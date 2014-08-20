@@ -7,4 +7,4 @@ This small experiment aims to provide bootstrap project environments for all the
 
 These templates can be copied freely and contributions are welcome.
 
-* `/sample-maven-osgiapi` - A maven project which uses the raw OSGI APIs for registering a portlet service.
+* `/sample-maven-osgiapi` - A maven project which uses the raw OSGI APIs for registering a portlet.

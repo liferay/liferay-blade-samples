@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>sample.bundle</groupId>
-	<artifactId>sample.bundle.maven</artifactId>
+	<artifactId>sample.bundle.maven.osgiapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Sample Bundle - Maven</name>
 
@@ -59,7 +59,7 @@
 				<configuration>
 					<instructions>
 						<Bundle-Activator>sample.bundle.maven.Activator</Bundle-Activator>
-						<Private-Package>sample.bundle.maven</Private-Package>
+						<Private-Package>sample.bundle.maven.osgiapi</Private-Package>
 					</instructions>
 				</configuration>
 			  </plugin>
