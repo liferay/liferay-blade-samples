@@ -6,3 +6,5 @@ Bootstrap Liferay Advanced Developer Environments
 This small experiment aims to provide bootstrap project environments for all the major build tools in common use for Java projects so that Liferay development can start quickly and easily.
 
 These templates can be copied freely and contributions are welcome.
+
+* `/sample-maven-osgiapi` - A maven project which uses the raw OSGI APIs for registering a portlet service.
