@@ -13,6 +13,9 @@
  */
 package sample.bundle.maven;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 import javax.portlet.Portlet;
 
 import org.osgi.framework.BundleActivator;
@@ -26,8 +29,19 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
+		Dictionary<String, Object> properties = new Hashtable<String, Object>();
+
+		properties.put(
+			"com.liferay.portlet.display-category", "category.sample");
+		properties.put(
+			"com.liferay.portlet.instanceable", "true");
+		properties.put("javax.portlet.display-name", "My Bundle Portlet");
+		properties.put(
+			"javax.portlet.security-role-ref",
+			new String[] {"power-user", "user"});
+
 		_serviceRegistration = bundleContext.registerService(
-			Portlet.class, new SamplePortletOne(), null);
+			Portlet.class, new SamplePortletOne(), properties);
 	}
 
 	@Override
