@@ -58,6 +58,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
+						<Bundle-Activator>sample.bundle.maven.Activator</Bundle-Activator>
 						<Private-Package>sample.bundle.maven</Private-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>

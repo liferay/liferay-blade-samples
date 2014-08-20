@@ -13,29 +13,28 @@
  */
 package sample.bundle.maven;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.portlet.GenericPortlet;
 import javax.portlet.Portlet;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
 
-import org.osgi.service.component.annotations.Component;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 
 /**
  * @author Raymond Augé
  */
-public class SamplePortletOne extends GenericPortlet {
+public class Activator implements BundleActivator {
 
 	@Override
-	protected void doView(RenderRequest request, RenderResponse response)
-		throws PortletException, IOException {
-
-		PrintWriter printWriter = response.getWriter();
-
-		printWriter.print("Hello World!");
+	public void start(BundleContext bundleContext) throws Exception {
+		_serviceRegistration = bundleContext.registerService(
+			Portlet.class, new SamplePortletOne(), null);
 	}
+
+	@Override
+	public void stop(BundleContext bundleContext) throws Exception {
+		_serviceRegistration.unregister();
+	}
+
+	private ServiceRegistration<Portlet> _serviceRegistration;
 
 }
