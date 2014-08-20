@@ -35,13 +35,14 @@ public class Activator implements BundleActivator {
 			"com.liferay.portlet.display-category", "category.sample");
 		properties.put(
 			"com.liferay.portlet.instanceable", "true");
-		properties.put("javax.portlet.display-name", "My Bundle Portlet");
+		properties.put(
+			"javax.portlet.display-name", "Sample Portlet - OSGI API");
 		properties.put(
 			"javax.portlet.security-role-ref",
 			new String[] {"power-user", "user"});
 
 		_serviceRegistration = bundleContext.registerService(
-			Portlet.class, new SamplePortletOne(), properties);
+			Portlet.class, new SamplePortletOSGIAPI(), properties);
 	}
 
 	@Override

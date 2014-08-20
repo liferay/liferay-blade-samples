@@ -24,7 +24,7 @@ import javax.portlet.RenderResponse;
 /**
  * @author Raymond Augé
  */
-public class SamplePortletOne extends GenericPortlet {
+public class SamplePortletOSGIAPI extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
