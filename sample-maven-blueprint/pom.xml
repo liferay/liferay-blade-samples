@@ -64,4 +64,11 @@
 			  </plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>liferay</id>
+			<url>http://cdn.repository.liferay.com/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
 </project>
