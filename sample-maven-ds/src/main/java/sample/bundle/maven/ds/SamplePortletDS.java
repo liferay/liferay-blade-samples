@@ -45,7 +45,7 @@ public class SamplePortletDS extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Hello World!");
+		printWriter.print("Maven DS - Hello World!");
 	}
 
 }

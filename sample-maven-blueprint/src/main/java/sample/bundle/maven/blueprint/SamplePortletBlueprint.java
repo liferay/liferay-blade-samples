@@ -32,7 +32,7 @@ public class SamplePortletBlueprint extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Hello World!");
+		printWriter.print("Maven Blueprint - Hello World!");
 	}
 
 }
