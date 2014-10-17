@@ -1,9 +1,9 @@
 .metadata
 .settings
-*/.classpath
-*/.project
-*/.settings
-*/target
-/.gradle/
-/reports/
-/generated/
+.classpath
+.project
+target
+bin
+.gradle/
+reports/
+generated/
