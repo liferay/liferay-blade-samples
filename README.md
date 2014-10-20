@@ -1,4 +1,4 @@
-# **B**ootstrap **L**iferay **A**dvanced **D**eveloper **E**nvironments
+# Bootstrap Liferay Advanced Developer Environments(**BLADE**)
 
 This small experiment aims to provide bootstrap project environments for all the major build tools in common use for Java projects so that Liferay development can start quickly and easily.
 
