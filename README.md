@@ -8,6 +8,7 @@ Software/Tools/Specifications | Version
  OSGI Compendium | 5.0
  OSGI Annotations | 6.0
  Liferay Portal | 7.x(Development)
+ Bndtools | 2.4.0.M2
 
 # Projects
 The template projects are categorized based on the build tools,
@@ -21,13 +22,6 @@ The projects also demonstrate how to use various frameworks like:
 * Blueprint
 * Declarative Services(**DS**)
 * OSGI API
-
-# Integation Points
-The following are the list of Liferay Integration points that are demonstrated as part of these projects,
-
-- [x] javax.portlet.Portlet
-- [x] com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand
-- [x] java.util.ResourceBundle
 
 ## Maven
 
@@ -43,9 +37,31 @@ The following are the list of Liferay Integration points that are demonstrated a
 
 >A maven project which uses the raw OSGI APIs for registering a portlet.
 
-## BndTools
+## Bndtools
 
-*WIP*
+* `cnf`
+
+> The Bndtools configuration project
+
+* `/bndtools/sample.bundle.bndtools.blueprint`
+  
+> A bndtools project which uses Blueprint for registering a portlet.
+
+* `/bndtools/sample.bundle.bndtools.ds` 
+
+> A bndtools project which uses the DS (Declarative Services) for registering a portlet.
+
+* `/bndtools/sample.bundle.bndtools.osgiapi`
+
+>A bndtools project which uses the raw OSGI APIs for registering a portlet.
+
+
+# Integration Points
+The following are the list of Liferay Integration points that are demonstrated as part of these projects,
+
+- [x] javax.portlet.Portlet
+- [ ] com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand
+- [ ] java.util.ResourceBundle
 
 # License
 [License](/LICENSE.txt)
@@ -61,3 +77,5 @@ These templates can be copied freely and contributions are welcome.
 [OSGI Compendium R5](http://www.osgi.org/Download/File?url=/download/r5/osgi.cmpn-5.0.0.pdf)
 
 [Blueprint](http://www.eclipse.org/gemini/blueprint/)
+
+[Bndtools](http://www.bndtools.org)
