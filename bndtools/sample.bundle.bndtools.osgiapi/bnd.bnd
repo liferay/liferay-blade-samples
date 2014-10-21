@@ -1,0 +1,13 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	osgi.core;version=5.0,\
+	JSR 286;version=2.0,\
+	portal-service;version=6.2
+Private-Package:  \
+	sample.bundle.bndtools.osgiapi
+Import-Package:  \
+	org.osgi.framework;version='[1.7,2)',\
+	javax.servlet;version='[2.5,4.0.0)',\
+	javax.portlet;version='[2.0,3)',\
+	*
+Bundle-Activator: sample.bundle.bndtools.osgiapi.Activator

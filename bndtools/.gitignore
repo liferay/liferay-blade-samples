@@ -1,3 +1,6 @@
 /.gradle/
 /reports/
 /generated/
+bin
+bin_test
+.DS_Store
