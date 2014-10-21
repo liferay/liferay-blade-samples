@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.liferay"
+		module="com.liferay.sdk.dependencies.biz.aQute.bnd"
+		revision="working@static-193.212.99.14-tataidc.co.in"
+		conf="default"
+		confs="default"
+		date="20141021150551"/>
+	<dependencies>
+		<module organisation="com.liferay" name="aQute.bnd">
+			<revision name="2.3.0.20140225-161137" status="release" pubdate="20140701042829" resolver="liferay-public" artresolver="default" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, master" position="0">
+				<metadata-artifact status="successful" details="" size="472" time="7035" location="/Users/kameshs/git/blade/liferay-plugins-sdk-7.0.0/.ivy/cache/com.liferay/aQute.bnd/ivy-2.3.0.20140225-161137.xml" searched="true" original-local-location="/Users/kameshs/git/blade/liferay-plugins-sdk-7.0.0/.ivy/cache/com.liferay/aQute.bnd/ivy-2.3.0.20140225-161137.xml.original" origin-is-local="false" origin-location="http://cdn.repository.liferay.com/nexus/content/groups/public/com/liferay/aQute.bnd/2.3.0.20140225-161137/aQute.bnd-2.3.0.20140225-161137.pom"/>
+				<caller organisation="com.liferay" name="com.liferay.sdk.dependencies.biz.aQute.bnd" conf="default" rev="2.3.0.20140225-161137" rev-constraint-default="2.3.0.20140225-161137" rev-constraint-dynamic="2.3.0.20140225-161137" callerrev="working@static-193.212.99.14-tataidc.co.in"/>
+				<artifacts>
+					<artifact name="aQute.bnd" type="jar" ext="jar" status="successful" details="" size="2140747" time="73773" location="/Users/kameshs/git/blade/liferay-plugins-sdk-7.0.0/.ivy/cache/com.liferay/aQute.bnd/jars/aQute.bnd-2.3.0.20140225-161137.jar">
+						<origin-location is-local="false" location="http://cdn.repository.liferay.com/nexus/content/groups/public/com/liferay/aQute.bnd/2.3.0.20140225-161137/aQute.bnd-2.3.0.20140225-161137.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
