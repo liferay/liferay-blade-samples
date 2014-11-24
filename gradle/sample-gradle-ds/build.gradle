@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.dm.bundle'
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	compile 'com.liferay.portal:portal-service:6.2.1'
+	compile 'javax.portlet:portlet-api:2.0'
+	compile 'org.osgi:org.osgi.compendium:5.0.0'
+}
+
+bundle {
+	instructions << [
+		'-dsannotations' : '*',
+		'-sources' : 'true',
+		'Bundle-Version' : '1.0.0.${tstamp}',
+		'Service-Component' : '*',
+		'Import-Package' :  """\
+			com.liferay.portal.kernel.dao.orm;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.kernel.exception;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.kernel.lar;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.kernel.search;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.kernel.util;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.model;version='[6.2.0,7.1.0)',\
+			com.liferay.portal.service;version='[6.2.0,7.1.0)',\
+			javax.servlet;version='[2.5,4)',\
+			*"""
+	]
+}
