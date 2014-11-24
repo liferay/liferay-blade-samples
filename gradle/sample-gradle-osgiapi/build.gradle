@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.dm.bundle'
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	compile 'com.liferay.portal:portal-service:6.2.1'
+	compile 'javax.portlet:portlet-api:2.0'
+	compile 'org.osgi:org.osgi.compendium:5.0.0'
+	compile 'org.osgi:org.osgi.core:5.0.0'
+}
+
+bundle {
+	instructions << [
+		'-sources' : 'true',
+		'Bundle-Activator' : 'sample.bundle.gradle.osgiapi.Activator',
+		'Bundle-Version' : '1.0.0.${tstamp}',
+		'Import-Package' :  """\
+			javax.portlet;version='[2.0,3)',\
+			javax.servlet;version='[2.5,4)',\
+			org.osgi.framework;version='[1.7,2)',\
+			*"""
+	]
+}
