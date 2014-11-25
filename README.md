@@ -60,7 +60,11 @@ The projects also demonstrate how to use various frameworks like:
 The following are the list of Liferay Integration points that are demonstrated as part of these projects,
 
 - [x] javax.portlet.Portlet
-- [ ] com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand
+- [x] com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand
+	  The project `sample.bundle.bndtools.ip.actioncommand` demonstrates this integation point.  It integrates the action command named `greet` with portlet `greeter`.
+
+	  __NOTE:__ To see how this example works, a portlet plugin with a portlet named **greeter** (javax.portlet.name='greeter') is to be deployed.  The command adds a key `greeting_message` to Liferay SessionMessages, along with a session attribute `GREETER_MESSAGE`. You can independently deploy the bundle `sample.bundle.bndtools.ip.actioncommand` a.k.a refresh the bundle without the need to redeploy the Portlet plugin.
+
 - [ ] java.util.ResourceBundle
 
 # License
