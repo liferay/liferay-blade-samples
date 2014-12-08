@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.1'
+        classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.2'
     }
 }
 
@@ -22,13 +22,5 @@ dependencies {
 }
 
 bundle {
-	instructions << [
-		'-sources' : 'true',
-		'Bundle-Version' : '1.0.0.${tstamp}',
-		'Import-Package' :  """\
-			javax.portlet;version='[2.0,3)',\
-			javax.servlet;version='[2.5,4)',\
-			org.osgi.framework;version='[1.7,2)',\
-			*"""
-	]
+	instructions << [ '-include' : 'bnd.bnd' ]
 }
