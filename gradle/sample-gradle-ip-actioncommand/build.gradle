@@ -4,7 +4,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.1'
+		classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.2'
 	}
 }
 
@@ -14,7 +14,7 @@ apply plugin: 'org.dm.bundle'
 repositories {
 	mavenCentral()
 	maven {
-		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+		url 'https://repository.liferay.com/nexus/content/repositories/liferay-snapshots-ce/'
 	}
 }
 
@@ -27,21 +27,11 @@ dependencies {
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 	compile 'org.osgi:org.osgi.core:5.0.0'
 	compile 'org.osgi:org.osgi.annotation:6.0.0'
-	compile 'com.liferay.portal:portal-service:7.0.0-m2-SNAPSHOT'
-
+	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
 }
 
 bundle {
-	instructions << [
-		'-sources' : 'true',
-		'Bundle-Version' : '1.0.0.${tstamp}',
-		'Import-Package' :  """\
-			javax.portlet;version='[2.0,3)',\
-			javax.servlet;version='[2.5,4)',\
-			org.osgi.framework;version='[1.7,2)',\
-			*""",
-		'-dsannotations':'*'
-	]
+	instructions << [ '-include' : 'bnd.bnd' ]
 }
 
 defaultTasks 'clean', 'deployBundle'
