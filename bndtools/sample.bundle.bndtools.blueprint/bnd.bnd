@@ -1,8 +1,8 @@
--buildpath:  \
+-buildpath: \
 	osgi.core,\
 	osgi.cmpn,\
-	JSR 286;version=2.0,\
-	portal-service;version=6.2
+	com.liferay.portal:portal-service;version=7.0.0.SNAPSHOT,\
+	javax.portlet:portlet-api;version=2.0;strategy=exact
 Bundle-Version: 0.0.0.${tstamp}
 Private-Package:  \
 	sample.bundle.bndtools.blueprint
