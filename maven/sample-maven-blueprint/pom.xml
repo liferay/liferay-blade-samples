@@ -55,7 +55,6 @@
 				<configuration>
 					<instructions>
 						<Private-Package>sample.bundle.maven.blueprint</Private-Package>
-						<!-- TODO remove it later, to make it resolve automatically -->
 						<Import-Package>javax.portlet;version="[2.0,3)",org.osgi.framework;versi
 							on="[1.7,2)",javax.servlet;version="[2.5,4.0.0)"</Import-Package>
 					</instructions>
@@ -88,11 +87,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>liferay</id>
-			<url>http://cdn.repository.liferay.com/nexus/content/groups/public</url>
-		</repository>
-	</repositories>
 </project>
