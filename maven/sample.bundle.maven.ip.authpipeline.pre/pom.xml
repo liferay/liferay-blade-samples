@@ -66,8 +66,8 @@
 									<instructions>
 										<Import-Package>org.osgi.framework;version="[1.7,2)",*</Import-Package>
 										<_dsannotations>*</_dsannotations>
-										<Include-Resource>{maven-resources}, @shiro-core-1.1.0.jar, 
-										 @slf4j-api-1.7.7.jar , @slf4j-simple-1.7.7.jar </Include-Resource>	
+										<Include-Resource>{maven-resources}, @shiro-core-1.1.0.jar,
+										 @slf4j-api-1.7.7.jar , @slf4j-simple-1.7.7.jar </Include-Resource>
 										 <Private-Package>org.apache.shiro.*,org.slf4j.*</Private-Package>
 									</instructions>
 								</configuration>
@@ -99,11 +99,4 @@
 						</plugin>
 				</plugins>
 		</build>
-
-		<repositories>
-				<repository>
-						<id>liferay</id>
-						<url>http://cdn.repository.liferay.com/nexus/content/groups/public</url>
-				</repository>
-		</repositories>
 </project>
