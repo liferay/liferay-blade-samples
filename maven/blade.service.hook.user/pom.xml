@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.liferay.blade</groupId>
-	<artifactId>service-hook-sample</artifactId>
+	<groupId>blade</groupId>
+	<artifactId>blade.service.hook.user</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Service Hook - Sample</name>
+	<name>Service Hook User</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>
@@ -30,7 +30,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Private-Package>com.liferay.blade.service.hook.sample</Private-Package>
+						<Private-Package>blade.service.hook.user</Private-Package>
 						<Import-Package>com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>

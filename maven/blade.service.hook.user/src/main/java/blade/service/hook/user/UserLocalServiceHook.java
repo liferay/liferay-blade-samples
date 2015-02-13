@@ -11,7 +11,9 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.blade.service.hook.sample;
+package blade.service.hook.user;
+
+import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -36,6 +38,16 @@ public class UserLocalServiceHook extends UserLocalServiceWrapper {
 	public User getUser(long userId) throws PortalException {
 		System.out.println("Getting user by id " + userId);
 		return super.getUser(userId);
+	}
+
+	@Override
+	public int authenticateByEmailAddress(long companyId, String emailAddress,
+			String password, Map<String, String[]> headerMap,
+			Map<String, String[]> parameterMap, Map<String, Object> resultsMap)
+			throws PortalException {
+		System.out.println("Authenticating user by email address " + emailAddress);
+		return super.authenticateByEmailAddress(companyId, emailAddress, password,
+				headerMap, parameterMap, resultsMap);
 	}
 
 }
