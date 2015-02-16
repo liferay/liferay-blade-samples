@@ -2,10 +2,10 @@
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 		<modelVersion>4.0.0</modelVersion>
-		<groupId>sample.bundle</groupId>
-		<artifactId>sample.bundle.maven.ip.authpipeline.pre</artifactId>
+		<groupId>blade</groupId>
+		<artifactId>blade.authenticator.shiro</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<name>Sample Bundle - Integration Point - authpipeline.pre</name>
+		<name>Authenticator Shiro</name>
 
 		<packaging>bundle</packaging>
 
@@ -53,8 +53,8 @@
 								<artifactId>maven-compiler-plugin</artifactId>
 								<version>2.3.2</version>
 								<configuration>
-										<source>1.6</source>
-										<target>1.6</target>
+										<source>1.7</source>
+										<target>1.7</target>
 								</configuration>
 						</plugin>
 						<plugin>
@@ -71,31 +71,6 @@
 										 <Private-Package>org.apache.shiro.*,org.slf4j.*</Private-Package>
 									</instructions>
 								</configuration>
-						</plugin>
-						<plugin>
-								<groupId>org.apache.maven.plugins</groupId>
-								<artifactId>maven-dependency-plugin</artifactId>
-								<version>2.8</version>
-								<executions>
-										<execution>
-												<id>copy-installed</id>
-												<phase>install</phase>
-												<goals>
-														<goal>copy</goal>
-												</goals>
-												<configuration>
-														<artifactItems>
-																<artifactItem>
-																		<groupId>${project.groupId}</groupId>
-																		<artifactId>${project.artifactId}</artifactId>
-																		<version>${project.version}</version>
-																		<type>${project.packaging}</type>
-																</artifactItem>
-														</artifactItems>
-														<outputDirectory>${liferay.home}/osgi/modules</outputDirectory>
-												</configuration>
-										</execution>
-								</executions>
 						</plugin>
 				</plugins>
 		</build>
