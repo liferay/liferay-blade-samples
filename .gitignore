@@ -1,9 +1,5 @@
 .metadata
 .settings
-.classpath
-.project
-target
 bin
-.gradle/
 reports/
 generated/
