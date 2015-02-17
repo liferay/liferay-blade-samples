@@ -11,7 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package sample.bundle.gradle.osgiapi;
+package blade.portlet.osgiapi;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -27,7 +27,6 @@ import org.osgi.framework.ServiceRegistration;
  */
 public class Activator implements BundleActivator {
 
-	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		Dictionary<String, Object> properties = new Hashtable<String, Object>();
 
@@ -36,16 +35,15 @@ public class Activator implements BundleActivator {
 		properties.put(
 			"com.liferay.portlet.instanceable", "true");
 		properties.put(
-			"javax.portlet.display-name", "Sample Portlet - OSGI API");
+			"javax.portlet.display-name", "OSGi API Portlet");
 		properties.put(
 			"javax.portlet.security-role-ref",
 			new String[] {"power-user", "user"});
 
 		_serviceRegistration = bundleContext.registerService(
-			Portlet.class, new SamplePortletOSGIAPI(), properties);
+			Portlet.class, new OSGiAPIPortlet(), properties);
 	}
 
-	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		_serviceRegistration.unregister();
 	}

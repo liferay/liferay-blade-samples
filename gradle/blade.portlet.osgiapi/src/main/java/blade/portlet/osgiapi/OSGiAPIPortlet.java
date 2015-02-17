@@ -11,7 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package sample.bundle.gradle.osgiapi;
+package blade.portlet.osgiapi;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,7 @@ import javax.portlet.RenderResponse;
 /**
  * @author Raymond Augé
  */
-public class SamplePortletOSGIAPI extends GenericPortlet {
+public class OSGiAPIPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
@@ -32,7 +32,7 @@ public class SamplePortletOSGIAPI extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Hello World! with gradle OSGi API");
+		printWriter.print("OSGi API Portlet - Hello World!");
 	}
 
 }

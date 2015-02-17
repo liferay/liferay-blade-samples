@@ -13,15 +13,24 @@ apply plugin: 'org.dm.bundle'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://repository.liferay.com/nexus/content/groups/public'
+	}
 }
 
+sourceCompatibility = 1.7
+version = '1.0'
+
 dependencies {
-	compile 'com.liferay.portal:portal-service:6.2.1'
+	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
 	compile 'javax.portlet:portlet-api:2.0'
-	compile 'org.osgi:org.osgi.compendium:5.0.0'
 	compile 'org.osgi:org.osgi.core:5.0.0'
 }
 
 bundle {
 	instructions << [ '-include' : 'bnd.bnd' ]
+}
+
+task wrapper(type:Wrapper){
+	gradleVersion = '2.2'
 }
