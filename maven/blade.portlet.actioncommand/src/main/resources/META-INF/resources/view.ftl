@@ -16,25 +16,13 @@
 
 <#include "init.ftl">
 
-<#assign redirectURL = renderResponse.createRenderURL() />
-
-Hello Greeter!
-<br/>
-
 <@portlet["actionURL"] name="greet" varImpl="greetURL"/>
 
-<@liferay_ui["header"]
-	backURL="${redirectURL}"
-	title='Greeter'
-/>
-
 <@aui["form"] action="${greetURL}" method="post" name="fm">
-	<@aui["input"] name="redirect" type="hidden" value="${redirectURL}" />
 
 	<@aui["input"] name="name" type="text" />
 
 	<@aui["button-row"]>
-		<@aui["button"] value="save" type="submit" />
-		<@aui["button"] href="${redirectURL}" type="cancel" />
+		<@aui["button"] value="Greet" type="submit" />
 	</@>
 </@>

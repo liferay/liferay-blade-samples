@@ -64,18 +64,16 @@ public class GreeterActionCommand implements ActionCommand {
 	private void _handleActionCommand(
 		ActionRequest actionRequest, ActionResponse actionResponse) {
 
-		String greeterName = ParamUtil.get(actionRequest,
-			"name", StringPool.BLANK);
+		String name = ParamUtil.get(actionRequest, "name", StringPool.BLANK);
 
-		_log.info("Greeter name:" + greeterName);
+		_log.info("Hello " + name);
 
-		String greetingMessage = "Hello " + greeterName + "! Welcome to OSGI";
+		String greetingMessage = "Hello " + name + "! Welcome to OSGi";
 
 		actionRequest.setAttribute("GREETER_MESSAGE", greetingMessage);
 
 		SessionMessages.add(actionRequest,
 			"greeting_message",greetingMessage);
-
 	}
 
 	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
