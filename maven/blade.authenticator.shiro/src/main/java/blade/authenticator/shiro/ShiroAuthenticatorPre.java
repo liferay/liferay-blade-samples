@@ -19,6 +19,7 @@ import com.liferay.portal.security.auth.Authenticator;
 
 
 @Component(
+	immediate = true,
 	property = {
 		"key=auth.pipeline.pre"
 	},
