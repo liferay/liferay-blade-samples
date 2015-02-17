@@ -1,5 +1,5 @@
 -sources: true
-Bundle-Activator: blade.portlet.osgiapi.Activator
+Bundle-Activator: blade.portlet.Activator
 Bundle-Version: 1.0.0.${tstamp}
 Import-Package:  \
 	javax.portlet;version='[2.0,3)',\
