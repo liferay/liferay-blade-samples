@@ -11,7 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package sample.bundle.gradle.ds;
+package blade.portlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,12 +32,12 @@ import org.osgi.service.component.annotations.Component;
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=Sample Portlet - DS",
+		"javax.portlet.display-name=DS Portlet",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
 )
-public class SamplePortletDS extends GenericPortlet {
+public class DSPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
@@ -45,7 +45,7 @@ public class SamplePortletDS extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Hello World! with gradle DS");
+		printWriter.print("DS Portlet - Hello World!");
 	}
 
 }
