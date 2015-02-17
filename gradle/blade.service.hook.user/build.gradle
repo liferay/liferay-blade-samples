@@ -23,3 +23,7 @@ dependencies {
 bundle {
 	instructions << [ '-include' : 'bnd.bnd' ]
 }
+
+task wrapper(type:Wrapper){
+	gradleVersion = '2.2'
+}
