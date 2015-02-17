@@ -32,7 +32,7 @@ public class BlueprintPortlet extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Blueprint Portlet - Hello World!!!");
+		printWriter.print("Blueprint Portlet - Hello World!");
 	}
 
 }
