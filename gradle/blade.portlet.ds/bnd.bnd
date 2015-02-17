@@ -1,0 +1,8 @@
+-dsannotations: *
+-sources: true
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: \
+	javax.portlet;version='[2.0,3)',\
+	javax.servlet;version='[2.5,4)',\
+	*
