@@ -1,0 +1,39 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.2'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.dm.bundle'
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'https://repository.liferay.com/nexus/content/repositories/liferay-snapshots-ce/'
+	}
+}
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+dependencies {
+    compile 'javax.portlet:portlet-api:2.0'
+	compile 'javax.servlet:servlet-api:2.5'
+	compile 'org.osgi:org.osgi.compendium:5.0.0'
+	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'com.liferay.portal:util-bridges:7.0.0-SNAPSHOT'
+	compile 'com.liferay.portal:util-taglib:7.0.0-SNAPSHOT'
+}
+
+bundle {
+	instructions << [ '-include' : 'bnd.bnd' ]
+}
+
+task wrapper(type:Wrapper){
+	gradleVersion = '2.2'
+}

@@ -11,14 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package sample.bundle.gradle.ip.actioncommand;
-
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand;
-import com.liferay.portal.kernel.servlet.SessionMessages;
-import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.StringPool;
+package blade.portlet.actioncommand;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -28,50 +21,61 @@ import javax.portlet.PortletResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand;
+import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.StringPool;
+
 
 /**
  * @author Kamesh Sampath
  *
  */
-@Component(property={"action.command.name=greet",
-					 "javax.portlet.name=greeter"},
-		   service=ActionCommand.class)
+@Component(
+	immediate = true,
+	property = {
+		"action.command.name=greet",
+		"javax.portlet.name=blade_portlet_GreeterPortlet"
+	},
+	service = ActionCommand.class
+)
 public class GreeterActionCommand implements ActionCommand {
 
+	@Override
 	public boolean processCommand(PortletRequest portletRequest,
 		PortletResponse portletResponse)
 		throws PortletException {
-		
+
 		_log.info("Processing Greeting Action");
-		
-		if(portletRequest instanceof ActionRequest 
+
+		if(portletRequest instanceof ActionRequest
 						&& portletResponse instanceof ActionResponse){
-			
+
 			_handleActionCommand((ActionRequest)portletRequest,
 				(ActionResponse)portletResponse);
-				
+
 		}
-		
+
 		return true;
 	}
-	
+
 	private void _handleActionCommand(
 		ActionRequest actionRequest, ActionResponse actionResponse) {
-		
-		String greeterName = ParamUtil.get(actionRequest,
-			"name", StringPool.BLANK);
-		
-		_log.info("Greeter name:"+greeterName);		
-		
-		String greetingMessage = "Hello "+greeterName+"! Welcome to OSGI";
-		
+
+		String name = ParamUtil.get(actionRequest, "name", StringPool.BLANK);
+
+		_log.info("Hello " + name);
+
+		String greetingMessage = "Hello " + name + "! Welcome to OSGi";
+
 		actionRequest.setAttribute("GREETER_MESSAGE", greetingMessage);
-		
+
 		SessionMessages.add(actionRequest,
 			"greeting_message",greetingMessage);
-		
 	}
 
 	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
-	
+
 }
