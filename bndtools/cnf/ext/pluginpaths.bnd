@@ -1,3 +1,0 @@
--pluginpath:\
-	${plugin-dir}/biz.aQute.repository/biz.aQute.repository.jar,\
-	${workspace}/cnf/buildrepo/biz.aQute.repository.aether/biz.aQute.repository.aether-3.0.0.jar
