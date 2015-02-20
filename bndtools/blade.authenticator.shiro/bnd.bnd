@@ -1,0 +1,19 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	osgi.core;version=5.0,\
+	osgi.cmpn;version=5.0,\
+	osgi.annotation;version=6.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	org.apache.shiro:shiro-core;version=1.2.3,\
+	slf4j.simple;version='[1.7,2)',\
+	slf4j.api;version='[1.7,2)'
+-dsannotations:  \
+	*
+Private-Package:  \
+	blade.authenticator.shiro
+	
+-includeresource: @shiro-core-1.2.3.jar,\
+                  @slf4j.api-1.7.7.jar,\
+                  @slf4j.simple-1.7.7.jar,\
+                  userauth.ini=src/userauth.ini
+Bundle-Name: Sample Authpipeline Pre
