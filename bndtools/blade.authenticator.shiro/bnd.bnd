@@ -3,14 +3,14 @@ Bundle-Version: 0.0.0.${tstamp}
 	osgi.core;version=5.0,\
 	osgi.cmpn;version=5.0,\
 	osgi.annotation;version=6.0,\
-	com.liferay.portal:portal-service;version=7.0.0.SNAPSHOT,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
 	org.apache.shiro:shiro-core;version=1.2.3,\
-	slf4j.simple;version=1.7,\
-	slf4j.api;version=1.7
+	slf4j.simple;version='[1.7,2)',\
+	slf4j.api;version='[1.7,2)'
 -dsannotations:  \
 	*
 Private-Package:  \
-	sample.bundle.bndtools.ip.authpipeline.pre.internal
+	blade.authenticator.shiro
 	
 -includeresource: @shiro-core-1.2.3.jar,\
                   @slf4j.api-1.7.7.jar,\
