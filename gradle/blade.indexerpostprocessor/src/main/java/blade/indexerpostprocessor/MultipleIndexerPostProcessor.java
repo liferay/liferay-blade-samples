@@ -71,7 +71,7 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessSummary(Summary summary, Document document,
-			Locale locale, String snippet, PortletURL portletURL) {
+			Locale locale, String snippet) {
 
 		_log.info("postProcessSummary");
 	}

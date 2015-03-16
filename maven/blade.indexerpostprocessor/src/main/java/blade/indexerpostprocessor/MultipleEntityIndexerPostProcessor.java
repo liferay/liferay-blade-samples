@@ -15,12 +15,6 @@
  */
 package blade.indexerpostprocessor;
 
-import java.util.Locale;
-
-import javax.portlet.PortletURL;
-
-import org.osgi.service.component.annotations.Component;
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.BooleanQuery;
@@ -28,6 +22,10 @@ import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.IndexerPostProcessor;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.search.Summary;
+
+import java.util.Locale;
+
+import org.osgi.service.component.annotations.Component;
 
 
 @Component(
@@ -71,7 +69,7 @@ public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor 
 
 	@Override
 	public void postProcessSummary(Summary summary, Document document,
-			Locale locale, String snippet, PortletURL portletURL) {
+			Locale locale, String snippet) {
 
 		_log.info("postProcessSummary");
 	}
