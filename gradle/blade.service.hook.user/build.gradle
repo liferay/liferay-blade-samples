@@ -13,6 +13,9 @@ apply plugin: 'org.dm.bundle'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://repository.liferay.com/nexus/content/groups/public'
+	}
 }
 
 dependencies {
