@@ -1,0 +1,5 @@
+-runremote: blade.authenticator.shiro;shell=11311
+
+-runbundles: blade.authenticator.shiro;version=latest
+
+-runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file

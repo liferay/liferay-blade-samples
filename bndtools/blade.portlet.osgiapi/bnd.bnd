@@ -4,7 +4,7 @@
 
 Bundle-Activator: blade.portlet.osgiapi.Activator
 
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Private-Package: blade.portlet.osgiapi
 

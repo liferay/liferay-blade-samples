@@ -18,5 +18,3 @@ Bundle-Version: 1.0.0.${tstamp}
 
 Private-Package:  \
 	blade.authenticator.shiro
-
-Bundle-Name: Sample Authpipeline Pre
