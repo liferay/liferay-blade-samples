@@ -1,0 +1,5 @@
+-runremote: blade.portlet.blueprint;shell=11311
+
+-runbundles: blade.portlet.blueprint;version=latest
+
+-runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file
