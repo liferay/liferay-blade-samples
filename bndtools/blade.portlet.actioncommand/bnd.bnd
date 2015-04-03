@@ -1,17 +1,17 @@
-Bundle-Version: 0.0.0.${tstamp}
--buildpath:  \
+-buildpath: \
 	osgi.core;version=5.0,\
 	osgi.cmpn;version=5.0,\
-	osgi.annotation;version=6.0,\
+	javax.portlet__portlet-api;version=2.0.0,\
+	javax.servlet__servlet-api;version=2.5.0,\
 	com.liferay.portal:portal-service;version='[7.0,8)',\
 	com.liferay.portal:util-bridges;version='[7.0,8)',\
 	com.liferay.portal:util-java;version='[7.0,8)',\
-	com.liferay.portal:util-taglib;version='[7.0,8)',\
-	javax.portlet:portlet-api;version=2.0;strategy=exact,\
-	javax.servlet;version=3.0
-Private-Package:  blade.portlet.*
--dsannotations:  \
-	*
+	com.liferay.portal:util-taglib;version='[7.0,8)'
+
 -includeresource: \
 	@util-bridges-7.0.0-SNAPSHOT.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
 	@util-taglib-7.0.0-SNAPSHOT.jar!/META-INF/*.tld
+
+Bundle-Version: 1.0.0.${tstamp}
+
+Private-Package:  blade.portlet.*
