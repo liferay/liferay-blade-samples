@@ -1,16 +1,17 @@
 -buildpath: \
-	osgi.core,\
 	osgi.cmpn,\
-	com.liferay.portal:portal-service;version='[7.0,8)',\
-	javax.portlet:portlet-api;version=2.0;strategy=exact
+	javax.portlet__portlet-api
+
+-includeresource: \
+	OSGI-INF/blueprint= OSGI-INF/blueprint
+
 Bundle-Version: 0.0.0.${tstamp}
+
 Private-Package:  \
-	blade.portlet.blueprint
-	
+	blade.portlet.blueprint,\
+
 Import-Package:  \
 	org.osgi.framework;version='[1.7,2)',\
 	javax.servlet;version='[2.5,4.0.0)',\
 	javax.portlet;version='[2.0,3)',\
 	*
--includeresource: \
-  OSGI-INF/blueprint= OSGI-INF/blueprint
