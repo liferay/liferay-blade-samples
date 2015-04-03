@@ -31,10 +31,6 @@ import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
 
 
-/**
- * @author Kamesh Sampath
- *
- */
 @Component(
 	immediate = true,
 	property = {
