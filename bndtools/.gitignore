@@ -1,7 +1,6 @@
-/.gradle/
-/reports/
+.gradle/
+.gradle-wrapper/
+.gradlew
 /generated/
-bin
-cnf/
-bin_test
-.DS_Store
+enroute.zip
+.metadata

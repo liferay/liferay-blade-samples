@@ -1,0 +1,56 @@
+#
+# -ENROUTE DISTRO-
+# 
+# This file contains the setup for OSGi enRoute
+#
+
+# must be removed before release
+bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles
+
+ 
+-pluginpath:\
+        ${build}/cache/biz.aQute.repository.jar;url=${bnd-release}/biz.aQute.repository/biz.aQute.repository-latest.jar
+
+
+-plugin.enroute.distrorepo = \
+	aQute.bnd.jpm.Repository; \
+	        includeStage	=       true; \
+	        name		=       Distro; \
+	        location	=       ~/.bnd/shacache; \
+	        index		=       ${build}/distro.json; \
+	        depository.group	=		OSGi; \
+    		depository.name		=		enRoute.rt
+
+-runfw:							org.eclipse.osgi;version=@3.9.1
+-runpath.eqnx:					osgi.enroute.equinox.log.adapter
+
+-runproperties.eqnx: 				\
+	org.apache.felix.http.jettyEnabled=true, \
+	org.apache.felix.http.whiteboardEnabled=true,\
+	osgi.console.enable.builtin=false, \
+	osgi.console=, \
+	org.osgi.service.http.port=8080
+
+-runsystempackages.eqnx:		javax.script
+-runsystemcapabilities.dflt: 	${native_capability}
+
+debug-bundles: \
+	osgi.identity;filter:='(osgi.identity=aQute.xray.plugin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.metatype)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.eventadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)', \
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.base.debug.provider)'
+	
+# 
+# Augments for the Repository Indexer
+#
+
+org.apache.felix.http.bundle: 		cap=osgi.enroute.whiteboard;osgi.enroute.whiteboard=osgi.enroute.servlet;version:Version=1.1.0;effective:=active, \
+	cap=osgi.service;objectClass=org.osgi.service.http.HttpService;effective:=active
+org.knopflerfish.bundle.useradmin: 	cap=osgi.service;objectClass=org.osgi.service.useradmin.UserAdmin;effective:=active
+org.eclipse.equinox.coordinator: 	cap=osgi.service;objectClass=org.osgi.service.coordinator.Coordinator;effective:=active
+org.apache.felix.scr:				cap=osgi.extender;osgi.extender=osgi.component;;version:Version=1.2.1;effective:=active
+
+	
