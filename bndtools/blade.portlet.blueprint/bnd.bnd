@@ -5,7 +5,7 @@
 -includeresource: \
 	OSGI-INF/blueprint= OSGI-INF/blueprint
 
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Private-Package:  \
 	blade.portlet.blueprint,\

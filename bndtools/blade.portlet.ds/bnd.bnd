@@ -2,7 +2,7 @@
 	osgi.cmpn;version=5.0,\
 	javax.portlet__portlet-api
 
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Import-Package:  \
 	org.osgi.framework;version='[1.7,2)',\
