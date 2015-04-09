@@ -1,0 +1,11 @@
+-dsannotations: *
+
+Bundle-Activator: blade.portlet.Activator
+
+Import-Package: \
+	javax.portlet;version="2.0",\
+	javax.servlet;version="2.5",\
+	org.osgi.framework;version="1.7",\
+	*
+
+Private-Package: blade.portlet
