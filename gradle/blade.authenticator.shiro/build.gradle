@@ -1,15 +1,18 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.2'
-	}
+    repositories {
+        ivy {
+            url 'https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles'
+            layout 'pattern', {
+                artifact '[module]/[artifact]-[revision].[ext]' /* OSGi repo pattern */
+            }
+        }
+    }
+    dependencies {
+        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.0.0'
+    }
 }
 
-apply plugin: 'java'
-apply plugin: 'org.dm.bundle'
+apply plugin: 'biz.aQute.bnd.builder'
 
 repositories {
 	mavenCentral()
@@ -27,10 +30,6 @@ dependencies {
 	compile 'org.apache.shiro:shiro-core:1.1.0'
 	compile 'org.slf4j:slf4j-api:1.7.7'
 	compile 'org.slf4j:slf4j-simple:1.7.7'
-}
-
-bundle {
-	instructions << [ '-include' : 'bnd.bnd' ]
 }
 
 task wrapper(type:Wrapper){
