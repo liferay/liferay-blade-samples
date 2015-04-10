@@ -1,15 +1,18 @@
 buildscript {
     repositories {
-        mavenCentral()
+        ivy {
+            url 'https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles'
+            layout 'pattern', {
+                artifact '[module]/[artifact]-[revision].[ext]' /* OSGi repo pattern */
+            }
+        }
     }
-
     dependencies {
-        classpath 'org.dm.gradle:gradle-bundle-plugin:0.6.2'
+        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.0.0'
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'org.dm.bundle'
+apply plugin: 'biz.aQute.bnd.builder'
 
 repositories {
 	mavenCentral()
@@ -23,10 +26,6 @@ version = '1.0'
 
 dependencies {
 	compile 'javax.portlet:portlet-api:2.0'
-}
-
-bundle {
-	instructions << [ '-include' : 'bnd.bnd' ]
 }
 
 task wrapper(type:Wrapper){
