@@ -1,0 +1,14 @@
+-buildpath: \
+	biz.aQute.junit,\
+	blade.cli;version=latest,\
+	osgi.enroute.base.api
+
+-testpath: \
+	biz.aQute.junit
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Private-Package: \
+	blade.cli.test
+
+Test-Cases: ${test-cases}
