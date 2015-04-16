@@ -1,0 +1,37 @@
+-buildpath: \
+	aQute.libg,\
+	biz.aQute.bndlib,\
+	osgi.enroute.base.api,\
+	org.apache.commons.lang3
+
+-includeresource: templates.zip
+
+-sources: false
+	
+Bundle-Version: 0.1.0.${tstamp}
+
+JPM-Command: blade
+Main-Class: blade.cli.blade
+
+Private-Package: \
+	aQute.bnd.osgi,\
+	org.apache.commons.lang3,\
+	org.apache.commons.lang3.text,\
+	aQute.configurable;-split-package:=first,\
+	aQute.lib.collections;-split-package:=first,\
+	aQute.lib.consoleapp;-split-package:=first,\
+	aQute.lib.env;-split-package:=first,\
+	aQute.lib.getopt;-split-package:=first,\
+	aQute.lib.io;-split-package:=first,\
+	aQute.lib.justif;-split-package:=first,\
+	aQute.lib.markdown;-split-package:=first,\
+	aQute.lib.utf8properties;-split-package:=first,\
+	aQute.lib.zip;-split-package:=first,\
+	aQute.libg.generics;-split-package:=first,\
+	aQute.libg.reporter;-split-package:=first,\
+	aQute.libg.sed;-split-package:=first,\
+	aQute.bnd.service;split-package:=first,\
+	aQute.service.reporter;split-package:=first,\
+	blade.cli,\
+	org.osgi.framework
+	
