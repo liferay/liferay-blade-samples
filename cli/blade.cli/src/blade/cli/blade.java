@@ -25,7 +25,11 @@ public class blade extends AbstractConsoleApp {
 	@Description("Creates a new Liferay module project.")
 	public void _create(CreateOptions options) throws Exception {
 		new CreateCommand(this, options);
-		
+	}
+
+	@Description("Deploys a bundle to Liferay 7")
+	public void _deploy(DeployOptions options) throws Exception {
+		new DeployCommand(this, options);
 	}
 
 	public PrintStream out() {

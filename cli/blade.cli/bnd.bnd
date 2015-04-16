@@ -6,7 +6,7 @@
 
 -includeresource: templates.zip
 
--sources: true
+-sources: false
 	
 Bundle-Version: 0.1.0.${tstamp}
 
@@ -26,6 +26,7 @@ Private-Package: \
 	aQute.lib.justif;-split-package:=first,\
 	aQute.lib.markdown;-split-package:=first,\
 	aQute.lib.utf8properties;-split-package:=first,\
+	aQute.lib.zip;-split-package:=first,\
 	aQute.libg.generics;-split-package:=first,\
 	aQute.libg.reporter;-split-package:=first,\
 	aQute.libg.sed;-split-package:=first,\
