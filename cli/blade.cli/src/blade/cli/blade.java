@@ -2,6 +2,9 @@ package blade.cli;
 
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+
+import blade.cli.cmds.CreateCommand;
+import blade.cli.cmds.DeployCommand;
 import aQute.lib.consoleapp.AbstractConsoleApp;
 import aQute.lib.getopt.Description;
 
