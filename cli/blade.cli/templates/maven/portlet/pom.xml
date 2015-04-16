@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>_name_</groupId>
-	<artifactId>_name_.portlet</artifactId>
+	<artifactId>_name_</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>_name_ Portlet</name>
+	<name>_NAME_</name>
 
 	<packaging>bundle</packaging>
 

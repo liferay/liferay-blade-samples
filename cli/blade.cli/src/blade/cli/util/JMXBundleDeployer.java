@@ -1,4 +1,4 @@
-package blade.cli;
+package blade.cli.util;
 
 import java.io.File;
 import java.io.IOException;

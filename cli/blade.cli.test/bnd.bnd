@@ -1,14 +1,15 @@
 -buildpath: \
 	biz.aQute.junit,\
-	blade.cli;version=latest,\
-	osgi.enroute.base.api
+	blade.cli;version=latest
 
 -testpath: \
-	biz.aQute.junit
+	biz.aQute.junit,\
+	blade.cli;version=latest
 
 Bundle-Version: 0.1.0.${tstamp}
 
 Private-Package: \
-	blade.cli.test
+	blade.cli.test,\
+	aQute.lib.io
 
-Test-Cases: ${test-cases}
+#Test-Cases: ${test-cases}

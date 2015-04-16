@@ -1,10 +1,13 @@
-package blade.cli;
+package blade.cli.cmds;
 
 import java.io.File;
 import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
 
+import blade.cli.DeployOptions;
+import blade.cli.blade;
+import blade.cli.util.JMXBundleDeployer;
 import aQute.bnd.osgi.Jar;
 
 public class DeployCommand {

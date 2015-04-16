@@ -1,14 +1,17 @@
 -buildpath: \
 	aQute.libg,\
 	biz.aQute.bndlib,\
-	osgi.enroute.base.api,\
-	org.apache.commons.lang3
+	org.apache.commons.lang3,\
+	org.eclipse.osgi
 
 -includeresource: templates.zip
 
--sources: false
+-sources: true
 	
 Bundle-Version: 0.1.0.${tstamp}
+
+Export-Package: \
+	blade.cli
 
 JPM-Command: blade
 Main-Class: blade.cli.blade
@@ -32,6 +35,8 @@ Private-Package: \
 	aQute.libg.sed;-split-package:=first,\
 	aQute.bnd.service;split-package:=first,\
 	aQute.service.reporter;split-package:=first,\
-	blade.cli,\
-	org.osgi.framework
+	blade.cli.cmds,\
+	blade.cli.util,\
+	org.osgi.framework,\
+	org.osgi.framework.dto
 	
