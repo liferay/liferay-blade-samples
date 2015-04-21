@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet.blueprint;
+package blade.portlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +23,7 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
-public class SamplePortletBlueprint extends GenericPortlet {
+public class OSGiAPIPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
@@ -31,7 +31,7 @@ public class SamplePortletBlueprint extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Bndtools Blueprint - Hello World!");
+		printWriter.print("OSGi API Portlet - Hello World!");
 	}
 
 }

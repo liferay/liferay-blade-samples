@@ -3,12 +3,11 @@
 	javax.portlet__portlet-api
 
 -includeresource: \
-	OSGI-INF/blueprint= OSGI-INF/blueprint
+	OSGI-INF/blueprint = OSGI-INF/blueprint
 
 Bundle-Version: 1.0.0.${tstamp}
 
-Private-Package:  \
-	blade.portlet.blueprint,\
+Private-Package: blade.portlet
 
 Import-Package:  \
 	org.osgi.framework;version='[1.7,2)',\

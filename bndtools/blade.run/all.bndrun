@@ -1,10 +1,11 @@
 -runremote: all;shell=11311
 
--runbundles:\
+-runbundles: \
 	blade.authenticator.shiro;version=latest,\
+	blade.authfailure;version=latest,\
 	blade.portlet.actioncommand;version=latest,\
-	blade.portlet.blueprint;version=latest,\
 	blade.portlet.ds;version=latest,\
+	blade.portlet.blueprint;version=latest,\
 	blade.portlet.osgiapi;version=latest
 
 -runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file

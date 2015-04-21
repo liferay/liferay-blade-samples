@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet.osgiapi;
+package blade.portlet;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -35,13 +35,13 @@ public class Activator implements BundleActivator {
 		properties.put(
 			"com.liferay.portlet.instanceable", "true");
 		properties.put(
-			"javax.portlet.display-name", "Bndtools - Sample Portlet - OSGI API");
+			"javax.portlet.display-name", "OSGI API Portlet");
 		properties.put(
 			"javax.portlet.security-role-ref",
 			new String[] {"power-user", "user"});
 
 		_serviceRegistration = bundleContext.registerService(
-			Portlet.class, new SamplePortletOSGIAPI(), properties);
+			Portlet.class, new OSGiAPIPortlet(), properties);
 	}
 
 	@Override
