@@ -2,6 +2,7 @@
 
 -runbundles: \
 	blade.authenticator.shiro;version=latest,\
+	blade.authfailure;version=latest,\
 	blade.portlet.actioncommand;version=latest,\
 	blade.portlet.ds;version=latest,\
 	blade.portlet.blueprint;version=latest,\

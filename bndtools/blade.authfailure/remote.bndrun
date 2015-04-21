@@ -1,0 +1,5 @@
+-runremote: blade.authfailure;shell=11311
+
+-runbundles: blade.authfailure;version=latest
+
+-runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file
