@@ -2,11 +2,11 @@
 	osgi.core;version=5.0,\
 	javax.portlet__portlet-api
 
-Bundle-Activator: blade.portlet.osgiapi.Activator
+Bundle-Activator: blade.portlet.Activator
 
 Bundle-Version: 1.0.0.${tstamp}
 
-Private-Package: blade.portlet.osgiapi
+Private-Package: blade.portlet
 
 Import-Package:  \
 	org.osgi.framework;version='[1.7,2)',\

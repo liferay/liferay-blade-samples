@@ -13,17 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet.osgiapi;
+package blade.portlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.portlet.GenericPortlet;
+import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
-public class SamplePortletOSGIAPI extends GenericPortlet {
+import org.osgi.service.component.annotations.Component;
+
+@Component(
+	immediate = true,
+	property = {
+		"com.liferay.portlet.display-category=category.sample",
+		"com.liferay.portlet.instanceable=true",
+		"javax.portlet.display-name=DS Portlet",
+		"javax.portlet.security-role-ref=power-user,user"
+	},
+	service = Portlet.class
+)
+public class DSPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
@@ -31,7 +44,7 @@ public class SamplePortletOSGIAPI extends GenericPortlet {
 
 		PrintWriter printWriter = response.getWriter();
 
-		printWriter.print("Bndtools - Hello World!");
+		printWriter.print("DS Portlet - Hello World!");
 	}
 
 }

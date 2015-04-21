@@ -11,4 +11,4 @@ Import-Package:  \
 	*
 
 Private-Package:  \
-	blade.portlet.ds
+	blade.portlet
