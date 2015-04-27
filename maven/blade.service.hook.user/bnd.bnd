@@ -1,8 +1,0 @@
--dsannotations: *
-
-Import-Package: \
-	com.liferay.portal.service;version="7.0",\
-	org.osgi.framework;version="1.7",\
-	*
-
-Private-Package: blade.service.hook.user
