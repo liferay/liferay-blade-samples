@@ -12,3 +12,6 @@
 	../cnf/local/biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.0.0.jar;version=file,\
 	../cnf/local/biz.aQute.remote.agent/biz.aQute.remote.agent-3.0.0.jar;version=file
 
+#-runpath: \
+#	../cnf/local/biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.0.0.jar;version=file,\
+#	../cnf/local/biz.aQute.remote.agent/biz.aQute.remote.agent.patched-3.0.0.jar;version=file
