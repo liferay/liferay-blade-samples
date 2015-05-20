@@ -1,4 +1,4 @@
--runremote: all;shell=11311
+-runremote: liferay;shell=-1;jmx=attach
 
 -runbundles: \
 	blade.authenticator.shiro;version=latest,\
@@ -8,4 +8,7 @@
 	blade.portlet.blueprint;version=latest,\
 	blade.portlet.osgiapi;version=latest
 
--runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file
+-runpath: \
+	../cnf/local/biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.0.0.jar;version=file,\
+	../cnf/local/biz.aQute.remote.agent/biz.aQute.remote.agent-3.0.0.jar;version=file
+
