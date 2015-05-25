@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>blade</groupId>
+	<artifactId>blade.servicebuilder.service</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>ServiceBuilder Service</name>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>portal-service</artifactId>
+			<version>7.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-java</artifactId>
+			<version>7.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-bridges</artifactId>
+			<version>7.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>blade</groupId>
+			<artifactId>blade.servicebuilder.api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bndlib</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.3</version>
+		        <configuration>
+		          <source>1.7</source>
+		          <target>1.7</target>
+		        </configuration>
+	        </plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Private-Package>blade.servicebuilder.service</Private-Package>
+						<Import-Package>com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<_dsannotations>*</_dsannotations>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
+				<version>1.0.6</version>
+				<configuration>
+					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
+					<hbmFileName>src/main/resources/META-INF/portal-hbm.xml</hbmFileName>
+					<implDirName>src/main/java</implDirName>
+					<inputFileName>service.xml</inputFileName>
+					<modelHintsFileName>src/main/resources/META-INF/portal-model-hints.xml</modelHintsFileName>
+					<propsUtil>com.liferay.portal.kernel.util.PropsUtil</propsUtil>
+					<resourcesDirName>src/main/resources</resourcesDirName>
+					<springFileName>src/main/resources/META-INF/portal-spring.xml</springFileName>
+					<sqlDirName>src/main/resources/sql</sqlDirName>
+					<testDirName>src/it</testDirName>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
+	</build>
+</project>
