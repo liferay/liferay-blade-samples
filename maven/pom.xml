@@ -10,10 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<faces.api.scope>compile</faces.api.scope>
-		<faces.impl.scope>compile</faces.impl.scope>
 		<liferay.version>7.0.0-SNAPSHOT</liferay.version>
-		<liferay.faces.version>4.2.0-beta</liferay.faces.version>
 		<mojarra.version>2.2.6</mojarra.version>
 	</properties>
 
@@ -42,7 +39,7 @@
 			<dependency>
 				<groupId>com.liferay.faces</groupId>
 				<artifactId>liferay-faces-bridge-impl</artifactId>
-				<version>${liferay.faces.version}</version>
+				<version>4.2.0-beta</version>
 			</dependency>
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
@@ -63,13 +60,13 @@
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-api</artifactId>
 				<version>${mojarra.version}</version>
-				<scope>${faces.api.scope}</scope>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-impl</artifactId>
 				<version>${mojarra.version}</version>
-				<scope>${faces.impl.scope}</scope>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>javax.portlet</groupId>
