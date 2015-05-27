@@ -15,7 +15,6 @@
 		<liferay.version>7.0.0-SNAPSHOT</liferay.version>
 		<liferay.faces.version>4.2.0-beta</liferay.faces.version>
 		<mojarra.version>2.2.6</mojarra.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<build>
