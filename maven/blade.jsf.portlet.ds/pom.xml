@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
-		</dependency>
+		</dependency>		
 	</dependencies>
 
 	<build>
