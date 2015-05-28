@@ -13,6 +13,13 @@
 		<liferay.version>7.0.0-SNAPSHOT</liferay.version>
 		<mojarra.version>2.2.6</mojarra.version>
 	</properties>
+	
+	<repositories>
+        <repository>
+            <id>liferay-ce</id>           
+            <url>https://repository.liferay.com/nexus/content/groups/liferay-ce/</url>
+        </repository>
+	</repositories>
 
 	<build>
 		<pluginManagement>
@@ -37,6 +44,11 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>biz.aQute.bndlib</artifactId>
+				<version>2.4.1</version>
+			</dependency>
+			<dependency>
 				<groupId>com.liferay.faces</groupId>
 				<artifactId>liferay-faces-bridge-impl</artifactId>
 				<version>4.2.0-beta</version>
@@ -49,6 +61,11 @@
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>util-bridges</artifactId>
+				<version>${liferay.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.liferay.portal</groupId>
+				<artifactId>util-java</artifactId>
 				<version>${liferay.version}</version>
 			</dependency>
 			<dependency>
@@ -118,7 +135,8 @@
 		<module>blade.portlet.blueprint</module>
 		<module>blade.portlet.ds</module>
 		<module>blade.portlet.osgiapi</module>
-		<module>blade.service.hook.user</module>
+		<module>blade.servicebuilder</module>
+		<module>blade.service.hook.user</module>		
 	</modules>
 
 </project>
