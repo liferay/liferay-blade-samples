@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="com.liferay.sampleservicebuilder.model.Foo">
+	<model name="blade.servicebuilder.model.Foo">
 		<field name="uuid" type="String" />
 		<field name="fooId" type="long" />
 		<field name="groupId" type="long" />

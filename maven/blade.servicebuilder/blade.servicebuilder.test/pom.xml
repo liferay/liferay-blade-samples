@@ -3,29 +3,26 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>blade.servicebuilder.api</artifactId>
-	<name>Blade ServiceBuilder API</name>
+	<artifactId>blade.servicebuilder.test</artifactId>
+	<name>Blade ServiceBuilder Test</name>
 	<packaging>bundle</packaging>
-
 	
+
 	<parent>
         <groupId>blade</groupId>
         <artifactId>blade.servicebuilder</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 	
-	<dependencies>
+	<dependencies>			
 		<dependency>
-			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
+			<groupId>blade</groupId>
+			<artifactId>blade.servicebuilder.api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.bndlib</artifactId>
+			<artifactId>org.osgi.core</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -34,10 +31,6 @@
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-compiler-plugin</artifactId>
-		        <configuration>
-		          <source>1.7</source>
-		          <target>1.7</target>
-		        </configuration>
 	        </plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
@@ -45,8 +38,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>blade.servicebuilder.*</Export-Package>
-						<Import-Package>com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<Private-Package>blade.servicebuilder.test</Private-Package>
+						<Bundle-Activator>blade.servicebuilder.test.Activator</Bundle-Activator>
+						<Import-Package>com.liferay.portal.kernel.*,org.osgi.framework;version="[1.7,2)",*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>
 				</configuration>

@@ -54,8 +54,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Private-Package>blade.servicebuilder.service</Private-Package>
-						<Import-Package>com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<Private-Package>blade.servicebuilder.model.impl,blade.servicebuilder.service.base,blade.servicebuilder.service.http,blade.servicebuilder.service.impl</Private-Package>
+						<Import-Package>blade.servicebuilder.*,com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>
 				</configuration>
