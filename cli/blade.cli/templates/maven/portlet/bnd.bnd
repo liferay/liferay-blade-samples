@@ -1,8 +1,0 @@
--dsannotations: *
-
-Import-Package: \
-	javax.portlet;version="2.0",\
-	javax.servlet;version="2.5",\
-	*
-
-Private-Package: _name_
