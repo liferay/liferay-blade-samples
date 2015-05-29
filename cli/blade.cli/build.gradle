@@ -1,6 +1,0 @@
-task createTemplateZip(type:Zip) {
-	include "templates"
-	destinationDir = new File("${project.rootDir}")
-}
-
-//jar.dependsOn createTemplateZip
