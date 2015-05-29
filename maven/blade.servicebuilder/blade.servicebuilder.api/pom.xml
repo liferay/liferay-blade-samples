@@ -21,7 +21,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
+			<artifactId>org.osgi.core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>

@@ -54,9 +54,21 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Private-Package>blade.servicebuilder.model.impl,blade.servicebuilder.service.base,blade.servicebuilder.service.http,blade.servicebuilder.service.impl</Private-Package>
+						<Private-Package>
+							blade.servicebuilder.model.impl,
+							blade.servicebuilder.service.base,
+							blade.servicebuilder.service.http,
+							blade.servicebuilder.service.impl,
+							blade.servicebuilder.service.persistence.impl
+						</Private-Package>
 						<Import-Package>blade.servicebuilder.*,com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
 						<_dsannotations>*</_dsannotations>
+						<Liferay-Service>true</Liferay-Service>
+						<Require-Capability>
+						<![CDATA[liferay.extender;
+						filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
+						</Require-Capability>
+						<Spring-Context>META-INF/*-spring.xml;timeout:=600</Spring-Context>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -70,9 +82,11 @@
 					<implDirName>src/main/java</implDirName>
 					<inputFileName>service.xml</inputFileName>
 					<modelHintsFileName>src/main/resources/META-INF/portal-model-hints.xml</modelHintsFileName>
+					<osgiModule>true</osgiModule>
 					<propsUtil>com.liferay.portal.kernel.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
 					<springFileName>src/main/resources/META-INF/portal-spring.xml</springFileName>
+					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/sql</sqlDirName>
 					<testDirName>src/it</testDirName>
 				</configuration>

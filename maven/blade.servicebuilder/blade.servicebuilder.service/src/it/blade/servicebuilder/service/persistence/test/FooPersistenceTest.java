@@ -14,13 +14,15 @@
 
 package blade.servicebuilder.service.persistence.test;
 
-import blade.servicebuilder.NoSuchFooException;
+import blade.servicebuilder.exception.NoSuchFooException;
 
 import blade.servicebuilder.model.Foo;
 
 import blade.servicebuilder.service.FooLocalServiceUtil;
 import blade.servicebuilder.service.persistence.FooPersistence;
 import blade.servicebuilder.service.persistence.FooUtil;
+
+import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -48,6 +50,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import org.junit.runner.RunWith;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -60,6 +64,7 @@ import java.util.Set;
 /**
  * @generated
  */
+@RunWith(Arquillian.class)
 public class FooPersistenceTest {
 	@Rule
 	public final AggregateTestRule aggregateTestRule = new AggregateTestRule(new LiferayIntegrationTestRule(),

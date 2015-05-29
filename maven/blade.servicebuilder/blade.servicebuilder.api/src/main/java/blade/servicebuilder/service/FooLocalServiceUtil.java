@@ -16,8 +16,10 @@ package blade.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.portal.kernel.bean.PortalBeanLocatorUtil;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the local service utility for Foo. This utility wraps
@@ -318,14 +320,7 @@ public class FooLocalServiceUtil {
 	}
 
 	public static FooLocalService getService() {
-		if (_service == null) {
-			_service = (FooLocalService)PortalBeanLocatorUtil.locate(FooLocalService.class.getName());
-
-			ReferenceRegistry.registerReference(FooLocalServiceUtil.class,
-				"_service");
-		}
-
-		return _service;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -335,5 +330,14 @@ public class FooLocalServiceUtil {
 	public void setService(FooLocalService service) {
 	}
 
-	private static FooLocalService _service;
+	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(FooLocalServiceUtil.class);
+
+		_serviceTracker = new ServiceTracker<FooLocalService, FooLocalService>(bundle.getBundleContext(),
+				FooLocalService.class, null);
+
+		_serviceTracker.open();
+	}
 }

@@ -86,11 +86,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByUuid_First(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the first foo in the ordered set where uuid = &#63;.
@@ -108,11 +108,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByUuid_Last(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the last foo in the ordered set where uuid = &#63;.
@@ -131,11 +131,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public Foo[] findByUuid_PrevAndNext(long fooId, java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Removes all the foos where uuid = &#63; from the database.
@@ -153,15 +153,15 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	public int countByUuid(java.lang.String uuid);
 
 	/**
-	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchFooException} if it could not be found.
+	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	*
 	* @param uuid the uuid
 	* @param groupId the group ID
 	* @return the matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByUUID_G(java.lang.String uuid, long groupId)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the foo where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
@@ -191,7 +191,7 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @return the foo that was removed
 	*/
 	public Foo removeByUUID_G(java.lang.String uuid, long groupId)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the number of foos where uuid = &#63; and groupId = &#63;.
@@ -253,11 +253,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByUuid_C_First(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the first foo in the ordered set where uuid = &#63; and companyId = &#63;.
@@ -277,11 +277,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByUuid_C_Last(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the last foo in the ordered set where uuid = &#63; and companyId = &#63;.
@@ -302,12 +302,12 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public Foo[] findByUuid_C_PrevAndNext(long fooId, java.lang.String uuid,
 		long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Removes all the foos where uuid = &#63; and companyId = &#63; from the database.
@@ -370,11 +370,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByField2_First(boolean field2,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the first foo in the ordered set where field2 = &#63;.
@@ -392,11 +392,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public Foo findByField2_Last(boolean field2,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the last foo in the ordered set where field2 = &#63;.
@@ -415,11 +415,11 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public Foo[] findByField2_PrevAndNext(long fooId, boolean field2,
 		com.liferay.portal.kernel.util.OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Removes all the foos where field2 = &#63; from the database.
@@ -463,22 +463,22 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo that was removed
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public Foo remove(long fooId)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	public Foo updateImpl(Foo foo);
 
 	/**
-	* Returns the foo with the primary key or throws a {@link NoSuchFooException} if it could not be found.
+	* Returns the foo with the primary key or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public Foo findByPrimaryKey(long fooId)
-		throws blade.servicebuilder.NoSuchFooException;
+		throws blade.servicebuilder.exception.NoSuchFooException;
 
 	/**
 	* Returns the foo with the primary key or returns <code>null</code> if it could not be found.
