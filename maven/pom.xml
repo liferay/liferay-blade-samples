@@ -13,10 +13,10 @@
 		<liferay.version>7.0.0-SNAPSHOT</liferay.version>
 		<mojarra.version>2.2.6</mojarra.version>
 	</properties>
-	
+
 	<repositories>
         <repository>
-            <id>liferay-ce</id>           
+            <id>liferay-ce</id>
             <url>https://repository.liferay.com/nexus/content/groups/liferay-ce/</url>
         </repository>
 	</repositories>
@@ -136,7 +136,8 @@
 		<module>blade.portlet.ds</module>
 		<module>blade.portlet.osgiapi</module>
 		<module>blade.servicebuilder</module>
-		<module>blade.service.hook.user</module>		
+		<module>blade.service.hook.user</module>
+		<module>blade.portlet.jsp</module>
 	</modules>
 
 </project>
