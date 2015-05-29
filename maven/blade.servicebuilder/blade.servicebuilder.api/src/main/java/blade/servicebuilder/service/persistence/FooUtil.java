@@ -18,11 +18,14 @@ import aQute.bnd.annotation.ProviderType;
 
 import blade.servicebuilder.model.Foo;
 
-import com.liferay.portal.kernel.bean.PortalBeanLocatorUtil;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.util.OrderByComparator;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.ServiceContext;
+
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 import java.util.List;
 
@@ -156,11 +159,11 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_First(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_First(uuid, orderByComparator);
 	}
 
@@ -182,11 +185,11 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_Last(uuid, orderByComparator);
 	}
 
@@ -209,11 +212,11 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByUuid_PrevAndNext(long fooId,
 		java.lang.String uuid, OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(fooId, uuid, orderByComparator);
 	}
@@ -238,15 +241,15 @@ public class FooUtil {
 	}
 
 	/**
-	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchFooException} if it could not be found.
+	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	*
 	* @param uuid the uuid
 	* @param groupId the group ID
 	* @return the matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUUID_G(java.lang.String uuid, long groupId)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUUID_G(uuid, groupId);
 	}
 
@@ -282,7 +285,7 @@ public class FooUtil {
 	* @return the foo that was removed
 	*/
 	public static Foo removeByUUID_G(java.lang.String uuid, long groupId)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().removeByUUID_G(uuid, groupId);
 	}
 
@@ -353,11 +356,11 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_C_First(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_First(uuid, companyId, orderByComparator);
 	}
@@ -383,11 +386,11 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_Last(uuid, companyId, orderByComparator);
 	}
@@ -414,12 +417,12 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByUuid_C_PrevAndNext(long fooId,
 		java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_PrevAndNext(fooId, uuid, companyId,
 			orderByComparator);
@@ -497,11 +500,11 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByField2_First(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByField2_First(field2, orderByComparator);
 	}
 
@@ -523,11 +526,11 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws NoSuchFooException if a matching foo could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByField2_Last(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByField2_Last(field2, orderByComparator);
 	}
 
@@ -550,11 +553,11 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByField2_PrevAndNext(long fooId, boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByField2_PrevAndNext(fooId, field2, orderByComparator);
 	}
@@ -611,10 +614,10 @@ public class FooUtil {
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo that was removed
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo remove(long fooId)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().remove(fooId);
 	}
 
@@ -623,14 +626,14 @@ public class FooUtil {
 	}
 
 	/**
-	* Returns the foo with the primary key or throws a {@link NoSuchFooException} if it could not be found.
+	* Returns the foo with the primary key or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo
-	* @throws NoSuchFooException if a foo with the primary key could not be found
+	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo findByPrimaryKey(long fooId)
-		throws blade.servicebuilder.NoSuchFooException {
+		throws blade.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByPrimaryKey(fooId);
 	}
 
@@ -707,13 +710,7 @@ public class FooUtil {
 	}
 
 	public static FooPersistence getPersistence() {
-		if (_persistence == null) {
-			_persistence = (FooPersistence)PortalBeanLocatorUtil.locate(FooPersistence.class.getName());
-
-			ReferenceRegistry.registerReference(FooUtil.class, "_persistence");
-		}
-
-		return _persistence;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -723,5 +720,14 @@ public class FooUtil {
 	public void setPersistence(FooPersistence persistence) {
 	}
 
-	private static FooPersistence _persistence;
+	private static ServiceTracker<FooPersistence, FooPersistence> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(FooUtil.class);
+
+		_serviceTracker = new ServiceTracker<FooPersistence, FooPersistence>(bundle.getBundleContext(),
+				FooPersistence.class, null);
+
+		_serviceTracker.open();
+	}
 }

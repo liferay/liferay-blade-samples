@@ -16,7 +16,7 @@ package blade.servicebuilder.service.persistence.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.NoSuchFooException;
+import blade.servicebuilder.exception.NoSuchFooException;
 
 import blade.servicebuilder.model.Foo;
 import blade.servicebuilder.model.impl.FooImpl;
@@ -268,7 +268,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByUuid_First(String uuid,
@@ -316,7 +316,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByUuid_Last(String uuid,
@@ -371,7 +371,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next foo
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo[] findByUuid_PrevAndNext(long fooId, String uuid,
@@ -615,12 +615,12 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			new String[] { String.class.getName(), Long.class.getName() });
 
 	/**
-	 * Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchFooException} if it could not be found.
+	 * Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	 *
 	 * @param uuid the uuid
 	 * @param groupId the group ID
 	 * @return the matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByUUID_G(String uuid, long groupId)
@@ -1053,7 +1053,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByUuid_C_First(String uuid, long companyId,
@@ -1106,7 +1106,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByUuid_C_Last(String uuid, long companyId,
@@ -1167,7 +1167,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next foo
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo[] findByUuid_C_PrevAndNext(long fooId, String uuid,
@@ -1577,7 +1577,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param field2 the field2
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByField2_First(boolean field2,
@@ -1625,7 +1625,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param field2 the field2
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching foo
-	 * @throws NoSuchFooException if a matching foo could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
 	 */
 	@Override
 	public Foo findByField2_Last(boolean field2,
@@ -1681,7 +1681,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 * @param field2 the field2
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next foo
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo[] findByField2_PrevAndNext(long fooId, boolean field2,
@@ -2037,7 +2037,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 *
 	 * @param fooId the primary key of the foo
 	 * @return the foo that was removed
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo remove(long fooId) throws NoSuchFooException {
@@ -2049,7 +2049,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 *
 	 * @param primaryKey the primary key of the foo
 	 * @return the foo that was removed
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo remove(Serializable primaryKey) throws NoSuchFooException {
@@ -2273,7 +2273,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 *
 	 * @param primaryKey the primary key of the foo
 	 * @return the foo
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo findByPrimaryKey(Serializable primaryKey)
@@ -2293,11 +2293,11 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	}
 
 	/**
-	 * Returns the foo with the primary key or throws a {@link NoSuchFooException} if it could not be found.
+	 * Returns the foo with the primary key or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
 	 *
 	 * @param fooId the primary key of the foo
 	 * @return the foo
-	 * @throws NoSuchFooException if a foo with the primary key could not be found
+	 * @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
 	 */
 	@Override
 	public Foo findByPrimaryKey(long fooId) throws NoSuchFooException {

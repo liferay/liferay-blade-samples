@@ -1,7 +1,20 @@
 <?xml version="1.0"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 	<bean id="blade.servicebuilder.service.FooLocalService" class="blade.servicebuilder.service.impl.FooLocalServiceImpl" />
+	<osgi:service interface="blade.servicebuilder.service.FooLocalService" ref="blade.servicebuilder.service.FooLocalService">
+		<osgi:service-properties>
+			<entry key="json.web.service.context.name" value="ssb" />
+			<entry key="json.web.service.context.path" value="Foo" />
+		</osgi:service-properties>
+	</osgi:service>
 	<bean id="blade.servicebuilder.service.FooService" class="blade.servicebuilder.service.impl.FooServiceImpl" />
+	<osgi:service interface="blade.servicebuilder.service.FooService" ref="blade.servicebuilder.service.FooService">
+		<osgi:service-properties>
+			<entry key="json.web.service.context.name" value="ssb" />
+			<entry key="json.web.service.context.path" value="Foo" />
+		</osgi:service-properties>
+	</osgi:service>
 	<bean id="blade.servicebuilder.service.persistence.FooPersistence" class="blade.servicebuilder.service.persistence.impl.FooPersistenceImpl" parent="basePersistence" />
+	<osgi:service interface="blade.servicebuilder.service.persistence.FooPersistence" ref="blade.servicebuilder.service.persistence.FooPersistence" />
 </beans>
