@@ -75,7 +75,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.6</version>
+				<version>1.0.8</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<hbmFileName>src/main/resources/META-INF/portal-hbm.xml</hbmFileName>
@@ -83,7 +83,7 @@
 					<inputFileName>service.xml</inputFileName>
 					<modelHintsFileName>src/main/resources/META-INF/portal-model-hints.xml</modelHintsFileName>
 					<osgiModule>true</osgiModule>
-					<propsUtil>com.liferay.portal.kernel.util.PropsUtil</propsUtil>
+					<propsUtil>blade.servicebuilder.service.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
 					<springFileName>src/main/resources/META-INF/portal-spring.xml</springFileName>
 					<springNamespaces>beans,osgi</springNamespaces>

@@ -92,13 +92,13 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	public static final String DATA_SOURCE = "liferayDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.portal.kernel.util.PropsUtil.get(
+	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
 				"value.object.entity.cache.enabled.blade.servicebuilder.model.Foo"),
 			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.portal.kernel.util.PropsUtil.get(
+	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
 				"value.object.finder.cache.enabled.blade.servicebuilder.model.Foo"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.portal.kernel.util.PropsUtil.get(
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
 				"value.object.column.bitmask.enabled.blade.servicebuilder.model.Foo"),
 			true);
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
@@ -157,7 +157,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		return models;
 	}
 
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.portal.kernel.util.PropsUtil.get(
+	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(blade.servicebuilder.service.util.PropsUtil.get(
 				"lock.expiration.time.blade.servicebuilder.model.Foo"));
 
 	public FooModelImpl() {
