@@ -31,7 +31,6 @@ import com.liferay.portal.kernel.dao.orm.Query;
 import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
-import com.liferay.portal.kernel.lar.ExportImportThreadLocal;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
@@ -2127,27 +2126,25 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			foo.setUuid(uuid);
 		}
 
-		if (!ExportImportThreadLocal.isImportInProcess()) {
-			ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
+		ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 
-			Date now = new Date();
+		Date now = new Date();
 
-			if (isNew && (foo.getCreateDate() == null)) {
-				if (serviceContext == null) {
-					foo.setCreateDate(now);
-				}
-				else {
-					foo.setCreateDate(serviceContext.getCreateDate(now));
-				}
+		if (isNew && (foo.getCreateDate() == null)) {
+			if (serviceContext == null) {
+				foo.setCreateDate(now);
 			}
+			else {
+				foo.setCreateDate(serviceContext.getCreateDate(now));
+			}
+		}
 
-			if (!fooModelImpl.hasSetModifiedDate()) {
-				if (serviceContext == null) {
-					foo.setModifiedDate(now);
-				}
-				else {
-					foo.setModifiedDate(serviceContext.getModifiedDate(now));
-				}
+		if (!fooModelImpl.hasSetModifiedDate()) {
+			if (serviceContext == null) {
+				foo.setModifiedDate(now);
+			}
+			else {
+				foo.setModifiedDate(serviceContext.getModifiedDate(now));
 			}
 		}
 
