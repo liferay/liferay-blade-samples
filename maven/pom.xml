@@ -139,6 +139,7 @@
 		<module>blade.service.hook.user</module>
 		<module>blade.portlet.jsp</module>
     <module>blade.pollprocessor</module>
+    <module>blade.strutsaction</module>
   </modules>
 
 </project>
