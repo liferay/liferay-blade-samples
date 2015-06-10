@@ -1,4 +1,4 @@
-language: bash
+language: java
 
 script:
     - bash build.sh
