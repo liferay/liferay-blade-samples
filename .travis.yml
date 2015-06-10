@@ -1,19 +1,19 @@
 language: java
 
 script:
-    - gradle/blade.authenticator.shiro/gradlew build
-    - gradle/blade.authfailure/gradlew build
-    - gradle/blade.indexerpostprocessor/gradlew build
-    - gradle/blade.lifecycle.loginpreaction/gradlew build
-    - gradle/blade.pollprocessor/gradlew build
-    - gradle/blade.portlet.actioncommand/gradlew build
-    - gradle/blade.portlet.blueprint/gradlew build
-    - gradle/blade.portlet.ds/gradlew build
-    - gradle/blade.portlet.jsp/gradlew build
-    - gradle/blade.portlet.osgiapi/gradlew build
-    - gradle/blade.service.hook.user/gradlew build
-    - gradle/blade.strutsaction/gradlew build
-    - gradle/blade.strutsportletaction/gradlew build
-    - gradle/blade.web-resource.provider/gradlew build
-    - gradle/sample-gradle-ds/gradlew build
+    - cd gradle/blade.authenticator.shiro/; ./gradlew build
+    - cd gradle/blade.authfailure/; ./gradlew build
+    - cd gradle/blade.indexerpostprocessor/; ./gradlew build
+    - cd gradle/blade.lifecycle.loginpreaction/; ./gradlew build
+    - cd gradle/blade.pollprocessor/; ./gradlew build
+    - cd gradle/blade.portlet.actioncommand/; ./gradlew build
+    - cd gradle/blade.portlet.blueprint/; ./gradlew build
+    - cd gradle/blade.portlet.ds/; ./gradlew build
+    - cd gradle/blade.portlet.jsp/; ./gradlew build
+    - cd gradle/blade.portlet.osgiapi/; ./gradlew build
+    - cd gradle/blade.service.hook.user/; ./gradlew build
+    - cd gradle/blade.strutsaction/; ./gradlew build
+    - cd gradle/blade.strutsportletaction/; ./gradlew build
+    - cd gradle/blade.web-resource.provider/; ./gradlew build
+    - cd gradle/sample-gradle-ds/; ./gradlew build
     - cd maven; mvn --fail-at-end package
