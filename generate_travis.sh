@@ -11,7 +11,7 @@ echo ""
 echo "script:"
 
 for dir in $( ls -d gradle/*/ ); do
-	echo "    - cd ${dir}; ./gradlew build"
+	echo "    - bash -c 'cd ${dir}; ./gradlew build'"
 done
 
-echo "    - cd maven; mvn --fail-at-end package"
+echo "    - bash -c 'cd maven; mvn --fail-at-end package'"
