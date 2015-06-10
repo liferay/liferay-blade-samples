@@ -28,3 +28,7 @@ dependencies {
 	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 }
+
+task wrapper(type:Wrapper){
+	gradleVersion = '2.4'
+}
