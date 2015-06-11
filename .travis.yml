@@ -1,17 +1,5 @@
 language: java
 
 script:
-    - bash -c 'cd gradle/blade.authenticator.shiro/; ./gradlew build'
-    - bash -c 'cd gradle/blade.authfailure/; ./gradlew build'
-    - bash -c 'cd gradle/blade.indexerpostprocessor/; ./gradlew build'
-    - bash -c 'cd gradle/blade.lifecycle.loginpreaction/; ./gradlew build'
-    - bash -c 'cd gradle/blade.pollprocessor/; ./gradlew build'
-    - bash -c 'cd gradle/blade.portlet.actioncommand/; ./gradlew build'
-    - bash -c 'cd gradle/blade.portlet.blueprint/; ./gradlew build'
-    - bash -c 'cd gradle/blade.portlet.ds/; ./gradlew build'
-    - bash -c 'cd gradle/blade.portlet.jsp/; ./gradlew build'
-    - bash -c 'cd gradle/blade.portlet.osgiapi/; ./gradlew build'
-    - bash -c 'cd gradle/blade.service.hook.user/; ./gradlew build'
-    - bash -c 'cd gradle/blade.strutsaction/; ./gradlew build'
-    - bash -c 'cd gradle/blade.strutsportletaction/; ./gradlew build'
+    - bash -c 'cd gradle; ./gradlew build'
     - bash -c 'cd maven; mvn --fail-at-end package'
