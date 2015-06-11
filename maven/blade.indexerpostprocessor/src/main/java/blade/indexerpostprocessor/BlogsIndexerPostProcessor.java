@@ -22,11 +22,11 @@ import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.IndexerPostProcessor;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.search.Summary;
+import com.liferay.portal.kernel.search.filter.BooleanFilter;
 
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
-
 
 @Component(
 	immediate = true,
@@ -37,6 +37,13 @@ import org.osgi.service.component.annotations.Component;
 )
 public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 
+	@Override
+	public void postProcessContextBooleanFilter(
+		BooleanFilter booleanFilter, SearchContext searchContext)
+		throws Exception {
+
+		_log.info("postProcessContextBooleanFilter");
+	}
 
 	@Override
 	public void postProcessContextQuery(BooleanQuery contextQuery,
@@ -57,6 +64,15 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 			SearchContext searchContext) throws Exception {
 
 		_log.info("postProcessFullQuery");
+	}
+
+	@Override
+	public void postProcessSearchQuery(
+		BooleanQuery booleanQuery, BooleanFilter booleanFilter,
+		SearchContext searchContext)
+		throws Exception {
+
+		_log.info("postProcessSearchQuery");
 	}
 
 	@Override

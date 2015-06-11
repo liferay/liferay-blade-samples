@@ -15,12 +15,6 @@
  */
 package blade.indexerpostprocessor;
 
-import java.util.Locale;
-
-import javax.portlet.PortletURL;
-
-import org.osgi.service.component.annotations.Component;
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.BooleanQuery;
@@ -28,6 +22,11 @@ import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.IndexerPostProcessor;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.search.Summary;
+import com.liferay.portal.kernel.search.filter.BooleanFilter;
+
+import java.util.Locale;
+
+import org.osgi.service.component.annotations.Component;
 
 
 @Component(
@@ -40,6 +39,14 @@ import com.liferay.portal.kernel.search.Summary;
 )
 public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor {
 
+
+	@Override
+	public void postProcessContextBooleanFilter(
+		BooleanFilter booleanFilter, SearchContext searchContext)
+		throws Exception {
+
+		_log.info("postProcessContextBooleanFilter");
+	}
 
 	@Override
 	public void postProcessContextQuery(BooleanQuery contextQuery,
@@ -60,6 +67,14 @@ public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor 
 			SearchContext searchContext) throws Exception {
 
 		_log.info("postProcessFullQuery");
+	}
+
+	@Override
+	public void postProcessSearchQuery(
+		BooleanQuery searchQuery, BooleanFilter booleanFilter,
+		SearchContext searchContext) throws Exception {
+
+		_log.info("postProcessSearchQuery");
 	}
 
 	@Override
