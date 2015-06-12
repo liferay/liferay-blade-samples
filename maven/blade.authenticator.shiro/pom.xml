@@ -16,10 +16,12 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -28,10 +30,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -45,9 +44,8 @@
 					<instructions>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
-						<Include-Resource>{maven-resources}, @shiro-core-1.1.0.jar,
-						 @slf4j-api-1.7.7.jar , @slf4j-simple-1.7.7.jar </Include-Resource>
-						<Private-Package>org.apache.shiro.*,org.slf4j.*</Private-Package>
+						<Include-Resource>{maven-resources}, @shiro-core-1.1.0.jar</Include-Resource>
+						<Private-Package>org.apache.shiro.*</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>

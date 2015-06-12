@@ -16,22 +16,22 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -46,9 +46,9 @@
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<Include-Resource>
-							{maven-resources},@slf4j-api-1.7.7.jar,@slf4j-simple-1.7.7.jar
+							{maven-resources}
 						</Include-Resource>
-						<Private-Package>blade.indexerpostprocessor,org.slf4j.*</Private-Package>
+						<Private-Package>blade.indexerpostprocessor</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
