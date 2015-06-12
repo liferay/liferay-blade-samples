@@ -16,9 +16,16 @@ package blade.servicebuilder.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import blade.servicebuilder.service.FooServiceUtil;
+
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link blade.servicebuilder.service.FooServiceUtil} service utility. The
+ * {@link FooServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,23 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see FooServiceHttp
  * @see blade.servicebuilder.model.FooSoap
- * @see blade.servicebuilder.service.FooServiceUtil
+ * @see FooServiceUtil
  * @generated
  */
 @ProviderType
 public class FooServiceSoap {
+	public static java.lang.String fooRemote() throws RemoteException {
+		try {
+			java.lang.String returnValue = FooServiceUtil.fooRemote();
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(FooServiceSoap.class);
 }

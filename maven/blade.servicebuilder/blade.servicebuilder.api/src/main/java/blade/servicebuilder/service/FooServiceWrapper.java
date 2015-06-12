@@ -32,6 +32,11 @@ public class FooServiceWrapper implements FooService,
 		_fooService = fooService;
 	}
 
+	@Override
+	public java.lang.String fooRemote() {
+		return _fooService.fooRemote();
+	}
+
 	/**
 	* Returns the Spring bean ID for this bean.
 	*

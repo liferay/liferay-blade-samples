@@ -80,7 +80,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.8</version>
+				<version>1.0.10</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<hbmFileName>src/main/resources/META-INF/portal-hbm.xml</hbmFileName>
@@ -94,6 +94,17 @@
 					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/sql</sqlDirName>
 					<testDirName>src/it</testDirName>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
+				<version>1.0.2</version>
+				<configuration>
+					<inputFileName>service.xml</inputFileName>
+					<outputDirName>src/main/java</outputDirName>
+					<serverConfigFileName>src/main/resources/server-config.wsdd</serverConfigFileName>
 				</configuration>
 			</plugin>
 

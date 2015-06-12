@@ -19,6 +19,7 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 import blade.servicebuilder.service.FooLocalServiceUtil;
+import blade.servicebuilder.service.FooServiceUtil;
 
 
 public class Activator implements BundleActivator {
@@ -26,12 +27,13 @@ public class Activator implements BundleActivator {
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		String result = FooLocalServiceUtil.fooLocal();
-		System.out.println("Service Builder Test: "+result);
+		System.out.println("FooLocalService Test: "+result);
+		String remoteResult = FooServiceUtil.fooRemote();
+		System.out.println("Foo Remote Service Test: "+remoteResult);
 	}
 
 	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		
 	}
-
 }
