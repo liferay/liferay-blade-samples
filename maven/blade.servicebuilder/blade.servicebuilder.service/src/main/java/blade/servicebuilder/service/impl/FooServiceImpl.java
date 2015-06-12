@@ -38,6 +38,8 @@ public class FooServiceImpl extends FooServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooServiceUtil} to access the foo remote service.
 	 */
-	
+	public String fooRemote(){
+		return "fooRemote";
+	} 
 	
 }

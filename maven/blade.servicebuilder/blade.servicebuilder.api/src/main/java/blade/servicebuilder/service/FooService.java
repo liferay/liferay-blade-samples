@@ -46,6 +46,7 @@ public interface FooService extends BaseService {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link FooServiceUtil} to access the foo remote service. Add custom service methods to {@link blade.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public java.lang.String fooRemote();
 
 	/**
 	* Returns the Spring bean ID for this bean.

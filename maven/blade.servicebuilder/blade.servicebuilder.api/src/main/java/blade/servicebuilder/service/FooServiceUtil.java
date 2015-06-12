@@ -42,6 +42,9 @@ public class FooServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to {@link blade.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static java.lang.String fooRemote() {
+		return getService().fooRemote();
+	}
 
 	/**
 	* Returns the Spring bean ID for this bean.
