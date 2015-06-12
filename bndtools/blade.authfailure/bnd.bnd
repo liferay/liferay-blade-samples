@@ -1,12 +1,7 @@
 -buildpath: \
 	osgi.cmpn;version=5.0,\
 	com.liferay.portal:portal-service;version='[7.0,8)',\
-	slf4j.api;version=1.7.10,\
-	slf4j.simple;version=1.7.10
-
--includeresource: \
-    @slf4j.api-1.7.10.jar,\
-    @slf4j.simple-1.7.10.jar
+	slf4j.api;version=1.7.10
 
 Bundle-Version: 1.0.0.${tstamp}
 

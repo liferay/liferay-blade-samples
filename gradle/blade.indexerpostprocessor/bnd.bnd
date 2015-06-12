@@ -4,6 +4,3 @@ Bundle-Version: 1.0.0.${tstamp}
 Service-Component: *
 Import-Package: *
 Private-Package: blade.indexerpostprocessor
--includeresource: \
-	@slf4j-api-1.7.7.jar,\
-	@slf4j-simple-1.7.7.jar

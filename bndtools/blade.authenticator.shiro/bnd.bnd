@@ -5,13 +5,10 @@
 	javax.servlet__servlet-api;version=2.5.0,\
 	com.liferay.portal:portal-service;version='[7.0,8)',\
 	org.apache.shiro.core;version=1.2.3,\
-	slf4j.api;version=1.7.10,\
-	slf4j.simple;version=1.7.10
+	slf4j.api;version=1.7.10
 
 -includeresource: \
 	@org.apache.shiro.core-1.2.3.jar,\
-    @slf4j.api-1.7.10.jar,\
-    @slf4j.simple-1.7.10.jar,\
     userauth.ini=src/userauth.ini
 
 Bundle-Version: 1.0.0.${tstamp}
