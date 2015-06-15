@@ -1,0 +1,15 @@
+-buildpath: \
+	osgi.core;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	biz.aQute.bndlib
+	
+Import-Package: \
+    com.liferay.portal.service;version="7.0.0",\
+    org.osgi.framework;version="[1.7,2)",\
+    *
+
+Export-Package: \
+	blade.servicebuilder.exception,\
+	blade.servicebuilder.model,\
+	blade.servicebuilder.service,\
+	blade.servicebuilder.service.persistence

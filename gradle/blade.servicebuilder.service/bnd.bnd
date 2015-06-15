@@ -1,0 +1,22 @@
+-buildpath: \
+	osgi.core;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	biz.aQute.bndlib,\
+	blade.servicebuilder.api;version=latest
+	
+Bundle-Version: 1.0.0.${tstamp}
+
+Private-Package: \
+	blade.servicebuilder.model.impl,\
+	blade.servicebuilder.service.base,\
+	blade.servicebuilder.service.http,\
+	blade.servicebuilder.service.impl,\
+	blade.servicebuilder.service.persistence.impl,\
+	blade.servicebuilder.service.util
+
+
+-includeresource: src/main/resources
+Liferay-Service: true
+Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
+Spring-Context: META-INF/*-spring.xml;timeout:=600
+-dsannotations: *
