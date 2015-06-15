@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven {
+			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+
+    dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
+	}
+}
+
+repositories {
+	mavenLocal()
+	maven {
+		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+	}
+}
+
+apply plugin: "com.liferay.portal.tools.service.builder"
+
+ dependencies {
+		compile  project(':blade.servicebuilder.api')
+}
+
+buildService {
+	apiDirName = "../blade.servicebuilder.api/src/main/java"
+	hbmFileName = "src/main/resources/META-INF/portal-hbm.xml"
+	implDirName = "src/main/java"
+	inputFileName = "service.xml"
+	modelHintsFileName = "src/main/resources/META-INF/portal-model-hints.xml"
+	osgiModule = true
+	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
+	remotingFileName = null
+	resourcesDirName = "src/main/resources"	
+	springFileName = "src/main/resources/META-INF/portal-spring.xml"
+	sqlDirName = "src/main/resources/sql"
+	springNamespaces = ["beans","osgi"]
+	testDirName = "test"
+}
+

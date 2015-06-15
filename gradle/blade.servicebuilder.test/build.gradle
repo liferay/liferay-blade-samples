@@ -1,0 +1,4 @@
+version='1.0'
+ dependencies {
+		compile  project(':blade.servicebuilder.api')
+}
