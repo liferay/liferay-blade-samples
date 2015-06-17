@@ -9,6 +9,7 @@ buildscript {
 
 	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.wsdd.builder", version: "latest.release"
 	}
 }
 
@@ -21,6 +22,7 @@ repositories {
 }
 
 apply plugin: "com.liferay.portal.tools.service.builder"
+apply plugin: "com.liferay.portal.tools.wsdd.builder"
 
 buildService {
 	apiDirName = "../blade.servicebuilder.api/src"
@@ -36,4 +38,10 @@ buildService {
 	sqlDirName = "resources/sql"
 	springNamespaces = ["beans","osgi"]
 	testDirName = "test"
+}
+
+buildWSDD {
+	inputFileName = "service.xml"
+	outputDirName = "src"
+	serverConfigFileName = "resources/server-config.wsdd"
 }
