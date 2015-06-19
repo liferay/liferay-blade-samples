@@ -15,6 +15,7 @@
 package blade.servicebuilder.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
+
 import blade.servicebuilder.service.base.FooServiceBaseImpl;
 
 /**
@@ -33,13 +34,13 @@ import blade.servicebuilder.service.base.FooServiceBaseImpl;
  */
 @ProviderType
 public class FooServiceImpl extends FooServiceBaseImpl {
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooServiceUtil} to access the foo remote service.
 	 */
-	public String fooRemote(){
+	public String fooRemote() {
 		return "fooRemote";
-	} 
-	
+	}
+
 }

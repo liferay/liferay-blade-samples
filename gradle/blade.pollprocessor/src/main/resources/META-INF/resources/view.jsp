@@ -14,7 +14,7 @@
  */
 --%>
 
-<%@ include file="/init.jsp"%>
+<%@ include file="/init.jsp" %>
 
 <p>
 	<b><liferay-ui:message

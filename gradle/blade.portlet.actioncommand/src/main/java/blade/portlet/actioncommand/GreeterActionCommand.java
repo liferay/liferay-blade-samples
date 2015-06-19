@@ -15,14 +15,6 @@
  */
 package blade.portlet.actioncommand;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.PortletException;
-import javax.portlet.PortletRequest;
-import javax.portlet.PortletResponse;
-
-import org.osgi.service.component.annotations.Component;
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand;
@@ -30,6 +22,13 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
+import javax.portlet.PortletRequest;
+import javax.portlet.PortletResponse;
+
+import org.osgi.service.component.annotations.Component;
 
 /**
  * @author Kamesh Sampath
@@ -52,12 +51,11 @@ public class GreeterActionCommand implements ActionCommand {
 
 		_log.info("Processing Greeting Action");
 
-		if(portletRequest instanceof ActionRequest
-						&& portletResponse instanceof ActionResponse){
+		if (portletRequest instanceof ActionRequest &&
+			portletResponse instanceof ActionResponse) {
 
 			_handleActionCommand((ActionRequest)portletRequest,
 				(ActionResponse)portletResponse);
-
 		}
 
 		return true;
@@ -74,10 +72,10 @@ public class GreeterActionCommand implements ActionCommand {
 
 		actionRequest.setAttribute("GREETER_MESSAGE", greetingMessage);
 
-		SessionMessages.add(actionRequest,
-			"greeting_message",greetingMessage);
+		SessionMessages.add(actionRequest, "greetingMessage", greetingMessage);
 	}
 
-	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		GreeterActionCommand.class);
 
 }

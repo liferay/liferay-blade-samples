@@ -27,22 +27,20 @@ import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
-
-
 @Component(
 	immediate = true,
-	property= {
+	property = {
 		"indexer.class.name=com.liferay.portal.model.Contact",
-		"indexer.class.name=com.liferay.portal.model.Organization",
+		"indexer.class.name=com.liferay.portal.model.Organization"
 	},
-	service=IndexerPostProcessor.class
+	service = IndexerPostProcessor.class
 )
-public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor {
-
+public class MultipleEntityIndexerPostProcessor
+	implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessContextBooleanFilter(
-		BooleanFilter booleanFilter, SearchContext searchContext)
+			BooleanFilter booleanFilter, SearchContext searchContext)
 		throws Exception {
 
 		_log.info("postProcessContextBooleanFilter");
@@ -57,7 +55,7 @@ public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor 
 
 	@Override
 	public void postProcessDocument(Document document, Object obj)
-			throws Exception {
+		throws Exception {
 
 		_log.info("postProcessDocument");
 	}
@@ -91,6 +89,7 @@ public class MultipleEntityIndexerPostProcessor implements IndexerPostProcessor 
 		_log.info("postProcessSummary");
 	}
 
-	private Log _log = LogFactoryUtil.getLog(MultipleEntityIndexerPostProcessor.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		MultipleEntityIndexerPostProcessor.class);
 
 }

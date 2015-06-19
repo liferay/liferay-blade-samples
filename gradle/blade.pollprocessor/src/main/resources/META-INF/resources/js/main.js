@@ -45,7 +45,7 @@ AUI()
 				instance._updateTask();
 			},
 
-			_updateMessage: function(){
+			_updateMessage: function() {
 				console.log("Update Message");
 				var instance = this;
 				instance.send(	{

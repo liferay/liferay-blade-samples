@@ -14,12 +14,14 @@ buildscript {
     dependencies {
         classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.0.0'
 		classpath 'com.liferay:com.liferay.ant.bnd:1.0.9'
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.source.formatter", version: "latest.release"
     }
 }
 
 subprojects {
     
     apply plugin: 'biz.aQute.bnd.builder'
+    apply plugin: 'com.liferay.source.formatter'
     sourceCompatibility = 1.7
 
     repositories {
@@ -40,6 +42,10 @@ subprojects {
         compile 'com.liferay.portal:util-taglib:7.0.0-SNAPSHOT'
         compile 'com.liferay.portal:util-java:7.0.0-SNAPSHOT'
         compile 'org.slf4j:slf4j-api:1.7.7'
+    }
+
+    formatSource {
+        baseDirName = "src/main"
     }
 }
 
