@@ -25,7 +25,6 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
-
 @Component(
 	immediate = true,
 	property = {
@@ -40,7 +39,7 @@ public class DSPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
-		throws PortletException, IOException {
+		throws IOException, PortletException {
 
 		PrintWriter printWriter = response.getWriter();
 

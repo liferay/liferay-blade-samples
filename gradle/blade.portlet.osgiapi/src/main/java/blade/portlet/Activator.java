@@ -23,18 +23,15 @@ import javax.portlet.Portlet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
-
 public class Activator implements BundleActivator {
 
 	public void start(BundleContext bundleContext) throws Exception {
-		Dictionary<String, Object> properties = new Hashtable<String, Object>();
+		Dictionary<String, Object> properties = new Hashtable<>();
 
 		properties.put(
 			"com.liferay.portlet.display-category", "category.sample");
-		properties.put(
-			"com.liferay.portlet.instanceable", "true");
-		properties.put(
-			"javax.portlet.display-name", "OSGi API Portlet");
+		properties.put("com.liferay.portlet.instanceable", "true");
+		properties.put("javax.portlet.display-name", "OSGi API Portlet");
 		properties.put(
 			"javax.portlet.security-role-ref",
 			new String[] {"power-user", "user"});

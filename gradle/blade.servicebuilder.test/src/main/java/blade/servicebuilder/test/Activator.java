@@ -15,13 +15,11 @@
  */
 package blade.servicebuilder.test;
 
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
-
 import blade.servicebuilder.service.FooLocalServiceUtil;
 import blade.servicebuilder.service.FooServiceUtil;
 
-
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
 public class Activator implements BundleActivator {
 
 	@Override
@@ -34,6 +32,6 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
-		
 	}
+
 }

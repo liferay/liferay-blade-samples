@@ -15,18 +15,17 @@
  */
 package blade.portlet;
 
+import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
+import com.liferay.portal.kernel.servlet.ServletContextPool;
+import com.liferay.portal.model.PortletApp;
+import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
+
 import javax.portlet.Portlet;
 import javax.portlet.PortletConfig;
 import javax.portlet.PortletContext;
 import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
-
-import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
-import com.liferay.portal.kernel.servlet.ServletContextPool;
-import com.liferay.portal.model.PortletApp;
-import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
-
 @Component(
 	immediate = true,
 	property = {
@@ -41,6 +40,15 @@ import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
 	service = Portlet.class
 )
 public class GreeterPortlet extends FreeMarkerPortlet {
+
+	@Override
+	public void destroy() {
+		PortletContext portletContext = getPortletContext();
+
+		ServletContextPool.remove(portletContext.getPortletContextName());
+
+		super.destroy();
+	}
 
 	@Override
 	public void init(PortletConfig portletConfig) throws PortletException {
@@ -58,12 +66,4 @@ public class GreeterPortlet extends FreeMarkerPortlet {
 			portletApp.getServletContextName(), portletApp.getServletContext());
 	}
 
-	@Override
-	public void destroy() {
-		PortletContext portletContext = getPortletContext();
-
-		ServletContextPool.remove(portletContext.getPortletContextName());
-
-		super.destroy();
-	}
 }

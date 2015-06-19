@@ -15,6 +15,7 @@
 package blade.servicebuilder.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
+
 import blade.servicebuilder.service.base.FooLocalServiceBaseImpl;
 
 /**
@@ -33,13 +34,13 @@ import blade.servicebuilder.service.base.FooLocalServiceBaseImpl;
  */
 @ProviderType
 public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
 	 */
-	public String fooLocal(){
+	public String fooLocal() {
 		return "fooLocal";
-	} 
-	
+	}
+
 }

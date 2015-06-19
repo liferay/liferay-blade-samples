@@ -16,6 +16,16 @@
 
 package blade.configurationaction.action;
 
+import aQute.bnd.annotation.metatype.Configurable;
+
+import blade.configurationaction.config.MessageDisplayConfiguration;
+
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.portlet.ConfigurationAction;
+import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
+import com.liferay.portal.kernel.util.ParamUtil;
+
 import java.util.Map;
 
 import javax.portlet.ActionRequest;
@@ -29,15 +39,6 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
 
-import aQute.bnd.annotation.metatype.Configurable;
-import blade.configurationaction.config.MessageDisplayConfiguration;
-
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.portlet.ConfigurationAction;
-import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
-import com.liferay.portal.kernel.util.ParamUtil;
-
 /**
  * @author Kamesh Sampath
  */
@@ -47,14 +48,15 @@ import com.liferay.portal.kernel.util.ParamUtil;
 				property = {
 					"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
 				},
-				service = ConfigurationAction.class)
+				service = ConfigurationAction.class
+)
 public class MessageDisplayConfigurationAction
 	extends DefaultConfigurationAction {
 
 	@Override
 	public void processAction(
-		PortletConfig portletConfig, ActionRequest actionRequest,
-		ActionResponse actionResponse)
+			PortletConfig portletConfig, ActionRequest actionRequest,
+			ActionResponse actionResponse)
 		throws Exception {
 
 		_log.debug("Blade Message Portlet configuration action");
@@ -91,12 +93,12 @@ public class MessageDisplayConfigurationAction
 	@Activate
 	@Modified
 	protected void activate(Map<Object, Object> properties) {
-		_messageDisplayConfiguration =
-			Configurable.createConfigurable(
-				MessageDisplayConfiguration.class, properties);
+		_messageDisplayConfiguration = Configurable.createConfigurable(
+			MessageDisplayConfiguration.class, properties);
 	}
-	private Log _log =
-		LogFactoryUtil.getLog(MessageDisplayConfigurationAction.class);
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		MessageDisplayConfigurationAction.class);
 
 	private volatile MessageDisplayConfiguration _messageDisplayConfiguration;
 

@@ -22,12 +22,11 @@ import javax.portlet.GenericPortlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-
 public class BlueprintPortlet extends GenericPortlet {
 
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
-		throws PortletException, IOException {
+		throws IOException, PortletException {
 
 		PrintWriter printWriter = response.getWriter();
 
