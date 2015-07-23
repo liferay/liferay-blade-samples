@@ -22,6 +22,13 @@
 		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>bndtools</id>
+			<url>https://bndtools.ci.cloudbees.com/job/bnd.master/666/artifact/bnd-maven-plugin/target/m2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<pluginManagement>
 			<plugins>

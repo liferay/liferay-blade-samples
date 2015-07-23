@@ -16,20 +16,8 @@
 
 package blade.configurationaction.action;
 
-import java.util.Map;
-
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.PortletConfig;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
-
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
-import org.osgi.service.component.annotations.Modified;
-
 import aQute.bnd.annotation.metatype.Configurable;
+
 import blade.configurationaction.config.MessageDisplayConfiguration;
 
 import com.liferay.portal.kernel.log.Log;
@@ -38,23 +26,34 @@ import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
 import com.liferay.portal.kernel.util.ParamUtil;
 
-/**
- * @author Kamesh Sampath
- */
+import java.util.Map;
+
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Modified;
+
 @Component(
-				configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
-				configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
-				property = {
-					"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
-				},
-				service = ConfigurationAction.class)
+	configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
+	configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
+	property = {
+		"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
+	},
+	service = ConfigurationAction.class
+)
 public class MessageDisplayConfigurationAction
 	extends DefaultConfigurationAction {
 
 	@Override
 	public void processAction(
-		PortletConfig portletConfig, ActionRequest actionRequest,
-		ActionResponse actionResponse)
+			PortletConfig portletConfig, ActionRequest actionRequest,
+			ActionResponse actionResponse)
 		throws Exception {
 
 		_log.debug("Blade Message Portlet configuration action");
@@ -75,28 +74,28 @@ public class MessageDisplayConfigurationAction
 	}
 
 	@Override
-	public String render(
-		PortletConfig portletConfig, RenderRequest renderRequest,
-		RenderResponse renderResponse) throws Exception {
+	public void include(
+		PortletConfig portletConfig, HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse) throws Exception {
 
-		_log.debug("Blade Message Portlet configuration render");
+		_log.debug("Blade Message Portlet configuration include");
 
-		renderRequest.setAttribute(
+		httpServletRequest.setAttribute(
 			MessageDisplayConfiguration.class.getName(),
 			_messageDisplayConfiguration);
 
-		return super.render(portletConfig, renderRequest, renderResponse);
+		super.include(portletConfig, httpServletRequest, httpServletResponse);
 	}
 
 	@Activate
 	@Modified
 	protected void activate(Map<Object, Object> properties) {
-		_messageDisplayConfiguration =
-			Configurable.createConfigurable(
-				MessageDisplayConfiguration.class, properties);
+		_messageDisplayConfiguration = Configurable.createConfigurable(
+			MessageDisplayConfiguration.class, properties);
 	}
-	private Log _log =
-		LogFactoryUtil.getLog(MessageDisplayConfigurationAction.class);
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		MessageDisplayConfigurationAction.class);
 
 	private volatile MessageDisplayConfiguration _messageDisplayConfiguration;
 

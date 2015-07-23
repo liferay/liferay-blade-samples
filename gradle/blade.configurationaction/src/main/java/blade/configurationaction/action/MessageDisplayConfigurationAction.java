@@ -31,24 +31,21 @@ import java.util.Map;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
 
-/**
- * @author Kamesh Sampath
- */
 @Component(
-				configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
-				configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
-				property = {
-					"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
-				},
-				service = ConfigurationAction.class
+	configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
+	configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
+	property = {
+		"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
+	},
+	service = ConfigurationAction.class
 )
 public class MessageDisplayConfigurationAction
 	extends DefaultConfigurationAction {
@@ -77,17 +74,17 @@ public class MessageDisplayConfigurationAction
 	}
 
 	@Override
-	public String render(
-		PortletConfig portletConfig, RenderRequest renderRequest,
-		RenderResponse renderResponse) throws Exception {
+	public void include(
+		PortletConfig portletConfig, HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse) throws Exception {
 
-		_log.debug("Blade Message Portlet configuration render");
+		_log.debug("Blade Message Portlet configuration include");
 
-		renderRequest.setAttribute(
+		httpServletRequest.setAttribute(
 			MessageDisplayConfiguration.class.getName(),
 			_messageDisplayConfiguration);
 
-		return super.render(portletConfig, renderRequest, renderResponse);
+		super.include(portletConfig, httpServletRequest, httpServletResponse);
 	}
 
 	@Activate
