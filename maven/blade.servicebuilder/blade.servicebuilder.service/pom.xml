@@ -70,8 +70,7 @@
 						<_dsannotations>*</_dsannotations>
 						<Liferay-Service>true</Liferay-Service>
 						<Require-Capability>
-						<![CDATA[liferay.extender;
-						filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
+						<![CDATA[liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
 						</Require-Capability>
 						<Spring-Context>META-INF/*-spring.xml;timeout:=600</Spring-Context>
 					</instructions>
@@ -80,7 +79,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.10</version>
+				<version>[1.0.0,2.0.0)</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<hbmFileName>src/main/resources/META-INF/portal-hbm.xml</hbmFileName>
@@ -96,19 +95,16 @@
 					<testDirName>src/it</testDirName>
 				</configuration>
 			</plugin>
-			
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
-				<version>1.0.2</version>
+				<version>[1.0.0,2.0.0)</version>
 				<configuration>
 					<inputFileName>service.xml</inputFileName>
 					<outputDirName>src/main/java</outputDirName>
 					<serverConfigFileName>src/main/resources/server-config.wsdd</serverConfigFileName>
 				</configuration>
 			</plugin>
-
-
 		</plugins>
 	</build>
 </project>

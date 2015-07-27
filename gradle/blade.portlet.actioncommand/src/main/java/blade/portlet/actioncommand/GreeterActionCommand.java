@@ -15,48 +15,33 @@
  */
 package blade.portlet.actioncommand;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
+
+import org.osgi.service.component.annotations.Component;
+
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.PortletException;
-import javax.portlet.PortletRequest;
-import javax.portlet.PortletResponse;
 
-import org.osgi.service.component.annotations.Component;
-
-/**
- * @author Kamesh Sampath
- *
- */
 @Component(
 	immediate = true,
 	property = {
-		"action.command.name=greet",
+		"mvc.command.name=greet",
 		"javax.portlet.name=blade_portlet_GreeterPortlet"
 	},
-	service = ActionCommand.class
+	service = MVCActionCommand.class
 )
-public class GreeterActionCommand implements ActionCommand {
+public class GreeterActionCommand implements MVCActionCommand {
 
 	@Override
-	public boolean processCommand(PortletRequest portletRequest,
-		PortletResponse portletResponse)
-		throws PortletException {
-
-		_log.info("Processing Greeting Action");
-
-		if (portletRequest instanceof ActionRequest &&
-			portletResponse instanceof ActionResponse) {
-
-			_handleActionCommand((ActionRequest)portletRequest,
-				(ActionResponse)portletResponse);
-		}
+	public boolean processAction(ActionRequest actionRequest, ActionResponse actionResponse) throws PortletException {
+		_handleActionCommand(actionRequest, actionResponse);
 
 		return true;
 	}
@@ -72,10 +57,10 @@ public class GreeterActionCommand implements ActionCommand {
 
 		actionRequest.setAttribute("GREETER_MESSAGE", greetingMessage);
 
-		SessionMessages.add(actionRequest, "greetingMessage", greetingMessage);
+		SessionMessages.add(actionRequest,
+			"greeting_message",greetingMessage);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		GreeterActionCommand.class);
+	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
 
 }
