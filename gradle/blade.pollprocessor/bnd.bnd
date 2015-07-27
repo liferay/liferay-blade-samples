@@ -11,4 +11,4 @@ Import-Package: \
 	@util-java-7.0.0-SNAPSHOT.jar!/com/liferay/util/Encryptor.class,\
 	@util-java-7.0.0-SNAPSHOT.jar!/com/liferay/util/EncryptorException.class
 -jsp: *.jsp,*.jspf
--plugin.jsp: com.liferay.ant.bnd.plugin.JspAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
