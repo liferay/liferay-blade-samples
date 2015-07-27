@@ -13,7 +13,7 @@ buildscript {
     }
     dependencies {
         classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.0.0'
-		classpath 'com.liferay:com.liferay.ant.bnd:1.0.9'
+		classpath 'com.liferay:com.liferay.ant.bnd:2.0.0'
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.source.formatter", version: "latest.release"
     }
 }
