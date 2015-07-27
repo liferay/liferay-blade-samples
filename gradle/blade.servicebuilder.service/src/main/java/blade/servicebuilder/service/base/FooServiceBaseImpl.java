@@ -435,7 +435,7 @@ public abstract class FooServiceBaseImpl extends BaseServiceImpl
 
 	@BeanReference(type = blade.servicebuilder.service.FooLocalService.class)
 	protected blade.servicebuilder.service.FooLocalService fooLocalService;
-	@BeanReference(type = FooService.class)
+	@BeanReference(type = blade.servicebuilder.service.FooService.class)
 	protected FooService fooService;
 	@BeanReference(type = FooPersistence.class)
 	protected FooPersistence fooPersistence;

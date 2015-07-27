@@ -192,6 +192,11 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	@Override
 	public java.lang.String fooLocal() {
 		return _fooLocalService.fooLocal();
@@ -214,7 +219,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		com.liferay.portal.kernel.lar.PortletDataContext portletDataContext) {
+		com.liferay.portlet.exportimport.lar.PortletDataContext portletDataContext) {
 		return _fooLocalService.getExportActionableDynamicQuery(portletDataContext);
 	}
 

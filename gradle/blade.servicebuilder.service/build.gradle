@@ -22,8 +22,8 @@ repositories {
 apply plugin: "com.liferay.portal.tools.service.builder"
 apply plugin: "com.liferay.portal.tools.wsdd.builder"
 
- dependencies {
-		compile  project(':blade.servicebuilder.api')
+dependencies {
+	compile  project(':blade.servicebuilder.api')
 }
 
 buildService {
@@ -35,7 +35,7 @@ buildService {
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
 	remotingFileName = null
-	resourcesDirName = "src/main/resources"	
+	resourcesDirName = "src/main/resources"
 	springFileName = "src/main/resources/META-INF/portal-spring.xml"
 	sqlDirName = "src/main/resources/sql"
 	springNamespaces = ["beans","osgi"]

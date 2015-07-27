@@ -174,6 +174,11 @@ public interface FooLocalService extends BaseLocalService,
 	public blade.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
 		java.lang.String uuid, long groupId);
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	public java.lang.String fooLocal();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -188,7 +193,7 @@ public interface FooLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		com.liferay.portal.kernel.lar.PortletDataContext portletDataContext);
+		com.liferay.portlet.exportimport.lar.PortletDataContext portletDataContext);
 
 	/**
 	* Returns the foo with the primary key.

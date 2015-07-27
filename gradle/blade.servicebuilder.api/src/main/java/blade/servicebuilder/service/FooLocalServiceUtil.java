@@ -190,6 +190,11 @@ public class FooLocalServiceUtil {
 		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	public static java.lang.String fooLocal() {
 		return getService().fooLocal();
 	}
@@ -208,7 +213,7 @@ public class FooLocalServiceUtil {
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		com.liferay.portal.kernel.lar.PortletDataContext portletDataContext) {
+		com.liferay.portlet.exportimport.lar.PortletDataContext portletDataContext) {
 		return getService().getExportActionableDynamicQuery(portletDataContext);
 	}
 
