@@ -32,7 +32,7 @@ import com.liferay.portal.kernel.util.StringPool;
 @Component(
 	immediate = true,
 	property = {
-		"action.command.name=greet",
+		"mvc.command.name=greet",
 		"javax.portlet.name=blade_portlet_GreeterPortlet"
 	},
 	service = MVCActionCommand.class
@@ -62,7 +62,5 @@ public class GreeterActionCommand implements MVCActionCommand {
 	}
 
 	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
-
-
 
 }
