@@ -23,7 +23,6 @@ import blade.servicebuilder.model.FooSoap;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
-import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -37,6 +36,7 @@ import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
+import com.liferay.portlet.exportimport.lar.StagedModelType;
 
 import java.io.Serializable;
 
@@ -85,6 +85,24 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 			{ "field4", Types.TIMESTAMP },
 			{ "field5", Types.VARCHAR }
 		};
+	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
+
+	static {
+		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("fooId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("groupId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("userId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("field1", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("field2", Types.BOOLEAN);
+		TABLE_COLUMNS_MAP.put("field3", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("field4", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("field5", Types.VARCHAR);
+	}
+
 	public static final String TABLE_SQL_CREATE = "create table Foo (uuid_ VARCHAR(75) null,fooId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,field1 VARCHAR(75) null,field2 BOOLEAN,field3 INTEGER,field4 DATE null,field5 VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table Foo";
 	public static final String ORDER_BY_JPQL = " ORDER BY foo.field1 ASC";

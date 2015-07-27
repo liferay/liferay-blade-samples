@@ -32,6 +32,11 @@ public class FooServiceWrapper implements FooService,
 		_fooService = fooService;
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooServiceUtil} to access the foo remote service.
+	*/
 	@Override
 	public java.lang.String fooRemote() {
 		return _fooService.fooRemote();
