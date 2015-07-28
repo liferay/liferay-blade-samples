@@ -1,5 +1,4 @@
 .gradle/
-.gradle-wrapper/
 .gradlew
 /generated/
 enroute.zip
