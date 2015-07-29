@@ -20,6 +20,8 @@ if (bndWorkspace == null) {
   throw new GradleException("Unable to load workspace ${rootDir}/${bnd_cnf}")
 }
 
+bndWorkspace.setProperty('bnd_repourl', bnd_repourl)
+
 ext.cnf = rootProject.project(bnd_cnf)
 
 /* Configure the subprojects */

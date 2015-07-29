@@ -1,8 +1,8 @@
 -buildpath: \
 	osgi.core;version=5.0,\
-	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay.portal:portal-service;version=latest,\
 	biz.aQute.bndlib
-	
+
 Import-Package: \
     com.liferay.portal.service;version="7.0.0",\
     org.osgi.framework;version="[1.7,2)",\
