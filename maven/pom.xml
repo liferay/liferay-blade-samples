@@ -155,6 +155,7 @@
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 		<module>blade.configurationaction</module>
+		<module>blade.portlet.filter</module>
 	</modules>
 
 </project>
