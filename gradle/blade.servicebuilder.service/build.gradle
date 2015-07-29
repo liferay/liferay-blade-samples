@@ -24,6 +24,10 @@ apply plugin: "com.liferay.portal.tools.wsdd.builder"
 
 dependencies {
 	compile  project(':blade.servicebuilder.api')
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+	testCompile group: 'com.liferay.portal', name: 'portal-test', version: '7.0.0-SNAPSHOT'
+	testCompile group: 'com.liferay.portal', name: 'portal-test-internal', version: '7.0.0-SNAPSHOT'
+	testCompile group: 'com.liferay', name: 'com.liferay.arquillian.extension.junit.bridge', version: '1.0.0-SNAPSHOT'
 }
 
 buildService {
