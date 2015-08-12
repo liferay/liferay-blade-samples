@@ -17,7 +17,7 @@
 	
     <modules>
         <module>blade.servicebuilder.api</module>
-        <module>blade.servicebuilder.service</module>
+        <module>blade.servicebuilder.svc</module>
         <module>blade.servicebuilder.test</module>
     </modules>
 	
