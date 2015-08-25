@@ -26,10 +26,10 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
-		String result = FooLocalServiceUtil.fooLocal();
-		System.out.println("FooLocalService Test: "+result);
+		String localResult = FooLocalServiceUtil.fooLocal();
+		System.out.println("FooLocalService Test: "+localResult);
 		String remoteResult = FooServiceUtil.fooRemote();
-		System.out.println("Foo Remote Service Test: "+remoteResult);
+		System.out.println("FooRemoteService Test: "+remoteResult);
 	}
 
 	@Override
