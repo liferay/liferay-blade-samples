@@ -32,18 +32,20 @@ dependencies {
 
 buildService {
 	apiDirName = "../blade.servicebuilder.api/src/main/java"
-	hbmFileName = "src/main/resources/META-INF/portal-hbm.xml"
+	beanLocatorUtil = "com.liferay.util.bean.PortletBeanLocatorUtil"
+	hbmFileName = "src/main/resources/META-INF/module-hbm.xml"
 	implDirName = "src/main/java"
 	inputFileName = "service.xml"
-	modelHintsFileName = "src/main/resources/META-INF/portal-model-hints.xml"
+	modelHintsFileName = "src/main/resources/META-INF/portlet-model-hints.xml"
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
 	remotingFileName = null
 	resourcesDirName = "src/main/resources"
-	springFileName = "src/main/resources/META-INF/portal-spring.xml"
-	sqlDirName = "src/main/resources/sql"
+	springFileName = "src/main/resources/META-INF/spring/module-spring.xml"
 	springNamespaces = ["beans","osgi"]
-	testDirName = "test"
+	sqlDirName = "src/main/resources/META-INF/sql"
+	sqlFileName = "tables.sql"
+	testDirName = "src/it"
 }
 
 buildWSDD {

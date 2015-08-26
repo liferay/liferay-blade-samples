@@ -2159,7 +2159,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 				foo.setNew(false);
 			}
 			else {
-				session.merge(foo);
+				foo = (Foo)session.merge(foo);
 			}
 		}
 		catch (Exception e) {
@@ -2230,8 +2230,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		EntityCacheUtil.putResult(FooModelImpl.ENTITY_CACHE_ENABLED,
 			FooImpl.class, foo.getPrimaryKey(), foo, false);
 
-		clearUniqueFindersCache(foo);
-		cacheUniqueFindersCache(foo, isNew);
+		clearUniqueFindersCache((Foo)fooModelImpl);
+		cacheUniqueFindersCache((Foo)fooModelImpl, isNew);
 
 		foo.resetOriginalValues();
 
