@@ -53,3 +53,5 @@ buildWSDD {
 	outputDirName = "src/main/java"
 	serverConfigFileName = "src/main/resources/server-config.wsdd"
 }
+
+version = '1.0.0'
