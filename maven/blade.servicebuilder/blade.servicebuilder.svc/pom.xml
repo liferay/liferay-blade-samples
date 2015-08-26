@@ -72,26 +72,28 @@
 						<Require-Capability>
 						<![CDATA[liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
 						</Require-Capability>
-						<Spring-Context>META-INF/*-spring.xml;timeout:=600</Spring-Context>
+						<Spring-Context>META-INF/spring</Spring-Context>
 					</instructions>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>[1.0.0,2.0.0)</version>
+				<version>1.0.30</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
-					<hbmFileName>src/main/resources/META-INF/portal-hbm.xml</hbmFileName>
+					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>
+					<hbmFileName>src/main/resources/META-INF/module-hbm.xml</hbmFileName>
 					<implDirName>src/main/java</implDirName>
 					<inputFileName>service.xml</inputFileName>
-					<modelHintsFileName>src/main/resources/META-INF/portal-model-hints.xml</modelHintsFileName>
+					<modelHintsFileName>src/main/resources/META-INF/portlet-model-hints.xml</modelHintsFileName>
 					<osgiModule>true</osgiModule>
 					<propsUtil>blade.servicebuilder.service.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
-					<springFileName>src/main/resources/META-INF/portal-spring.xml</springFileName>
+					<springFileName>src/main/resources/META-INF/spring/module-spring.xml</springFileName>
 					<springNamespaces>beans,osgi</springNamespaces>
-					<sqlDirName>src/main/resources/sql</sqlDirName>
+					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
+					<sqlFileName>tables.sql</sqlFileName>
 					<testDirName>src/it</testDirName>
 				</configuration>
 			</plugin>
