@@ -2230,8 +2230,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		EntityCacheUtil.putResult(FooModelImpl.ENTITY_CACHE_ENABLED,
 			FooImpl.class, foo.getPrimaryKey(), foo, false);
 
-		clearUniqueFindersCache((Foo)fooModelImpl);
-		cacheUniqueFindersCache((Foo)fooModelImpl, isNew);
+		clearUniqueFindersCache(foo);
+		cacheUniqueFindersCache(foo, isNew);
 
 		foo.resetOriginalValues();
 
