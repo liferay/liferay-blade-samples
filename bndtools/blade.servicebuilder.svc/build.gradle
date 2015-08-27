@@ -3,13 +3,12 @@ buildscript {
 		mavenLocal()
 
 		maven {
-			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 		}
 	}
 
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.wsdd.builder", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "1.0.5"
 	}
 }
 
@@ -17,12 +16,11 @@ repositories {
 	mavenLocal()
 
 	maven {
-		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+		url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 	}
 }
 
 apply plugin: "com.liferay.portal.tools.service.builder"
-apply plugin: "com.liferay.portal.tools.wsdd.builder"
 
 buildService {
 	apiDirName = "../blade.servicebuilder.api/src"
@@ -34,16 +32,10 @@ buildService {
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
 	remotingFileName = null
-	resourcesDirName = "resources"	
+	resourcesDirName = "resources"
 	springFileName = "resources/META-INF/spring/module-spring.xml"
 	springNamespaces = ["beans","osgi"]
 	sqlDirName = "resources/META-INF/sql"
-	sqlFileName = "tables.sql"	
-	testDirName = "it"
-}
-
-buildWSDD {
-	inputFileName = "service.xml"
-	outputDirName = "src"
-	serverConfigFileName = "resources/server-config.wsdd"
+	sqlFileName = "tables.sql"
+	testDirName = "test"
 }
