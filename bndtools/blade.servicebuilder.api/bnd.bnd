@@ -13,3 +13,4 @@ Export-Package: \
 	blade.servicebuilder.model,\
 	blade.servicebuilder.service,\
 	blade.servicebuilder.service.persistence
+	

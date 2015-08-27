@@ -38,8 +38,13 @@ bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBui
 		pretty=true
 
 -plugin.enroute.liferaysnapshotsrepo = \
-	aQute.bnd.deployer.repository.aether.AetherRepository; \
+aQute.bnd.deployer.repository.aether.AetherRepository; \
 		name 	= 	Liferay Nexus; \
+		url 	= 	https://repository.liferay.com/nexus/content/groups/liferay-ce/
+
+-plugin.enroute.liferaypublich = \
+	aQute.bnd.deployer.repository.aether.AetherRepository; \
+		name 	= 	Liferay Public; \
 		url 	= 	https://repository.liferay.com/nexus/content/groups/public/
 
 -releaserepo: 					Release
