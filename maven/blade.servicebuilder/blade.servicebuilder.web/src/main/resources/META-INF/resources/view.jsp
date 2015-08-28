@@ -16,6 +16,86 @@
 
 <%@ include file="/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="blade_servicebuilder_web_JSPPortlet.caption"/></b>
-</p>
+<strong><liferay-ui:message key="welcome-to-the-blade-service-builder-web" /></strong>
+
+<aui:button-row>
+	<portlet:renderURL var="editFooURL">
+		<portlet:param name="mvcPath" value="/edit_foo.jsp" />
+		<portlet:param name="redirect" value="<%= currentURL %>" />
+	</portlet:renderURL>
+
+	<aui:button href="<%= editFooURL %>" value="add-foo" />
+</aui:button-row>
+
+<liferay-ui:search-container
+	total="<%= FooLocalServiceUtil.getFoosCount() %>"
+>
+<liferay-ui:search-container-results
+	results="<%= FooLocalServiceUtil.getFoos(searchContainer.getStart(), searchContainer.getEnd()) %>"
+/>
+
+	<liferay-ui:search-container-row
+		className="blade.servicebuilder.model.Foo"
+		escapedModel="true"
+		modelVar="foo"
+	>
+		<liferay-ui:search-container-column-text
+			name="id"
+			property="fooId"
+			valign="top"
+		/>
+
+		<liferay-ui:search-container-column-text
+			name="field1"
+			valign="top"
+		>
+			<strong><%= foo.getField1() %></strong>
+
+			<br />
+
+			<div class="lfr-asset-categories">
+				<liferay-ui:asset-categories-summary
+					className="<%= Foo.class.getName() %>"
+					classPK="<%= foo.getFooId() %>"
+				/>
+			</div>
+
+			<div class="lfr-asset-tags">
+				<liferay-ui:asset-tags-summary
+					className="<%= Foo.class.getName() %>"
+					classPK="<%= foo.getFooId() %>"
+					message="tags"
+				/>
+			</div>
+		</liferay-ui:search-container-column-text>
+
+		<liferay-ui:search-container-column-text
+			property="field2"
+			valign="top"
+		/>
+
+		<liferay-ui:search-container-column-text
+			property="field3"
+			valign="top"
+		/>
+
+		<liferay-ui:search-container-column-date
+			name="field4"
+			valign="top"
+			value="<%= foo.getField4() %>"
+		/>
+
+		<liferay-ui:search-container-column-text
+			property="field5"
+			valign="top"
+		/>
+
+		<liferay-ui:search-container-column-jsp
+			cssClass="entry-action"
+			path="/foo_action.jsp"
+			valign="top"
+		/>
+	</liferay-ui:search-container-row>
+
+	<liferay-ui:search-iterator />
+</liferay-ui:search-container>

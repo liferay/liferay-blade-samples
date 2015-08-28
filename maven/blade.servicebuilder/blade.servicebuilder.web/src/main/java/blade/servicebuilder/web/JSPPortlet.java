@@ -16,6 +16,8 @@
 package blade.servicebuilder.web;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -24,7 +26,19 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
+import blade.servicebuilder.model.Foo;
+import blade.servicebuilder.service.FooLocalServiceUtil;
+
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.util.Constants;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.ServiceContextFactory;
+import com.liferay.portal.util.PortalUtil;
 
 @Component(immediate = true, property = {
 		"com.liferay.portlet.display-category=category.osgi",
@@ -39,7 +53,7 @@ public class JSPPortlet extends MVCPortlet {
 	public void processAction(ActionRequest actionRequest,
 			ActionResponse actionResponse) throws IOException, PortletException {
 
-	/*	try {
+		try {
 			String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
 			if (cmd.equals(Constants.ADD) || cmd.equals(Constants.UPDATE)) {
@@ -60,17 +74,17 @@ public class JSPPortlet extends MVCPortlet {
 			}
 		} catch (Exception e) {
 			throw new PortletException(e);
-		}*/
+		}
 	}
 
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {
-	/*	long fooId = ParamUtil.getLong(actionRequest, "fooId");
+		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
-		FooLocalServiceUtil.deleteFoo(fooId);*/
+		FooLocalServiceUtil.deleteFoo(fooId);
 	}
 
 	protected void updateFoo(ActionRequest actionRequest) throws Exception {
-		/*long fooId = ParamUtil.getLong(actionRequest, "fooId");
+		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
 		String field1 = ParamUtil.getString(actionRequest, "field1");
 		boolean field2 = ParamUtil.getBoolean(actionRequest, "field2");
@@ -91,16 +105,26 @@ public class JSPPortlet extends MVCPortlet {
 		Date field4 = PortalUtil.getDate(dateMonth, dateDay, dateYear,
 				dateHour, dateMinute, PortalException.class);
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(
-				Foo.class.getName(), actionRequest);
-
 		if (fooId <= 0) {
-			FooLocalServiceUtil.addFoo(field1, field2, field3, field4, field5,
-					serviceContext);
+			Foo foo = FooLocalServiceUtil.createFoo(0);
+			
+			foo.setField1(field1);
+			foo.setField2(field2);
+			foo.setField3(field3);
+			foo.setField4(field4);
+			foo.setField5(field5);
+			foo.isNew();
+			FooLocalServiceUtil.addFooWithoutId(foo);
 		} else {
-			FooLocalServiceUtil.updateFoo(fooId, field1, field2, field3,
-					field4, field5, serviceContext);
-		}*/
+			Foo foo = FooLocalServiceUtil.fetchFoo(fooId);
+			foo.setFooId(fooId);
+			foo.setField1(field1);
+			foo.setField2(field2);
+			foo.setField3(field3);
+			foo.setField4(field4);
+			foo.setField5(field5);
+			FooLocalServiceUtil.updateFoo(foo);
+		}
 	}
 
 }

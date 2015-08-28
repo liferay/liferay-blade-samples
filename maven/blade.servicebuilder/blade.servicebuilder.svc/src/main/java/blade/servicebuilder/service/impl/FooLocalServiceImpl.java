@@ -15,6 +15,7 @@
 package blade.servicebuilder.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
+import blade.servicebuilder.model.Foo;
 import blade.servicebuilder.service.base.FooLocalServiceBaseImpl;
 
 /**
@@ -38,6 +39,12 @@ public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
 	 */
+	public Foo addFooWithoutId(Foo foo){
+		long resourcePrimKey = counterLocalService.increment();
+		foo.setFooId(resourcePrimKey);
+		return addFoo(foo);
+	}
+	
 	public String fooLocal(){
 		return "fooLocal";
 	} 

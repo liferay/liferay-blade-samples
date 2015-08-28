@@ -435,8 +435,8 @@ public class FooPersistenceTest {
 		Assert.assertTrue(Validator.equals(existingFoo.getUuid(),
 				ReflectionTestUtil.invoke(existingFoo, "getOriginalUuid",
 					new Class<?>[0])));
-		Assert.assertEquals(existingFoo.getGroupId(),
-			ReflectionTestUtil.invoke(existingFoo, "getOriginalGroupId",
+		Assert.assertEquals(Long.valueOf(existingFoo.getGroupId()),
+			ReflectionTestUtil.<Long>invoke(existingFoo, "getOriginalGroupId",
 				new Class<?>[0]));
 	}
 

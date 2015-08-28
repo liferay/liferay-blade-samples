@@ -79,7 +79,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.30</version>
+				<version>1.0.33</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>

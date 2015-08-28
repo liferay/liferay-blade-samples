@@ -58,6 +58,9 @@ public interface FooLocalService extends BaseLocalService,
 	public blade.servicebuilder.model.Foo addFoo(
 		blade.servicebuilder.model.Foo foo);
 
+	public blade.servicebuilder.model.Foo addFooWithoutId(
+		blade.servicebuilder.model.Foo foo);
+
 	/**
 	* Creates a new foo with the primary key. Does not add the foo to the database.
 	*
