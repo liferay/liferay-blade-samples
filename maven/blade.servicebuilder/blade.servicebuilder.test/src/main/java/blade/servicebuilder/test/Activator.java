@@ -15,9 +15,13 @@
  */
 package blade.servicebuilder.test;
 
+import java.util.Date;
+import java.util.List;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+import blade.servicebuilder.model.Foo;
 import blade.servicebuilder.service.FooLocalServiceUtil;
 import blade.servicebuilder.service.FooServiceUtil;
 
@@ -30,6 +34,25 @@ public class Activator implements BundleActivator {
 		System.out.println("FooLocalService Test: "+localResult);
 		String remoteResult = FooServiceUtil.fooRemote();
 		System.out.println("FooRemoteService Test: "+remoteResult);
+		
+		int count = FooLocalServiceUtil.getFoosCount();
+		List<Foo> fooList = FooLocalServiceUtil.getFoos(0, count);
+		for(Foo foo : fooList){
+			System.out.println(foo.getFooId()+" "+foo.getField1());
+		}
+		//FooLocalServiceUtil.deleteFoo(111);
+	/*	if( fooList == null || fooList.size()<=0 ){
+			for(int i = 0 ; i < 9 ; i++){
+				Foo foo = FooLocalServiceUtil.createFoo();
+				foo.setField1("field1 String"+1);
+				foo.setField2(true);
+				foo.setField3(i);
+				foo.setField4(new Date());
+				foo.setField5("field5 String"+i);
+				FooLocalServiceUtil.addFoo(foo);
+			}
+		}	*/		
+		
 	}
 
 	@Override

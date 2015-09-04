@@ -54,6 +54,11 @@ public class FooLocalServiceUtil {
 		return getService().addFoo(foo);
 	}
 
+	public static blade.servicebuilder.model.Foo addFooWithoutId(
+		blade.servicebuilder.model.Foo foo) {
+		return getService().addFooWithoutId(foo);
+	}
+
 	/**
 	* Creates a new foo with the primary key. Does not add the foo to the database.
 	*

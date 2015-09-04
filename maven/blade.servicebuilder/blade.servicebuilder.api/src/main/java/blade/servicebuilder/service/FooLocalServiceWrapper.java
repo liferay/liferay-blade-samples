@@ -44,6 +44,12 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.addFoo(foo);
 	}
 
+	@Override
+	public blade.servicebuilder.model.Foo addFooWithoutId(
+		blade.servicebuilder.model.Foo foo) {
+		return _fooLocalService.addFooWithoutId(foo);
+	}
+
 	/**
 	* Creates a new foo with the primary key. Does not add the foo to the database.
 	*
