@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package blade.servicebuilder.web;
 
 import java.io.IOException;
@@ -36,17 +37,20 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.service.ServiceContext;
-import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.portal.util.PortalUtil;
 
-@Component(immediate = true, property = {
+@Component(
+	immediate = true,
+	property = {
 		"com.liferay.portlet.display-category=category.osgi",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.security-role-ref=power-user,user",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.resource-bundle=content.Language" }, service = Portlet.class)
+		"javax.portlet.resource-bundle=content.Language"
+	},
+	service = Portlet.class
+)
 public class JSPPortlet extends MVCPortlet {
 
 	@Override
@@ -107,7 +111,7 @@ public class JSPPortlet extends MVCPortlet {
 
 		if (fooId <= 0) {
 			Foo foo = FooLocalServiceUtil.createFoo(0);
-			
+
 			foo.setField1(field1);
 			foo.setField2(field2);
 			foo.setField3(field3);
