@@ -3,3 +3,4 @@
 	blade.servicebuilder.api;version=latest
 Private-Package: blade.servicebuilder.test
 Bundle-Activator: blade.servicebuilder.test.Activator
+Bundle-Version: 1.0.0.${tstamp}
