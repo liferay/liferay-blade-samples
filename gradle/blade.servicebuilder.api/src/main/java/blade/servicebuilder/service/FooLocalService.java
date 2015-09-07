@@ -59,6 +59,14 @@ public interface FooLocalService extends BaseLocalService,
 		blade.servicebuilder.model.Foo foo);
 
 	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
+	public blade.servicebuilder.model.Foo addFooWithoutId(
+		blade.servicebuilder.model.Foo foo);
+
+	/**
 	* Creates a new foo with the primary key. Does not add the foo to the database.
 	*
 	* @param fooId the primary key for the new foo
@@ -174,11 +182,6 @@ public interface FooLocalService extends BaseLocalService,
 	public blade.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
 		java.lang.String uuid, long groupId);
 
-	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
-	*/
 	public java.lang.String fooLocal();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
