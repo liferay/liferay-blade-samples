@@ -55,6 +55,16 @@ public class FooLocalServiceUtil {
 	}
 
 	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
+	public static blade.servicebuilder.model.Foo addFooWithoutId(
+		blade.servicebuilder.model.Foo foo) {
+		return getService().addFooWithoutId(foo);
+	}
+
+	/**
 	* Creates a new foo with the primary key. Does not add the foo to the database.
 	*
 	* @param fooId the primary key for the new foo
@@ -190,11 +200,6 @@ public class FooLocalServiceUtil {
 		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
-	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
-	*/
 	public static java.lang.String fooLocal() {
 		return getService().fooLocal();
 	}
