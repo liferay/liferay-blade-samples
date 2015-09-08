@@ -10,5 +10,4 @@ Import-Package:  \
 	javax.portlet;version='[2.0,3)',\
 	*
 
-Private-Package:  \
-	blade.portlet
+Private-Package: blade.portlet.*
