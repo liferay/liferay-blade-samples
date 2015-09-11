@@ -5,7 +5,7 @@
 #
 
 # must be removed before release
-bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles
+bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/719/artifact/dist/bundles
 
 
 -plugin.enroute.distrorepo = \

@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         ivy {
-            url 'https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles'
+            url 'https://bndtools.ci.cloudbees.com/job/bnd.master/719/artifact/dist/bundles'
             layout 'pattern', {
                 artifact '[module]/[artifact]-[revision].[ext]' /* OSGi repo pattern */
             }
