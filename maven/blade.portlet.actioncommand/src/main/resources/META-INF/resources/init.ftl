@@ -14,7 +14,7 @@
  */
 -->
 
-<#assign aui = PortletJspTagLibs["/META-INF/aui.tld"] />
+<#assign aui = PortletJspTagLibs["/META-INF/liferay-aui.tld"] />
 <#assign liferay_portlet = PortletJspTagLibs["/META-INF/liferay-portlet-ext.tld"] />
 <#assign liferay_security = PortletJspTagLibs["/META-INF/liferay-security.tld"] />
 <#assign liferay_theme = PortletJspTagLibs["/META-INF/liferay-theme.tld"] />
