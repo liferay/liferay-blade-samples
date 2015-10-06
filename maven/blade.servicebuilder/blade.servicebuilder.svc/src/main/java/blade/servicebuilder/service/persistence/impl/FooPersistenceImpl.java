@@ -153,6 +153,26 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	@Override
 	public List<Foo> findByUuid(String uuid, int start, int end,
 		OrderByComparator<Foo> orderByComparator) {
+		return findByUuid(uuid, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the foos where uuid = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param start the lower bound of the range of foos
+	 * @param end the upper bound of the range of foos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching foos
+	 */
+	@Override
+	public List<Foo> findByUuid(String uuid, int start, int end,
+		OrderByComparator<Foo> orderByComparator, boolean retrieveFromCache) {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -168,15 +188,19 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderArgs = new Object[] { uuid, start, end, orderByComparator };
 		}
 
-		List<Foo> list = (List<Foo>)FinderCacheUtil.getResult(finderPath,
-				finderArgs, this);
+		List<Foo> list = null;
 
-		if ((list != null) && !list.isEmpty()) {
-			for (Foo foo : list) {
-				if (!Validator.equals(uuid, foo.getUuid())) {
-					list = null;
+		if (retrieveFromCache) {
+			list = (List<Foo>)FinderCacheUtil.getResult(finderPath, finderArgs,
+					this);
 
-					break;
+			if ((list != null) && !list.isEmpty()) {
+				for (Foo foo : list) {
+					if (!Validator.equals(uuid, foo.getUuid())) {
+						list = null;
+
+						break;
+					}
 				}
 			}
 		}
@@ -666,7 +690,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	 *
 	 * @param uuid the uuid
 	 * @param groupId the group ID
-	 * @param retrieveFromCache whether to use the finder cache
+	 * @param retrieveFromCache whether to retrieve from the finder cache
 	 * @return the matching foo, or <code>null</code> if a matching foo could not be found
 	 */
 	@Override
@@ -928,6 +952,28 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	@Override
 	public List<Foo> findByUuid_C(String uuid, long companyId, int start,
 		int end, OrderByComparator<Foo> orderByComparator) {
+		return findByUuid_C(uuid, companyId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the foos where uuid = &#63; and companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of foos
+	 * @param end the upper bound of the range of foos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching foos
+	 */
+	@Override
+	public List<Foo> findByUuid_C(String uuid, long companyId, int start,
+		int end, OrderByComparator<Foo> orderByComparator,
+		boolean retrieveFromCache) {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -947,16 +993,20 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 				};
 		}
 
-		List<Foo> list = (List<Foo>)FinderCacheUtil.getResult(finderPath,
-				finderArgs, this);
+		List<Foo> list = null;
 
-		if ((list != null) && !list.isEmpty()) {
-			for (Foo foo : list) {
-				if (!Validator.equals(uuid, foo.getUuid()) ||
-						(companyId != foo.getCompanyId())) {
-					list = null;
+		if (retrieveFromCache) {
+			list = (List<Foo>)FinderCacheUtil.getResult(finderPath, finderArgs,
+					this);
 
-					break;
+			if ((list != null) && !list.isEmpty()) {
+				for (Foo foo : list) {
+					if (!Validator.equals(uuid, foo.getUuid()) ||
+							(companyId != foo.getCompanyId())) {
+						list = null;
+
+						break;
+					}
 				}
 			}
 		}
@@ -1476,6 +1526,26 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	@Override
 	public List<Foo> findByField2(boolean field2, int start, int end,
 		OrderByComparator<Foo> orderByComparator) {
+		return findByField2(field2, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the foos where field2 = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param field2 the field2
+	 * @param start the lower bound of the range of foos
+	 * @param end the upper bound of the range of foos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching foos
+	 */
+	@Override
+	public List<Foo> findByField2(boolean field2, int start, int end,
+		OrderByComparator<Foo> orderByComparator, boolean retrieveFromCache) {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -1491,15 +1561,19 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderArgs = new Object[] { field2, start, end, orderByComparator };
 		}
 
-		List<Foo> list = (List<Foo>)FinderCacheUtil.getResult(finderPath,
-				finderArgs, this);
+		List<Foo> list = null;
 
-		if ((list != null) && !list.isEmpty()) {
-			for (Foo foo : list) {
-				if ((field2 != foo.getField2())) {
-					list = null;
+		if (retrieveFromCache) {
+			list = (List<Foo>)FinderCacheUtil.getResult(finderPath, finderArgs,
+					this);
 
-					break;
+			if ((list != null) && !list.isEmpty()) {
+				for (Foo foo : list) {
+					if ((field2 != foo.getField2())) {
+						list = null;
+
+						break;
+					}
 				}
 			}
 		}
@@ -2495,6 +2569,25 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	@Override
 	public List<Foo> findAll(int start, int end,
 		OrderByComparator<Foo> orderByComparator) {
+		return findAll(start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the foos.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of foos
+	 * @param end the upper bound of the range of foos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of foos
+	 */
+	@Override
+	public List<Foo> findAll(int start, int end,
+		OrderByComparator<Foo> orderByComparator, boolean retrieveFromCache) {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -2510,8 +2603,12 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderArgs = new Object[] { start, end, orderByComparator };
 		}
 
-		List<Foo> list = (List<Foo>)FinderCacheUtil.getResult(finderPath,
-				finderArgs, this);
+		List<Foo> list = null;
+
+		if (retrieveFromCache) {
+			list = (List<Foo>)FinderCacheUtil.getResult(finderPath, finderArgs,
+					this);
+		}
 
 		if (list == null) {
 			StringBundler query = null;
@@ -2621,7 +2718,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	}
 
 	@Override
-	protected Set<String> getBadColumnNames() {
+	public Set<String> getBadColumnNames() {
 		return _badColumnNames;
 	}
 
