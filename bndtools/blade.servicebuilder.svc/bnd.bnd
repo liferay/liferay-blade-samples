@@ -1,6 +1,6 @@
 -buildpath: \
 	osgi.core;version=5.0,\
-	com.liferay.portal:portal-service;version=latest,\
+	com.liferay.portal:portal-service;version='7.0.0.a1',\
 	com.liferay.portal:portal-test-internal;version=latest,\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
 	org.jboss.arquillian.junit:arquillian-junit-core;version='1.1.8.Final';strategy='exact',\
