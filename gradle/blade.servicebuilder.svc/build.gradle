@@ -4,6 +4,7 @@ buildscript {
 		maven {
 			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 		}
+		mavenCentral()
 	}
 
     dependencies {
