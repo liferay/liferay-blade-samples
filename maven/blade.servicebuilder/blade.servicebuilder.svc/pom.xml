@@ -7,7 +7,6 @@
 	<name>Blade ServiceBuilder Service</name>
 	<packaging>bundle</packaging>
 	
-
 	<parent>
         <groupId>blade</groupId>
         <artifactId>blade.servicebuilder</artifactId>
@@ -29,7 +28,13 @@
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>util-bridges</artifactId>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.portal.spring.extender</artifactId>
+			<version>1.0.2</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>blade</groupId>
 			<artifactId>blade.servicebuilder.api</artifactId>
@@ -79,7 +84,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.43</version>
+				<version>1.0.48</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>

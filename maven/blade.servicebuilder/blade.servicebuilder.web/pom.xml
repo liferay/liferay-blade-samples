@@ -37,7 +37,7 @@
 			<artifactId>portal-service</artifactId>
 			<scope>provided</scope>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>util-taglib</artifactId>
 			<scope>provided</scope>
