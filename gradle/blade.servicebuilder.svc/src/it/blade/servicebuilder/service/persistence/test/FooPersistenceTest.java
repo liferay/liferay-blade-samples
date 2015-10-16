@@ -339,11 +339,9 @@ public class FooPersistenceTest {
 
 		ActionableDynamicQuery actionableDynamicQuery = FooLocalServiceUtil.getActionableDynamicQuery();
 
-		actionableDynamicQuery.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod() {
+		actionableDynamicQuery.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Foo>() {
 				@Override
-				public void performAction(Object object) {
-					Foo foo = (Foo)object;
-
+				public void performAction(Foo foo) {
 					Assert.assertNotNull(foo);
 
 					count.increment();

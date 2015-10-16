@@ -9,7 +9,7 @@ buildscript {
 
     dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "1.0.5"
-		classpath group: "com.liferay", name: "com.liferay.portal.tools.service.builder", version: "1.0.43"
+		classpath group: "com.liferay", name: "com.liferay.portal.tools.service.builder", version: "1.0.48"
 	}
 }
 
@@ -24,6 +24,7 @@ apply plugin: "com.liferay.portal.tools.service.builder"
 
 dependencies {
 	compile  project(':blade.servicebuilder.api')
+	compile group: 'com.liferay', name: 'com.liferay.portal.spring.extender', version: '1.0.2'
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 	testCompile group: 'com.liferay.portal', name: 'portal-test', version: '7.0.0-SNAPSHOT'
 	testCompile group: 'com.liferay.portal', name: 'portal-test-internal', version: '7.0.0-SNAPSHOT'
