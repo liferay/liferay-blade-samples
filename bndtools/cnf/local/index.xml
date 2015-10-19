@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1444979193000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1445247825000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="biz.aQute.remote.agent"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="3.0.0.201505200456"/>
+      <attribute name="version" type="Version" value="3.0.0.201510081031"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="d9dba07ee0bd98982f29b964fefbde148134e55a7a72e7cb14349d4bb60cf2c0"/>
-      <attribute name="url" value="biz.aQute.remote.agent/biz.aQute.remote.agent-3.0.0.jar"/>
-      <attribute name="size" type="Long" value="263009"/>
+      <attribute name="osgi.content" value="ee5260f280e2f5cac44b85f6d41c9578b25f959431c69215b386c53d8b18a8ba"/>
+      <attribute name="url" value="biz.aQute.remote.agent-3.0.0.jar"/>
+      <attribute name="size" type="Long" value="292349"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="biz.aQute.remote.agent"/>
-      <attribute name="bundle-version" type="Version" value="3.0.0.201505200456"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201510081031"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="biz.aQute.remote.agent"/>
-      <attribute name="bundle-version" type="Version" value="3.0.0.201505200456"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201510081031"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
@@ -39,6 +39,9 @@
       <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -47,6 +50,14 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring.dto)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
       <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.ee">
@@ -57,26 +68,22 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="biz.aQute.remote.agent"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="3.0.0.201505200458"/>
+      <attribute name="version" type="Version" value="3.0.0.201510081031"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="828f84fb6c653690ddaeb3cf3c402e949428ca225345ddbb3fc4a726152da8ab"/>
-      <attribute name="url" value="biz.aQute.remote.agent/biz.aQute.remote.agent.patched-3.0.0.jar"/>
-      <attribute name="size" type="Long" value="263020"/>
+      <attribute name="osgi.content" value="ee5260f280e2f5cac44b85f6d41c9578b25f959431c69215b386c53d8b18a8ba"/>
+      <attribute name="url" value="biz.aQute.remote.agent/biz.aQute.remote.agent-3.0.0.jar"/>
+      <attribute name="size" type="Long" value="292349"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="biz.aQute.remote.agent"/>
-      <attribute name="bundle-version" type="Version" value="3.0.0.201505200458"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201510081031"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="biz.aQute.remote.agent"/>
-      <attribute name="bundle-version" type="Version" value="3.0.0.201505200458"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201510081031"/>
     </capability>
-    <requirement namespace="osgi.wiring.package">
-      <attribute name="status" value="provisional"/>
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.felix.service.command)(version&gt;=0.10.0))"/>
-    </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
@@ -96,6 +103,9 @@
       <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -104,6 +114,14 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring.dto)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
       <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.ee">
