@@ -10,6 +10,9 @@ buildscript {
 	maven {
 		url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 	}
+	maven {
+		url "https://repository.liferay.com/nexus/content/groups/public/"
+	}
     }
     dependencies {
 	classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.0.0'
