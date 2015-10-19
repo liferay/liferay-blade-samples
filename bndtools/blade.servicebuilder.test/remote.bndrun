@@ -1,5 +1,0 @@
--runremote: blade.servicebuilder.test;shell=11311
-
--runbundles: blade.servicebuilder.api,blade.servicebuilder.svc,blade.servicebuilder.test;version=latest
-
--runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file

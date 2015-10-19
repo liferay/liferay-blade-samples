@@ -1,5 +1,0 @@
--runremote: blade.portlet.actioncommand;shell=11311
-
--runbundles: blade.portlet.actioncommand;version=latest
-
--runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file
