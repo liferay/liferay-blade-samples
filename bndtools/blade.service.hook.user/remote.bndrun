@@ -1,5 +1,0 @@
--runremote: blade.service.hook.user;shell=11311
-
--runbundles: blade.service.hook.user;version=latest
-
--runpath: ../cnf/cache/biz.aQute.remote.launcher.jar;version=file
