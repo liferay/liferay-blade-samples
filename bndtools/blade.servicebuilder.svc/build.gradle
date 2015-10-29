@@ -3,7 +3,7 @@ buildscript {
 		mavenLocal()
 
 		maven {
-			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
+			url "https://repository.liferay.com/nexus/content/groups/public/"
 		}
 	}
 
