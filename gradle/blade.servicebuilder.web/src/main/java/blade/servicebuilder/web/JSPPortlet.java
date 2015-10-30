@@ -26,9 +26,10 @@ import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 import blade.servicebuilder.model.Foo;
-import blade.servicebuilder.service.FooLocalServiceUtil;
+import blade.servicebuilder.service.FooLocalService;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
@@ -84,7 +85,7 @@ public class JSPPortlet extends MVCPortlet {
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {
 		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
-		FooLocalServiceUtil.deleteFoo(fooId);
+		getFooLocalService().deleteFoo(fooId);
 	}
 
 	protected void updateFoo(ActionRequest actionRequest) throws Exception {
@@ -110,7 +111,7 @@ public class JSPPortlet extends MVCPortlet {
 				dateHour, dateMinute, PortalException.class);
 
 		if (fooId <= 0) {
-			Foo foo = FooLocalServiceUtil.createFoo(0);
+			Foo foo = getFooLocalService().createFoo(0);
 
 			foo.setField1(field1);
 			foo.setField2(field2);
@@ -118,17 +119,30 @@ public class JSPPortlet extends MVCPortlet {
 			foo.setField4(field4);
 			foo.setField5(field5);
 			foo.isNew();
-			FooLocalServiceUtil.addFooWithoutId(foo);
+			getFooLocalService().addFooWithoutId(foo);
 		} else {
-			Foo foo = FooLocalServiceUtil.fetchFoo(fooId);
+			Foo foo = getFooLocalService().fetchFoo(fooId);
 			foo.setFooId(fooId);
 			foo.setField1(field1);
 			foo.setField2(field2);
 			foo.setField3(field3);
 			foo.setField4(field4);
 			foo.setField5(field5);
-			FooLocalServiceUtil.updateFoo(foo);
+			getFooLocalService().updateFoo(foo);
 		}
 	}
+
+	public FooLocalService getFooLocalService() {
+
+		return _fooLocalService;
+	}
+	
+	@Reference
+	public void setFooLocalService(FooLocalService fooLocalService) {
+
+		this._fooLocalService = fooLocalService;
+	}
+	
+	private FooLocalService _fooLocalService;
 
 }
