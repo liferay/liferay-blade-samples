@@ -29,11 +29,12 @@
 	<aui:button href="<%= editFooURL %>" value="add-foo" />
 </aui:button-row>
 
+
 <liferay-ui:search-container
-	total="<%= FooLocalServiceUtil.getFoosCount() %>"
+	total="<%= fooLocalService.getFoosCount() %>"
 >
 <liferay-ui:search-container-results
-	results="<%= FooLocalServiceUtil.getFoos(searchContainer.getStart(), searchContainer.getEnd()) %>"
+	results="<%= fooLocalService.getFoos(searchContainer.getStart(), searchContainer.getEnd()) %>"
 />
 
 	<liferay-ui:search-container-row
