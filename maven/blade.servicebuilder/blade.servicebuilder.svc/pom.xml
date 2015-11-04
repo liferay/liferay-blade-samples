@@ -84,7 +84,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.55</version>
+				<version>1.0.57</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>
@@ -105,7 +105,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
-				<version>[1.0.0,2.0.0)</version>
+				<version>1.0.3</version>
 				<configuration>
 					<inputFileName>service.xml</inputFileName>
 					<outputDirName>src/main/java</outputDirName>

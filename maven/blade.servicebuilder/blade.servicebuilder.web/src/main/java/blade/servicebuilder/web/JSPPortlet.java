@@ -24,6 +24,8 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -52,6 +54,10 @@ import com.liferay.portal.util.PortalUtil;
 	},
 	service = Portlet.class
 )
+
+/**
+ * @author Andy Wu
+  */
 public class JSPPortlet extends MVCPortlet {
 
 	@Override
@@ -72,14 +78,23 @@ public class JSPPortlet extends MVCPortlet {
 					SessionMessages.add(actionRequest, "requestProcessed");
 				}
 
-				String redirect = ParamUtil
-						.getString(actionRequest, "redirect");
+				String redirect = ParamUtil.getString(actionRequest, "redirect");
 
 				actionResponse.sendRedirect(redirect);
 			}
 		} catch (Exception e) {
 			throw new PortletException(e);
 		}
+	}
+
+	@Override
+	public void render(RenderRequest request, RenderResponse response)
+			throws IOException, PortletException {
+
+		//set service bean
+		request.setAttribute("fooLocalService", getFooLocalService());
+
+		super.render(request, response);
 	}
 
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {
@@ -136,13 +151,13 @@ public class JSPPortlet extends MVCPortlet {
 
 		return _fooLocalService;
 	}
-	
+
 	@Reference
 	public void setFooLocalService(FooLocalService fooLocalService) {
 
 		this._fooLocalService = fooLocalService;
 	}
-	
+
 	private FooLocalService _fooLocalService;
 
 }
