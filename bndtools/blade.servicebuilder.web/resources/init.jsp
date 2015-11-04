@@ -29,10 +29,9 @@ page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
 page import="com.liferay.portal.kernel.util.StringPool" %><%@
 page import="com.liferay.portal.kernel.util.WebKeys" %><%@
 page import="blade.servicebuilder.model.Foo" %><%@
-page import="blade.servicebuilder.service.FooLocalServiceUtil" %>
+page import="blade.servicebuilder.service.FooLocalService" %>
 
-
- <%@
+<%@
 page import="com.liferay.taglib.search.ResultRow" %>
 
 <%@ page import="javax.portlet.PortletURL" %>
@@ -45,4 +44,8 @@ page import="com.liferay.taglib.search.ResultRow" %>
 PortletURL portletURL = renderResponse.createRenderURL();
 
 String currentURL = portletURL.toString();
+
+//get service bean
+FooLocalService fooLocalService = (FooLocalService)request.getAttribute("fooLocalService");
+
 %>
