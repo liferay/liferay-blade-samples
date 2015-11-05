@@ -93,6 +93,42 @@ The projects also demonstrate how to use various frameworks like:
 
 ## Maven
 
+* `/maven/blade.authenticator.shiro`
+
+> A maven project which uses Apache Shiro for hooking auth.pipeline.pre.
+
+* `/maven/blade.authfailure`
+
+> A maven project which demonstrates a hook for auth.failure and auth.max.failures.
+
+* `/maven/blade.configurationaction`
+
+> A maven project which demonstrates integration point of ConfigurationAction.
+
+* `/maven/blade.gogo`
+
+> A maven project which contributes to felix gogo commands.
+
+* `/maven/blade.indexerpostprocessor`
+
+> A maven project which contributes to IndexerPostProcessor.
+
+* `/maven/blade.jsf.portlet.ds`
+
+> A maven project which uses the DS (Declarative Services) for registering a jsf portlet.
+
+* `/maven/blade.lifecycle.loginpreaction`
+
+> A maven project which makes a hook for login.events.pre.
+
+* `/maven/blade.pollprocessor`
+
+> A maven project which make a hook for PollerProcessor.
+
+* `/maven/blade.portlet.actioncommand`
+
+> A maven project which demonstrates integration point of MVCActionCommand.
+
 * `/maven/blade.portlet.blueprint`
 
 > A maven project which uses Blueprint for registering a portlet.
@@ -101,17 +137,51 @@ The projects also demonstrate how to use various frameworks like:
 
 > A maven project which uses the DS (Declarative Services) for registering a portlet.
 
+* `/maven/blade.portlet.filter`
+
+> A maven project which demonstrates integration point of PortletFilter.
+
+* `/maven/blade.portlet.jsp`
+
+> A maven project which demonstrates a simple jsp portlet.
+
 * `/maven/blade.portlet.osgiapi`
 
 >A maven project which uses the raw OSGI APIs for registering a portlet.
 
-Other projects' description will come soon.
+* `/maven/blade.service.hook.user`
+
+> A maven project which makes a hook for UserLocalServiceWrapper.
+
+* `/maven/blade.servicebuilder`
+
+>ServiceBuilder based project, separated to 4 bundles(subprojects), api bundle for interface, svc bundle for implementation, test bundle for tesing, web bundle is a portlet calling generated services.
+
+* `/maven/blade.strutsaction`
+
+> A maven project which demonstrates integration point of StrutsAction.
+
+* `/maven/blade.strutsportletaction`
+
+> A maven project which demonstrates integration point of StrutsPortletAction.
 
 ## Bndtools
 
-* `cnf`
+* `/bndtools/cnf`
 
 > The Bndtools configuration project
+
+* `/bndtools/blade.authenticator.shiro`
+
+> A bndtools project which uses Apache Shiro for hooking auth.pipeline.pre.
+
+* `/bndtools/blade.authfailure`
+
+> A bndtools project which demonstrates a hook for auth.failure and auth.max.failures.
+
+* `/bndtools/blade.portlet.actioncommand`
+
+> A bndtools project which demonstrates integration point of MVCActionCommand.
 
 * `/bndtools/blade.portlet.blueprint`
 
@@ -121,11 +191,28 @@ Other projects' description will come soon.
 
 > A bndtools project which uses the DS (Declarative Services) for registering a portlet.
 
+* `/bndtools/blade.portlet.filter`
+
+> A bndtools project which demonstrates integration point of PortletFilter.
+
 * `/bndtools/blade.portlet.osgiapi`
 
->A bndtools project which uses the raw OSGI APIs for registering a portlet.
+> A bndtools project which uses the raw OSGI APIs for registering a portlet.
 
-Other projects' description will come soon.
+* `/bndtools/blade.run`
+
+> A bndtools project which can push bundles into an osgi container and run them, need biz.aQute.remote.agent-X.X.X.jar deployed first.
+
+* `/bndtools/blade.service.hook.user`
+
+> A bndtools project which makes a hook for UserLocalServiceWrapper.
+
+* `/bndtools/blade.servicebuilder.api`
+* `/bndtools/blade.servicebuilder.svc`
+* `/bndtools/blade.servicebuilder.test`
+* `/bndtools/blade.servicebuilder.web`
+
+> ServiceBuilder based project, separated to 4 bundles, api bundle for interface, svc bundle for implementation, test bundle for tesing, web bundle is a portlet calling generated services.
 
 # Integration Points
 The following are the list of Liferay Integration points that are demonstrated as part of these projects,
