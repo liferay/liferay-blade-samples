@@ -34,7 +34,7 @@ The projects also demonstrate how to use various frameworks like:
 
 * `/gradle/blade.gogo`
 
-> A gradle project which contributes to felix gogo commands.
+> A gradle project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
 
 * `/gradle/blade.indexerpostprocessor`
 
@@ -107,7 +107,7 @@ The projects also demonstrate how to use various frameworks like:
 
 * `/maven/blade.gogo`
 
-> A maven project which contributes to felix gogo commands.
+> A maven project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
 
 * `/maven/blade.indexerpostprocessor`
 
