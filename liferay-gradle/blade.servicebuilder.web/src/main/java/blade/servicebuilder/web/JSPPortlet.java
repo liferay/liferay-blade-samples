@@ -45,7 +45,7 @@ import com.liferay.portal.util.PortalUtil;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=category.osgi",
+		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.security-role-ref=power-user,user",
 		"javax.portlet.init-param.template-path=/",
