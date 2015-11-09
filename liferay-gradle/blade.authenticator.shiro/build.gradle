@@ -1,0 +1,5 @@
+version = '1.0'
+
+dependencies {
+	compile 'org.apache.shiro:shiro-core:1.1.0'
+}

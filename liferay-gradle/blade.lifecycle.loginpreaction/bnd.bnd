@@ -1,0 +1,11 @@
+Bundle-Name: Blade Lifecycle Loginpreaction
+Bundle-SymbolicName: blade.lifecycle.loginpreaction
+Bundle-Version: 1.0.0.${tstamp}
+Import-Package: \
+	com.liferay.portal.service;version="7.0.0",\
+	org.osgi.framework;version="[1.7,2)",\
+	*
+Private-Package: blade.lifecycle.loginpreaction
+-includeresource: classes
+-dsannotations: *
+-sources: true

@@ -1,5 +1,5 @@
-Bundle-Name: Blade Portlet Jsp
-Bundle-SymbolicName: blade.portlet.jsp
+Bundle-Name: Blade Strutsaction
+Bundle-SymbolicName: blade.strutsaction
 Bundle-Version: 1.0.0.${tstamp}
 Service-Component: *
 Import-Package: \
@@ -9,5 +9,7 @@ Import-Package: \
 -includeresource:\
 	classes,\
 	META-INF/resources=src/main/resources/META-INF/resources
+
+Web-ContextPath: /bladestrutsaction
 -dsannotations: *
 -sources: true

@@ -1,0 +1,10 @@
+Bundle-Name: Blade Authenticator Shiro
+Bundle-SymbolicName: blade.authenticator.shiro
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: *
+-includeresource: \
+	classes,\
+	@lib/shiro-core.jar
+-dsannotations: *
+-sources: true

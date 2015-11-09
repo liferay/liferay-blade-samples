@@ -1,5 +1,5 @@
-Bundle-Name: Blade Portlet Jsp
-Bundle-SymbolicName: blade.portlet.jsp
+Bundle-Name: Blade Configurationaction
+Bundle-SymbolicName: blade.configurationaction
 Bundle-Version: 1.0.0.${tstamp}
 Service-Component: *
 Import-Package: \

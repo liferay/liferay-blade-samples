@@ -1,0 +1,11 @@
+Bundle-Name: Blade Hook User
+Bundle-SymbolicName: blade.service.hook.user
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: \
+	com.liferay.portal.model;version='[7.0,7.1)',\
+	com.liferay.portal.service;version='[7.0,7.1)',\
+	*
+-includeresource: classes
+-dsannotations: *
+-sources: true
