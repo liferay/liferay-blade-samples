@@ -18,6 +18,16 @@ The projects also demonstrate how to use various frameworks like:
 * Declarative Services(**DS**)
 * OSGI API
 
+## A note on Blueprint
+
+Liferay does not provide a blueprint implementation out of the box. To use the blueprint modules provided in blade, you must deploy a blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
+
+* [Apache Aries Blueprint Bundle](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint/1.1.0)
+* [Apache Aries Blueprint Annotation API](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.api/1.0.1)
+* [Apache Aries Proxy Bundle](http://mvnrepository.com/artifact/org.apache.aries.proxy/org.apache.aries.proxy/1.0.1)
+
+Simply download the bundles from mvnrepository and drop them in your osgi/modules folder as usual before deploying blueprint bundles.
+
 ## Gradle
 
 * `/gradle/blade.authenticator.shiro`
