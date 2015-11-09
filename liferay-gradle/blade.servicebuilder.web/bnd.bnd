@@ -1,13 +1,15 @@
-Bundle-Name: Blade Portlet Jsp
-Bundle-SymbolicName: blade.portlet.jsp
+Bundle-Name: Blade ServiceBuilder Web
+Bundle-SymbolicName: blade.servicebuilder.web
 Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
+
 Import-Package: \
 	javax.portlet;version='[2.0,3)',\
 	javax.servlet;version='[2.5,4)',\
 	*
+Service-Component: *
 -includeresource:\
 	classes,\
 	META-INF/resources=src/main/resources/META-INF/resources
 -dsannotations: *
 -sources: true
+

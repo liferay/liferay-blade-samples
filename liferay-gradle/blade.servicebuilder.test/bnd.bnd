@@ -1,0 +1,5 @@
+Bundle-Name: Blade ServiceBuilder Test
+Bundle-SymbolicName: blade.servicebuilder.test
+Bundle-Version: 1.0.0.${tstamp}
+Bundle-Activator: blade.servicebuilder.test.Activator
+Private-Package: blade.servicebuilder.test
