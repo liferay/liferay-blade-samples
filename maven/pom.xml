@@ -150,6 +150,7 @@
 		<module>blade.configurationaction</module>
 		<module>blade.portlet.filter</module>
 		<module>blade.gogo</module>
+		<module>blade.hook.jsp</module>
 	</modules>
 
 </project>
