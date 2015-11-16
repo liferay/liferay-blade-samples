@@ -1,9 +1,8 @@
-bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/719/artifact/dist/bundles
+bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/798/artifact/dist/bundles
 
 
 -pluginpath:\
         ${build}/cache/biz.aQute.repository.aether.jar;url=${bnd-release}/biz.aQute.repository.aether/biz.aQute.repository.aether-latest.jar,\
-        ${build}/cache/biz.aQute.remote.launcher.jar;url=${bnd-release}/biz.aQute.remote.launcher/biz.aQute.remote.launcher-latest.jar,\
         ${build}/cache/com.liferay.ant.bnd.jar;url=https://repository.liferay.com/nexus/content/groups/liferay-ce/com/liferay/com.liferay.ant.bnd/2.0.0/com.liferay.ant.bnd-2.0.0.jar
 
 
@@ -46,7 +45,7 @@ aQute.bnd.deployer.repository.aether.AetherRepository; \
 		name 	= 	Liferay Nexus; \
 		url 	= 	https://repository.liferay.com/nexus/content/groups/liferay-ce/
 
--plugin.enroute.liferaypublich = \
+-plugin.enroute.liferaypublic = \
 	aQute.bnd.deployer.repository.aether.AetherRepository; \
 		name 	= 	Liferay Public; \
 		url 	= 	https://repository.liferay.com/nexus/content/groups/public/
