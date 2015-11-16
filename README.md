@@ -9,8 +9,10 @@ This small experiment aims to provide bootstrap project environments for all the
 The template projects are categorized based on the build tools,
 
 * `gradle` - these are set of Liferay projects that can be bootstrapped on to `gradle` based development environment
+* `liferay-gradle` - these are set of Liferay projects that can be bootstrapped on to `com.liferay.plugin`(a gradle plugin) based development environment
 * `maven` - these are set of Liferay projects that can be bootstrapped on to `maven` development environment
 * `bndtools` - these are set of Liferay projects that can be bootstrapped on to `bndtools` based development environment
+
 
 The projects also demonstrate how to use various frameworks like:
 
@@ -45,6 +47,10 @@ Simply download the bundles from mvnrepository and drop them in your osgi/module
 * `/gradle/blade.gogo`
 
 > A gradle project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
+
+* `/gradle/blade.hook.jsp`
+
+> A gradle project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
 
 * `/gradle/blade.indexerpostprocessor`
 
@@ -101,6 +107,10 @@ Simply download the bundles from mvnrepository and drop them in your osgi/module
 
 > A gradle project which demonstrates integration point of StrutsPortletAction.
 
+##liferay-gradle
+
+all the projects' description in 'liferay-gradle' directory are the same as the ones in 'liferay' directory.
+
 ## Maven
 
 * `/maven/blade.authenticator.shiro`
@@ -118,6 +128,10 @@ Simply download the bundles from mvnrepository and drop them in your osgi/module
 * `/maven/blade.gogo`
 
 > A maven project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
+
+* `/maven/blade.hook.jsp`
+
+> A maven project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
 
 * `/maven/blade.indexerpostprocessor`
 
@@ -188,6 +202,10 @@ Simply download the bundles from mvnrepository and drop them in your osgi/module
 * `/bndtools/blade.authfailure`
 
 > A bndtools project which demonstrates a hook for auth.failure and auth.max.failures.
+
+* `/bndtools/blade.hook.jsp`
+
+> A bndtools project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
 
 * `/bndtools/blade.portlet.actioncommand`
 
