@@ -1,3 +1,4 @@
+releaserepo:            ${workspace}/dist/bundles
 bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/798/artifact/dist/bundles
 
 
@@ -35,10 +36,7 @@ bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/798/artifact/dist
 	        index		=       ${build}/repository.json
 
 -plugin.enroute.releaserepo = \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name=Release; \
-		local=${build}/release;\
-		pretty=true
+	aQute.lib.deployer.FileRepo;name='Release';location=${releaserepo}
 
 -plugin.enroute.liferaysnapshotsrepo = \
 aQute.bnd.deployer.repository.aether.AetherRepository; \
@@ -51,4 +49,4 @@ aQute.bnd.deployer.repository.aether.AetherRepository; \
 		url 	= 	https://repository.liferay.com/nexus/content/groups/public/
 		
 
--releaserepo: 					Release
+-releaserepo: Release

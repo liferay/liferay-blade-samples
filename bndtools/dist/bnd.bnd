@@ -1,0 +1,18 @@
+-dependson = \
+	blade.authenticator.shiro,\
+	blade.authfailure,\
+	blade.hook.jsp,\
+	blade.portlet.actioncommand,\
+	blade.portlet.blueprint,\
+	blade.portlet.ds,\
+	blade.portlet.filter,\
+	blade.portlet.osgiapi,\
+	blade.run,\
+	blade.service.hook.user,\
+	blade.servicebuilder.api,\
+	blade.servicebuilder.svc,\
+	blade.servicebuilder.test,\
+	blade.servicebuilder.web,\
+	blade.watchmen
+
+-nobundles = true
