@@ -53,8 +53,10 @@ public class WhoWatchesTheWatchmen implements ListenerHook {
 			for (Filter filter : filters) {
 				checkFilter(filter, interesting, objectNames);
 			}
+
+			objectNames.pop();
 		} else {
-			String className = objectNames.pop();
+			String className = objectNames.peek();
 
 			Map<String, List<String>> props = interesting.get(className);
 
@@ -97,6 +99,7 @@ public class WhoWatchesTheWatchmen implements ListenerHook {
 					Filter f = listenerInfo.getBundleContext().createFilter(filter);
 
 					try {
+						objectNames.clear();
 						checkFilter(f, objectClassInfo, objectNames);
 					} catch (Exception e) {
 					}
