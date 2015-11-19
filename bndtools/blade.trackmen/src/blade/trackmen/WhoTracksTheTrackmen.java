@@ -1,4 +1,4 @@
-package blade.watchmen;
+package blade.trackmen;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import org.osgi.service.component.annotations.Component;
 	immediate = true, 
 	property = { 
 		CommandProcessor.COMMAND_SCOPE + "=blade",
-		CommandProcessor.COMMAND_FUNCTION + "=watchmen" 
+		CommandProcessor.COMMAND_FUNCTION + "=trackers" 
 	}, 
 	service = ListenerHook.class
 )
-public class WhoWatchesTheWatchmen implements ListenerHook {
+public class WhoTracksTheTrackmen implements ListenerHook {
 
 	@Override
 	public void added(Collection<ListenerInfo> listeners) {
@@ -85,7 +85,7 @@ public class WhoWatchesTheWatchmen implements ListenerHook {
 		_listenerInfos.removeAll(listeners);
 	}
 
-	public String watchmen() {
+	public String trackers() {
 		StringBuilder output = new StringBuilder();
 
 		Map<String, Map<String, List<String>>> objectClassInfo = new HashMap<>();

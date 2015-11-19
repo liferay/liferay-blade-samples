@@ -10,4 +10,4 @@ Import-Package:  \
 	*
 
 Private-Package: \
-	blade.watchmen.*
+	blade.trackmen.*
