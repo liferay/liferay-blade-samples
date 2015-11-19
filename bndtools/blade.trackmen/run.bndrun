@@ -1,6 +1,6 @@
 -runremote: liferay;shell=-1
 
--runbundles: blade.watchmen;version=latest
+-runbundles: blade.trackmen;version=latest
 
 -runpath: \
 	../cnf/cache/3.1.0/biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.1.0.jar;version=file
