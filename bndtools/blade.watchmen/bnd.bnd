@@ -1,0 +1,13 @@
+-buildpath: \
+	osgi.core;version=6.0,\
+	osgi.cmpn;version=6.0,\
+	org.apache.felix.gogo.runtime
+
+Bundle-Version: 1.0.0.${tstamp}
+
+Import-Package:  \
+	org.osgi.framework;version='[1.7,2)',\
+	*
+
+Private-Package: \
+	blade.watchmen.*
