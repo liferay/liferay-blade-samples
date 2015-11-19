@@ -13,6 +13,6 @@
 	blade.servicebuilder.svc,\
 	blade.servicebuilder.test,\
 	blade.servicebuilder.web,\
-	blade.watchmen
+	blade.trackmen
 
 -nobundles = true
