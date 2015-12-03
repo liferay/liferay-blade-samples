@@ -151,6 +151,7 @@
 		<module>blade.portlet.filter</module>
 		<module>blade.gogo</module>
 		<module>blade.hook.jsp</module>
+		<module>blade.modellistener</module>
 	</modules>
 
 </project>

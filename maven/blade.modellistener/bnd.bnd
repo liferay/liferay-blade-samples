@@ -1,0 +1,4 @@
+-dsannotations: *
+-sources: true
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
