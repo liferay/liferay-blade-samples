@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.svc.util;
+package blade.servicebuilder.service.util;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -27,7 +27,7 @@ import java.util.Properties;
  * @generated
  */
 @ProviderType
-public class ServiceProps {
+public class PropsUtil {
 	public static void addProperties(Properties properties) {
 		_instance._configuration.addProperties(properties);
 	}
@@ -64,12 +64,12 @@ public class ServiceProps {
 		_instance._configuration.set(key, value);
 	}
 
-	private ServiceProps() {
+	private PropsUtil() {
 		_configuration = ConfigurationFactoryUtil.getConfiguration(getClass()
 																	   .getClassLoader(),
 				"service");
 	}
 
-	private static ServiceProps _instance = new ServiceProps();
+	private static PropsUtil _instance = new PropsUtil();
 	private Configuration _configuration;
 }

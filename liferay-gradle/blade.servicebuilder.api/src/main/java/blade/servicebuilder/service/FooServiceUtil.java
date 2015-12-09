@@ -16,8 +16,7 @@ package blade.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
+import com.liferay.osgi.util.ServiceTrackerFactory;
 
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -72,14 +71,5 @@ public class FooServiceUtil {
 	public void setService(FooService service) {
 	}
 
-	private static ServiceTracker<FooService, FooService> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(FooServiceUtil.class);
-
-		_serviceTracker = new ServiceTracker<FooService, FooService>(bundle.getBundleContext(),
-				FooService.class, null);
-
-		_serviceTracker.open();
-	}
+	private static ServiceTracker<FooService, FooService> _serviceTracker = ServiceTrackerFactory.open(FooService.class);
 }

@@ -31,6 +31,7 @@ subprojects {
 		compile 'javax.servlet:servlet-api:2.5'		
 		compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'		
 		compile 'com.liferay.portal:util-bridges:7.0.0-SNAPSHOT'		
+		compile 'com.liferay:com.liferay.osgi.util:2.0.4'		
 	}
 }
 
