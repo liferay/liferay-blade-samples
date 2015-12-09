@@ -305,6 +305,11 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.getFoosCount();
 	}
 
+	@Override
+	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
+		return _fooLocalService.getIndexableActionableDynamicQuery();
+	}
+
 	/**
 	* Returns the OSGi service identifier.
 	*

@@ -14,7 +14,10 @@ buildscript {
 apply plugin: "com.liferay.portal.tools.service.builder"
 
 buildService {
-	apiDirName = "../blade.servicebuilder.api/src/main/java"
+	apiDir = "../blade.servicebuilder.api/src/main/java"
+	testDir = "src/main/test"
+	osgiModule = true
+	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
 }
 
 dependencies {

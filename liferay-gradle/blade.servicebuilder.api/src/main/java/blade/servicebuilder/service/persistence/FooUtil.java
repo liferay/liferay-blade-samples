@@ -18,12 +18,11 @@ import aQute.bnd.annotation.ProviderType;
 
 import blade.servicebuilder.model.Foo;
 
+import com.liferay.osgi.util.ServiceTrackerFactory;
+
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.service.ServiceContext;
-
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
 
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -809,14 +808,6 @@ public class FooUtil {
 	public void setPersistence(FooPersistence persistence) {
 	}
 
-	private static ServiceTracker<FooPersistence, FooPersistence> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(FooUtil.class);
-
-		_serviceTracker = new ServiceTracker<FooPersistence, FooPersistence>(bundle.getBundleContext(),
-				FooPersistence.class, null);
-
-		_serviceTracker.open();
-	}
+	private static ServiceTracker<FooPersistence, FooPersistence> _serviceTracker =
+		ServiceTrackerFactory.open(FooPersistence.class);
 }

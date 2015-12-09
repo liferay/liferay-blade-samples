@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-		mavenLocal()
 		maven {
 			url "https://repository.liferay.com/nexus/content/groups/public/"
 		}
@@ -16,17 +15,26 @@ buildscript {
 subprojects {
 	apply plugin: "com.liferay.plugin"
 
-    repositories {		
-    	maven {
+	repositories {		
+		maven {
 			url "https://repository.liferay.com/nexus/content/groups/public/"
 		}
-		mavenCentral()
 		maven {
 			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 		}
-    }
+	}
+	dependencies {		
+		compile 'org.osgi:org.osgi.core:6.0.0'		
+		compile 'org.osgi:org.osgi.compendium:5.0.0'		
+		compile 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.0.0'
+		compile 'javax.portlet:portlet-api:2.0'		
+		compile 'javax.servlet:servlet-api:2.5'		
+		compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'		
+		compile 'com.liferay.portal:util-bridges:7.0.0-SNAPSHOT'		
+		compile 'com.liferay:com.liferay.osgi.util:2.0.4'		
+	}
 }
 
 task wrapper(type:Wrapper){
-    gradleVersion = '2.7'
+	gradleVersion = '2.9'
 }
