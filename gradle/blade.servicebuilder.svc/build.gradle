@@ -7,7 +7,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "1.0.8"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
 	}
 }
 
@@ -29,21 +29,10 @@ dependencies {
 }
 
 buildService {
-	apiDirName = "../blade.servicebuilder.api/src/main/java"
-	beanLocatorUtil = "com.liferay.util.bean.PortletBeanLocatorUtil"
-	hbmFileName = "src/main/resources/META-INF/module-hbm.xml"
-	implDirName = "src/main/java"
-	inputFileName = "service.xml"
-	modelHintsFileName = "src/main/resources/META-INF/portlet-model-hints.xml"
+	apiDir = "../blade.servicebuilder.api/src/main/java"
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
-	remotingFileName = null
-	resourcesDirName = "src/main/resources"
-	springFileName = "src/main/resources/META-INF/spring/module-spring.xml"
-	springNamespaces = ["beans","osgi"]
-	sqlDirName = "src/main/resources/META-INF/sql"
-	sqlFileName = "tables.sql"
-	testDirName = "src/it"
+	testDir = "src/main/test"
 }
 
 version = '1.0.0'
