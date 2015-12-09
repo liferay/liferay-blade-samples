@@ -153,6 +153,7 @@
 		<module>blade.hook.jsp</module>
 		<module>blade.modellistener</module>
 		<module>blade.friandlyurl</module>
+		<module>blade.rest</module>
 	</modules>
 
 </project>
