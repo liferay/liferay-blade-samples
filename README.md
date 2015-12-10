@@ -112,21 +112,6 @@ __Template projects links__:
 | Maven      | [./maven/blade.gogo](./maven/blade.gogo)          |
 
 
-## JSP hook
-
-__Extension point description__: 
-
-__Template project description__:  demonstrates a jsp hook for `login.jsp` in `com.liferay.login.web` bundle via fragment bundle.
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  | [./bndtools/blade.hook.jsp](./bndtools/blade.hook.jsp)        |
-| Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
-| Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
-
-
 ## `IndexerPostProcessor`
 
 __Extension point description__: 
@@ -140,6 +125,21 @@ __Template projects links__:
 | BND Tools  |       |
 | Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
 | Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
+
+
+## JSP hook
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates a jsp hook for `login.jsp` in `com.liferay.login.web` bundle via fragment bundle.
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.hook.jsp](./bndtools/blade.hook.jsp)        |
+| Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
+| Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
 
 
 ## `login.events.pre`
@@ -157,21 +157,6 @@ __Template projects links__:
 | Maven      | [./maven/blade.lifecycle.loginpreaction](./maven/blade.lifecycle.loginpreaction)        |
 
 
-## `PollerProcessor`
-
-__Extension point description__: 
-
-__Template project description__:  demonstrates how to make a hook for `PollerProcessor`.
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  |       |
-| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
-| Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
-
-
 ## `MVCActionCommand`
 
 __Extension point description__: 
@@ -187,6 +172,21 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.portlet.actioncommand](./bndtools/blade.portlet.actioncommand)  |
 | Gradle     | [./gradle/blade.portlet.actioncommand](./gradle/blade.portlet.actioncommand)      |
 | Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
+
+
+## `PollerProcessor`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to make a hook for `PollerProcessor`.
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |       |
+| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
+| Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
 
 
 ## Portlet 
@@ -277,21 +277,6 @@ __Template projects links__:
 | Maven      | [./maven/blade.portlet.filter](./maven/blade.portlet.filter)        |
 
 
-## `ServiceWrapper`
-
-__Extension point description__: 
-
-__Template project description__:  demonstrates how to wrap UserLocalService with custom UserLocalServiceWrapper
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
-| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
-| Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
-
-
 ## Service Builder
 
 __Extension point description__: 
@@ -316,6 +301,21 @@ __Template projects links__:
 | Gradle     | Test         | [./gradle/blade.servicebuilder.test](./gradle/blade.servicebuilder.test)  |
 | Gradle     | Web          | [./gradle/blade.servicebuilder.web](./gradle/blade.servicebuilder.web)  |
 | Maven      | All (parent) | [./maven/blade.servicebuilder](./maven/blade.servicebuilder)  |
+
+
+## `ServiceWrapper`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to wrap UserLocalService with custom UserLocalServiceWrapper
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
+| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
+| Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
 
 
 ## `StrutsAction`
