@@ -152,7 +152,7 @@
 		<module>blade.gogo</module>
 		<module>blade.hook.jsp</module>
 		<module>blade.modellistener</module>
-		<module>blade.friandlyurl</module>
+		<module>blade.friendlyurl</module>
 		<module>blade.rest</module>
 	</modules>
 
