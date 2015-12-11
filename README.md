@@ -413,11 +413,66 @@ __Template projects links__:
 
 # Liferay extension points without template projects
 
-This project still does not have template projects for the following extension points. We encourage you to contribute some!  
+This project does not yet have template projects for the following extension points. We encourage you to contribute some!  
 
-* TODO  
-* TODO  
-* TODO  
+* com.liferay.mail.util.Hook
+* com.liferay.portal.kernel.atom.AtomCollectionAdapter
+* com.liferay.portal.kernel.format.PhoneNumberFormat
+* com.liferay.portal.kernel.lar.PortletDataHandler
+* com.liferay.portal.kernel.lar.StagedModelDataHandler
+* com.liferay.portal.kernel.lock.LockListener
+* com.liferay.portal.kernel.notifications.UserNotificationHandler
+* com.liferay.portal.kernel.pop.MessageListener
+* com.liferay.portal.kernel.portlet.FriendlyURLMapper
+* com.liferay.portal.kernel.portlet.PortletLayoutListener
+* com.liferay.portal.kernel.sanitizer.Sanitizer 
+* com.liferay.portal.kernel.scheduler.SchedulerEntry
+* com.liferay.portal.kernel.scheduler.SchedulerEntry
+* com.liferay.portal.kernel.search.Indexer
+* com.liferay.portal.kernel.search.OpenSearch
+* com.liferay.portal.kernel.servlet.URLEncoder
+* com.liferay.portal.kernel.template.TemplateHandler
+* com.liferay.portal.kernel.template.TemplateManager
+* com.liferay.portal.kernel.trash.TrashHandler
+* com.liferay.portal.kernel.upgrade.UpgradeProcess (call the Release service)
+* com.liferay.portal.kernel.webdav.WebDAVStorage
+* com.liferay.portal.kernel.workflow.WorkflowHandler
+* com.liferay.portal.kernel.xmlrpc.Method
+* com.liferay.portal.model.ModelListener
+* com.liferay.portal.security.auth.AuthToken
+* com.liferay.portal.security.auth.AuthVerifierConfiguration
+* com.liferay.portal.security.auth.AutoLogin 
+* com.liferay.portal.security.auth.EmailAddressGenerator
+* com.liferay.portal.security.auth.EmailAddressValidator
+* com.liferay.portal.security.auth.FullNameGenerator
+* com.liferay.portal.security.auth.FullNameValidator
+* com.liferay.portal.security.auth.ScreenNameGenerator
+* com.liferay.portal.security.auth.ScreenNameValidator
+* com.liferay.portal.security.ldap.AttributesTransformer
+* com.liferay.portal.security.membershippolicy.OrganizationMembershipPolicy
+* com.liferay.portal.security.membershippolicy.RoleMembershipPolicy
+* com.liferay.portal.security.membershippolicy.SiteMembershipPolicy
+* com.liferay.portal.security.membershippolicy.UserGroupMembershipPolicy
+* com.liferay.portal.security.permission.BaseModelPermissionChecker
+* com.liferay.portal.security.permission.PermissionPropagator
+* com.liferay.portal.security.pwd.Toolkit
+* com.liferay.portal.verify.VerifyProcess
+* com.liferay.portlet.asset.model.AssetRendererFactory
+* com.liferay.portlet.ControlPanelEntry
+* com.liferay.portlet.ControlPanelEntry
+* com.liferay.portlet.DefaultControlPanelEntryFactory
+* com.liferay.portlet.dynamicdatamapping.render.DDMFormFieldRenderer
+* com.liferay.portlet.dynamicdatamapping.util.DDMDisplay
+* com.liferay.portlet.expando.model.CustomAttributesDisplay
+* com.liferay.portlet.social.model.SocialActivityInterpreter
+* com.liferay.portlet.social.model.SocialRequestInterpreter
+* java.util.ResourceBundle
+* javax.portlet.filter.ActionFilter
+* javax.portlet.filter.EventFilter
+* javax.portlet.filter.RenderFilter
+* javax.portlet.filter.ResourceFilter
+* javax.portlet.PreferencesValidator
+* javax.servlet.Filter (Liferay InvokerFilterChain Filters)
 
 
 
