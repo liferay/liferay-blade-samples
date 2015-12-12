@@ -5,7 +5,13 @@
 
 This small experiment aims to provide bootstrap project environments for all the major build tools in common use for Java projects so that Liferay development can start quickly and easily.
 
-# Projects
+
+
+# Related build tools and frameworks 
+
+
+## Build tools
+
 The template projects are categorized based on the build tools,
 
 * `gradle` - these are set of Liferay projects that can be bootstrapped on to `gradle` based development environment
@@ -14,13 +20,24 @@ The template projects are categorized based on the build tools,
 * `bndtools` - these are set of Liferay projects that can be bootstrapped on to `bndtools` based development environment
 
 
+### A note on BNDTools
+
+There are 2 additional projects in the `/bndtools/` folder that you will need to build and publish the modules
+
+* `/bndtools/cnf` - The Bndtools configuration project
+* `/bndtools/blade.run` - A bndtools project which can push bundles into an osgi container and run them, need biz.aQute.remote.agent-X.X.X.jar deployed first.
+
+
+## Frameworks
+
 The projects also demonstrate how to use various frameworks like:
 
 * Blueprint
 * Declarative Services(**DS**)
 * OSGI API
 
-## A note on Blueprint
+
+### A note on Blueprint
 
 Liferay does not provide a blueprint implementation out of the box. To use the blueprint modules provided in blade, you must deploy a blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
 
@@ -30,228 +47,434 @@ Liferay does not provide a blueprint implementation out of the box. To use the b
 
 Simply download the bundles from mvnrepository and drop them in your osgi/modules folder as usual before deploying blueprint bundles.
 
-## Gradle
 
-* `/gradle/blade.authenticator.shiro`
 
-> A gradle project which uses Apache Shiro for hooking auth.pipeline.pre.
+# Liferay extension points and template projects 
 
-* `/gradle/blade.authfailure`
 
-> A gradle project which demonstrates a hook for auth.failure and auth.max.failures.
+## `auth.pipeline.pre` 
 
-* `/gradle/blade.configurationaction`
+__Extension point description__: 
 
-> A gradle project which demonstrates integration point of ConfigurationAction.
+__Template project description__: Uses Apache Shiro for hooking `auth.pipeline.pre`
 
-* `/gradle/blade.gogo`
+__Template projects links__:
 
-> A gradle project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.authenticator.shiro](./bndtools/blade.authenticator.shiro)    |
+| Gradle     | [./gradle/blade.authenticator.shiro](./gradle/blade.authenticator.shiro)        |
+| Maven      | [./maven/blade.authenticator.shiro](./maven/blade.authenticator.shiro)          |
 
-* `/gradle/blade.hook.jsp`
 
-> A gradle project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
+## `auth.failure` and `auth.max.failures`
 
-* `/gradle/blade.indexerpostprocessor`
+__Extension point description__: 
 
-> A gradle project which contributes to IndexerPostProcessor.
+__Template project description__: Demonstrates a hook for `auth.failure` and `auth.max.failures`
 
-* `/gradle/blade.lifecycle.loginpreaction`
+__Template projects links__:
 
-> A gradle project which makes a hook for login.events.pre.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.authfailure](./bndtools/blade.authfailure)    |
+| Gradle     | [./gradle/blade.authfailure](./gradle/blade.authfailure)        |
+| Maven      | [./maven/blade.authfailure](./maven/blade.authfailure)          |
 
-* `/gradle/blade.pollprocessor`
 
-> A gradle project which make a hook for PollerProcessor.
+## `ConfigurationAction`
 
-* `/gradle/blade.portlet.actioncommand`
+__Extension point description__: 
 
-> A gradle project which demonstrates integration point of MVCActionCommand.
+__Template project description__: demonstrates integration point of `ConfigurationAction`
 
-* `/gradle/blade.portlet.blueprint`
+__Template projects links__:
 
-> A gradle project which uses Blueprint for registering a portlet.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |     |
+| Gradle     | [./gradle/blade.configurationaction](./gradle/blade.configurationaction)        |
+| Maven      | [./maven/blade.configurationaction](./maven/blade.configurationaction)          |
 
-* `/gradle/blade.portlet.ds`
 
-> A gradle project which uses the DS (Declarative Services) for registering a portlet.
+## `FriendlyURLMapper`
 
-* `/gradle/blade.portlet.filter`
+__Extension point description__: This extension point allows one to provide (or overwrite) friendly URL mapping for portlets.
 
-> A gradle project which demonstrates integration point of PortletFilter.
+__Template project description__: demonstrates how to create a FriendlyURLMapper for the standard `NetworkUtilities` portlet.
 
-* `/gradle/blade.portlet.jsp`
+`NetworkUtilities` portlet does not provide friendly URLs out of the box. To test this plugin put a `NetworkUtilities` portlet on a page.
+If for example that was the home page, after deploying this plugin you can access its tabs directly using the following urls:
 
-> A gradle project which demonstrates a simple jsp portlet.
+* http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
+* http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
 
-* `/gradle/blade.portlet.osgiapi`
+__Template projects links__:
 
->A gradle project which uses the raw OSGI APIs for registering a portlet.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |  |
+| Gradle     |  |
+| Maven      | [./maven/blade.friendlyurl](./maven/blade.friendlyurl)          |
 
-* `/gradle/blade.service.hook.user`
 
-> A gradle project which makes a hook for UserLocalServiceWrapper.
+## Gogo command
 
-* `/gradle/blade.servicebuilder.api`
-* `/gradle/blade.servicebuilder.svc`
-* `/gradle/blade.servicebuilder.test`
-* `/gradle/blade.servicebuilder.web`
+__Extension point description__: 
 
->ServiceBuilder based project, separated to 4 bundles, api bundle for interface, svc bundle for implementation, test bundle for tesing, web bundle is a portlet calling generated services. 
+__Template project description__: demonstrates felix gogo commands and consuming Liferay services through DS (Declarative Services)
 
-* `/gradle/blade.strutsaction`
+__Template projects links__:
 
-> A gradle project which demonstrates integration point of StrutsAction.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |     |
+| Gradle     | [./gradle/blade.gogo](./gradle/blade.gogo)        |
+| Maven      | [./maven/blade.gogo](./maven/blade.gogo)          |
 
-* `/gradle/blade.strutsportletaction`
 
-> A gradle project which demonstrates integration point of StrutsPortletAction.
+## `IndexerPostProcessor`
 
-##liferay-gradle
+__Extension point description__: 
 
-all the projects' description in 'liferay-gradle' directory are the same as the ones in 'liferay' directory.
+__Template project description__:  demonstrates how to create custom IndexerPostProcessor.
 
-## Maven
+__Template projects links__:
 
-* `/maven/blade.authenticator.shiro`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |       |
+| Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
+| Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
 
-> A maven project which uses Apache Shiro for hooking auth.pipeline.pre.
 
-* `/maven/blade.authfailure`
+## JSP hook
 
-> A maven project which demonstrates a hook for auth.failure and auth.max.failures.
+__Extension point description__: 
 
-* `/maven/blade.configurationaction`
+__Template project description__:  demonstrates a jsp hook for `login.jsp` in `com.liferay.login.web` bundle via fragment bundle.
 
-> A maven project which demonstrates integration point of ConfigurationAction.
+__Template projects links__:
 
-* `/maven/blade.gogo`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.hook.jsp](./bndtools/blade.hook.jsp)        |
+| Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
+| Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
 
-> A maven project which contributes to felix gogo commands, and demonstrates consuming Liferay services through DS (Declarative Services).
 
-* `/maven/blade.hook.jsp`
+## `login.events.pre`
 
-> A maven project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
+__Extension point description__: 
 
-* `/maven/blade.indexerpostprocessor`
+__Template project description__:  demonstrates a hook for `login.events.pre`.
 
-> A maven project which contributes to IndexerPostProcessor.
+__Template projects links__:
 
-* `/maven/blade.jsf.portlet.ds`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |       |
+| Gradle     | [./gradle/blade.lifecycle.loginpreaction](./gradle/blade.lifecycle.loginpreaction)      |
+| Maven      | [./maven/blade.lifecycle.loginpreaction](./maven/blade.lifecycle.loginpreaction)        |
 
-> A maven project which uses the DS (Declarative Services) for registering a jsf portlet.
 
-* `/maven/blade.lifecycle.loginpreaction`
+## `ModelListener`
 
-> A maven project which makes a hook for login.events.pre.
+__Extension point description__: Model Listeners are used to listen for events on models and do something in response.
 
-* `/maven/blade.pollprocessor`
+__Template project description__:  Demonstrates how to create a model listener for `Layout`
 
-> A maven project which make a hook for PollerProcessor.
+After deploying this plugin the title of any newly created page will be automatically set to "Title generated by model listener!"
 
-* `/maven/blade.portlet.actioncommand`
 
-> A maven project which demonstrates integration point of MVCActionCommand.
+__Template projects links__:
 
-* `/maven/blade.portlet.blueprint`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |   |
+| Gradle     |   |
+| Maven      | [./maven/blade.modellistener](./maven/blade.modellistener)        |
 
-> A maven project which uses Blueprint for registering a portlet.
 
-* `/maven/blade.portlet.ds`
+## `MVCActionCommand`
 
-> A maven project which uses the DS (Declarative Services) for registering a portlet.
+__Extension point description__: 
 
-* `/maven/blade.portlet.filter`
+__Template project description__:  Demonstrates extension point of `MVCActionCommand`. It integrates the action command named `greet` with portlet `greeter`.
 
-> A maven project which demonstrates integration point of PortletFilter.
+To see how this example works, a portlet plugin with a portlet named **greeter** (`javax.portlet.name='greeter'`) is to be deployed.  The command adds a key `greeting_message` to Liferay SessionMessages, along with a session attribute `GREETER_MESSAGE`. You can independently deploy the bundle `blade.portlet.actioncommand` a.k.a refresh the bundle without the need to redeploy the Portlet plugin.
 
-* `/maven/blade.portlet.jsp`
+__Template projects links__:
 
-> A maven project which demonstrates a simple jsp portlet.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.portlet.actioncommand](./bndtools/blade.portlet.actioncommand)  |
+| Gradle     | [./gradle/blade.portlet.actioncommand](./gradle/blade.portlet.actioncommand)      |
+| Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
 
-* `/maven/blade.portlet.osgiapi`
 
->A maven project which uses the raw OSGI APIs for registering a portlet.
+## `PollerProcessor`
 
-* `/maven/blade.service.hook.user`
+__Extension point description__: 
 
-> A maven project which makes a hook for UserLocalServiceWrapper.
+__Template project description__:  demonstrates how to make a hook for `PollerProcessor`.
 
-* `/maven/blade.servicebuilder`
+__Template projects links__:
 
->ServiceBuilder based project, separated to 4 bundles(subprojects), api bundle for interface, svc bundle for implementation, test bundle for tesing, web bundle is a portlet calling generated services.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |       |
+| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
+| Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
 
-* `/maven/blade.strutsaction`
 
-> A maven project which demonstrates integration point of StrutsAction.
+## Portlet 
 
-* `/maven/blade.strutsportletaction`
+__Extension point description__: 
 
-> A maven project which demonstrates integration point of StrutsPortletAction.
+Below are examples of buildeing portles using diferent frameworks: 
 
-## Bndtools
 
-* `/bndtools/cnf`
+### Liferay MVC Portlet - using Blueprint framework
 
-> The Bndtools configuration project
+__Template project description__:  demonstrates how to use Blueprint framework for registering a portlet.
 
-* `/bndtools/blade.authenticator.shiro`
+__Template projects links__:
 
-> A bndtools project which uses Apache Shiro for hooking auth.pipeline.pre.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.portlet.blueprint](./bndtools/blade.portlet.blueprint)  |
+| Gradle     | [./gradle/blade.portlet.blueprint](./gradle/blade.portlet.blueprint)      |
+| Maven      | [./maven/blade.portlet.blueprint](./maven/blade.portlet.blueprint)        |
 
-* `/bndtools/blade.authfailure`
 
-> A bndtools project which demonstrates a hook for auth.failure and auth.max.failures.
+### Liferay MVC Portlet - using DS (Declarative Services) framework
 
-* `/bndtools/blade.hook.jsp`
+__Template project description__:  demonstrates how to use DS (Declarative Services) framework for registering a portlet.
 
-> A bndtools project which demonstrates a jsp hook for login.jsp in com.liferay.login.web bundle via fragment bundle.
+__Template projects links__:
 
-* `/bndtools/blade.portlet.actioncommand`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.portlet.ds](./bndtools/blade.portlet.ds)  |
+| Gradle     | [./gradle/blade.portlet.ds](./gradle/blade.portlet.ds)      |
+| Maven      | [./maven/blade.portlet.ds](./maven/blade.portlet.ds)        |
 
-> A bndtools project which demonstrates integration point of MVCActionCommand.
 
-* `/bndtools/blade.portlet.blueprint`
+### Liferay MVC Portlet - using raw OSGI APIs
 
-> A bndtools project which uses Blueprint for registering a portlet.
+__Template project description__:  demonstrates how to use the raw OSGI APIs for registering a portlet.
 
-* `/bndtools/blade.portlet.ds`
+__Template projects links__:
 
-> A bndtools project which uses the DS (Declarative Services) for registering a portlet.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.portlet.osgiapi](./bndtools/blade.portlet.osgiapi)  |
+| Gradle     | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi)      |
+| Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
 
-* `/bndtools/blade.portlet.filter`
 
-> A bndtools project which demonstrates integration point of PortletFilter.
+### JSF Portlet - using DS (Declarative Services) framework
 
-* `/bndtools/blade.portlet.osgiapi`
+__Template project description__:  demonstrates how to use the DS (Declarative Services) for registering a JSF portlet
 
-> A bndtools project which uses the raw OSGI APIs for registering a portlet.
+__Template projects links__:
 
-* `/bndtools/blade.run`
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |   |
+| Gradle     |   |
+| Maven      | [./maven/blade.jsf.portlet.ds](./maven/blade.jsf.portlet.ds)        |
 
-> A bndtools project which can push bundles into an osgi container and run them, need biz.aQute.remote.agent-X.X.X.jar deployed first.
+### JSP Portlet 
 
-* `/bndtools/blade.service.hook.user`
+__Extension point description__: 
 
-> A bndtools project which makes a hook for UserLocalServiceWrapper.
+__Template project description__:  demonstrates a simple jsp portlet.
 
-* `/bndtools/blade.servicebuilder.api`
-* `/bndtools/blade.servicebuilder.svc`
-* `/bndtools/blade.servicebuilder.test`
-* `/bndtools/blade.servicebuilder.web`
+__Template projects links__:
 
-> ServiceBuilder based project, separated to 4 bundles, api bundle for interface, svc bundle for implementation, test bundle for tesing, web bundle is a portlet calling generated services.
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |  |
+| Gradle     | [./gradle/blade.portlet.jsp](./gradle/blade.portlet.jsp)      |
+| Maven      | [./maven/blade.portlet.jsp](./maven/blade.portlet.jsp)        |
 
-# Integration Points
-The following are the list of Liferay Integration points that are demonstrated as part of these projects,
 
-- [x] javax.portlet.Portlet
-- [x] com.liferay.portal.kernel.portlet.bridges.mvc.ActionCommand
-	  The project `blade.portlet.actioncommand` demonstrates this integration point.  It integrates the action command named `greet` with portlet `greeter`.
+## `PortletFilter`
 
-	  __NOTE:__ To see how this example works, a portlet plugin with a portlet named **greeter** (javax.portlet.name='greeter') is to be deployed.  The command adds a key `greeting_message` to Liferay SessionMessages, along with a session attribute `GREETER_MESSAGE`. You can independently deploy the bundle `blade.portlet.actioncommand` a.k.a refresh the bundle without the need to redeploy the Portlet plugin.
+__Extension point description__: 
 
-The rest will come soon.
+__Template project description__:  demonstrates how to apply PortletFilters
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.portlet.filter](./bndtools/blade.portlet.filter)  |
+| Gradle     | [./gradle/blade.portlet.filter](./gradle/blade.portlet.filter)      |
+| Maven      | [./maven/blade.portlet.filter](./maven/blade.portlet.filter)        |
+
+
+## REST service
+
+__Extension point description__: Allows to create custom, JAX-RS standard based restfull services   
+
+__Template project description__:  demonstrates how to create a JAX-RS service that list Liferay users
+
+NOTE: Before this service is accessible, one needs to configure endpoints for it. To do so, go to 
+`Control Panel > System > System Settings > Platform` and 
+
+* create new `CXFEndpoint publisher configuration` providing `Context path` (say `/rest-test`)
+* create new `Rest extender configuration` providing `Context paths` (say `/rest-test`)
+
+Then you can access the service via http://localhost:8080/o/rest-test/blade.users/list/
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |   |
+| Gradle     |   |
+| Maven      | [./maven/blade.rest](./maven/blade.rest)        |
+
+
+## Service Builder
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to create a Service Builder project separated to 4 bundles: 
+
+* api bundle for interface
+* svc bundle for implementation
+* test bundle for testing
+* web bundle is a portlet calling generated services 
+
+__Template projects links__:
+
+| Build tool | subproject   | Link to project's source code                                                   |
+| ---------- | ------------ | ------------------------------------------------------------------------------- |
+| BND Tools  | API          | [./bndtools/blade.servicebuilder.api](./bndtools/blade.servicebuilder.api)  |
+| BND Tools  | Service      | [./bndtools/blade.servicebuilder.svc](./bndtools/blade.servicebuilder.svc)  |
+| BND Tools  | Test         | [./bndtools/blade.servicebuilder.test](./bndtools/blade.servicebuilder.test)  |
+| BND Tools  | Web          | [./bndtools/blade.servicebuilder.web](./bndtools/blade.servicebuilder.web)  |
+| Gradle     | API          | [./gradle/blade.servicebuilder.api](./gradle/blade.servicebuilder.api)  |
+| Gradle     | Service      | [./gradle/blade.servicebuilder.svc](./gradle/blade.servicebuilder.svc)  |
+| Gradle     | Test         | [./gradle/blade.servicebuilder.test](./gradle/blade.servicebuilder.test)  |
+| Gradle     | Web          | [./gradle/blade.servicebuilder.web](./gradle/blade.servicebuilder.web)  |
+| Maven      | All (parent) | [./maven/blade.servicebuilder](./maven/blade.servicebuilder)  |
+
+
+## `ServiceWrapper`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to wrap UserLocalService with custom UserLocalServiceWrapper
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
+| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
+| Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
+
+
+## `StrutsAction`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to write StrutsAction
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |   |
+| Gradle     | [./gradle/blade.strutsaction](./gradle/blade.strutsaction)      |
+| Maven      | [./maven/blade.strutsaction](./maven/blade.strutsaction)        |
+
+
+## `StrutsPortletAction`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to write StrutsPortletAction
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| BND Tools  |   |
+| Gradle     | [./gradle/blade.strutsportletaction](./gradle/blade.strutsportletaction)      |
+| Maven      | [./maven/blade.strutsportletaction](./maven/blade.strutsportletaction)        |
+
+
+
+# Liferay extension points without template projects
+
+This project does not yet have template projects for the following extension points. We encourage you to contribute some!  
+
+* com.liferay.mail.util.Hook
+* com.liferay.portal.kernel.atom.AtomCollectionAdapter
+* com.liferay.portal.kernel.format.PhoneNumberFormat
+* com.liferay.portal.kernel.lar.PortletDataHandler
+* com.liferay.portal.kernel.lar.StagedModelDataHandler
+* com.liferay.portal.kernel.lock.LockListener
+* com.liferay.portal.kernel.notifications.UserNotificationHandler
+* com.liferay.portal.kernel.pop.MessageListener
+* com.liferay.portal.kernel.portlet.FriendlyURLMapper
+* com.liferay.portal.kernel.portlet.PortletLayoutListener
+* com.liferay.portal.kernel.sanitizer.Sanitizer 
+* com.liferay.portal.kernel.scheduler.SchedulerEntry
+* com.liferay.portal.kernel.scheduler.SchedulerEntry
+* com.liferay.portal.kernel.search.Indexer
+* com.liferay.portal.kernel.search.OpenSearch
+* com.liferay.portal.kernel.servlet.URLEncoder
+* com.liferay.portal.kernel.template.TemplateHandler
+* com.liferay.portal.kernel.template.TemplateManager
+* com.liferay.portal.kernel.trash.TrashHandler
+* com.liferay.portal.kernel.upgrade.UpgradeProcess (call the Release service)
+* com.liferay.portal.kernel.webdav.WebDAVStorage
+* com.liferay.portal.kernel.workflow.WorkflowHandler
+* com.liferay.portal.kernel.xmlrpc.Method
+* com.liferay.portal.model.ModelListener
+* com.liferay.portal.security.auth.AuthToken
+* com.liferay.portal.security.auth.AuthVerifierConfiguration
+* com.liferay.portal.security.auth.AutoLogin 
+* com.liferay.portal.security.auth.EmailAddressGenerator
+* com.liferay.portal.security.auth.EmailAddressValidator
+* com.liferay.portal.security.auth.FullNameGenerator
+* com.liferay.portal.security.auth.FullNameValidator
+* com.liferay.portal.security.auth.ScreenNameGenerator
+* com.liferay.portal.security.auth.ScreenNameValidator
+* com.liferay.portal.security.ldap.AttributesTransformer
+* com.liferay.portal.security.membershippolicy.OrganizationMembershipPolicy
+* com.liferay.portal.security.membershippolicy.RoleMembershipPolicy
+* com.liferay.portal.security.membershippolicy.SiteMembershipPolicy
+* com.liferay.portal.security.membershippolicy.UserGroupMembershipPolicy
+* com.liferay.portal.security.permission.BaseModelPermissionChecker
+* com.liferay.portal.security.permission.PermissionPropagator
+* com.liferay.portal.security.pwd.Toolkit
+* com.liferay.portal.verify.VerifyProcess
+* com.liferay.portlet.asset.model.AssetRendererFactory
+* com.liferay.portlet.ControlPanelEntry
+* com.liferay.portlet.ControlPanelEntry
+* com.liferay.portlet.DefaultControlPanelEntryFactory
+* com.liferay.portlet.dynamicdatamapping.render.DDMFormFieldRenderer
+* com.liferay.portlet.dynamicdatamapping.util.DDMDisplay
+* com.liferay.portlet.expando.model.CustomAttributesDisplay
+* com.liferay.portlet.social.model.SocialActivityInterpreter
+* com.liferay.portlet.social.model.SocialRequestInterpreter
+* java.util.ResourceBundle
+* javax.portlet.filter.ActionFilter
+* javax.portlet.filter.EventFilter
+* javax.portlet.filter.RenderFilter
+* javax.portlet.filter.ResourceFilter
+* javax.portlet.PreferencesValidator
+* javax.servlet.Filter (Liferay InvokerFilterChain Filters)
+
+
 
 # License
 [License](/LICENSE.txt)
