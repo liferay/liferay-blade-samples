@@ -1,1 +1,5 @@
 version='1.0.0'
+
+dependencies {
+	compile group: 'com.liferay', name: 'com.liferay.osgi.util', version: '2.0.4'
+}
