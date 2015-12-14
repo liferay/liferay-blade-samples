@@ -1,6 +1,7 @@
 -buildpath: \
 	osgi.core;version=5.0,\
 	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay:com.liferay.osgi.util;version=2.0.4,\
 	biz.aQute.bndlib
 
 Import-Package: \
@@ -8,9 +9,10 @@ Import-Package: \
     org.osgi.framework;version="[1.7,2)",\
     *
 
+Bundle-Version: 1.0.0.${tstamp}
+
 Export-Package: \
 	blade.servicebuilder.exception,\
 	blade.servicebuilder.model,\
 	blade.servicebuilder.service,\
 	blade.servicebuilder.service.persistence
-	

@@ -16,8 +16,12 @@ Import-Package:  \
 
 Private-Package: blade.servicebuilder.web.*
 
--includeresource: META-INF/resources=resources
+-includeresource: \
+	META-INF/resources=resources,\
+	content=src/content
 
 -jsp: *.jsp,*.jspf
 
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+
+-sources: true
