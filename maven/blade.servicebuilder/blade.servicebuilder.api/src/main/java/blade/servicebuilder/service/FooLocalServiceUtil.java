@@ -16,8 +16,7 @@ package blade.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
+import com.liferay.osgi.util.ServiceTrackerFactory;
 
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -289,6 +288,10 @@ public class FooLocalServiceUtil {
 		return getService().getFoosCount();
 	}
 
+	public static com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
+		return getService().getIndexableActionableDynamicQuery();
+	}
+
 	/**
 	* Returns the OSGi service identifier.
 	*
@@ -326,14 +329,6 @@ public class FooLocalServiceUtil {
 	public void setService(FooLocalService service) {
 	}
 
-	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(FooLocalServiceUtil.class);
-
-		_serviceTracker = new ServiceTracker<FooLocalService, FooLocalService>(bundle.getBundleContext(),
-				FooLocalService.class, null);
-
-		_serviceTracker.open();
-	}
+	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker =
+		ServiceTrackerFactory.open(FooLocalService.class);
 }
