@@ -1,0 +1,7 @@
+-buildpath: \
+	osgi.cmpn;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)'
+
+Bundle-Version: 1.0.0.${tstamp}
+
+Private-Package: blade.modellistener
