@@ -3,7 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="blade.servicebuilder.model.Foo" />
-	<class name="blade.servicebuilder.model.impl.FooImpl" table="Foo">
+	<class name="blade.servicebuilder.model.impl.FooImpl" table="SSB_Foo">
 		<id name="fooId" type="long">
 			<generator class="assigned" />
 		</id>

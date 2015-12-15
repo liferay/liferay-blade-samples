@@ -20,7 +20,7 @@ import com.liferay.portal.kernel.util.Accessor;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the Foo service. Represents a row in the &quot;Foo&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the Foo service. Represents a row in the &quot;SSB_Foo&quot; database table, with each column mapped to a property of this class.
  *
  * @author Brian Wing Shun Chan
  * @see FooModel
