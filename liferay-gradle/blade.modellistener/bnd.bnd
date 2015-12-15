@@ -1,0 +1,7 @@
+Bundle-Name: Blade Model Listener
+Bundle-SymbolicName: blade.modellistener
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+-includeresource: classes
+-dsannotations: *
+-sources: true
