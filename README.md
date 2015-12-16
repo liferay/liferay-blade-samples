@@ -191,8 +191,8 @@ __Template projects links__:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  |   |
-| Gradle     |   |
+| BND Tools  | [./bndtools/blade.modellistener](./bndtools/blade.modellistener)  |
+| Gradle     | [./gradle/blade.modellistener](./gradle/blade.modellistener)      |
 | Maven      | [./maven/blade.modellistener](./maven/blade.modellistener)        |
 
 
