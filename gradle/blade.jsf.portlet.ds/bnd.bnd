@@ -1,0 +1,15 @@
+-includeresource: \
+	liferay-faces-bridge-api-4.2.0-beta.jar=liferay-faces-bridge-api-4.2.0-beta.jar,\
+	liferay-faces-bridge-impl-4.2.0-beta.jar=liferay-faces-bridge-impl-4.2.0-beta.jar,\
+	liferay-faces-util-4.2.0-beta.jar=liferay-faces-util-4.2.0-beta.jar,\
+	jsf-api-2.2.6.jar=jsf-api-2.2.6.jar,\
+	jsf-impl-2.2.6.jar=jsf-impl-2.2.6.jar
+
+Bundle-ClassPath: \
+	.,\
+	liferay-faces-bridge-api-4.2.0-beta.jar,\
+	liferay-faces-bridge-impl-4.2.0-beta.jar,\
+	liferay-faces-util-4.2.0-beta.jar,\
+	jsf-api-2.2.6.jar,\
+	jsf-impl-2.2.6.jar
+	
