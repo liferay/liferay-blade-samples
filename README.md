@@ -282,7 +282,7 @@ __Template projects links__:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  |   |
+| BND Tools  | [./bndtools/blade.jsf.portlet.ds](./bndtools/blade.jsf.portlet.ds)  |
 | Gradle     | [./gradle/blade.jsf.portlet.ds](./gradle/blade.jsf.portlet.ds)      |
 | Maven      | [./maven/blade.jsf.portlet.ds](./maven/blade.jsf.portlet.ds)        |
 

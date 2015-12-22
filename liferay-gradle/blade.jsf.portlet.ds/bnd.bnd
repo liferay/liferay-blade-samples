@@ -1,0 +1,27 @@
+Bundle-Name: Blade JSF Portlet DS
+Bundle-SymbolicName: blade.jsf.portlet.ds
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Private-Package: blade.portlet
+Import-Package: \
+	javax.portlet;version="[2.0,3)",\
+	javax.servlet;version="[2.5,4)"
+
+-includeresource: \
+	classes,\
+	liferay-faces-bridge-api.jar=lib/liferay-faces-bridge-api.jar,\
+	liferay-faces-bridge-impl.jar=lib/liferay-faces-bridge-impl.jar,\
+	liferay-faces-util.jar=lib/liferay-faces-util.jar,\
+	jsf-api.jar=lib/jsf-api.jar,\
+	jsf-impl.jar=lib/jsf-impl.jar
+
+Bundle-ClassPath: \
+	.,\
+	liferay-faces-bridge-api.jar,\
+	liferay-faces-bridge-impl.jar,\
+	liferay-faces-util.jar,\
+	jsf-api.jar,\
+	jsf-impl.jar
+
+-dsannotations: *
+-sources: true

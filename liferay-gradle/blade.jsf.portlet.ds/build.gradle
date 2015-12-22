@@ -1,0 +1,7 @@
+dependencies {
+	compile 'com.liferay.faces:liferay-faces-bridge-impl:4.2.0-beta'
+	compile 'com.sun.faces:jsf-api:2.2.6'
+	compile 'com.sun.faces:jsf-impl:2.2.6'
+}
+
+version = '1.0.0'
