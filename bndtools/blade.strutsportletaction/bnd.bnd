@@ -1,0 +1,15 @@
+-buildpath: \
+	osgi.cmpn;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	javax.portlet__portlet-api
+
+-dsannotations: *
+-sources: true
+Bundle-Version: 1.0.0.${tstamp}
+Bundle-Name: BLADE Gradle StrutsPortletAction
+Service-Component: *
+Import-Package: \
+	javax.portlet;version='[2.0,3)',\
+	javax.servlet;version='[2.5,4)',\
+	*
+Private-Package: blade.portlet
