@@ -1,0 +1,30 @@
+-buildpath: \
+	osgi.cmpn;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	javax.portlet:portlet-api;version=2.0;strategy=exact,\
+	biz.aQute.bnd.annotation,\
+	javax.servlet__servlet-api
+
+Bundle-Version: 1.0.0.${tstamp}
+
+Private-Package: \
+	blade.configurationaction.action,\
+	blade.configurationaction.config,\
+	blade.configurationaction.portlet
+
+Service-Component: *
+
+Import-Package: \
+	javax.portlet;version='[2.0,3)',\
+	javax.servlet;version='[2.5,4)',\
+	*
+
+-includeresource:\
+	META-INF/resources=resources,\
+	content=content
+
+-dsannotations: *
+-sources: true
+
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
