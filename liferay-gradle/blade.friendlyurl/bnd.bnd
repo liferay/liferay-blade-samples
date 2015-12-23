@@ -1,0 +1,8 @@
+Bundle-Name: Blade Friendlyurl
+Bundle-SymbolicName: blade.friendlyurl
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: *
+-includeresource: classes
+-dsannotations: *
+-sources: true
