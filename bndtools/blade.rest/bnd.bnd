@@ -1,0 +1,14 @@
+-buildpath: \
+	osgi.cmpn;version=5.0,\
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	javax.ws.rs:javax.ws.rs-api;version=2.0.1
+
+Bundle-Name: Blade Rest
+Bundle-SymbolicName: blade.rest
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: *
+
+-dsannotations: *
+-sources: true
+Private-Package: blade.rest
