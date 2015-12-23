@@ -113,8 +113,8 @@ __Template projects links__:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  |  |
-| Gradle     |  |
+| BND Tools  | [./bndtools/blade.friendlyurl](./bndtools/blade.friendlyurl)    |
+| Gradle     | [./gradle/blade.friendlyurl](./gradle/blade.friendlyurl)        |
 | Maven      | [./maven/blade.friendlyurl](./maven/blade.friendlyurl)          |
 
 
@@ -334,8 +334,8 @@ __Template projects links__:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| BND Tools  |   |
-| Gradle     |   |
+| BND Tools  | [./bndtools/blade.rest](./bndtools/blade.rest)  |
+| Gradle     | [./gradle/blade.rest](./gradle/blade.rest)      |
 | Maven      | [./maven/blade.rest](./maven/blade.rest)        |
 
 

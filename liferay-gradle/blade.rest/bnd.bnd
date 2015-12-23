@@ -1,0 +1,8 @@
+Bundle-Name: Blade Rest
+Bundle-SymbolicName: blade.rest
+Bundle-Version: 1.0.0.${tstamp}
+Service-Component: *
+Import-Package: *
+-includeresource: classes
+-dsannotations: *
+-sources: true

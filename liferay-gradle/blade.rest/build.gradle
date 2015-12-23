@@ -1,0 +1,5 @@
+dependencies {
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+}
+
+version = '1.0'
