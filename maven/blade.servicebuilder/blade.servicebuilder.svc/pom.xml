@@ -78,14 +78,14 @@
 						<![CDATA[liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
 						</Require-Capability>
 						<Spring-Context>META-INF/spring</Spring-Context>
-						<Require-SchemaVersion>1.0.0</Require-SchemaVersion>
+						<Require-SchemaVersion>3.0.0</Require-SchemaVersion>
 					</instructions>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.63</version>
+				<version>1.0.67</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
 					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>

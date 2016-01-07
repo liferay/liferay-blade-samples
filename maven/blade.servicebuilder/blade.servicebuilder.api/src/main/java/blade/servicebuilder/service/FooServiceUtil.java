@@ -58,12 +58,5 @@ public class FooServiceUtil {
 		return _serviceTracker.getService();
 	}
 
-	/**
-	 * @deprecated As of 6.2.0
-	 */
-	@Deprecated
-	public void setService(FooService service) {
-	}
-
 	private static ServiceTracker<FooService, FooService> _serviceTracker = ServiceTrackerFactory.open(FooService.class);
 }
