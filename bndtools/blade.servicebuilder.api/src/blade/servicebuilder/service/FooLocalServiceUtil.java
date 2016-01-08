@@ -327,13 +327,6 @@ public class FooLocalServiceUtil {
 		return _serviceTracker.getService();
 	}
 
-	/**
-	 * @deprecated As of 6.2.0
-	 */
-	@Deprecated
-	public void setService(FooLocalService service) {
-	}
-
 	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker =
 		ServiceTrackerFactory.open(FooLocalService.class);
 }
