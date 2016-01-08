@@ -801,13 +801,6 @@ public class FooUtil {
 		return _serviceTracker.getService();
 	}
 
-	/**
-	 * @deprecated As of 6.2.0
-	 */
-	@Deprecated
-	public void setPersistence(FooPersistence persistence) {
-	}
-
 	private static ServiceTracker<FooPersistence, FooPersistence> _serviceTracker =
 		ServiceTrackerFactory.open(FooPersistence.class);
 }
