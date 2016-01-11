@@ -24,4 +24,4 @@ Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extende
 Spring-Context: META-INF/spring
 -dsannotations: *
 -sources: true
-Require-SchemaVersion: 2.0.0
+Require-SchemaVersion: 1.0.0
