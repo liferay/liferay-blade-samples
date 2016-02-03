@@ -180,7 +180,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_First(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
@@ -206,7 +206,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
@@ -233,7 +233,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
+	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByUuid_PrevAndNext(long fooId,
 		java.lang.String uuid, OrderByComparator<Foo> orderByComparator)
@@ -262,12 +262,12 @@ public class FooUtil {
 	}
 
 	/**
-	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
+	* Returns the foo where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchFooException} if it could not be found.
 	*
 	* @param uuid the uuid
 	* @param groupId the group ID
 	* @return the matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUUID_G(java.lang.String uuid, long groupId)
 		throws blade.servicebuilder.exception.NoSuchFooException {
@@ -400,7 +400,7 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_C_First(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
@@ -430,7 +430,7 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
@@ -461,7 +461,7 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
+	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByUuid_C_PrevAndNext(long fooId,
 		java.lang.String uuid, long companyId,
@@ -565,7 +565,7 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByField2_First(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
@@ -591,7 +591,7 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo
-	* @throws blade.servicebuilder.NoSuchFooException if a matching foo could not be found
+	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByField2_Last(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
@@ -618,7 +618,7 @@ public class FooUtil {
 	* @param field2 the field2
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next foo
-	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
+	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo[] findByField2_PrevAndNext(long fooId, boolean field2,
 		OrderByComparator<Foo> orderByComparator)
@@ -679,7 +679,7 @@ public class FooUtil {
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo that was removed
-	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
+	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo remove(long fooId)
 		throws blade.servicebuilder.exception.NoSuchFooException {
@@ -691,11 +691,11 @@ public class FooUtil {
 	}
 
 	/**
-	* Returns the foo with the primary key or throws a {@link blade.servicebuilder.NoSuchFooException} if it could not be found.
+	* Returns the foo with the primary key or throws a {@link NoSuchFooException} if it could not be found.
 	*
 	* @param fooId the primary key of the foo
 	* @return the foo
-	* @throws blade.servicebuilder.NoSuchFooException if a foo with the primary key could not be found
+	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo findByPrimaryKey(long fooId)
 		throws blade.servicebuilder.exception.NoSuchFooException {

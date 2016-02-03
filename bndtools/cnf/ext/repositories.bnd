@@ -1,5 +1,5 @@
 releaserepo:            ${workspace}/dist/bundles
-bnd-release	=	https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles/
+bnd-release	=	https://dl.bintray.com/bnd/dist/3.1.0/
 
 
 -pluginpath:\
