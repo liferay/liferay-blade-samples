@@ -17,8 +17,8 @@ package blade.authenticator.shiro;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.security.auth.AuthException;
-import com.liferay.portal.security.auth.Authenticator;
+import com.liferay.portal.kernel.security.auth.AuthException;
+import com.liferay.portal.kernel.security.auth.Authenticator;
 
 import java.util.Map;
 

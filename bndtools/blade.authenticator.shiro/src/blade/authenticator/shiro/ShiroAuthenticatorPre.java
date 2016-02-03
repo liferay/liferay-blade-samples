@@ -29,8 +29,8 @@ import org.osgi.service.component.annotations.Component;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.security.auth.AuthException;
-import com.liferay.portal.security.auth.Authenticator;
+import com.liferay.portal.kernel.security.auth.AuthException;
+import com.liferay.portal.kernel.security.auth.Authenticator;
 
 
 @Component(

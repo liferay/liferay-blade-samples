@@ -18,9 +18,9 @@ package blade.authfailure;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.AuthException;
+import com.liferay.portal.kernel.security.auth.AuthFailure;
 import com.liferay.portal.model.User;
-import com.liferay.portal.security.auth.AuthException;
-import com.liferay.portal.security.auth.AuthFailure;
 import com.liferay.portal.service.UserLocalServiceUtil;
 
 import java.util.Map;
