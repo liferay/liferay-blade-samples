@@ -12,8 +12,8 @@ import javax.ws.rs.core.Application;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.liferay.portal.model.User;
-import com.liferay.portal.service.UserLocalService;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.UserLocalService;
 
 @Component(
 	immediate = true,

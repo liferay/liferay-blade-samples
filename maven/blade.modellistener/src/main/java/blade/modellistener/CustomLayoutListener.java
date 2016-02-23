@@ -16,10 +16,10 @@ package blade.modellistener;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.portal.exception.ModelListenerException;
-import com.liferay.portal.model.BaseModelListener;
-import com.liferay.portal.model.Layout;
-import com.liferay.portal.model.ModelListener;
+import com.liferay.portal.kernel.exception.ModelListenerException;
+import com.liferay.portal.kernel.model.BaseModelListener;
+import com.liferay.portal.kernel.model.Layout;
+import com.liferay.portal.kernel.model.ModelListener;
 
 @Component(
 	immediate = true,

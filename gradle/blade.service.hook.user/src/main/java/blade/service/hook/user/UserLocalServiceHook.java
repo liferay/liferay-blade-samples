@@ -16,9 +16,9 @@
 package blade.service.hook.user;
 
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.model.User;
-import com.liferay.portal.service.ServiceWrapper;
-import com.liferay.portal.service.UserLocalServiceWrapper;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.ServiceWrapper;
+import com.liferay.portal.kernel.service.UserLocalServiceWrapper;
 
 import java.util.Map;
 
