@@ -22,9 +22,9 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.portal.kernel.model.PortletApp;
 import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
-import com.liferay.portal.model.PortletApp;
 import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
 
 @Component(
@@ -49,7 +49,7 @@ public class GreeterPortlet extends FreeMarkerPortlet {
 		LiferayPortletConfig liferayPortletConfig =
 			(LiferayPortletConfig)portletConfig;
 
-		com.liferay.portal.model.Portlet portlet =
+		com.liferay.portal.kernel.model.Portlet portlet =
 			liferayPortletConfig.getPortlet();
 
 		PortletApp portletApp = portlet.getPortletApp();
