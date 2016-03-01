@@ -1,20 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 
 	<modelVersion>4.0.0</modelVersion>
-
 	<artifactId>blade.servicebuilder.test</artifactId>
-	<name>Blade ServiceBuilder Test</name>
+	<name>BLADE ServiceBuilder Test</name>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	
 
 	<parent>
         <groupId>blade</groupId>
         <artifactId>blade.servicebuilder</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-	
-	<dependencies>			
+
+	<dependencies>
 		<dependency>
 			<groupId>blade</groupId>
 			<artifactId>blade.servicebuilder.api</artifactId>
@@ -23,10 +25,7 @@
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -34,13 +33,8 @@
 	<build>
 		<plugins>
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-compiler-plugin</artifactId>
-	        </plugin>
-			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
 					<instructions>
 						<Private-Package>blade.servicebuilder.test</Private-Package>

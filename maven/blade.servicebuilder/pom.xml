@@ -1,25 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
 	<modelVersion>4.0.0</modelVersion>
-	
     <artifactId>blade.servicebuilder</artifactId>
-    <name>Blade Service Builder</name>
-	
+    <name>BLADE Service Builder</name>
+    <packaging>pom</packaging>
+
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.maven</artifactId>
+		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../parent.felix.bundle.plugin</relativePath>
 	</parent>
-	
-    <packaging>pom</packaging>	
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>portal-service</artifactId>
+			<version>7.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bnd.annotation</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
     <modules>
         <module>blade.servicebuilder.api</module>
         <module>blade.servicebuilder.svc</module>
         <module>blade.servicebuilder.test</module>
         <module>blade.servicebuilder.web</module>
     </modules>
-	
 </project>
