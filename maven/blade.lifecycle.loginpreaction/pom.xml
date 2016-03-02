@@ -1,26 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.lifecycle.loginpreaction</artifactId>
-	<name>Blade Lifecycle LoginPreAction</name>
+	<name>BLADE Lifecycle LoginPreAction</name>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.maven</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../parent.felix.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
+			<version>7.0.0-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -30,7 +37,6 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
 					<instructions>
 						<Private-Package>blade.lifecycle.loginpreaction</Private-Package>

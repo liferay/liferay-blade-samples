@@ -1,21 +1,27 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.portlet.blueprint</artifactId>
-	<name>Portlet Blueprint</name>
+	<name>BLADE Portlet Blueprint</name>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.maven</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../parent.felix.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -25,7 +31,6 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
 					<instructions>
 						<Private-Package>blade.portlet</Private-Package>

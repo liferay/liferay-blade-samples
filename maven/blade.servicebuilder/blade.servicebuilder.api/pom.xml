@@ -1,39 +1,26 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 
 	<modelVersion>4.0.0</modelVersion>
-
 	<artifactId>blade.servicebuilder.api</artifactId>
-	<name>Blade ServiceBuilder API</name>
+	<name>BLADE ServiceBuilder API</name>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
-	
 	<parent>
         <groupId>blade</groupId>
         <artifactId>blade.servicebuilder</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
-	
+
 	<dependencies>
-		<dependency>
-			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.osgi.util</artifactId>
 			<version>2.0.4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.bndlib</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -41,17 +28,8 @@
 	<build>
 		<plugins>
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-compiler-plugin</artifactId>
-		        <configuration>
-		          <source>1.7</source>
-		          <target>1.7</target>
-		        </configuration>
-	        </plugin>
-			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
 					<instructions>
 						<Export-Package>blade.servicebuilder.*</Export-Package>
