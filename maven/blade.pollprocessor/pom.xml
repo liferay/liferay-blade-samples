@@ -10,6 +10,13 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../parent.felix.bundle.plugin</relativePath>
+	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
@@ -30,11 +37,5 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-	<parent>
-		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
-		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
-	</parent>
+	
 </project>
