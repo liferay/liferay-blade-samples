@@ -7,13 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.hook.jsp</artifactId>
 	<name>BLADE Hook Jsp</name>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 </project>

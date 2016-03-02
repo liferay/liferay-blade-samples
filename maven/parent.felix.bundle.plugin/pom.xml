@@ -5,14 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>blade</groupId>
 	<artifactId>blade.parent.felix.bundle.plugin</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>BLADE Maven Felix Bundle Plugin Parent</name>
 	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>blade.maven</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<build>

@@ -7,13 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.gogo</artifactId>
 	<name>BLADE GoGo Command</name>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../parent.felix.bundle.plugin</relativePath>
 	</parent>
 
