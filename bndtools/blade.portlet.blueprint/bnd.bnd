@@ -1,16 +1,7 @@
--buildpath: \
-	osgi.cmpn,\
-	javax.portlet__portlet-api
-
--includeresource: \
-	OSGI-INF/blueprint = OSGI-INF/blueprint
-
-Bundle-Version: 1.0.0.${tstamp}
-
+Bundle-Version: 1.0.0
 Private-Package: blade.portlet
-
-Import-Package:  \
-	org.osgi.framework;version='[1.7,2)',\
-	javax.servlet;version='[2.5,4.0.0)',\
-	javax.portlet;version='[2.0,3)',\
-	*
+-buildpath: \
+	javax.portlet;version='2.0.0'
+-includeresource: \
+	OSGI-INF/blueprint=OSGI-INF/blueprint
+-sources: true

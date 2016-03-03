@@ -1,17 +1,5 @@
--buildpath: \
-	osgi.core;version=5.0,\
-	com.liferay.portal:portal-service;version='[7.0,8)',\
-	com.liferay.portal:portal-test-internal;version=latest,\
-	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
-	com.liferay:com.liferay.portal.spring.extender;version=1.0.2,\
-	org.jboss.arquillian.junit:arquillian-junit-core;version='1.1.8.Final';strategy='exact',\
-	biz.aQute.bndlib,\
-	biz.aQute.junit,\
-	blade.servicebuilder.api;version=latest,\
-	portal-test
-
-Bundle-Version: 1.0.0.${tstamp}
-
+Bundle-Version: 1.0.0
+Liferay-Service: true
 Private-Package: \
 	blade.servicebuilder.model.impl,\
 	blade.servicebuilder.service.base,\
@@ -19,11 +7,19 @@ Private-Package: \
 	blade.servicebuilder.service.impl,\
 	blade.servicebuilder.service.persistence.impl,\
 	blade.servicebuilder.service.util
-
-
--includeresource: resources
-Liferay-Service: true
 Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
-Spring-Context: META-INF/spring
--dsannotations: *
 Require-SchemaVersion: 1.0.0
+Spring-Context: META-INF/spring
+-buildpath: \
+	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay.portal:portal-test-internal;version=latest,\
+	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
+	com.liferay:com.liferay.portal.spring.extender;version='1.0.2',\
+	org.jboss.arquillian.junit:arquillian-junit-core;version='1.1.8.Final';strategy='exact',\
+	biz.aQute.bndlib;version='3.1.0',\
+	biz.aQute.junit;version='3.1.0',\
+	blade.servicebuilder.api;version=latest,\
+	osgi.core;version='6.0.0',\
+	portal-test
+-includeresource: resources
+-sources: true

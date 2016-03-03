@@ -1,6 +1,4 @@
-Bundle-Name: Blade Hook Jsp
-Bundle-SymbolicName: blade.hook.jsp
-Bundle-Version: 1.0.0.${tstamp}
+Bundle-Version: 1.0.0
 Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
 -includeresource:\
 	META-INF/resources=resources
