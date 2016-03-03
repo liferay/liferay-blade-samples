@@ -19,25 +19,25 @@
 	<modules>
 		<module>blade.authenticator.shiro</module>
 		<module>blade.authfailure</module>
+		<module>blade.configurationaction</module>
+		<module>blade.friendlyurl</module>
+		<module>blade.gogo</module>
+		<module>blade.hook.jsp</module>
 		<module>blade.indexerpostprocessor</module>
 		<module>blade.jsf.portlet.ds</module>
 		<module>blade.lifecycle.loginpreaction</module>
+		<module>blade.modellistener</module>
+		<module>blade.pollprocessor</module>
 		<module>blade.portlet.actioncommand</module>
 		<module>blade.portlet.blueprint</module>
 		<module>blade.portlet.ds</module>
-		<module>blade.portlet.osgiapi</module>
-		<module>blade.servicebuilder</module>
-		<module>blade.service.hook.user</module>
+		<module>blade.portlet.filter</module>
 		<module>blade.portlet.jsp</module>
-		<module>blade.pollprocessor</module>
+		<module>blade.portlet.osgiapi</module>
+		<module>blade.rest</module>
+		<module>blade.service.hook.user</module>
+		<module>blade.servicebuilder</module>
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
-		<module>blade.configurationaction</module>
-		<module>blade.portlet.filter</module>
-		<module>blade.gogo</module>
-		<module>blade.hook.jsp</module>
-		<module>blade.modellistener</module>
-		<module>blade.friendlyurl</module>
-		<module>blade.rest</module>
 	</modules>
 </project>

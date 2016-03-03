@@ -1,34 +1,27 @@
+Bundle-ClassPath: \
+	.,\
+	lib/liferay-faces-bridge-api-4.2.0-beta.jar,\
+	lib/liferay-faces-bridge-impl-4.2.0-beta.jar,\
+	lib/liferay-faces-util-4.2.0-beta.jar,\
+	lib/jsf-api-2.2.6.jar,\
+	lib/jsf-impl-2.2.6.jar
+Bundle-Version: 1.0.0
+Private-Package: blade.portlet
 -buildpath: \
-	osgi.cmpn;version=5.0,\
 	com.liferay.portal:portal-service;version='[7.0,8)',\
-	javax.portlet:portlet-api;version=2.0;strategy=exact,\
 	com.sun.faces:jsf-api;version=2.2.6,\
 	com.sun.faces:jsf-impl;version=2.2.6,\
 	com.liferay.faces:liferay-faces-bridge-api;version=4.2.0,\
 	com.liferay.faces:liferay-faces-bridge-impl;version=4.2.0,\
-	com.liferay.faces:liferay-faces-util;version=4.2.0
-
-Bundle-Version: 1.0.0.${tstamp}
-
-Private-Package: blade.portlet
-
-Import-Package: \
-	javax.portlet;version="[2.0,3)",\
-	javax.servlet;version="[2.5,4)"
-
+	com.liferay.faces:liferay-faces-util;version=4.2.0,\
+	javax.portlet;version='2.0.0',\
+	org.osgi.service.component.annotations;version='1.3.0'
 -includeresource: \
 	META-INF/resources=resources,\
 	WEB-INF=WEB-INF,\
-	liferay-faces-bridge-api-4.2.0-beta.jar=liferay-faces-bridge-api-4.2.0-beta.jar,\
-	liferay-faces-bridge-impl-4.2.0-beta.jar=liferay-faces-bridge-impl-4.2.0-beta.jar,\
-	liferay-faces-util-4.2.0-beta.jar=liferay-faces-util-4.2.0-beta.jar,\
-	jsf-api-2.2.6.jar=jsf-api-2.2.6.jar,\
-	jsf-impl-2.2.6.jar=jsf-impl-2.2.6.jar
-
-Bundle-ClassPath: \
-	.,\
-	liferay-faces-bridge-api-4.2.0-beta.jar,\
-	liferay-faces-bridge-impl-4.2.0-beta.jar,\
-	liferay-faces-util-4.2.0-beta.jar,\
-	jsf-api-2.2.6.jar,\
-	jsf-impl-2.2.6.jar
+	lib/liferay-faces-bridge-api-4.2.0-beta.jar=liferay-faces-bridge-api-4.2.0-beta.jar,\
+	lib/liferay-faces-bridge-impl-4.2.0-beta.jar=liferay-faces-bridge-impl-4.2.0-beta.jar,\
+	lib/liferay-faces-util-4.2.0-beta.jar=liferay-faces-util-4.2.0-beta.jar,\
+	lib/jsf-api-2.2.6.jar=jsf-api-2.2.6.jar,\
+	lib/jsf-impl-2.2.6.jar=jsf-impl-2.2.6.jar
+-sources: true
