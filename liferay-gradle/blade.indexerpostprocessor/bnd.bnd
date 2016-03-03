@@ -1,9 +1,2 @@
-Bundle-Name: Blade Indexerpostprocessor
-Bundle-SymbolicName: blade.indexerpostprocessor
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: *
-Private-Package: blade.indexerpostprocessor
--includeresource: classes
--dsannotations: *
+Bundle-Version: 1.0.0
 -sources: true

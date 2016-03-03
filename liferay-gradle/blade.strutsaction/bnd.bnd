@@ -1,15 +1,5 @@
-Bundle-Name: Blade Strutsaction
-Bundle-SymbolicName: blade.strutsaction
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: \
-	javax.portlet;version='[2.0,3)',\
-	javax.servlet;version='[2.5,4)',\
-	*
--includeresource:\
-	classes,\
-	META-INF/resources=src/main/resources/META-INF/resources
-
+Bundle-Version: 1.0.0
 Web-ContextPath: /bladestrutsaction
--dsannotations: *
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true

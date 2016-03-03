@@ -2,5 +2,3 @@ dependencies {
 	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
 	compile 'javax.portlet:portlet-api:2.0'
 }
-
-version = '1.0.0'

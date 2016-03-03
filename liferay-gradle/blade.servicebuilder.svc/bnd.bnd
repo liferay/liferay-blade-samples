@@ -1,27 +1,6 @@
-Bundle-Name: Blade ServiceBuilder Svc
-Bundle-SymbolicName: blade.servicebuilder.svc
-Bundle-Version: 1.0.0.${tstamp}
-
-Import-Package: \
-	blade.servicebuilder.*,\
-	com.liferay.portal.service;version="7.0.0",\
-	org.osgi.framework;version="[1.7,2)",\
-	*
-
-Private-Package: \
-	blade.servicebuilder.model.impl,\
-	blade.servicebuilder.service.base,\
-	blade.servicebuilder.service.http,\
-	blade.servicebuilder.service.impl,\
-	blade.servicebuilder.service.persistence.impl,\
-	blade.servicebuilder.service.util
-
--includeresource:\
-	classes,\
-	src/main/resources
+Bundle-Version: 1.0.0
 Liferay-Service: true
 Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
-Spring-Context: META-INF/spring
--dsannotations: *
--sources: true
 Require-SchemaVersion: 1.0.0
+Spring-Context: META-INF/spring
+-sources: true
