@@ -1,17 +1,7 @@
-Bundle-Name: Blade ServiceBuilder Api
-Bundle-SymbolicName: blade.servicebuilder.api
-Bundle-Version: 1.0.0.${tstamp}
-
-Import-Package: \
-    com.liferay.portal.service;version="7.0.0",\
-    org.osgi.framework;version="[1.7,2)",\
-    *
-
+Bundle-Version: 1.0.0
 Export-Package: \
 	blade.servicebuilder.exception,\
 	blade.servicebuilder.model,\
 	blade.servicebuilder.service,\
 	blade.servicebuilder.service.persistence
-	
--includeresource:classes
 -sources: true

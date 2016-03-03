@@ -1,12 +1,3 @@
-Bundle-Name: Blade Rest
-Bundle-SymbolicName: blade.rest
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: \
-	javax.ws.rs;version=!,\
-	javax.ws.rs.core;version=!,\
-	*
+Bundle-Version: 1.0.0
 Require-Capability: osgi.contract; filter:="(&(osgi.contract=JavaJAXRS)(version=2))"
--includeresource: classes
--dsannotations: *
 -sources: true

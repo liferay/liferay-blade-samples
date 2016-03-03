@@ -1,27 +1,25 @@
 buildscript {
-	repositories {
-		maven {
-			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
-		}
-		mavenCentral()
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
 	}
 }
 
 apply plugin: "com.liferay.portal.tools.service.builder"
 
+dependencies {
+	compile 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
+	compile 'com.liferay:com.liferay.portal.spring.extender:1.0.2'
+	compile 'com.liferay:com.liferay.osgi.util:2.0.4'
+	compile  project(':blade.servicebuilder.api')
+	testCompile 'com.liferay.portal:portal-test:7.0.0-SNAPSHOT'
+	testCompile 'com.liferay.portal:portal-test-internal:7.0.0-SNAPSHOT'
+	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.0-SNAPSHOT'
+	testCompile 'junit:junit:4.+'
+}
+
 buildService {
 	apiDir = "../blade.servicebuilder.api/src/main/java"
-	testDir = "src/main/test"
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
+	testDir = "src/main/test"
 }
-
-dependencies {
-	compile  project(':blade.servicebuilder.api')
-	compile group: 'com.liferay', name: 'com.liferay.portal.spring.extender', version: '1.0.2'
-	testCompile group: 'junit', name: 'junit', version: '4.+'
-	testCompile group: 'com.liferay.portal', name: 'portal-test', version: '7.0.0-SNAPSHOT'
-	testCompile group: 'com.liferay.portal', name: 'portal-test-internal', version: '7.0.0-SNAPSHOT'
-}
-
-version = '1.0.0'

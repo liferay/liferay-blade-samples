@@ -17,10 +17,10 @@ buildscript {
 subprojects {
 	buildscript {
 		repositories {
+			mavenCentral()
 			maven {
 				url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 			}
-			mavenCentral()
 		}
 	}
 

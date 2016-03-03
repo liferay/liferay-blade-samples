@@ -1,16 +1,4 @@
-Bundle-Name: Blade Pollprocessor
-Bundle-SymbolicName: blade.pollprocessor
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: \
-	javax.portlet;version='[2.0,3)',\
-	javax.servlet;version='[2.5,4)',\
-	*
--includeresource:\
-	classes,\
-	META-INF/resources=src/main/resources/META-INF/resources,\
-	@lib/util-java.jar!/com/liferay/util/Encryptor.class,\
-	@lib/util-java.jar!/com/liferay/util/EncryptorException.class
-
--dsannotations: *
+Bundle-Version: 1.0.0
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true
