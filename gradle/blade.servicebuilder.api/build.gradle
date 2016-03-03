@@ -1,5 +1,5 @@
-version='1.0.0'
-
 dependencies {
-	compile group: 'com.liferay', name: 'com.liferay.osgi.util', version: '2.0.4'
+	compile 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
+	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'com.liferay:com.liferay.osgi.util:2.0.4'
 }

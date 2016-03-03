@@ -1,13 +1,5 @@
--dsannotations: *
--sources: true
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: \
-	javax.portlet;version='[2.0,3)',\
-	javax.servlet;version='[2.5,4)',\
-	*
--includeresource:\
-	META-INF/resources=src/main/resources/META-INF/resources
+Bundle-Version: 1.0.0
+Web-ContextPath: /bladestrutsaction
 -jsp: *.jsp,*.jspf
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
-Web-ContextPath: /bladestrutsaction
+-sources: true

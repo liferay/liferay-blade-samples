@@ -1,1 +1,4 @@
-version='1.0'
+dependencies {
+	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'org.osgi:org.osgi.service.component.annotations:1.3.0'
+}
