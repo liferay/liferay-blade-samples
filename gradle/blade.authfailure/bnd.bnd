@@ -1,6 +1,2 @@
--dsannotations: *
+Bundle-Version: 1.0.0
 -sources: true
-Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
-Import-Package: *
-Private-Package: blade.authfailure

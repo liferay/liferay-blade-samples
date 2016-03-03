@@ -1,14 +1,5 @@
--dsannotations: *
--sources: true
-Bundle-Version: 1.0.0.${tstamp}
-Private-Package: blade.portlet.*
-Import-Package:  \
-	javax.portlet;version='[2.0,3)',\
-	javax.servlet;version='[2.5,4)',\
-	org.osgi.framework;version='[1.7,2)',\
-	com.liferay.portal.kernel.portlet.bridges.mvc;version="1.0.0",\
-	com.liferay.portal.kernel.template;version="7.0.0",\
-	*
+Bundle-Version: 1.0.0
 -includeresource: \
 	@util-bridges-7.0.0-SNAPSHOT.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
 	@util-taglib-7.0.0-SNAPSHOT.jar!/META-INF/*.tld
+-sources: true
