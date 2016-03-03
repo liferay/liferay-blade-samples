@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+FileTree bndtoolsGradleTree = fileTree(
+	dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree gradleTree = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
+FileTree liferayGradleTree = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
+FileTree mavenTree = fileTree(dir: 'maven/', include: '**/target/*.jar')
+
+task bndtoolSizeTest <<{
+	assert 25 == bndtoolsTree.size()
+}
+
+task filesOutputsTest <<{
+	def collection1 = liferayGradleTree.files.name.sort() - gradleTree.files.name.sort()
+	assert [] == collection1
+
+	def collection2 = liferayGradleTree.files.name.sort() - bndtoolsGradleTree.files.name.sort()
+	assert [] == collection2
+
+	def collection3 = liferayGradleTree.files.name.sort() - mavenTree.files.name.sort()
+	assert [] == collection3
+}
+
+task gradleSizeTest <<{
+	assert 25 == gradleTree.size()
+}
+
+task liferayGradleSizeTest <<{
+	assert 25 == liferayGradleTree.size()
+}
+
+task mavenSizeTest <<{
+	assert 25 == mavenTree.size()
+}
