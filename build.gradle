@@ -1,5 +1,3 @@
-apply plugin: 'java'
-
 FileTree bndtoolsGradleTree = fileTree(
 	dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleTree = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
@@ -7,7 +5,7 @@ FileTree liferayGradleTree = fileTree(dir: 'liferay-gradle/', include: '**/libs/
 FileTree mavenTree = fileTree(dir: 'maven/', include: '**/target/*.jar')
 
 task bndtoolSizeTest <<{
-	assert 25 == bndtoolsTree.size()
+	assert 25 == bndtoolsGradleTree.size()
 }
 
 task filesOutputsTest <<{
