@@ -1,18 +1,28 @@
 -dependson = \
 	blade.authenticator.shiro,\
 	blade.authfailure,\
+	blade.configurationaction,\
+	blade.friendlyurl,\
+	blade.gogo,\
 	blade.hook.jsp,\
+	blade.indexerpostprocessor,\
+	blade.jsf.portlet.ds,\
+	blade.lifecycle.loginpreaction,\
+	blade.modellistener,\
+	blade.pollprocessor,\
 	blade.portlet.actioncommand,\
 	blade.portlet.blueprint,\
 	blade.portlet.ds,\
 	blade.portlet.filter,\
+	blade.portlet.jsp,\
 	blade.portlet.osgiapi,\
-	blade.run,\
+	blade.rest,\
 	blade.service.hook.user,\
 	blade.servicebuilder.api,\
 	blade.servicebuilder.svc,\
 	blade.servicebuilder.test,\
 	blade.servicebuilder.web,\
-	blade.trackmen
+	blade.strutsaction,\
+	blade.strutsportletaction
 
 -nobundles = true
