@@ -8,6 +8,7 @@ buildscript {
 
 	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.portal.tools.service.builder", version: "1.0.103"
 	}
 }
 

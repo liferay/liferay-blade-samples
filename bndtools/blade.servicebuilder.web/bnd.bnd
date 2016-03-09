@@ -2,7 +2,7 @@ Bundle-Version: 1.0.0
 Private-Package: blade.servicebuilder.web
 -buildpath: \
 	blade.servicebuilder.api;version=latest,\
-	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay.portal:com.liferay.portal.kernel;version='1.0.2',\
 	javax.portlet;version='2.0.0',\
 	javax.servlet-api;version='3.0.1',\
 	org.osgi.service.component.annotations;version='1.3.0'

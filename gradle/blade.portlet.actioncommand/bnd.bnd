@@ -1,5 +1,5 @@
 Bundle-Version: 1.0.0
 -includeresource: \
-	@util-bridges-7.0.0-SNAPSHOT.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
-	@util-taglib-7.0.0-SNAPSHOT.jar!/META-INF/*.tld
+	@com.liferay.util.bridges-1.0.0.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
+	@com.liferay.util.taglib-1.0.0.jar!/META-INF/*.tld
 -sources: true
