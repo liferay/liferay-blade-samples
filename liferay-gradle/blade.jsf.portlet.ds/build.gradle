@@ -2,7 +2,7 @@ dependencies {
 	compile 'com.liferay.faces:liferay-faces-bridge-api:4.2.0-beta'
 	compile 'com.liferay.faces:liferay-faces-bridge-impl:4.2.0-beta'
 	compile 'com.liferay.faces:liferay-faces-util:4.2.0-beta'
-	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
 	compile 'com.sun.faces:jsf-api:2.2.6'
 	compile 'com.sun.faces:jsf-impl:2.2.6'
 	compile 'javax.portlet:portlet-api:2.0'
