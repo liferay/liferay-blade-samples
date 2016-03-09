@@ -12,8 +12,6 @@ dependencies {
 	compile 'com.liferay:com.liferay.portal.spring.extender:1.0.2'
 	compile 'com.liferay:com.liferay.osgi.util:2.0.4'
 	compile  project(':blade.servicebuilder.api')
-	testCompile 'com.liferay.portal:portal-test:7.0.0-SNAPSHOT'
-	testCompile 'com.liferay.portal:portal-test-internal:7.0.0-SNAPSHOT'
 	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.0-SNAPSHOT'
 	testCompile 'junit:junit:4.+'
 }
