@@ -39,7 +39,7 @@
 					<instructions>
 						<Private-Package>blade.servicebuilder.test</Private-Package>
 						<Bundle-Activator>blade.servicebuilder.test.Activator</Bundle-Activator>
-						<Import-Package>com.liferay.portal.kernel.*,org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>
 				</configuration>

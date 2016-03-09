@@ -33,7 +33,7 @@
 				<configuration>
 					<instructions>
 						<Export-Package>blade.servicebuilder.*</Export-Package>
-						<Import-Package>com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>
 				</configuration>
