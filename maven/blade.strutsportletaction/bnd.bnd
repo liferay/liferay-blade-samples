@@ -1,6 +1,2 @@
--dsannotations: *
--sources: true
 Bundle-Version: 1.0.0.${tstamp}
-Bundle-Name: Blade StrutsPortletAction
-Service-Component: *
-Import-Package: *
+-sources: true

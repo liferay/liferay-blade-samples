@@ -1,9 +1,7 @@
--dsannotations: *
--sources: true
 Bundle-Version: 1.0.0.${tstamp}
-Service-Component: *
 Import-Package: \
 	javax.ws.rs;version=!,\
 	javax.ws.rs.core;version=!,\
 	*
 Require-Capability: osgi.contract; filter:="(&(osgi.contract=JavaJAXRS)(version=2))"
+-sources: true
