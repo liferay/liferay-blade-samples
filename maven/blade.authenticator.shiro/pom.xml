@@ -46,8 +46,14 @@
 					<instructions>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
-						<Include-Resource>{maven-resources}, @shiro-core-1.1.0.jar</Include-Resource>
-						<Private-Package>org.apache.shiro.*</Private-Package>
+						<Include-Resource>
+							{maven-resources},
+							@shiro-core-1.1.0.jar
+						</Include-Resource>
+						<Private-Package>
+							blade.authenticator.shiro,
+							org.apache.shiro.*
+						</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>

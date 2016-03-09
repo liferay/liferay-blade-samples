@@ -54,7 +54,7 @@
 						<Embed-Transitive>true</Embed-Transitive>
 						<Include-Resource>{maven-resources}</Include-Resource>
 						<Private-Package>blade.portlet</Private-Package>
-						<Import-Package>javax.portlet;version="[2.0,3)",javax.servlet;version="[2.5,4)"</Import-Package>
+						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 					</instructions>
 				</configuration>

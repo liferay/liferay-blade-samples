@@ -33,8 +33,8 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
+						<Import-Package>*</Import-Package>
 						<Private-Package>blade.portlet</Private-Package>
-						<Import-Package>javax.portlet;version="[2.0,3)",javax.servlet;version="[2.5,4)"</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

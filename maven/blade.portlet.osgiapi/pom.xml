@@ -41,8 +41,7 @@
 					<instructions>
 						<Bundle-Activator>blade.portlet.Activator</Bundle-Activator>
 						<Private-Package>blade.portlet</Private-Package>
-						<Import-Package>javax.portlet;version="[2.0,3)",org.osgi.framework;versi
-							on="[1.7,2)",javax.servlet;version="[2.5,4.0.0)"</Import-Package>
+						<Import-Package>*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

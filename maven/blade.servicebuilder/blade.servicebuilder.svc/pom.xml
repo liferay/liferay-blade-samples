@@ -44,11 +44,11 @@
 							blade.servicebuilder.service.impl,
 							blade.servicebuilder.service.persistence.impl
 						</Private-Package>
-						<Import-Package>blade.servicebuilder.*,com.liferay.portal.service;version="7.0.0",org.osgi.framework;version="[1.7,2)",*</Import-Package>
+						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<Liferay-Service>true</Liferay-Service>
 						<Require-Capability>
-						<![CDATA[liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
+							<![CDATA[liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"]]>
 						</Require-Capability>
 						<Spring-Context>META-INF/spring</Spring-Context>
 						<Require-SchemaVersion>1.0.0</Require-SchemaVersion>
