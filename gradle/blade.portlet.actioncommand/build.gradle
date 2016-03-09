@@ -1,5 +1,5 @@
 dependencies {
-	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
 	compile 'com.liferay.portal:util-bridges:7.0.0-SNAPSHOT'
 	compile 'com.liferay.portal:util-taglib:7.0.0-SNAPSHOT'
 	compile 'javax.portlet:portlet-api:2.0'
