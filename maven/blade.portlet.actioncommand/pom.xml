@@ -69,14 +69,14 @@
 							org.osgi.framework;version="[1.7,2)",
 							javax.servlet;version="[2.5,4)",
 							com.liferay.portal.kernel.portlet.bridges.mvc;version="1.0.0",
-							com.liferay.portal.kernel.template;version="7.0.0",
+							com.liferay.portal.kernel.template;version="1.0.0",
 							*
 						</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<Include-Resource>
 							{maven-resources},
-							@util-bridges-7.0.0-SNAPSHOT.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,
-							@util-taglib-7.0.0-SNAPSHOT.jar!/META-INF/*.tld
+							@com.liferay.util.bridges-1.0.0.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,
+							@com.liferay.util.taglib-1.0.0.jar!/META-INF/*.tld
 						</Include-Resource>
 					</instructions>
 				</configuration>
