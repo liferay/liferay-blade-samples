@@ -6,6 +6,7 @@ script:
 - bash -c 'cd liferay-gradle; ./gradlew build'
 - bash -c 'cd maven; mvn --fail-at-end package'
 - bash -c 'cd bndtools; ./gradlew build'
+- bash -c './gradlew outputFilesTest'
 notifications:
   webhooks:
     urls:

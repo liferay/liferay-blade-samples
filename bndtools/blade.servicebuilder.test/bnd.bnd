@@ -1,3 +1,4 @@
+Bundle-Version: 1.0.0
 Bundle-Activator: blade.servicebuilder.test.Activator
 Private-Package: blade.servicebuilder.test
 -buildpath: \
