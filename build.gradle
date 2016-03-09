@@ -20,3 +20,8 @@ task outputFilesSortTest <<{
 	def collection3 = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
 	assert [] == collection3
 }
+
+task outputFilesTest << {}
+
+outputFilesTest.dependsOn outputFilesSizeTest
+outputFilesTest.dependsOn outputFilesSortTest
