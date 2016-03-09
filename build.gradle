@@ -11,14 +11,14 @@ task outputFilesSizeTest << {
 }
 
 task outputFilesSortTest << {
-	def collection1 = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
-	assert [] == collection1
+	def fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
+	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
 
-	def collection2 = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
-	assert [] == collection2
+	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
+	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
 
-	def collection3 = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
-	assert [] == collection3
+	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
+	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
 task outputFilesTest << {}
