@@ -3,7 +3,7 @@ FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
 
-task outputFilesTest <<{
+task outputFilesSortTest <<{
 	def collection1 = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
 	assert [] == collection1
 
