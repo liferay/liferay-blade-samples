@@ -1,4 +1,5 @@
 language: java
+install: /bin/true
 sudo: false
 script:
 - bash -c 'cd gradle; ./gradlew build'
