@@ -3,7 +3,7 @@ Private-Package: \
 	blade.portlet,\
 	blade.portlet.actioncommand
 -buildpath: \
-	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay.portal:com.liferay.portal.kernel;version='1.0.2',\
 	com.liferay.portal:util-bridges;version='[7.0,8)',\
 	com.liferay.portal:util-java;version='[7.0,8)',\
 	com.liferay.portal:util-taglib;version='[7.0,8)',\

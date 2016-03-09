@@ -11,7 +11,7 @@ Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extende
 Require-SchemaVersion: 1.0.0
 Spring-Context: META-INF/spring
 -buildpath: \
-	com.liferay.portal:portal-service;version='[7.0,8)',\
+	com.liferay.portal:com.liferay.portal.kernel;version='1.0.2',\
 	com.liferay.portal:portal-test-internal;version=latest,\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
 	com.liferay:com.liferay.portal.spring.extender;version='1.0.2',\
