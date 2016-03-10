@@ -8,8 +8,8 @@ Private-Package: \
 	blade.servicebuilder.service.persistence.impl,\
 	blade.servicebuilder.service.util
 Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
-Require-SchemaVersion: 1.0.0
-Spring-Context: META-INF/spring
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Spring-Context: META-INF/spring
 -buildpath: \
 	com.liferay.portal:com.liferay.portal.kernel;version='1.0.2',\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
