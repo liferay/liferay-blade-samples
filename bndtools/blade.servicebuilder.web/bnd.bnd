@@ -10,5 +10,6 @@ Private-Package: blade.servicebuilder.web
 	META-INF/resources=resources,\
 	content=src/content
 -jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true
