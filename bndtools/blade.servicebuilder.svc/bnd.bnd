@@ -11,9 +11,9 @@ Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extende
 Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Spring-Context: META-INF/spring
 -buildpath: \
-	com.liferay.portal:com.liferay.portal.kernel;version='1.0.2',\
+	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
-	com.liferay:com.liferay.portal.spring.extender;version='1.0.2',\
+	com.liferay:com.liferay.portal.spring.extender;version='1.0.5',\
 	org.jboss.arquillian.junit:arquillian-junit-core;version='1.1.8.Final';strategy='exact',\
 	biz.aQute.bndlib;version='3.1.0',\
 	biz.aQute.junit;version='3.1.0',\
