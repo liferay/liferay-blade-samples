@@ -21,19 +21,19 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>1.0.2</version>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.bridges</artifactId>
-			<version>1.0.0</version>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.taglib</artifactId>
-			<version>1.0.0</version>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -68,8 +68,8 @@
 						<_dsannotations>*</_dsannotations>
 						<Include-Resource>
 							{maven-resources},
-							@com.liferay.util.bridges-1.0.0.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,
-							@com.liferay.util.taglib-1.0.0.jar!/META-INF/*.tld
+							@com.liferay.util.bridges-2.0.0.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,
+							@com.liferay.util.taglib-2.0.0.jar!/META-INF/*.tld
 						</Include-Resource>
 					</instructions>
 				</configuration>
