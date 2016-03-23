@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1447967428000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1458749254000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="biz.aQute.remote.launcher"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.0.0.201509101327"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="9f9b12159fd8058ead2a84a1110932850e3b06415e98ed5d02f4407cf16b5e6c"/>
+      <attribute name="url" value="biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.0.0.jar"/>
+      <attribute name="size" type="Long" value="310445"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="biz.aQute.remote.launcher"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201509101327"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="biz.aQute.remote.launcher"/>
+      <attribute name="bundle-version" type="Version" value="3.0.0.201509101327"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.osgi.impl.bundle.repoindex.cli"/>
