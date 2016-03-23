@@ -15,17 +15,12 @@
  */
 package blade.portlet;
 
-import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
-import com.liferay.portal.kernel.servlet.ServletContextPool;
-import com.liferay.portal.kernel.model.PortletApp;
 import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
 
 import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletContext;
-import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true,
 	property = {
@@ -40,30 +35,4 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class GreeterPortlet extends FreeMarkerPortlet {
-
-	@Override
-	public void destroy() {
-		PortletContext portletContext = getPortletContext();
-
-		ServletContextPool.remove(portletContext.getPortletContextName());
-
-		super.destroy();
-	}
-
-	@Override
-	public void init(PortletConfig portletConfig) throws PortletException {
-		super.init(portletConfig);
-
-		LiferayPortletConfig liferayPortletConfig =
-			(LiferayPortletConfig)portletConfig;
-
-		com.liferay.portal.kernel.model.Portlet portlet =
-			liferayPortletConfig.getPortlet();
-
-		PortletApp portletApp = portlet.getPortletApp();
-
-		ServletContextPool.put(
-			portletApp.getServletContextName(), portletApp.getServletContext());
-	}
-
 }
