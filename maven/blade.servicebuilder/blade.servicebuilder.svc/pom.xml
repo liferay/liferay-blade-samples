@@ -56,6 +56,7 @@
 						<Liferay-Spring-Context>META-INF/spring</Liferay-Spring-Context>
 						<Liferay-Require-SchemaVersion>1.0.0</Liferay-Require-SchemaVersion>
 						<_plugin.service>com.liferay.ant.bnd.service.ServiceAnalyzerPlugin</_plugin.service>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

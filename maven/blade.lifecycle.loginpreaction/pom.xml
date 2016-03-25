@@ -42,6 +42,7 @@
 						<Private-Package>blade.lifecycle.loginpreaction</Private-Package>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

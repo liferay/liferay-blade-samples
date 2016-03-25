@@ -42,6 +42,7 @@
 						<Import-Package>*</Import-Package>
 						<Private-Package>blade.service.hook.user</Private-Package>
 						<_dsannotations>*</_dsannotations>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

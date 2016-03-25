@@ -42,6 +42,7 @@
 						<Bundle-Activator>blade.portlet.Activator</Bundle-Activator>
 						<Private-Package>blade.portlet</Private-Package>
 						<Import-Package>*</Import-Package>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>
