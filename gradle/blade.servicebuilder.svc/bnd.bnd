@@ -1,6 +1,6 @@
 Bundle-Version: 1.0.0
 Liferay-Service: true
-Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
 Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Spring-Context: META-INF/spring
+-plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
 -sources: true

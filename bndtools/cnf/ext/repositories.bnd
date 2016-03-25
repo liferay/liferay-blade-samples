@@ -3,7 +3,7 @@ bnd-release	=	https://dl.bintray.com/bnd/dist/3.1.0/
 
 -pluginpath:\
         ${build}/cache/biz.aQute.repository.aether.jar;url=${bnd-release}/biz.aQute.repository.aether/biz.aQute.repository.aether-latest.jar,\
-        ${build}/cache/com.liferay.ant.bnd.jar;url=https://repository.liferay.com/nexus/content/groups/liferay-ce/com/liferay/com.liferay.ant.bnd/2.0.13/com.liferay.ant.bnd-2.0.13.jar
+        ${build}/cache/com.liferay.ant.bnd.jar;url=https://repository.liferay.com/nexus/content/groups/liferay-ce/com/liferay/com.liferay.ant.bnd/2.0.18/com.liferay.ant.bnd-2.0.18.jar
 
 -plugin.enroute.distrorepo = \
 	aQute.bnd.jpm.Repository; \

@@ -7,17 +7,17 @@ Private-Package: \
 	blade.servicebuilder.service.impl,\
 	blade.servicebuilder.service.persistence.impl,\
 	blade.servicebuilder.service.util
-Require-Capability: liferay.extender;filter:="(&(liferay.extender=spring.extender)(version>=1.0)(!(version>=2.0)))"
 Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Spring-Context: META-INF/spring
 -buildpath: \
 	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
-	com.liferay:com.liferay.portal.spring.extender;version='1.0.5',\
+	com.liferay:com.liferay.portal.spring.extender;version='2.0.0',\
 	org.jboss.arquillian.junit:arquillian-junit-core;version='1.1.8.Final';strategy='exact',\
 	biz.aQute.bndlib;version='3.1.0',\
 	biz.aQute.junit;version='3.1.0',\
 	blade.servicebuilder.api;version=latest,\
 	osgi.core;version='6.0.0'
 -includeresource: resources
+-plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
 -sources: true

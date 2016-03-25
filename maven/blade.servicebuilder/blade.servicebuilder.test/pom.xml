@@ -41,6 +41,7 @@
 						<Bundle-Activator>blade.servicebuilder.test.Activator</Bundle-Activator>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

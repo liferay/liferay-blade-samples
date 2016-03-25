@@ -35,6 +35,7 @@
 					<instructions>
 						<Import-Package>*</Import-Package>
 						<Private-Package>blade.portlet</Private-Package>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

@@ -43,6 +43,7 @@
 						<_dsannotations>*</_dsannotations>
 						<Include-Resource>{maven-resources}</Include-Resource>
 						<Private-Package>blade.authfailure</Private-Package>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>

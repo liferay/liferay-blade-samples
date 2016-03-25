@@ -54,6 +54,7 @@
 							blade.authenticator.shiro,
 							org.apache.shiro.*
 						</Private-Package>
+						<_sources>true</_sources>
 					</instructions>
 				</configuration>
 			</plugin>
