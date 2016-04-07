@@ -14,6 +14,15 @@
 
 package blade.portlet;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.struts.BaseStrutsPortletAction;
+import com.liferay.portal.kernel.struts.StrutsPortletAction;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
@@ -25,24 +34,13 @@ import javax.portlet.ResourceResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.struts.BaseStrutsPortletAction;
-import com.liferay.portal.kernel.struts.StrutsPortletAction;
-import com.liferay.portal.kernel.service.UserLocalService;
-import com.liferay.portal.kernel.theme.ThemeDisplay;
-import com.liferay.portal.kernel.util.WebKeys;
-
 /**
  * @author Kamesh Sampath
  */
 @Component(
-				immediate = true,
-				property = {
-					"path=/login/"
-				},
-				service = StrutsPortletAction.class)
+				immediate = true, property = {"path=/login/login"},
+				service = StrutsPortletAction.class
+)
 public class BladePortletAction extends BaseStrutsPortletAction {
 
 	@Override
@@ -53,14 +51,12 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 
 		_log.debug("BladePortletAction - procesAction");
 
-		ThemeDisplay themeDisplay =
-			(ThemeDisplay)actionRequest.getAttribute(
-				WebKeys.THEME_DISPLAY);
+		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
+			WebKeys.THEME_DISPLAY);
 
 		User loggedinUser = themeDisplay.getUser();
 
 		if (loggedinUser != null) {
-
 			_log.info("Logging in with user:[" + loggedinUser.getFirstName() +
 				" " +
 				loggedinUser.getLastName() + "]");
@@ -81,15 +77,13 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 
 		_log.debug("BladePortletAction - render");
 
-		ThemeDisplay themeDisplay =
-			(ThemeDisplay)renderRequest.getAttribute(
-				WebKeys.THEME_DISPLAY);
+		ThemeDisplay themeDisplay = (ThemeDisplay)renderRequest.getAttribute(
+			WebKeys.THEME_DISPLAY);
 
 		User loggedinUser = themeDisplay.getUser();
 
 		if (loggedinUser != null) {
-
-			loggedinUser.setLastName("Blade");
+			loggedinUser.setLastName("BLADE");
 
 			loggedinUser.setGreeting("Hello," + loggedinUser.getFirstName() +
 				" from BLADE!");
@@ -118,7 +112,9 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 		_userLocalService = userService;
 	}
 
-	private Log _log = LogFactoryUtil.getLog(BladePortletAction.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladePortletAction.class);
+
 	private UserLocalService _userLocalService;
 
 }

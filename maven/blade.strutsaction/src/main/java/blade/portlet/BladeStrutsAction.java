@@ -14,6 +14,11 @@
 
 package blade.portlet;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.struts.BaseStrutsAction;
+import com.liferay.portal.kernel.struts.StrutsAction;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -22,24 +27,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.struts.BaseStrutsAction;
-import com.liferay.portal.kernel.struts.StrutsAction;
-
 /**
  * @author Kamesh Sampath
  */
 @Component(
-				immediate = true,
-				property = {
-					"path=/portal/blade"
-				},
-				service = StrutsAction.class)
+				immediate = true, property = {"path=/portal/blade"},
+				service = StrutsAction.class
+)
 public class BladeStrutsAction extends BaseStrutsAction {
 
 	public String execute(
-		HttpServletRequest request, HttpServletResponse response)
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		_log.debug("Processing path /c/portal/blade");
@@ -57,7 +55,9 @@ public class BladeStrutsAction extends BaseStrutsAction {
 		_servletContext = servletContext;
 	}
 
-	private Log _log = LogFactoryUtil.getLog(BladeStrutsAction.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeStrutsAction.class);
+
 	private ServletContext _servletContext;
 
 }

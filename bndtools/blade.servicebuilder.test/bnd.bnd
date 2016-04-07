@@ -1,7 +1,9 @@
-Bundle-Version: 1.0.0
 Bundle-Activator: blade.servicebuilder.test.Activator
+Bundle-Version: 1.0.0
+-sources: true
+
 Private-Package: blade.servicebuilder.test
 -buildpath: \
 	blade.servicebuilder.api;version=latest,\
+	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
 	osgi.core;version='6.0.0'
--sources: true

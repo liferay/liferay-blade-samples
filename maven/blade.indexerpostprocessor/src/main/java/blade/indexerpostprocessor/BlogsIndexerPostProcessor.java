@@ -33,13 +33,13 @@ import org.osgi.service.component.annotations.Component;
 	property = {
 		"indexer.class.name=com.liferay.portlet.blogs.util.BlogsIndexer"
 	},
-	service=IndexerPostProcessor.class
+	service = IndexerPostProcessor.class
 )
 public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessContextBooleanFilter(
-		BooleanFilter booleanFilter, SearchContext searchContext)
+			BooleanFilter booleanFilter, SearchContext searchContext)
 		throws Exception {
 
 		_log.info("postProcessContextBooleanFilter");
@@ -54,7 +54,7 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessDocument(Document document, Object obj)
-			throws Exception {
+		throws Exception {
 
 		_log.info("postProcessDocument");
 	}
@@ -68,9 +68,8 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessSearchQuery(
-		BooleanQuery booleanQuery, BooleanFilter booleanFilter,
-		SearchContext searchContext)
-		throws Exception {
+		BooleanQuery searchQuery, BooleanFilter booleanFilter,
+		SearchContext searchContext) throws Exception {
 
 		_log.info("postProcessSearchQuery");
 	}
@@ -89,6 +88,7 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 		_log.info("postProcessSummary");
 	}
 
-	private Log _log = LogFactoryUtil.getLog(BlogsIndexerPostProcessor.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		BlogsIndexerPostProcessor.class);
 
 }

@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true, property = {"key=auth.failure"},
 	service = AuthFailure.class
@@ -40,6 +41,7 @@ public class LogAuthFailure implements AuthFailure {
 		try {
 			User user = UserLocalServiceUtil.getUserByEmailAddress(
 				companyId, emailAddress);
+
 			int failures = user.getFailedLoginAttempts();
 
 			_log.info("onFailureByEmailAddress: " + emailAddress +
@@ -56,6 +58,7 @@ public class LogAuthFailure implements AuthFailure {
 		try {
 			User user = UserLocalServiceUtil.getUserByScreenName(
 				companyId, screenName);
+
 			int failures = user.getFailedLoginAttempts();
 
 			_log.info("onFailureByScreenName: " + screenName +

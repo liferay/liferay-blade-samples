@@ -1,4 +1,9 @@
 Bundle-Version: 1.0.0
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true
+
 Private-Package: blade.servicebuilder.web
 -buildpath: \
 	blade.servicebuilder.api;version=latest,\
@@ -6,10 +11,3 @@ Private-Package: blade.servicebuilder.web
 	javax.portlet;version='2.0.0',\
 	javax.servlet-api;version='3.0.1',\
 	org.osgi.service.component.annotations;version='1.3.0'
--includeresource: \
-	META-INF/resources=resources,\
-	content=src/content
--jsp: *.jsp,*.jspf
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
--sources: true

@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true, property = {"key=auth.max.failures"},
 	service = AuthFailure.class
@@ -40,6 +41,7 @@ public class LogMaxFailures implements AuthFailure {
 		try {
 			User user = UserLocalServiceUtil.getUserByEmailAddress(
 				companyId, emailAddress);
+
 			boolean lockout = user.isLockout();
 
 			_log.info("onFailureByEmailAddress: " + emailAddress +
@@ -56,11 +58,13 @@ public class LogMaxFailures implements AuthFailure {
 		try {
 			User user = UserLocalServiceUtil.getUserByScreenName(
 				companyId, screenName);
+
 			boolean lockout = user.isLockout();
 
 			_log.info("onFailureByScreenName: " + screenName +
 				" is " + (lockout ? "" : "not") + " locked out.");
-		} catch (PortalException e) {
+		} 
+		catch (PortalException e) {
 		}
 	}
 
@@ -75,7 +79,8 @@ public class LogMaxFailures implements AuthFailure {
 
 			_log.info("onFailureById: userId " + userId +
 				" is " + (lockout ? "" : "not") + " locked out.");
-		} catch (PortalException e) {
+		} 
+		catch (PortalException e) {
 		}
 	}
 

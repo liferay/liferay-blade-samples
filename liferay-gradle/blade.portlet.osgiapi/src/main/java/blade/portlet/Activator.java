@@ -23,8 +23,10 @@ import javax.portlet.Portlet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
+
 public class Activator implements BundleActivator {
 
+	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		Dictionary<String, Object> properties = new Hashtable<>();
 
@@ -40,6 +42,7 @@ public class Activator implements BundleActivator {
 			Portlet.class, new OSGiAPIPortlet(), properties);
 	}
 
+	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		_serviceRegistration.unregister();
 	}

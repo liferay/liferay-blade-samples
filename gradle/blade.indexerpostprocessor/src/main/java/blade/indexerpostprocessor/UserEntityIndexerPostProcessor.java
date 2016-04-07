@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true,
 	property = {"indexer.class.name=com.liferay.portal.model.User"},

@@ -15,39 +15,37 @@
  */
 package blade.authfailure;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.AuthException;
+import com.liferay.portal.kernel.security.auth.AuthFailure;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.security.auth.AuthException;
-import com.liferay.portal.kernel.security.auth.AuthFailure;
-import com.liferay.portal.kernel.service.UserLocalServiceUtil;
-
-
 @Component(
-	immediate = true,
-	property = {
-		"key=auth.failure"
-	},
-	service=AuthFailure.class
+	immediate = true, property = {"key=auth.failure"},
+	service = AuthFailure.class
 )
 public class LogAuthFailure implements AuthFailure {
 
 	@Override
 	public void onFailureByEmailAddress(long companyId, String emailAddress,
 			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
-			throws AuthException {
+		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByEmailAddress(companyId, emailAddress);
+			User user = UserLocalServiceUtil.getUserByEmailAddress(
+				companyId, emailAddress);
+
 			int failures = user.getFailedLoginAttempts();
 
 			_log.info("onFailureByEmailAddress: " + emailAddress +
-					" has failed to login " + failures + " times");
+				" has failed to login " + failures + " times");
 		} catch (PortalException e) {
 		}
 	}
@@ -55,14 +53,16 @@ public class LogAuthFailure implements AuthFailure {
 	@Override
 	public void onFailureByScreenName(long companyId, String screenName,
 			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
-			throws AuthException {
+		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByScreenName(companyId, screenName);
+			User user = UserLocalServiceUtil.getUserByScreenName(
+				companyId, screenName);
+
 			int failures = user.getFailedLoginAttempts();
 
 			_log.info("onFailureByScreenName: " + screenName +
-					" has failed to login " + failures + " times");
+				" has failed to login " + failures + " times");
 		} catch (PortalException e) {
 		}
 	}
@@ -70,18 +70,18 @@ public class LogAuthFailure implements AuthFailure {
 	@Override
 	public void onFailureByUserId(long companyId, long userId,
 			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
-			throws AuthException {
+		throws AuthException {
 
 		try {
 			User user = UserLocalServiceUtil.getUserById(userId);
 			int failures = user.getFailedLoginAttempts();
 
 			_log.info("onFailureByUserId: userId " + userId +
-					" has failed to login " + failures + " times");
+				" has failed to login " + failures + " times");
 		} catch (PortalException e) {
 		}
 	}
 
-	private Log _log = LogFactoryUtil.getLog(LogAuthFailure.class);
+	private static final Log _log = LogFactoryUtil.getLog(LogAuthFailure.class);
 
 }

@@ -22,6 +22,7 @@ import javax.portlet.GenericPortlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+
 public class OSGiAPIPortlet extends GenericPortlet {
 
 	@Override

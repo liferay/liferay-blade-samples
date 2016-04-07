@@ -16,7 +16,16 @@
 
 package blade.configurationaction.portlet;
 
+import aQute.bnd.annotation.metatype.Configurable;
+
+import blade.configurationaction.config.MessageDisplayConfiguration;
+
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+
 import java.io.IOException;
+
 import java.util.Map;
 
 import javax.portlet.Portlet;
@@ -27,28 +36,20 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
-
-import aQute.bnd.annotation.metatype.Configurable;
-import blade.configurationaction.action.MessageDisplayConfigurationAction;
-import blade.configurationaction.config.MessageDisplayConfiguration;
-
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-
 @Component(
-				immediate = true,
-				configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
-				property = {
-					"com.liferay.portlet.display-category=category.sample",
-					"com.liferay.portlet.instanceable=true",
-					"javax.portlet.security-role-ref=power-user,user",
-					"javax.portlet.init-param.template-path=/",
-					"javax.portlet.init-param.config-template=/configuration.jsp",
-					"javax.portlet.init-param.view-template=/view.jsp",
-					"javax.portlet.resource-bundle=content.Language"
-				},
-				service = Portlet.class)
+	immediate = true,
+	configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
+	property = {
+		"com.liferay.portlet.display-category=category.sample",
+		"com.liferay.portlet.instanceable=true",
+		"javax.portlet.init-param.config-template=/configuration.jsp",
+		"javax.portlet.init-param.template-path=/",
+		"javax.portlet.init-param.view-template=/view.jsp",
+		"javax.portlet.resource-bundle=content.Language",
+		"javax.portlet.security-role-ref=power-user,user"
+	},
+	service = Portlet.class
+)
 public class BladeMessagePortlet extends MVCPortlet {
 
 	@Override
@@ -67,12 +68,13 @@ public class BladeMessagePortlet extends MVCPortlet {
 	@Activate
 	@Modified
 	protected void activate(Map<Object, Object> properties) {
-		_messageDisplayConfiguration =
-			Configurable.createConfigurable(
-				MessageDisplayConfiguration.class, properties);
+		_messageDisplayConfiguration = Configurable.createConfigurable(
+			MessageDisplayConfiguration.class, properties);
 	}
-	private Log _log =
-		LogFactoryUtil.getLog(MessageDisplayConfigurationAction.class);
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeMessagePortlet.class);
 
 	private volatile MessageDisplayConfiguration _messageDisplayConfiguration;
+
 }

@@ -22,15 +22,15 @@ repositories {
 apply plugin: "com.liferay.portal.tools.service.builder"
 
 buildService {
-	apiDir = "../blade.servicebuilder.api/src"
-	hbmFile = "resources/META-INF/module-hbm.xml"
-	implDir = "src"
+	apiDir = "../blade.servicebuilder.api/src/main/java"
+	hbmFile = "src/main/resources/META-INF/module-hbm.xml"
+	implDir = "src/main/java"
 	inputFile = "service.xml"
-	modelHintsFile = "resources/META-INF/portlet-model-hints.xml"
+	modelHintsFile = "src/main/resources/META-INF/portlet-model-hints.xml"
 	osgiModule = true
 	propsUtil = "blade.servicebuilder.service.util.PropsUtil"
-	resourcesDir = "resources"
-	springFile = "resources/META-INF/spring/module-spring.xml"
+	resourcesDir = "src/main/resources"
+	springFile = "src/main/resources/META-INF/spring/module-spring.xml"
 	springNamespaces = ["beans","osgi"]
-	sqlDir = "resources/META-INF/sql"
+	sqlDir = "src/main/resources/META-INF/sql"
 }

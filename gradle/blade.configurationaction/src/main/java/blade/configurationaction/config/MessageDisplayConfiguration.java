@@ -2,6 +2,7 @@
 package blade.configurationaction.config;
 
 import aQute.bnd.annotation.metatype.Meta;
+
 @Meta.OCD(id = "blade.configurationaction.config.MessageDisplayConfiguration")
 public interface MessageDisplayConfiguration {
 

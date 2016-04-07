@@ -7,10 +7,7 @@ import com.liferay.portal.kernel.events.LifecycleEvent;
 import org.osgi.service.component.annotations.Component;
 
 @Component(
-	immediate = true,
-	property = {
-		"key=login.events.pre"
-	},
+	immediate = true, property = {"key=login.events.pre"},
 	service = LifecycleAction.class
 )
 public class LoginPreAction implements LifecycleAction {
@@ -21,6 +18,5 @@ public class LoginPreAction implements LifecycleAction {
 
 		System.out.println("login.event.pre=" + lifecycleEvent);
 	}
-
 
 }

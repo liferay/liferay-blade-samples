@@ -25,6 +25,7 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true,
 	property = {
