@@ -14,7 +14,7 @@
  */
 --%>
 
-<%@ include file="/html/init.jsp"%>
+<%@ include file="/html/init.jsp" %>
 
 <p>
 	<b>BLADE StrutsAction Demo</b>

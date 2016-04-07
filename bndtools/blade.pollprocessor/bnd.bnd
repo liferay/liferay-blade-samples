@@ -1,13 +1,11 @@
 Bundle-Version: 1.0.0
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true
+
 Private-Package: blade.portlet
 -buildpath: \
 	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
 	javax.portlet;version='2.0.0',\
 	org.osgi.service.component.annotations;version='1.3.0'
--includeresource:\
-	META-INF/resources=resources,\
-	content=content
--jsp: *.jsp,*.jspf
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
--sources: true

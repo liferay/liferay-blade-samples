@@ -31,10 +31,10 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
 
 @Component(
-	immediate = true, 
+	immediate = true,
 	property = {
 		"jaxrs.application=true"
-	}, 
+	},
 	service = Application.class)
 @Path("/blade.users")
 public class UsersRestService extends Application {

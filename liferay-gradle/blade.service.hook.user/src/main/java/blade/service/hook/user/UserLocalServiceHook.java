@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceWrapper;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(service = ServiceWrapper.class)
 public class UserLocalServiceHook extends UserLocalServiceWrapper {
 
@@ -38,6 +39,7 @@ public class UserLocalServiceHook extends UserLocalServiceWrapper {
 
 		System.out.println(
 			"Authenticating user by email address " + emailAddress);
+
 		return super.authenticateByEmailAddress(companyId, emailAddress, password,
 			headerMap, parameterMap, resultsMap);
 	}
@@ -45,6 +47,7 @@ public class UserLocalServiceHook extends UserLocalServiceWrapper {
 	@Override
 	public User getUser(long userId) throws PortalException {
 		System.out.println("Getting user by id " + userId);
+
 		return super.getUser(userId);
 	}
 

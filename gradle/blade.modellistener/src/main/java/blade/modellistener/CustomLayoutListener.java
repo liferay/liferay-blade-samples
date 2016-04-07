@@ -27,7 +27,6 @@ import com.liferay.portal.kernel.model.ModelListener;
 )
 public class CustomLayoutListener extends BaseModelListener<Layout> {
 
-
 	@Override
 	public void onBeforeCreate(Layout model)
 		throws ModelListenerException {

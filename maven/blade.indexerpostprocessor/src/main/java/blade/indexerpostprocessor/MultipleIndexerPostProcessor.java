@@ -34,13 +34,13 @@ import org.osgi.service.component.annotations.Component;
 		"indexer.class.name=com.liferay.portlet.messageboards.util.MBMessageIndexer",
 		"indexer.class.name=com.liferay.portlet.usersadmin.util.ContactIndexer"
 	},
-	service=IndexerPostProcessor.class
+	service = IndexerPostProcessor.class
 )
 public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessContextBooleanFilter(
-		BooleanFilter booleanFilter, SearchContext searchContext)
+			BooleanFilter booleanFilter, SearchContext searchContext)
 		throws Exception {
 
 		_log.info("postProcessContextBooleanFilter");
@@ -55,7 +55,7 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessDocument(Document document, Object obj)
-			throws Exception {
+		throws Exception {
 
 		_log.info("postProcessDocument");
 	}
@@ -69,9 +69,8 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessSearchQuery(
-		BooleanQuery booleanQuery, BooleanFilter booleanFilter,
-		SearchContext searchContext)
-		throws Exception {
+		BooleanQuery searchQuery, BooleanFilter booleanFilter,
+		SearchContext searchContext) throws Exception {
 
 		_log.info("postProcessSearchQuery");
 	}
@@ -90,6 +89,7 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 		_log.info("postProcessSummary");
 	}
 
-	private Log _log = LogFactoryUtil.getLog(MultipleIndexerPostProcessor.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		MultipleIndexerPostProcessor.class);
 
 }

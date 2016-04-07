@@ -4,4 +4,5 @@ Export-Package: \
 	blade.servicebuilder.model,\
 	blade.servicebuilder.service,\
 	blade.servicebuilder.service.persistence
+-includeresource: META-INF/service.xml=../blade.servicebuilder.svc/service.xml
 -sources: true

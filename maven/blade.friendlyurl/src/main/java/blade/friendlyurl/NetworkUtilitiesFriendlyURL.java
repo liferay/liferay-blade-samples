@@ -24,7 +24,7 @@ import com.liferay.portal.kernel.portlet.FriendlyURLMapper;
 	property = {
 		"com.liferay.portlet.friendly-url-routes=META-INF/friendly-url-routes/routes.xml",
 		"javax.portlet.name=com_liferay_network_utilities_web_portlet_NetworkUtilitiesPortlet"
-	}, 
+	},
 	service = FriendlyURLMapper.class)
 public class NetworkUtilitiesFriendlyURL extends DefaultFriendlyURLMapper {
 
@@ -33,6 +33,6 @@ public class NetworkUtilitiesFriendlyURL extends DefaultFriendlyURLMapper {
 
 		return _MAPPING;
 	}
-	
+
 	private static final String _MAPPING = "NetworkUtilities";
 }

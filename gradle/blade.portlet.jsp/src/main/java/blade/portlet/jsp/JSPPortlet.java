@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import javax.portlet.Portlet;
 
 import org.osgi.service.component.annotations.Component;
+
 @Component(
 	immediate = true,
 	property = {

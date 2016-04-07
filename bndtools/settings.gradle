@@ -9,7 +9,7 @@ import aQute.bnd.build.Workspace
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
   repositories {
-	ivy { /* Configure the repository as an "ivy" repository */
+    ivy { /* Configure the repository as an "ivy" repository */
       url bnd_repourl
       layout 'pattern', {
             artifact '[module]/[artifact]-[revision].[ext]' /* OSGi repo pattern */
@@ -21,7 +21,7 @@ buildscript {
     classpath bnd_plugin
   }
 /* Since the files in the repository change with each build, we need to recheck for changes */
-  configurations.classpath.resolutionStrategy.cacheChangingModulesFor 30, 'minutes'
+//  configurations.classpath.resolutionStrategy.cacheChangingModulesFor 30, 'minutes'
   dependencies {
     components {
       all { ComponentMetadataDetails details ->
