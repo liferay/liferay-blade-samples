@@ -14,9 +14,21 @@
  * limitations under the License.
  */
 
-package blade.servicebuilder.web;
+package com.liferay.blade.samples.servicebuilder.web;
+
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.util.Constants;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.Validator;
 
 import java.io.IOException;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,46 +42,39 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import blade.servicebuilder.model.Foo;
-import blade.servicebuilder.service.FooLocalService;
-
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.servlet.SessionErrors;
-import com.liferay.portal.kernel.servlet.SessionMessages;
-import com.liferay.portal.kernel.util.Constants;
-import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.kernel.util.PortalUtil;
-
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.security-role-ref=power-user,user",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.resource-bundle=content.Language"
+		"javax.portlet.resource-bundle=content.Language",
+		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
 )
-
-/**
- * @author Andy Wu
-  */
 public class JSPPortlet extends MVCPortlet {
 
+	public FooLocalService getFooLocalService() {
+		return _fooLocalService;
+	}
+
 	@Override
-	public void processAction(ActionRequest actionRequest,
-			ActionResponse actionResponse) throws IOException, PortletException {
+	public void processAction(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws IOException, PortletException {
 
 		try {
 			String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
 			if (cmd.equals(Constants.ADD) || cmd.equals(Constants.UPDATE)) {
 				updateFoo(actionRequest);
-			} else if (cmd.equals(Constants.DELETE)) {
+			}
+			else if (cmd.equals(Constants.DELETE)) {
 				deleteFoo(actionRequest);
 			}
 
@@ -78,23 +83,30 @@ public class JSPPortlet extends MVCPortlet {
 					SessionMessages.add(actionRequest, "requestProcessed");
 				}
 
-				String redirect = ParamUtil.getString(actionRequest, "redirect");
+				String redirect = ParamUtil.getString(
+					actionRequest, "redirect");
 
 				actionResponse.sendRedirect(redirect);
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new PortletException(e);
 		}
 	}
 
 	@Override
 	public void render(RenderRequest request, RenderResponse response)
-			throws IOException, PortletException {
+		throws IOException, PortletException {
 
 		//set service bean
 		request.setAttribute("fooLocalService", getFooLocalService());
 
 		super.render(request, response);
+	}
+
+	@Reference
+	public void setFooLocalService(FooLocalService fooLocalService) {
+		this._fooLocalService = fooLocalService;
 	}
 
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {
@@ -122,8 +134,9 @@ public class JSPPortlet extends MVCPortlet {
 			dateHour += 12;
 		}
 
-		Date field4 = PortalUtil.getDate(dateMonth, dateDay, dateYear,
-				dateHour, dateMinute, PortalException.class);
+		Date field4 = PortalUtil.getDate(
+			dateMonth, dateDay, dateYear, dateHour, dateMinute,
+			PortalException.class);
 
 		if (fooId <= 0) {
 			Foo foo = getFooLocalService().createFoo(0);
@@ -135,8 +148,10 @@ public class JSPPortlet extends MVCPortlet {
 			foo.setField5(field5);
 			foo.isNew();
 			getFooLocalService().addFooWithoutId(foo);
-		} else {
+		}
+		else {
 			Foo foo = getFooLocalService().fetchFoo(fooId);
+
 			foo.setFooId(fooId);
 			foo.setField1(field1);
 			foo.setField2(field2);
@@ -145,17 +160,6 @@ public class JSPPortlet extends MVCPortlet {
 			foo.setField5(field5);
 			getFooLocalService().updateFoo(foo);
 		}
-	}
-
-	public FooLocalService getFooLocalService() {
-
-		return _fooLocalService;
-	}
-
-	@Reference
-	public void setFooLocalService(FooLocalService fooLocalService) {
-
-		this._fooLocalService = fooLocalService;
 	}
 
 	private FooLocalService _fooLocalService;
