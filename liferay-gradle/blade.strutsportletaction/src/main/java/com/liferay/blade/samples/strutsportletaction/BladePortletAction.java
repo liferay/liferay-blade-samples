@@ -12,16 +12,16 @@
  * details.
  */
 
-package blade.portlet;
+package com.liferay.blade.samples.strutsportletaction;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.struts.BaseStrutsPortletAction;
-import com.liferay.portal.kernel.struts.StrutsPortletAction;
-import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.struts.BaseStrutsPortletAction;
+import com.liferay.portal.kernel.struts.StrutsPortletAction;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -35,47 +35,55 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Kamesh Sampath
+ * @author Liferay
  */
 @Component(
-				immediate = true, property = {"path=/login/login"},
-				service = StrutsPortletAction.class
+	immediate = true, property = {"path=/login/login"},
+	service = StrutsPortletAction.class
 )
 public class BladePortletAction extends BaseStrutsPortletAction {
 
 	@Override
 	public void processAction(
-		StrutsPortletAction originalStrutsPortletAction,
-		PortletConfig portletConfig, ActionRequest actionRequest,
-		ActionResponse actionResponse) throws Exception {
+			StrutsPortletAction originalStrutsPortletAction,
+			PortletConfig portletConfig, ActionRequest actionRequest,
+			ActionResponse actionResponse)
+		throws Exception {
 
-		_log.debug("BladePortletAction - procesAction");
+		if (_log.isDebugEnabled()) {
+			_log.debug("BladePortletAction - procesAction");
+		}
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
 		User loggedinUser = themeDisplay.getUser();
 
-		if (loggedinUser != null) {
-			_log.info("Logging in with user:[" + loggedinUser.getFirstName() +
-				" " +
-				loggedinUser.getLastName() + "]");
+		if ((loggedinUser != null) && _log.isInfoEnabled()) {
+			_log.info(
+				"Logging in with user:[" + loggedinUser.getFirstName() + " " +
+					loggedinUser.getLastName() + "]");
 
-			_log.info("Logged in user: Current Greetings[" +
-				loggedinUser.getGreeting() + "]");
+			_log.info(
+				"Logged in user: Current Greetings[" +
+					loggedinUser.getGreeting() + "]");
 		}
 
-		originalStrutsPortletAction.processAction(originalStrutsPortletAction,
-			portletConfig, actionRequest, actionResponse);
+		originalStrutsPortletAction.processAction(
+			originalStrutsPortletAction, portletConfig, actionRequest,
+			actionResponse);
 	}
 
 	@Override
 	public String render(
-		StrutsPortletAction originalStrutsPortletAction,
-		PortletConfig portletConfig, RenderRequest renderRequest,
-		RenderResponse renderResponse) throws Exception {
+			StrutsPortletAction originalStrutsPortletAction,
+			PortletConfig portletConfig, RenderRequest renderRequest,
+			RenderResponse renderResponse)
+		throws Exception {
 
-		_log.debug("BladePortletAction - render");
+		if (_log.isDebugEnabled()) {
+			_log.debug("BladePortletAction - render");
+		}
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)renderRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
@@ -85,26 +93,31 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 		if (loggedinUser != null) {
 			loggedinUser.setLastName("BLADE");
 
-			loggedinUser.setGreeting("Hello," + loggedinUser.getFirstName() +
-				" from BLADE!");
+			loggedinUser.setGreeting(
+				"Hello," + loggedinUser.getFirstName() + " from BLADE!");
 
 			_userLocalService.updateUser(loggedinUser);
 		}
 
-		return originalStrutsPortletAction.render(originalStrutsPortletAction,
-			portletConfig, renderRequest, renderResponse);
+		return originalStrutsPortletAction.render(
+			originalStrutsPortletAction, portletConfig, renderRequest,
+			renderResponse);
 	}
 
 	@Override
 	public void serveResource(
-		StrutsPortletAction originalStrutsPortletAction,
-		PortletConfig portletConfig, ResourceRequest resourceRequest,
-		ResourceResponse resourceResponse) throws Exception {
+			StrutsPortletAction originalStrutsPortletAction,
+			PortletConfig portletConfig, ResourceRequest resourceRequest,
+			ResourceResponse resourceResponse)
+		throws Exception {
 
-		_log.debug("BladePortletAction - serveResource");
+		if (_log.isDebugEnabled()) {
+			_log.debug("BladePortletAction - serveResource");
+		}
 
-		originalStrutsPortletAction.serveResource(originalStrutsPortletAction,
-			portletConfig, resourceRequest, resourceResponse);
+		originalStrutsPortletAction.serveResource(
+			originalStrutsPortletAction, portletConfig, resourceRequest,
+			resourceResponse);
 	}
 
 	@Reference(unbind = "-")
