@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet.filter;
+
+package com.liferay.blade.samples.portlet.filter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,13 +27,16 @@ import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.name=blade_portlet_filter_ExamplePortlet",
 		"javax.portlet.display-name=Example Filter Portlet",
+		"javax.portlet.name=blade_portlet_filter_ExamplePortlet",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
