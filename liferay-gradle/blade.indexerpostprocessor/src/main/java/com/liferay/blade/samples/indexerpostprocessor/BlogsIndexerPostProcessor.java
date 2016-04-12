@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.indexerpostprocessor;
+
+package com.liferay.blade.samples.indexerpostprocessor;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -27,68 +28,89 @@ import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
+
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
-		"indexer.class.name=com.liferay.portlet.messageboards.util.MBMessageIndexer",
-		"indexer.class.name=com.liferay.portlet.usersadmin.util.ContactIndexer"
+		"indexer.class.name=com.liferay.portlet.blogs.util.BlogsIndexer"
 	},
 	service = IndexerPostProcessor.class
 )
-public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
+public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 
 	@Override
 	public void postProcessContextBooleanFilter(
 			BooleanFilter booleanFilter, SearchContext searchContext)
 		throws Exception {
 
-		_log.info("postProcessContextBooleanFilter");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessContextBooleanFilter");
+		}
 	}
 
 	@Override
-	public void postProcessContextQuery(BooleanQuery contextQuery,
-			SearchContext searchContext) throws Exception {
+	public void postProcessContextQuery(
+			BooleanQuery contextQuery, SearchContext searchContext)
+		throws Exception {
 
-		_log.info("postProcessContextQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessContextQuery");
+		}
 	}
 
 	@Override
 	public void postProcessDocument(Document document, Object obj)
 		throws Exception {
 
-		_log.info("postProcessDocument");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessDocument");
+		}
 	}
 
 	@Override
-	public void postProcessFullQuery(BooleanQuery fullQuery,
-			SearchContext searchContext) throws Exception {
+	public void postProcessFullQuery(
+			BooleanQuery fullQuery, SearchContext searchContext)
+		throws Exception {
 
-		_log.info("postProcessFullQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessFullQuery");
+		}
 	}
 
 	@Override
 	public void postProcessSearchQuery(
-		BooleanQuery searchQuery, BooleanFilter booleanFilter,
-		SearchContext searchContext) throws Exception {
+			BooleanQuery searchQuery, BooleanFilter booleanFilter,
+			SearchContext searchContext)
+		throws Exception {
 
-		_log.info("postProcessSearchQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSearchQuery");
+		}
 	}
 
 	@Override
-	public void postProcessSearchQuery(BooleanQuery searchQuery,
-			SearchContext searchContext) throws Exception {
+	public void postProcessSearchQuery(
+			BooleanQuery searchQuery, SearchContext searchContext)
+		throws Exception {
 
-		_log.info("postProcessSearchQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSearchQuery");
+		}
 	}
 
 	@Override
-	public void postProcessSummary(Summary summary, Document document,
-			Locale locale, String snippet) {
+	public void postProcessSummary(
+		Summary summary, Document document, Locale locale, String snippet) {
 
-		_log.info("postProcessSummary");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSummary");
+		}
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		MultipleIndexerPostProcessor.class);
+		BlogsIndexerPostProcessor.class);
 
 }
