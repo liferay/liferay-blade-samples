@@ -12,27 +12,30 @@
  * details.
  */
 
-package blade.friendlyurl;
-
-import org.osgi.service.component.annotations.Component;
+package com.liferay.blade.samples.friendlyurl;
 
 import com.liferay.portal.kernel.portlet.DefaultFriendlyURLMapper;
 import com.liferay.portal.kernel.portlet.FriendlyURLMapper;
 
+import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(
 	property = {
 		"com.liferay.portlet.friendly-url-routes=META-INF/friendly-url-routes/routes.xml",
 		"javax.portlet.name=com_liferay_network_utilities_web_portlet_NetworkUtilitiesPortlet"
 	},
-	service = FriendlyURLMapper.class)
+	service = FriendlyURLMapper.class
+)
 public class NetworkUtilitiesFriendlyURL extends DefaultFriendlyURLMapper {
 
 	@Override
 	public String getMapping() {
-
 		return _MAPPING;
 	}
 
 	private static final String _MAPPING = "NetworkUtilities";
+
 }
