@@ -1,15 +1,9 @@
 	FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
 
-println "gradleOutputFiles: ${gradleOutputFiles.files}"
-
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
 
-println "liferayGradleOutputFiles: ${liferayGradleOutputFiles.files}"
-
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
-
-println "mavenOutputFiles: ${mavenOutputFiles.files}"
 
 task outputFilesSizeTest << {
 	assert 25 == bndtoolsOutputFiles.size()

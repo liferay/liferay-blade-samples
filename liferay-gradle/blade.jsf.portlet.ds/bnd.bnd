@@ -5,7 +5,7 @@ Bundle-ClassPath:\
 	WEB-INF/lib/jsf-api-2.2.6.jar,\
 	WEB-INF/lib/jsf-impl-2.2.6.jar
 Bundle-Version: 1.0.0
--includeresource: \
+-includeresource:\
 	WEB-INF/lib/liferay-faces-bridge-api-4.2.0-beta.jar=liferay-faces-bridge-api-4.2.0-beta.jar,\
 	WEB-INF/lib/liferay-faces-bridge-impl-4.2.0-beta.jar=liferay-faces-bridge-impl-4.2.0-beta.jar,\
 	WEB-INF/lib/liferay-faces-util-4.2.0-beta.jar=liferay-faces-util-4.2.0-beta.jar,\
