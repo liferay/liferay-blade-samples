@@ -12,11 +12,11 @@
  * details.
  */
 
-package blade.servicebuilder.service.http;
+package com.liferay.blade.samples.servicebuilder.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.service.FooServiceUtil;
+import com.liferay.blade.samples.servicebuilder.service.FooServiceUtil;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -33,10 +33,10 @@ import java.rmi.RemoteException;
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
  * if the method in the service utility returns a {@link java.util.List}, that
- * is translated to an array of {@link blade.servicebuilder.model.FooSoap}.
+ * is translated to an array of {@link com.liferay.blade.samples.servicebuilder.model.FooSoap}.
  * If the method in the service utility returns a
- * {@link blade.servicebuilder.model.Foo}, that is translated to a
- * {@link blade.servicebuilder.model.FooSoap}. Methods that SOAP cannot
+ * {@link com.liferay.blade.samples.servicebuilder.model.Foo}, that is translated to a
+ * {@link com.liferay.blade.samples.servicebuilder.model.FooSoap}. Methods that SOAP cannot
  * safely wire are skipped.
  * </p>
  *
@@ -59,17 +59,12 @@ import java.rmi.RemoteException;
  *
  * @author Brian Wing Shun Chan
  * @see FooServiceHttp
- * @see blade.servicebuilder.model.FooSoap
+ * @see com.liferay.blade.samples.servicebuilder.model.FooSoap
  * @see FooServiceUtil
  * @generated
  */
 @ProviderType
 public class FooServiceSoap {
-	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
-	*/
 	public static java.lang.String fooRemote() throws RemoteException {
 		try {
 			java.lang.String returnValue = FooServiceUtil.fooRemote();

@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.service.util;
+package com.liferay.blade.samples.servicebuilder.service.util;
 
 import aQute.bnd.annotation.ProviderType;
 

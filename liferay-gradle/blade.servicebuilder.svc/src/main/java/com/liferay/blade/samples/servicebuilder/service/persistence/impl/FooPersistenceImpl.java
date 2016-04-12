@@ -12,17 +12,15 @@
  * details.
  */
 
-package blade.servicebuilder.service.persistence.impl;
+package com.liferay.blade.samples.servicebuilder.service.persistence.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.exception.NoSuchFooException;
-
-import blade.servicebuilder.model.Foo;
-import blade.servicebuilder.model.impl.FooImpl;
-import blade.servicebuilder.model.impl.FooModelImpl;
-
-import blade.servicebuilder.service.persistence.FooPersistence;
+import com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException;
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.model.impl.FooImpl;
+import com.liferay.blade.samples.servicebuilder.model.impl.FooModelImpl;
+import com.liferay.blade.samples.servicebuilder.service.persistence.FooPersistence;
 
 import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.FinderCache;
@@ -67,7 +65,7 @@ import java.util.Set;
  *
  * @author Brian Wing Shun Chan
  * @see FooPersistence
- * @see blade.servicebuilder.service.persistence.FooUtil
+ * @see com.liferay.blade.samples.servicebuilder.service.persistence.FooUtil
  * @generated
  */
 @ProviderType
@@ -665,8 +663,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 			msg.append(StringPool.CLOSE_CURLY_BRACE);
 
-			if (_log.isWarnEnabled()) {
-				_log.warn(msg.toString());
+			if (_log.isDebugEnabled()) {
+				_log.debug(msg.toString());
 			}
 
 			throw new NoSuchFooException(msg.toString());
@@ -2139,8 +2137,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			Foo foo = (Foo)session.get(FooImpl.class, primaryKey);
 
 			if (foo == null) {
-				if (_log.isWarnEnabled()) {
-					_log.warn(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
+				if (_log.isDebugEnabled()) {
+					_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 				}
 
 				throw new NoSuchFooException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
@@ -2357,8 +2355,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		Foo foo = fetchByPrimaryKey(primaryKey);
 
 		if (foo == null) {
-			if (_log.isWarnEnabled()) {
-				_log.warn(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
+			if (_log.isDebugEnabled()) {
+				_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 			}
 
 			throw new NoSuchFooException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +

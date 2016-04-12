@@ -12,17 +12,17 @@
  * details.
  */
 
-package blade.servicebuilder.service.impl;
+package com.liferay.blade.samples.servicebuilder.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.service.base.FooServiceBaseImpl;
+import com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl;
 
 /**
  * The implementation of the foo remote service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link blade.servicebuilder.service.FooService} interface.
+ * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.blade.samples.servicebuilder.service.FooService} interface.
  *
  * <p>
  * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
@@ -30,14 +30,15 @@ import blade.servicebuilder.service.base.FooServiceBaseImpl;
  *
  * @author Brian Wing Shun Chan
  * @see FooServiceBaseImpl
- * @see blade.servicebuilder.service.FooServiceUtil
+ * @see com.liferay.blade.samples.servicebuilder.service.FooServiceUtil
  */
 @ProviderType
 public class FooServiceImpl extends FooServiceBaseImpl {
+
 	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooServiceUtil} to access the foo remote service.
+	 * Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooServiceUtil} to access the foo remote service.
 	 */
 	public String fooRemote() {
 		return "fooRemote";

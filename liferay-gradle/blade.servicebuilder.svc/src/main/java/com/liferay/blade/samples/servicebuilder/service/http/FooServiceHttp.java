@@ -12,11 +12,11 @@
  * details.
  */
 
-package blade.servicebuilder.service.http;
+package com.liferay.blade.samples.servicebuilder.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.service.FooServiceUtil;
+import com.liferay.blade.samples.servicebuilder.service.FooServiceUtil;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;

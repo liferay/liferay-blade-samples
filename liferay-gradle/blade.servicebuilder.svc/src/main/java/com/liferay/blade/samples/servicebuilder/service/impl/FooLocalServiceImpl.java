@@ -12,17 +12,18 @@
  * details.
  */
 
-package blade.servicebuilder.service.impl;
+package com.liferay.blade.samples.servicebuilder.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
-import blade.servicebuilder.model.Foo;
-import blade.servicebuilder.service.base.FooLocalServiceBaseImpl;
+
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.base.FooLocalServiceBaseImpl;
 
 /**
  * The implementation of the foo local service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link blade.servicebuilder.service.FooLocalService} interface.
+ * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.blade.samples.servicebuilder.service.FooLocalService} interface.
  *
  * <p>
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
@@ -30,20 +31,22 @@ import blade.servicebuilder.service.base.FooLocalServiceBaseImpl;
  *
  * @author Brian Wing Shun Chan
  * @see FooLocalServiceBaseImpl
- * @see blade.servicebuilder.service.FooLocalServiceUtil
+ * @see com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil
  */
 @ProviderType
 public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
+
 	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	 * Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
 	 */
 	public Foo addFooWithoutId(Foo foo) {
 		long resourcePrimKey = counterLocalService.increment();
 		foo.setFooId(resourcePrimKey);
 		return addFoo(foo);
 	}
+
 	public String fooLocal() {
 		return "fooLocal";
 	}

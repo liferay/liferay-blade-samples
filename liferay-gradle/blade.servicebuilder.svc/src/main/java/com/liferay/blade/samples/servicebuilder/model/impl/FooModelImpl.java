@@ -12,13 +12,13 @@
  * details.
  */
 
-package blade.servicebuilder.model.impl;
+package com.liferay.blade.samples.servicebuilder.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.model.Foo;
-import blade.servicebuilder.model.FooModel;
-import blade.servicebuilder.model.FooSoap;
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.model.FooModel;
+import com.liferay.blade.samples.servicebuilder.model.FooSoap;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
@@ -111,14 +111,14 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	public static final String DATA_SOURCE = "liferayDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
-				"value.object.entity.cache.enabled.blade.servicebuilder.model.Foo"),
+	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+				"value.object.entity.cache.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
 			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
-				"value.object.finder.cache.enabled.blade.servicebuilder.model.Foo"),
+	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+				"value.object.finder.cache.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(blade.servicebuilder.service.util.PropsUtil.get(
-				"value.object.column.bitmask.enabled.blade.servicebuilder.model.Foo"),
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+				"value.object.column.bitmask.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
 			true);
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 	public static final long FIELD2_COLUMN_BITMASK = 2L;
@@ -176,8 +176,8 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		return models;
 	}
 
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(blade.servicebuilder.service.util.PropsUtil.get(
-				"lock.expiration.time.blade.servicebuilder.model.Foo"));
+	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+				"lock.expiration.time.com.liferay.blade.samples.servicebuilder.model.Foo"));
 
 	public FooModelImpl() {
 	}
@@ -800,7 +800,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
-		sb.append("blade.servicebuilder.model.Foo");
+		sb.append("com.liferay.blade.samples.servicebuilder.model.Foo");
 		sb.append("</model-name>");
 
 		sb.append(

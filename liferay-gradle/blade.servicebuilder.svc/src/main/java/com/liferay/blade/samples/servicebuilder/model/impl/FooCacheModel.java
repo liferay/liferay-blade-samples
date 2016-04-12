@@ -12,11 +12,11 @@
  * details.
  */
 
-package blade.servicebuilder.model.impl;
+package com.liferay.blade.samples.servicebuilder.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.model.Foo;
 
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.util.HashUtil;

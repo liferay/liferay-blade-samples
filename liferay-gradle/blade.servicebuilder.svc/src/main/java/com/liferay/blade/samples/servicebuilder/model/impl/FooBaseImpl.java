@@ -12,13 +12,12 @@
  * details.
  */
 
-package blade.servicebuilder.model.impl;
+package com.liferay.blade.samples.servicebuilder.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.model.Foo;
-
-import blade.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
 
 /**
  * The extended model base implementation for the Foo service. Represents a row in the &quot;SSB_Foo&quot; database table, with each column mapped to a property of this class.
