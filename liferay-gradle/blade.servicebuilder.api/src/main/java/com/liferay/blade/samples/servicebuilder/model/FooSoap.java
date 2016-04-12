@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.model;
+package com.liferay.blade.samples.servicebuilder.model;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -23,10 +23,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services, specifically {@link blade.servicebuilder.service.http.FooServiceSoap}.
+ * This class is used by SOAP remote services, specifically {@link com.liferay.blade.samples.servicebuilder.service.http.FooServiceSoap}.
  *
  * @author Brian Wing Shun Chan
- * @see blade.servicebuilder.service.http.FooServiceSoap
+ * @see com.liferay.blade.samples.servicebuilder.service.http.FooServiceSoap
  * @generated
  */
 @ProviderType

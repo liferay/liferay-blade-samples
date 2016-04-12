@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.service;
+package com.liferay.blade.samples.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -22,7 +22,7 @@ import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the local service utility for Foo. This utility wraps
- * {@link blade.servicebuilder.service.impl.FooLocalServiceImpl} and is the
+ * {@link com.liferay.blade.samples.servicebuilder.service.impl.FooLocalServiceImpl} and is the
  * primary access point for service operations in application layer code running
  * on the local server. Methods of this service will not have security checks
  * based on the propagated JAAS credentials because this service can only be
@@ -30,8 +30,8 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  * @author Brian Wing Shun Chan
  * @see FooLocalService
- * @see blade.servicebuilder.service.base.FooLocalServiceBaseImpl
- * @see blade.servicebuilder.service.impl.FooLocalServiceImpl
+ * @see com.liferay.blade.samples.servicebuilder.service.base.FooLocalServiceBaseImpl
+ * @see com.liferay.blade.samples.servicebuilder.service.impl.FooLocalServiceImpl
  * @generated
  */
 @ProviderType
@@ -39,7 +39,7 @@ public class FooLocalServiceUtil {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to {@link blade.servicebuilder.service.impl.FooLocalServiceImpl} and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.service.impl.FooLocalServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
 
 	/**
@@ -48,18 +48,13 @@ public class FooLocalServiceUtil {
 	* @param foo the foo
 	* @return the foo that was added
 	*/
-	public static blade.servicebuilder.model.Foo addFoo(
-		blade.servicebuilder.model.Foo foo) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo addFoo(
+		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return getService().addFoo(foo);
 	}
 
-	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
-	*/
-	public static blade.servicebuilder.model.Foo addFooWithoutId(
-		blade.servicebuilder.model.Foo foo) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo addFooWithoutId(
+		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return getService().addFooWithoutId(foo);
 	}
 
@@ -69,7 +64,8 @@ public class FooLocalServiceUtil {
 	* @param fooId the primary key for the new foo
 	* @return the new foo
 	*/
-	public static blade.servicebuilder.model.Foo createFoo(long fooId) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo createFoo(
+		long fooId) {
 		return getService().createFoo(fooId);
 	}
 
@@ -79,8 +75,8 @@ public class FooLocalServiceUtil {
 	* @param foo the foo
 	* @return the foo that was removed
 	*/
-	public static blade.servicebuilder.model.Foo deleteFoo(
-		blade.servicebuilder.model.Foo foo) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo deleteFoo(
+		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return getService().deleteFoo(foo);
 	}
 
@@ -91,8 +87,8 @@ public class FooLocalServiceUtil {
 	* @return the foo that was removed
 	* @throws PortalException if a foo with the primary key could not be found
 	*/
-	public static blade.servicebuilder.model.Foo deleteFoo(long fooId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo deleteFoo(
+		long fooId) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteFoo(fooId);
 	}
 
@@ -124,7 +120,7 @@ public class FooLocalServiceUtil {
 	* Performs a dynamic query on the database and returns a range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link blade.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.blade.samples.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -142,7 +138,7 @@ public class FooLocalServiceUtil {
 	* Performs a dynamic query on the database and returns an ordered range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link blade.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.blade.samples.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -183,7 +179,8 @@ public class FooLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static blade.servicebuilder.model.Foo fetchFoo(long fooId) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFoo(
+		long fooId) {
 		return getService().fetchFoo(fooId);
 	}
 
@@ -194,7 +191,7 @@ public class FooLocalServiceUtil {
 	* @param groupId the primary key of the group
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static blade.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
+	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
 		java.lang.String uuid, long groupId) {
 		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
 	}
@@ -219,8 +216,8 @@ public class FooLocalServiceUtil {
 	* @return the foo
 	* @throws PortalException if a foo with the primary key could not be found
 	*/
-	public static blade.servicebuilder.model.Foo getFoo(long fooId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo getFoo(
+		long fooId) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getFoo(fooId);
 	}
 
@@ -232,7 +229,7 @@ public class FooLocalServiceUtil {
 	* @return the matching foo
 	* @throws PortalException if a matching foo could not be found
 	*/
-	public static blade.servicebuilder.model.Foo getFooByUuidAndGroupId(
+	public static com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
 		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getFooByUuidAndGroupId(uuid, groupId);
@@ -242,14 +239,14 @@ public class FooLocalServiceUtil {
 	* Returns a range of all the foos.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link blade.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.blade.samples.servicebuilder.model.impl.FooModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param start the lower bound of the range of foos
 	* @param end the upper bound of the range of foos (not inclusive)
 	* @return the range of foos
 	*/
-	public static java.util.List<blade.servicebuilder.model.Foo> getFoos(
+	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoos(
 		int start, int end) {
 		return getService().getFoos(start, end);
 	}
@@ -261,7 +258,7 @@ public class FooLocalServiceUtil {
 	* @param companyId the primary key of the company
 	* @return the matching foos, or an empty list if no matches were found
 	*/
-	public static java.util.List<blade.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
+	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
 		java.lang.String uuid, long companyId) {
 		return getService().getFoosByUuidAndCompanyId(uuid, companyId);
 	}
@@ -276,9 +273,9 @@ public class FooLocalServiceUtil {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the range of matching foos, or an empty list if no matches were found
 	*/
-	public static java.util.List<blade.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
+	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
 		java.lang.String uuid, long companyId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator<blade.servicebuilder.model.Foo> orderByComparator) {
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.model.Foo> orderByComparator) {
 		return getService()
 				   .getFoosByUuidAndCompanyId(uuid, companyId, start, end,
 			orderByComparator);
@@ -318,8 +315,8 @@ public class FooLocalServiceUtil {
 	* @param foo the foo
 	* @return the foo that was updated
 	*/
-	public static blade.servicebuilder.model.Foo updateFoo(
-		blade.servicebuilder.model.Foo foo) {
+	public static com.liferay.blade.samples.servicebuilder.model.Foo updateFoo(
+		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return getService().updateFoo(foo);
 	}
 

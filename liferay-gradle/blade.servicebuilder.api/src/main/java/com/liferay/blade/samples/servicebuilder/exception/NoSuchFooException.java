@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.exception;
+package com.liferay.blade.samples.servicebuilder.exception;
 
 import aQute.bnd.annotation.ProviderType;
 

@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.model;
+package com.liferay.blade.samples.servicebuilder.model;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -163,7 +163,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public int compareTo(blade.servicebuilder.model.Foo foo) {
+	public int compareTo(com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return _foo.compareTo(foo);
 	}
 
@@ -544,12 +544,12 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public com.liferay.portal.kernel.model.CacheModel<blade.servicebuilder.model.Foo> toCacheModel() {
+	public com.liferay.portal.kernel.model.CacheModel<com.liferay.blade.samples.servicebuilder.model.Foo> toCacheModel() {
 		return _foo.toCacheModel();
 	}
 
 	@Override
-	public blade.servicebuilder.model.Foo toEscapedModel() {
+	public com.liferay.blade.samples.servicebuilder.model.Foo toEscapedModel() {
 		return new FooWrapper(_foo.toEscapedModel());
 	}
 
@@ -559,7 +559,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public blade.servicebuilder.model.Foo toUnescapedModel() {
+	public com.liferay.blade.samples.servicebuilder.model.Foo toUnescapedModel() {
 		return new FooWrapper(_foo.toUnescapedModel());
 	}
 

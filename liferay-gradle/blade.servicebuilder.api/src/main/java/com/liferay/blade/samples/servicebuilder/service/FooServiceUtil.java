@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.servicebuilder.service;
+package com.liferay.blade.samples.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
@@ -22,7 +22,7 @@ import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the remote service utility for Foo. This utility wraps
- * {@link blade.servicebuilder.service.impl.FooServiceImpl} and is the
+ * {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and is the
  * primary access point for service operations in application layer code running
  * on a remote server. Methods of this service are expected to have security
  * checks based on the propagated JAAS credentials because this service can be
@@ -30,8 +30,8 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  * @author Brian Wing Shun Chan
  * @see FooService
- * @see blade.servicebuilder.service.base.FooServiceBaseImpl
- * @see blade.servicebuilder.service.impl.FooServiceImpl
+ * @see com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl
+ * @see com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl
  * @generated
  */
 @ProviderType
@@ -39,14 +39,8 @@ public class FooServiceUtil {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to {@link blade.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
-
-	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link blade.servicebuilder.service.FooServiceUtil} to access the foo remote service.
-	*/
 	public static java.lang.String fooRemote() {
 		return getService().fooRemote();
 	}

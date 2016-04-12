@@ -12,13 +12,12 @@
  * details.
  */
 
-package blade.servicebuilder.service.persistence;
+package com.liferay.blade.samples.servicebuilder.service.persistence;
 
 import aQute.bnd.annotation.ProviderType;
 
-import blade.servicebuilder.exception.NoSuchFooException;
-
-import blade.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException;
+import com.liferay.blade.samples.servicebuilder.model.Foo;
 
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 
@@ -30,7 +29,7 @@ import com.liferay.portal.kernel.service.persistence.BasePersistence;
  * </p>
  *
  * @author Brian Wing Shun Chan
- * @see blade.servicebuilder.service.persistence.impl.FooPersistenceImpl
+ * @see com.liferay.blade.samples.servicebuilder.service.persistence.impl.FooPersistenceImpl
  * @see FooUtil
  * @generated
  */
