@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package blade.configurationaction.portlet;
+package com.liferay.blade.samples.configurationaction;
 
-import aQute.bnd.annotation.metatype.Configurable;
-
-import blade.configurationaction.config.MessageDisplayConfiguration;
-
+import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
@@ -36,9 +33,13 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
+
+/**
+ * @author Liferay
+ */
 @Component(
+	configurationPid = "com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration",
 	immediate = true,
-	configurationPid = "blade.configurationaction.config.MessageDisplayConfiguration",
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
@@ -53,10 +54,13 @@ import org.osgi.service.component.annotations.Modified;
 public class BladeMessagePortlet extends MVCPortlet {
 
 	@Override
-	public void doView(RenderRequest renderRequest,
-		RenderResponse renderResponse) throws IOException, PortletException {
+	public void doView(
+			RenderRequest renderRequest, RenderResponse renderResponse)
+		throws IOException, PortletException {
 
-		_log.debug("Blade Message Portlet render");
+		if (_log.isDebugEnabled()) {
+			_log.debug("Blade Message Portlet render");
+		}
 
 		renderRequest.setAttribute(
 			MessageDisplayConfiguration.class.getName(),
@@ -68,7 +72,7 @@ public class BladeMessagePortlet extends MVCPortlet {
 	@Activate
 	@Modified
 	protected void activate(Map<Object, Object> properties) {
-		_messageDisplayConfiguration = Configurable.createConfigurable(
+		_messageDisplayConfiguration = ConfigurableUtil.createConfigurable(
 			MessageDisplayConfiguration.class, properties);
 	}
 
