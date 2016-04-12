@@ -13,14 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet;
 
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
+package com.liferay.blade.samples.portlet;
 
 import javax.portlet.Portlet;
 import javax.portlet.faces.GenericFacesPortlet;
 
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
@@ -38,4 +42,5 @@ public class JSFPortletDS extends GenericFacesPortlet {
 	public void activate() {
 		System.err.println("!@#$ activated " + this);
 	}
+
 }
