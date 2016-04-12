@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet;
+
+package com.liferay.blade.samples.portlet.osgiapi;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -24,6 +25,9 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
+/**
+ * @author Liferay
+ */
 public class Activator implements BundleActivator {
 
 	@Override

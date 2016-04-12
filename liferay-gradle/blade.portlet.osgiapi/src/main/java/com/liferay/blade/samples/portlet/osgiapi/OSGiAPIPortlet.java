@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet;
+
+package com.liferay.blade.samples.portlet.osgiapi;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,6 +24,9 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+/**
+ * @author Liferay
+ */
 public class OSGiAPIPortlet extends GenericPortlet {
 
 	@Override
