@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.authenticator.shiro;
+
+package com.liferay.blade.samples.authenticator.shiro;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -33,6 +34,9 @@ import org.apache.shiro.util.Factory;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true, property = {"key=auth.pipeline.pre"},
 	service = Authenticator.class
@@ -42,18 +46,25 @@ public class ShiroAuthenticatorPre implements Authenticator {
 	@Activate
 	public void activate() {
 		Factory<SecurityManager> factory = new IniSecurityManagerFactory(
-						"classpath:userauth.ini");
+			"classpath:userauth.ini");
+
 		SecurityUtils.setSecurityManager(factory.getInstance());
-		_log.info("activate");
+
+		if (_log.isInfoEnabled()) {
+			_log.info("activate");
+		}
 	}
 
 	@Override
 	public int authenticateByEmailAddress(
 			long companyId, String emailAddress, String password,
-			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
+			Map<String, String[]> headerMap,
+			Map<String, String[]> parameterMap)
 		throws AuthException {
 
-		_log.info("authenticateByEmailAddress");
+		if (_log.isInfoEnabled()) {
+			_log.info("authenticateByEmailAddress");
+		}
 
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(
 			emailAddress, password);
@@ -66,26 +77,32 @@ public class ShiroAuthenticatorPre implements Authenticator {
 			boolean authenticated = currentUser.isAuthenticated();
 
 			if (authenticated) {
-				_log.info("authenticated");
+				if (_log.isInfoEnabled()) {
+					_log.info("authenticated");
+				}
+
 				return SKIP_LIFERAY_CHECK;
 			}
 			else {
 				return FAILURE;
 			}
 		}
-		catch (AuthenticationException e) {
-			_log.error(e.getMessage(), e);
-			throw new AuthException(e.getMessage(), e);
+		catch (AuthenticationException ae) {
+			_log.error(ae.getMessage(), ae);
+			throw new AuthException(ae.getMessage(), ae);
 		}
 	}
 
 	@Override
 	public int authenticateByScreenName(
 			long companyId, String screenName, String password,
-			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
+			Map<String, String[]> headerMap,
+			Map<String, String[]> parameterMap)
 		throws AuthException {
 
-		_log.info("authenticateByScreenName  - not implemented ");
+		if (_log.isInfoEnabled()) {
+			_log.info("authenticateByScreenName  - not implemented ");
+		}
 
 		return SUCCESS;
 	}
@@ -93,10 +110,13 @@ public class ShiroAuthenticatorPre implements Authenticator {
 	@Override
 	public int authenticateByUserId(
 			long companyId, long userId, String password,
-			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
+			Map<String, String[]> headerMap,
+			Map<String, String[]> parameterMap)
 		throws AuthException {
 
-		_log.info("authenticateByScreenName  - not implemented ");
+		if (_log.isInfoEnabled()) {
+			_log.info("authenticateByScreenName  - not implemented ");
+		}
 
 		return SUCCESS;
 	}
