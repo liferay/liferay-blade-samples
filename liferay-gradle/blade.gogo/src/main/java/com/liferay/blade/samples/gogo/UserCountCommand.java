@@ -14,33 +14,36 @@
  * limitations under the License.
  */
 
-package blade.gogo;
+package com.liferay.blade.samples.gogo;
 
 import com.liferay.portal.kernel.service.UserLocalService;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-
+/**
+ * @author Liferay
+ */
 @Component(
-        property = {
-                "osgi.command.scope=blade",
-                "osgi.command.function=usercount"
-        },
-        service = Object.class
+	property = {"osgi.command.function=usercount", "osgi.command.scope=blade"},
+	service = Object.class
 )
 public class UserCountCommand {
-    private UserLocalService _userLocalService;
 
-    public void usercount() {
-        System.out.println("# of users: " + getUserLocalService().getUsersCount());
-    }
+	public UserLocalService getUserLocalService() {
+		return _userLocalService;
+	}
 
-    public UserLocalService getUserLocalService() {
-        return _userLocalService;
-    }
+	@Reference
+	public void setUserLocalService(UserLocalService _userLocalService) {
+		this._userLocalService = _userLocalService;
+	}
 
-    @Reference
-    public void setUserLocalService(UserLocalService _userLocalService) {
-        this._userLocalService = _userLocalService;
-    }
+	public void usercount() {
+		System.out.println(
+			"# of users: " + getUserLocalService().getUsersCount());
+	}
+
+	private UserLocalService _userLocalService;
+
 }
