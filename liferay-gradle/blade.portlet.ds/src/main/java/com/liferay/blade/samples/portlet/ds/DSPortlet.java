@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet;
+
+package com.liferay.blade.samples.portlet.ds;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,6 +27,9 @@ import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
