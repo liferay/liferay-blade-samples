@@ -2,6 +2,8 @@
 *.ipr
 *.iws
 .idea/
+.project
+.settings/
 atlassian-ide-plugin.xml
 
 */.gradle
