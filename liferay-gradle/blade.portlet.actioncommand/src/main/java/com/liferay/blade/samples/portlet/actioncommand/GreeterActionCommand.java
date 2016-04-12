@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.portlet.actioncommand;
+
+package com.liferay.blade.samples.portlet.actioncommand;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -28,38 +29,44 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
-		"mvc.command.name=greet",
-		"javax.portlet.name=blade_portlet_GreeterPortlet"
+		"javax.portlet.name=blade_portlet_GreeterPortlet",
+		"mvc.command.name=greet"
 	},
 	service = MVCActionCommand.class
 )
 public class GreeterActionCommand implements MVCActionCommand {
 
 	@Override
-	public boolean processAction(ActionRequest actionRequest, ActionResponse actionResponse) throws PortletException {
-		_handleActionCommand(actionRequest, actionResponse);
+	public boolean processAction(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws PortletException {
+
+		_handleActionCommand(actionRequest);
 
 		return true;
 	}
 
-	private void _handleActionCommand(
-		ActionRequest actionRequest, ActionResponse actionResponse) {
-
+	private void _handleActionCommand(ActionRequest actionRequest) {
 		String name = ParamUtil.get(actionRequest, "name", StringPool.BLANK);
 
-		_log.info("Hello " + name);
+		if (_log.isInfoEnabled()) {
+			_log.info("Hello " + name);
+		}
 
 		String greetingMessage = "Hello " + name + "! Welcome to OSGi";
 
 		actionRequest.setAttribute("GREETER_MESSAGE", greetingMessage);
 
-		SessionMessages.add(actionRequest,
-			"greeting_message",greetingMessage);
+		SessionMessages.add(actionRequest, "greetingMessage", greetingMessage);
 	}
 
-	private Log _log = LogFactoryUtil.getLog(GreeterActionCommand.class);
+	private static final Log _log = LogFactoryUtil.getLog(
+		GreeterActionCommand.class);
 
 }
