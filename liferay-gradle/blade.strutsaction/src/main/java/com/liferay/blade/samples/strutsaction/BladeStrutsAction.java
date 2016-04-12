@@ -12,7 +12,7 @@
  * details.
  */
 
-package blade.portlet;
+package com.liferay.blade.samples.strutsaction;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -28,11 +28,11 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Kamesh Sampath
+ * @author Liferay
  */
 @Component(
-				immediate = true, property = {"path=/portal/blade"},
-				service = StrutsAction.class
+	immediate = true, property = {"path=/portal/blade"},
+	service = StrutsAction.class
 )
 public class BladeStrutsAction extends BaseStrutsAction {
 
@@ -40,7 +40,9 @@ public class BladeStrutsAction extends BaseStrutsAction {
 			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
-		_log.debug("Processing path /c/portal/blade");
+		if (_log.isDebugEnabled()) {
+			_log.debug("Processing path /c/portal/blade");
+		}
 
 		RequestDispatcher requestDispatcher =
 			_servletContext.getRequestDispatcher("/html/portal/blade.jsp");
