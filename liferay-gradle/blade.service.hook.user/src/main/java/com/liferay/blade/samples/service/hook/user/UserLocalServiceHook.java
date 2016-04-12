@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package blade.service.hook.user;
+
+package com.liferay.blade.samples.service.hook.user;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
@@ -24,6 +25,9 @@ import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Liferay
+ */
 @Component(service = ServiceWrapper.class)
 public class UserLocalServiceHook extends UserLocalServiceWrapper {
 
@@ -32,16 +36,18 @@ public class UserLocalServiceHook extends UserLocalServiceWrapper {
 	}
 
 	@Override
-	public int authenticateByEmailAddress(long companyId, String emailAddress,
-			String password, Map<String, String[]> headerMap,
-			Map<String, String[]> parameterMap, Map<String, Object> resultsMap)
+	public int authenticateByEmailAddress(
+			long companyId, String emailAddress, String password,
+			Map<String, String[]> headerMap, Map<String, String[]> parameterMap,
+			Map<String, Object> resultsMap)
 		throws PortalException {
 
 		System.out.println(
 			"Authenticating user by email address " + emailAddress);
 
-		return super.authenticateByEmailAddress(companyId, emailAddress, password,
-			headerMap, parameterMap, resultsMap);
+		return super.authenticateByEmailAddress(
+			companyId, emailAddress, password, headerMap, parameterMap,
+			resultsMap);
 	}
 
 	@Override
