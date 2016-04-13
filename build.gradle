@@ -25,3 +25,29 @@ task outputFilesTest << {}
 
 outputFilesTest.dependsOn outputFilesSizeTest
 outputFilesTest.dependsOn outputFilesSortTest
+
+task replicateSources << {
+	Closure projectFilter = { it.isDirectory() && !it.name.matches("\\..*") }
+
+	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
+
+	def replicationParents = files('gradle')
+
+	canonicalProjects.each { canonicalProject ->
+		replicationParents.each { replicationParent ->
+			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
+
+			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+			
+			def replicationSrc = new File( replicationProject, 'src/' )
+			
+			replicationSrc.deleteDir()
+			
+			def canonicalSrc = new File( canonicalProject, 'src/' )
+			
+			ant.copy(todir: replicationSrc) {
+				fileset(dir: canonicalSrc, includes: "**")
+			}
+		}
+	}
+}
