@@ -31,7 +31,7 @@ task replicateSources << {
 
 	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
 
-	def replicationParents = files('maven')
+	def replicationParents = files('bndtools', 'gradle', 'maven')
 
 	canonicalProjects.each { canonicalProject ->
 		replicationParents.each { replicationParent ->
