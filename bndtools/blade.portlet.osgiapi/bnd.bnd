@@ -1,8 +1,8 @@
-Bundle-Activator: blade.portlet.Activator
+Bundle-Activator: com.liferay.blade.samples.portlet.osgiapi.Activator
 Bundle-Version: 1.0.0
 -sources: true
 
-Private-Package: blade.portlet
--buildpath:  \
+Private-Package: com.liferay.blade.samples.portlet.osgiapi
+-buildpath:\
 	javax.portlet;version='2.0.0',\
 	osgi.core;version='6.0.0'

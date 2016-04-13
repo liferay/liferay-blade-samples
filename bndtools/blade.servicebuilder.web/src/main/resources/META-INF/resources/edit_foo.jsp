@@ -28,7 +28,6 @@ Foo foo = null;
 if (fooId > 0) {
 	foo = fooLocalService.getFoo(fooId);
 }
-
 %>
 
 <aui:form action="<%= renderResponse.createActionURL() %>" method="post" name="fm">
