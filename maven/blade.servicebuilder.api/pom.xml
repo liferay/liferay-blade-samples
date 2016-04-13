@@ -10,7 +10,7 @@
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
-    <parent>
+	<parent>
 		<groupId>blade</groupId>
 		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
 		<version>1.0.0</version>
