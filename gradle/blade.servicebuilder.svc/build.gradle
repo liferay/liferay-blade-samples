@@ -23,3 +23,5 @@ buildService {
 	propsUtil = "com.liferay.blade.samples.servicebuilder.service.util.PropsUtil"
 	testDir = "src/main/test"
 }
+
+version = '1.0.0'
