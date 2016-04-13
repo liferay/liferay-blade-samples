@@ -57,17 +57,16 @@
 				<configuration>
 					<instructions>
 						<Private-Package>
-							blade.servicebuilder.model.impl,
-							blade.servicebuilder.service.base,
-							blade.servicebuilder.service.http,
-							blade.servicebuilder.service.impl,
-							blade.servicebuilder.service.persistence.impl
+							com.liferay.blade.samples.servicebuilder.model.impl,
+							com.liferay.blade.samples.servicebuilder.service.base,
+							com.liferay.blade.samples.servicebuilder.service.http,
+							com.liferay.blade.samples.servicebuilder.service.impl,
+							com.liferay.blade.samples.servicebuilder.service.persistence.impl
 						</Private-Package>
 						<Import-Package>*</Import-Package>
-						<_dsannotations>*</_dsannotations>
-						<Liferay-Service>true</Liferay-Service>
-						<Liferay-Spring-Context>META-INF/spring</Liferay-Spring-Context>
 						<Liferay-Require-SchemaVersion>1.0.0</Liferay-Require-SchemaVersion>
+						<Liferay-Service>true</Liferay-Service>
+						<_dsannotations>*</_dsannotations>
 						<_plugin.service>com.liferay.ant.bnd.service.ServiceAnalyzerPlugin</_plugin.service>
 						<_sources>true</_sources>
 					</instructions>

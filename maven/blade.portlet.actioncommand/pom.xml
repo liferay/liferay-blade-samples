@@ -63,7 +63,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
-						<Private-Package>blade.portlet.*</Private-Package>
+						<Private-Package>com.liferay.blade.samples.portlet.actioncommand</Private-Package>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<Include-Resource>

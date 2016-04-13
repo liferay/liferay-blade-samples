@@ -53,7 +53,7 @@
 						<Embed-Dependency>*;scope=compile|runtime;groupId=!org.osgi</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 						<Include-Resource>{maven-resources}</Include-Resource>
-						<Private-Package>blade.portlet</Private-Package>
+						<Private-Package>com.liferay.blade.samples.portlet</Private-Package>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<_sources>true</_sources>

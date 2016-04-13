@@ -44,7 +44,7 @@
 						<Include-Resource>
 							{maven-resources}
 						</Include-Resource>
-						<Private-Package>blade.indexerpostprocessor</Private-Package>
+						<Private-Package>com.liferay.blade.samples.indexerpostprocessor</Private-Package>
 						<_sources>true</_sources>
 					</instructions>
 				</configuration>

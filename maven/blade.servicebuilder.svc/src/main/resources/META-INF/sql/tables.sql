@@ -1,4 +1,4 @@
-create table Foo (
+create table SSB_Foo (
 	uuid_ VARCHAR(75) null,
 	fooId LONG not null primary key,
 	groupId LONG,

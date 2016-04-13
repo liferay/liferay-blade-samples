@@ -51,7 +51,7 @@
 							@shiro-core-1.1.0.jar
 						</Include-Resource>
 						<Private-Package>
-							blade.authenticator.shiro,
+							com.liferay.blade.samples.authenticator.shiro,
 							org.apache.shiro.*
 						</Private-Package>
 						<_sources>true</_sources>
