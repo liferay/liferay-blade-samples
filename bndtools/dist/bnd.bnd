@@ -16,6 +16,7 @@
 	blade.portlet.filter,\
 	blade.portlet.jsp,\
 	blade.portlet.osgiapi,\
+	blade.resourcebundle,\
 	blade.rest,\
 	blade.service.hook.user,\
 	blade.servicebuilder.api,\
