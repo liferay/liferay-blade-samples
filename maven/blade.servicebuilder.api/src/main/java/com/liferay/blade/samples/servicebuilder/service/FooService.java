@@ -49,6 +49,12 @@ public interface FooService extends BaseService {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link FooServiceUtil} to access the foo remote service. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooServiceUtil} to access the foo remote service.
+	*/
 	public java.lang.String fooRemote();
 
 	/**

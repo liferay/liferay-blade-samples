@@ -75,22 +75,24 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.103</version>
+				<version>1.0.105</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
-					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>
+					<autoImportDefaultReferences>true</autoImportDefaultReferences>
+					<autoNamespaceTables>true</autoNamespaceTables>
+					<buildNumberIncrement>true</buildNumberIncrement>
 					<hbmFileName>src/main/resources/META-INF/module-hbm.xml</hbmFileName>
 					<implDirName>src/main/java</implDirName>
 					<inputFileName>service.xml</inputFileName>
 					<modelHintsFileName>src/main/resources/META-INF/portlet-model-hints.xml</modelHintsFileName>
 					<osgiModule>true</osgiModule>
-					<propsUtil>blade.servicebuilder.service.util.PropsUtil</propsUtil>
+					<propsUtil>com.liferay.blade.samples.servicebuilder.service.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
 					<springFileName>src/main/resources/META-INF/spring/module-spring.xml</springFileName>
 					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
 					<sqlFileName>tables.sql</sqlFileName>
-					<testDirName>src/it</testDirName>
+					<testDirName>src/main/test</testDirName>
 				</configuration>
 			</plugin>
 			<plugin>
