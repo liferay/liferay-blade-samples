@@ -1,5 +1,5 @@
 Bundle-Version: 1.0.0
-Export-Package: \
+Export-Package:\
 	blade.servicebuilder.exception,\
 	blade.servicebuilder.model,\
 	blade.servicebuilder.service,\

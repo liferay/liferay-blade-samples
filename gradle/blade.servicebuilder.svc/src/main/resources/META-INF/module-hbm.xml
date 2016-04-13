@@ -3,7 +3,25 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="blade.servicebuilder.model.Foo" />
+	<import class="com.liferay.blade.samples.servicebuilder.model.Foo" />
 	<class name="blade.servicebuilder.model.impl.FooImpl" table="SSB_Foo">
+		<id name="fooId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="field1" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="field2" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="field3" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="field4" type="org.hibernate.type.TimestampType" />
+		<property name="field5" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.blade.samples.servicebuilder.model.impl.FooImpl" table="SSB_Foo">
 		<id name="fooId" type="long">
 			<generator class="assigned" />
 		</id>

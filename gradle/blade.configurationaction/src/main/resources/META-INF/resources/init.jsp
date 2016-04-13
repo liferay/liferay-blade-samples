@@ -26,13 +26,13 @@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
 taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@page
-	import="blade.configurationaction.config.MessageDisplayConfiguration" %>
+	import="com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration" %>
 
 <%@ page import="com.liferay.portal.kernel.util.Validator" %>
 
-<portlet:defineObjects />
-
 <liferay-theme:defineObjects />
+
+<portlet:defineObjects />
 
 <%
 	MessageDisplayConfiguration messageDisplayConfiguration =
