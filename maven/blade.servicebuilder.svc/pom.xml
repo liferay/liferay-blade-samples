@@ -75,10 +75,12 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.103</version>
+				<version>1.0.105</version>
 				<configuration>
 					<apiDirName>../blade.servicebuilder.api/src/main/java</apiDirName>
-					<beanLocatorUtil>com.liferay.util.bean.PortletBeanLocatorUtil</beanLocatorUtil>
+					<autoImportDefaultReferences>true</autoImportDefaultReferences>
+					<autoNamespaceTables>true</autoNamespaceTables>
+					<buildNumberIncrement>true</buildNumberIncrement>
 					<hbmFileName>src/main/resources/META-INF/module-hbm.xml</hbmFileName>
 					<implDirName>src/main/java</implDirName>
 					<inputFileName>service.xml</inputFileName>
