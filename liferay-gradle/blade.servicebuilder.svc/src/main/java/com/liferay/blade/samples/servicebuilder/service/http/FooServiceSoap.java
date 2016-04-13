@@ -65,6 +65,11 @@ import java.rmi.RemoteException;
  */
 @ProviderType
 public class FooServiceSoap {
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
+	*/
 	public static java.lang.String fooRemote() throws RemoteException {
 		try {
 			java.lang.String returnValue = FooServiceUtil.fooRemote();

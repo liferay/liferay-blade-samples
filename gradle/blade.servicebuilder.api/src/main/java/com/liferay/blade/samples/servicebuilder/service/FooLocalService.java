@@ -73,6 +73,11 @@ public interface FooLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Foo addFoo(Foo foo);
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	public Foo addFooWithoutId(Foo foo);
 
 	/**

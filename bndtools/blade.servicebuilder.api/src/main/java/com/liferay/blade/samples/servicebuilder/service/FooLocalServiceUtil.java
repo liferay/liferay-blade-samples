@@ -53,6 +53,11 @@ public class FooLocalServiceUtil {
 		return getService().addFoo(foo);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	public static com.liferay.blade.samples.servicebuilder.model.Foo addFooWithoutId(
 		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
 		return getService().addFooWithoutId(foo);

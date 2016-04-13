@@ -44,6 +44,11 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.addFoo(foo);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.model.Foo addFooWithoutId(
 		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
