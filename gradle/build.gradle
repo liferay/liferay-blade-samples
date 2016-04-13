@@ -36,8 +36,6 @@ subprojects {
 			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 		}
 	}
-
-	version = '1.0.0'
 }
 
 task wrapper(type:Wrapper){

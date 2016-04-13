@@ -40,7 +40,7 @@
 				<configuration>
 					<instructions>
 						<Import-Package>*</Import-Package>
-						<Private-Package>blade.service.hook.user</Private-Package>
+						<Private-Package>com.liferay.blade.samples.service.hook.user</Private-Package>
 						<_dsannotations>*</_dsannotations>
 						<_sources>true</_sources>
 					</instructions>

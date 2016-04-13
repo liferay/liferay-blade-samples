@@ -1,8 +1,8 @@
 Bundle-Version: 1.0.0
 Export-Package:\
-	blade.servicebuilder.exception,\
-	blade.servicebuilder.model,\
-	blade.servicebuilder.service,\
-	blade.servicebuilder.service.persistence
+	com.liferay.blade.samples.servicebuilder.exception,\
+	com.liferay.blade.samples.servicebuilder.model,\
+	com.liferay.blade.samples.servicebuilder.service,\
+	com.liferay.blade.samples.servicebuilder.service.persistence
 -includeresource: META-INF/service.xml=../blade.servicebuilder.svc/service.xml
 -sources: true

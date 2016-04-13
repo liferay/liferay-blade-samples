@@ -1,8 +1,6 @@
-	FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
-
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
-
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
 
 task outputFilesSizeTest << {
@@ -27,3 +25,29 @@ task outputFilesTest << {}
 
 outputFilesTest.dependsOn outputFilesSizeTest
 outputFilesTest.dependsOn outputFilesSortTest
+
+task replicateSources << {
+	Closure projectFilter = { it.isDirectory() && !it.name.matches("\\..*") }
+
+	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
+
+	def replicationParents = files('bndtools', 'gradle', 'maven')
+
+	canonicalProjects.each { canonicalProject ->
+		replicationParents.each { replicationParent ->
+			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
+
+			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+			
+			def replicationSrc = new File( replicationProject, 'src/' )
+			
+			replicationSrc.deleteDir()
+			
+			def canonicalSrc = new File( canonicalProject, 'src/' )
+			
+			ant.copy(todir: replicationSrc) {
+				fileset(dir: canonicalSrc, includes: "**")
+			}
+		}
+	}
+}

@@ -1,17 +1,17 @@
 Bundle-Version: 1.0.0
-Liferay-Service: true
 Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
 -plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
 -sources: true
 
-Private-Package: \
-	blade.servicebuilder.model.impl,\
-	blade.servicebuilder.service.base,\
-	blade.servicebuilder.service.http,\
-	blade.servicebuilder.service.impl,\
-	blade.servicebuilder.service.persistence.impl,\
-	blade.servicebuilder.service.util
--buildpath: \
+Private-Package:\
+	com.liferay.blade.samples.servicebuilder.model.impl,\
+	com.liferay.blade.samples.servicebuilder.service.base,\
+	com.liferay.blade.samples.servicebuilder.service.http,\
+	com.liferay.blade.samples.servicebuilder.service.impl,\
+	com.liferay.blade.samples.servicebuilder.service.persistence.impl,\
+	com.liferay.blade.samples.servicebuilder.service.util
+-buildpath:\
 	biz.aQute.bndlib;version='3.1.0',\
 	biz.aQute.junit;version='3.1.0',\
 	blade.servicebuilder.api;version=latest,\

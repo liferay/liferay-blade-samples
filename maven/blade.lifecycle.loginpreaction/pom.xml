@@ -39,7 +39,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
-						<Private-Package>blade.lifecycle.loginpreaction</Private-Package>
+						<Private-Package>com.liferay.blade.samples.lifecycle.loginpreaction</Private-Package>
 						<Import-Package>*</Import-Package>
 						<_dsannotations>*</_dsannotations>
 						<_sources>true</_sources>
