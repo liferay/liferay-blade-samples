@@ -36,7 +36,10 @@
 		<module>blade.portlet.osgiapi</module>
 		<module>blade.rest</module>
 		<module>blade.service.hook.user</module>
-		<module>blade.servicebuilder</module>
+		<module>blade.servicebuilder.api</module>
+		<module>blade.servicebuilder.svc</module>
+		<module>blade.servicebuilder.test</module>
+		<module>blade.servicebuilder.web</module>
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 	</modules>
