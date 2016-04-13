@@ -3,11 +3,13 @@ FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
 
+int expectedOutputFilesSize = 26
+
 task outputFilesSizeTest << {
-	assert 25 == bndtoolsOutputFiles.size()
-	assert 25 == gradleOutputFiles.size()
-	assert 25 == liferayGradleOutputFiles.size()
-	assert 25 == mavenOutputFiles.size()
+	assert expectedOutputFilesSize == bndtoolsOutputFiles.size()
+	assert expectedOutputFilesSize == gradleOutputFiles.size()
+	assert expectedOutputFilesSize == liferayGradleOutputFiles.size()
+	assert expectedOutputFilesSize == mavenOutputFiles.size()
 }
 
 task outputFilesSortTest << {
