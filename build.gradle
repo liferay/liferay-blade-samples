@@ -30,7 +30,7 @@ task replicateSources << {
 	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
 
 	def replicationParents = files('bndtools', 'gradle', 'maven')
-
+	
 	canonicalProjects.each { canonicalProject ->
 		replicationParents.each { replicationParent ->
 			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
@@ -50,3 +50,35 @@ task replicateSources << {
 	}
 }
 
+configurations {
+	bnd
+}
+
+dependencies {
+	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
+}
+
+repositories {
+	mavenCentral()
+}
+
+task diff << {
+	[gradleOutputFiles, bndtoolsOutputFiles, mavenOutputFiles].each { replicationFiles ->
+		replicationFiles.each { replicationFile ->
+
+			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
+				it.name == replicationFile.name
+
+			}
+			
+			javaexec {
+			args "diff", liferayGradleOutputFile, replicationFile
+
+			classpath = configurations.bnd
+			main = "aQute.bnd.main.bnd"
+			
+			}
+
+		}
+	}
+}
