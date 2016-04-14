@@ -64,7 +64,15 @@ repositories {
 
 task diff << {
 	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+
 		replicationFiles.each { replicationFile ->
+
+			println replicationFile.name
+			println "*******************************************************"
 
 			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
 				it.name == replicationFile.name
