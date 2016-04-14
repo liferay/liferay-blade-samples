@@ -5,6 +5,7 @@ include(
 	'blade.friendlyurl',
 	'blade.gogo',
 	'blade.hook.jsp',
+	'blade.hook.resourcebundle',
 	'blade.indexerpostprocessor',
 	'blade.jsf.portlet.ds',
 	'blade.lifecycle.loginpreaction',
