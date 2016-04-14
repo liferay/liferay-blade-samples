@@ -32,6 +32,7 @@
 		<module>blade.pollprocessor</module>
 		<module>blade.portlet.actioncommand</module>
 		<module>blade.portlet.blueprint</module>
+		<module>blade.portlet.controlpanel</module>
 		<module>blade.portlet.ds</module>
 		<module>blade.portlet.filter</module>
 		<module>blade.portlet.jsp</module>
