@@ -20,6 +20,7 @@
 		<module>blade.authenticator.shiro</module>
 		<module>blade.authfailure</module>
 		<module>blade.configurationaction</module>
+		<module>blade.corejsphook</module>
 		<module>blade.friendlyurl</module>
 		<module>blade.gogo</module>
 		<module>blade.hook.jsp</module>
