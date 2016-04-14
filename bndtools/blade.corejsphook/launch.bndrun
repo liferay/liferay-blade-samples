@@ -1,0 +1,6 @@
+-runremote: liferay;shell=-1
+
+-runbundles: blade.corejsphook;version=latest
+
+-runpath: \
+	../cnf/local/biz.aQute.remote.launcher/biz.aQute.remote.launcher-3.1.0.jar;version=file
