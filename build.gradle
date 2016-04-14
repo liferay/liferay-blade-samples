@@ -52,3 +52,104 @@ task replicateSources << {
 		}
 	}
 }
+
+configurations {
+	bnd
+}
+
+dependencies {
+	bnd "biz.aQute.bnd:bnd:2.4.0"
+}
+
+repositories {
+	mavenLocal()
+
+	mavenCentral()
+}
+
+task jarBndTools(type: GradleBuild) {
+	dir = file("bndtools")
+	tasks = ["jar"]
+}
+
+task jarGradle(type: GradleBuild) {
+	dir = file("gradle")
+	tasks = ["jar"]
+}
+
+task jarLiferayGradle(type: GradleBuild) {
+	dir = file("liferay-gradle")
+	tasks = ["jar"]
+}
+
+task diff << {}
+
+diff.dependsOn diffGradle
+diff.dependsOn diffBndTools
+diff.dependsOn diffMaven
+
+task diffGradle(dependsOn: [jarGradle, jarLiferayGradle]) << {
+	liferayGradleOutputFiles.each {
+		liferayGradleOutputFile ->
+
+		def gradleOutputFile = gradleOutputFiles.find {
+			it.name == liferayGradleOutputFile.name
+		}
+
+		println "*******************************************************"
+		println "*******************************************************"
+		println "*******************************************************"
+
+		javaexec {
+			args "diff", liferayGradleOutputFile, gradleOutputFile
+
+			classpath = configurations.bnd
+			main = "aQute.bnd.main.bnd"
+		}
+	}
+}
+
+
+task diffBndTools(dependsOn: [jarLiferayGradle, jarBndTools]) << {
+	liferayGradleOutputFiles.each {
+		liferayGradleOutputFile ->
+
+		def bndtoolsOutputFile = bndtoolsOutputFiles.find {
+			it.name == liferayGradleOutputFile.name
+		}
+
+		println "*******************************************************"
+		println "*******************************************************"
+		println "*******************************************************"
+
+
+		javaexec {
+			args "diff", liferayGradleOutputFile, bndtoolsOutputFile
+
+			classpath = configurations.bnd
+			main = "aQute.bnd.main.bnd"
+		}
+	}
+}
+
+task diffMaven(dependsOn: [jarLiferayGradle, jarMaven]) << {
+	liferayGradleOutputFiles.each {
+		liferayGradleOutputFile ->
+
+		def mavenOutputFile = mavenOutputFiles.find {
+			it.name == liferayGradleOutputFile.name
+		}
+
+		println "*******************************************************"
+		println "*******************************************************"
+		println "*******************************************************"
+
+
+		javaexec {
+			args "diff", liferayGradleOutputFile, mavenOutputFile
+
+			classpath = configurations.bnd
+			main = "aQute.bnd.main.bnd"
+		}
+	}
+}
