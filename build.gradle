@@ -1,4 +1,4 @@
-FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/',include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
@@ -22,10 +22,7 @@ task outputFilesSortTest << {
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
-task outputFilesTest << {}
-
-outputFilesTest.dependsOn outputFilesSizeTest
-outputFilesTest.dependsOn outputFilesSortTest
+task outputFilesTest(dependsOn: [outputFilesSizeTest, outputFilesSortTest]) << {}
 
 task replicateSources << {
 	Closure projectFilter = { it.isDirectory() && !it.name.matches("\\..*") }
@@ -52,3 +49,4 @@ task replicateSources << {
 		}
 	}
 }
+
