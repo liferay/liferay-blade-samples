@@ -1,0 +1,6 @@
+Bundle-Version: 1.0.0
+Private-Package: com.liferay.blade.samples.hook.resourcebundle
+-buildpath:\
+	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
+	org.osgi.service.component.annotations;version='1.3.0'
+-sources: true
