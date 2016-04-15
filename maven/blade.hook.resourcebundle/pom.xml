@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.hook.resourcebundle</artifactId>
-	<name>BLADE Hook Resource Bundle</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.indexerpostprocessor</artifactId>
-	<name>BLADE IndexerPostProcessor</name>
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 

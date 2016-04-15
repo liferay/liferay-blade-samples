@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.hook.jsp</artifactId>
-	<name>BLADE Hook Jsp</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.jsf.portlet.ds</artifactId>
-	<name>BLADE JSF Portlet DS</name>
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
