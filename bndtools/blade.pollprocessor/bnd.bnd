@@ -4,7 +4,7 @@ Bundle-Version: 1.0.0
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true
 
-Private-Package: com.liferay.blade.samples.portlet
+Private-Package: com.liferay.blade.samples.pollprocessor
 -buildpath:\
 	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
 	javax.portlet;version='2.0.0',\
