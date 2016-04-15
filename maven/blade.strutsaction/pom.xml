@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.strutsaction</artifactId>
-	<name>BLADE StrutsAction Integration Point</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

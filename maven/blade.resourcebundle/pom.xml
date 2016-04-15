@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.resourcebundle</artifactId>
-	<name>BLADE ResourceBundle sample</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

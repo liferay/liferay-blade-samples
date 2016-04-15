@@ -6,15 +6,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.gogo</artifactId>
-	<name>BLADE GoGo Command</name>
 	<version>1.0.0</version>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
+		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>

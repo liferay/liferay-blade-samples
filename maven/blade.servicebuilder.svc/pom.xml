@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.servicebuilder.svc</artifactId>
-	<name>BLADE ServiceBuilder Service</name>
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 

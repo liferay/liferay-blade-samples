@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.portlet.controlpanel</artifactId>
-	<name>BLADE ControlPanel Portlet</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

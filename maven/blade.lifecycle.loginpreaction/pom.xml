@@ -6,15 +6,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.lifecycle.loginpreaction</artifactId>
-	<name>BLADE Lifecycle LoginPreAction</name>
 	<version>1.0.0</version>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
+		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
@@ -32,20 +31,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Private-Package>com.liferay.blade.samples.lifecycle.loginpreaction</Private-Package>
-						<Import-Package>*</Import-Package>
-						<_dsannotations>*</_dsannotations>
-						<_sources>true</_sources>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.configurationaction</artifactId>
-	<name>BLADE Message Portlet - ConfigurationAction</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

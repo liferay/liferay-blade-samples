@@ -6,16 +6,20 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.portlet.actioncommand</artifactId>
-	<name>BLADE MVC Portlet ActionCommand</name>
 	<version>1.0.0</version>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
+		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
+
+	<properties>
+		<bridges.version>2.0.0</bridges.version>
+		<taglib.version>2.0.0</taglib.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -27,13 +31,13 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.bridges</artifactId>
-			<version>2.0.0</version>
+			<version>${bridges.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.taglib</artifactId>
-			<version>2.0.0</version>
+			<version>${taglib.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -56,25 +60,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Private-Package>com.liferay.blade.samples.portlet.actioncommand</Private-Package>
-						<Import-Package>*</Import-Package>
-						<_dsannotations>*</_dsannotations>
-						<Include-Resource>
-							{maven-resources},
-							@com.liferay.util.bridges-2.0.0.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,
-							@com.liferay.util.taglib-2.0.0.jar!/META-INF/*.tld
-						</Include-Resource>
-						<_sources>true</_sources>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
