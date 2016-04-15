@@ -12,20 +12,17 @@ task outputFilesSizeTest << {
 }
 
 task outputFilesSortTest << {
-	def fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
-	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
-
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
+	def fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
+
+	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
+	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
 
 	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
-task outputFilesTest << {}
-
-outputFilesTest.dependsOn outputFilesSizeTest
-outputFilesTest.dependsOn outputFilesSortTest
+task outputFilesTest(dependsOn: [outputFilesSizeTest, outputFilesSortTest]) << {}
 
 task replicateSources << {
 	Closure projectFilter = { it.isDirectory() && !it.name.matches("\\..*") }
@@ -39,16 +36,59 @@ task replicateSources << {
 			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
 
 			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
-			
+
 			def replicationSrc = new File( replicationProject, 'src/' )
-			
+
 			replicationSrc.deleteDir()
-			
+
 			def canonicalSrc = new File( canonicalProject, 'src/' )
-			
+
 			ant.copy(todir: replicationSrc) {
 				fileset(dir: canonicalSrc, includes: "**")
 			}
+		}
+	}
+}
+
+configurations {
+	bnd
+}
+
+dependencies {
+	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
+}
+
+repositories {
+	mavenCentral()
+}
+
+task diff << {
+	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+		println "${replicationFiles}"
+
+		replicationFiles.each { replicationFile ->
+
+			println ""
+			println ""
+			println replicationFile.name
+			println "*******************************************************"
+
+			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
+				it.name == replicationFile.name
+			}
+
+			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml"
+
+			javaexec {
+				args "diff", "-i", "${exclusions}", liferayGradleOutputFile, replicationFile
+
+				classpath = configurations.bnd
+				main = "aQute.bnd.main.bnd"
+			}
+
 		}
 	}
 }
