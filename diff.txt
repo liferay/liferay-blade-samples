@@ -1,0 +1,879 @@
+directory 'bndtools/'
+directory 'bndtools/'
+directory 'bndtools/'
+directory 'bndtools/'
+
+
+blade.authenticator.shiro-1.0.0.jar
+*******************************************************
+
+
+blade.authfailure-1.0.0.jar
+*******************************************************
+
+
+blade.configurationaction-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ REMOVED    HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/metatype/com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration.xml
+
+
+blade.corejsphook-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     javax.servlet
+  ADDED      CLAUSE     javax.servlet.http
+
+
+blade.friendlyurl-1.0.0.jar
+*******************************************************
+
+
+blade.gogo-1.0.0.jar
+*******************************************************
+
+
+blade.hook.jsp-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Import-Package
+
+
+blade.hook.resourcebundle-1.0.0.jar
+*******************************************************
+
+
+blade.indexerpostprocessor-1.0.0.jar
+*******************************************************
+
+
+blade.jsf.portlet.ds-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     javax.servlet
+   ADDED      PARAMETER  version:[3.0,4)
+  CHANGED    CLAUSE     javax.servlet.annotation
+   ADDED      PARAMETER  version:[3.0,4)
+  CHANGED    CLAUSE     javax.servlet.http
+   ADDED      PARAMETER  version:[3.0,4)
+MAJOR      RESOURCES  <resources>
+ MAJOR      RESOURCE   WEB-INF/lib/jsf-api-2.2.6.jar
+  ADDED      SHA        A1A0388E1DF0AEED8181E22269CAF167615396C0
+  REMOVED    SHA        E53D243407F28CD38B512A333711AD226E289F5B
+ MAJOR      RESOURCE   WEB-INF/lib/jsf-impl-2.2.6.jar
+  ADDED      SHA        2A18F84321DC7537FFBF378B66444FBE5398E208
+  REMOVED    SHA        97E1147CA3DF107537B09439974095E80C1CC4CF
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-bridge-api-4.2.0-beta.jar
+  ADDED      SHA        6E7ADB57B6EE004EB27C42D99E1247EB8628ACC3
+  REMOVED    SHA        7912507F5F342710B9CF5005DE01697BBBDE280C
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-bridge-impl-4.2.0-beta.jar
+  REMOVED    SHA        072E78000C8F3B17DC93037A90AFA60372B4A49E
+  ADDED      SHA        F60C62FBC09676CBA07E3B484E110D4B0EFCA12F
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-util-4.2.0-beta.jar
+  REMOVED    SHA        7CE282773C4162B171D01CC20C8FA6E6197CEF81
+  ADDED      SHA        EDD0448EBBBF0C879002A344F9C63A3A04ABE0C1
+
+
+blade.lifecycle.loginpreaction-1.0.0.jar
+*******************************************************
+
+
+blade.modellistener-1.0.0.jar
+*******************************************************
+
+
+blade.pollprocessor-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     com.liferay.portal.kernel.json
+  ADDED      CLAUSE     com.liferay.portal.kernel.log
+  ADDED      CLAUSE     com.liferay.portal.kernel.poller
+  ADDED      CLAUSE     com.liferay.portal.kernel.portlet.bridges.mvc
+  ADDED      CLAUSE     javax.portlet
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.pollprocessor,content
+ REMOVED    HEADER     Private-Package:content
+ REMOVED    HEADER     Provide-Capability:liferay.resource.bundle;bundle.symbolic.name="blade.pollprocessor";resource.bundle.base.name="content.Language"
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="com.liferay.portal.kernel.poller.PollerProcessor",osgi.service;objectClass:List<String>="javax.portlet.Portlet",liferay.resource.bundle;bundle.symbolic.name="blade.pollprocessor";resource.bundle.base.name="content.Language"
+ ADDED      HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ REMOVED    HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))"
+ ADDED      HEADER     Service-Component:OSGI-INF/com.liferay.blade.samples.pollprocessor.BladePollProcessor.xml,OSGI-INF/com.liferay.blade.samples.pollprocessor.BladePollProcessorPortlet.xml
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/com.liferay.blade.samples.pollprocessor.BladePollProcessor.xml
+ ADDED      RESOURCE   OSGI-INF/com.liferay.blade.samples.pollprocessor.BladePollProcessorPortlet.xml
+ ADDED      RESOURCE   OSGI-OPT/src/com/liferay/blade/samples/pollprocessor/BladePollProcessor.java
+ ADDED      RESOURCE   OSGI-OPT/src/com/liferay/blade/samples/pollprocessor/BladePollProcessorPortlet.java
+ ADDED      RESOURCE   com/liferay/blade/samples/pollprocessor/BladePollProcessor.class
+ ADDED      RESOURCE   com/liferay/blade/samples/pollprocessor/BladePollProcessorPortlet.class
+
+
+blade.portlet.actioncommand-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.blueprint-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.controlpanel-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.ds-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.filter-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.jsp-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ REMOVED    HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+
+blade.portlet.osgiapi-1.0.0.jar
+*******************************************************
+
+
+blade.resourcebundle-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle"
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle",liferay.resource.bundle;bundle.symbolic.name="blade.resourcebundle";resource.bundle.base.name="content.Language"
+
+
+blade.rest-1.0.0.jar
+*******************************************************
+
+
+blade.service.hook.user-1.0.0.jar
+*******************************************************
+
+
+blade.servicebuilder.api-1.0.0.jar
+*******************************************************
+
+
+blade.servicebuilder.svc-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     blade.servicebuilder.service.impl
+  ADDED      CLAUSE     blade.servicebuilder.service.persistence.impl
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.counter.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.util
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.exportimport.kernel.lar
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.bean
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.configuration
+   REMOVED    PARAMETER  version:[6.2,7)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.db
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.jdbc
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.orm
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.exception
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.json
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.log
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.module.framework.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.search
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.security.auth
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.http
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.util
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.uuid
+   REMOVED    PARAMETER  version:[6.2,7)
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/context/context.dependencies
+
+
+blade.servicebuilder.test-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     org.osgi.framework
+   REMOVED    PARAMETER  version:[1.8,2)
+
+
+blade.servicebuilder.web-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.service;filter:="(objectClass=com.liferay.blade.samples.servicebuilder.service.FooLocalService)";effective:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ ADDED      HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.service;filter:="(objectClass=com.liferay.blade.samples.servicebuilder.service.FooLocalService)";effective:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+
+blade.strutsaction-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     com.liferay.portal.kernel.log
+  ADDED      CLAUSE     com.liferay.portal.kernel.struts
+ REMOVED    HEADER     Private-Package:com.liferay.blade.samples.portlet
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.strutsaction
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="com.liferay.portal.kernel.struts.StrutsAction"
+ REMOVED    HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))"
+ ADDED      HEADER     Require-Capability:osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.service;filter:="(objectClass=javax.servlet.ServletContext)";effective:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ ADDED      HEADER     Service-Component:OSGI-INF/com.liferay.blade.samples.strutsaction.BladeStrutsAction.xml
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/com.liferay.blade.samples.strutsaction.BladeStrutsAction.xml
+ ADDED      RESOURCE   OSGI-OPT/src/com/liferay/blade/samples/strutsaction/BladeStrutsAction.java
+ ADDED      RESOURCE   com/liferay/blade/samples/strutsaction/BladeStrutsAction.class
+
+
+blade.strutsportletaction-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Import-Package
+ REMOVED    HEADER     Private-Package:com.liferay.blade.samples.portlet
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.strutsportletaction
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="com.liferay.portal.kernel.struts.StrutsPortletAction"
+ ADDED      HEADER     Require-Capability:osgi.service;filter:="(objectClass=com.liferay.portal.kernel.service.UserLocalService)";effective:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+ ADDED      HEADER     Service-Component:OSGI-INF/com.liferay.blade.samples.strutsportletaction.BladePortletAction.xml
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/com.liferay.blade.samples.strutsportletaction.BladePortletAction.xml
+ ADDED      RESOURCE   OSGI-OPT/src/com/liferay/blade/samples/strutsportletaction/BladePortletAction.java
+ ADDED      RESOURCE   com/liferay/blade/samples/strutsportletaction/BladePortletAction.class
+directory 'gradle/'
+directory 'gradle/'
+directory 'gradle/'
+directory 'gradle/'
+
+
+blade.authenticator.shiro-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     org.apache.commons.beanutils
+   REMOVED    PARAMETER  version:[1.8,2)
+  CHANGED    CLAUSE     org.slf4j
+   REMOVED    PARAMETER  version:[1.6,2)
+
+
+blade.authfailure-1.0.0.jar
+*******************************************************
+
+
+blade.configurationaction-1.0.0.jar
+*******************************************************
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/metatype/com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration.xml
+
+
+blade.corejsphook-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     javax.servlet
+  ADDED      CLAUSE     javax.servlet.http
+
+
+blade.friendlyurl-1.0.0.jar
+*******************************************************
+
+
+blade.gogo-1.0.0.jar
+*******************************************************
+
+
+blade.hook.jsp-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Import-Package
+
+
+blade.hook.resourcebundle-1.0.0.jar
+*******************************************************
+
+
+blade.indexerpostprocessor-1.0.0.jar
+*******************************************************
+
+
+blade.jsf.portlet.ds-1.0.0.jar
+*******************************************************
+MAJOR      RESOURCES  <resources>
+ MAJOR      RESOURCE   WEB-INF/lib/jsf-api-2.2.6.jar
+  ADDED      SHA        A1A0388E1DF0AEED8181E22269CAF167615396C0
+  REMOVED    SHA        A93DCA55B0CAD81A3EF06E23DF305451A66330BB
+ MAJOR      RESOURCE   WEB-INF/lib/jsf-impl-2.2.6.jar
+  ADDED      SHA        2A18F84321DC7537FFBF378B66444FBE5398E208
+  REMOVED    SHA        D60A55929D7DDDD493BED1156B3CB62DDE1DBD50
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-bridge-api-4.2.0-beta.jar
+  REMOVED    SHA        4DAFE882F6B5C80F285DD2024FD7AB62D2CCCD1E
+  ADDED      SHA        6E7ADB57B6EE004EB27C42D99E1247EB8628ACC3
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-bridge-impl-4.2.0-beta.jar
+  REMOVED    SHA        70465913A33B5F55819EFF37981EA6D7AF116823
+  ADDED      SHA        F60C62FBC09676CBA07E3B484E110D4B0EFCA12F
+ MAJOR      RESOURCE   WEB-INF/lib/liferay-faces-util-4.2.0-beta.jar
+  REMOVED    SHA        84A75C2270A981D18EF6914A463CBB86EBFE014F
+  ADDED      SHA        EDD0448EBBBF0C879002A344F9C63A3A04ABE0C1
+
+
+blade.lifecycle.loginpreaction-1.0.0.jar
+*******************************************************
+
+
+blade.modellistener-1.0.0.jar
+*******************************************************
+
+
+blade.pollprocessor-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.actioncommand-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.blueprint-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.controlpanel-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.ds-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.filter-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.jsp-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.osgiapi-1.0.0.jar
+*******************************************************
+
+
+blade.resourcebundle-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle"
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle",liferay.resource.bundle;bundle.symbolic.name="blade.resourcebundle";resource.bundle.base.name="content.Language"
+
+
+blade.rest-1.0.0.jar
+*******************************************************
+
+
+blade.service.hook.user-1.0.0.jar
+*******************************************************
+
+
+blade.servicebuilder.api-1.0.0.jar
+*******************************************************
+
+
+blade.servicebuilder.svc-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     blade.servicebuilder.service.impl
+  ADDED      CLAUSE     blade.servicebuilder.service.persistence.impl
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.counter.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.util
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.exportimport.kernel.lar
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.bean
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.configuration
+   REMOVED    PARAMETER  version:[6.2,7)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.db
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.jdbc
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.orm
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.exception
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.json
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.log
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.module.framework.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.search
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.security.auth
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.http
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.util
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.uuid
+   REMOVED    PARAMETER  version:[6.2,7)
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/context/context.dependencies
+
+
+blade.servicebuilder.test-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     org.osgi.framework
+   REMOVED    PARAMETER  version:[1.7,2)
+
+
+blade.servicebuilder.web-1.0.0.jar
+*******************************************************
+
+
+blade.strutsaction-1.0.0.jar
+*******************************************************
+
+
+blade.strutsportletaction-1.0.0.jar
+*******************************************************
+directory 'maven/'
+directory 'maven/'
+directory 'maven/'
+directory 'maven/'
+
+
+blade.authenticator.shiro-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.authenticator.shiro
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE Authenticator Shiro
+ ADDED      HEADER     Bundle-Name:blade.authenticator.shiro
+ REMOVED    HEADER     Export-Package
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     org.apache.commons.beanutils
+   REMOVED    PARAMETER  version:[1.8,2)
+  CHANGED    CLAUSE     org.slf4j
+   REMOVED    PARAMETER  version:[1.6,2)
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.authenticator.shiro,org.apache.shiro,org.apache.shiro.aop,org.apache.shiro.authc,org.apache.shiro.authc.credential,org.apache.shiro.authc.pam,org.apache.shiro.authz,org.apache.shiro.authz.annotation,org.apache.shiro.authz.aop,org.apache.shiro.authz.permission,org.apache.shiro.cache,org.apache.shiro.codec,org.apache.shiro.concurrent,org.apache.shiro.config,org.apache.shiro.crypto,org.apache.shiro.crypto.hash,org.apache.shiro.io,org.apache.shiro.jndi,org.apache.shiro.mgt,org.apache.shiro.realm,org.apache.shiro.realm.activedirectory,org.apache.shiro.realm.jdbc,org.apache.shiro.realm.jndi,org.apache.shiro.realm.ldap,org.apache.shiro.realm.text,org.apache.shiro.session,org.apache.shiro.session.mgt,org.apache.shiro.session.mgt.eis,org.apache.shiro.subject,org.apache.shiro.subject.support,org.apache.shiro.util
+
+
+blade.authfailure-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.authfailure
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE AuthFailure
+ ADDED      HEADER     Bundle-Name:blade.authfailure
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.authfailure
+
+
+blade.configurationaction-1.0.0.jar
+*******************************************************
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/metatype/com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration.xml
+
+
+blade.corejsphook-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     javax.servlet
+  ADDED      CLAUSE     javax.servlet.http
+
+
+blade.friendlyurl-1.0.0.jar
+*******************************************************
+
+
+blade.gogo-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.gogo
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE GoGo Command
+ ADDED      HEADER     Bundle-Name:blade.gogo
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.gogo
+MAJOR      RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-OPT/src/com/liferay/blade/samples/gogo/UserCountCommand.java
+ MAJOR      RESOURCE   com/liferay/blade/samples/gogo/UserCountCommand.class
+  REMOVED    SHA        4D3D17722A25C69ECB024B517A4954AD999DBF7A
+  ADDED      SHA        B06D9F9CD656AA17F187A7AFEC4F61CD386AE95B
+
+
+blade.hook.jsp-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ ADDED      HEADER     Import-Package
+
+
+blade.hook.resourcebundle-1.0.0.jar
+*******************************************************
+
+
+blade.indexerpostprocessor-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.indexerpostprocessor
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE IndexerPostProcessor
+ ADDED      HEADER     Bundle-Name:blade.indexerpostprocessor
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.indexerpostprocessor
+
+
+blade.jsf.portlet.ds-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.portlet
+REMOVED    CLASS_VERSION OpenJDK7
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-ClassPath:.,liferay-faces-bridge-impl-4.2.0-beta.jar,liferay-faces-bridge-api-4.2.0-beta.jar,liferay-faces-util-4.2.0-beta.jar
+ ADDED      HEADER     Bundle-ClassPath:WEB-INF/classes,WEB-INF/lib/liferay-faces-bridge-api-4.2.0-beta.jar,WEB-INF/lib/liferay-faces-bridge-impl-4.2.0-beta.jar,WEB-INF/lib/liferay-faces-util-4.2.0-beta.jar,WEB-INF/lib/jsf-api-2.2.6.jar,WEB-INF/lib/jsf-impl-2.2.6.jar
+ REMOVED    HEADER     Bundle-Name:BLADE JSF Portlet DS
+ ADDED      HEADER     Bundle-Name:blade.jsf.portlet.ds
+ REMOVED    HEADER     Embed-Dependency:*;scope=compile|runtime;groupId=!org.osgi
+ REMOVED    HEADER     Embed-Transitive:true
+ REMOVED    HEADER     Embedded-Artifacts:liferay-faces-bridge-impl-4.2.0-beta.jar;g="com.liferay.faces";a="liferay-faces-bridge-impl";v="4.2.0-beta",liferay-faces-bridge-api-4.2.0-beta.jar;g="com.liferay.faces";a="liferay-faces-bridge-api";v="4.2.0-beta",liferay-faces-util-4.2.0-beta.jar;g="com.liferay.faces";a="liferay-faces-util";v="4.2.0-beta"
+ REMOVED    HEADER     Export-Package
+ CHANGED    HEADER     Import-Package
+  ADDED      CLAUSE     com.sun.enterprise
+  ADDED      CLAUSE     com.sun.enterprise.deployment
+  ADDED      CLAUSE     groovy.lang
+  ADDED      CLAUSE     groovy.util
+  ADDED      CLAUSE     javax.annotation
+  ADDED      CLAUSE     javax.crypto
+  ADDED      CLAUSE     javax.crypto.spec
+  ADDED      CLAUSE     javax.ejb
+  ADDED      CLAUSE     javax.enterprise.context
+  ADDED      CLAUSE     javax.enterprise.context.spi
+  ADDED      CLAUSE     javax.enterprise.event
+  ADDED      CLAUSE     javax.enterprise.inject
+  ADDED      CLAUSE     javax.enterprise.inject.spi
+  ADDED      CLAUSE     javax.enterprise.util
+  REMOVED    CLAUSE     javax.faces
+  REMOVED    CLAUSE     javax.faces.application
+  REMOVED    CLAUSE     javax.faces.bean
+  REMOVED    CLAUSE     javax.faces.component
+  REMOVED    CLAUSE     javax.faces.component.behavior
+  REMOVED    CLAUSE     javax.faces.component.html
+  REMOVED    CLAUSE     javax.faces.component.visit
+  REMOVED    CLAUSE     javax.faces.context
+  REMOVED    CLAUSE     javax.faces.convert
+  REMOVED    CLAUSE     javax.faces.el
+  REMOVED    CLAUSE     javax.faces.event
+  REMOVED    CLAUSE     javax.faces.lifecycle
+  REMOVED    CLAUSE     javax.faces.model
+  REMOVED    CLAUSE     javax.faces.render
+  REMOVED    CLAUSE     javax.faces.validator
+  REMOVED    CLAUSE     javax.faces.view
+  REMOVED    CLAUSE     javax.faces.view.facelets
+  REMOVED    CLAUSE     javax.faces.webapp
+  ADDED      CLAUSE     javax.inject
+  ADDED      CLAUSE     javax.naming
+  ADDED      CLAUSE     javax.naming.spi
+  ADDED      CLAUSE     javax.persistence
+  CHANGED    CLAUSE     javax.servlet
+   ADDED      PARAMETER  version:[3.0,4)
+  ADDED      CLAUSE     javax.servlet.annotation
+  CHANGED    CLAUSE     javax.servlet.http
+   ADDED      PARAMETER  version:[3.0,4)
+  ADDED      CLAUSE     javax.servlet.jsp.jstl.core
+  ADDED      CLAUSE     javax.servlet.jsp.jstl.sql
+  ADDED      CLAUSE     javax.validation
+  ADDED      CLAUSE     javax.validation.groups
+  ADDED      CLAUSE     javax.xml.bind
+  ADDED      CLAUSE     javax.xml.transform
+  ADDED      CLAUSE     javax.xml.transform.dom
+  ADDED      CLAUSE     javax.xml.transform.stream
+  ADDED      CLAUSE     javax.xml.validation
+  ADDED      CLAUSE     javax.xml.ws
+  ADDED      CLAUSE     javax.xml.xpath
+  ADDED      CLAUSE     org.apache
+  ADDED      CLAUSE     org.mortbay.jetty.annotations
+  ADDED      CLAUSE     org.mortbay.jetty.handler
+  ADDED      CLAUSE     org.mortbay.jetty.plus.annotation
+  ADDED      CLAUSE     org.mortbay.jetty.webapp
+  ADDED      CLAUSE     org.w3c.dom.ls
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.portlet,com.liferay.faces.bridge,com.liferay.faces.bridge.component,com.liferay.faces.bridge.component.inputfile,com.liferay.faces.bridge.config,com.liferay.faces.bridge.context,com.liferay.faces.bridge.context.url,com.liferay.faces.bridge.event,com.liferay.faces.bridge.filter,com.liferay.faces.bridge.model,com.liferay.faces.bridge.scope,com.liferay.faces.bridge.taglib,javax.portlet.faces,javax.portlet.faces.annotation,javax.portlet.faces.component,javax.portlet.faces.event,javax.portlet.faces.preference,com.liferay.faces.bridge.application.internal,com.liferay.faces.bridge.application.view.internal,com.liferay.faces.bridge.bean.internal,com.liferay.faces.bridge.component.behavior.internal,com.liferay.faces.bridge.component.html.internal,com.liferay.faces.bridge.component.inputfile.internal,com.liferay.faces.bridge.component.internal,com.liferay.faces.bridge.component.primefaces.internal,com.liferay.faces.bridge.component.visit.internal,com.liferay.faces.bridge.config.internal,com.liferay.faces.bridge.context.internal,com.liferay.faces.bridge.context.map.internal,com.liferay.faces.bridge.context.url.internal,com.liferay.faces.bridge.context.url.internal.liferay,com.liferay.faces.bridge.el.internal,com.liferay.faces.bridge.event.internal,com.liferay.faces.bridge.event.internal.liferay,com.liferay.faces.bridge.filter.internal,com.liferay.faces.bridge.filter.liferay,com.liferay.faces.bridge.filter.liferay.internal,com.liferay.faces.bridge.helper.internal,com.liferay.faces.bridge.internal,com.liferay.faces.bridge.lifecycle.internal,com.liferay.faces.bridge.model.internal,com.liferay.faces.bridge.preference.internal,com.liferay.faces.bridge.renderkit.bridge.internal,com.liferay.faces.bridge.renderkit.html_basic.internal,com.liferay.faces.bridge.renderkit.icefaces.internal,com.liferay.faces.bridge.renderkit.portlet.internal,com.liferay.faces.bridge.renderkit.primefaces.internal,com.liferay.faces.bridge.renderkit.richfaces.internal,com.liferay.faces.bridge.scope.internal,com.liferay.faces.bridge.servlet,com.liferay.faces.bridge.taglib.liferay.internal,com.liferay.faces.bridge.util.internal,com.liferay.faces.util.application,com.liferay.faces.util.application.internal,com.liferay.faces.util.client,com.liferay.faces.util.client.internal,com.liferay.faces.util.component,com.liferay.faces.util.config,com.liferay.faces.util.context,com.liferay.faces.util.context.internal,com.liferay.faces.util.context.map,com.liferay.faces.util.el,com.liferay.faces.util.event,com.liferay.faces.util.event.internal,com.liferay.faces.util.factory,com.liferay.faces.util.helper,com.liferay.faces.util.io,com.liferay.faces.util.js,com.liferay.faces.util.jsp,com.liferay.faces.util.lang,com.liferay.faces.util.lifecycle,com.liferay.faces.util.logging,com.liferay.faces.util.map,com.liferay.faces.util.model,com.liferay.faces.util.model.internal,com.liferay.faces.util.portal,com.liferay.faces.util.product,com.liferay.faces.util.render,com.liferay.faces.util.render.internal,com.liferay.faces.util.template,com.liferay.faces.util.template.internal,com.liferay.faces.util.text,com.liferay.faces.util.text.internal,com.liferay.faces.util.view.facelets,com.liferay.faces.util.xml,javax.faces,javax.faces.application,javax.faces.bean,javax.faces.component,javax.faces.component.behavior,javax.faces.component.html,javax.faces.component.visit,javax.faces.context,javax.faces.convert,javax.faces.el,javax.faces.event,javax.faces.flow,javax.faces.flow.builder,javax.faces.lifecycle,javax.faces.model,javax.faces.render,javax.faces.validator,javax.faces.view,javax.faces.view.facelets,javax.faces.webapp,com.sun.faces,com.sun.faces.action,com.sun.faces.application,com.sun.faces.application.annotation,com.sun.faces.application.resource,com.sun.faces.application.view,com.sun.faces.component,com.sun.faces.component.behavior,com.sun.faces.component.validator,com.sun.faces.component.visit,com.sun.faces.config,com.sun.faces.config.configprovider,com.sun.faces.config.processor,com.sun.faces.context,com.sun.faces.context.flash,com.sun.faces.el,com.sun.faces.ext.component,com.sun.faces.ext.render,com.sun.faces.ext.taglib,com.sun.faces.ext.validator,com.sun.faces.facelets,com.sun.faces.facelets.compiler,com.sun.faces.facelets.component,com.sun.faces.facelets.el,com.sun.faces.facelets.impl,com.sun.faces.facelets.tag,com.sun.faces.facelets.tag.composite,com.sun.faces.facelets.tag.jsf,com.sun.faces.facelets.tag.jsf.core,com.sun.faces.facelets.tag.jsf.html,com.sun.faces.facelets.tag.jstl.core,com.sun.faces.facelets.tag.jstl.fn,com.sun.faces.facelets.tag.ui,com.sun.faces.facelets.util,com.sun.faces.flow,com.sun.faces.flow.builder,com.sun.faces.io,com.sun.faces.lifecycle,com.sun.faces.metadata.taglib,com.sun.faces.mgbean,com.sun.faces.renderkit,com.sun.faces.renderkit.html_basic,com.sun.faces.resources,com.sun.faces.scripting,com.sun.faces.scripting.groovy,com.sun.faces.spi,com.sun.faces.taglib,com.sun.faces.taglib.html_basic,com.sun.faces.taglib.jsf_core,com.sun.faces.util,com.sun.faces.util.cdi11,com.sun.faces.vendor,com.sun.faces.xhtml
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   WEB-INF/classes/com/liferay/blade/samples/portlet/JSFPortletDS.class
+ ADDED      RESOURCE   WEB-INF/lib/jsf-api-2.2.6.jar
+ ADDED      RESOURCE   WEB-INF/lib/jsf-impl-2.2.6.jar
+ ADDED      RESOURCE   WEB-INF/lib/liferay-faces-bridge-api-4.2.0-beta.jar
+ ADDED      RESOURCE   WEB-INF/lib/liferay-faces-bridge-impl-4.2.0-beta.jar
+ ADDED      RESOURCE   WEB-INF/lib/liferay-faces-util-4.2.0-beta.jar
+ REMOVED    RESOURCE   com/liferay/blade/samples/portlet/JSFPortletDS.class
+ REMOVED    RESOURCE   liferay-faces-bridge-api-4.2.0-beta.jar
+ REMOVED    RESOURCE   liferay-faces-bridge-impl-4.2.0-beta.jar
+ REMOVED    RESOURCE   liferay-faces-util-4.2.0-beta.jar
+
+
+blade.lifecycle.loginpreaction-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.lifecycle.loginpreaction
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE Lifecycle LoginPreAction
+ ADDED      HEADER     Bundle-Name:blade.lifecycle.loginpreaction
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.lifecycle.loginpreaction
+
+
+blade.modellistener-1.0.0.jar
+*******************************************************
+
+
+blade.pollprocessor-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.actioncommand-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.portlet.actioncommand
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE MVC Portlet ActionCommand
+ ADDED      HEADER     Bundle-Name:blade.portlet.actioncommand
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.portlet.actioncommand,com.liferay.util.bridges.freemarker
+
+
+blade.portlet.blueprint-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.portlet.blueprint
+REMOVED    CLASS_VERSION OpenJDK7
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Blueprint:OSGI-INF/blueprint/blueprint.xml
+ REMOVED    HEADER     Bundle-Name:BLADE Portlet Blueprint
+ ADDED      HEADER     Bundle-Name:blade.portlet.blueprint
+ REMOVED    HEADER     Export-Package
+ REMOVED    HEADER     Export-Service:javax.portlet.Portlet;com.liferay.portlet.display-category=category.sample;com.liferay.portlet.instanceable=true;javax.portlet.display-name=Blueprint Portlet;javax.portlet.security-role-ref="power-user,user"
+ CHANGED    HEADER     Import-Package
+  REMOVED    CLAUSE     blade.portlet
+  REMOVED    CLAUSE     org.osgi.service.blueprint
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.portlet.blueprint
+
+
+blade.portlet.controlpanel-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.ds-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.portlet.ds
+REMOVED    CLASS_VERSION OpenJDK7
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE Portlet DS
+ ADDED      HEADER     Bundle-Name:blade.portlet.ds
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.portlet.ds
+
+
+blade.portlet.filter-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.jsp-1.0.0.jar
+*******************************************************
+
+
+blade.portlet.osgiapi-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.portlet.osgiapi
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE Portlet OSGi API
+ ADDED      HEADER     Bundle-Name:blade.portlet.osgiapi
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.portlet.osgiapi
+
+
+blade.resourcebundle-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle"
+ ADDED      HEADER     Provide-Capability:osgi.service;objectClass:List<String>="java.util.ResourceBundle",liferay.resource.bundle;bundle.symbolic.name="blade.resourcebundle";resource.bundle.base.name="content.Language"
+
+
+blade.rest-1.0.0.jar
+*******************************************************
+
+
+blade.service.hook.user-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.service.hook.user
+REMOVED    CLASS_VERSION OpenJDK7
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE Service Hook User
+ ADDED      HEADER     Bundle-Name:blade.service.hook.user
+ REMOVED    HEADER     Export-Package
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.service.hook.user
+
+
+blade.servicebuilder.api-1.0.0.jar
+*******************************************************
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE ServiceBuilder API
+ ADDED      HEADER     Bundle-Name:blade.servicebuilder.api
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   META-INF/service.xml
+
+
+blade.servicebuilder.svc-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.servicebuilder.service.base
+REMOVED    PACKAGE    com.liferay.blade.samples.servicebuilder.service.http
+REMOVED    PACKAGE    com.liferay.blade.samples.servicebuilder.service.util
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE ServiceBuilder Service
+ ADDED      HEADER     Bundle-Name:blade.servicebuilder.svc
+ REMOVED    HEADER     Export-Package
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.asset.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  REMOVED    CLAUSE     com.liferay.blade.samples.servicebuilder.service.base
+  REMOVED    CLAUSE     com.liferay.blade.samples.servicebuilder.service.util
+  CHANGED    CLAUSE     com.liferay.counter.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.expando.kernel.util
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.exportimport.kernel.lar
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.bean
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.configuration
+   REMOVED    PARAMETER  version:[6.2,7)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.db
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.jdbc
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.dao.orm
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.exception
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.json
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.log
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.model.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.module.framework.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.search
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.security.auth
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.http
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.service.persistence.impl
+   REMOVED    PARAMETER  version:[1.0,2)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.util
+   REMOVED    PARAMETER  version:[7.0,8)
+  CHANGED    CLAUSE     com.liferay.portal.kernel.uuid
+   REMOVED    PARAMETER  version:[6.2,7)
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.servicebuilder.model.impl,com.liferay.blade.samples.servicebuilder.service.base,com.liferay.blade.samples.servicebuilder.service.http,com.liferay.blade.samples.servicebuilder.service.impl,com.liferay.blade.samples.servicebuilder.service.persistence.impl,com.liferay.blade.samples.servicebuilder.service.util
+CHANGED    RESOURCES  <resources>
+ ADDED      RESOURCE   OSGI-INF/context/context.dependencies
+
+
+blade.servicebuilder.test-1.0.0.jar
+*******************************************************
+REMOVED    PACKAGE    com.liferay.blade.samples.servicebuilder.test
+REMOVED    CLASS_VERSION OpenJDK7
+REMOVED    CLASS_VERSION OpenJDK8
+CHANGED    MANIFEST   <manifest>
+ REMOVED    HEADER     Bundle-Name:BLADE ServiceBuilder Test
+ ADDED      HEADER     Bundle-Name:blade.servicebuilder.test
+ REMOVED    HEADER     Export-Package
+ CHANGED    HEADER     Import-Package
+  CHANGED    CLAUSE     org.osgi.framework
+   REMOVED    PARAMETER  version:[1.8,2)
+ ADDED      HEADER     Private-Package:com.liferay.blade.samples.servicebuilder.test
+
+
+blade.servicebuilder.web-1.0.0.jar
+*******************************************************
+MAJOR      RESOURCES  <resources>
+ MAJOR      RESOURCE   OSGI-INF/com.liferay.blade.samples.servicebuilder.web.JSPPortlet.xml
+  ADDED      SHA        0D9E93D44E9E18C39F0215A19489BE6787DB17ED
+  REMOVED    SHA        B211FFEF2C1D3CA9CC8D5933F232E38F0EA9D549
+
+
+blade.strutsaction-1.0.0.jar
+*******************************************************
+
+
+blade.strutsportletaction-1.0.0.jar
+*******************************************************
+
+BUILD SUCCESSFUL
+
+Total time: 39.164 secs
+
+This build could be faster, please consider using the Gradle Daemon: https://docs.gradle.org/2.11/userguide/gradle_daemon.html
