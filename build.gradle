@@ -68,9 +68,6 @@ repositories {
 task diff << {
 	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
 		println "${replicationFiles}"
-		println "${replicationFiles}"
-		println "${replicationFiles}"
-		println "${replicationFiles}"
 
 		replicationFiles.each { replicationFile ->
 
