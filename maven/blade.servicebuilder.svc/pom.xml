@@ -7,13 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.servicebuilder.svc</artifactId>
 	<version>1.0.0</version>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
+		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
@@ -50,27 +50,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Private-Package>
-							com.liferay.blade.samples.servicebuilder.model.impl,
-							com.liferay.blade.samples.servicebuilder.service.base,
-							com.liferay.blade.samples.servicebuilder.service.http,
-							com.liferay.blade.samples.servicebuilder.service.impl,
-							com.liferay.blade.samples.servicebuilder.service.persistence.impl
-						</Private-Package>
-						<Import-Package>*</Import-Package>
-						<Liferay-Require-SchemaVersion>1.0.0</Liferay-Require-SchemaVersion>
-						<Liferay-Service>true</Liferay-Service>
-						<_dsannotations>*</_dsannotations>
-						<_plugin.service>com.liferay.ant.bnd.service.ServiceAnalyzerPlugin</_plugin.service>
-						<_sources>true</_sources>
-					</instructions>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>

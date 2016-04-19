@@ -7,13 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>blade.servicebuilder.api</artifactId>
 	<version>1.0.0</version>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.felix.bundle.plugin</artifactId>
+		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../parent.felix.bundle.plugin</relativePath>
+		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
@@ -49,25 +49,4 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Export-Package>
-							com.liferay.blade.samples.servicebuilder.exception,
-							com.liferay.blade.samples.servicebuilder.model,
-							com.liferay.blade.samples.servicebuilder.service,
-							com.liferay.blade.samples.servicebuilder.service.persistence
-						</Export-Package>
-						<Import-Package>*</Import-Package>
-						<_dsannotations>*</_dsannotations>
-						<_sources>true</_sources>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
