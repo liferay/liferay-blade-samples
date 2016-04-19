@@ -83,7 +83,7 @@ task diff << {
 			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml, WEB-INF/lib/*"
 
 			javaexec {
-				args "diff", "-i", "${exclusions}", liferayGradleOutputFile, replicationFile
+				args "diff", "-i", "${exclusions}", replicationFile, liferayGradleOutputFile
 
 				classpath = configurations.bnd
 				main = "aQute.bnd.main.bnd"
