@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
-	<bean id="blade.servicebuilder.service.FooLocalService" class="blade.servicebuilder.service.impl.FooLocalServiceImpl" />
-	<bean id="blade.servicebuilder.service.FooService" class="blade.servicebuilder.service.impl.FooServiceImpl" />
-	<bean id="blade.servicebuilder.service.persistence.FooPersistence" class="blade.servicebuilder.service.persistence.impl.FooPersistenceImpl" parent="basePersistence" />
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<bean id="com.liferay.blade.samples.servicebuilder.service.FooLocalService" class="com.liferay.blade.samples.servicebuilder.service.impl.FooLocalServiceImpl" />
 	<bean id="com.liferay.blade.samples.servicebuilder.service.FooService" class="com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl" />
 	<bean id="com.liferay.blade.samples.servicebuilder.service.persistence.FooPersistence" class="com.liferay.blade.samples.servicebuilder.service.persistence.impl.FooPersistenceImpl" parent="basePersistence" />
