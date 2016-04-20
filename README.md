@@ -340,9 +340,11 @@ __Extension point description__: Allows to create custom, JAX-RS standard based 
 __Template project description__:  demonstrates how to create a JAX-RS service that list Liferay users
 
 NOTE: Before this service is accessible, one needs to configure endpoints for it. To do so, go to 
-`Control Panel > System > System Settings` and 
+`Control Panel > System > System Settings > Foundation` and then
 
-* create new `CXFEndpoint publisher configuration` (search with `CXF`) providing `Context path` (say `/rest-test`) 
+* Search for CXF Endpoints
+* create new `CXFEndpoint publisher configuration` providing `Context path` (say `/rest-test`)
+* Go back to `System Settings > Foundation` and select `REST Extender`
 * create new `Rest extender configuration` (search with `rest`) providing `Context paths` (say `/rest-test`) and `jaxrs.applications.filters` set to: `(jaxrs.application=true)`
 
 Then you can access the service via http://localhost:8080/o/rest-test/blade.users/list/
