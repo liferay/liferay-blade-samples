@@ -21,6 +21,7 @@ include(
 	'blade.portlet.osgiapi',
 	'blade.resourcebundle',
 	'blade.rest',
+	'blade.schedulerentry',
 	'blade.service.hook.user',
 	'blade.servicebuilder.api',
 	'blade.servicebuilder.svc',
