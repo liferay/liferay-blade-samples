@@ -1,6 +1,7 @@
 include(
 	'blade.authenticator.shiro',
 	'blade.authfailure',
+	'blade.controlmenuentry',
 	'blade.configurationaction',
 	'blade.corejsphook',
 	'blade.friendlyurl',
