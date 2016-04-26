@@ -8,7 +8,6 @@ include(
 	'blade.hook.jsp',
 	'blade.hook.resourcebundle',
 	'blade.indexerpostprocessor',
-	'blade.jsf.portlet.ds',
 	'blade.lifecycle.loginpreaction',
 	'blade.modellistener',
 	'blade.pollprocessor',
