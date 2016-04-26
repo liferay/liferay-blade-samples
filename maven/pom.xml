@@ -26,7 +26,6 @@
 		<module>blade.hook.jsp</module>
 		<module>blade.hook.resourcebundle</module>
 		<module>blade.indexerpostprocessor</module>
-		<module>blade.jsf.portlet.ds</module>
 		<module>blade.lifecycle.loginpreaction</module>
 		<module>blade.modellistener</module>
 		<module>blade.pollprocessor</module>
