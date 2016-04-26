@@ -40,6 +40,17 @@ task replicateSources << {
 
 			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
 
+			if (replicationProject == null) {
+				replicationProject = new File(replicationParent, canonicalProject.name)
+				replicationProject.mkdirs()
+
+				def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+
+				ant.copy(todir: replicationProject) {
+					fileset(dir: buildFilesProject, includes: "*")
+				}
+			}
+
 			def replicationSrc = new File( replicationProject, 'src/' )
 
 			replicationSrc.deleteDir()
