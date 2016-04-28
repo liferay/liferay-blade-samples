@@ -23,13 +23,16 @@ import com.liferay.product.navigation.control.menu.BaseProductNavigationControlM
 import com.liferay.product.navigation.control.menu.ProductNavigationControlMenuEntry;
 import com.liferay.product.navigation.control.menu.constants.ProductNavigationControlMenuCategoryKeys;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
+/**
+ * @author Liferay
+ */
 @Component(
 	immediate = true,
 	property = {
@@ -38,8 +41,9 @@ import java.util.ResourceBundle;
 	},
 	service = ProductNavigationControlMenuEntry.class
 )
-public class BladeProductNavigationControlMenuEntry extends BaseProductNavigationControlMenuEntry
-		implements ProductNavigationControlMenuEntry {
+public class BladeProductNavigationControlMenuEntry
+	extends BaseProductNavigationControlMenuEntry
+	implements ProductNavigationControlMenuEntry {
 
 	@Override
 	public String getIconCssClass(HttpServletRequest request) {
@@ -48,19 +52,21 @@ public class BladeProductNavigationControlMenuEntry extends BaseProductNavigatio
 
 	@Override
 	public String getLabel(Locale locale) {
-		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle("content.Language", locale, getClass());
+		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
+			"content.Language", locale, getClass());
 
-		return LanguageUtil.get(resourceBundle, "blade-menu-entry-custom-message");
-	}
-
-	@Override
-	public boolean isShow(HttpServletRequest request) throws PortalException {
-		return true;
+		return LanguageUtil.get(
+			resourceBundle, "blade-menu-entry-custom-message");
 	}
 
 	@Override
 	public String getURL(HttpServletRequest request) {
 		return "http://www.liferay.com";
+	}
+
+	@Override
+	public boolean isShow(HttpServletRequest request) throws PortalException {
+		return true;
 	}
 
 }
