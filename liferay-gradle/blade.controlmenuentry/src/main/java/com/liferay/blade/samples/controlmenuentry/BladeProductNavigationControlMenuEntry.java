@@ -43,7 +43,7 @@ public class BladeProductNavigationControlMenuEntry extends BaseProductNavigatio
 
 	@Override
 	public String getIconCssClass(HttpServletRequest request) {
-		return "icon-puzzle";
+		return "link";
 	}
 
 	@Override
