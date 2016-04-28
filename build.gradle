@@ -82,24 +82,30 @@ task diff << {
 
 		replicationFiles.each { replicationFile ->
 
-			println ""
-			println ""
-			println replicationFile.name
-			println "*******************************************************"
-
 			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
 				it.name == replicationFile.name
 			}
 
 			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml, WEB-INF/lib/*"
 
-			javaexec {
-				args "diff", "-i", "${exclusions}", replicationFile, liferayGradleOutputFile
+			new ByteArrayOutputStream().withStream { os ->
+				javaexec {
+					args "diff", "-i", "${exclusions}", replicationFile, liferayGradleOutputFile
 
-				classpath = configurations.bnd
-				main = "aQute.bnd.main.bnd"
+					classpath = configurations.bnd
+					main = "aQute.bnd.main.bnd"
+					standardOutput = os
+				}
+
+				def output = os.toString()
+
+				if (output?.trim()) {
+					println "\n"
+					println replicationFile.name
+					println "*******************************************************"
+					println output
+				}
 			}
-
 		}
 	}
 }
