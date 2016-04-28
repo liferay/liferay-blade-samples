@@ -10,5 +10,5 @@
 		</service-properties>
 	</service>
 
-	<bean id="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" class="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" />
+	<bean class="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" id="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" />
 </blueprint>
