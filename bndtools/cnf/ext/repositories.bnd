@@ -1,11 +1,11 @@
 releaserepo:            ${workspace}/dist/bundles
 bnd-release	=	https://dl.bintray.com/bnd/dist/3.1.0/
-liferay-ce-release = https://repository.liferay.com/nexus/content/groups/liferay-ce
+liferay-public = http://cdn.repository.liferay.com/nexus/content/groups/public
 ant-bnd-version = 2.0.19
 
 -pluginpath:\
         ${build}/cache/biz.aQute.repository.aether.jar;url=${bnd-release}/biz.aQute.repository.aether/biz.aQute.repository.aether-latest.jar,\
-        ${build}/cache/com.liferay.ant.bnd-${ant-bnd-version}.jar;url=${liferay-ce-release}/com/liferay/com.liferay.ant.bnd/${ant-bnd-version}/com.liferay.ant.bnd-${ant-bnd-version}.jar
+        ${build}/cache/com.liferay.ant.bnd-${ant-bnd-version}.jar;url=${liferay-public}/com/liferay/com.liferay.ant.bnd/${ant-bnd-version}/com.liferay.ant.bnd-${ant-bnd-version}.jar
 
 -plugin.enroute.distrorepo = \
 	aQute.bnd.jpm.Repository; \
@@ -41,12 +41,12 @@ ant-bnd-version = 2.0.19
 -plugin.enroute.liferaysnapshotsrepo = \
 aQute.bnd.deployer.repository.aether.AetherRepository; \
 		name 	= 	Liferay Nexus; \
-		url 	= 	https://repository.liferay.com/nexus/content/groups/liferay-ce/
+		url 	= 	http://cdn.repository.liferay.com/nexus/content/groups/liferay-ce/
 
 -plugin.enroute.liferaypublic = \
 	aQute.bnd.deployer.repository.aether.AetherRepository; \
 		name 	= 	Liferay Public; \
-		url 	= 	https://repository.liferay.com/nexus/content/groups/public/
-		
+		url 	= 	http://cdn.repository.liferay.com/nexus/content/groups/public/
+
 
 -releaserepo: Release

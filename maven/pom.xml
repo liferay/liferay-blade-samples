@@ -11,8 +11,8 @@
 
 	<repositories>
 		<repository>
-			<id>liferay-ce</id>
-			<url>https://repository.liferay.com/nexus/content/groups/liferay-ce/</url>
+			<id>liferay-public</id>
+			<url>http://cdn.repository.liferay.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 
