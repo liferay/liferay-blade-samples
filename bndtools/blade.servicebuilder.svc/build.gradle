@@ -2,7 +2,7 @@ buildscript {
 	repositories {
 		mavenCentral()
 		maven {
-			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
+			url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
 		}
 	}
 
@@ -14,7 +14,7 @@ buildscript {
 repositories {
 	mavenCentral()
 	maven {
-		url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
+		url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
 	}
 }
 
