@@ -86,7 +86,7 @@ task diff << {
 				it.name == replicationFile.name
 			}
 
-			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml, WEB-INF/lib/*"
+			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml"
 
 			new ByteArrayOutputStream().withStream { os ->
 				javaexec {
