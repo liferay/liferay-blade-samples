@@ -1,2 +1,5 @@
 Bundle-Version: 1.0.0
 -sources: true
+
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
