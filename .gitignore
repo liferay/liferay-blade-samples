@@ -48,3 +48,5 @@ maven/*/*/.project
 maven/*/*/.settings
 maven/*/*/bin
 maven/*/*/target
+
+**/.sass-cache
