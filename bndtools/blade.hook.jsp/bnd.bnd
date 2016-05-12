@@ -2,5 +2,6 @@ Bundle-Version: 1.0.0
 Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
 -sources: true
 
+-includeresource: META-INF/resources=src/main/resources/META-INF/resources
 -jsp: *.jsp,*.jspf
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
