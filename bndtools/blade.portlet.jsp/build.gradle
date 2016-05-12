@@ -1,0 +1,20 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven {
+			url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
+		}
+	}
+    dependencies {
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "latest.release"
+    }
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
+	}
+}
+
+apply plugin: "com.liferay.css.builder"
