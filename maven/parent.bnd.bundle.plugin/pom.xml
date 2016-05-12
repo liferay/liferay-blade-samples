@@ -37,6 +37,24 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.css.builder</artifactId>
+				<version>1.0.17</version>
+				<executions>
+					<execution>
+						<id>default-build-css</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>build-css</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<portalCommonDirName>/</portalCommonDirName>
+					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
 				<version>3.1.0</version>
