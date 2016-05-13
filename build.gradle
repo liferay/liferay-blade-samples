@@ -78,15 +78,13 @@ repositories {
 
 task diff << {
 	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
-		println "${replicationFiles}"
-
 		replicationFiles.each { replicationFile ->
 
 			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
 				it.name == replicationFile.name
 			}
 
-			String exclusions = "Archiver-Version, Javac-Debug, Javac-Deprecation, Javac-Encoding, Built-By, Build-Jdk, *pom.properties, *pom.xml"
+			String exclusions = "*pom.properties, *pom.xml, Archiver-Version, Built-By, Build-Jdk, Javac-Debug, Javac-Deprecation, Javac-Encoding"
 
 			new ByteArrayOutputStream().withStream { os ->
 				javaexec {
@@ -97,13 +95,10 @@ task diff << {
 					standardOutput = os
 				}
 
-				def output = os.toString()
+				def errorOutput = os.toString()
 
-				if (output?.trim()) {
-					println "\n"
-					println replicationFile.name
-					println "*******************************************************"
-					println output
+				if (!errorOutput.empty) {
+					throw new GradleScriptException("${replicationFiles} - ${replicationFile.name} \n", new Exception (errorOutput))
 				}
 			}
 		}
