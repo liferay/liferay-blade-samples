@@ -77,6 +77,8 @@ repositories {
 }
 
 task diff << {
+	def errorList = []
+
 	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
@@ -86,21 +88,26 @@ task diff << {
 
 			String exclusions = "*pom.properties, *pom.xml, Archiver-Version, Built-By, Build-Jdk, Javac-Debug, Javac-Deprecation, Javac-Encoding"
 
-			new ByteArrayOutputStream().withStream { os ->
-				javaexec {
-					args "diff", "-i", "${exclusions}", replicationFile, liferayGradleOutputFile
+			def os = new ByteArrayOutputStream()
 
-					classpath = configurations.bnd
-					main = "aQute.bnd.main.bnd"
-					standardOutput = os
-				}
+			javaexec {
+				args "diff", "-i", "${exclusions}", replicationFile, liferayGradleOutputFile
 
-				def errorOutput = os.toString()
+				classpath = configurations.bnd
+				main = "aQute.bnd.main.bnd"
+				standardOutput = os
+			}
 
-				if (!errorOutput.empty) {
-					throw new GradleScriptException("${replicationFiles} - ${replicationFile.name} \n", new Exception (errorOutput))
-				}
+			def errorOutput = os.toString()
+
+			if (errorOutput) {
+				errorList.add("${replicationFiles} - ${replicationFile.name} \n" + errorOutput)
 			}
 		}
 	}
+
+	if (!errorList.empty) {
+		throw new GradleException(errorList.toListString())
+	}
 }
+
