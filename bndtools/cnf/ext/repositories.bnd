@@ -1,21 +1,19 @@
-releaserepo:            ${workspace}/dist/bundles
-bnd-release	=	https://dl.bintray.com/bnd/dist/3.1.0/
-liferay-public = http://cdn.repository.liferay.com/nexus/content/groups/public
+releaserepo: ${workspace}/dist/bundles
+
+liferay-public  = http://cdn.repository.liferay.com/nexus/content/groups/public
 ant-bnd-version = 2.0.21
 
 -pluginpath:\
-        ${build}/cache/biz.aQute.repository.aether.jar;url=${bnd-release}/biz.aQute.repository.aether/biz.aQute.repository.aether-latest.jar,\
-        ${build}/cache/com.liferay.ant.bnd-${ant-bnd-version}.jar;url=${liferay-public}/com/liferay/com.liferay.ant.bnd/${ant-bnd-version}/com.liferay.ant.bnd-${ant-bnd-version}.jar
+    ${build}/cache/com.liferay.ant.bnd-${ant-bnd-version}.jar;url=${liferay-public}/com/liferay/com.liferay.ant.bnd/${ant-bnd-version}/com.liferay.ant.bnd-${ant-bnd-version}.jar
 
 -plugin.enroute.distrorepo = \
-	aQute.bnd.jpm.Repository; \
-	        includeStage	=       true; \
-	        name		=       Distro; \
-	        location	=       ~/.bnd/shacache; \
-	        index		=       ${build}/distro.json; \
-	        depository.group	=		OSGi; \
-    		depository.name		=		enRoute.rt
-
+    aQute.bnd.jpm.Repository; \
+        includeStage = true; \
+        name         = Distro; \
+        location	     =       ~/.bnd/shacache; \
+        index         =       ${build}/distro.json; \
+        depository.group	=		OSGi; \
+        depository.name		=		enRoute.rt
 
 -plugin.enroute.wrapper: aQute.bnd.deployer.repository.wrapper.Plugin; \
             location            =	"${build}/cache/wrapper"; \
@@ -38,15 +36,10 @@ ant-bnd-version = 2.0.21
 -plugin.enroute.releaserepo = \
 	aQute.lib.deployer.FileRepo;name='Release';location=${releaserepo}
 
--plugin.enroute.liferaysnapshotsrepo = \
-aQute.bnd.deployer.repository.aether.AetherRepository; \
-		name 	= 	Liferay Nexus; \
-		url 	= 	http://cdn.repository.liferay.com/nexus/content/groups/liferay-ce/
-
 -plugin.enroute.liferaypublic = \
-	aQute.bnd.deployer.repository.aether.AetherRepository; \
-		name 	= 	Liferay Public; \
-		url 	= 	http://cdn.repository.liferay.com/nexus/content/groups/public/
+  aQute.bnd.repository.maven.provider.MavenBndRepository; \
+    releaseUrl=${liferay-public}; \
+    name="Liferay"
 
 
 -releaserepo: Release
