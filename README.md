@@ -508,7 +508,11 @@ This project does not yet have template projects for the following extension poi
 
 # Contribution
 
-These templates can be copied freely and contributions are welcome.
+These templates can be copied freely and contributions are welcome. You can
+contribute additional template samples by creating the project for one of the
+four build tools and sending a pull request to `liferay/liferay-blade-samples`.
+A repository admin will review the submission and replicate the project for the
+other three build tools, once the submission is approved.
 
 # References
 
