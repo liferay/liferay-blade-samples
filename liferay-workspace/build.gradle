@@ -1,0 +1,129 @@
+FileTree liferayGradleOutputFiles = fileTree(dir: '../liferay-gradle/', include: '**/libs/*.jar')
+
+buildscript {
+        repositories {
+                jcenter()
+        }
+
+        dependencies {
+                classpath 'de.undercouch:gradle-download-task:2.1.0'
+                classpath 'com.squareup.okhttp3:okhttp:3.3.1'
+        }
+}
+
+apply plugin: 'de.undercouch.download'
+
+import de.undercouch.gradle.tasks.download.Download
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
+def bladeclijar = 'com.liferay.blade.cli_1.0.1.201606141418.jar'
+
+task downloadBladeCLI(type: Download) {
+    src "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/21/artifact/build/generated/p2/plugins/${bladeclijar}"
+    dest buildDir
+    overwrite false
+}
+
+def sampleBundles = liferayGradleOutputFiles.files
+def sampleBundle = sampleBundles.name
+def bundleMap = [:]
+
+task installBundle(dependsOn: 'downloadBladeCLI') << {
+	javaexec {
+			args "server", "start", "-b"
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+	}
+
+	OkHttpClient client = new OkHttpClient();
+	Request request = new Request.Builder().url("http://localhost:8080").build();
+
+	boolean pingSucceeded = false;
+
+	while (!pingSucceeded) {
+		try {
+			client.newCall(request).execute();
+			pingSucceeded = true;
+		}
+		catch( Exception e) {
+		}
+	}
+
+	def errorList = []
+
+	sampleBundles.each { sampleBundlefile ->
+
+		def os = new ByteArrayOutputStream()
+
+		javaexec {
+			args "sh", "install", "file:${sampleBundlefile}"
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
+		}
+
+		def installOutput = os.toString()
+
+		def bundleID = installOutput.substring(installOutput.length() - 3)
+
+		javaexec {
+			args "sh", "start", bundleID
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
+		}
+		def startOutput = os.toString()
+
+		if (startOutput.contains('Exception')) {
+				errorList.add(startOutput)
+			}
+
+		javaexec {
+			args "sh", "uninstall", bundleID
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+		}
+	}
+
+	if (!errorList.empty) {
+		throw new GradleException(errorList.toListString())
+	}
+
+	javaexec {
+		args "server", "stop"
+		classpath = files("build/${bladeclijar}")
+		main = "com.liferay.blade.cli.blade"
+	}
+}
+
+task uninstallBundle << {
+	sampleBundles.each { sampleBundlefile ->
+		javaexec {
+			args "sh", "uninstall", "file:${sampleBundlefile}"
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+		}
+	}
+}
+
+/*task storeBundlestoMap << {
+	sampleBundle.each { item ->
+		def symbolicName = item.split("-")[0];
+		def os = new ByteArrayOutputStream()
+
+		javaexec {
+			args "sh lb" symbolicName
+			classpath = configurations.bladeCLI
+			main = "-jar"
+			standardOutput = os
+		}
+
+		***def outputID = os.toString().getID***
+
+		bundleMap.put(symbolicName, "outputID")
+	}
+
+}*/
+
+
