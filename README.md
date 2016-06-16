@@ -172,9 +172,25 @@ __Template projects links__:
 
 ## `login.events.pre`
 
-__Extension point description__: 
+__Extension point description__:  This example demonstrates how to implement a Liferay `com.liferay.portal.kernel.events.LifecycleAction`. This API replaces all the legacy lifecycle events such as `com.liferay.portal.kernel.events.Action`, `com.liferay.portal.kernel.events.SessionAction`, and `com.liferay.portal.kernel.events.SimpleAction`.
+Connecting an LifecycleAction to a particular event is determined by the OSGi service property `key`. The following keys are supported:
 
-__Template project description__:  demonstrates a hook for `login.events.pre`.
+* `application.shutdown.events` - fired during destruction of company instances at portal shutdown
+* `application.startup.events` - fired during initialization of company instances at portal start, or when a new instance is created
+* `global.shutdown.events` - fired during destruction of the portal's main servlet
+* `global.startup.events` - fire during initialization of the portal's main servlet
+* `layout.configuration.action.delete` - fired during destruction of a page (Layout)
+* `layout.configuration.action.update` - fired during initialization of a page (Layout)
+* `login.events.post` - fired immediately following login
+* `login.events.pre` - fired immediately prior to login
+* `logout.events.post` - fired immediately following logout
+* `logout.events.pre` - fired immediately prior to logout
+* `servlet.service.events.post` - fired following requests to the portal (including all portlet container requests)
+* `servlet.service.events.pre` - fired prior to requests to the portal (including all portlet container requests & post login)
+* `servlet.session.create.events` - fired during creation of a portal's http session
+* `servlet.session.destroy.events` - fired during destruction of a portal's http session
+
+__Template project description__:  this example demonstrates a hook for `login.events.pre`.
 
 __Template projects links__:
 
