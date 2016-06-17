@@ -50,10 +50,10 @@ task installBundle(dependsOn: 'downloadBladeCLI') << {
 		}
 	}
 
+	def bundleIDList = []
 	def errorList = []
 
 	sampleBundles.each { sampleBundlefile ->
-
 		def os = new ByteArrayOutputStream()
 
 		javaexec {
@@ -67,18 +67,24 @@ task installBundle(dependsOn: 'downloadBladeCLI') << {
 
 		def bundleID = installOutput.substring(installOutput.length() - 3)
 
+		bundleIDList.add(bundleID)
+
 		javaexec {
 			args "sh", "start", bundleID
 			classpath = files("build/${bladeclijar}")
 			main = "com.liferay.blade.cli.blade"
 			standardOutput = os
 		}
+
 		def startOutput = os.toString()
 
 		if (startOutput.contains('Exception')) {
 				errorList.add(startOutput)
-			}
+		}
 
+	}
+
+	bundleIDList.each { bundleID ->
 		javaexec {
 			args "sh", "uninstall", bundleID
 			classpath = files("build/${bladeclijar}")
@@ -95,35 +101,5 @@ task installBundle(dependsOn: 'downloadBladeCLI') << {
 		classpath = files("build/${bladeclijar}")
 		main = "com.liferay.blade.cli.blade"
 	}
+
 }
-
-task uninstallBundle << {
-	sampleBundles.each { sampleBundlefile ->
-		javaexec {
-			args "sh", "uninstall", "file:${sampleBundlefile}"
-			classpath = files("build/${bladeclijar}")
-			main = "com.liferay.blade.cli.blade"
-		}
-	}
-}
-
-/*task storeBundlestoMap << {
-	sampleBundle.each { item ->
-		def symbolicName = item.split("-")[0];
-		def os = new ByteArrayOutputStream()
-
-		javaexec {
-			args "sh lb" symbolicName
-			classpath = configurations.bladeCLI
-			main = "-jar"
-			standardOutput = os
-		}
-
-		***def outputID = os.toString().getID***
-
-		bundleMap.put(symbolicName, "outputID")
-	}
-
-}*/
-
-
