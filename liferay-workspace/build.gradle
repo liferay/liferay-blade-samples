@@ -6,8 +6,8 @@ buildscript {
         }
 
         dependencies {
-                classpath 'de.undercouch:gradle-download-task:2.1.0'
                 classpath 'com.squareup.okhttp3:okhttp:3.3.1'
+                classpath 'de.undercouch:gradle-download-task:2.1.0'
         }
 }
 
@@ -20,16 +20,15 @@ import okhttp3.Request;
 def bladeclijar = 'com.liferay.blade.cli_1.0.1.201606141418.jar'
 
 task downloadBladeCLI(type: Download) {
-    src "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/21/artifact/build/generated/p2/plugins/${bladeclijar}"
     dest buildDir
     overwrite false
+    src "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/21/artifact/build/generated/p2/plugins/${bladeclijar}"
 }
 
 def sampleBundles = liferayGradleOutputFiles.files
 def sampleBundle = sampleBundles.name
-def bundleMap = [:]
 
-task installBundle(dependsOn: 'downloadBladeCLI') << {
+task installBundlesTest(dependsOn: 'downloadBladeCLI') << {
 	javaexec {
 			args "server", "start", "-b"
 			classpath = files("build/${bladeclijar}")
@@ -85,21 +84,25 @@ task installBundle(dependsOn: 'downloadBladeCLI') << {
 	}
 
 	bundleIDList.each { bundleID ->
+		def os = new ByteArrayOutputStream()
+
 		javaexec {
 			args "sh", "uninstall", bundleID
 			classpath = files("build/${bladeclijar}")
 			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
 		}
-	}
 
-	if (!errorList.empty) {
-		throw new GradleException(errorList.toListString())
 	}
 
 	javaexec {
 		args "server", "stop"
 		classpath = files("build/${bladeclijar}")
 		main = "com.liferay.blade.cli.blade"
+	}
+
+	if (!errorList.empty) {
+		throw new GradleException(errorList.toListString())
 	}
 
 }
