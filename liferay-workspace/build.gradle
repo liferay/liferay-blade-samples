@@ -1,0 +1,129 @@
+FileTree liferayGradleOutputFiles = fileTree(dir: '../liferay-gradle/', include: '**/libs/*.jar')
+
+buildscript {
+        repositories {
+                jcenter()
+        }
+
+        dependencies {
+        		classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.2.0'
+        		classpath 'com.jcabi:jcabi-manifests:1.1'
+                classpath 'com.squareup.okhttp3:okhttp:3.3.1'
+                classpath 'de.undercouch:gradle-download-task:2.1.0'
+        }
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+apply plugin: 'de.undercouch.download'
+
+import com.jcabi.manifests.Manifests
+import java.util.jar.JarInputStream;
+import de.undercouch.gradle.tasks.download.Download;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
+def bladeclijar = 'com.liferay.blade.cli_1.0.1.201606141418.jar'
+
+task downloadBladeCLI(type: Download) {
+    dest buildDir
+    overwrite false
+    src "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/21/artifact/build/generated/p2/plugins/${bladeclijar}"
+}
+
+def sampleBundles = liferayGradleOutputFiles.files
+def sampleBundle = sampleBundles.name
+
+task installBundlesTest(dependsOn: 'downloadBladeCLI') << {
+	javaexec {
+			args "server", "start", "-b"
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+	}
+
+	OkHttpClient client = new OkHttpClient();
+	Request request = new Request.Builder().url("http://localhost:8080").build();
+
+	boolean pingSucceeded = false;
+
+	while (!pingSucceeded) {
+		try {
+			client.newCall(request).execute();
+			pingSucceeded = true;
+		}
+		catch( Exception e) {
+		}
+	}
+
+	def bundleIDAllList = []
+	def bundleIDStartList = []
+	def errorList = []
+
+	sampleBundles.each { sampleBundlefile ->
+		def os = new ByteArrayOutputStream()
+
+		javaexec {
+			args "sh", "install", "file:${sampleBundlefile}"
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
+		}
+
+		def installOutput = os.toString()
+
+		def bundleID = installOutput.substring(installOutput.length() - 3)
+
+		bundleIDAllList.add(bundleID)
+
+		def jarInputStream = new JarInputStream(new FileInputStream(sampleBundlefile))
+
+		jarInputStream.withCloseable {
+			if (jarInputStream.manifest.getMainAttributes().getValue( "Fragment-Host" ) == null ) {
+				bundleIDStartList.add(bundleID)
+			}
+		}
+
+		bundleIDAllList = bundleIDAllList.unique()
+		bundleIDStartList = bundleIDStartList.unique()
+	}
+
+	bundleIDStartList.each { startBundleID ->
+		def os = new ByteArrayOutputStream()
+
+		javaexec {
+			args "sh", "start", startBundleID
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
+		}
+
+		def startOutput = os.toString()
+
+		if (startOutput.contains('Exception')) {
+			errorList.add(startOutput)
+		}
+
+	}
+
+	bundleIDAllList.each { bundleIDAll ->
+		def os = new ByteArrayOutputStream()
+
+		javaexec {
+			args "sh", "uninstall", bundleIDAll
+			classpath = files("build/${bladeclijar}")
+			main = "com.liferay.blade.cli.blade"
+			standardOutput = os
+		}
+
+	}
+
+	javaexec {
+		args "server", "stop"
+		classpath = files("build/${bladeclijar}")
+		main = "com.liferay.blade.cli.blade"
+	}
+
+	if (!errorList.empty) {
+		throw new GradleException(errorList.toListString())
+	}
+
+}

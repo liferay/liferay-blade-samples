@@ -16,6 +16,8 @@ bndtools/*/generated
 bndtools/cnf/cache/
 bndtools/dist/
 
+build/com.liferay.blade.cli*.jar
+
 gradle/.project
 gradle/.settings
 gradle/*/.classpath
