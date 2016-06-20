@@ -6,14 +6,19 @@ buildscript {
         }
 
         dependencies {
+        		classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.2.0'
+        		classpath 'com.jcabi:jcabi-manifests:1.1'
                 classpath 'com.squareup.okhttp3:okhttp:3.3.1'
                 classpath 'de.undercouch:gradle-download-task:2.1.0'
         }
 }
 
+apply plugin: 'biz.aQute.bnd.builder'
 apply plugin: 'de.undercouch.download'
 
-import de.undercouch.gradle.tasks.download.Download
+import com.jcabi.manifests.Manifests
+import java.util.jar.JarInputStream;
+import de.undercouch.gradle.tasks.download.Download;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
@@ -49,7 +54,8 @@ task installBundlesTest(dependsOn: 'downloadBladeCLI') << {
 		}
 	}
 
-	def bundleIDList = []
+	def bundleIDAllList = []
+	def bundleIDStartList = []
 	def errorList = []
 
 	sampleBundles.each { sampleBundlefile ->
@@ -66,10 +72,25 @@ task installBundlesTest(dependsOn: 'downloadBladeCLI') << {
 
 		def bundleID = installOutput.substring(installOutput.length() - 3)
 
-		bundleIDList.add(bundleID)
+		bundleIDAllList.add(bundleID)
+
+		def jarInputStream = new JarInputStream(new FileInputStream(sampleBundlefile))
+
+		jarInputStream.withCloseable {
+			if (jarInputStream.manifest.getMainAttributes().getValue( "Fragment-Host" ) == null ) {
+				bundleIDStartList.add(bundleID)
+			}
+		}
+
+		bundleIDAllList = bundleIDAllList.unique()
+		bundleIDStartList = bundleIDStartList.unique()
+	}
+
+	bundleIDStartList.each { startBundleID ->
+		def os = new ByteArrayOutputStream()
 
 		javaexec {
-			args "sh", "start", bundleID
+			args "sh", "start", startBundleID
 			classpath = files("build/${bladeclijar}")
 			main = "com.liferay.blade.cli.blade"
 			standardOutput = os
@@ -78,16 +99,16 @@ task installBundlesTest(dependsOn: 'downloadBladeCLI') << {
 		def startOutput = os.toString()
 
 		if (startOutput.contains('Exception')) {
-				errorList.add(startOutput)
+			errorList.add(startOutput)
 		}
 
 	}
 
-	bundleIDList.each { bundleID ->
+	bundleIDAllList.each { bundleIDAll ->
 		def os = new ByteArrayOutputStream()
 
 		javaexec {
-			args "sh", "uninstall", bundleID
+			args "sh", "uninstall", bundleIDAll
 			classpath = files("build/${bladeclijar}")
 			main = "com.liferay.blade.cli.blade"
 			standardOutput = os
