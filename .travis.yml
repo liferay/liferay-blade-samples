@@ -4,6 +4,7 @@ sudo: false
 script:
 - bash -c 'cd gradle; ./gradlew build'
 - bash -c 'cd liferay-gradle; ./gradlew build'
+- bash -c 'cd liferay-workspace; ./gradlew build'
 - bash -c 'cd maven; mvn --fail-at-end package'
 - bash -c 'cd bndtools; ./gradlew build'
 - bash -c './gradlew outputFilesTest diff'
