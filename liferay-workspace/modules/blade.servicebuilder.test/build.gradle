@@ -1,0 +1,7 @@
+dependencies {
+	compile  project(':modules:blade.servicebuilder.api')
+}
+
+bundle {
+	includeTransitiveDependencies = true
+}
