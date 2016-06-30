@@ -16,6 +16,8 @@ bndtools/*/generated
 bndtools/cnf/cache/
 bndtools/dist/
 
+build/*
+
 gradle/.project
 gradle/.settings
 gradle/*/.classpath
@@ -33,6 +35,15 @@ liferay-gradle/*/.project
 liferay-gradle/*/.settings
 liferay-gradle/*/bin
 liferay-gradle/*/build
+
+liferay-workspace/.project
+liferay-workspace/.settings
+liferay-workspace/*/.classpath
+liferay-workspace/*/.metadata
+liferay-workspace/*/.project
+liferay-workspace/*/.settings
+liferay-workspace/*/bin
+liferay-workspace/*/build
 
 maven/.project
 maven/.settings

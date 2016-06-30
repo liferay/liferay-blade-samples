@@ -1,6 +1,7 @@
 FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
 FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
+FileTree liferayWorkspaceOutputFiles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
 FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
 
 int canonicalSize = liferayGradleOutputFiles.size()
@@ -8,6 +9,7 @@ int canonicalSize = liferayGradleOutputFiles.size()
 task outputFilesSizeTest << {
 	assert canonicalSize == bndtoolsOutputFiles.size()
 	assert canonicalSize == gradleOutputFiles.size()
+	assert canonicalSize == liferayWorkspaceOutputFiles.size()
 	assert canonicalSize == mavenOutputFiles.size()
 }
 
@@ -17,6 +19,9 @@ task outputFilesSortTest << {
 
 	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
+
+	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - liferayWorkspaceOutputFiles.files.name.sort()
+	assert [] == fileNamesDiff : "liferay-gradle vs liferay-workspace"
 
 	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
@@ -32,7 +37,7 @@ task replicateSources << {
 
 	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
 
-	def replicationParents = files('bndtools', 'gradle', 'maven')
+	def replicationParents = files('bndtools', 'gradle', 'liferay-workspace/modules', 'maven')
 
 	canonicalProjects.each { canonicalProject ->
 		replicationParents.each { replicationParent ->
@@ -79,7 +84,7 @@ repositories {
 task diff << {
 	def errorList = []
 
-	[bndtoolsOutputFiles, gradleOutputFiles, mavenOutputFiles].each { replicationFiles ->
+	[bndtoolsOutputFiles, gradleOutputFiles, liferayWorkspaceOutputFiles, mavenOutputFiles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
 			def liferayGradleOutputFile = liferayGradleOutputFiles.find {

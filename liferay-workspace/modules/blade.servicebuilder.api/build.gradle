@@ -1,0 +1,7 @@
+dependencies {
+	compile 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
+	compile 'com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0'
+	compile 'com.liferay:com.liferay.osgi.util:3.0.0'
+	compile 'org.osgi:org.osgi.core:6.0.0'
+}

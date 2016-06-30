@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+	<service id="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet.service" interface="javax.portlet.Portlet" ref="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet">
+		<service-properties>
+			<entry key="com.liferay.portlet.display-category" value="category.sample" />
+			<entry key="com.liferay.portlet.instanceable" value="true" />
+			<entry key="javax.portlet.display-name" value="Blueprint Portlet" />
+			<entry key="javax.portlet.security-role-ref" value="power-user,user" />
+		</service-properties>
+	</service>
+
+	<bean class="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" id="com.liferay.blade.samples.portlet.blueprint.BlueprintPortlet" />
+</blueprint>
