@@ -33,7 +33,9 @@ outputFilesTest.dependsOn outputFilesSizeTest
 outputFilesTest.dependsOn outputFilesSortTest
 
 task replicateSources << {
-	Closure projectFilter = { it.isDirectory() && !it.name.matches("\\..*") }
+	Closure projectFilter = {
+		it.isDirectory() && it.name.startsWith("blade") && !it.name.matches("\\..*")
+	}
 
 	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
 
@@ -115,4 +117,3 @@ task diff << {
 		throw new GradleException(errorList.toListString())
 	}
 }
-

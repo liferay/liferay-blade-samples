@@ -40,8 +40,7 @@ public class LogMaxFailures implements AuthFailure {
 	@Override
 	public void onFailureByEmailAddress(
 			long companyId, String emailAddress,
-			Map<String, String[]> headerMap,
-			Map<String, String[]> parameterMap)
+			Map<String, String[]> headerMap, Map<String, String[]> parameterMap)
 		throws AuthException {
 
 		try {

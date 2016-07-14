@@ -44,7 +44,7 @@ import org.osgi.service.component.annotations.Modified;
 	configurationPid = "com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration",
 	configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
 	property = {
-		"javax.portlet.name=blade_configurationaction_portlet_BladeMessagePortlet"
+		"javax.portlet.name=com_liferay_blade_samples_configurationaction_portlet_BladeMessagePortlet"
 	},
 	service = ConfigurationAction.class
 )
