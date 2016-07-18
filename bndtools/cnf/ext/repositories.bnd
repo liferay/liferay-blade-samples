@@ -1,6 +1,6 @@
 releaserepo: ${workspace}/dist/bundles
 
-liferay-public  = http://cdn.repository.liferay.com/nexus/content/groups/public
+liferay-public  = https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public
 ant-bnd-version = 2.0.21
 
 -pluginpath:\

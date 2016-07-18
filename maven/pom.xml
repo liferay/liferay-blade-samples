@@ -12,7 +12,7 @@
 	<repositories>
 		<repository>
 			<id>liferay-public</id>
-			<url>http://cdn.repository.liferay.com/nexus/content/groups/public/</url>
+			<url>https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 
