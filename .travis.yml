@@ -10,6 +10,7 @@ script:
 - bash -c 'cd maven; mvn --fail-at-end package'
 - bash -c 'cd bndtools; ./gradlew build'
 - bash -c './gradlew outputFilesTest diff'
+- bash -c 'cd liferay-workspace/tests ../gradlew test'
 notifications:
   webhooks:
     urls:
