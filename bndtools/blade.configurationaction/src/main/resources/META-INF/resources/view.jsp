@@ -29,7 +29,6 @@ boolean doConfigure =
 			key="blade_configurationaction_portlet_BladeMessagePortlet.no-config"
 		/>
 	</c:when>
-
 	<c:otherwise>
 		<p style="font-family:<%= fontFamily %>;color:<%= fontColor %>;font-size:<%= fontSize %>">
 			<liferay-ui:message
