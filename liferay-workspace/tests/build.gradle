@@ -30,7 +30,7 @@ test {
 
 	project(":modules").subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
-			dependsOn p.tasks["jar"]
+			dependsOn p.tasks["build"]
 		}
 	}
 }
