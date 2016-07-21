@@ -43,7 +43,7 @@ class BladeTests extends Specification {
 		println "Starting Server"
 		def bladeclijar = getLatestBladeCLIJar()
 
-		executeBlade('server','start', '-b');
+		executeBlade('server','start');
 
 		OkHttpClient client = new OkHttpClient()
 		Request request = new Builder().url("http://localhost:8080").build()
