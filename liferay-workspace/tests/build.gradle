@@ -14,10 +14,6 @@ dependencies {
 }
 
 test {
-	jvmArgs '-XX:MaxPermSize=2048m'
-	minHeapSize = "1028m"
-	maxHeapSize = "2048m"
-
 	dependsOn ":initBundle"
 
 	beforeSuite {
