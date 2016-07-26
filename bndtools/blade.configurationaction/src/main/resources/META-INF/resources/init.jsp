@@ -44,7 +44,6 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 	String fontSize = StringPool.BLANK;
 
 	if (Validator.isNotNull(messageDisplayConfiguration)) {
-
 		fontFamily =
 			portletPreferences.getValue(
 				"fontFamily", messageDisplayConfiguration.fontFamily());
