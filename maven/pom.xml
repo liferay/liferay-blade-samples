@@ -19,6 +19,7 @@
 	<modules>
 		<module>blade.authenticator.shiro</module>
 		<module>blade.authfailure</module>
+		<module>blade.autologin</module>
 		<module>blade.configurationaction</module>
 		<module>blade.controlmenuentry</module>
 		<module>blade.corejsphook</module>
