@@ -11,6 +11,8 @@ com.liferay.portal:com.liferay.portal.test:1.0.0
 com.liferay.portal:com.liferay.portal.test.integration:1.0.0
 com.liferay.portal:com.liferay.util.bridges:2.0.0
 com.liferay.portal:com.liferay.util.taglib:2.0.0
+javax.portlet:portlet-api:2.0
+javax.servlet:javax.servlet-api:3.0.1
 javax.ws.rs:javax.ws.rs-api:2.0.1
 org.apache.shiro:shiro-core:1.1.0
 org.jboss.arquillian.junit:arquillian-junit-core:1.1.8.Final

@@ -1,6 +1,7 @@
 -dependson = \
 	blade.authenticator.shiro,\
 	blade.authfailure,\
+	blade.autologin,\
 	blade.configurationaction,\
 	blade.controlmenuentry,\
 	blade.corejsphook,\
