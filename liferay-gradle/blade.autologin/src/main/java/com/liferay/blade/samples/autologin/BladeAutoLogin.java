@@ -16,13 +16,17 @@
 
 package com.liferay.blade.samples.autologin;
 
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.security.auto.login.AutoLogin;
+import com.liferay.portal.kernel.security.auto.login.BaseAutoLogin;
+import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.util.PortalUtil;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
-
-import com.liferay.portal.kernel.security.auto.login.AutoLogin;
-import com.liferay.portal.kernel.security.auto.login.BaseAutoLogin;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Marco Re
@@ -31,11 +35,34 @@ import com.liferay.portal.kernel.security.auto.login.BaseAutoLogin;
 public class BladeAutoLogin extends BaseAutoLogin {
 
 	@Override
-	protected String[] doLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	protected String[] doLogin(
+			HttpServletRequest request, HttpServletResponse response)
+		throws Exception {
+
 		String[] credentials = null;
-		System.out.println("HERE YOU SHOULD DO SOMETHING TO MAKE AUTO LOGIN ...");
+
+		long companyId = PortalUtil.getCompanyId(request);
+
+		User autoLoginUser = null;
+
+		try {
+			autoLoginUser = _userLocalService.getUserByEmailAddress(
+				companyId, "auto.login@liferay.com");
+		}
+		catch (Exception e) {
+		}
+
+		if (autoLoginUser != null) {
+			credentials = new String[3];
+			credentials[0] = Long.toString(autoLoginUser.getUserId());
+			credentials[1] = autoLoginUser.getPassword();
+			credentials[2] = Boolean.toString(true);
+		}
+
 		return credentials;
 	}
+
+	@Reference
+	private UserLocalService _userLocalService;
 
 }
