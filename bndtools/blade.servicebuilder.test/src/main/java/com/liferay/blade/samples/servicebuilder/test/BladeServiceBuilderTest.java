@@ -17,28 +17,32 @@
 package com.liferay.blade.samples.servicebuilder.test;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
 import com.liferay.blade.samples.servicebuilder.service.FooServiceUtil;
 
 import java.util.List;
 
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Liferay
  */
-public class Activator implements BundleActivator {
+@Component(immediate = true)
+public class BladeServiceBuilderTest {
 
-	@Override
-	public void start(BundleContext bundleContext) throws Exception {
-		String localResult = FooLocalServiceUtil.fooLocal();
+	@Activate
+	public void activate(ComponentContext context) throws Exception {
+		String localResult = _fooLocalService.fooLocal();
 		System.out.println("FooLocalService Test: "+localResult);
 
 		String remoteResult = FooServiceUtil.fooRemote();
 		System.out.println("FooRemoteService Test: "+remoteResult);
 
-		int count = FooLocalServiceUtil.getFoosCount();
+		int count = _fooLocalService.getFoosCount();
 		List<Foo> fooList = FooLocalServiceUtil.getFoos(0, count);
 
 		for (Foo foo : fooList) {
@@ -46,8 +50,7 @@ public class Activator implements BundleActivator {
 		}
 	}
 
-	@Override
-	public void stop(BundleContext bundleContext) throws Exception {
-	}
+	@Reference
+	private FooLocalService _fooLocalService;
 
 }
