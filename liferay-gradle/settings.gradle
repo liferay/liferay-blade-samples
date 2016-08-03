@@ -2,7 +2,6 @@ include(
 	'blade.authenticator.shiro',
 	'blade.authfailure',
 	'blade.autologin',
-	'blade.autologin',
 	'blade.controlmenuentry',
 	'blade.configurationaction',
 	'blade.corejsphook',
