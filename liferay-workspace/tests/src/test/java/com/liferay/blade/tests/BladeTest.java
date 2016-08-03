@@ -16,28 +16,36 @@
 
 package com.liferay.blade.tests;
 
-import static org.junit.Assert.assertFalse;
+import aQute.bnd.osgi.Jar;
+
+import aQute.lib.io.IO;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Writer;
+
 import java.nio.file.Files;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
 
 import org.gradle.testkit.runner.BuildTask;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import aQute.lib.io.IO;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @author Lawrence Lee
@@ -86,6 +94,44 @@ public class BladeTest {
 		if (testDir.exists()) {
 			IO.delete(testDir);
 			assertFalse(testDir.exists());
+		}
+	}
+
+	@Test
+	public void verifyAllBladeSamples() throws Exception {
+		List<String> bladeSampleOutputFiles = new ArrayList<String>();
+		Map<String, String> bundleIDAllMap = new HashMap<String, String>();
+		Map<String, String> bundleIDStartMap = new HashMap<String, String>();
+
+		String[] sampleOutputFiles = System.getProperty("moduleOutputPaths").split(",");
+
+		for (String file : sampleOutputFiles) {
+			bladeSampleOutputFiles.add(file);
+		}
+
+		for (String sampleBundleFile : bladeSampleOutputFiles) {
+			String installBundleOutput = BladeCLI.installBundle(new File(sampleBundleFile));
+
+			String printFileName = new File(sampleBundleFile).getName();
+
+			bundleIDAllMap.put(installBundleOutput, printFileName);
+
+			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
+				if (jar.getManifest().getMainAttributes().getValue("Fragment-Host") == null)
+					bundleIDStartMap.put(installBundleOutput, printFileName);
+			}
+		}
+
+		for (String startBundleIO : bundleIDStartMap.keySet()) {
+			BladeCLI.startBundle(startBundleIO);
+		}
+
+		String listBundleOutput = BladeCLI.execute("sh", "lb");
+
+		System.out.println(listBundleOutput);
+
+		for (String allBundleID : bundleIDAllMap.keySet()) {
+			BladeCLI.uninstallBundle(allBundleID);
 		}
 	}
 
