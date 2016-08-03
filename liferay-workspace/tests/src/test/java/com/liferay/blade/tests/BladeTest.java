@@ -52,12 +52,9 @@ import static org.junit.Assert.assertFalse;
  */
 public class BladeTest {
 	private File testDir;
-	private String bundleID;
 
 	@BeforeClass
 	public static void startServer() throws Exception {
-		System.out.println("Starting Server");
-
 		BladeCLI.execute(new File(".."), "server", "start", "-b");
 
 		OkHttpClient client = new OkHttpClient();
@@ -75,18 +72,17 @@ public class BladeTest {
 			}
 			Thread.sleep(100);
 		}
-		System.out.println("Server Started");
 	}
 
 	@AfterClass
 	public static void stopServer() throws Exception {
 		BladeCLI.execute("server", "stop");
-		System.out.println("Stopping Server");
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		testDir = Files.createTempDirectory("bladetest").toFile();
+		testDir.deleteOnExit();
 	}
 
 	@After
@@ -117,18 +113,15 @@ public class BladeTest {
 			bundleIDAllMap.put(installBundleOutput, printFileName);
 
 			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
-				if (jar.getManifest().getMainAttributes().getValue("Fragment-Host") == null)
+				if (jar.getManifest().getMainAttributes().getValue("Fragment-Host") == null) {
 					bundleIDStartMap.put(installBundleOutput, printFileName);
+				}
 			}
 		}
 
 		for (String startBundleIO : bundleIDStartMap.keySet()) {
 			BladeCLI.startBundle(startBundleIO);
 		}
-
-		String listBundleOutput = BladeCLI.execute("sh", "lb");
-
-		System.out.println(listBundleOutput);
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {
 			BladeCLI.uninstallBundle(allBundleID);
@@ -146,7 +139,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -168,7 +161,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -190,7 +183,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -212,7 +205,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -234,7 +227,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -292,7 +285,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 
@@ -346,7 +339,7 @@ public class BladeTest {
 
 		File buildOutput = new File(projectPath + "/build/libs/serviceoverride-1.0.0.jar");
 
-		bundleID = BladeCLI.installBundle(buildOutput);
+		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
 

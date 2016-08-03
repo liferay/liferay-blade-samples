@@ -130,6 +130,7 @@ public class BladeCLI {
 		if (output.contains("Exception")) {
 			throw new Exception(output);
 		}
+		
 		return output;
 	}
 
