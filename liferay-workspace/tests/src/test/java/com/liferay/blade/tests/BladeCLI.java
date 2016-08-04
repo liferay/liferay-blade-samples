@@ -35,7 +35,6 @@ import static org.junit.Assert.assertTrue;
  */
 public class BladeCLI {
 	private static File bladeJar;
-	private static String printFileName;
 
 	public static File createProject (File testDir, String templateName, String bundleName, String...createArgs) throws Exception {
 		String[] executeArgs = new String[createArgs.length + 6];
@@ -113,10 +112,6 @@ public class BladeCLI {
 
 		String bundleID = output.substring(output.length() -3);
 
-		printFileName = file.getName().split("-")[0];
-
-		System.out.println("Installing " + printFileName);
-
 		if (output.contains("Failed")) {
 			throw new Exception(output);
 		}
@@ -130,7 +125,7 @@ public class BladeCLI {
 		if (output.contains("Exception")) {
 			throw new Exception(output);
 		}
-		
+
 		return output;
 	}
 

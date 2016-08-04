@@ -143,10 +143,6 @@ public class BladeTest {
 
 		BladeCLI.startBundle(bundleID);
 
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
-
 		BladeCLI.uninstallBundle(bundleID);
 	}
 
@@ -164,10 +160,6 @@ public class BladeTest {
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
-
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
 
 		BladeCLI.uninstallBundle(bundleID);
 	}
@@ -187,10 +179,6 @@ public class BladeTest {
 
 		BladeCLI.startBundle(bundleID);
 
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
-
 		BladeCLI.uninstallBundle(bundleID);
 	}
 
@@ -209,10 +197,6 @@ public class BladeTest {
 
 		BladeCLI.startBundle(bundleID);
 
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
-
 		BladeCLI.uninstallBundle(bundleID);
 	}
 
@@ -230,10 +214,6 @@ public class BladeTest {
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
-
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
 
 		BladeCLI.uninstallBundle(bundleID);
 	}
@@ -289,10 +269,6 @@ public class BladeTest {
 
 		BladeCLI.startBundle(bundleID);
 
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "helloworld");
-
-		System.out.println(listBundleOutput);
-
 		BladeCLI.uninstallBundle(bundleID);
 	}
 
@@ -318,12 +294,6 @@ public class BladeTest {
 		BladeCLI.startBundle(bundleIDApi);
 		BladeCLI.startBundle(bundleIDService);
 
-		String listBundleApiOutput = BladeCLI.execute("sh", "lb", "-s", "guestbook-api");
-		String listBundleServiceOutput = BladeCLI.execute("sh", "lb", "-s", "guestbook-service");
-
-		System.out.println(listBundleApiOutput);
-		System.out.println(listBundleServiceOutput);
-
 		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService);
 	}
 
@@ -342,10 +312,6 @@ public class BladeTest {
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
 		BladeCLI.startBundle(bundleID);
-
-		String listBundleOutput = BladeCLI.execute("sh", "lb", "-s", "serviceoverride");
-
-		System.out.println(listBundleOutput);
 
 		BladeCLI.uninstallBundle(bundleID);
 	}
