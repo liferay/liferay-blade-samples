@@ -1,0 +1,10 @@
+Bundle-Version: 1.0.0
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-sources: true
+
+Private-Package: com.liferay.blade.samples.portlet.configuration.icon.*
+-buildpath: \
+	com.liferay.portal:com.liferay.portal.kernel;version=2.0.0,\
+	javax.portlet;version=2.0.0,\
+	javax.servlet-api;version=3.0.1,\
+	org.osgi.service.component.annotations;version=1.3.0
