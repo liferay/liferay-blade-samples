@@ -298,6 +298,35 @@ public class BladeTest {
 	}
 
 	@Test
+	public void verifyServiceBuilderBladeSample() throws Exception {
+		File projectPath = new File(System.getProperty("user.dir")).getParentFile();
+
+		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:buildService");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
+
+		BuildTask buildApiTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.api:build");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildApiTask);
+
+		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:build");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
+
+		GradleRunnerUtil.verifyBuildOutput(projectPath.toString() + "/modules/blade.servicebuilder.api", "blade.servicebuilder.api-1.0.0.jar");
+		GradleRunnerUtil.verifyBuildOutput(projectPath.toString() + "/modules/blade.servicebuilder.svc", "blade.servicebuilder.svc-1.0.0.jar");
+
+		File buildApiOutput = new File(projectPath + "/modules/blade.servicebuilder.api/build/libs/blade.servicebuilder.api-1.0.0.jar");
+		File buildServiceOutput = new File(projectPath + "/modules/blade.servicebuilder.svc/build/libs/blade.servicebuilder.api-1.0.0.jar");
+
+		String bundleIDApi = BladeCLI.installBundle(buildApiOutput);
+		String bundleIDService = BladeCLI.installBundle(buildServiceOutput);
+
+		BladeCLI.startBundle(bundleIDApi);
+		BladeCLI.startBundle(bundleIDService);
+
+		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService);
+
+	}
+
+	@Test
 	public void verifyServiceWrapperGradleTemplate () throws Exception {
 		File projectPath = BladeCLI.createProject(testDir, "servicewrapper", "serviceoverride", "-s",
 				"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
