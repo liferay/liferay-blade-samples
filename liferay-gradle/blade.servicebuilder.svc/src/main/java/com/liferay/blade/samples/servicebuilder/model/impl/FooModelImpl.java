@@ -493,6 +493,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		return _field2;
 	}
 
+	@JSON
 	@Override
 	public boolean isField2() {
 		return _field2;

@@ -76,7 +76,7 @@ public interface FooLocalService extends BaseLocalService,
 	/**
 	* NOTE FOR DEVELOPERS:
 	*
-	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil} to access the foo local service.
+	* Never reference this class directly. Always use {@link FooLocalServiceUtil} to access the foo local service.
 	*/
 	public Foo addFooWithoutId(Foo foo);
 

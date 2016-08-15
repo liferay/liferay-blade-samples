@@ -425,7 +425,7 @@ public abstract class FooServiceBaseImpl extends BaseServiceImpl
 
 	@BeanReference(type = com.liferay.blade.samples.servicebuilder.service.FooLocalService.class)
 	protected com.liferay.blade.samples.servicebuilder.service.FooLocalService fooLocalService;
-	@BeanReference(type = com.liferay.blade.samples.servicebuilder.service.FooService.class)
+	@BeanReference(type = FooService.class)
 	protected FooService fooService;
 	@BeanReference(type = FooPersistence.class)
 	protected FooPersistence fooPersistence;
