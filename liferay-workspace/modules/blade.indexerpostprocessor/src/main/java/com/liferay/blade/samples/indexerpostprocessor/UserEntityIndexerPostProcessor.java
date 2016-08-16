@@ -34,7 +34,10 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	property = {"indexer.class.name=com.liferay.portal.model.User"},
+	property = {
+		"indexer.class.name=com.liferay.portal.kernel.model.User",
+		"indexer.class.name=com.liferay.portal.kernel.model.UserGroup"
+	},
 	service = IndexerPostProcessor.class
 )
 public class UserEntityIndexerPostProcessor implements IndexerPostProcessor {
