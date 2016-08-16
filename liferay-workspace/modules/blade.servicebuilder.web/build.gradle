@@ -1,6 +1,5 @@
 dependencies {
-	compile  project(':modules:blade.servicebuilder.api')
-	compile  project(':modules:blade.servicebuilder.svc')
+	compile project(':modules:blade.servicebuilder.api')
 	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
 	compile 'javax.portlet:portlet-api:2.0'
 	compile 'javax.servlet:javax.servlet-api:3.0.1'

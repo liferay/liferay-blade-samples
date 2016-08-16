@@ -18,9 +18,6 @@ package com.liferay.blade.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import aQute.lib.io.IO;
 
 import java.io.File;
 
@@ -34,7 +31,7 @@ import org.gradle.testkit.runner.TaskOutcome;
  */
 public class GradleRunnerUtil {
 
-	public static BuildTask executeGradleRunner (File projectDir, String... taskPath) {
+	public static BuildTask executeGradleRunner(File projectDir, String... taskPath) {
 		BuildResult buildResult = GradleRunner.create()
 									.withProjectDir(projectDir)
 									.withArguments(taskPath)
@@ -52,16 +49,10 @@ public class GradleRunnerUtil {
 		return buildtask;
 	}
 
-	public static void verifyGradleRunnerOutput (BuildTask buildtask) {
+	public static void verifyGradleRunnerOutput(BuildTask buildtask) {
 		assertNotNull(buildtask);
 
-		assertEquals(buildtask.getOutcome(), TaskOutcome.SUCCESS);
-	}
-
-	public static void verifyBuildOutput (String projectPath, String fileName) {
-		File file = IO.getFile(projectPath + "/build/libs/" + fileName);
-
-		assertTrue(file.exists());
+		assertEquals(TaskOutcome.SUCCESS, buildtask.getOutcome());
 	}
 
 }

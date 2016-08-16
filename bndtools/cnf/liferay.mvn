@@ -11,6 +11,7 @@ com.liferay:com.liferay.product.navigation.simulation.web:2.0.0
 com.liferay.portal:com.liferay.portal.impl:2.0.0
 com.liferay.portal:com.liferay.portal.kernel:2.0.0
 com.liferay.portal:com.liferay.portal.kernel:2.3.0
+com.liferay.portal:com.liferay.portal.kernel:2.6.0
 com.liferay.portal:com.liferay.portal.test:1.0.0
 com.liferay.portal:com.liferay.portal.test.integration:1.0.0
 com.liferay.portal:com.liferay.util.bridges:2.0.0

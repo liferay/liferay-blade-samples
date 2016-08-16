@@ -16,8 +16,10 @@
 
 package com.liferay.blade.tests;
 
-import aQute.bnd.osgi.Jar;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import aQute.bnd.osgi.Jar;
 import aQute.lib.io.IO;
 
 import java.io.BufferedReader;
@@ -25,27 +27,22 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Writer;
-
 import java.nio.file.Files;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
-
 import org.gradle.testkit.runner.BuildTask;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
 
 /**
  * @author Lawrence Lee
@@ -135,9 +132,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -153,9 +151,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -171,9 +170,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -189,9 +189,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -207,9 +208,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -261,9 +263,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "helloworld-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/helloworld-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 
@@ -282,11 +285,12 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath + "/guestbook-api", "guestbook-api-1.0.0.jar");
-		GradleRunnerUtil.verifyBuildOutput(projectPath + "/guestbook-service", "guestbook-service-1.0.0.jar");
 
 		File buildApiOutput = new File(projectPath + "/guestbook-api/build/libs/guestbook-api-1.0.0.jar");
 		File buildServiceOutput = new File(projectPath + "/guestbook-service/build/libs/guestbook-service-1.0.0.jar");
+
+		assertTrue(buildApiOutput.exists());
+		assertTrue(buildServiceOutput.exists());
 
 		String bundleIDApi = BladeCLI.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLI.installBundle(buildServiceOutput);
@@ -298,6 +302,41 @@ public class BladeTest {
 	}
 
 	@Test
+	public void verifyServiceBuilderBladeSample() throws Exception {
+		File projectPath = new File(System.getProperty("user.dir")).getParentFile();
+
+		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:buildService");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
+
+		BuildTask cleanTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.api:clean");
+		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
+
+		BuildTask buildApiTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.api:build");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildApiTask);
+
+		cleanTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:clean");
+		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
+
+		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:build");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
+
+		File buildApiOutput = new File(projectPath + "/modules/blade.servicebuilder.api/build/libs/blade.servicebuilder.api-1.0.0.jar");
+		File buildServiceOutput = new File(projectPath + "/modules/blade.servicebuilder.svc/build/libs/blade.servicebuilder.svc-1.0.0.jar");
+
+		assertTrue(buildApiOutput.exists());
+		assertTrue(buildServiceOutput.exists());
+
+		String bundleIDApi = BladeCLI.installBundle(buildApiOutput);
+		String bundleIDService = BladeCLI.installBundle(buildServiceOutput);
+
+		BladeCLI.startBundle(bundleIDApi);
+		BladeCLI.startBundle(bundleIDService);
+
+		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService);
+
+	}
+
+	@Test
 	public void verifyServiceWrapperGradleTemplate () throws Exception {
 		File projectPath = BladeCLI.createProject(testDir, "servicewrapper", "serviceoverride", "-s",
 				"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
@@ -305,9 +344,10 @@ public class BladeTest {
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
-		GradleRunnerUtil.verifyBuildOutput(projectPath.getPath(), "serviceoverride-1.0.0.jar");
 
 		File buildOutput = new File(projectPath + "/build/libs/serviceoverride-1.0.0.jar");
+
+		assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLI.installBundle(buildOutput);
 

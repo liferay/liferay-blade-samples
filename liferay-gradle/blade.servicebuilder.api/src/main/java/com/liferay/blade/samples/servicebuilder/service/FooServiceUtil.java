@@ -45,7 +45,7 @@ public class FooServiceUtil {
 	/**
 	* NOTE FOR DEVELOPERS:
 	*
-	* Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.service.FooServiceUtil} to access the foo remote service.
+	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
 	*/
 	public static java.lang.String fooRemote() {
 		return getService().fooRemote();

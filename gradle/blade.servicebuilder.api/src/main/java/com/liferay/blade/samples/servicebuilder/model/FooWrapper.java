@@ -157,6 +157,16 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 		}
 	}
 
+	@Override
+	public Foo toEscapedModel() {
+		return new FooWrapper(_foo.toEscapedModel());
+	}
+
+	@Override
+	public Foo toUnescapedModel() {
+		return new FooWrapper(_foo.toUnescapedModel());
+	}
+
 	/**
 	* Returns the field2 of this foo.
 	*
@@ -193,27 +203,17 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public com.liferay.blade.samples.servicebuilder.model.Foo toEscapedModel() {
-		return new FooWrapper(_foo.toEscapedModel());
-	}
-
-	@Override
-	public com.liferay.blade.samples.servicebuilder.model.Foo toUnescapedModel() {
-		return new FooWrapper(_foo.toUnescapedModel());
-	}
-
-	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return _foo.getExpandoBridge();
 	}
 
 	@Override
-	public com.liferay.portal.kernel.model.CacheModel<com.liferay.blade.samples.servicebuilder.model.Foo> toCacheModel() {
+	public com.liferay.portal.kernel.model.CacheModel<Foo> toCacheModel() {
 		return _foo.toCacheModel();
 	}
 
 	@Override
-	public int compareTo(com.liferay.blade.samples.servicebuilder.model.Foo foo) {
+	public int compareTo(Foo foo) {
 		return _foo.compareTo(foo);
 	}
 
