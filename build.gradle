@@ -37,9 +37,17 @@ task replicateSources << {
 		it.isDirectory() && it.name.startsWith("blade") && !it.name.matches("\\..*")
 	}
 
-	def canonicalProjects = file('liferay-gradle').listFiles().findAll(projectFilter)
+	def canonicalSource
 
-	def replicationParents = files('bndtools', 'gradle', 'liferay-workspace/modules', 'maven')
+	if (project.hasProperty('sourceProjectProp')) {
+		canonicalSource = sourceProjectProp
+	}
+	else {
+		canonicalSource = 'liferay-gradle'
+	}
+
+	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
+	def replicationParents = files(['bndtools', 'gradle', 'liferay-gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
 
 	canonicalProjects.each { canonicalProject ->
 		replicationParents.each { replicationParent ->

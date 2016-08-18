@@ -305,8 +305,16 @@ public class BladeTest {
 	public void verifyServiceBuilderBladeSample() throws Exception {
 		File projectPath = new File(System.getProperty("user.dir")).getParentFile();
 
+		File serviceProperties = new File(projectPath, "modules/blade.servicebuilder.svc/src/main/resources/service.properties");
+		File servicePropertiesBackup = new File("service.properties.bak");
+
+		IO.copy(serviceProperties, servicePropertiesBackup);
+
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:buildService");
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
+
+		IO.copy(servicePropertiesBackup, serviceProperties);
+		IO.delete(servicePropertiesBackup);
 
 		BuildTask cleanTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.api:clean");
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
