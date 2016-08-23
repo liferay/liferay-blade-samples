@@ -48,8 +48,6 @@ import okhttp3.Request.Builder;
  * @author Lawrence Lee
  */
 public class BladeTest {
-	private File testDir;
-
 	@BeforeClass
 	public static void startServer() throws Exception {
 		BladeCLI.execute(new File(".."), "server", "start", "-b");
@@ -72,8 +70,13 @@ public class BladeTest {
 	}
 
 	@AfterClass
-	public static void stopServer() throws Exception {
+	public static void cleanUpTest() throws Exception {
 		BladeCLI.execute("server", "stop");
+
+		if (_bundleDir.exists()) {
+			IO.delete(_bundleDir);
+			assertFalse(_bundleDir.exists());
+		}
 	}
 
 	@Before
@@ -363,4 +366,7 @@ public class BladeTest {
 
 		BladeCLI.uninstallBundle(bundleID);
 	}
+
+	private static final File _bundleDir = IO.getFile("../bundles");
+	private File testDir;
 }
