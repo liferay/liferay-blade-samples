@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.service.UserLocalService;
 import java.util.Collections;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -37,7 +38,7 @@ import org.osgi.service.component.annotations.Reference;
 	immediate = true, property = {"jaxrs.application=true"},
 	service = Application.class
 )
-@Path("/blade.users")
+@ApplicationPath("/blade.users")
 public class UsersRestService extends Application {
 
 	@Override
