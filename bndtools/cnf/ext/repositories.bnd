@@ -1,7 +1,7 @@
 releaserepo: ${workspace}/dist/bundles
 
 liferay-public  = https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public
-ant-bnd-version = 2.0.21
+ant-bnd-version = 2.0.28
 
 -pluginpath:\
     ${build}/cache/com.liferay.ant.bnd-${ant-bnd-version}.jar;url=${liferay-public}/com/liferay/com.liferay.ant.bnd/${ant-bnd-version}/com.liferay.ant.bnd-${ant-bnd-version}.jar

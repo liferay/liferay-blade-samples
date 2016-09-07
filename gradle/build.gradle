@@ -6,7 +6,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.2.0'
-		classpath 'com.liferay:com.liferay.ant.bnd:2.0.21'
+		classpath 'com.liferay:com.liferay.ant.bnd:2.0.28'
 	}
 }
 
