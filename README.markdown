@@ -71,6 +71,21 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.authfailure](./gradle/blade.authfailure)        |
 | Maven      | [./maven/blade.authfailure](./maven/blade.authfailure)          |
 
+### `AutoLogin`
+
+__Extension point description__: 
+
+__Template project description__: demonstrates integration point of `AutoLogin`
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.autologin](./liferay-gradle/blade.autologin) |
+| BND Tools  | [./bndtools/blade.autologin](./bndtools/blade.autologin)    |
+| Gradle     | [./gradle/blade.autologin](./gradle/blade.autologin)        |
+| Maven      | [./maven/blade.autologin](./maven/blade.autologin)          |
+
 ### `ConfigurationAction`
 
 __Extension point description__: 
@@ -85,6 +100,36 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.configurationaction](./bndtools/blade.configurationaction)    |
 | Gradle     | [./gradle/blade.configurationaction](./gradle/blade.configurationaction)        |
 | Maven      | [./maven/blade.configurationaction](./maven/blade.configurationaction)          |
+
+### Control Menu Entry
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.controlmenuentry](./liferay-gradle/blade.controlmenuentry) |
+| BND Tools  | [./bndtools/blade.controlmenuentry](./bndtools/blade.controlmenuentry)    |
+| Gradle     | [./gradle/blade.controlmenuentry](./gradle/blade.controlmenuentry)        |
+| Maven      | [./maven/blade.controlmenuentry](./maven/blade.controlmenuentry)          |
+
+### Core JSP Hook
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.corejsphook](./liferay-gradle/blade.corejsphook) |
+| BND Tools  | [./bndtools/blade.corejsphook](./bndtools/blade.corejsphook)    |
+| Gradle     | [./gradle/blade.corejsphook](./gradle/blade.corejsphook)        |
+| Maven      | [./maven/blade.corejsphook](./maven/blade.corejsphook)          |
 
 ### `FriendlyURLMapper`
 
@@ -122,21 +167,6 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.gogo](./gradle/blade.gogo)        |
 | Maven      | [./maven/blade.gogo](./maven/blade.gogo)          |
 
-### `IndexerPostProcessor`
-
-__Extension point description__: 
-
-__Template project description__:  demonstrates how to create custom IndexerPostProcessor.
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Liferay-gradle | [./liferay-gradle/blade.indexerpostprocessor](./liferay-gradle/blade.indexerpostprocessor) |
-| BND Tools  | [./bndtools/blade.indexerpostprocessor](./bndtools/blade.indexerpostprocessor)      |
-| Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
-| Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
-
 ### JSP Hook
 
 __Extension point description__: 
@@ -151,6 +181,36 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.hook.jsp](./bndtools/blade.hook.jsp)        |
 | Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
 | Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
+
+### Resource Bundle
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.hook.resourcebundle](./liferay-gradle/blade.hook.resourcebundle) |
+| BND Tools  | [./bndtools/blade.hook.resourcebundle](./bndtools/blade.hook.resourcebundle)      |
+| Gradle     | [./gradle/blade.hook.resourcebundle](./gradle/blade.hook.resourcebundle)      |
+| Maven      | [./maven/blade.hook.resourcebundle](./maven/blade.hook.resourcebundle)        |
+
+### `IndexerPostProcessor`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to create custom IndexerPostProcessor.
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.indexerpostprocessor](./liferay-gradle/blade.indexerpostprocessor) |
+| BND Tools  | [./bndtools/blade.indexerpostprocessor](./bndtools/blade.indexerpostprocessor)      |
+| Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
+| Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
 
 ### `login.events.pre`
 
@@ -200,6 +260,21 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.modellistener](./gradle/blade.modellistener)      |
 | Maven      | [./maven/blade.modellistener](./maven/blade.modellistener)        |
 
+### `PollerProcessor`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to make a hook for `PollerProcessor`.
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.pollprocessor](./liferay-gradle/blade.pollprocessor) |
+| BND Tools  | [./bndtools/blade.pollprocessor](./bndtools/blade.pollprocessor)      |
+| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
+| Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
+
 ### `MVCActionCommand`
 
 __Extension point description__: 
@@ -217,26 +292,9 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.actioncommand](./gradle/blade.portlet.actioncommand)      |
 | Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
 
-### `PollerProcessor`
+### Portlet
 
-__Extension point description__: 
-
-__Template project description__:  demonstrates how to make a hook for `PollerProcessor`.
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Liferay-gradle | [./liferay-gradle/blade.pollprocessor](./liferay-gradle/blade.pollprocessor) |
-| BND Tools  | [./bndtools/blade.pollprocessor](./bndtools/blade.pollprocessor)      |
-| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
-| Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
-
-### Portlet 
-
-__Extension point description__: 
-
-Below are examples of buildeing portles using diferent frameworks: 
+Below are examples of building portlets using different frameworks: 
 
 #### Liferay MVC Portlet - Using Blueprint Framework
 
@@ -264,32 +322,6 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.ds](./gradle/blade.portlet.ds)      |
 | Maven      | [./maven/blade.portlet.ds](./maven/blade.portlet.ds)        |
 
-#### Liferay MVC Portlet - Using Raw OSGI APIs
-
-__Template project description__:  demonstrates how to use the raw OSGI APIs for registering a portlet.
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Liferay-gradle | [./liferay-gradle/blade.portlet.osgiapi](./liferay-gradle/blade.portlet.osgiapi) |
-| BND Tools  | [./bndtools/blade.portlet.osgiapi](./bndtools/blade.portlet.osgiapi)  |
-| Gradle     | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi)      |
-| Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
-
-#### JSF Portlet - Using DS (Declarative Services) Framework
-
-__Template project description__:  demonstrates how to use the DS (Declarative Services) for registering a JSF portlet
-
-__Template projects links__:
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Liferay-gradle | [./liferay-gradle/blade.jsf.portlet.ds](./liferay-gradle/blade.jsf.portlet.ds) |
-| BND Tools  | [./bndtools/blade.jsf.portlet.ds](./bndtools/blade.jsf.portlet.ds)  |
-| Gradle     | [./gradle/blade.jsf.portlet.ds](./gradle/blade.jsf.portlet.ds)      |
-| Maven      | [./maven/blade.jsf.portlet.ds](./maven/blade.jsf.portlet.ds)        |
-
 #### JSP Portlet 
 
 __Extension point description__: 
@@ -305,6 +337,49 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.jsp](./gradle/blade.portlet.jsp)      |
 | Maven      | [./maven/blade.portlet.jsp](./maven/blade.portlet.jsp)        |
 
+#### Liferay MVC Portlet - Using Raw OSGI APIs
+
+__Template project description__:  demonstrates how to use the raw OSGI APIs for registering a portlet.
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.portlet.osgiapi](./liferay-gradle/blade.portlet.osgiapi) |
+| BND Tools  | [./bndtools/blade.portlet.osgiapi](./bndtools/blade.portlet.osgiapi)  |
+| Gradle     | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi)      |
+| Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
+
+### Configuration Icon
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.portlet.configuration.icon](./liferay-gradle/blade.portlet.configuration.icon) |
+| BND Tools  | [./bndtools/blade.portlet.configuration.icon](./bndtools/blade.portlet.configuration.icon)  |
+| Gradle     | [./gradle/blade.portlet.configuration.icon](./gradle/blade.portlet.configuration.icon)      |
+| Maven      | [./maven/blade.portlet.configuration.icon](./maven/blade.portlet.configuration.icon)        |
+
+### Control Panel
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.portlet.controlpanel](./liferay-gradle/blade.portlet.controlpanel) |
+| BND Tools  | [./bndtools/blade.portlet.controlpanel](./bndtools/blade.portlet.controlpanel)  |
+| Gradle     | [./gradle/blade.portlet.controlpanel](./gradle/blade.portlet.controlpanel)      |
+| Maven      | [./maven/blade.portlet.controlpanel](./maven/blade.portlet.controlpanel)        |
+
 ### `PortletFilter`
 
 __Extension point description__: 
@@ -319,6 +394,36 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.portlet.filter](./bndtools/blade.portlet.filter)  |
 | Gradle     | [./gradle/blade.portlet.filter](./gradle/blade.portlet.filter)      |
 | Maven      | [./maven/blade.portlet.filter](./maven/blade.portlet.filter)        |
+
+### Toolbar Contributor
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.portlet.toolbar.contributor](./liferay-gradle/blade.portlet.toolbar.contributor) |
+| BND Tools  | [./bndtools/blade.portlet.toolbar.contributor](./bndtools/blade.portlet.toolbar.contributor)  |
+| Gradle     | [./gradle/blade.portlet.toolbar.contributor](./gradle/blade.portlet.toolbar.contributor)      |
+| Maven      | [./maven/blade.portlet.toolbar.contributor](./maven/blade.portlet.toolbar.contributor)        |
+
+### Resource Bundle
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.resourcebundle](./liferay-gradle/blade.resourcebundle) |
+| BND Tools  | [./bndtools/blade.resourcebundle](./bndtools/blade.resourcebundle)  |
+| Gradle     | [./gradle/blade.resourcebundle](./gradle/blade.resourcebundle)      |
+| Maven      | [./maven/blade.resourcebundle](./maven/blade.resourcebundle)        |
 
 ### REST Service
 
@@ -344,6 +449,36 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.rest](./bndtools/blade.rest)  |
 | Gradle     | [./gradle/blade.rest](./gradle/blade.rest)      |
 | Maven      | [./maven/blade.rest](./maven/blade.rest)        |
+
+### Scheduler Entry
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.schedulerentry](./liferay-gradle/blade.schedulerentry) |
+| BND Tools  | [./bndtools/blade.schedulerentry](./bndtools/blade.schedulerentry)  |
+| Gradle     | [./gradle/blade.schedulerentry](./gradle/blade.schedulerentry)      |
+| Maven      | [./maven/blade.schedulerentry](./maven/blade.schedulerentry)        |
+
+### `ServiceWrapper`
+
+__Extension point description__: 
+
+__Template project description__:  demonstrates how to wrap UserLocalService with custom UserLocalServiceWrapper
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.service.hook.user](./liferay-gradle/blade.service.hook.user) |
+| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
+| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
+| Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
 
 ### Service Builder
 
@@ -374,20 +509,20 @@ __Template projects links__:
 | Gradle     | Web          | [./gradle/blade.servicebuilder.web](./gradle/blade.servicebuilder.web)  |
 | Maven      | All (parent) | [./maven/blade.servicebuilder](./maven/blade.servicebuilder)  |
 
-### `ServiceWrapper`
+### Simulation Panel
 
 __Extension point description__: 
 
-__Template project description__:  demonstrates how to wrap UserLocalService with custom UserLocalServiceWrapper
+__Template project description__: 
 
 __Template projects links__:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Liferay-gradle | [./liferay-gradle/blade.service.hook.user](./liferay-gradle/blade.service.hook.user) |
-| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
-| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
-| Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
+| Liferay-gradle | [./liferay-gradle/blade.simulation.panel.app](./liferay-gradle/blade.simulation.panel.app) |
+| BND Tools  | [./bndtools/blade.simulation.panel.app](./bndtools/blade.simulation.panel.app)  |
+| Gradle     | [./gradle/blade.simulation.panel.app](./gradle/blade.simulation.panel.app)      |
+| Maven      | [./maven/blade.simulation.panel.app](./maven/blade.simulation.panel.app)        |
 
 ### `StrutsAction`
 
@@ -418,6 +553,21 @@ __Template projects links__:
 | BND Tools  | [./bndtools/blade.strutsportletaction](./bndtools/blade.strutsportletaction)  |
 | Gradle     | [./gradle/blade.strutsportletaction](./gradle/blade.strutsportletaction)      |
 | Maven      | [./maven/blade.strutsportletaction](./maven/blade.strutsportletaction)        |
+
+### Context Contributor
+
+__Extension point description__: 
+
+__Template project description__: 
+
+__Template projects links__:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay-gradle | [./liferay-gradle/blade.template.context.contributor](./liferay-gradle/blade.template.context.contributor) |
+| BND Tools  | [./bndtools/blade.template.context.contributor](./bndtools/blade.template.context.contributor)  |
+| Gradle     | [./gradle/blade.template.context.contributor](./gradle/blade.template.context.contributor)      |
+| Maven      | [./maven/blade.template.context.contributor](./maven/blade.template.context.contributor)        |
 
 ## Liferay Extension Points Without Template Projects
 
