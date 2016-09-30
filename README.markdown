@@ -3,23 +3,32 @@
 [![Build Status](https://travis-ci.org/rotty3000/blade.svg?branch=master)](https://travis-ci.org/rotty3000/blade)
 [![Join the chat at https://gitter.im/rotty3000/blade](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rotty3000/blade?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Liferay's Blade samples provides bootstrap project environments for all major build tools in common use for Java projects so that Liferay development can start quickly and easily.
+Liferay's Blade samples provides bootstrap project environments for all major
+build tools in common use for Java projects so that Liferay development can
+start quickly and easily.
 
 ## Build Tools
 
 The template projects are categorized under four build tools:
 
-* `gradle` - A set of Liferay projects that can be bootstrapped onto the *Gradle* based development environment.
-* `liferay-gradle` - A set of Liferay projects that can be bootstrapped onto the `com.liferay.plugin` (a Gradle plugin) based development environment.
-* `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven* development environment.
-* `bndtools` - A set of Liferay projects that can be bootstrapped onto the *Bndtools* based development environment.
+* `gradle` - A set of Liferay projects that can be bootstrapped onto the
+  *Gradle* based development environment.
+* `liferay-gradle` - A set of Liferay projects that can be bootstrapped onto the
+  `com.liferay.plugin` (a Gradle plugin) based development environment.
+* `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
+  development environment.
+* `bndtools` - A set of Liferay projects that can be bootstrapped onto the
+  *Bndtools* based development environment.
 
 ### A Note on BNDTools
 
-There are 2 additional projects in the `/bndtools/` folder that you will need to build and publish the modules:
+There are 2 additional projects in the `/bndtools/` folder that you will need to
+build and publish the modules:
 
 * `/bndtools/cnf` - The Bndtools configuration project
-* `/bndtools/blade.run` - A Bndtools project which can push bundles into an OSGi container and run them. The `biz.aQute.remote.agent-X.X.X.jar` must be deployed first before this project will function properly.
+* `/bndtools/blade.run` - A Bndtools project which can push bundles into an OSGi
+  container and run them. The `biz.aQute.remote.agent-X.X.X.jar` must be
+  deployed first before this project will function properly.
 
 ## Frameworks
 
@@ -31,13 +40,18 @@ The template projects also demonstrate how to use various frameworks:
 
 ### A Note on Blueprint
 
-Liferay does not provide a Blueprint implementation out of the box. To use the Blueprint modules provided in Blade, you must deploy a Blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
+Liferay does not provide a Blueprint implementation out of the box. To use the
+Blueprint modules provided in Blade, you must deploy a Blueprint implementation
+such as [Apache Aries -
+Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are
+needed:
 
 * [Apache Aries Blueprint Bundle](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint/1.1.0)
 * [Apache Aries Blueprint Annotation API](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.api/1.0.1)
 * [Apache Aries Proxy Bundle](http://mvnrepository.com/artifact/org.apache.aries.proxy/org.apache.aries.proxy/1.0.1)
 
-Simply download the bundles from [mvnrepository](https://mvnrepository.com/) and drop them in your `osgi/modules` folder before deploying Blueprint bundles.
+Simply download the bundles from [mvnrepository](https://mvnrepository.com/) and
+drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ## Liferay Extension Points and Template Projects 
 
@@ -45,7 +59,8 @@ Simply download the bundles from [mvnrepository](https://mvnrepository.com/) and
 
 __Extension point description__: 
 
-__Template project description__: Uses Apache Shiro for hooking `auth.pipeline.pre`.
+__Template project description__: Uses Apache Shiro for hooking
+`auth.pipeline.pre`.
 
 __Template projects links__:
 
@@ -60,7 +75,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__: Demonstrates a hook for `auth.failure` and `auth.max.failures`.
+__Template project description__: Demonstrates a hook for `auth.failure` and
+`auth.max.failures`.
 
 __Template projects links__:
 
@@ -75,7 +91,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__: Demonstrates the `AutoLogin` integration point.
+__Template project description__: Demonstrates the `AutoLogin` integration
+point.
 
 __Template projects links__:
 
@@ -90,7 +107,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__: Demonstrates the `ConfigurationAction` integration point. 
+__Template project description__: Demonstrates the `ConfigurationAction`
+integration point.
 
 __Template projects links__:
 
@@ -133,12 +151,16 @@ __Template projects links__:
 
 ### `FriendlyURLMapper`
 
-__Extension point description__: Lets a developer provide (or overwrite) friendly URL mapping for portlets.
+__Extension point description__: Lets a developer provide (or overwrite)
+friendly URL mapping for portlets.
 
-__Template project description__: Demonstrates how to create a `FriendlyURLMapper` for the standard `NetworkUtilities` portlet.
+__Template project description__: Demonstrates how to create a
+`FriendlyURLMapper` for the standard `NetworkUtilities` portlet.
 
-The `NetworkUtilities` portlet does not provide friendly URLs out of the box. To test this plugin, put a `NetworkUtilities` portlet on the home page.
-After deploying this plugin, you can access its tabs directly using the following URLs:
+The `NetworkUtilities` portlet does not provide friendly URLs out of the box. To
+test this plugin, put a `NetworkUtilities` portlet on the home page. After
+deploying this plugin, you can access its tabs directly using the following
+URLs:
 
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
@@ -156,7 +178,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__: Demonstrates Felix Gogo commands and consuming Liferay services through DS (Declarative Services).
+__Template project description__: Demonstrates Felix Gogo commands and consuming
+Liferay services through DS (Declarative Services).
 
 __Template projects links__:
 
@@ -171,7 +194,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates a JSP hook for `login.jsp` in the `com.liferay.login.web` bundle via a fragment bundle.
+__Template project description__: Demonstrates a JSP hook for `login.jsp` in the
+`com.liferay.login.web` bundle via a fragment bundle.
 
 __Template projects links__:
 
@@ -201,7 +225,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates how to create a custom `IndexerPostProcessor`.
+__Template project description__: Demonstrates how to create a custom
+`IndexerPostProcessor`.
 
 __Template projects links__:
 
@@ -214,24 +239,39 @@ __Template projects links__:
 
 ### `login.events.pre`
 
-__Extension point description__:  Demonstrates how to implement a Liferay `com.liferay.portal.kernel.events.LifecycleAction`. This API replaces all the legacy lifecycle events such as `com.liferay.portal.kernel.events.Action`, `com.liferay.portal.kernel.events.SessionAction`, and `com.liferay.portal.kernel.events.SimpleAction`.
-Connecting a `LifecycleAction` to a particular event is determined by the OSGi service property `key`. The following keys are supported:
+__Extension point description__: Demonstrates how to implement a Liferay
+`com.liferay.portal.kernel.events.LifecycleAction`. This API replaces all the
+legacy lifecycle events such as `com.liferay.portal.kernel.events.Action`,
+`com.liferay.portal.kernel.events.SessionAction`, and
+`com.liferay.portal.kernel.events.SimpleAction`. Connecting a `LifecycleAction`
+to a particular event is determined by the OSGi service property `key`. The
+following keys are supported:
 
-* `application.shutdown.events` - fired during destruction of company instances at portal shutdown.
-* `application.startup.events` - fired during initialization of company instances at portal start, or when a new instance is created.
-* `global.shutdown.events` - fired during destruction of the portal's main servlet.
-* `global.startup.events` - fire during initialization of the portal's main servlet.
-* `layout.configuration.action.delete` - fired during destruction of a page (Layout).
-* `layout.configuration.action.update` - fired during initialization of a page (Layout).
+* `application.shutdown.events` - fired during destruction of company instances
+  at portal shutdown.
+* `application.startup.events` - fired during initialization of company
+  instances at portal start, or when a new instance is created.
+* `global.shutdown.events` - fired during destruction of the portal's main
+  servlet.
+* `global.startup.events` - fire during initialization of the portal's main
+  servlet.
+* `layout.configuration.action.delete` - fired during destruction of a page
+  (Layout).
+* `layout.configuration.action.update` - fired during initialization of a page
+  (Layout).
 * `login.events.post` - fired immediately following login.
 * `login.events.pre` - fired immediately prior to login.
 * `logout.events.post` - fired immediately following logout.
 * `logout.events.pre` - fired immediately prior to logout.
-* `servlet.service.events.post` - fired following requests to the portal (including all portlet container requests).
-* `servlet.service.events.pre` - fired prior to requests to the portal (including all portlet container requests & post login).
-* `servlet.session.create.events` - fired during creation of a portal's HTTP session.
-* `servlet.session.destroy.events` - fired during destruction of a portal's HTTP session.
-
+* `servlet.service.events.post` - fired following requests to the portal
+  (including all portlet container requests).
+* `servlet.service.events.pre` - fired prior to requests to the portal
+  (including all portlet container requests & post login).
+* `servlet.session.create.events` - fired during creation of a portal's HTTP
+  session.
+* `servlet.session.destroy.events` - fired during destruction of a portal's HTTP
+  session.
+  
 __Template project description__:  Demonstrates a hook for `login.events.pre`.
 
 __Template projects links__:
@@ -245,11 +285,14 @@ __Template projects links__:
 
 ### `ModelListener`
 
-__Extension point description__: Model Listeners are used to listen for events on models and do something in response.
+__Extension point description__: Model Listeners are used to listen for events
+on models and do something in response.
 
-__Template project description__:  Demonstrates how to create a model listener for `Layout`.
+__Template project description__: Demonstrates how to create a model listener
+for `Layout`.
 
-After deploying this plugin, the title of any newly created page will be automatically set to *Title generated by model listener!*.
+After deploying this plugin, the title of any newly created page will be
+automatically set to *Title generated by model listener!*.
 
 __Template projects links__:
 
@@ -264,7 +307,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates how to make a hook for a `PollerProcessor`.
+__Template project description__: Demonstrates how to make a hook for a
+`PollerProcessor`.
 
 __Template projects links__:
 
@@ -279,9 +323,14 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates the `MVCActionCommand` extension point. It integrates the action command named `greet` with portlet `greeter`.
-
-To see how this example works, a portlet plugin with a portlet named **greeter** (`javax.portlet.name='greeter'`) should be deployed.  The command adds a key `greeting_message` to Liferay `SessionMessages`, along with a session attribute `GREETER_MESSAGE`. You can independently deploy the bundle `blade.portlet.actioncommand` (i.e., refresh the bundle without the need to redeploy the Portlet plugin).
+__Template project description__: Demonstrates the `MVCActionCommand` extension
+point. It integrates the action command named `greet` with portlet `greeter`. To
+see how this example works, a portlet plugin with a portlet named **greeter**
+(`javax.portlet.name='greeter'`) should be deployed. The command adds a key
+`greeting_message` to Liferay `SessionMessages`, along with a session attribute
+`GREETER_MESSAGE`. You can independently deploy the bundle
+`blade.portlet.actioncommand` (i.e., refresh the bundle without the need to
+redeploy the Portlet plugin).
 
 __Template projects links__:
 
@@ -298,7 +347,8 @@ Below are examples of building portlets using different frameworks:
 
 #### Liferay MVC Portlet - Using Blueprint Framework
 
-__Template project description__:  Demonstrates how to use the Blueprint framework for registering a portlet.
+__Template project description__: Demonstrates how to use the Blueprint
+framework for registering a portlet.
 
 __Template projects links__:
 
@@ -311,7 +361,8 @@ __Template projects links__:
 
 #### Liferay MVC Portlet - Using DS (Declarative Services) Framework
 
-__Template project description__:  Demonstrates how to use the DS (Declarative Services) framework for registering a portlet.
+__Template project description__: Demonstrates how to use the DS (Declarative
+Services) framework for registering a portlet.
 
 __Template projects links__:
 
@@ -339,7 +390,8 @@ __Template projects links__:
 
 #### Liferay MVC Portlet - Using Raw OSGI APIs
 
-__Template project description__:  Demonstrates how to use the raw OSGI APIs for registering a portlet.
+__Template project description__: Demonstrates how to use the raw OSGI APIs for
+registering a portlet.
 
 __Template projects links__:
 
@@ -427,19 +479,26 @@ __Template projects links__:
 
 ### REST Service
 
-__Extension point description__: Lets developers create custom JAX-RS standard based RESTful services.  
+__Extension point description__: Lets developers create custom JAX-RS standard
+based RESTful services.
 
-__Template project description__:  Demonstrates how to create a JAX-RS service that lists Liferay users.
+__Template project description__: Demonstrates how to create a JAX-RS service
+that lists Liferay users.
 
-NOTE: Before this service is accessible, the developer needs to configure endpoints for it. To do so, go to 
-the Control Panel &rarr; *System* &rarr; *System Settings* &rarr; *Foundation* and then
+**NOTE:** Before this service is accessible, the developer needs to configure
+endpoints for it. To do so, go to the Control Panel &rarr; *System* &rarr;
+*System Settings* &rarr; *Foundation* and then
 
 * Search for CXF Endpoints
-* Create a new *CXFEndpoint publisher configuration* providing a context path (e.g., `/rest-test`).
+* Create a new *CXFEndpoint publisher configuration* providing a context path
+  (e.g., `/rest-test`).
 * Go back to *System Settings* &rarr; *Foundation* and select *REST Extender*.
-* Create a new REST extender configuration (i.e., search with `rest`) providing context paths (e.g., `/rest-test`) and `jaxrs.applications.filters` set to `(jaxrs.application=true)`.
+* Create a new REST extender configuration (i.e., search with `rest`) providing
+  context paths (e.g., `/rest-test`) and `jaxrs.applications.filters` set to
+  `(jaxrs.application=true)`.
 
-Then you can access the service via [http://localhost:8080/o/rest-test/blade.users/list/](http://localhost:8080/o/rest-test/blade.users/list/).
+Then you can access the service via
+[http://localhost:8080/o/rest-test/blade.users/list/](http://localhost:8080/o/rest-test/blade.users/list/).
 
 __Template projects links__:
 
@@ -469,7 +528,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates how to wrap the `UserLocalService` with custom a `UserLocalServiceWrapper`.
+__Template project description__: Demonstrates how to wrap the
+`UserLocalService` with custom a `UserLocalServiceWrapper`.
 
 __Template projects links__:
 
@@ -484,7 +544,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates how to create a Service Builder project separated into four bundles: 
+__Template project description__: Demonstrates how to create a Service Builder
+project separated into four bundles:
 
 * `api` bundle is for interfaces
 * `svc` bundle is for implementations
@@ -543,7 +604,8 @@ __Template projects links__:
 
 __Extension point description__: 
 
-__Template project description__:  Demonstrates how to write a `StrutsPortletAction`.
+__Template project description__: Demonstrates how to write a
+`StrutsPortletAction`.
 
 __Template projects links__:
 
@@ -571,7 +633,8 @@ __Template projects links__:
 
 ## Liferay Extension Points Without Template Projects
 
-This project does not yet have template projects for the following extension points. We encourage you to contribute some!  
+This project does not yet have template projects for the following extension
+points. We encourage you to contribute some!
 
 * com.liferay.mail.util.Hook
 * com.liferay.portal.kernel.atom.AtomCollectionAdapter
