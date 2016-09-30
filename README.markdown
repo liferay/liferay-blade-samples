@@ -3,41 +3,41 @@
 [![Build Status](https://travis-ci.org/rotty3000/blade.svg?branch=master)](https://travis-ci.org/rotty3000/blade)
 [![Join the chat at https://gitter.im/rotty3000/blade](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rotty3000/blade?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This small experiment aims to provide bootstrap project environments for all the major build tools in common use for Java projects so that Liferay development can start quickly and easily.
+Liferay's Blade samples provides bootstrap project environments for all major build tools in common use for Java projects so that Liferay development can start quickly and easily.
 
 ## Build Tools
 
-The template projects are categorized based on the build tools,
+The template projects are categorized under four build tools:
 
-* `gradle` - these are set of Liferay projects that can be bootstrapped on to `gradle` based development environment
-* `liferay-gradle` - these are set of Liferay projects that can be bootstrapped on to `com.liferay.plugin`(a gradle plugin) based development environment
-* `maven` - these are set of Liferay projects that can be bootstrapped on to `maven` development environment
-* `bndtools` - these are set of Liferay projects that can be bootstrapped on to `bndtools` based development environment
+* `gradle` - A set of Liferay projects that can be bootstrapped onto the *Gradle* based development environment.
+* `liferay-gradle` - A set of Liferay projects that can be bootstrapped onto the `com.liferay.plugin` (a Gradle plugin) based development environment.
+* `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven* development environment.
+* `bndtools` - A set of Liferay projects that can be bootstrapped onto the *Bndtools* based development environment.
 
 ### A Note on BNDTools
 
-There are 2 additional projects in the `/bndtools/` folder that you will need to build and publish the modules
+There are 2 additional projects in the `/bndtools/` folder that you will need to build and publish the modules:
 
 * `/bndtools/cnf` - The Bndtools configuration project
-* `/bndtools/blade.run` - A bndtools project which can push bundles into an osgi container and run them, need biz.aQute.remote.agent-X.X.X.jar deployed first.
+* `/bndtools/blade.run` - A Bndtools project which can push bundles into an OSGi container and run them. The `biz.aQute.remote.agent-X.X.X.jar` must be deployed first before this project will function properly.
 
 ## Frameworks
 
-The projects also demonstrate how to use various frameworks like:
+The template projects also demonstrate how to use various frameworks:
 
 * Blueprint
-* Declarative Services(**DS**)
-* OSGI API
+* Declarative Services (**DS**)
+* OSGi API
 
 ### A Note on Blueprint
 
-Liferay does not provide a blueprint implementation out of the box. To use the blueprint modules provided in blade, you must deploy a blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
+Liferay does not provide a Blueprint implementation out of the box. To use the Blueprint modules provided in Blade, you must deploy a Blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
 
 * [Apache Aries Blueprint Bundle](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint/1.1.0)
 * [Apache Aries Blueprint Annotation API](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.api/1.0.1)
 * [Apache Aries Proxy Bundle](http://mvnrepository.com/artifact/org.apache.aries.proxy/org.apache.aries.proxy/1.0.1)
 
-Simply download the bundles from mvnrepository and drop them in your osgi/modules folder as usual before deploying blueprint bundles.
+Simply download the bundles from [mvnrepository](https://mvnrepository.com/) and drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ## Liferay Extension Points and Template Projects 
 
