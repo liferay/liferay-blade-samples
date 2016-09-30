@@ -42,9 +42,8 @@ The template projects also demonstrate how to use various frameworks:
 
 Liferay does not provide a Blueprint implementation out of the box. To use the
 Blueprint modules provided in Blade, you must deploy a Blueprint implementation
-such as [Apache Aries -
-Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are
-needed:
+such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html).
+Three bundles are needed:
 
 * [Apache Aries Blueprint Bundle](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint/1.1.0)
 * [Apache Aries Blueprint Annotation API](http://mvnrepository.com/artifact/org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.api/1.0.1)
@@ -57,12 +56,12 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ### `auth.pipeline.pre` 
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Uses Apache Shiro for hooking
+**Template project description**: Uses Apache Shiro for hooking
 `auth.pipeline.pre`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -73,12 +72,12 @@ __Template projects links__:
 
 ### `auth.failure` and `auth.max.failures`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates a hook for `auth.failure` and
+**Template project description**: Demonstrates a hook for `auth.failure` and
 `auth.max.failures`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -89,12 +88,12 @@ __Template projects links__:
 
 ### `AutoLogin`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates the `AutoLogin` integration
+**Template project description**: Demonstrates the `AutoLogin` integration
 point.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -105,12 +104,12 @@ __Template projects links__:
 
 ### `ConfigurationAction`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates the `ConfigurationAction`
+**Template project description**: Demonstrates the `ConfigurationAction`
 integration point.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -121,11 +120,11 @@ __Template projects links__:
 
 ### Control Menu Entry
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -136,11 +135,11 @@ __Template projects links__:
 
 ### Core JSP Hook
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -151,10 +150,10 @@ __Template projects links__:
 
 ### `FriendlyURLMapper`
 
-__Extension point description__: Lets a developer provide (or overwrite)
+**Extension point description**: Lets a developer provide (or overwrite)
 friendly URL mapping for portlets.
 
-__Template project description__: Demonstrates how to create a
+**Template project description**: Demonstrates how to create a
 `FriendlyURLMapper` for the standard `NetworkUtilities` portlet.
 
 The `NetworkUtilities` portlet does not provide friendly URLs out of the box. To
@@ -165,7 +164,7 @@ URLs:
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -176,12 +175,12 @@ __Template projects links__:
 
 ### Gogo Command
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates Felix Gogo commands and consuming
+**Template project description**: Demonstrates Felix Gogo commands and consuming
 Liferay services through DS (Declarative Services).
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -192,12 +191,12 @@ __Template projects links__:
 
 ### JSP Hook
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates a JSP hook for `login.jsp` in the
+**Template project description**: Demonstrates a JSP hook for `login.jsp` in the
 `com.liferay.login.web` bundle via a fragment bundle.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -208,11 +207,11 @@ __Template projects links__:
 
 ### Resource Bundle
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -223,12 +222,12 @@ __Template projects links__:
 
 ### `IndexerPostProcessor`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates how to create a custom
+**Template project description**: Demonstrates how to create a custom
 `IndexerPostProcessor`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -239,7 +238,7 @@ __Template projects links__:
 
 ### `login.events.pre`
 
-__Extension point description__: Demonstrates how to implement a Liferay
+**Extension point description**: Demonstrates how to implement a Liferay
 `com.liferay.portal.kernel.events.LifecycleAction`. This API replaces all the
 legacy lifecycle events such as `com.liferay.portal.kernel.events.Action`,
 `com.liferay.portal.kernel.events.SessionAction`, and
@@ -272,9 +271,9 @@ following keys are supported:
 * `servlet.session.destroy.events` - fired during destruction of a portal's HTTP
   session.
   
-__Template project description__:  Demonstrates a hook for `login.events.pre`.
+**Template project description**:  Demonstrates a hook for `login.events.pre`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -285,16 +284,16 @@ __Template projects links__:
 
 ### `ModelListener`
 
-__Extension point description__: Model Listeners are used to listen for events
+**Extension point description**: Model Listeners are used to listen for events
 on models and do something in response.
 
-__Template project description__: Demonstrates how to create a model listener
+**Template project description**: Demonstrates how to create a model listener
 for `Layout`.
 
 After deploying this plugin, the title of any newly created page will be
 automatically set to *Title generated by model listener!*.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -305,12 +304,12 @@ __Template projects links__:
 
 ### `PollerProcessor`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates how to make a hook for a
+**Template project description**: Demonstrates how to make a hook for a
 `PollerProcessor`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -321,9 +320,9 @@ __Template projects links__:
 
 ### `MVCActionCommand`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates the `MVCActionCommand` extension
+**Template project description**: Demonstrates the `MVCActionCommand` extension
 point. It integrates the action command named `greet` with portlet `greeter`. To
 see how this example works, a portlet plugin with a portlet named **greeter**
 (`javax.portlet.name='greeter'`) should be deployed. The command adds a key
@@ -332,7 +331,7 @@ see how this example works, a portlet plugin with a portlet named **greeter**
 `blade.portlet.actioncommand` (i.e., refresh the bundle without the need to
 redeploy the Portlet plugin).
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -347,10 +346,10 @@ Below are examples of building portlets using different frameworks:
 
 #### Liferay MVC Portlet - Using Blueprint Framework
 
-__Template project description__: Demonstrates how to use the Blueprint
+**Template project description**: Demonstrates how to use the Blueprint
 framework for registering a portlet.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -361,10 +360,10 @@ __Template projects links__:
 
 #### Liferay MVC Portlet - Using DS (Declarative Services) Framework
 
-__Template project description__: Demonstrates how to use the DS (Declarative
+**Template project description**: Demonstrates how to use the DS (Declarative
 Services) framework for registering a portlet.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -375,11 +374,11 @@ __Template projects links__:
 
 #### JSP Portlet 
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__:  Demonstrates a simple JSP portlet.
+**Template project description**:  Demonstrates a simple JSP portlet.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -390,10 +389,10 @@ __Template projects links__:
 
 #### Liferay MVC Portlet - Using Raw OSGI APIs
 
-__Template project description__: Demonstrates how to use the raw OSGI APIs for
+**Template project description**: Demonstrates how to use the raw OSGI APIs for
 registering a portlet.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -404,11 +403,11 @@ __Template projects links__:
 
 ### Configuration Icon
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -419,11 +418,11 @@ __Template projects links__:
 
 ### Control Panel
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -434,11 +433,11 @@ __Template projects links__:
 
 ### `PortletFilter`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__:  Demonstrates how to apply `PortletFilter`s.
+**Template project description**:  Demonstrates how to apply `PortletFilter`s.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -449,11 +448,11 @@ __Template projects links__:
 
 ### Toolbar Contributor
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -464,11 +463,11 @@ __Template projects links__:
 
 ### Resource Bundle
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -479,10 +478,10 @@ __Template projects links__:
 
 ### REST Service
 
-__Extension point description__: Lets developers create custom JAX-RS standard
+**Extension point description**: Lets developers create custom JAX-RS standard
 based RESTful services.
 
-__Template project description__: Demonstrates how to create a JAX-RS service
+**Template project description**: Demonstrates how to create a JAX-RS service
 that lists Liferay users.
 
 **NOTE:** Before this service is accessible, the developer needs to configure
@@ -500,7 +499,7 @@ endpoints for it. To do so, go to the Control Panel &rarr; *System* &rarr;
 Then you can access the service via
 [http://localhost:8080/o/rest-test/blade.users/list/](http://localhost:8080/o/rest-test/blade.users/list/).
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -511,11 +510,11 @@ __Template projects links__:
 
 ### Scheduler Entry
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -526,12 +525,12 @@ __Template projects links__:
 
 ### `ServiceWrapper`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates how to wrap the
+**Template project description**: Demonstrates how to wrap the
 `UserLocalService` with custom a `UserLocalServiceWrapper`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -542,9 +541,9 @@ __Template projects links__:
 
 ### Service Builder
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates how to create a Service Builder
+**Template project description**: Demonstrates how to create a Service Builder
 project separated into four bundles:
 
 * `api` bundle is for interfaces
@@ -552,7 +551,7 @@ project separated into four bundles:
 * `test` bundle is for testing
 * `web` bundle is a portlet calling the generated services 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | subproject   | Link to project's source code                                                   |
 | ---------- | ------------ | ------------------------------------------------------------------------------- |
@@ -572,11 +571,11 @@ __Template projects links__:
 
 ### Simulation Panel
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -587,11 +586,11 @@ __Template projects links__:
 
 ### `StrutsAction`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__:  Demonstrates how to write a `StrutsAction`.
+**Template project description**:  Demonstrates how to write a `StrutsAction`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -602,12 +601,12 @@ __Template projects links__:
 
 ### `StrutsPortletAction`
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: Demonstrates how to write a
+**Template project description**: Demonstrates how to write a
 `StrutsPortletAction`.
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -618,11 +617,11 @@ __Template projects links__:
 
 ### Context Contributor
 
-__Extension point description__: 
+**Extension point description**: 
 
-__Template project description__: 
+**Template project description**: 
 
-__Template projects links__:
+**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
