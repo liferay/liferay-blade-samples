@@ -1,4 +1,4 @@
-# Control Menu Entry Sample
+# Control Menu Entry
 
 The Control Menu Entry sample provides a customizable button that is added to
 Liferay's default Control Menu. When deploying this sample with no
