@@ -1,16 +1,11 @@
-# Bootstrap Liferay Advanced Developer Environments(**BLADE**)
+# Bootstrap Liferay Advanced Developer Environments (BLADE)
 
 [![Build Status](https://travis-ci.org/rotty3000/blade.svg?branch=master)](https://travis-ci.org/rotty3000/blade)
 [![Join the chat at https://gitter.im/rotty3000/blade](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rotty3000/blade?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This small experiment aims to provide bootstrap project environments for all the major build tools in common use for Java projects so that Liferay development can start quickly and easily.
 
-
-
-# Related build tools and frameworks 
-
-
-## Build tools
+## Build Tools
 
 The template projects are categorized based on the build tools,
 
@@ -19,14 +14,12 @@ The template projects are categorized based on the build tools,
 * `maven` - these are set of Liferay projects that can be bootstrapped on to `maven` development environment
 * `bndtools` - these are set of Liferay projects that can be bootstrapped on to `bndtools` based development environment
 
-
-### A note on BNDTools
+### A Note on BNDTools
 
 There are 2 additional projects in the `/bndtools/` folder that you will need to build and publish the modules
 
 * `/bndtools/cnf` - The Bndtools configuration project
 * `/bndtools/blade.run` - A bndtools project which can push bundles into an osgi container and run them, need biz.aQute.remote.agent-X.X.X.jar deployed first.
-
 
 ## Frameworks
 
@@ -36,8 +29,7 @@ The projects also demonstrate how to use various frameworks like:
 * Declarative Services(**DS**)
 * OSGI API
 
-
-### A note on Blueprint
+### A Note on Blueprint
 
 Liferay does not provide a blueprint implementation out of the box. To use the blueprint modules provided in blade, you must deploy a blueprint implementation such as [Apache Aries - Blueprint](http://aries.apache.org/modules/blueprint.html). Three bundles are needed:
 
@@ -47,12 +39,9 @@ Liferay does not provide a blueprint implementation out of the box. To use the b
 
 Simply download the bundles from mvnrepository and drop them in your osgi/modules folder as usual before deploying blueprint bundles.
 
+## Liferay Extension Points and Template Projects 
 
-
-# Liferay extension points and template projects 
-
-
-## `auth.pipeline.pre` 
+### `auth.pipeline.pre` 
 
 __Extension point description__: 
 
@@ -67,8 +56,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.authenticator.shiro](./gradle/blade.authenticator.shiro)        |
 | Maven      | [./maven/blade.authenticator.shiro](./maven/blade.authenticator.shiro)          |
 
-
-## `auth.failure` and `auth.max.failures`
+### `auth.failure` and `auth.max.failures`
 
 __Extension point description__: 
 
@@ -83,8 +71,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.authfailure](./gradle/blade.authfailure)        |
 | Maven      | [./maven/blade.authfailure](./maven/blade.authfailure)          |
 
-
-## `ConfigurationAction`
+### `ConfigurationAction`
 
 __Extension point description__: 
 
@@ -99,8 +86,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.configurationaction](./gradle/blade.configurationaction)        |
 | Maven      | [./maven/blade.configurationaction](./maven/blade.configurationaction)          |
 
-
-## `FriendlyURLMapper`
+### `FriendlyURLMapper`
 
 __Extension point description__: This extension point allows one to provide (or overwrite) friendly URL mapping for portlets.
 
@@ -121,8 +107,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.friendlyurl](./gradle/blade.friendlyurl)        |
 | Maven      | [./maven/blade.friendlyurl](./maven/blade.friendlyurl)          |
 
-
-## Gogo command
+### Gogo Command
 
 __Extension point description__: 
 
@@ -137,8 +122,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.gogo](./gradle/blade.gogo)        |
 | Maven      | [./maven/blade.gogo](./maven/blade.gogo)          |
 
-
-## `IndexerPostProcessor`
+### `IndexerPostProcessor`
 
 __Extension point description__: 
 
@@ -153,8 +137,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
 | Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
 
-
-## JSP hook
+### JSP Hook
 
 __Extension point description__: 
 
@@ -169,8 +152,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
 | Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
 
-
-## `login.events.pre`
+### `login.events.pre`
 
 __Extension point description__:  This example demonstrates how to implement a Liferay `com.liferay.portal.kernel.events.LifecycleAction`. This API replaces all the legacy lifecycle events such as `com.liferay.portal.kernel.events.Action`, `com.liferay.portal.kernel.events.SessionAction`, and `com.liferay.portal.kernel.events.SimpleAction`.
 Connecting an LifecycleAction to a particular event is determined by the OSGi service property `key`. The following keys are supported:
@@ -201,15 +183,13 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.lifecycle.loginpreaction](./gradle/blade.lifecycle.loginpreaction)      |
 | Maven      | [./maven/blade.lifecycle.loginpreaction](./maven/blade.lifecycle.loginpreaction)        |
 
-
-## `ModelListener`
+### `ModelListener`
 
 __Extension point description__: Model Listeners are used to listen for events on models and do something in response.
 
 __Template project description__:  Demonstrates how to create a model listener for `Layout`
 
 After deploying this plugin the title of any newly created page will be automatically set to "Title generated by model listener!"
-
 
 __Template projects links__:
 
@@ -220,8 +200,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.modellistener](./gradle/blade.modellistener)      |
 | Maven      | [./maven/blade.modellistener](./maven/blade.modellistener)        |
 
-
-## `MVCActionCommand`
+### `MVCActionCommand`
 
 __Extension point description__: 
 
@@ -238,8 +217,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.actioncommand](./gradle/blade.portlet.actioncommand)      |
 | Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
 
-
-## `PollerProcessor`
+### `PollerProcessor`
 
 __Extension point description__: 
 
@@ -254,15 +232,13 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
 | Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
 
-
-## Portlet 
+### Portlet 
 
 __Extension point description__: 
 
 Below are examples of buildeing portles using diferent frameworks: 
 
-
-### Liferay MVC Portlet - using Blueprint framework
+#### Liferay MVC Portlet - Using Blueprint Framework
 
 __Template project description__:  demonstrates how to use Blueprint framework for registering a portlet.
 
@@ -275,8 +251,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.blueprint](./gradle/blade.portlet.blueprint)      |
 | Maven      | [./maven/blade.portlet.blueprint](./maven/blade.portlet.blueprint)        |
 
-
-### Liferay MVC Portlet - using DS (Declarative Services) framework
+#### Liferay MVC Portlet - Using DS (Declarative Services) Framework
 
 __Template project description__:  demonstrates how to use DS (Declarative Services) framework for registering a portlet.
 
@@ -289,8 +264,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.ds](./gradle/blade.portlet.ds)      |
 | Maven      | [./maven/blade.portlet.ds](./maven/blade.portlet.ds)        |
 
-
-### Liferay MVC Portlet - using raw OSGI APIs
+#### Liferay MVC Portlet - Using Raw OSGI APIs
 
 __Template project description__:  demonstrates how to use the raw OSGI APIs for registering a portlet.
 
@@ -303,8 +277,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi)      |
 | Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
 
-
-### JSF Portlet - using DS (Declarative Services) framework
+#### JSF Portlet - Using DS (Declarative Services) Framework
 
 __Template project description__:  demonstrates how to use the DS (Declarative Services) for registering a JSF portlet
 
@@ -317,7 +290,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.jsf.portlet.ds](./gradle/blade.jsf.portlet.ds)      |
 | Maven      | [./maven/blade.jsf.portlet.ds](./maven/blade.jsf.portlet.ds)        |
 
-### JSP Portlet 
+#### JSP Portlet 
 
 __Extension point description__: 
 
@@ -332,8 +305,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.jsp](./gradle/blade.portlet.jsp)      |
 | Maven      | [./maven/blade.portlet.jsp](./maven/blade.portlet.jsp)        |
 
-
-## `PortletFilter`
+### `PortletFilter`
 
 __Extension point description__: 
 
@@ -348,8 +320,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.portlet.filter](./gradle/blade.portlet.filter)      |
 | Maven      | [./maven/blade.portlet.filter](./maven/blade.portlet.filter)        |
 
-
-## REST service
+### REST Service
 
 __Extension point description__: Allows to create custom, JAX-RS standard based restfull services   
 
@@ -374,8 +345,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.rest](./gradle/blade.rest)      |
 | Maven      | [./maven/blade.rest](./maven/blade.rest)        |
 
-
-## Service Builder
+### Service Builder
 
 __Extension point description__: 
 
@@ -404,8 +374,7 @@ __Template projects links__:
 | Gradle     | Web          | [./gradle/blade.servicebuilder.web](./gradle/blade.servicebuilder.web)  |
 | Maven      | All (parent) | [./maven/blade.servicebuilder](./maven/blade.servicebuilder)  |
 
-
-## `ServiceWrapper`
+### `ServiceWrapper`
 
 __Extension point description__: 
 
@@ -420,8 +389,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
 | Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
 
-
-## `StrutsAction`
+### `StrutsAction`
 
 __Extension point description__: 
 
@@ -436,8 +404,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.strutsaction](./gradle/blade.strutsaction)      |
 | Maven      | [./maven/blade.strutsaction](./maven/blade.strutsaction)        |
 
-
-## `StrutsPortletAction`
+### `StrutsPortletAction`
 
 __Extension point description__: 
 
@@ -452,9 +419,7 @@ __Template projects links__:
 | Gradle     | [./gradle/blade.strutsportletaction](./gradle/blade.strutsportletaction)      |
 | Maven      | [./maven/blade.strutsportletaction](./maven/blade.strutsportletaction)        |
 
-
-
-# Liferay extension points without template projects
+## Liferay Extension Points Without Template Projects
 
 This project does not yet have template projects for the following extension points. We encourage you to contribute some!  
 
@@ -517,12 +482,10 @@ This project does not yet have template projects for the following extension poi
 * javax.portlet.PreferencesValidator
 * javax.servlet.Filter (Liferay InvokerFilterChain Filters)
 
-
-
-# License
+## License
 [License](/LICENSE.txt)
 
-# Contribution
+## Contribution
 
 These templates can be copied freely and contributions are welcome. You can
 contribute additional template samples by creating the project for one of the
@@ -530,7 +493,7 @@ four build tools and sending a pull request to `liferay/liferay-blade-samples`.
 A repository admin will review the submission and replicate the project for the
 other three build tools, once the submission is approved.
 
-# References
+## References
 
 [OSGI R5](http://www.osgi.org/Release5/HomePage)
 
@@ -539,4 +502,3 @@ other three build tools, once the submission is approved.
 [Blueprint](http://www.eclipse.org/gemini/blueprint/)
 
 [Bndtools](http://www.bndtools.org)
-
