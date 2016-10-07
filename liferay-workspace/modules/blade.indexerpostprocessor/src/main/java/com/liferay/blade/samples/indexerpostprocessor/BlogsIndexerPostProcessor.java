@@ -34,9 +34,7 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	property = {
-		"indexer.class.name=com.liferay.blogs.kernel.model.BlogsEntry"
-	},
+	property = {"indexer.class.name=com.liferay.blogs.kernel.model.BlogsEntry"},
 	service = IndexerPostProcessor.class
 )
 public class BlogsIndexerPostProcessor implements IndexerPostProcessor {

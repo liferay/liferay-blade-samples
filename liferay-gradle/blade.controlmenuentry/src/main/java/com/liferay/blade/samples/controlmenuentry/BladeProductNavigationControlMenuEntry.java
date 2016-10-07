@@ -31,6 +31,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.osgi.service.component.annotations.Component;
 
 /**
+ * Represents a Control menu entry, providing methods to define the entry's
+ * icon, label, URL, and visibility.
+ *
  * @author Liferay
  */
 @Component(
@@ -45,11 +48,27 @@ public class BladeProductNavigationControlMenuEntry
 	extends BaseProductNavigationControlMenuEntry
 	implements ProductNavigationControlMenuEntry {
 
+	/**
+	 * Returns the icon to display in the Control Menu. By default, Lexicon
+	 * icons are expected to be returned. To view all the Lexicon icons
+	 * available, see
+	 * <a href="http://liferay.github.io/lexicon/content/icons-lexicon/">http://liferay.github.io/lexicon/content/icons-lexicon/</a>.
+	 *
+	 * @param  request the request
+	 * @return the icon to display in the Control Menu
+	 */
 	@Override
 	public String getIcon(HttpServletRequest request) {
 		return "link";
 	}
 
+	/**
+	 * Returns the Control Menu entry's label stored in the module's resource
+	 * bundle.
+	 *
+	 * @param  locale the label's locale
+	 * @return the Control Menu entry's label
+	 */
 	@Override
 	public String getLabel(Locale locale) {
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
@@ -59,11 +78,26 @@ public class BladeProductNavigationControlMenuEntry
 			resourceBundle, "blade-menu-entry-custom-message");
 	}
 
+	/**
+	 * Returns the Control Menu entry's linked URL.
+	 *
+	 * @param  request the request
+	 * @return the Control Menu entry's linked URL
+	 */
 	@Override
 	public String getURL(HttpServletRequest request) {
 		return "http://www.liferay.com";
 	}
 
+	/**
+	 * Returns <code>true</code> if the Control Menu entry is visible in the
+	 * Control Menu.
+	 *
+	 * @param  request the request
+	 * @return <code>true</code> if the Control Menu entry is visible in the
+	 *         Control Menu; <code>false</code> otherwise
+	 * @throws PortalException if a portal exception occurred
+	 */
 	@Override
 	public boolean isShow(HttpServletRequest request) throws PortalException {
 		return true;

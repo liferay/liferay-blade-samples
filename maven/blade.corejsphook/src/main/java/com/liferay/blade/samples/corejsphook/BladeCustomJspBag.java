@@ -66,11 +66,11 @@ public class BladeCustomJspBag implements CustomJspBag {
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
-		bundle = bundleContext.getBundle();
+		_bundle = bundleContext.getBundle();
 
 		_customJsps = new ArrayList<>();
 
-		Enumeration<URL> entries = bundle.findEntries(
+		Enumeration<URL> entries = _bundle.findEntries(
 			getCustomJspDir(), "*.jsp", true);
 
 		while (entries.hasMoreElements()) {
@@ -80,9 +80,15 @@ public class BladeCustomJspBag implements CustomJspBag {
 		}
 	}
 
+	private Bundle _bundle;
 	private List<String> _customJsps;
 
 	private final URLContainer _urlContainer = new URLContainer() {
+
+		@Override
+		public URL getResource(String name) {
+			return _bundle.getEntry(name);
+		}
 
 		@Override
 		public Set<String> getResources(String path) {
@@ -97,13 +103,6 @@ public class BladeCustomJspBag implements CustomJspBag {
 			return paths;
 		}
 
-		@Override
-		public URL getResource(String name) {
-			return bundle.getEntry(name);
-		}
-
 	};
-
-	private Bundle bundle;
 
 }

@@ -9,9 +9,10 @@ import aQute.bnd.build.Workspace
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
   repositories {
-    maven {
+    mavenCentral()
+    /*maven {
       url bnd_repourl
-    }
+    }*/
   }
   dependencies {
     classpath bnd_plugin

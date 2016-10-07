@@ -35,8 +35,8 @@ public class UserCountCommand {
 	}
 
 	@Reference
-	public void setUserLocalService(UserLocalService _userLocalService) {
-		this._userLocalService = _userLocalService;
+	public void setUserLocalService(UserLocalService userLocalService) {
+		_userLocalService = userLocalService;
 	}
 
 	public void usercount() {

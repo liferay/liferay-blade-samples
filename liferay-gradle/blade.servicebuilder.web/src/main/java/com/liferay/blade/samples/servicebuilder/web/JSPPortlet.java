@@ -106,7 +106,7 @@ public class JSPPortlet extends MVCPortlet {
 
 	@Reference
 	public void setFooLocalService(FooLocalService fooLocalService) {
-		this._fooLocalService = fooLocalService;
+		_fooLocalService = fooLocalService;
 	}
 
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {

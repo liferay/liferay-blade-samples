@@ -43,7 +43,7 @@ public class UsersRestService extends Application {
 
 	@Override
 	public Set<Object> getSingletons() {
-		return Collections.<Object> singleton(this);
+		return Collections.singleton((Object)this);
 	}
 
 	@GET
@@ -61,7 +61,7 @@ public class UsersRestService extends Application {
 
 	@Reference
 	public void setUserLocalService(UserLocalService userLocalService) {
-		this._userLocalService = userLocalService;
+		_userLocalService = userLocalService;
 	}
 
 	private UserLocalService _userLocalService;
