@@ -43,13 +43,13 @@ public class BladePollProcessor extends BasePollerProcessor {
 		throws Exception {
 
 		if (_log.isDebugEnabled()) {
-			_log.debug("Recevied the poller request"+pollerRequest);
+			_log.debug("Recevied the poller request" + pollerRequest);
 		}
 
 		JSONObject responseJSON = JSONFactoryUtil.createJSONObject();
 		PollerResponse pollerResponse = new DefaultPollerResponse();
 		responseJSON.put(
-			"message", "Hello from BLADE Poller, time now is:"+new Date());
+			"message", "Hello from BLADE Poller, time now is:" + new Date());
 		pollerResponse.setParameter("content", responseJSON);
 
 		return pollerResponse;
@@ -60,7 +60,7 @@ public class BladePollProcessor extends BasePollerProcessor {
 		String status = getString(pollerRequest, "status");
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Poller status:"+status);
+			_log.info("Poller status:" + status);
 		}
 	}
 

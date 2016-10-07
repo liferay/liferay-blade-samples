@@ -43,7 +43,9 @@ public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 	 */
 	public Foo addFooWithoutId(Foo foo) {
 		long resourcePrimKey = counterLocalService.increment();
+
 		foo.setFooId(resourcePrimKey);
+
 		return addFoo(foo);
 	}
 
