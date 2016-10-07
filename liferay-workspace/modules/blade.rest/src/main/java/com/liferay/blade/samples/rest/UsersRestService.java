@@ -42,7 +42,7 @@ public class UsersRestService extends Application {
 
 	@Override
 	public Set<Object> getSingletons() {
-		return Collections.singleton(this);
+		return Collections.singleton((Object)this);
 	}
 
 	@GET
