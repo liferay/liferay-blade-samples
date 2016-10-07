@@ -37,16 +37,19 @@ public class BladeServiceBuilderTest {
 	@Activate
 	public void activate(ComponentContext context) throws Exception {
 		String localResult = _fooLocalService.fooLocal();
-		System.out.println("FooLocalService Test: "+localResult);
+
+		System.out.println("FooLocalService Test: " + localResult);
 
 		String remoteResult = FooServiceUtil.fooRemote();
-		System.out.println("FooRemoteService Test: "+remoteResult);
+
+		System.out.println("FooRemoteService Test: " + remoteResult);
 
 		int count = _fooLocalService.getFoosCount();
+
 		List<Foo> fooList = FooLocalServiceUtil.getFoos(0, count);
 
 		for (Foo foo : fooList) {
-			System.out.println(foo.getFooId()+" "+foo.getField1());
+			System.out.println(foo.getFooId() + " " + foo.getField1());
 		}
 	}
 

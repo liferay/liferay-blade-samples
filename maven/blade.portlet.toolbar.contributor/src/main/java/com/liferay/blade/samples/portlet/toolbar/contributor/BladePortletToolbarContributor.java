@@ -41,7 +41,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.name=" + "com_liferay_hello_world_web_portlet_HelloWorldPortlet",
+		"javax.portlet.name=com_liferay_hello_world_web_portlet_HelloWorldPortlet",
 		"mvc.path=-"
 	},
 	service = PortletToolbarContributor.class
@@ -75,7 +75,10 @@ public class BladePortletToolbarContributor
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", getLocale(portletRequest), getClass());
 
-		menu.setMessage(LanguageUtil.get(resourceBundle, "list-of-links"));
+		String message = LanguageUtil.get(resourceBundle, "list-of-links");
+
+		menu.setMessage(message);
+
 		menu.setScroll(false);
 		menu.setShowArrow(false);
 		menu.setShowWhenSingleIcon(true);

@@ -53,7 +53,7 @@ public class BladeProductNavigationControlMenuEntry
 	 * icons are expected to be returned. To view all the Lexicon icons
 	 * available, see
 	 * <a href="http://liferay.github.io/lexicon/content/icons-lexicon/">http://liferay.github.io/lexicon/content/icons-lexicon/</a>.
-	 * 
+	 *
 	 * @param  request the request
 	 * @return the icon to display in the Control Menu
 	 */
@@ -65,7 +65,7 @@ public class BladeProductNavigationControlMenuEntry
 	/**
 	 * Returns the Control Menu entry's label stored in the module's resource
 	 * bundle.
-	 * 
+	 *
 	 * @param  locale the label's locale
 	 * @return the Control Menu entry's label
 	 */
@@ -80,7 +80,7 @@ public class BladeProductNavigationControlMenuEntry
 
 	/**
 	 * Returns the Control Menu entry's linked URL.
-	 * 
+	 *
 	 * @param  request the request
 	 * @return the Control Menu entry's linked URL
 	 */
@@ -92,7 +92,7 @@ public class BladeProductNavigationControlMenuEntry
 	/**
 	 * Returns <code>true</code> if the Control Menu entry is visible in the
 	 * Control Menu.
-	 * 
+	 *
 	 * @param  request the request
 	 * @return <code>true</code> if the Control Menu entry is visible in the
 	 *         Control Menu; <code>false</code> otherwise
