@@ -1,19 +1,22 @@
 #!/bin/bash
+repoDir=`pwd`
 function buildAll() {
-  pwd=$(repoDir)
   cd "$repoDir"
   cd bndtools
-  ./gradlew build
+  ./gradlew clean build
   cd "$repoDir"
   cd gradle
-  ./gradlew build
+  ./gradlew clean build
   cd "$repoDir"
   cd liferay-gradle
-  ./gradlew build
+  ./gradlew clean build
   cd "$repoDir"
   cd maven
-  mvn --fail-at-end package
+  mvn --fail-at-end clean package
   cd "$repoDir"
-  ./gradlew outputFilesTest
+  cd liferay-workspace
+  ./gradlew clean build -x :tests:test
+  cd "$repoDir"
+  ./gradlew outputFilesTest diff
 }
 buildAll
