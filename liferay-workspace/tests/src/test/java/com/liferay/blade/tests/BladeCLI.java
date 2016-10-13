@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.gradle.internal.impldep.com.google.common.io.Files;
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -101,7 +103,11 @@ public class BladeCLI {
 			File[] files = repo.get( "com.liferay.blade.cli", "[1,2)" );
 			File cliJar = files[0];
 
-			bladeJar = cliJar;
+			File newCliJar = new File(repoPath + "/" + cliJar.getName());
+
+			IO.copy(cliJar, newCliJar);
+
+			bladeJar = newCliJar;
 		}
 
 		return bladeJar.getCanonicalPath();
