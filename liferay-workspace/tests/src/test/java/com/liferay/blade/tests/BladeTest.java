@@ -55,10 +55,10 @@ public class BladeTest {
 	@BeforeClass
 	public static void startServer() throws Exception {
 		if (isWindows()) {
-			BladeCLI.startServerWindows(new File(".."), "server", "start", "-b");
+			BladeCLI.startServerWindows(new File(System.getProperty("user.dir")).getParentFile(), "server", "start", "-b");
 		}
 		else {
-			BladeCLI.execute(new File(".."), "server", "start", "-b");
+			BladeCLI.execute(new File(System.getProperty("user.dir")).getParentFile(), "server", "start", "-b");
 		}
 
 		OkHttpClient client = new OkHttpClient();
