@@ -28,8 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.gradle.internal.impldep.com.google.common.io.Files;
-
 import static org.junit.Assert.assertTrue;
 
 /**
