@@ -54,7 +54,12 @@ import okhttp3.Request.Builder;
 public class BladeTest {
 	@BeforeClass
 	public static void startServer() throws Exception {
-		BladeCLI.execute(new File(".."), "server", "start", "-b");
+		if (isWindows()) {
+			BladeCLI.startServerWindows(new File(".."), "server", "start", "-b");
+		}
+		else {
+			BladeCLI.execute(new File(".."), "server", "start", "-b");
+		}
 
 		OkHttpClient client = new OkHttpClient();
 		Request request = new Builder().url("http://localhost:8080").build();
@@ -369,6 +374,10 @@ public class BladeTest {
 		BladeCLI.startBundle(bundleID);
 
 		BladeCLI.uninstallBundle(bundleID);
+	}
+
+	private static boolean isWindows() {
+		return System.getProperty("os.name").toLowerCase().contains("windows");
 	}
 
 	private static final File _bundleDir = IO.getFile("../bundles");

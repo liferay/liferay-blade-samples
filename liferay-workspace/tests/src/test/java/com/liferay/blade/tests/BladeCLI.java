@@ -54,7 +54,6 @@ public class BladeCLI {
 	}
 
 	public static String execute(File workingDir, String... bladeArgs) throws Exception {
-
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
@@ -129,6 +128,35 @@ public class BladeCLI {
 		if (output.contains("Exception")) {
 			throw new Exception(output);
 		}
+
+		return output;
+	}
+
+	public static String startServerWindows(File workingDir, String... bladeArgs) throws Exception {
+		String bladeCLIJarPath = getLatestBladeCLIJar();
+
+		List<String> command = new ArrayList<>();
+		command.add("start");
+		command.add("/b");
+		command.add("java");
+		command.add("-jar");
+		command.add(bladeCLIJarPath);
+
+		for (String arg : bladeArgs) {
+			command.add(arg);
+		}
+
+		Process process = new ProcessBuilder(command.toArray(new String[0])).directory(workingDir).start();
+
+		process.waitFor();
+
+		InputStream stream = process.getInputStream();
+		String output = new String(IO.read(stream));
+
+		InputStream errorStream = process.getErrorStream();
+		String errors = new String(IO.read(errorStream));
+
+		assertTrue(errors, errors == null || errors.isEmpty());
 
 		return output;
 	}
