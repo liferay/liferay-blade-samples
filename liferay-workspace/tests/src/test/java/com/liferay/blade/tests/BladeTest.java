@@ -20,6 +20,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import aQute.bnd.osgi.Jar;
+
 import aQute.lib.io.IO;
 
 import java.io.BufferedReader;
@@ -27,13 +28,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Writer;
+
 import java.nio.file.Files;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.gradle.testkit.runner.BuildTask;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -50,7 +54,12 @@ import okhttp3.Request.Builder;
 public class BladeTest {
 	@BeforeClass
 	public static void startServer() throws Exception {
-		BladeCLI.execute(new File(".."), "server", "start", "-b");
+		if (isWindows()) {
+			BladeCLI.startServerWindows(new File(System.getProperty("user.dir")).getParentFile(), "server", "start", "-b");
+		}
+		else {
+			BladeCLI.execute(new File(System.getProperty("user.dir")).getParentFile(), "server", "start", "-b");
+		}
 
 		OkHttpClient client = new OkHttpClient();
 		Request request = new Builder().url("http://localhost:8080").build();
@@ -130,7 +139,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyControlMenuEntryGradleTemplates() throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "controlmenuentry", "helloworld");
+		File projectPath = BladeCLI.createProject(testDir, "control-menu-entry", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
@@ -149,7 +158,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyMVCPortletGradleTemplates () throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "mvcportlet", "helloworld");
+		File projectPath = BladeCLI.createProject(testDir, "mvc-portlet", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
@@ -168,7 +177,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyPanelAppGradleTemplates () throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "panelapp", "helloworld");
+		File projectPath = BladeCLI.createProject(testDir, "panel-app", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
@@ -206,7 +215,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyPortletProviderGradleTemplates () throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "portletprovider", "helloworld");
+		File projectPath = BladeCLI.createProject(testDir, "portlet-provider", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
 
@@ -280,7 +289,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyServiceBuilderGradleTemplate () throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "servicebuilder", "guestbook", "-p",
+		File projectPath = BladeCLI.createProject(testDir, "service-builder", "guestbook", "-p",
 				"com.liferay.docs.guestbook");
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(projectPath, "buildService");
@@ -289,8 +298,8 @@ public class BladeTest {
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
-		File buildApiOutput = new File(projectPath + "/guestbook-api/build/libs/guestbook-api-1.0.0.jar");
-		File buildServiceOutput = new File(projectPath + "/guestbook-service/build/libs/guestbook-service-1.0.0.jar");
+		File buildApiOutput = new File(projectPath + "/guestbook-api/build/libs/com.liferay.docs.guestbook.api-1.0.0.jar");
+		File buildServiceOutput = new File(projectPath + "/guestbook-service/build/libs/com.liferay.docs.guestbook.service-1.0.0.jar");
 
 		assertTrue(buildApiOutput.exists());
 		assertTrue(buildServiceOutput.exists());
@@ -349,7 +358,7 @@ public class BladeTest {
 
 	@Test
 	public void verifyServiceWrapperGradleTemplate () throws Exception {
-		File projectPath = BladeCLI.createProject(testDir, "servicewrapper", "serviceoverride", "-s",
+		File projectPath = BladeCLI.createProject(testDir, "service-wrapper", "serviceoverride", "-s",
 				"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(projectPath, "build");
@@ -365,6 +374,10 @@ public class BladeTest {
 		BladeCLI.startBundle(bundleID);
 
 		BladeCLI.uninstallBundle(bundleID);
+	}
+
+	private static boolean isWindows() {
+		return System.getProperty("os.name").toLowerCase().contains("windows");
 	}
 
 	private static final File _bundleDir = IO.getFile("../bundles");
