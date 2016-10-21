@@ -1,19 +1,19 @@
 buildscript {
 	repositories {
 		maven {
-			url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
 	}
-    dependencies {
+	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
-    }
+	}
 }
 
 subprojects {
 	buildscript {
 		repositories {
 			maven {
-				url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
+				url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 			}
 		}
 	}
@@ -23,11 +23,7 @@ subprojects {
 
 	repositories {
 		maven {
-			url "http://cdn.repository.liferay.com/nexus/content/groups/public/"
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
 	}
-}
-
-task wrapper(type:Wrapper){
-	gradleVersion = '2.9'
 }

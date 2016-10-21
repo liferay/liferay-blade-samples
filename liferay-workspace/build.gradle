@@ -1,0 +1,7 @@
+subprojects {
+	afterEvaluate { Project project ->
+		if (project.plugins.hasPlugin("java")) {
+			project.sourceCompatibility = 1.7
+		}
+	}
+}

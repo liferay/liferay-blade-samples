@@ -14,6 +14,9 @@ function buildAll() {
   cd maven
   mvn --fail-at-end clean package
   cd "$repoDir"
-  ./gradlew outputFilesTest
+  cd liferay-workspace
+  ./gradlew clean build -x :tests:test
+  cd "$repoDir"
+  ./gradlew outputFilesTest diff
 }
 buildAll

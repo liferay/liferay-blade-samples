@@ -12,13 +12,14 @@
 	<repositories>
 		<repository>
 			<id>liferay-public</id>
-			<url>http://cdn.repository.liferay.com/nexus/content/groups/public/</url>
+			<url>https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 
 	<modules>
 		<module>blade.authenticator.shiro</module>
 		<module>blade.authfailure</module>
+		<module>blade.autologin</module>
 		<module>blade.configurationaction</module>
 		<module>blade.controlmenuentry</module>
 		<module>blade.corejsphook</module>
@@ -32,11 +33,13 @@
 		<module>blade.pollprocessor</module>
 		<module>blade.portlet.actioncommand</module>
 		<module>blade.portlet.blueprint</module>
+		<module>blade.portlet.configuration.icon</module>
 		<module>blade.portlet.controlpanel</module>
 		<module>blade.portlet.ds</module>
 		<module>blade.portlet.filter</module>
 		<module>blade.portlet.jsp</module>
 		<module>blade.portlet.osgiapi</module>
+		<module>blade.portlet.toolbar.contributor</module>
 		<module>blade.resourcebundle</module>
 		<module>blade.rest</module>
 		<module>blade.schedulerentry</module>
@@ -45,7 +48,9 @@
 		<module>blade.servicebuilder.svc</module>
 		<module>blade.servicebuilder.test</module>
 		<module>blade.servicebuilder.web</module>
+		<module>blade.simulation.panel.app</module>
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
+		<module>blade.template.context.contributor</module>
 	</modules>
 </project>

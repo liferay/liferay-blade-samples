@@ -1,0 +1,8 @@
+dependencies {
+	compile  project(':modules:blade.servicebuilder.api')
+	compile 'org.osgi:osgi.cmpn:6.0.0'
+}
+
+bundle {
+	includeTransitiveDependencies = true
+}

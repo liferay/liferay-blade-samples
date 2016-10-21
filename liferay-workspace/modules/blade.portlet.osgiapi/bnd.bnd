@@ -1,0 +1,3 @@
+Bundle-Activator: com.liferay.blade.samples.portlet.osgiapi.Activator
+Bundle-Version: 1.0.0
+-sources: true
