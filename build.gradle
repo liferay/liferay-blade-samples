@@ -1,36 +1,53 @@
-FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
-FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
-FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
-FileTree liferayWorkspaceOutputFiles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
-FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
+FileTree bndtoolsBundleFiles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree gradleBundleFiles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
+FileTree liferayGradleBundleFiles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
+FileTree liferayWorkspaceBundleFiles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
+FileTree mavenBundleFiles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
-int canonicalSize = liferayGradleOutputFiles.size()
+int canonicalBundleFilesSize = liferayGradleBundleFiles.size()
 
-task outputFilesSizeTest << {
-	assert canonicalSize == bndtoolsOutputFiles.size()
-	assert canonicalSize == gradleOutputFiles.size()
-	assert canonicalSize == liferayWorkspaceOutputFiles.size()
-	assert canonicalSize == mavenOutputFiles.size()
+task bundleFilesSizeTest << {
+	assert canonicalBundleFilesSize == bndtoolsBundles.size()
+	assert canonicalBundleFilesSize == gradleBundles.size()
+	assert canonicalBundleFilesSize == liferayWorkspaceBundles.size()
+	assert canonicalBundleFilesSize == mavenBundles.size()
 }
 
-task outputFilesSortTest << {
-	def fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
+FileTree gradleWars = fileTree(dir: 'gradle', include: '**/libs/*.war')
+FileTree liferayWorkspaceWars = fileTree(dir: 'liferay-workspace/wars', include: '**/libs/*.war')
+FileTree liferayGradleWars = fileTree(dir: 'liferay-gradle', include: '**/libs/*.war')
+FileTree mavenWars = fileTree(dir: 'maven', include: '**/target/*.war')
+
+int canonicalWarsSize = liferayGradleWars.size()
+
+task warsSizeTest << {
+	assert canonicalWarsSize == gradleWars.size()
+	assert canonicalWarsSize == liferayGradleWars.size()
+	assert canonicalWarsSize == liferayWorkspaceWars.size()
+}
+
+task bundleFilesSortTest << {
+	def fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - gradleBundleFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - bndtoolsBundleFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - liferayWorkspaceOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - liferayWorkspaceBundleFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs liferay-workspace"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - mavenBundleFiles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
-task outputFilesTest << {}
+task bundleFilesTest << {}
 
-outputFilesTest.dependsOn outputFilesSizeTest
-outputFilesTest.dependsOn outputFilesSortTest
+bundleFilesTest.dependsOn bundleFilesSizeTest
+bundleFilesTest.dependsOn bundleFilesSortTest
+
+task warFilesTest << {}
+
+warFilesTest.dependsOn warsSizeTest
 
 task replicateSources << {
 	Closure projectFilter = {
@@ -100,10 +117,10 @@ repositories {
 task diff << {
 	def errorList = []
 
-	[bndtoolsOutputFiles, gradleOutputFiles, liferayWorkspaceOutputFiles, mavenOutputFiles].each { replicationFiles ->
+	[bndtoolsBundleFiles, gradleBundleFiles, liferayWorkspaceBundleFiles, mavenBundleFiles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
-			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
+			def liferayGradleOutputFile = liferayGradleBundleFiles.find {
 				it.name == replicationFile.name
 			}
 
