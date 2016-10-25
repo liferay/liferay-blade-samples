@@ -50,34 +50,36 @@ task replicateSources << {
 	def replicationParents = files(['bndtools', 'gradle', 'liferay-gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
 
 	canonicalProjects.each { canonicalProject ->
-		replicationParents.each { replicationParent ->
-			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
+		if ((new File(canonicalProject, "bnd.bnd").exists())) {
+			replicationParents.each { replicationParent ->
+				def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
 
-			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+				def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
 
-			if (replicationProject == null) {
-				replicationProject = new File(replicationParent, canonicalProject.name)
-				replicationProject.mkdirs()
+				if (replicationProject == null) {
+					replicationProject = new File(replicationParent, canonicalProject.name)
+					replicationProject.mkdirs()
 
-				def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+					def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+
+					ant.copy(todir: replicationProject) {
+						fileset(dir: buildFilesProject, includes: "*")
+					}
+				}
 
 				ant.copy(todir: replicationProject) {
-					fileset(dir: buildFilesProject, includes: "*")
+					fileset(dir: canonicalProject, includes: "*.markdown")
 				}
-			}
 
-			ant.copy(todir: replicationProject) {
-				fileset(dir: canonicalProject, includes: "*.markdown")
-			}
+				def replicationSrc = new File( replicationProject, 'src/' )
 
-			def replicationSrc = new File( replicationProject, 'src/' )
+				replicationSrc.deleteDir()
 
-			replicationSrc.deleteDir()
+				def canonicalSrc = new File( canonicalProject, 'src/' )
 
-			def canonicalSrc = new File( canonicalProject, 'src/' )
-
-			ant.copy(todir: replicationSrc) {
-				fileset(dir: canonicalSrc, includes: "**")
+				ant.copy(todir: replicationSrc) {
+					fileset(dir: canonicalSrc, includes: "**")
+				}
 			}
 		}
 	}
