@@ -39,12 +39,12 @@ public class ControlPanelDemo extends BasePanelApp {
 
 	@Override
 	public String getPortletId() {
-		return "blade_portlet_ControlPanelAppPortlet";
+		return "com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
 	}
 
 	@Override
 	@Reference(
-		target = "(javax.portlet.name=blade_portlet_ControlPanelAppPortlet)",
+		target = "(javax.portlet.name=com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet)",
 		unbind = "-"
 	)
 	public void setPortlet(Portlet portlet) {
