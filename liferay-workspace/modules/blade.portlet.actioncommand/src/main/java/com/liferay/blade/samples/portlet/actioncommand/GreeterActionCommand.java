@@ -35,7 +35,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.name=blade_portlet_GreeterPortlet",
+		"javax.portlet.name=com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet",
 		"mvc.command.name=greet"
 	},
 	service = MVCActionCommand.class
