@@ -1,16 +1,16 @@
-FileTree bndtoolsBundleFiles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
-FileTree gradleBundleFiles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
-FileTree liferayGradleBundleFiles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
-FileTree liferayWorkspaceBundleFiles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
-FileTree mavenBundleFiles = fileTree(dir: 'maven', include: '**/target/*.jar')
+FileTree bndtoolsBundles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
+FileTree liferayGradleBundles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
+FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
+FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
-int canonicalBundleFilesSize = liferayGradleBundleFiles.size()
+int canonicalBundlesSize = liferayGradleBundles.size()
 
-task bundleFilesSizeTest << {
-	assert canonicalBundleFilesSize == bndtoolsBundles.size()
-	assert canonicalBundleFilesSize == gradleBundles.size()
-	assert canonicalBundleFilesSize == liferayWorkspaceBundles.size()
-	assert canonicalBundleFilesSize == mavenBundles.size()
+task bundlesSizeTest << {
+	assert canonicalBundlesSize == bndtoolsBundles.size()
+	assert canonicalBundlesSize == gradleBundles.size()
+	assert canonicalBundlesSize == liferayWorkspaceBundles.size()
+	assert canonicalBundlesSize == mavenBundles.size()
 }
 
 FileTree gradleWars = fileTree(dir: 'gradle', include: '**/libs/*.war')
@@ -24,30 +24,31 @@ task warsSizeTest << {
 	assert canonicalWarsSize == gradleWars.size()
 	assert canonicalWarsSize == liferayGradleWars.size()
 	assert canonicalWarsSize == liferayWorkspaceWars.size()
+	assert canonicalWarsSize == mavenWars.size()
 }
 
-task bundleFilesSortTest << {
-	def fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - gradleBundleFiles.files.name.sort()
+task bundlesSortTest << {
+	def fileNamesDiff = liferayGradleBundles.files.name.sort() - gradleBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
 
-	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - bndtoolsBundleFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - bndtoolsBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
 
-	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - liferayWorkspaceBundleFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - liferayWorkspaceBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs liferay-workspace"
 
-	fileNamesDiff = liferayGradleBundleFiles.files.name.sort() - mavenBundleFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - mavenBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
-task bundleFilesTest << {}
+task bundlesTest << {}
 
-bundleFilesTest.dependsOn bundleFilesSizeTest
-bundleFilesTest.dependsOn bundleFilesSortTest
+bundlesTest.dependsOn bundlesSizeTest
+bundlesTest.dependsOn bundlesSortTest
 
-task warFilesTest << {}
+task warsTest << {}
 
-warFilesTest.dependsOn warsSizeTest
+warsTest.dependsOn warsSizeTest
 
 task replicateSources << {
 	Closure projectFilter = {
@@ -117,10 +118,10 @@ repositories {
 task diff << {
 	def errorList = []
 
-	[bndtoolsBundleFiles, gradleBundleFiles, liferayWorkspaceBundleFiles, mavenBundleFiles].each { replicationFiles ->
+	[bndtoolsBundles, gradleBundles, liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
-			def liferayGradleOutputFile = liferayGradleBundleFiles.find {
+			def liferayGradleOutputFile = liferayGradleBundles.find {
 				it.name == replicationFile.name
 			}
 

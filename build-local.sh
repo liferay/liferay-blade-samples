@@ -17,6 +17,6 @@ function buildAll() {
   cd liferay-workspace
   ./gradlew clean build -x :tests:test
   cd "$repoDir"
-  ./gradlew bundleFilesTest warFilesTest diff
+  ./gradlew bundlesTest warsTest diff
 }
 buildAll
