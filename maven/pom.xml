@@ -52,5 +52,6 @@
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 		<module>blade.template.context.contributor</module>
-	</modules>
+    <module>blade.theme</module>
+  </modules>
 </project>
