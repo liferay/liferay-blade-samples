@@ -34,11 +34,11 @@ import org.osgi.service.component.annotations.Reference;
 /**
  * @author Liferay
  */
+@ApplicationPath("/blade.users")
 @Component(
 	immediate = true, property = {"jaxrs.application=true"},
 	service = Application.class
 )
-@ApplicationPath("/blade.users")
 public class UsersRestService extends Application {
 
 	@Override
