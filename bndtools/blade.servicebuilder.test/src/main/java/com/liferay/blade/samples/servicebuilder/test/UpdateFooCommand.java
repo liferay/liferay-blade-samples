@@ -18,42 +18,39 @@ package com.liferay.blade.samples.servicebuilder.test;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
-import com.liferay.blade.samples.servicebuilder.service.FooServiceUtil;
 
 import java.util.List;
 
-import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Liferay
  */
-@Component(immediate = true)
-public class BladeServiceBuilderTest {
+@Component(
+	property = {"osgi.command.function=updatefoo", "osgi.command.scope=blade"},
+	service = Object.class
+)
+public class UpdateFooCommand {
 
-	@Activate
-	public void activate(ComponentContext context) throws Exception {
-		String localResult = _fooLocalService.fooLocal();
-
-		System.out.println("FooLocalService Test: " + localResult);
-
-		String remoteResult = FooServiceUtil.fooRemote();
-
-		System.out.println("FooRemoteService Test: " + remoteResult);
-
-		int count = _fooLocalService.getFoosCount();
-
-		List<Foo> fooList = FooLocalServiceUtil.getFoos(0, count);
-
-		for (Foo foo : fooList) {
-			System.out.println(foo.getFooId() + " " + foo.getField1());
+	
+	public int updatefoo() {
+		int retval = 0;
+		
+		List<Foo> foos = _fooLocalService.getFoos(-1, -1);
+		
+		if (foos != null && foos.size() > 0) {
+			Foo foo = foos.get(0);
+			
+			foo.setField1("UPDATED FIELD");
+			
+			_fooLocalService.updateFoo(foo);
 		}
+		
+		return retval;
 	}
 
 	@Reference
-	private FooLocalService _fooLocalService;
+	private  FooLocalService _fooLocalService;
 
 }

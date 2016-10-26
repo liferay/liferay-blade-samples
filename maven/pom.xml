@@ -16,6 +16,10 @@
 		</repository>
 	</repositories>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<modules>
 		<module>blade.authenticator.shiro</module>
 		<module>blade.authfailure</module>
@@ -52,6 +56,6 @@
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 		<module>blade.template.context.contributor</module>
-    <module>blade.theme</module>
-  </modules>
+		<module>blade.theme</module>
+	</modules>
 </project>

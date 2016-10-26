@@ -19,6 +19,8 @@ Private-Package:\
 	blade.servicebuilder.api;version=latest,\
 	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
 	com.liferay:com.liferay.portal.spring.extender;version='2.0.0',\
+	com.liferay:com.liferay.osgi.service.tracker.collections;version='2.0.0',\
+	com.liferay:com.liferay.osgi.util;version='3.0.0',\
 	com.liferay.portal:com.liferay.portal.kernel;version='2.6.0',\
 	com.liferay.portal:com.liferay.portal.test;version="1.0.0",\
 	com.liferay.portal:com.liferay.portal.test.integration;version="1.0.0",\
