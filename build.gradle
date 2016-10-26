@@ -1,3 +1,16 @@
+buildscript {
+	dependencies {
+		classpath group: "net.diibadaaba.zipdiff", name: "zipdiff", version: "1.0"
+	}
+	repositories {
+		mavenCentral()
+	}
+}
+
+import net.diibadaaba.zipdiff.DifferenceCalculator
+import net.diibadaaba.zipdiff.Differences
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+
 FileTree bndtoolsBundles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
 FileTree liferayGradleBundles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
@@ -141,6 +154,66 @@ task diff << {
 
 			if (errorOutput) {
 				errorList.add("${replicationFiles} - ${replicationFile.name} \n" + errorOutput)
+			}
+		}
+	}
+
+	[gradleWars, liferayWorkspaceWars, mavenWars].each { replicationWars ->
+		replicationWars.each { replicationWar ->
+
+			def liferayGradleWar = liferayGradleWars.find {
+				it.name == replicationWar.name.replaceAll("-1.0.0", "")
+			}
+
+			DifferenceCalculator differenceCalculator = new DifferenceCalculator(
+				replicationWar, liferayGradleWar)
+
+			differenceCalculator.setFilenameRegexToIgnore(
+				Collections.singleton(".*META-INF.*"))
+			differenceCalculator.setIgnoreTimestamps(true)
+
+			Differences differences = differenceCalculator.getDifferences()
+
+			if (differences.hasDifferences()) {
+				boolean realChange = false
+
+				def added = differences.getAdded()
+				def changed = differences.getChanged()
+				def removed = differences.getRemoved()
+
+				if (added.isEmpty() && !changed.isEmpty() && removed.isEmpty()) {
+					for (String change : changed.keySet()) {
+						ZipArchiveEntry[] zipArchiveEntries = changed.get(change);
+
+						ZipArchiveEntry zipArchiveEntry1 = zipArchiveEntries[0];
+						ZipArchiveEntry zipArchiveEntry2 = zipArchiveEntries[0];
+
+						if (zipArchiveEntry1.isDirectory() &&
+								zipArchiveEntry2.isDirectory() &&
+								(zipArchiveEntry1.getSize() ==
+									zipArchiveEntry2.getSize()) &&
+								(zipArchiveEntry1.getCompressedSize() <= 2) &&
+								(zipArchiveEntry2.getCompressedSize() <= 2)) {
+
+							// Skip zipdiff bug
+
+							continue;
+						}
+
+						realChange = true;
+
+						break;
+					}
+				}
+				else {
+						realChange = true;
+				}
+
+				if (realChange) {
+					throw new GradleException(
+						"WAR " + replicationWar + " and " + liferayGradleWar + " do not match:\n" +
+							differences)
+				}
 			}
 		}
 	}
