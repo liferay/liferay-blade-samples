@@ -1,36 +1,67 @@
-FileTree bndtoolsOutputFiles = fileTree(dir: 'bndtools/', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
-FileTree gradleOutputFiles = fileTree(dir: 'gradle/', include: '**/libs/*.jar')
-FileTree liferayGradleOutputFiles = fileTree(dir: 'liferay-gradle/', include: '**/libs/*.jar')
-FileTree liferayWorkspaceOutputFiles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
-FileTree mavenOutputFiles = fileTree(dir: 'maven/', include: '**/target/*.jar')
-
-int canonicalSize = liferayGradleOutputFiles.size()
-
-task outputFilesSizeTest << {
-	assert canonicalSize == bndtoolsOutputFiles.size()
-	assert canonicalSize == gradleOutputFiles.size()
-	assert canonicalSize == liferayWorkspaceOutputFiles.size()
-	assert canonicalSize == mavenOutputFiles.size()
+buildscript {
+	dependencies {
+		classpath group: "net.diibadaaba.zipdiff", name: "zipdiff", version: "1.0"
+	}
+	repositories {
+		mavenCentral()
+	}
 }
 
-task outputFilesSortTest << {
-	def fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - gradleOutputFiles.files.name.sort()
+import net.diibadaaba.zipdiff.DifferenceCalculator
+import net.diibadaaba.zipdiff.Differences
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+
+FileTree bndtoolsBundles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
+FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
+FileTree liferayGradleBundles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
+FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
+FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
+
+int canonicalBundlesSize = liferayGradleBundles.size()
+
+task bundlesSizeTest << {
+	assert canonicalBundlesSize == bndtoolsBundles.size()
+	assert canonicalBundlesSize == gradleBundles.size()
+	assert canonicalBundlesSize == liferayWorkspaceBundles.size()
+	assert canonicalBundlesSize == mavenBundles.size()
+}
+
+FileTree gradleWars = fileTree(dir: 'gradle', include: '**/libs/*.war')
+FileTree liferayWorkspaceWars = fileTree(dir: 'liferay-workspace/wars', include: '**/libs/*.war')
+FileTree liferayGradleWars = fileTree(dir: 'liferay-gradle', include: '**/libs/*.war')
+FileTree mavenWars = fileTree(dir: 'maven', include: '**/target/*.war')
+
+int canonicalWarsSize = liferayGradleWars.size()
+
+task warsSizeTest << {
+	assert canonicalWarsSize == gradleWars.size()
+	assert canonicalWarsSize == liferayGradleWars.size()
+	assert canonicalWarsSize == liferayWorkspaceWars.size()
+	assert canonicalWarsSize == mavenWars.size()
+}
+
+task bundlesSortTest << {
+	def fileNamesDiff = liferayGradleBundles.files.name.sort() - gradleBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - bndtoolsOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - bndtoolsBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - liferayWorkspaceOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - liferayWorkspaceBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs liferay-workspace"
 
-	fileNamesDiff = liferayGradleOutputFiles.files.name.sort() - mavenOutputFiles.files.name.sort()
+	fileNamesDiff = liferayGradleBundles.files.name.sort() - mavenBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs maven"
 }
 
-task outputFilesTest << {}
+task bundlesTest << {}
 
-outputFilesTest.dependsOn outputFilesSizeTest
-outputFilesTest.dependsOn outputFilesSortTest
+bundlesTest.dependsOn bundlesSizeTest
+bundlesTest.dependsOn bundlesSortTest
+
+task warsTest << {}
+
+warsTest.dependsOn warsSizeTest
 
 task replicateSources << {
 	Closure projectFilter = {
@@ -50,34 +81,36 @@ task replicateSources << {
 	def replicationParents = files(['bndtools', 'gradle', 'liferay-gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
 
 	canonicalProjects.each { canonicalProject ->
-		replicationParents.each { replicationParent ->
-			def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
+		if ((new File(canonicalProject, "bnd.bnd").exists())) {
+			replicationParents.each { replicationParent ->
+				def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
 
-			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+				def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
 
-			if (replicationProject == null) {
-				replicationProject = new File(replicationParent, canonicalProject.name)
-				replicationProject.mkdirs()
+				if (replicationProject == null) {
+					replicationProject = new File(replicationParent, canonicalProject.name)
+					replicationProject.mkdirs()
 
-				def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+					def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+
+					ant.copy(todir: replicationProject) {
+						fileset(dir: buildFilesProject, includes: "*")
+					}
+				}
 
 				ant.copy(todir: replicationProject) {
-					fileset(dir: buildFilesProject, includes: "*")
+					fileset(dir: canonicalProject, includes: "*.markdown")
 				}
-			}
 
-			ant.copy(todir: replicationProject) {
-				fileset(dir: canonicalProject, includes: "*.markdown")
-			}
+				def replicationSrc = new File( replicationProject, 'src/' )
 
-			def replicationSrc = new File( replicationProject, 'src/' )
+				replicationSrc.deleteDir()
 
-			replicationSrc.deleteDir()
+				def canonicalSrc = new File( canonicalProject, 'src/' )
 
-			def canonicalSrc = new File( canonicalProject, 'src/' )
-
-			ant.copy(todir: replicationSrc) {
-				fileset(dir: canonicalSrc, includes: "**")
+				ant.copy(todir: replicationSrc) {
+					fileset(dir: canonicalSrc, includes: "**")
+				}
 			}
 		}
 	}
@@ -98,10 +131,10 @@ repositories {
 task diff << {
 	def errorList = []
 
-	[bndtoolsOutputFiles, gradleOutputFiles, liferayWorkspaceOutputFiles, mavenOutputFiles].each { replicationFiles ->
+	[bndtoolsBundles, gradleBundles, liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
-			def liferayGradleOutputFile = liferayGradleOutputFiles.find {
+			def liferayGradleOutputFile = liferayGradleBundles.find {
 				it.name == replicationFile.name
 			}
 
@@ -121,6 +154,66 @@ task diff << {
 
 			if (errorOutput) {
 				errorList.add("${replicationFiles} - ${replicationFile.name} \n" + errorOutput)
+			}
+		}
+	}
+
+	[gradleWars, liferayWorkspaceWars, mavenWars].each { replicationWars ->
+		replicationWars.each { replicationWar ->
+
+			def liferayGradleWar = liferayGradleWars.find {
+				it.name == replicationWar.name.replaceAll("-1.0.0", "")
+			}
+
+			DifferenceCalculator differenceCalculator = new DifferenceCalculator(
+				replicationWar, liferayGradleWar)
+
+			differenceCalculator.setFilenameRegexToIgnore(
+				Collections.singleton(".*META-INF.*"))
+			differenceCalculator.setIgnoreTimestamps(true)
+
+			Differences differences = differenceCalculator.getDifferences()
+
+			if (differences.hasDifferences()) {
+				boolean realChange = false
+
+				def added = differences.getAdded()
+				def changed = differences.getChanged()
+				def removed = differences.getRemoved()
+
+				if (added.isEmpty() && !changed.isEmpty() && removed.isEmpty()) {
+					for (String change : changed.keySet()) {
+						ZipArchiveEntry[] zipArchiveEntries = changed.get(change);
+
+						ZipArchiveEntry zipArchiveEntry1 = zipArchiveEntries[0];
+						ZipArchiveEntry zipArchiveEntry2 = zipArchiveEntries[0];
+
+						if (zipArchiveEntry1.isDirectory() &&
+								zipArchiveEntry2.isDirectory() &&
+								(zipArchiveEntry1.getSize() ==
+									zipArchiveEntry2.getSize()) &&
+								(zipArchiveEntry1.getCompressedSize() <= 2) &&
+								(zipArchiveEntry2.getCompressedSize() <= 2)) {
+
+							// Skip zipdiff bug
+
+							continue;
+						}
+
+						realChange = true;
+
+						break;
+					}
+				}
+				else {
+						realChange = true;
+				}
+
+				if (realChange) {
+					throw new GradleException(
+						"WAR " + replicationWar + " and " + liferayGradleWar + " do not match:\n" +
+							differences)
+				}
 			}
 		}
 	}

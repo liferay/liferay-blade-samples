@@ -1,0 +1,14 @@
+buildscript {
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.theme.builder", version: "2.0.0"
+	}
+}
+
+apply plugin: "com.liferay.portal.tools.theme.builder"
+
+dependencies {
+	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.styled", version: "2.0.13"
+	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.unstyled", version: "2.0.13"
+
+	themeBuilder group: "com.liferay", name: "com.liferay.portal.tools.theme.builder", version: "1.0.0"
+}
