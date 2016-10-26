@@ -1,6 +1,7 @@
 com.liferay:com.liferay.application.list.api:1.0.0
 com.liferay:com.liferay.application.list.api:2.0.0
 com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5
+com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0
 com.liferay:com.liferay.osgi.util:3.0.0
 com.liferay:com.liferay.portal.configuration.metatype:2.0.0
 com.liferay:com.liferay.portal.spring.extender:2.0.0
