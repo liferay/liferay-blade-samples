@@ -340,19 +340,38 @@ public class BladeTest {
 		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.svc:build");
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
 
+		cleanTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.test:clean");
+		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
+
+		BuildTask buildTestTask = GradleRunnerUtil.executeGradleRunner(projectPath, ":modules:blade.servicebuilder.test:build");
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildTestTask);
+
 		File buildApiOutput = new File(projectPath + "/modules/blade.servicebuilder.api/build/libs/blade.servicebuilder.api-1.0.0.jar");
 		File buildServiceOutput = new File(projectPath + "/modules/blade.servicebuilder.svc/build/libs/blade.servicebuilder.svc-1.0.0.jar");
+		File buildTestOutput = new File(projectPath + "/modules/blade.servicebuilder.test/build/libs/blade.servicebuilder.test-1.0.0.jar");
 
 		assertTrue(buildApiOutput.exists());
 		assertTrue(buildServiceOutput.exists());
+		assertTrue(buildTestOutput.exists());
 
 		String bundleIDApi = BladeCLI.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLI.installBundle(buildServiceOutput);
+		String bundleIDTest = BladeCLI.installBundle(buildTestOutput);
 
 		BladeCLI.startBundle(bundleIDApi);
 		BladeCLI.startBundle(bundleIDService);
+		BladeCLI.startBundle(bundleIDTest);
 
-		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService);
+		BladeCLI.execute("sh", "addfoo");
+		assertTrue("Unable to add", BladeCLI.execute("sh", "listfoo").contains("field1=field1"));
+
+		BladeCLI.execute("sh", "updatefoo");
+		assertTrue("Unable to update", BladeCLI.execute("sh", "listfoo").toLowerCase().contains("updated field"));
+
+		BladeCLI.execute("sh", "deletefoo");
+		assertTrue("Unable to delete", BladeCLI.execute("sh", "listfoo").equals("listfoo"));
+
+		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService, bundleIDTest);
 
 	}
 
