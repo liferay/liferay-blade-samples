@@ -97,7 +97,7 @@ public class BladeCLI {
 			repo.setProperties(repoMap);
 			repo.setReporter(new Processor());
 
-			File[] files = repo.get( "com.liferay.blade.cli", "[1,2)" );
+			File[] files = repo.get( "com.liferay.blade.cli", "[2,3)" );
 			File cliJar = files[0];
 
 			File newCliJar = new File(repoPath + "/" + cliJar.getName());
@@ -105,6 +105,12 @@ public class BladeCLI {
 			IO.copy(cliJar, newCliJar);
 
 			bladeJar = newCliJar;
+
+			String bladeJarName = bladeJar.getName();
+
+			if (!bladeJarName.contains("_2.0.0")) {
+				throw new Exception("Expecting blade jar with version 2.0.0, found version: " + bladeJarName);
+			}
 		}
 
 		return bladeJar.getCanonicalPath();
