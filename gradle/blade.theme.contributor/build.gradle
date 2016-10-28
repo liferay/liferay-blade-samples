@@ -1,0 +1,9 @@
+buildscript {
+    dependencies {
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "latest.release"
+    }
+}
+
+apply plugin: "com.liferay.css.builder"
+
+version = '1.0.0'
