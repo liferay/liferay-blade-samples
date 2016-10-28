@@ -33,6 +33,7 @@
 	blade.simulation.panel.app,\
 	blade.strutsaction,\
 	blade.strutsportletaction,\
-	blade.template.context.contributor
+	blade.template.context.contributor,\
+	blade.theme.contributor
 
 -nobundles = true

@@ -34,5 +34,6 @@ include(
 	'blade.strutsaction',
 	'blade.strutsportletaction',
 	'blade.template.context.contributor',
-	'blade.theme'
+	'blade.theme',\
+	'blade.theme.contributor'
 )
