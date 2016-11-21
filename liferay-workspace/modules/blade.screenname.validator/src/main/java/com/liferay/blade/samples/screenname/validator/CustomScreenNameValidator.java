@@ -2,12 +2,19 @@ package com.liferay.blade.samples.screenname.validator;
 
 import com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration;
 import com.liferay.blade.samples.screenname.constants.CustomScreenName;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.module.configuration.ConfigurationException;
 import com.liferay.portal.kernel.module.configuration.ConfigurationProvider;
 import com.liferay.portal.kernel.security.auth.ScreenNameValidator;
+import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.settings.CompanyServiceSettingsLocator;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.PropsKeys;
+import com.liferay.portal.kernel.util.PropsUtil;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -32,7 +39,32 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 
     @Override
     public String getAUIValidatorJS() {
-        return "function(val) {return !(val.indexOf(\"admin\") !==-1)}";
+		StringBuilder javascript = new StringBuilder();
+
+    		try {
+				Company company = _companyLocalService.getCompanyByWebId(PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
+				
+				long companyId = company.getCompanyId();
+				
+				String[] reservedWords = getReservedWords(companyId);
+				
+				
+				javascript.append("function(val) { return !(");
+				
+				for (int i = 0; i < reservedWords.length; i++) {
+					javascript.append("val.indexOf(\"" + reservedWords[i] + "\") !== -1");
+					
+					if (reservedWords.length > 1 && i < reservedWords.length - 1) {
+						javascript.append(" || ");
+					}
+				}
+				
+				javascript.append(")}");
+				
+			} catch (PortalException e) {
+			}
+    	
+        return javascript.toString();
     }
 
     @Override
@@ -86,6 +118,9 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
         _configurationProvider = configurationProvider;
     }
     private ConfigurationProvider _configurationProvider;
+    
+    @Reference
+    private CompanyLocalService _companyLocalService;
 
 
 }
