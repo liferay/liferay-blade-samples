@@ -90,7 +90,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
     private String[] getReservedWords(long companyId){
         CustomScreenNameConfiguration configuration = getConfiguration(companyId);
         if(configuration!=null){
-            String reservedWord = configuration.reservedWord();
+            String reservedWord = configuration.reservedWords();
             if(reservedWord!=null && !("").equals(reservedWord))
             return reservedWord.split(SEPARATOR);
         }
@@ -111,16 +111,11 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
         return null;
     }
 
-    @Reference(unbind = "-")
-    protected void setConfigurationProvider(
-            ConfigurationProvider configurationProvider) {
-
-        _configurationProvider = configurationProvider;
-    }
-    private ConfigurationProvider _configurationProvider;
+    @Reference
+    private volatile ConfigurationProvider _configurationProvider;
     
     @Reference
-    private CompanyLocalService _companyLocalService;
+    private volatile CompanyLocalService _companyLocalService;
 
 
 }

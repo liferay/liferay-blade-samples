@@ -19,7 +19,7 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 public interface CustomScreenNameConfiguration {
 
         @Meta.AD(deflt = "admin,user", description = "custom.screen.name.reserved.words", required = true)
-        String reservedWord();
+        String reservedWords();
 
 
 }
