@@ -5,5 +5,6 @@ package com.liferay.blade.samples.screenname.validator;
  */
 public interface CustomScreenName {
 
-    String SETTINGS_ID = "CustomScreenNameConfiguration";
+	public String SETTINGS_ID = "CustomScreenNameConfiguration";
+
 }

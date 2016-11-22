@@ -13,102 +13,107 @@ import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.settings.CompanyServiceSettingsLocator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
+import com.liferay.portal.kernel.util.StringUtil;
+
+import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
-import java.util.Locale;
 
 /**
  * @author Romeo Sheshi
  */
 @Component(
-        immediate = true,
-        property = {"service.ranking:Integer=100"},
-        configurationPid = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
-        service = ScreenNameValidator.class
+	configurationPid = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
+	immediate = true, property = {"service.ranking:Integer=100"},
+	service = ScreenNameValidator.class
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {
 
-    private static Log _log = LogFactoryUtil.getLog(CustomScreenNameValidator.class);
-
-    @Override
-    public String getAUIValidatorJS() {
+	@Override
+	public String getAUIValidatorJS() {
 		StringBuilder javascript = new StringBuilder();
 
-    		try {
-				Company company = _companyLocalService.getCompanyByWebId(PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
-				
-				long companyId = company.getCompanyId();
-				
-				String[] reservedWords = getReservedWords(companyId);
-				
-				
-				javascript.append("function(val) { return !(");
-				
-				for (int i = 0; i < reservedWords.length; i++) {
-					javascript.append("val.indexOf(\"" + reservedWords[i] + "\") !== -1");
-					
-					if (reservedWords.length > 1 && i < reservedWords.length - 1) {
-						javascript.append(" || ");
-					}
+		try {
+			Company company = _companyLocalService.getCompanyByWebId(
+				PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
+
+			long companyId = company.getCompanyId();
+
+			String[] reservedWords = _getReservedWords(companyId);
+
+			javascript.append("function(val) { return !(");
+
+			for (int i = 0; i < reservedWords.length; i++) {
+				javascript.append(
+					"val.indexOf(\"" + reservedWords[i] + "\") !== -1");
+
+				if ((reservedWords.length > 1) &&
+					(i < (reservedWords.length - 1))) {
+
+					javascript.append(" || ");
 				}
-				
-				javascript.append(")}");
-				
-			} catch (PortalException e) {
 			}
-    	
-        return javascript.toString();
-    }
 
-    @Override
-    public String getDescription(Locale locale) {
-        return "The screen name contains reserved words";
-    }
+			javascript.append(")}");
+		}
+		catch (PortalException pe) {
+		}
 
-    @Override
-    public boolean validate(long companyId, String screenName) {
-        String[] reservedWords = getReservedWords(companyId);
+		return javascript.toString();
+	}
 
-        for(String word :reservedWords) {
-            if(screenName.toLowerCase().contains(word.toLowerCase())){
-                return false;
-            }
-        }
+	@Override
+	public String getDescription(Locale locale) {
+		return "The screen name contains reserved words";
+	}
 
+	@Override
+	public boolean validate(long companyId, String screenName) {
+		String safeScreenName = StringUtil.toLowerCase(screenName);
+		String[] reservedWords = _getReservedWords(companyId);
 
-        return true;
-    }
+		for (String word : reservedWords) {
+			if (safeScreenName.contains(StringUtil.toLowerCase(word))) {
+				return false;
+			}
+		}
 
+		return true;
+	}
 
-    private String[] getReservedWords(long companyId){
-        CustomScreenNameConfiguration configuration = getConfiguration(companyId);
-        if(configuration!=null){
-        		return configuration.reservedWords();
-        }
-        return new String[]{};
-    }
-    private CustomScreenNameConfiguration getConfiguration(long companyId){
-        try {
-            return _configurationProvider.getConfiguration(
-                    CustomScreenNameConfiguration.class,
-                    new CompanyServiceSettingsLocator(
-                            companyId, CustomScreenName.SETTINGS_ID));
-        } catch (ConfigurationException e) {
-            _log.error("Error to inizialize the configuration, the plugin will not be active" );
-            if(_log.isDebugEnabled()) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
+	private CustomScreenNameConfiguration _getConfiguration(long companyId) {
+		try {
+			return _configurationProvider.getConfiguration(
+				CustomScreenNameConfiguration.class,
+				new CompanyServiceSettingsLocator(
+					companyId, CustomScreenName.SETTINGS_ID));
+		}
+		catch (ConfigurationException ce) {
+			_log.error("Error initializing the configuration.");
+		}
 
-    @Reference
-    private volatile ConfigurationProvider _configurationProvider;
-    
-    @Reference
-    private volatile CompanyLocalService _companyLocalService;
+		return null;
+	}
 
+	private String[] _getReservedWords(long companyId) {
+		CustomScreenNameConfiguration configuration = _getConfiguration(
+			companyId);
+
+		if (configuration != null) {
+			return configuration.reservedWords();
+		}
+
+		return new String[0];
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(
+		CustomScreenNameValidator.class);
+
+	@Reference
+	private volatile CompanyLocalService _companyLocalService;
+
+	@Reference
+	private volatile ConfigurationProvider _configurationProvider;
 
 }

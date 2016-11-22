@@ -3,8 +3,8 @@ package com.liferay.blade.samples.screenname.validator.internal;
 import com.liferay.blade.samples.screenname.validator.CustomScreenName;
 import com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration;
 import com.liferay.portal.kernel.settings.definition.ConfigurationPidMapping;
-import org.osgi.service.component.annotations.Component;
 
+import org.osgi.service.component.annotations.Component;
 
 /**
  * @author Romeo Sheshi
