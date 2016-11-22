@@ -20,9 +20,7 @@ import org.osgi.service.component.annotations.Reference;
 import java.util.Locale;
 
 /**
- * User: Romeo Sheshi <a href="mailto:rsheshi@gmail.com">Romeo Sheshi</a>
- * Date: 14/11/2016
- * Time: 10:32
+ * @author Romeo Sheshi
  */
 @Component(
         immediate = true,

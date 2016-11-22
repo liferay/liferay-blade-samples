@@ -7,9 +7,7 @@ import org.osgi.service.component.annotations.Component;
 
 
 /**
- * User: Romeo Sheshi <a href="rsheshi@gmail.com">Romeo Sheshi</a>
- * Date: 26/10/2016
- * Time: 15:21
+ * @author Romeo Sheshi
  */
 @Component
 public class CustomScreenNameCompanyServiceConfigurationPidMapping
