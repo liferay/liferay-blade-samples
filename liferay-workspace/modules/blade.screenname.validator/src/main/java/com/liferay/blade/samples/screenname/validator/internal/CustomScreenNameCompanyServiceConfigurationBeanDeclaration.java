@@ -1,6 +1,6 @@
-package com.liferay.blade.samples.screenname.internal.configuration;
+package com.liferay.blade.samples.screenname.validator.internal;
 
-import com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration;
+import com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration;
 import com.liferay.portal.kernel.settings.definition.ConfigurationBeanDeclaration;
 import org.osgi.service.component.annotations.Component;
 

@@ -1,7 +1,7 @@
-package com.liferay.blade.samples.screenname.validator;
+package com.liferay.blade.samples.screenname.validator.internal;
 
-import com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration;
-import com.liferay.blade.samples.screenname.constants.CustomScreenName;
+import com.liferay.blade.samples.screenname.validator.CustomScreenName;
+import com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -11,7 +11,6 @@ import com.liferay.portal.kernel.module.configuration.ConfigurationProvider;
 import com.liferay.portal.kernel.security.auth.ScreenNameValidator;
 import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.settings.CompanyServiceSettingsLocator;
-import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 
@@ -28,14 +27,12 @@ import java.util.Locale;
 @Component(
         immediate = true,
         property = {"service.ranking:Integer=100"},
-        configurationPid = "com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration",
+        configurationPid = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
         service = ScreenNameValidator.class
-
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {
 
     private static Log _log = LogFactoryUtil.getLog(CustomScreenNameValidator.class);
-    private static final String SEPARATOR =",";
 
     @Override
     public String getAUIValidatorJS() {
@@ -90,9 +87,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
     private String[] getReservedWords(long companyId){
         CustomScreenNameConfiguration configuration = getConfiguration(companyId);
         if(configuration!=null){
-            String reservedWord = configuration.reservedWords();
-            if(reservedWord!=null && !("").equals(reservedWord))
-            return reservedWord.split(SEPARATOR);
+        		return configuration.reservedWords();
         }
         return new String[]{};
     }
@@ -101,7 +96,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
             return _configurationProvider.getConfiguration(
                     CustomScreenNameConfiguration.class,
                     new CompanyServiceSettingsLocator(
-                            companyId, CustomScreenName.SERVICE_NAME));
+                            companyId, CustomScreenName.SETTINGS_ID));
         } catch (ConfigurationException e) {
             _log.error("Error to inizialize the configuration, the plugin will not be active" );
             if(_log.isDebugEnabled()) {

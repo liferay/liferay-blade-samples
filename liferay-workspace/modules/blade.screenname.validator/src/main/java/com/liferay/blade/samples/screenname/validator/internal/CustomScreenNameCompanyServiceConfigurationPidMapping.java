@@ -1,7 +1,7 @@
-package com.liferay.blade.samples.screenname.internal.configuration;
+package com.liferay.blade.samples.screenname.validator.internal;
 
-import com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration;
-import com.liferay.blade.samples.screenname.constants.CustomScreenName;
+import com.liferay.blade.samples.screenname.validator.CustomScreenName;
+import com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration;
 import com.liferay.portal.kernel.settings.definition.ConfigurationPidMapping;
 import org.osgi.service.component.annotations.Component;
 
@@ -22,7 +22,7 @@ public class CustomScreenNameCompanyServiceConfigurationPidMapping
 
 	@Override
 	public String getConfigurationPid() {
-		return CustomScreenName.SERVICE_NAME;
+		return CustomScreenName.SETTINGS_ID;
 	}
 
 }

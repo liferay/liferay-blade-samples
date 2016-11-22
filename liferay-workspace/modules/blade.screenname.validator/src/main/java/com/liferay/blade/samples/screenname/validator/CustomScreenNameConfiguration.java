@@ -1,6 +1,9 @@
-package com.liferay.blade.samples.screenname.configuration;
+package com.liferay.blade.samples.screenname.validator;
 
 import aQute.bnd.annotation.metatype.Meta;
+
+import java.util.List;
+
 import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClassDefinition;
 
 /**
@@ -13,13 +16,14 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
         category = "foundation", scope = ExtendedObjectClassDefinition.Scope.COMPANY
 )
 @Meta.OCD(
-        id = "com.liferay.blade.samples.screenname.configuration.CustomScreenNameConfiguration",
+        id = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
         localization = "content/Language", name = "custom.screen.name"
+
 )
 public interface CustomScreenNameConfiguration {
 
-        @Meta.AD(deflt = "admin,user", description = "custom.screen.name.reserved.words", required = true)
-        String reservedWords();
+        @Meta.AD(deflt = "admin|user", required = false )
+        public String[] reservedWords();
 
 
 }

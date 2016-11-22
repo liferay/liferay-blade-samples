@@ -1,4 +1,4 @@
-package com.liferay.blade.samples.screenname.constants;
+package com.liferay.blade.samples.screenname.validator;
 
 /**
  * User: Romeo Sheshi <a href="mailto:romeo.sheshi@sourcesence.com">Romeo Sheshi</a>
@@ -7,5 +7,5 @@ package com.liferay.blade.samples.screenname.constants;
  */
 public interface CustomScreenName {
 
-    String SERVICE_NAME = "CustomScreenNameConfiguration";
+    String SETTINGS_ID = "CustomScreenNameConfiguration";
 }
