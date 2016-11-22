@@ -88,12 +88,13 @@
 					<docrootDirName>${com.liferay.portal.tools.theme.builder.outputDir}</docrootDirName>
 					<outputDirName>/</outputDirName>
 					<portalCommonPath>target/deps/com.liferay.frontend.css.common.jar</portalCommonPath>
+					<precision>9</precision>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.theme.builder</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>
