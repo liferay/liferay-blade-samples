@@ -1,4 +1,4 @@
-package com.liferay.blade.samples.screenname.validator.internal;
+package com.liferay.blade.samples.screenname.validator.definition;
 
 import com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration;
 import com.liferay.portal.kernel.settings.definition.ConfigurationBeanDeclaration;
