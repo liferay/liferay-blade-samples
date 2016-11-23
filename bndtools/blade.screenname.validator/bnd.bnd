@@ -3,7 +3,11 @@ Bundle-Version: 1.0.0
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -metatype: *
 
-Private-Package: com.liferay.blade.samples.screenname.validator.*
+Private-Package: \
+	com.liferay.blade.samples.screenname.validator,\
+	com.liferay.blade.samples.screenname.validator.definition,\
+	com.liferay.blade.samples.screenname.validator.internal
+
 -buildpath: \
 	biz.aQute.bnd:biz.aQute.bnd.annotation;version=3.3.0,\
 	com.liferay:com.liferay.portal.configuration.metatype;version=2.0.0,\
