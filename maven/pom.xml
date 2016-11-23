@@ -46,6 +46,7 @@
 		<module>blade.resourcebundle</module>
 		<module>blade.rest</module>
 		<module>blade.schedulerentry</module>
+		<module>blade.screenname.validator</module>
 		<module>blade.service.hook.user</module>
 		<module>blade.servicebuilder.api</module>
 		<module>blade.servicebuilder.svc</module>

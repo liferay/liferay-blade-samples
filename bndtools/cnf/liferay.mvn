@@ -1,3 +1,4 @@
+biz.aQute.bnd:biz.aQute.bnd.annotation:3.3.0
 com.liferay:com.liferay.application.list.api:1.0.0
 com.liferay:com.liferay.application.list.api:2.0.0
 com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5
