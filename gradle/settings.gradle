@@ -21,6 +21,7 @@ include(
 	'blade.portlet.filter',
 	'blade.portlet.jsp',
 	'blade.portlet.osgiapi',
+	'blade.portlet.resourcecommand',
 	'blade.portlet.toolbar.contributor',
 	'blade.resourcebundle',
 	'blade.rest',
