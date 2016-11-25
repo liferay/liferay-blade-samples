@@ -42,6 +42,7 @@
 		<module>blade.portlet.filter</module>
 		<module>blade.portlet.jsp</module>
 		<module>blade.portlet.osgiapi</module>
+		<module>blade.portlet.rendercommand</module>
 		<module>blade.portlet.resourcecommand</module>
 		<module>blade.portlet.toolbar.contributor</module>
 		<module>blade.resourcebundle</module>
