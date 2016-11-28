@@ -38,9 +38,11 @@ import org.osgi.service.component.annotations.Component;
 public class BladeMVCRenderCommand implements MVCRenderCommand {
 
 	@Override
-	public String render(RenderRequest renderRequest, RenderResponse renderResponse)
-			throws PortletException {
+	public String render(
+			RenderRequest renderRequest, RenderResponse renderResponse)
+		throws PortletException {
 
 		return "/render.jsp";
 	}
+
 }
