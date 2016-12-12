@@ -14,5 +14,5 @@ buildService {
 	apiDir = "../blade.servicebuilder.api/src/main/java"
 	osgiModule = true
 	propsUtil = "com.liferay.blade.samples.servicebuilder.service.util.PropsUtil"
-	testDir = "src/main/test"
+	testDir = "src/java/test"
 }

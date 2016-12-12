@@ -31,5 +31,5 @@ buildService {
 	springFile = "src/main/resources/META-INF/spring/module-spring.xml"
 	springNamespaces = ["beans","osgi"]
 	sqlDir = "src/main/resources/META-INF/sql"
-	testDir = "src/main/test"
+	testDir = "src/java/test"
 }
