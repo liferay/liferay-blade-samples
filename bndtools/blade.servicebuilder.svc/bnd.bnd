@@ -17,7 +17,7 @@ Private-Package:\
 	biz.aQute.bndlib;version='3.1.0',\
 	biz.aQute.junit;version='3.1.0',\
 	blade.servicebuilder.api;version=latest,\
-	com.liferay:com.liferay.arquillian.extension.junit.bridge;version=latest,\
+	com.liferay:com.liferay.arquillian.extension.junit.bridge;version='1.0.5',\
 	com.liferay:com.liferay.portal.spring.extender;version='2.0.0',\
 	com.liferay:com.liferay.osgi.service.tracker.collections;version='2.0.0',\
 	com.liferay:com.liferay.osgi.util;version='3.0.0',\

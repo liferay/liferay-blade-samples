@@ -6,7 +6,7 @@ dependencies {
 	compile 'com.liferay:com.liferay.portal.spring.extender:2.0.0'
 	compile project(':modules:blade.servicebuilder.api')
 
-	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.0-SNAPSHOT'
+	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5'
 	testCompile 'junit:junit:4.+'
 }
 
