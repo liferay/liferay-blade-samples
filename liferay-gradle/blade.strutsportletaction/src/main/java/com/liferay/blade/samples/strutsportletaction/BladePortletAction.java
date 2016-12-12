@@ -121,13 +121,9 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 	}
 
 	@Reference(unbind = "-")
-	public void setUserService(UserLocalService userService) {
-		_userLocalService = userService;
-	}
+	private volatile UserLocalService _userLocalService;
+
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		BladePortletAction.class);
-
-	private UserLocalService _userLocalService;
-
 }

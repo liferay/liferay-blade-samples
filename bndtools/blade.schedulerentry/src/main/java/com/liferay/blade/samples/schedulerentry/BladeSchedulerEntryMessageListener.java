@@ -65,23 +65,17 @@ public class BladeSchedulerEntryMessageListener
 	}
 
 	@Reference(target = ModuleServiceLifecycle.PORTAL_INITIALIZED, unbind = "-")
-	protected void setModuleServiceLifecycle(
-		ModuleServiceLifecycle moduleServiceLifecycle) {
-	}
+	private volatile ModuleServiceLifecycle _moduleServiceLifecycle;
+
 
 	@Reference(unbind = "-")
-	protected void setSchedulerEngineHelper(
-		SchedulerEngineHelper schedulerEngineHelper) {
+	private volatile SchedulerEngineHelper _schedulerEngineHelper;
 
-		_schedulerEngineHelper = schedulerEngineHelper;
-	}
 
 	@Reference(unbind = "-")
-	protected void setTriggerFactory(TriggerFactory triggerFactory) {
-	}
+	private volatile TriggerFactory _triggerFactory;
+
 
 	private final Log _log = LogFactoryUtil.getLog(
 		BladeSchedulerEntryMessageListener.class);
-	private SchedulerEngineHelper _schedulerEngineHelper;
-
 }

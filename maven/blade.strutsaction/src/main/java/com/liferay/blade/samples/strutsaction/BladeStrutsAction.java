@@ -53,13 +53,8 @@ public class BladeStrutsAction extends BaseStrutsAction {
 	}
 
 	@Reference(target = "(osgi.web.symbolicname=blade.strutsaction)")
-	protected void setServletContext(ServletContext servletContext) {
-		_servletContext = servletContext;
-	}
+	private volatile ServletContext _servletContext;
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		BladeStrutsAction.class);
-
-	private ServletContext _servletContext;
-
 }
