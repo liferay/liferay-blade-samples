@@ -89,7 +89,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>1.0.20</version>
+				<version>1.0.21</version>
 				<executions>
 					<execution>
 						<id>default-build-css</id>
@@ -100,7 +100,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>src/main/resources</docrootDirName>
+					<docrootDirName>${project.build.directory}</docrootDirName>
 					<outputDirName>/</outputDirName>
 					<portalCommonPath>target/deps/com.liferay.frontend.css.common.jar</portalCommonPath>
 				</configuration>
