@@ -93,14 +93,14 @@
 				<executions>
 					<execution>
 						<id>default-build-css</id>
-						<phase>generate-sources</phase>
+						<phase>process-classes</phase>
 						<goals>
 							<goal>build-css</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>${project.build.directory}</docrootDirName>
+					<docrootDirName>${project.build.outputDirectory}</docrootDirName>
 					<outputDirName>/</outputDirName>
 					<portalCommonPath>target/deps/com.liferay.frontend.css.common.jar</portalCommonPath>
 				</configuration>
