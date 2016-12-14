@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0
 -sass: *
 -sources: true
 
-Private-Package: com.liferay.blade.samples.portlet.resourcecommand
+Private-Package: com.liferay.blade.samples.doclib.resourcecommand.override
 -buildpath: \
 	com.liferay:com.liferay.document.library.web;version=1.0.0,\
 	com.liferay.portal:com.liferay.portal.kernel;version=2.0.0,\
