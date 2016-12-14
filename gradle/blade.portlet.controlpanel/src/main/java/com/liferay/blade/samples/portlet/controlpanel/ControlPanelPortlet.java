@@ -39,6 +39,7 @@ import org.osgi.service.component.annotations.Component;
 		"com.liferay.portlet.display-category=category.hidden",
 		"com.liferay.portlet.preferences-owned-by-group=true",
 		"com.liferay.portlet.render-weight=100",
+		"javax.portlet.name=blade_portlet_ControlPanelAppPortlet",
 		"javax.portlet.display-name=Control Panel Demo",
 		"javax.portlet.expiration-cache=0",
 		"javax.portlet.init-param.view-template=/templates/view.ftl",
