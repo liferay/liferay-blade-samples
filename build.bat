@@ -16,4 +16,5 @@ call cd liferay-workspace
 call gradlew.bat clean build -x :tests:test
 call cd %repoDir%
 call gradlew.bat bundlesTest warsTest diff
+call cd liferay-workspace
 call gradlew.bat build %*
