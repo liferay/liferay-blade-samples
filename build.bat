@@ -13,6 +13,7 @@ call cd maven
 call mvn --fail-at-end clean package
 call cd %repoDir%
 call cd liferay-workspace
-call gradlew.bat clean build %*
+call gradlew.bat clean build -x :tests:test
 call cd %repoDir%
-call gradlew.bat outputFilesTest diff
+call gradlew.bat bundlesTest warsTest diff
+call gradlew.bat build %*
