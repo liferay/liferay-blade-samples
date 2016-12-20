@@ -14,7 +14,7 @@ dependencies {
 	compile 'com.liferay:com.liferay.osgi.util:3.0.0'
 	compile 'com.liferay:com.liferay.portal.spring.extender:2.0.0'
 
-	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.0-SNAPSHOT'
+	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5'
 	testCompile 'junit:junit:4.+'
 }
 
@@ -22,5 +22,5 @@ buildService {
 	apiDir = "../blade.servicebuilder.api/src/main/java"
 	osgiModule = true
 	propsUtil = "com.liferay.blade.samples.servicebuilder.service.util.PropsUtil"
-	testDir = "src/test/java"
+	testDir = "src/java/test"
 }
