@@ -60,10 +60,5 @@ public class UsersRestService extends Application {
 	}
 
 	@Reference
-	public void setUserLocalService(UserLocalService userLocalService) {
-		_userLocalService = userLocalService;
-	}
-
-	private UserLocalService _userLocalService;
-
+	private volatile UserLocalService _userLocalService;
 }
