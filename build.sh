@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
