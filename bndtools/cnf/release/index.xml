@@ -123,6 +123,11 @@
     </requirement>
   </resource>
   <resource>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand"/>
+    </capability>
+  </resource>
+  <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="blade.hook.jsp"/>
       <attribute name="type" value="osgi.fragment"/>

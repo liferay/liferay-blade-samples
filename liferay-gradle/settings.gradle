@@ -5,6 +5,7 @@ include(
 	'blade.configurationaction',
 	'blade.controlmenuentry',
 	'blade.corejsphook',
+	'blade.doclib.resourcecommand.override',
 	'blade.friendlyurl',
 	'blade.gogo',
 	'blade.hook.jsp',
