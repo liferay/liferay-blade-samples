@@ -21,7 +21,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>1.0.17</version>
+				<version>1.0.20</version>
 				<executions>
 					<execution>
 						<id>default-build-css</id>
@@ -32,7 +32,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<portalCommonDirName>/</portalCommonDirName>
+					<portalCommonPath>/</portalCommonPath>
 					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
 				</configuration>
 			</plugin>
