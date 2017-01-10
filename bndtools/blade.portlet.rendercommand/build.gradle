@@ -1,5 +1,6 @@
 buildscript {
 	repositories {
+		mavenLocal()
 		mavenCentral()
 		maven {
 			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/"
@@ -7,6 +8,7 @@ buildscript {
 	}
     dependencies {
         classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "latest.release"
+        classpath group: "com.liferay", name: "com.liferay.css.builder", version: "1.0.23"
     }
 }
 

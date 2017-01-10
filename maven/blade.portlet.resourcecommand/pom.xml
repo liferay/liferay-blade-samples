@@ -15,13 +15,13 @@
 		<version>1.0.0</version>
 		<relativePath>../parent.bnd.bundle.plugin</relativePath>
 	</parent>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>1.0.20</version>
+				<version>1.0.23</version>
 				<executions>
 					<execution>
 						<id>default-build-css</id>
@@ -32,7 +32,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<portalCommonPath>/</portalCommonPath>
 					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
 				</configuration>
 			</plugin>
