@@ -121,7 +121,7 @@ public class BladeCLI {
 
 		String bundleID = output.substring(output.length() -3);
 
-		if (output.contains("Failed")) {
+		if (output.contains("Failed") || output.contains("IOException")) {
 			throw new Exception(output);
 		}
 
