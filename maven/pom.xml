@@ -40,6 +40,7 @@
 		<module>blade.portlet.configuration.icon</module>
 		<module>blade.portlet.controlpanel</module>
 		<module>blade.portlet.ds</module>
+		<module>blade.portlet.freemarker</module>
 		<module>blade.portlet.filter</module>
 		<module>blade.portlet.jsp</module>
 		<module>blade.portlet.osgiapi</module>
