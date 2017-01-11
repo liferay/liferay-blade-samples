@@ -47,11 +47,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
-		</dependency>		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.cmpn</artifactId>
 			<version>6.0.0</version>
