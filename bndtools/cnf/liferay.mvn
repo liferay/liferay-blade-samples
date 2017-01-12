@@ -24,5 +24,4 @@ javax.servlet:javax.servlet-api:3.0.1
 javax.ws.rs:javax.ws.rs-api:2.0.1
 org.apache.shiro:shiro-core:1.1.0
 org.jboss.arquillian.junit:arquillian-junit-core:1.1.8.Final
-
-
+org.osgi:osgi.cmpn:6.0.0

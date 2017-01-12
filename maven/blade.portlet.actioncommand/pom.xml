@@ -30,12 +30,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>com.liferay.util.bridges</artifactId>
-			<version>${bridges.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.taglib</artifactId>
 			<version>${taglib.version}</version>
 			<scope>provided</scope>
@@ -54,8 +48,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.service.component.annotations</artifactId>
-			<version>1.3.0</version>
+			<artifactId>osgi.cmpn</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
