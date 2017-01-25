@@ -108,8 +108,8 @@ public class BladeCLI {
 
 			String bladeJarName = bladeJar.getName();
 
-			if (!bladeJarName.contains("_2.0.1")) {
-				throw new Exception("Expecting blade jar with version 2.0.1, found version: " + bladeJarName);
+			if (!bladeJarName.contains("_2.0.2")) {
+				throw new Exception("Expecting blade jar with version 2.0.2, found version: " + bladeJarName);
 			}
 		}
 
