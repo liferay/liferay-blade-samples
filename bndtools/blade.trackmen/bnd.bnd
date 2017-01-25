@@ -1,7 +1,0 @@
-Bundle-Version: 1.0.0
-Private-Package: com.liferay.blade.samples.trackmen
--buildpath: \
-	osgi.core;version=6.0,\
-	osgi.cmpn;version=6.0,\
-	org.apache.felix.gogo.runtime
--sources: true
