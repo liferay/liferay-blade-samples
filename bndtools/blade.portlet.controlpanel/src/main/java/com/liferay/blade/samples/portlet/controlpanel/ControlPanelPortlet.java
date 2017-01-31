@@ -18,8 +18,8 @@ package com.liferay.blade.samples.portlet.controlpanel;
 
 import com.liferay.portal.kernel.model.PortletApp;
 import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
-import com.liferay.util.bridges.freemarker.FreeMarkerPortlet;
 
 import javax.portlet.Portlet;
 import javax.portlet.PortletConfig;
@@ -41,14 +41,15 @@ import org.osgi.service.component.annotations.Component;
 		"com.liferay.portlet.render-weight=100",
 		"javax.portlet.display-name=Control Panel Demo",
 		"javax.portlet.expiration-cache=0",
-		"javax.portlet.init-param.view-template=/templates/view.ftl",
+		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet",
+		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=administrator",
 		"javax.portlet.supports.mime-type=text/html"
 	},
 	service = Portlet.class
 )
-public class ControlPanelPortlet extends FreeMarkerPortlet {
+public class ControlPanelPortlet extends MVCPortlet {
 
 	@Override
 	public void destroy() {

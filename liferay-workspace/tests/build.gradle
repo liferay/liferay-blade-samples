@@ -33,4 +33,6 @@ test {
 			dependsOn p.tasks["build"]
 		}
 	}
+
+	systemProperty 'bladeURL', "https://liferay-test-01.ci.cloudbees.com"
 }

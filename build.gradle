@@ -128,7 +128,7 @@ repositories {
 	mavenCentral()
 }
 
-task diff << {
+task bundlesDiffTest << {
 	def errorList = []
 
 	[bndtoolsBundles, gradleBundles, liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
@@ -158,6 +158,12 @@ task diff << {
 		}
 	}
 
+		if (!errorList.empty) {
+		throw new GradleException(errorList.toListString())
+	}
+}
+
+task warsDiffTest << {
 	[gradleWars, liferayWorkspaceWars, mavenWars].each { replicationWars ->
 		replicationWars.each { replicationWar ->
 
@@ -217,8 +223,9 @@ task diff << {
 			}
 		}
 	}
-
-	if (!errorList.empty) {
-		throw new GradleException(errorList.toListString())
-	}
 }
+
+task diff << {}
+
+diff.dependsOn bundlesDiffTest
+diff.dependsOn warsDiffTest

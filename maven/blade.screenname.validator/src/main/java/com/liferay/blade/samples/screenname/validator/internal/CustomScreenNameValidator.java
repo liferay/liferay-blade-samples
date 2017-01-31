@@ -14,13 +14,15 @@ import com.liferay.portal.kernel.settings.CompanyServiceSettingsLocator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.StringUtil;
-
-import java.util.Locale;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import java.util.Locale;
+
 /**
+ * Provides methods to validate the user's screen name client-side and
+ * server-side.
+ *
  * @author Romeo Sheshi
  */
 @Component(
@@ -30,6 +32,11 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {
 
+	/**
+	 * Returns the JavaScript function to validate the screen name client-side.
+	 *
+	 * @return the JavaScript function
+	 */
 	@Override
 	public String getAUIValidatorJS() {
 		StringBuilder javascript = new StringBuilder();
@@ -63,11 +70,26 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return javascript.toString();
 	}
 
+	/**
+	 * Returns the error message to display to the user. The message can be
+	 * localized using a resource bundle.
+	 *
+	 * @param  locale the error message's locale
+	 * @return the error message to display
+	 */
 	@Override
 	public String getDescription(Locale locale) {
 		return "The screen name contains reserved words";
 	}
 
+	/**
+	 * Returns <code>true</code> if the user's screen name is valid.
+	 *
+	 * @param  companyId the ID of the portal instance to which the user belongs
+	 * @param  screenName the user's screen name
+	 * @return <code>true</code> if the user's screen name is valid else;
+	 *         <code>false</code> otherwise
+	 */
 	@Override
 	public boolean validate(long companyId, String screenName) {
 		String safeScreenName = StringUtil.toLowerCase(screenName);
@@ -82,6 +104,12 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return true;
 	}
 
+	/**
+	 * Returns the plugin's configuration based on the company ID.
+	 *
+	 * @param  companyId the ID of the portal instance to which the user belongs
+	 * @return {@link CustomScreenNameConfiguration}
+	 */
 	private CustomScreenNameConfiguration _getConfiguration(long companyId) {
 		try {
 			return _configurationProvider.getConfiguration(
@@ -96,6 +124,14 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return null;
 	}
 
+	/**
+	 * Returns the reserved words configured in the Control Panel &rarr;
+	 * Configuration &rarr; System Settings &rarr; Foundation &rarr; ScreenName
+	 * Validator menu.
+	 *
+	 * @param  companyId the ID of the portal instance to which the user belongs
+	 * @return the reserved words, which by default are <code>admin|user</code>
+	 */
 	private String[] _getReservedWords(long companyId) {
 		CustomScreenNameConfiguration configuration = _getConfiguration(
 			companyId);

@@ -1,0 +1,1 @@
+blade_portlet_controlpanel_Portlet=We are in the control panel

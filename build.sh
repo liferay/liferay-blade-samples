@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
@@ -15,8 +16,10 @@ function buildAll() {
   mvn --fail-at-end clean package
   cd "$repoDir"
   cd liferay-workspace
-  ./gradlew clean build $@
+  ./gradlew clean build -x :tests:test
   cd "$repoDir"
-  ./gradlew outputFilesTest diff
+  ./gradlew bundlesTest warsTest diff
+  cd liferay-workspace
+  ./gradlew build $@
 }
 buildAll

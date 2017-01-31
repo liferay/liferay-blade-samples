@@ -91,7 +91,7 @@ public class BladeCLI {
 
 			Map<String, String> repoMap = new HashMap<>();
 			repoMap.put("name", "index1");
-			repoMap.put("locations", "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/lastSuccessfulBuild/artifact/build/generated/p2/index.xml.gz");
+			repoMap.put("locations", System.getProperty("bladeURL") + "/job/liferay-blade-cli/lastSuccessfulBuild/artifact/build/generated/p2/index.xml.gz");
 			repoMap.put(FixedIndexedRepo.PROP_CACHE, repoPath);
 
 			repo.setProperties(repoMap);
@@ -108,8 +108,8 @@ public class BladeCLI {
 
 			String bladeJarName = bladeJar.getName();
 
-			if (!bladeJarName.contains("_2.0.0")) {
-				throw new Exception("Expecting blade jar with version 2.0.0, found version: " + bladeJarName);
+			if (!bladeJarName.contains("_2.0.2")) {
+				throw new Exception("Expecting blade jar with version 2.0.2, found version: " + bladeJarName);
 			}
 		}
 
@@ -121,7 +121,7 @@ public class BladeCLI {
 
 		String bundleID = output.substring(output.length() -3);
 
-		if (output.contains("Failed")) {
+		if (output.contains("Failed") || output.contains("IOException")) {
 			throw new Exception(output);
 		}
 

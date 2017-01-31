@@ -70,7 +70,7 @@
 					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
 					<sqlFileName>tables.sql</sqlFileName>
-					<testDirName>src/main/test</testDirName>
+					<testDirName>src/java/test</testDirName>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -35,15 +35,10 @@ public class UserCountCommand {
 	}
 
 	@Reference
-	public void setUserLocalService(UserLocalService userLocalService) {
-		_userLocalService = userLocalService;
-	}
+	private volatile UserLocalService _userLocalService;
 
 	public void usercount() {
 		System.out.println(
 			"# of users: " + getUserLocalService().getUsersCount());
 	}
-
-	private UserLocalService _userLocalService;
-
 }
