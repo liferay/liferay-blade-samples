@@ -34,5 +34,5 @@ test {
 		}
 	}
 
-	systemProperty 'bladeURL', "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/lastSuccessfulBuild/artifact/build/generated/p2/index.xml.gz"
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/lastSuccessfulBuild/artifact/build/generated/p2/index.xml.gz")
 }
