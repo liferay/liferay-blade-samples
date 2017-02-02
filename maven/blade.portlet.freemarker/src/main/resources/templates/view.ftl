@@ -17,4 +17,8 @@
 -->
 
 <#include "init.ftl">
-    <b>Hello from BLADE FreeMarker!</b>
+<p>
+	<b class="redBackground">
+		<@liferay_ui["message"] key="blade_portlet_freemarker_BladeFreeMarkerPortlet.caption"/>
+	</b>
+</p>
