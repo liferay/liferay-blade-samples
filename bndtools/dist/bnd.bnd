@@ -19,6 +19,7 @@
 	blade.portlet.configuration.icon,\
 	blade.portlet.controlpanel,\
 	blade.portlet.ds,\
+	blade.portlet.freemarker,\
 	blade.portlet.filter,\
 	blade.portlet.jsp,\
 	blade.portlet.osgiapi,\
