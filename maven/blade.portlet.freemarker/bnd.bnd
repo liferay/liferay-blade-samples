@@ -2,4 +2,6 @@ Bundle-Version: 1.0.0
 -includeresource:\
 	@com.liferay.util.bridges-${bridges.version}.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
 	@com.liferay.util.taglib-${taglib.version}.jar!/META-INF/*.tld
+-plugin.builder: com.liferay.css.builder.CSSBuilder
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -sources: true
