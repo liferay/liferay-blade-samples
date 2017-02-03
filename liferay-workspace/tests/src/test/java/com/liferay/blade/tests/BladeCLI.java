@@ -15,26 +15,25 @@
  */
 package com.liferay.blade.tests;
 
-import aQute.bnd.deployer.repository.FixedIndexedRepo;
-import aQute.bnd.osgi.Processor;
+import static org.junit.Assert.assertTrue;
 
+import aQute.bnd.osgi.Domain;
+import aQute.bnd.version.Version;
 import aQute.lib.io.IO;
 
 import java.io.File;
 import java.io.InputStream;
-
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.Assert.assertTrue;
+import org.apache.commons.io.FileUtils;
 
 /**
  * @author Lawrence Lee
  */
 public class BladeCLI {
-	private static File bladeJar;
+	public static File bladeJar;
 
 	public static File createProject (File testDir, String templateName, String bundleName, String...createArgs) throws Exception {
 		String[] executeArgs = new String[createArgs.length + 6];
@@ -86,30 +85,19 @@ public class BladeCLI {
 
 	public static String getLatestBladeCLIJar() throws Exception {
 		if (bladeJar == null) {
-			String repoPath = new File("build").getAbsolutePath();
-			FixedIndexedRepo repo = new FixedIndexedRepo();
+			URL url = new URL(System.getProperty("bladeURL"));
+			File file = new File("blade.jar");
+			
+			FileUtils.copyURLToFile(url, file);
 
-			Map<String, String> repoMap = new HashMap<>();
-			repoMap.put("name", "index1");
-			repoMap.put("locations", System.getProperty("bladeURL"));
-			repoMap.put(FixedIndexedRepo.PROP_CACHE, repoPath);
-
-			repo.setProperties(repoMap);
-			repo.setReporter(new Processor());
-
-			File[] files = repo.get( "com.liferay.blade.cli", "[2,3)" );
-			File cliJar = files[0];
-
-			File newCliJar = new File(repoPath + "/" + cliJar.getName());
-
-			IO.copy(cliJar, newCliJar);
-
-			bladeJar = newCliJar;
-
-			String bladeJarName = bladeJar.getName();
-
-			if (!bladeJarName.contains("_2.0.2")) {
-				throw new Exception("Expecting blade jar with version 2.0.2, found version: " + bladeJarName);
+			bladeJar = file;
+			
+			Domain jar = Domain.domain(bladeJar);
+			
+			int bundleVersion = new Version(jar.getBundleVersion()).getMajor(); 
+			
+			if (bundleVersion != 2) {
+				throw new Exception("Expecting blade jar with major version 2, found version: " + bundleVersion);
 			}
 		}
 

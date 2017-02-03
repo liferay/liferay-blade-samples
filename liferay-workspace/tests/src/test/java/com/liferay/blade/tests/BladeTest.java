@@ -82,10 +82,15 @@ public class BladeTest {
 	public static void cleanUpTest() throws Exception {
 		BladeCLI.execute("server", "stop");
 
+		if (BladeCLI.bladeJar.exists()) {
+			IO.delete(BladeCLI.bladeJar);
+			assertFalse(BladeCLI.bladeJar.exists());
+		}
+
 		if (_bundleDir.exists()) {
 			IO.delete(_bundleDir);
 			assertFalse(_bundleDir.exists());
-		}
+		}	
 	}
 
 	@Before
