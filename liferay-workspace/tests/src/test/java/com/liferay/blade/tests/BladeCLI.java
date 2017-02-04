@@ -19,11 +19,14 @@ import static org.junit.Assert.assertTrue;
 
 import aQute.bnd.osgi.Domain;
 import aQute.bnd.version.Version;
+
 import aQute.lib.io.IO;
 
 import java.io.File;
 import java.io.InputStream;
+
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +36,14 @@ import org.apache.commons.io.FileUtils;
  * @author Lawrence Lee
  */
 public class BladeCLI {
+
 	public static File bladeJar;
 
-	public static File createProject (File testDir, String templateName, String bundleName, String...createArgs) throws Exception {
+	public static File createProject(
+			File testDir, String templateName, String bundleName,
+			String...createArgs)
+		throws Exception {
+
 		String[] executeArgs = new String[createArgs.length + 6];
 		executeArgs[0] = "create";
 		executeArgs[1] = "-d";
@@ -52,7 +60,9 @@ public class BladeCLI {
 		return projectPath;
 	}
 
-	public static String execute(File workingDir, String... bladeArgs) throws Exception {
+	public static String execute(File workingDir, String... bladeArgs)
+		throws Exception {
+
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
@@ -64,7 +74,8 @@ public class BladeCLI {
 			command.add(arg);
 		}
 
-		Process process = new ProcessBuilder(command.toArray(new String[0])).directory(workingDir).start();
+		Process process = new ProcessBuilder(
+			command.toArray(new String[0])).directory(workingDir).start();
 
 		process.waitFor();
 
@@ -87,17 +98,19 @@ public class BladeCLI {
 		if (bladeJar == null) {
 			URL url = new URL(System.getProperty("bladeURL"));
 			File file = new File("blade.jar");
-			
+
 			FileUtils.copyURLToFile(url, file);
 
 			bladeJar = file;
-			
+
 			Domain jar = Domain.domain(bladeJar);
-			
-			int bundleVersion = new Version(jar.getBundleVersion()).getMajor(); 
-			
+
+			int bundleVersion = new Version(jar.getBundleVersion()).getMajor();
+
 			if (bundleVersion != 2) {
-				throw new Exception("Expecting blade jar with major version 2, found version: " + bundleVersion);
+				throw new Exception(
+					"Expecting blade jar with major version 2, found version: " +
+						bundleVersion);
 			}
 		}
 
@@ -126,7 +139,10 @@ public class BladeCLI {
 		return output;
 	}
 
-	public static String startServerWindows(File workingDir, String... bladeArgs) throws Exception {
+	public static String startServerWindows(
+			File workingDir, String... bladeArgs)
+		throws Exception {
+
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
@@ -140,7 +156,8 @@ public class BladeCLI {
 			command.add(arg);
 		}
 
-		Process process = new ProcessBuilder(command.toArray(new String[0])).directory(workingDir).start();
+		Process process = new ProcessBuilder(
+			command.toArray(new String[0])).directory(workingDir).start();
 
 		process.waitFor();
 
@@ -155,11 +172,14 @@ public class BladeCLI {
 		return output;
 	}
 
-	public static void uninstallBundle (String... bundleIDArgs) throws Exception {
+	public static void uninstallBundle(String... bundleIDArgs)
+		throws Exception {
+
 		String[] executeArgs = new String[bundleIDArgs.length + 2];
 		executeArgs[0] = "sh";
 		executeArgs[1] = "uninstall";
 		System.arraycopy(bundleIDArgs, 0, executeArgs, 2, bundleIDArgs.length);
 		execute(executeArgs);
 	}
+
 }
