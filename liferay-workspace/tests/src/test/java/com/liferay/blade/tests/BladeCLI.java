@@ -91,7 +91,7 @@ public class BladeCLI {
 
 			Map<String, String> repoMap = new HashMap<>();
 			repoMap.put("name", "index1");
-			repoMap.put("locations", System.getProperty("bladeURL") + "/job/liferay-blade-cli/lastSuccessfulBuild/artifact/build/generated/p2/index.xml.gz");
+			repoMap.put("locations", System.getProperty("bladeURL"));
 			repoMap.put(FixedIndexedRepo.PROP_CACHE, repoPath);
 
 			repo.setProperties(repoMap);
