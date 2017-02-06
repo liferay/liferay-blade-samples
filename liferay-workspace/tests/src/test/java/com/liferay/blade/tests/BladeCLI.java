@@ -13,31 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.liferay.blade.tests;
 
-import aQute.bnd.deployer.repository.FixedIndexedRepo;
-import aQute.bnd.osgi.Processor;
+import static org.junit.Assert.assertTrue;
+
+import aQute.bnd.osgi.Domain;
+import aQute.bnd.version.Version;
 
 import aQute.lib.io.IO;
+
+import com.liferay.portal.kernel.util.StringUtil;
 
 import java.io.File;
 import java.io.InputStream;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
 
-import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 /**
  * @author Lawrence Lee
  */
 public class BladeCLI {
-	private static File bladeJar;
 
-	public static File createProject (File testDir, String templateName, String bundleName, String...createArgs) throws Exception {
+	public static File bladeJar;
+
+	public static File createProject(
+			File testDir, String templateName, String bundleName,
+			String...createArgs)
+		throws Exception {
+
 		String[] executeArgs = new String[createArgs.length + 6];
+
 		executeArgs[0] = "create";
 		executeArgs[1] = "-d";
 		executeArgs[2] = testDir.getPath();
@@ -53,10 +64,13 @@ public class BladeCLI {
 		return projectPath;
 	}
 
-	public static String execute(File workingDir, String... bladeArgs) throws Exception {
+	public static String execute(File workingDir, String... bladeArgs)
+		throws Exception {
+
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
+
 		command.add("java");
 		command.add("-jar");
 		command.add(bladeCLIJarPath);
@@ -65,17 +79,22 @@ public class BladeCLI {
 			command.add(arg);
 		}
 
-		Process process = new ProcessBuilder(command.toArray(new String[0])).directory(workingDir).start();
+		Process process = new ProcessBuilder(
+			command.toArray(new String[0])).directory(workingDir).start();
 
 		process.waitFor();
 
 		InputStream stream = process.getInputStream();
+
 		String output = new String(IO.read(stream));
 
 		InputStream errorStream = process.getErrorStream();
+
 		String errors = new String(IO.read(errorStream));
 
 		assertTrue(errors, errors == null || errors.isEmpty());
+
+		output = StringUtil.toLowerCase(output);
 
 		return output;
 	}
@@ -86,31 +105,22 @@ public class BladeCLI {
 
 	public static String getLatestBladeCLIJar() throws Exception {
 		if (bladeJar == null) {
-			String repoPath = new File("build").getAbsolutePath();
-			FixedIndexedRepo repo = new FixedIndexedRepo();
+			URL url = new URL(System.getProperty("bladeURL"));
+			File file = new File("blade.jar");
 
-			Map<String, String> repoMap = new HashMap<>();
-			repoMap.put("name", "index1");
-			repoMap.put("locations", System.getProperty("bladeURL"));
-			repoMap.put(FixedIndexedRepo.PROP_CACHE, repoPath);
+			FileUtils.copyURLToFile(url, file);
 
-			repo.setProperties(repoMap);
-			repo.setReporter(new Processor());
+			Domain jar = Domain.domain(file);
 
-			File[] files = repo.get( "com.liferay.blade.cli", "[2,3)" );
-			File cliJar = files[0];
+			int bundleVersion = new Version(jar.getBundleVersion()).getMajor();
 
-			File newCliJar = new File(repoPath + "/" + cliJar.getName());
-
-			IO.copy(cliJar, newCliJar);
-
-			bladeJar = newCliJar;
-
-			String bladeJarName = bladeJar.getName();
-
-			if (!bladeJarName.contains("_2.0.2")) {
-				throw new Exception("Expecting blade jar with version 2.0.2, found version: " + bladeJarName);
+			if (bundleVersion != 2) {
+				throw new Exception(
+					"Expecting bladejar with major version 2, found version: " +
+						bundleVersion);
 			}
+
+			bladeJar = file;
 		}
 
 		return bladeJar.getCanonicalPath();
@@ -119,7 +129,7 @@ public class BladeCLI {
 	public static String installBundle(File file) throws Exception {
 		String output = execute("sh", "install", file.toURI().toString());
 
-		String bundleID = output.substring(output.length() -3);
+		String bundleID = output.substring(output.length() - 3);
 
 		if (output.contains("Failed") || output.contains("IOException")) {
 			throw new Exception(output);
@@ -138,10 +148,14 @@ public class BladeCLI {
 		return output;
 	}
 
-	public static String startServerWindows(File workingDir, String... bladeArgs) throws Exception {
+	public static String startServerWindows(
+			File workingDir, String... bladeArgs)
+		throws Exception {
+
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
+
 		command.add("start");
 		command.add("/b");
 		command.add("java");
@@ -152,14 +166,17 @@ public class BladeCLI {
 			command.add(arg);
 		}
 
-		Process process = new ProcessBuilder(command.toArray(new String[0])).directory(workingDir).start();
+		Process process = new ProcessBuilder(
+			command.toArray(new String[0])).directory(workingDir).start();
 
 		process.waitFor();
 
 		InputStream stream = process.getInputStream();
+
 		String output = new String(IO.read(stream));
 
 		InputStream errorStream = process.getErrorStream();
+
 		String errors = new String(IO.read(errorStream));
 
 		assertTrue(errors, errors == null || errors.isEmpty());
@@ -167,11 +184,15 @@ public class BladeCLI {
 		return output;
 	}
 
-	public static void uninstallBundle (String... bundleIDArgs) throws Exception {
+	public static void uninstallBundle(String... bundleIDArgs)
+		throws Exception {
+
 		String[] executeArgs = new String[bundleIDArgs.length + 2];
+
 		executeArgs[0] = "sh";
 		executeArgs[1] = "uninstall";
 		System.arraycopy(bundleIDArgs, 0, executeArgs, 2, bundleIDArgs.length);
 		execute(executeArgs);
 	}
+
 }
