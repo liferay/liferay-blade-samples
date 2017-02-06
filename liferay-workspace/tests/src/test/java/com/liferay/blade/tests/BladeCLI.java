@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.liferay.blade.tests;
 
 import static org.junit.Assert.assertTrue;
@@ -21,6 +22,8 @@ import aQute.bnd.osgi.Domain;
 import aQute.bnd.version.Version;
 
 import aQute.lib.io.IO;
+
+import com.liferay.portal.kernel.util.StringUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -45,6 +48,7 @@ public class BladeCLI {
 		throws Exception {
 
 		String[] executeArgs = new String[createArgs.length + 6];
+
 		executeArgs[0] = "create";
 		executeArgs[1] = "-d";
 		executeArgs[2] = testDir.getPath();
@@ -66,6 +70,7 @@ public class BladeCLI {
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
+
 		command.add("java");
 		command.add("-jar");
 		command.add(bladeCLIJarPath);
@@ -80,12 +85,16 @@ public class BladeCLI {
 		process.waitFor();
 
 		InputStream stream = process.getInputStream();
+
 		String output = new String(IO.read(stream));
 
 		InputStream errorStream = process.getErrorStream();
+
 		String errors = new String(IO.read(errorStream));
 
 		assertTrue(errors, errors == null || errors.isEmpty());
+
+		output = StringUtil.toLowerCase(output);
 
 		return output;
 	}
@@ -101,17 +110,17 @@ public class BladeCLI {
 
 			FileUtils.copyURLToFile(url, file);
 
-			bladeJar = file;
-
-			Domain jar = Domain.domain(bladeJar);
+			Domain jar = Domain.domain(file);
 
 			int bundleVersion = new Version(jar.getBundleVersion()).getMajor();
 
 			if (bundleVersion != 2) {
 				throw new Exception(
-					"Expecting blade jar with major version 2, found version: " +
+					"Expecting bladejar with major version 2, found version: " +
 						bundleVersion);
 			}
+
+			bladeJar = file;
 		}
 
 		return bladeJar.getCanonicalPath();
@@ -120,7 +129,7 @@ public class BladeCLI {
 	public static String installBundle(File file) throws Exception {
 		String output = execute("sh", "install", file.toURI().toString());
 
-		String bundleID = output.substring(output.length() -3);
+		String bundleID = output.substring(output.length() - 3);
 
 		if (output.contains("Failed") || output.contains("IOException")) {
 			throw new Exception(output);
@@ -146,6 +155,7 @@ public class BladeCLI {
 		String bladeCLIJarPath = getLatestBladeCLIJar();
 
 		List<String> command = new ArrayList<>();
+
 		command.add("start");
 		command.add("/b");
 		command.add("java");
@@ -162,9 +172,11 @@ public class BladeCLI {
 		process.waitFor();
 
 		InputStream stream = process.getInputStream();
+
 		String output = new String(IO.read(stream));
 
 		InputStream errorStream = process.getErrorStream();
+
 		String errors = new String(IO.read(errorStream));
 
 		assertTrue(errors, errors == null || errors.isEmpty());
@@ -176,6 +188,7 @@ public class BladeCLI {
 		throws Exception {
 
 		String[] executeArgs = new String[bundleIDArgs.length + 2];
+
 		executeArgs[0] = "sh";
 		executeArgs[1] = "uninstall";
 		System.arraycopy(bundleIDArgs, 0, executeArgs, 2, bundleIDArgs.length);
