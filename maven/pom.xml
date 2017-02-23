@@ -27,6 +27,7 @@
 		<module>blade.controlmenuentry</module>
 		<module>blade.corejsphook</module>
 		<module>blade.doclib.resourcecommand.override</module>
+		<module>blade.document.action</module>
 		<module>blade.friendlyurl</module>
 		<module>blade.gogo</module>
 		<module>blade.hook.jsp</module>
