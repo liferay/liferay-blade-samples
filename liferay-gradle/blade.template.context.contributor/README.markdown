@@ -7,8 +7,8 @@ customizations, you can use the `${sample_text}` variable from any theme.
 Many developers prefer using templating frameworks like FreeMarker and Velocity,
 but don't have access to the common objects offered to those working with JSPs.
 Context contributors allow non-JSP developers an easy way to inject variables
-into their Liferay templates. For more information on how to context
-contributors and how to create them in Liferay Portal, visit the
+into their Liferay templates. For more information on context contributors and
+how to create them in Liferay Portal, visit the
 [Context Contributors](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/context-contributors)
 tutorial.
 
@@ -17,7 +17,8 @@ You can easily modify this sample by customizing its
 context contributor sample provides the `${sample_text}` variable by injecting
 it into Liferay's `contextObjects`, which is a map provided by default to offer
 common variables to non-JSP template developers. You can easily inject your own
-variables into the `contextObjects` map usable by any theme deployed to Liferay.
+variables into the `contextObjects` map usable by any theme deployed to Liferay
+Portal.
 
 Are you working with templates that aren't themes (e.g., ADTs, DDM templates,
 etc.)? You can change the context in which your variables are injected by
@@ -26,5 +27,6 @@ your variable available for all templates, change it to
 
     property = {"type=" + TemplateContextContributor.TYPE_GLOBAL}
 
-Liferay makes it easy for you to inject any variable into your non-native Java
-EE templates with context contributors!
+For more information on customizing the Template Context Contributor sample to
+fit your needs, see the Javadoc listed in this sample's
+`BladeTemplateContextContributor` class.
