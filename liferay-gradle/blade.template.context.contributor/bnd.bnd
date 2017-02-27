@@ -1,2 +1,3 @@
+Bundle-Description: Injects a new variable into Liferay Portal's theme context usable by non-JSP templates (e.g., FreeMarker, Velocity, etc.).
 Bundle-Version: 1.0.0
 -sources: true
