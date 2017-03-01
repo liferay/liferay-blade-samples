@@ -58,6 +58,7 @@
 		<module>blade.servicebuilder.test</module>
 		<module>blade.servicebuilder.web</module>
 		<module>blade.simulation.panel.app</module>
+		<module>blade.springmvc.web</module>
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 		<module>blade.template.context.contributor</module>

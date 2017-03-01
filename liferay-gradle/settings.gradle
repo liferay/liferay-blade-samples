@@ -37,6 +37,7 @@ include(
 	'blade.servicebuilder.test',
 	'blade.servicebuilder.web',
 	'blade.simulation.panel.app',
+	'blade.springmvc.web',
 	'blade.strutsaction',
 	'blade.strutsportletaction',
 	'blade.template.context.contributor',
