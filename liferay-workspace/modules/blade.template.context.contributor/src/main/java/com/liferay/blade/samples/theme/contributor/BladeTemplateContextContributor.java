@@ -25,6 +25,26 @@ import javax.servlet.http.HttpServletRequest;
 import org.osgi.service.component.annotations.Component;
 
 /**
+ * Provides the ability to inject variables into a template's context. You can
+ * inject custom variables into your platform's global context (e.g., themes,
+ * application display templates, DDM templates, etc.) or into the theming
+ * context only.
+ *
+ * <p>
+ * To change the context in which you want to inject your variables, update the
+ * <code>property</code> attribute of the <code>@Component</code> annotation.
+ * For example, the following logic would inject your variables into the global
+ * context:
+ * </p>
+ *
+ * <p>
+ * <pre>
+ * <code>
+ * property = {"type=" + TemplateContextContributor.TYPE_GLOBAL}
+ * </code>
+ * </pre>
+ * </p>
+ * 
  * @author Liferay
  */
 @Component(
@@ -35,13 +55,24 @@ import org.osgi.service.component.annotations.Component;
 public class BladeTemplateContextContributor
 	implements TemplateContextContributor {
 
+	/**
+	 * Injects a new string variable into the map of provided variables. The map
+	 * is made available to non-JSP templates (FreeMarker, Velocity, etc.) that
+	 * do not have access to the contextual objects native to the platform, like
+	 * the request and session.
+	 *
+	 * <p>
+	 * The <code>sample_text</code> variable can be used in any theme file.
+	 * For example, you could add it to the <code>portal_normal.ftl</code> file
+	 * in your theme as <code>${sample_text}</code>.
+	 * </p>
+	 *
+	 * @param contextObjects the variables available in the context
+	 * @param request the HTTP servlet request
+	 */
 	@Override
 	public void prepare(
 		Map<String, Object> contextObjects, HttpServletRequest request) {
-
-		// This variable can be used in any theme file. For example, you could
-		// add this code to the file portal_normal.ftl in your theme:
-		// <h1>${sample_text}</h1>
 
 		contextObjects.put("sample_text", "This is some sample text");
 	}
