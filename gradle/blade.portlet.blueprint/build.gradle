@@ -1,6 +1,0 @@
-dependencies {
-	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
-	compile 'javax.portlet:portlet-api:2.0'
-}
-
-version = '1.0.0'

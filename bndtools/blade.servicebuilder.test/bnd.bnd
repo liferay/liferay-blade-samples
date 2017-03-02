@@ -1,8 +1,0 @@
-Bundle-Version: 1.0.0
--sources: true
-
-Private-Package: com.liferay.blade.samples.servicebuilder.test
--buildpath: \
-	blade.servicebuilder.api;version=latest,\
-	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
-	osgi.cmpn;version='6.0.0'

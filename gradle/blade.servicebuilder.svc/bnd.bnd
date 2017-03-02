@@ -1,8 +1,0 @@
-Bundle-Version: 1.0.0
-Liferay-Require-SchemaVersion: 1.0.0
-Liferay-Service: true
--sources: true
-
-Bundle-SymbolicName: blade.servicebuilder.svc
--plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
--plugin.spring: com.liferay.ant.bnd.spring.SpringDependencyAnalyzerPlugin

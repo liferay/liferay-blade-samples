@@ -11,8 +11,6 @@ import net.diibadaaba.zipdiff.DifferenceCalculator
 import net.diibadaaba.zipdiff.Differences
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 
-FileTree bndtoolsBundles = fileTree(dir: 'bndtools', include: '**/dist/bundles/**/*.jar', exclude: '**/*latest.jar')
-FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
 FileTree liferayGradleBundles = fileTree(dir: 'liferay-gradle', include: '**/libs/*.jar')
 FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
@@ -20,34 +18,24 @@ FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 int canonicalBundlesSize = liferayGradleBundles.size()
 
 task bundlesSizeTest << {
-	assert canonicalBundlesSize == bndtoolsBundles.size()
-	assert canonicalBundlesSize == gradleBundles.size()
 	assert canonicalBundlesSize == liferayWorkspaceBundles.size()
 	assert canonicalBundlesSize == mavenBundles.size()
 }
 
-FileTree gradleWars = fileTree(dir: 'gradle', include: '**/libs/*.war')
-FileTree liferayWorkspaceWars = fileTree(dir: 'liferay-workspace/wars', include: '**/libs/*.war')
 FileTree liferayGradleWars = fileTree(dir: 'liferay-gradle', include: '**/libs/*.war')
+FileTree liferayWorkspaceWars = fileTree(dir: 'liferay-workspace/wars', include: '**/libs/*.war')
 FileTree mavenWars = fileTree(dir: 'maven', include: '**/target/*.war')
 
 int canonicalWarsSize = liferayGradleWars.size()
 
 task warsSizeTest << {
-	assert canonicalWarsSize == gradleWars.size()
 	assert canonicalWarsSize == liferayGradleWars.size()
 	assert canonicalWarsSize == liferayWorkspaceWars.size()
 	assert canonicalWarsSize == mavenWars.size()
 }
 
 task bundlesSortTest << {
-	def fileNamesDiff = liferayGradleBundles.files.name.sort() - gradleBundles.files.name.sort()
-	assert [] == fileNamesDiff : "liferay-gradle vs gradle"
-
-	fileNamesDiff = liferayGradleBundles.files.name.sort() - bndtoolsBundles.files.name.sort()
-	assert [] == fileNamesDiff : "liferay-gradle vs bndtools"
-
-	fileNamesDiff = liferayGradleBundles.files.name.sort() - liferayWorkspaceBundles.files.name.sort()
+	def fileNamesDiff = liferayGradleBundles.files.name.sort() - liferayWorkspaceBundles.files.name.sort()
 	assert [] == fileNamesDiff : "liferay-gradle vs liferay-workspace"
 
 	fileNamesDiff = liferayGradleBundles.files.name.sort() - mavenBundles.files.name.sort()
@@ -78,7 +66,7 @@ task replicateSources << {
 	}
 
 	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
-	def replicationParents = files(['bndtools', 'gradle', 'liferay-gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
+	def replicationParents = files(['liferay-gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
 
 	canonicalProjects.each { canonicalProject ->
 		if ((new File(canonicalProject, "bnd.bnd").exists())) {
@@ -121,7 +109,7 @@ configurations {
 }
 
 dependencies {
-	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
+	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
 }
 
 repositories {
@@ -131,7 +119,7 @@ repositories {
 task bundlesDiffTest << {
 	def errorList = []
 
-	[bndtoolsBundles, gradleBundles, liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
+	[liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
 		replicationFiles.each { replicationFile ->
 
 			def liferayGradleOutputFile = liferayGradleBundles.find {
@@ -164,7 +152,7 @@ task bundlesDiffTest << {
 }
 
 task warsDiffTest << {
-	[gradleWars, liferayWorkspaceWars, mavenWars].each { replicationWars ->
+	[mavenWars, liferayWorkspaceWars].each { replicationWars ->
 		replicationWars.each { replicationWar ->
 
 			def liferayGradleWar = liferayGradleWars.find {
@@ -216,8 +204,10 @@ task warsDiffTest << {
 				}
 
 				if (realChange) {
+					ant.unzip(src: replicationWar.absolutePath, dest:replicationWar.getParentFile().absolutePath + "/explodedWar")
+					ant.unzip(src: liferayGradleWar.absolutePath, dest:liferayGradleWar.getParentFile().absolutePath + "/explodedWar")
 					throw new GradleException(
-						"WAR " + replicationWar + " and " + liferayGradleWar + " do not match:\n" +
+						"wars " + replicationWar + " and " + liferayGradleWar + " do not match:\n" +
 							differences)
 				}
 			}

@@ -1,6 +1,0 @@
-Bundle-Description: Provides a way to validate a user's inputted screen name.
-Bundle-Version: 1.0.0
--sources: true
-
--metatype: *
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
