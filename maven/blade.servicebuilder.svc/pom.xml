@@ -63,6 +63,7 @@
 					<implDirName>src/main/java</implDirName>
 					<inputFileName>service.xml</inputFileName>
 					<modelHintsFileName>src/main/resources/META-INF/portlet-model-hints.xml</modelHintsFileName>
+					<mergeModelHintsConfigs>src/main/resources/META-INF/portlet-model-hints.xml</mergeModelHintsConfigs>
 					<osgiModule>true</osgiModule>
 					<propsUtil>com.liferay.blade.samples.servicebuilder.service.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
