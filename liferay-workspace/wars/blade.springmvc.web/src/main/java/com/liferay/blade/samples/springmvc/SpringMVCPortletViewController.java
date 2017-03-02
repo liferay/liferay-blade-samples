@@ -48,39 +48,81 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+/**
+ * class SpringMVCPortletViewController: The Spring MVC portlet view controller
+ * class.
+ *
+ * @author Liferay
+ */
 @Controller
 @RequestMapping("VIEW")
 public class SpringMVCPortletViewController {
 
+	/**
+	 * view: This is the default method invoked for the normal view.
+	 * @param request
+	 * @param response
+	 * @return String the view result.
+	 */
 	@RenderMapping
 	public String view(RenderRequest request, RenderResponse response) {
 		return "view";
 	}
 
+	/**
+	 * view2: This is another view method that is invoked when the action key
+	 * is set to view.
+	 * @param request
+	 * @param response
+	 * @return String The view result.
+	 */
 	@RenderMapping(params = "action=view")
 	public String view2(RenderRequest request, RenderResponse response) {
 		return "view";
 	}
 
+	/**
+	 * addFoo: This is the view handler when the action is addFoo.
+	 * @param request
+	 * @param response
+	 * @return String The view result.
+	 */
 	@RenderMapping(params = "action=addFoo")
 	public String addFoo(RenderRequest request, RenderResponse response) {
 		return "edit_foo";
 	}
 
+	/**
+	 * editFoo: This is the view handler when the action is editFoo.
+	 * @param request
+	 * @param response
+	 * @return String The view result.
+	 */
 	@RenderMapping(params = "action=editFoo")
 	public String editFoo(RenderRequest request, RenderResponse response) {
 		return "edit_foo";
 	}
 
+	/**
+	 * updateFoo: This is the action handler when the action key is updateFoo,
+	 * this will be the case for both Foo adds and updates.
+	 * @param actionRequest
+	 * @param response
+	 * @throws Exception
+	 */
 	@ActionMapping(params = "action=updateFoo")
-	public void updateFoo(ActionRequest actionRequest, ActionResponse response) throws Exception {
+	public void updateFoo(ActionRequest actionRequest, ActionResponse response)
+			throws Exception {
+		// see if there is an existing foo id
 		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
+		// extract the form field values.
 		String field1 = ParamUtil.getString(actionRequest, "field1");
 		boolean field2 = ParamUtil.getBoolean(actionRequest, "field2");
 		int field3 = ParamUtil.getInteger(actionRequest, "field3");
 		String field5 = ParamUtil.getString(actionRequest, "field5");
 
+		// convert the calendar details into a date.
 		int dateMonth = ParamUtil.getInteger(actionRequest, "field4Month");
 		int dateDay = ParamUtil.getInteger(actionRequest, "field4Day");
 		int dateYear = ParamUtil.getInteger(actionRequest, "field4Year");
@@ -96,24 +138,30 @@ public class SpringMVCPortletViewController {
 				dateMonth, dateDay, dateYear, dateHour, dateMinute,
 				PortalException.class);
 
+		// if foo id is less than or equal to zero, we're adding a new Foo
 		if (fooId <= 0) {
-			_log.warn("Adding a new foo...");
+			_log.info("Adding a new foo...");
 
+			// create the Foo
 			Foo foo = FooLocalServiceUtil.createFoo(0);
 
+			// set the fields
 			foo.setField1(field1);
 			foo.setField2(field2);
 			foo.setField3(field3);
 			foo.setField4(field4);
 			foo.setField5(field5);
 
-			foo.isNew();
-
+			// Invoke the service layer to add the Foo
 			FooLocalServiceUtil.addFooWithoutId(foo);
 		}
 		else {
+			_log.info("Updating a new foo...");
+
+			// doing an update, retrieve the current Foo
 			Foo foo = FooLocalServiceUtil.fetchFoo(fooId);
 
+			// update the Foo fields
 			foo.setFooId(fooId);
 			foo.setField1(field1);
 			foo.setField2(field2);
@@ -121,12 +169,23 @@ public class SpringMVCPortletViewController {
 			foo.setField4(field4);
 			foo.setField5(field5);
 
+			// Invoke the service layer to update the Foo
 			FooLocalServiceUtil.updateFoo(foo);
 		}
 	}
 
+	/**
+	 * deleteFoo: This is the action handler when the action key is deleteFoo,
+	 * this will be the case when we are deleting a Foo.
+	 * @param actionRequest
+	 * @param response
+	 * @throws Exception
+	 */
 	@ActionMapping(params = "action=deleteFoo")
-	public void deleteFoo(ActionRequest actionRequest, ActionResponse response) throws Exception {
+	public void deleteFoo(ActionRequest actionRequest, ActionResponse response)
+			throws Exception {
+		_log.info("Deleting a new foo...");
+
 		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
 		response.setRenderParameter("action","view");
@@ -134,5 +193,6 @@ public class SpringMVCPortletViewController {
 		FooLocalServiceUtil.deleteFoo(fooId);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(SpringMVCPortletViewController.class);
+	private static final Log _log =
+			LogFactoryUtil.getLog(SpringMVCPortletViewController.class);
 }
