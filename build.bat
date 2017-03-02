@@ -1,11 +1,5 @@
 set repoDir=%cd%
 
-call cd bndtools
-call gradlew.bat clean build
-call cd %repoDir%
-call cd gradle
-call gradlew.bat clean build
-call cd %repoDir%
 call cd liferay-gradle
 call gradlew.bat clean build
 call cd %repoDir%

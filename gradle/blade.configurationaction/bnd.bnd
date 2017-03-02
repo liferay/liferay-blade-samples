@@ -1,6 +1,0 @@
-Bundle-Version: 1.0.0
--jsp: *.jsp,*.jspf
--metatype: *
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
--sources: true

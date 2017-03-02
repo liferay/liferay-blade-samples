@@ -1,5 +1,0 @@
-Bundle-Version: 1.0.0
--sources: true
-
-Private-Package: com.liferay.blade.samples.portlet.blueprint
--buildpath: javax.portlet;version='2.0.0'

@@ -1,8 +1,0 @@
-Bundle-Version: 1.0.0
--sources: true
-
-Private-Package: com.liferay.blade.samples.strutsportletaction
--buildpath:\
-	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
-	javax.portlet;version='2.0.0',\
-	org.osgi.service.component.annotations;version='1.3.0'

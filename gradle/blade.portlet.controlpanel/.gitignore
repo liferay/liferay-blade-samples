@@ -1,6 +1,0 @@
-bin
-/build
-.project
-.settings
-.classpath
-.settings/*

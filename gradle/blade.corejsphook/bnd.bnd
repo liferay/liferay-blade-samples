@@ -1,6 +1,0 @@
-Bundle-Description: Overrides core/kernel JSPs by providing new JSPs in the META-INF/jsps folder.
-Bundle-Version: 1.0.0
--sources: true
-
--jsp: *.jsp,*.jspf
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin

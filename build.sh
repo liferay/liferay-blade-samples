@@ -3,12 +3,6 @@ set -xe
 repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
-  cd bndtools
-  ./gradlew clean build
-  cd "$repoDir"
-  cd gradle
-  ./gradlew clean build
-  cd "$repoDir"
   cd liferay-gradle
   ./gradlew clean build
   cd "$repoDir"

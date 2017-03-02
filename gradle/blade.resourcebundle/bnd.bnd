@@ -1,4 +1,0 @@
-Bundle-Version: 1.0.0
--sources: true
-
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin

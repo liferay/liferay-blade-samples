@@ -11,24 +11,10 @@ start quickly and easily.
 
 The template projects are categorized under four build tools:
 
-* `gradle` - A set of Liferay projects that can be bootstrapped onto the
-  *Gradle* based development environment.
 * `liferay-gradle` - A set of Liferay projects that can be bootstrapped onto the
   `com.liferay.plugin` (a Gradle plugin) based development environment.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
-* `bndtools` - A set of Liferay projects that can be bootstrapped onto the
-  *Bndtools* based development environment.
-
-### A Note on BNDTools
-
-There are 2 additional projects in the `/bndtools/` folder that you will need to
-build and publish the modules:
-
-* `/bndtools/cnf` - The Bndtools configuration project
-* `/bndtools/blade.run` - A Bndtools project which can push bundles into an OSGi
-  container and run them. The `biz.aQute.remote.agent-X.X.X.jar` must be
-  deployed first before this project will function properly.
 
 ## Frameworks
 
@@ -66,8 +52,6 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.authenticator.shiro](./liferay-gradle/blade.authenticator.shiro) |
-| BND Tools  | [./bndtools/blade.authenticator.shiro](./bndtools/blade.authenticator.shiro)    |
-| Gradle     | [./gradle/blade.authenticator.shiro](./gradle/blade.authenticator.shiro)        |
 | Maven      | [./maven/blade.authenticator.shiro](./maven/blade.authenticator.shiro)          |
 
 ### `auth.failure` and `auth.max.failures`
@@ -82,8 +66,6 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.authfailure](./liferay-gradle/blade.authfailure) |
-| BND Tools  | [./bndtools/blade.authfailure](./bndtools/blade.authfailure)    |
-| Gradle     | [./gradle/blade.authfailure](./gradle/blade.authfailure)        |
 | Maven      | [./maven/blade.authfailure](./maven/blade.authfailure)          |
 
 ### `AutoLogin`
@@ -98,8 +80,6 @@ point.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.autologin](./liferay-gradle/blade.autologin) |
-| BND Tools  | [./bndtools/blade.autologin](./bndtools/blade.autologin)    |
-| Gradle     | [./gradle/blade.autologin](./gradle/blade.autologin)        |
 | Maven      | [./maven/blade.autologin](./maven/blade.autologin)          |
 
 ### `ConfigurationAction`
@@ -114,8 +94,6 @@ integration point.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.configurationaction](./liferay-gradle/blade.configurationaction) |
-| BND Tools  | [./bndtools/blade.configurationaction](./bndtools/blade.configurationaction)    |
-| Gradle     | [./gradle/blade.configurationaction](./gradle/blade.configurationaction)        |
 | Maven      | [./maven/blade.configurationaction](./maven/blade.configurationaction)          |
 
 ### Control Menu Entry
@@ -129,8 +107,6 @@ integration point.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.controlmenuentry](./liferay-gradle/blade.controlmenuentry) |
-| BND Tools  | [./bndtools/blade.controlmenuentry](./bndtools/blade.controlmenuentry)    |
-| Gradle     | [./gradle/blade.controlmenuentry](./gradle/blade.controlmenuentry)        |
 | Maven      | [./maven/blade.controlmenuentry](./maven/blade.controlmenuentry)          |
 
 ### Core JSP Hook
@@ -144,8 +120,6 @@ integration point.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.corejsphook](./liferay-gradle/blade.corejsphook) |
-| BND Tools  | [./bndtools/blade.corejsphook](./bndtools/blade.corejsphook)    |
-| Gradle     | [./gradle/blade.corejsphook](./gradle/blade.corejsphook)        |
 | Maven      | [./maven/blade.corejsphook](./maven/blade.corejsphook)          |
 
 ### `FriendlyURLMapper`
@@ -169,8 +143,6 @@ URLs:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.friendlyurl](./liferay-gradle/blade.friendlyurl) |
-| BND Tools  | [./bndtools/blade.friendlyurl](./bndtools/blade.friendlyurl)    |
-| Gradle     | [./gradle/blade.friendlyurl](./gradle/blade.friendlyurl)        |
 | Maven      | [./maven/blade.friendlyurl](./maven/blade.friendlyurl)          |
 
 ### Gogo Command
@@ -185,8 +157,6 @@ Liferay services through DS (Declarative Services).
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.gogo](./liferay-gradle/blade.gogo) |
-| BND Tools  | [./bndtools/blade.gogo](./bndtools/blade.gogo)    |
-| Gradle     | [./gradle/blade.gogo](./gradle/blade.gogo)        |
 | Maven      | [./maven/blade.gogo](./maven/blade.gogo)          |
 
 ### JSP Hook
@@ -201,8 +171,6 @@ Liferay services through DS (Declarative Services).
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.hook.jsp](./liferay-gradle/blade.hook.jsp) |
-| BND Tools  | [./bndtools/blade.hook.jsp](./bndtools/blade.hook.jsp)        |
-| Gradle     | [./gradle/blade.hook.jsp](./gradle/blade.hook.jsp)        |
 | Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
 
 ### Resource Bundle
@@ -216,8 +184,6 @@ Liferay services through DS (Declarative Services).
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.hook.resourcebundle](./liferay-gradle/blade.hook.resourcebundle) |
-| BND Tools  | [./bndtools/blade.hook.resourcebundle](./bndtools/blade.hook.resourcebundle)      |
-| Gradle     | [./gradle/blade.hook.resourcebundle](./gradle/blade.hook.resourcebundle)      |
 | Maven      | [./maven/blade.hook.resourcebundle](./maven/blade.hook.resourcebundle)        |
 
 ### `IndexerPostProcessor`
@@ -232,8 +198,6 @@ Liferay services through DS (Declarative Services).
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.indexerpostprocessor](./liferay-gradle/blade.indexerpostprocessor) |
-| BND Tools  | [./bndtools/blade.indexerpostprocessor](./bndtools/blade.indexerpostprocessor)      |
-| Gradle     | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor)      |
 | Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
 
 ### `login.events.pre`
@@ -278,8 +242,6 @@ following keys are supported:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.lifecycle.loginpreaction](./liferay-gradle/blade.lifecycle.loginpreaction) |
-| BND Tools  | [./bndtools/blade.lifecycle.loginpreaction](./bndtools/blade.lifecycle.loginpreaction)      |
-| Gradle     | [./gradle/blade.lifecycle.loginpreaction](./gradle/blade.lifecycle.loginpreaction)      |
 | Maven      | [./maven/blade.lifecycle.loginpreaction](./maven/blade.lifecycle.loginpreaction)        |
 
 ### `ModelListener`
@@ -298,8 +260,6 @@ automatically set to *Title generated by model listener!*.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.modellistener](./liferay-gradle/blade.modellistener) |
-| BND Tools  | [./bndtools/blade.modellistener](./bndtools/blade.modellistener)  |
-| Gradle     | [./gradle/blade.modellistener](./gradle/blade.modellistener)      |
 | Maven      | [./maven/blade.modellistener](./maven/blade.modellistener)        |
 
 ### `PollerProcessor`
@@ -314,8 +274,6 @@ automatically set to *Title generated by model listener!*.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.pollprocessor](./liferay-gradle/blade.pollprocessor) |
-| BND Tools  | [./bndtools/blade.pollprocessor](./bndtools/blade.pollprocessor)      |
-| Gradle     | [./gradle/blade.pollprocessor](./gradle/blade.pollprocessor)      |
 | Maven      | [./maven/blade.pollprocessor](./maven/blade.pollprocessor)        |
 
 ### `MVCActionCommand`
@@ -336,8 +294,6 @@ redeploy the Portlet plugin).
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.actioncommand](./liferay-gradle/blade.portlet.actioncommand) |
-| BND Tools  | [./bndtools/blade.portlet.actioncommand](./bndtools/blade.portlet.actioncommand)  |
-| Gradle     | [./gradle/blade.portlet.actioncommand](./gradle/blade.portlet.actioncommand)      |
 | Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
 
 ### Portlet
@@ -354,8 +310,6 @@ framework for registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.blueprint](./liferay-gradle/blade.portlet.blueprint) |
-| BND Tools  | [./bndtools/blade.portlet.blueprint](./bndtools/blade.portlet.blueprint)  |
-| Gradle     | [./gradle/blade.portlet.blueprint](./gradle/blade.portlet.blueprint)      |
 | Maven      | [./maven/blade.portlet.blueprint](./maven/blade.portlet.blueprint)        |
 
 #### Liferay MVC Portlet - Using DS (Declarative Services) Framework
@@ -368,8 +322,6 @@ Services) framework for registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.ds](./liferay-gradle/blade.portlet.ds) |
-| BND Tools  | [./bndtools/blade.portlet.ds](./bndtools/blade.portlet.ds)  |
-| Gradle     | [./gradle/blade.portlet.ds](./gradle/blade.portlet.ds)      |
 | Maven      | [./maven/blade.portlet.ds](./maven/blade.portlet.ds)        |
 
 #### JSP Portlet 
@@ -383,8 +335,6 @@ Services) framework for registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.jsp](./liferay-gradle/blade.portlet.jsp) |
-| BND Tools  | [./bndtools/blade.portlet.jsp](./bndtools/blade.portlet.jsp) |
-| Gradle     | [./gradle/blade.portlet.jsp](./gradle/blade.portlet.jsp)      |
 | Maven      | [./maven/blade.portlet.jsp](./maven/blade.portlet.jsp)        |
 
 #### Liferay MVC Portlet - Using Raw OSGI APIs
@@ -397,8 +347,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.osgiapi](./liferay-gradle/blade.portlet.osgiapi) |
-| BND Tools  | [./bndtools/blade.portlet.osgiapi](./bndtools/blade.portlet.osgiapi)  |
-| Gradle     | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi)      |
 | Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
 
 ### Configuration Icon
@@ -412,8 +360,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.configuration.icon](./liferay-gradle/blade.portlet.configuration.icon) |
-| BND Tools  | [./bndtools/blade.portlet.configuration.icon](./bndtools/blade.portlet.configuration.icon)  |
-| Gradle     | [./gradle/blade.portlet.configuration.icon](./gradle/blade.portlet.configuration.icon)      |
 | Maven      | [./maven/blade.portlet.configuration.icon](./maven/blade.portlet.configuration.icon)        |
 
 ### Control Panel
@@ -427,8 +373,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.controlpanel](./liferay-gradle/blade.portlet.controlpanel) |
-| BND Tools  | [./bndtools/blade.portlet.controlpanel](./bndtools/blade.portlet.controlpanel)  |
-| Gradle     | [./gradle/blade.portlet.controlpanel](./gradle/blade.portlet.controlpanel)      |
 | Maven      | [./maven/blade.portlet.controlpanel](./maven/blade.portlet.controlpanel)        |
 
 ### `PortletFilter`
@@ -442,8 +386,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.filter](./liferay-gradle/blade.portlet.filter) |
-| BND Tools  | [./bndtools/blade.portlet.filter](./bndtools/blade.portlet.filter)  |
-| Gradle     | [./gradle/blade.portlet.filter](./gradle/blade.portlet.filter)      |
 | Maven      | [./maven/blade.portlet.filter](./maven/blade.portlet.filter)        |
 
 ### Toolbar Contributor
@@ -457,8 +399,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.portlet.toolbar.contributor](./liferay-gradle/blade.portlet.toolbar.contributor) |
-| BND Tools  | [./bndtools/blade.portlet.toolbar.contributor](./bndtools/blade.portlet.toolbar.contributor)  |
-| Gradle     | [./gradle/blade.portlet.toolbar.contributor](./gradle/blade.portlet.toolbar.contributor)      |
 | Maven      | [./maven/blade.portlet.toolbar.contributor](./maven/blade.portlet.toolbar.contributor)        |
 
 ### Resource Bundle
@@ -472,8 +412,6 @@ registering a portlet.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.resourcebundle](./liferay-gradle/blade.resourcebundle) |
-| BND Tools  | [./bndtools/blade.resourcebundle](./bndtools/blade.resourcebundle)  |
-| Gradle     | [./gradle/blade.resourcebundle](./gradle/blade.resourcebundle)      |
 | Maven      | [./maven/blade.resourcebundle](./maven/blade.resourcebundle)        |
 
 ### REST Service
@@ -504,8 +442,6 @@ Then you can access the service via
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.rest](./liferay-gradle/blade.rest) |
-| BND Tools  | [./bndtools/blade.rest](./bndtools/blade.rest)  |
-| Gradle     | [./gradle/blade.rest](./gradle/blade.rest)      |
 | Maven      | [./maven/blade.rest](./maven/blade.rest)        |
 
 ### Scheduler Entry
@@ -519,8 +455,6 @@ Then you can access the service via
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.schedulerentry](./liferay-gradle/blade.schedulerentry) |
-| BND Tools  | [./bndtools/blade.schedulerentry](./bndtools/blade.schedulerentry)  |
-| Gradle     | [./gradle/blade.schedulerentry](./gradle/blade.schedulerentry)      |
 | Maven      | [./maven/blade.schedulerentry](./maven/blade.schedulerentry)        |
 
 ### `ServiceWrapper`
@@ -535,8 +469,6 @@ Then you can access the service via
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.service.hook.user](./liferay-gradle/blade.service.hook.user) |
-| BND Tools  | [./bndtools/blade.service.hook.user](./bndtools/blade.service.hook.user)  |
-| Gradle     | [./gradle/blade.service.hook.user](./gradle/blade.service.hook.user)      |
 | Maven      | [./maven/blade.service.hook.user](./maven/blade.service.hook.user)        |
 
 ### Service Builder
@@ -559,14 +491,6 @@ project separated into four bundles:
 | Liferay Gradle | Service      | [./liferay-gradle/blade.servicebuilder.svc](./liferay-gradle/blade.servicebuilder.svc)  |
 | Liferay Gradle | Test         | [./liferay-gradle/blade.servicebuilder.test](./liferay-gradle/blade.servicebuilder.test)  |
 | Liferay Gradle | Web          | [./liferay-gradle/blade.servicebuilder.web](./liferay-gradle/blade.servicebuilder.web)  |
-| BND Tools  | API          | [./bndtools/blade.servicebuilder.api](./bndtools/blade.servicebuilder.api)  |
-| BND Tools  | Service      | [./bndtools/blade.servicebuilder.svc](./bndtools/blade.servicebuilder.svc)  |
-| BND Tools  | Test         | [./bndtools/blade.servicebuilder.test](./bndtools/blade.servicebuilder.test)  |
-| BND Tools  | Web          | [./bndtools/blade.servicebuilder.web](./bndtools/blade.servicebuilder.web)  |
-| Gradle     | API          | [./gradle/blade.servicebuilder.api](./gradle/blade.servicebuilder.api)  |
-| Gradle     | Service      | [./gradle/blade.servicebuilder.svc](./gradle/blade.servicebuilder.svc)  |
-| Gradle     | Test         | [./gradle/blade.servicebuilder.test](./gradle/blade.servicebuilder.test)  |
-| Gradle     | Web          | [./gradle/blade.servicebuilder.web](./gradle/blade.servicebuilder.web)  |
 | Maven      | All (parent) | [./maven/blade.servicebuilder](./maven/blade.servicebuilder)  |
 
 ### Simulation Panel
@@ -580,8 +504,6 @@ project separated into four bundles:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.simulation.panel.app](./liferay-gradle/blade.simulation.panel.app) |
-| BND Tools  | [./bndtools/blade.simulation.panel.app](./bndtools/blade.simulation.panel.app)  |
-| Gradle     | [./gradle/blade.simulation.panel.app](./gradle/blade.simulation.panel.app)      |
 | Maven      | [./maven/blade.simulation.panel.app](./maven/blade.simulation.panel.app)        |
 
 ### `StrutsAction`
@@ -595,8 +517,6 @@ project separated into four bundles:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.strutsaction](./liferay-gradle/blade.strutsaction) |
-| BND Tools  | [./bndtools/blade.strutsaction](./bndtools/blade.strutsaction)  |
-| Gradle     | [./gradle/blade.strutsaction](./gradle/blade.strutsaction)      |
 | Maven      | [./maven/blade.strutsaction](./maven/blade.strutsaction)        |
 
 ### `StrutsPortletAction`
@@ -611,8 +531,6 @@ project separated into four bundles:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.strutsportletaction](./liferay-gradle/blade.strutsportletaction) |
-| BND Tools  | [./bndtools/blade.strutsportletaction](./bndtools/blade.strutsportletaction)  |
-| Gradle     | [./gradle/blade.strutsportletaction](./gradle/blade.strutsportletaction)      |
 | Maven      | [./maven/blade.strutsportletaction](./maven/blade.strutsportletaction)        |
 
 ### Context Contributor
@@ -626,8 +544,6 @@ project separated into four bundles:
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Gradle | [./liferay-gradle/blade.template.context.contributor](./liferay-gradle/blade.template.context.contributor) |
-| BND Tools  | [./bndtools/blade.template.context.contributor](./bndtools/blade.template.context.contributor)  |
-| Gradle     | [./gradle/blade.template.context.contributor](./gradle/blade.template.context.contributor)      |
 | Maven      | [./maven/blade.template.context.contributor](./maven/blade.template.context.contributor)        |
 
 ## Liferay Extension Points Without Template Projects
@@ -712,5 +628,3 @@ other three build tools, once the submission is approved.
 [OSGI Compendium R5](http://www.osgi.org/Download/File?url=/download/r5/osgi.cmpn-5.0.0.pdf)
 
 [Blueprint](http://www.eclipse.org/gemini/blueprint/)
-
-[Bndtools](http://www.bndtools.org)

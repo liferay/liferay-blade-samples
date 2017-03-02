@@ -1,9 +1,0 @@
-Bundle-Version: 1.0.0
-Require-Capability: osgi.contract; filter:="(&(osgi.contract=JavaJAXRS)(version=2))"
--sources: true
-
-Private-Package: com.liferay.blade.samples.rest
--buildpath:\
-	com.liferay.portal:com.liferay.portal.kernel;version='2.0.0',\
-	javax.ws.rs:javax.ws.rs-api;version=2.0.1,\
-	org.osgi.service.component.annotations;version='1.3.0'
