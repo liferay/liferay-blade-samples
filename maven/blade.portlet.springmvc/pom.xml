@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.liferay.blade.samples</groupId>
-	<artifactId>blade.springmvc.web</artifactId>
+	<artifactId>blade.portlet.springmvc</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<properties>
