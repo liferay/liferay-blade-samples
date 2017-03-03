@@ -47,6 +47,7 @@
 		<module>blade.portlet.osgiapi</module>
 		<module>blade.portlet.rendercommand</module>
 		<module>blade.portlet.resourcecommand</module>
+		<module>blade.portlet.springmvc</module>
 		<module>blade.portlet.toolbar.contributor</module>
 		<module>blade.resourcebundle</module>
 		<module>blade.rest</module>
@@ -58,7 +59,6 @@
 		<module>blade.servicebuilder.test</module>
 		<module>blade.servicebuilder.web</module>
 		<module>blade.simulation.panel.app</module>
-		<module>blade.springmvc.web</module>
 		<module>blade.strutsaction</module>
 		<module>blade.strutsportletaction</module>
 		<module>blade.template.context.contributor</module>
