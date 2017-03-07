@@ -49,8 +49,7 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 /**
- * class SpringMVCPortletViewController: The Spring MVC portlet view controller
- * class.
+ * Provides the Spring MVC portlet view controller class.
  *
  * @author Liferay
  */
@@ -59,10 +58,11 @@ import javax.portlet.RenderResponse;
 public class SpringMVCPortletViewController {
 
 	/**
-	 * view: This is the default method invoked for the normal view.
-	 * @param request
-	 * @param response
-	 * @return String the view result.
+	 * Returns the normal view.
+	 *
+	 * @param  request the render request
+	 * @param  response the render response
+	 * @return the view result
 	 */
 	@RenderMapping
 	public String view(RenderRequest request, RenderResponse response) {
@@ -70,11 +70,11 @@ public class SpringMVCPortletViewController {
 	}
 
 	/**
-	 * view2: This is another view method that is invoked when the action key
-	 * is set to view.
-	 * @param request
-	 * @param response
-	 * @return String The view result.
+	 * Returns the view when the action key is set to <code>view</code>.
+	 *
+	 * @param  request the render request
+	 * @param  response the render response
+	 * @return the view result
 	 */
 	@RenderMapping(params = "action=view")
 	public String view2(RenderRequest request, RenderResponse response) {
@@ -82,10 +82,11 @@ public class SpringMVCPortletViewController {
 	}
 
 	/**
-	 * addFoo: This is the view handler when the action is addFoo.
-	 * @param request
-	 * @param response
-	 * @return String The view result.
+	 * Handles the view when the action is <code>addFoo</code>.
+	 *
+	 * @param  request the render request
+	 * @param  response the render response
+	 * @return the view result
 	 */
 	@RenderMapping(params = "action=addFoo")
 	public String addFoo(RenderRequest request, RenderResponse response) {
@@ -93,10 +94,11 @@ public class SpringMVCPortletViewController {
 	}
 
 	/**
-	 * editFoo: This is the view handler when the action is editFoo.
-	 * @param request
-	 * @param response
-	 * @return String The view result.
+	 * Handles the view when the action is <code>editFoo</code>.
+	 *
+	 * @param  request the render request
+	 * @param  response the render response
+	 * @return the view result
 	 */
 	@RenderMapping(params = "action=editFoo")
 	public String editFoo(RenderRequest request, RenderResponse response) {
@@ -104,25 +106,26 @@ public class SpringMVCPortletViewController {
 	}
 
 	/**
-	 * updateFoo: This is the action handler when the action key is updateFoo,
-	 * this will be the case for both Foo adds and updates.
-	 * @param actionRequest
-	 * @param response
-	 * @throws Exception
+	 * Handles the action when the action key is <code>updateFoo</code>. This is
+	 * the case when Foo is added and updated.
+	 *
+	 * @param  actionRequest the action request
+	 * @param  response the action response
+	 * @throws Exception if an exception occurred
 	 */
 	@ActionMapping(params = "action=updateFoo")
 	public void updateFoo(ActionRequest actionRequest, ActionResponse response)
 			throws Exception {
-		// see if there is an existing foo id
+		// See if there is an existing Foo ID.
 		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
-		// extract the form field values.
+		// Extract the form field values.
 		String field1 = ParamUtil.getString(actionRequest, "field1");
 		boolean field2 = ParamUtil.getBoolean(actionRequest, "field2");
 		int field3 = ParamUtil.getInteger(actionRequest, "field3");
 		String field5 = ParamUtil.getString(actionRequest, "field5");
 
-		// convert the calendar details into a date.
+		// Convert the calendar details into a date.
 		int dateMonth = ParamUtil.getInteger(actionRequest, "field4Month");
 		int dateDay = ParamUtil.getInteger(actionRequest, "field4Day");
 		int dateYear = ParamUtil.getInteger(actionRequest, "field4Year");
@@ -138,30 +141,30 @@ public class SpringMVCPortletViewController {
 				dateMonth, dateDay, dateYear, dateHour, dateMinute,
 				PortalException.class);
 
-		// if foo id is less than or equal to zero, we're adding a new Foo
+		// If the Foo ID is less than or equal to zero, add a new Foo.
 		if (fooId <= 0) {
 			_log.info("Adding a new foo...");
 
-			// create the Foo
+			// Create the Foo.
 			Foo foo = FooLocalServiceUtil.createFoo(0);
 
-			// set the fields
+			// Set the Foo's fields.
 			foo.setField1(field1);
 			foo.setField2(field2);
 			foo.setField3(field3);
 			foo.setField4(field4);
 			foo.setField5(field5);
 
-			// Invoke the service layer to add the Foo
+			// Invoke the service layer to add the foo.
 			FooLocalServiceUtil.addFooWithoutId(foo);
 		}
 		else {
 			_log.info("Updating a new foo...");
 
-			// doing an update, retrieve the current Foo
+			// Retrieve the current Foo during the update.
 			Foo foo = FooLocalServiceUtil.fetchFoo(fooId);
 
-			// update the Foo fields
+			// Update the Foo's fields.
 			foo.setFooId(fooId);
 			foo.setField1(field1);
 			foo.setField2(field2);
@@ -169,17 +172,18 @@ public class SpringMVCPortletViewController {
 			foo.setField4(field4);
 			foo.setField5(field5);
 
-			// Invoke the service layer to update the Foo
+			// Invoke the service layer to update the Foo.
 			FooLocalServiceUtil.updateFoo(foo);
 		}
 	}
 
 	/**
-	 * deleteFoo: This is the action handler when the action key is deleteFoo,
-	 * this will be the case when we are deleting a Foo.
-	 * @param actionRequest
-	 * @param response
-	 * @throws Exception
+	 * Handles the action when the action key is <code>deleteFoo</code>. This is
+	 * the case when Foo is deleted.
+	 *
+	 * @param  actionRequest the action request
+	 * @param  response the action response
+	 * @throws Exception if an exception occurred
 	 */
 	@ActionMapping(params = "action=deleteFoo")
 	public void deleteFoo(ActionRequest actionRequest, ActionResponse response)
