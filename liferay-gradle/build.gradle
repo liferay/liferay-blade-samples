@@ -22,7 +22,7 @@ subprojects {
 	apply plugin: "com.liferay.plugin"
 
 	plugins.withId("java") {
-		sourceCompatibility = "1.7"
+		sourceCompatibility = "1.8"
 	}
 
 
