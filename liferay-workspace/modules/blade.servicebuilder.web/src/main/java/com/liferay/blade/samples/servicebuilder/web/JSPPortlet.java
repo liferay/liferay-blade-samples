@@ -50,9 +50,9 @@ import org.osgi.service.component.annotations.Reference;
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.name=com_liferay_blade_samples_servicebuilder_web",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
+		"javax.portlet.name=com_liferay_blade_samples_servicebuilder_web",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
@@ -104,10 +104,6 @@ public class JSPPortlet extends MVCPortlet {
 
 		super.render(request, response);
 	}
-
-	@Reference
-	private volatile FooLocalService _fooLocalService;
-
 
 	protected void deleteFoo(ActionRequest actionRequest) throws Exception {
 		long fooId = ParamUtil.getLong(actionRequest, "fooId");
@@ -161,4 +157,8 @@ public class JSPPortlet extends MVCPortlet {
 			getFooLocalService().updateFoo(foo);
 		}
 	}
+
+	@Reference
+	private volatile FooLocalService _fooLocalService;
+
 }

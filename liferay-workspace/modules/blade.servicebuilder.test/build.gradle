@@ -3,4 +3,3 @@ dependencies {
 	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
 	compile 'org.osgi:osgi.cmpn:6.0.0'
 }
-

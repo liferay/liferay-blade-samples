@@ -10,5 +10,4 @@
 	<extension qualifier="graphene">
 		<property name="url">http://localhost:8080</property>
 	</extension>
-
 </arquillian>

@@ -16,43 +16,42 @@
 
 package com.liferay.blade.samples.servicebuilder.test;
 
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
+
 import java.util.Date;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
-
 /**
  * @author Liferay
  */
-@Component(
-		immediate=true
-)
+@Component(immediate = true)
 public class AddTestData {
 
-	@Reference
-	private  FooLocalService _fooLocalService;
-		
 	@Activate
 	public void addTestData() {
 		int entries = 10;
-		
-		while (entries > 0) {			
+
+		while (entries > 0) {
 			Foo foo = _fooLocalService.createFoo(0);
-			
+
 			foo.setField1("new field1 entry" + entries);
 			foo.setField2(true);
 			foo.setField3(10);
 			foo.setField4(new Date());
 			foo.setField5("new field5 entry" + entries);
 			foo.isNew();
-	
+
 			_fooLocalService.addFooWithoutId(foo);
-			
+
 			entries--;
 		}
 	}
+
+	@Reference
+	private FooLocalService _fooLocalService;
+
 }

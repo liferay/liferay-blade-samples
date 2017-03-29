@@ -33,24 +33,23 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class UpdateFooCommand {
 
-	
 	public int updatefoo() {
 		int retval = 0;
-		
+
 		List<Foo> foos = _fooLocalService.getFoos(-1, -1);
-		
+
 		if (foos != null && foos.size() > 0) {
 			Foo foo = foos.get(0);
-			
+
 			foo.setField1("UPDATED FIELD");
-			
+
 			_fooLocalService.updateFoo(foo);
 		}
-		
+
 		return retval;
 	}
 
 	@Reference
-	private  FooLocalService _fooLocalService;
+	private FooLocalService _fooLocalService;
 
 }

@@ -33,12 +33,11 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class AddFooCommand {
 
-	
 	public int addfoo() {
 		int retval = 0;
-		
+
 		Foo foo = _fooLocalService.createFoo(0);
-		
+
 		foo.setField1("field1");
 		foo.setField2(true);
 		foo.setField3(10);
@@ -47,11 +46,11 @@ public class AddFooCommand {
 		foo.isNew();
 
 		_fooLocalService.addFooWithoutId(foo);
-		
+
 		return retval;
 	}
 
 	@Reference
-	private  FooLocalService _fooLocalService;
+	private FooLocalService _fooLocalService;
 
 }
