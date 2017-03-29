@@ -19,34 +19,36 @@ package com.liferay.blade.samples.servicebuilder.test;
 import com.liferay.blade.samples.servicebuilder.model.Foo;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
 
-import java.util.List;
+import java.util.Date;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Liferay
  */
-@Component(
-	property = {"osgi.command.function=updatefoo", "osgi.command.scope=blade"},
-	service = Object.class
-)
-public class UpdateFooCommand {
+@Component(immediate = true)
+public class AddTestData {
 
-	public int updatefoo() {
-		int retval = 0;
+	@Activate
+	public void addTestData() {
+		int entries = 10;
 
-		List<Foo> foos = _fooLocalService.getFoos(-1, -1);
+		while (entries > 0) {
+			Foo foo = _fooLocalService.createFoo(0);
 
-		if (foos != null && foos.size() > 0) {
-			Foo foo = foos.get(0);
+			foo.setField1("new field1 entry" + entries);
+			foo.setField2(true);
+			foo.setField3(10);
+			foo.setField4(new Date());
+			foo.setField5("new field5 entry" + entries);
+			foo.isNew();
 
-			foo.setField1("UPDATED FIELD");
+			_fooLocalService.addFooWithoutId(foo);
 
-			_fooLocalService.updateFoo(foo);
+			entries--;
 		}
-
-		return retval;
 	}
 
 	@Reference

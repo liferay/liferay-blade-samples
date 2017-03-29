@@ -33,12 +33,11 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class ListFooCommand {
 
-	
 	public List<Foo> listfoo() {
 		return _fooLocalService.getFoos(-1, -1);
 	}
 
 	@Reference
-	private  FooLocalService _fooLocalService;
+	private FooLocalService _fooLocalService;
 
 }

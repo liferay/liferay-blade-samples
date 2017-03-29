@@ -33,22 +33,21 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class DeleteFooCommand {
 
-	
 	public int deletefoo() {
 		int retval = 0;
-		
+
 		List<Foo> foos = _fooLocalService.getFoos(-1, -1);
-		
+
 		if (foos != null && foos.size() > 0) {
 			Foo foo = foos.get(0);
-			
+
 			_fooLocalService.deleteFoo(foo);
 		}
-		
+
 		return retval;
 	}
 
 	@Reference
-	private  FooLocalService _fooLocalService;
+	private FooLocalService _fooLocalService;
 
 }
