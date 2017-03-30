@@ -29,10 +29,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Writer;
-
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +44,6 @@ import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-
 import okhttp3.Request.Builder;
 
 import org.gradle.testkit.runner.BuildTask;
@@ -57,7 +60,13 @@ import org.junit.Test;
 public class BladeTest {
 
 	@BeforeClass
-	public static void setUpClass() throws Exception {
+	public static void setUpClass() throws Exception { 
+		Path currentRoot = new File(System.getProperty("user.dir")).getParentFile().toPath();
+
+		Path path = Paths.get(currentRoot.toString(), "bundles/data");
+		
+		deltree(path);
+		
 		if (_isWindows()) {
 			BladeCLI.startServerWindows(
 				new File(System.getProperty("user.dir")).getParentFile(),
@@ -339,22 +348,6 @@ public class BladeTest {
 		BladeCLI.startBundle(bundleIDService);
 		BladeCLI.startBundle(bundleIDTest);
 
-		BladeCLI.execute("sh", "addfoo");
-		assertTrue(
-			"Unable to add",
-			BladeCLI.execute("sh", "listfoo").contains("field1=field1"));
-
-		BladeCLI.execute("sh", "updatefoo");
-
-		assertTrue(
-			"Unable to update",
-			BladeCLI.execute("sh", "listfoo").contains("updated field"));
-
-		BladeCLI.execute("sh", "deletefoo");
-		assertTrue(
-			"Unable to delete",
-			BladeCLI.execute("sh", "listfoo").equals("listfoo"));
-
 		BladeCLI.uninstallBundle(bundleIDApi, bundleIDService, bundleIDTest);
 	}
 
@@ -476,6 +469,34 @@ public class BladeTest {
 		BladeCLI.startBundle(bundleID);
 
 		BladeCLI.uninstallBundle(bundleID);
+	}
+	
+	private static void deltree(Path path) throws IOException {
+		Files.walkFileTree(
+			path,
+			new SimpleFileVisitor<Path>() {
+
+				@Override
+				public FileVisitResult postVisitDirectory(
+						Path dir, IOException exc)
+					throws IOException {
+
+					Files.delete(dir);
+
+					return FileVisitResult.CONTINUE;
+				}
+
+				@Override
+				public FileVisitResult visitFile(
+						Path file, BasicFileAttributes attrs)
+					throws IOException {
+
+					Files.delete(file);
+
+					return FileVisitResult.CONTINUE;
+				}
+
+			});
 	}
 
 	private static boolean _isWindows() {
