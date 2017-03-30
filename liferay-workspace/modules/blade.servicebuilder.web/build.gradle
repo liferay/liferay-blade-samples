@@ -9,6 +9,8 @@ dependencies {
 	testIntegrationCompile group: "junit", name: "junit", version: "4.12"
 	testIntegrationCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
 	testIntegrationCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+	
+    testIntegrationCompile project(path: ':tests', configuration: 'tests')
 }
 
 startTestableTomcat {
