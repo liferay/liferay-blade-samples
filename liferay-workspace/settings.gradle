@@ -13,4 +13,4 @@ buildscript {
 
 apply plugin: "com.liferay.workspace"
 
-include 'tests'
+include 'tests:blade.sample.tests', 'tests:blade.servicebuilder.test'
