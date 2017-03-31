@@ -35,7 +35,6 @@ include(
 	'blade.service.hook.user',
 	'blade.servicebuilder.api',
 	'blade.servicebuilder.svc',
-	'blade.servicebuilder.test',
 	'blade.servicebuilder.web',
 	'blade.simulation.panel.app',
 	'blade.strutsaction',
