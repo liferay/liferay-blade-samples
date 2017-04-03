@@ -12,8 +12,6 @@ startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-testIntegration.mustRunAfter ":tests:blade.sample.tests:test"
-
 testIntegration {
 	dependsOn jar, ":initBundle"
 	dependsOn ":modules:blade.servicebuilder.api:deploy"
