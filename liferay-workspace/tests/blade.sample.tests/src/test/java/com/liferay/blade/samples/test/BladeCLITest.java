@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.tests;
+package com.liferay.blade.samples.test;
 
 import static org.junit.Assert.assertTrue;
 
@@ -38,7 +38,7 @@ import org.apache.commons.io.FileUtils;
 /**
  * @author Lawrence Lee
  */
-public class BladeCLI {
+public class BladeCLITest {
 
 	public static File bladeJar;
 
