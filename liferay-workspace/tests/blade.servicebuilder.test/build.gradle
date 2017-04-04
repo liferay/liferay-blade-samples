@@ -1,0 +1,31 @@
+dependencies {
+	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
+	compileOnly 'javax.portlet:portlet-api:2.0'
+	compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+	compileOnly  project(':modules:blade.servicebuilder.api')
+	compileOnly 'org.osgi:osgi.cmpn:6.0.0'
+
+	testIntegrationCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.5"
+	testIntegrationCompile group: "junit", name: "junit", version: "4.12"
+	testIntegrationCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
+	testIntegrationCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+}
+
+startTestableTomcat {
+	checkTimeout = 10 * 60 * 1000
+}
+
+testIntegration {
+	dependsOn jar, ":initBundle"
+	dependsOn ":modules:blade.servicebuilder.api:deploy"
+	dependsOn ":modules:blade.servicebuilder.svc:deploy"
+	dependsOn ":modules:blade.servicebuilder.web:deploy"
+
+	systemProperty 'jarFile', jar.archivePath
+}
+
+stopTestableTomcat {
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
+}

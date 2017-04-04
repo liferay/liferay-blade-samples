@@ -56,7 +56,6 @@
 		<module>blade.service.hook.user</module>
 		<module>blade.servicebuilder.api</module>
 		<module>blade.servicebuilder.svc</module>
-		<module>blade.servicebuilder.test</module>
 		<module>blade.servicebuilder.web</module>
 		<module>blade.simulation.panel.app</module>
 		<module>blade.strutsaction</module>

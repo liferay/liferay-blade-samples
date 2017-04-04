@@ -12,5 +12,3 @@ buildscript {
 }
 
 apply plugin: "com.liferay.workspace"
-
-include 'tests'
