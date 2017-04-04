@@ -62,7 +62,7 @@ import org.junit.Test;
  */
 public class BladeTest {
 
-	public static void deltree(Path path) throws IOException {
+	public static void delFileTree(Path path) throws IOException {
 		Files.walkFileTree(
 			path,
 			new SimpleFileVisitor<Path>() {
@@ -96,7 +96,7 @@ public class BladeTest {
 
 		Path path = Paths.get(currentRoot.toString(), "bundles/data");
 
-		deltree(path);
+		delFileTree(path);
 
 		if (_isWindows()) {
 			BladeCLI.startServerWindows(
