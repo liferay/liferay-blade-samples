@@ -17,5 +17,13 @@
 <%@ include file="/init.jsp" %>
 
 <p>
-	<b><liferay-ui:message key="blade_language_web_LanguageWebPortlet.caption" /></b>
+	<liferay-ui:message key="blade_language_web_LanguageWebPortlet.caption" />
+</p>
+
+<p>
+	<liferay-ui:message key="blade_language_LanguageWebPortlet.caption" />
+</p>
+
+<p>
+	<liferay-ui:message key="blade_language_web_override_LanguageWebPortlet.caption" />
 </p>
