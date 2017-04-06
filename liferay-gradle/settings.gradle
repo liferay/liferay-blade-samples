@@ -12,6 +12,8 @@ include(
 	'blade.hook.jsp',
 	'blade.hook.resourcebundle',
 	'blade.indexerpostprocessor',
+	'blade.language',
+	'blade.language.web',
 	'blade.lifecycle.loginpreaction',
 	'blade.modellistener',
 	'blade.pollprocessor',
