@@ -7,4 +7,3 @@ liferay.resource.bundle;resource.bundle.base.name:String="(bundle.symbolic.name=
 liferay.resource.bundle;resource.bundle.aggregate:String="(&(bundle.symbolic.name=blade.language.web)(!(aggregate=true))),(bundle.symbolic.name=blade.language)";bundle.symbolic.name=blade.language.web;resource.bundle.base.name="content.Language";service.ranking:long="1";aggregate=true;servlet.context.name=blade-language-web
 
 Web-ContextPath:/blade-language-web
-
