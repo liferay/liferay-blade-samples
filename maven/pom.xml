@@ -33,6 +33,8 @@
 		<module>blade.hook.jsp</module>
 		<module>blade.hook.resourcebundle</module>
 		<module>blade.indexerpostprocessor</module>
+		<module>blade.language</module>
+		<module>blade.language.web</module>
 		<module>blade.lifecycle.loginpreaction</module>
 		<module>blade.modellistener</module>
 		<module>blade.pollprocessor</module>
