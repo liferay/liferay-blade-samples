@@ -57,8 +57,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"context.id=BladeCustomJspBag",
-		"context.name=Test Custom JSP Bag",
+		"context.id=BladeCustomJspBag", "context.name=Test Custom JSP Bag",
 		"service.ranking:Integer=100"
 	}
 )
