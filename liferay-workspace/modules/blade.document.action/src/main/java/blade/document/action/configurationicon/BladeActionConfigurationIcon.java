@@ -66,7 +66,8 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 
 	public String getURL(
 		PortletRequest portletRequest, PortletResponse portletResponse)
-	{
+			{
+
 		HttpServletRequest servletRequest = _portal.getHttpServletRequest(
 			portletRequest);
 

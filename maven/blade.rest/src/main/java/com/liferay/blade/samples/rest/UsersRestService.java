@@ -61,4 +61,5 @@ public class UsersRestService extends Application {
 
 	@Reference
 	private volatile UserLocalService _userLocalService;
+
 }

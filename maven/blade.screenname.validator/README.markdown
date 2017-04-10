@@ -14,7 +14,7 @@ values for the screen name validator's reserved words are *admin* and *user*.
 To customize this sample, modify the
 `com.liferay.blade.samples.screenname.validator.internal.CustomScreenNameValidator`
 class.
-    
+
 You can also customize this sample's configuration by adding more properties in
 the
 `com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration`

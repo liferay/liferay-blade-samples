@@ -13,7 +13,6 @@ AUI()
 
 				instance._bladePollerContainer = A.one('#bladePollerContainer');
 
-
 				console.log("Init: portletId:"+instance._portletId+
 						", containerId:"+instance._bladePollerContainer);
 

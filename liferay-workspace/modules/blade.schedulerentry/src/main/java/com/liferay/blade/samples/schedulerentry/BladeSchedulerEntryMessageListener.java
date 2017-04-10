@@ -64,18 +64,16 @@ public class BladeSchedulerEntryMessageListener
 		}
 	}
 
+	private final Log _log = LogFactoryUtil.getLog(
+		BladeSchedulerEntryMessageListener.class);
+
 	@Reference(target = ModuleServiceLifecycle.PORTAL_INITIALIZED, unbind = "-")
 	private volatile ModuleServiceLifecycle _moduleServiceLifecycle;
-
 
 	@Reference(unbind = "-")
 	private volatile SchedulerEngineHelper _schedulerEngineHelper;
 
-
 	@Reference(unbind = "-")
 	private volatile TriggerFactory _triggerFactory;
 
-
-	private final Log _log = LogFactoryUtil.getLog(
-		BladeSchedulerEntryMessageListener.class);
 }

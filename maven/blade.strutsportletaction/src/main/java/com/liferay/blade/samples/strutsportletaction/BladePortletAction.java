@@ -120,10 +120,10 @@ public class BladePortletAction extends BaseStrutsPortletAction {
 			resourceResponse);
 	}
 
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladePortletAction.class);
+
 	@Reference(unbind = "-")
 	private volatile UserLocalService _userLocalService;
 
-
-	private static final Log _log = LogFactoryUtil.getLog(
-		BladePortletAction.class);
 }
