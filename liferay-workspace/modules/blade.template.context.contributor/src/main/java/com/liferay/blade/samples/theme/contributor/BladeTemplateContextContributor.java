@@ -44,7 +44,7 @@ import org.osgi.service.component.annotations.Component;
  * </code>
  * </pre>
  * </p>
- * 
+ *
  * @author Liferay
  */
 @Component(

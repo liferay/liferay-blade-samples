@@ -34,11 +34,12 @@ public class UserCountCommand {
 		return _userLocalService;
 	}
 
-	@Reference
-	private volatile UserLocalService _userLocalService;
-
 	public void usercount() {
 		System.out.println(
 			"# of users: " + getUserLocalService().getUsersCount());
 	}
+
+	@Reference
+	private volatile UserLocalService _userLocalService;
+
 }

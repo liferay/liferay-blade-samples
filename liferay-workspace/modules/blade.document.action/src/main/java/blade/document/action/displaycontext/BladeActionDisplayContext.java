@@ -86,8 +86,26 @@ public class BladeActionDisplayContext
 		return menu;
 	}
 
+	/**
+	 * This method is for adding context menu in Document Detail screen in page portlet
+	 */
+	@Override
+	public List<ToolbarItem> getToolbarItems() throws PortalException {
+		List<ToolbarItem> toolbarItems = super.getToolbarItems();
+
+		JavaScriptToolbarItem jsToolbarItem = new JavaScriptToolbarItem();
+
+		jsToolbarItem.setLabel("Blade Basic Info");
+		jsToolbarItem.setOnClick(_getOnclick());
+
+		toolbarItems.add(jsToolbarItem);
+
+		return toolbarItems;
+	}
+
 	private String _getOnclick()
 	{
+
 		PortletURL portletURL = PortletURLFactoryUtil.create(
 			request, "blade_document_action_portlet_BladeDocumentActionPortlet",
 			_themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
@@ -117,23 +135,6 @@ public class BladeActionDisplayContext
 			"dialog: {cache: false,width:800,modal: true}," +
 				"title: 'basic information',id: 'testPopupIdUnique',uri: '" +
 					portletURL.toString() + "'});";
-	}
-
-	/**
-	 * This method is for adding context menu in Document Detail screen in page portlet
-	 */
-	@Override
-	public List<ToolbarItem> getToolbarItems() throws PortalException {
-		List<ToolbarItem> toolbarItems = super.getToolbarItems();
-
-		JavaScriptToolbarItem jsToolbarItem = new JavaScriptToolbarItem();
-
-		jsToolbarItem.setLabel("Blade Basic Info");
-		jsToolbarItem.setOnClick(_getOnclick());
-
-		toolbarItems.add(jsToolbarItem);
-
-		return toolbarItems;
 	}
 
 	/**

@@ -52,9 +52,10 @@ public class BladeStrutsAction extends BaseStrutsAction {
 		return null;
 	}
 
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeStrutsAction.class);
+
 	@Reference(target = "(osgi.web.symbolicname=blade.strutsaction)")
 	private volatile ServletContext _servletContext;
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		BladeStrutsAction.class);
 }

@@ -7,15 +7,15 @@ buildscript {
 apply plugin: "com.liferay.portal.tools.service.builder"
 
 dependencies {
-	compileOnly  project(':blade.servicebuilder.api')
-	compileOnly 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
-	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.6.0'
-	compileOnly 'com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0'
-	compileOnly 'com.liferay:com.liferay.osgi.util:3.0.0'
-	compileOnly 'com.liferay:com.liferay.portal.spring.extender:2.0.0'
+	compileOnly  project(":blade.servicebuilder.api")
+	compileOnly "biz.aQute.bnd:biz.aQute.bndlib:3.1.0"
+	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.6.0"
+	compileOnly "com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0"
+	compileOnly "com.liferay:com.liferay.osgi.util:3.0.0"
+	compileOnly "com.liferay:com.liferay.portal.spring.extender:2.0.0"
 
-	testCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5'
-	testCompile 'junit:junit:4.+'
+	testCompile "com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5"
+	testCompile "junit:junit:4.+"
 }
 
 buildService {
