@@ -56,6 +56,7 @@ public class LogAuthFailure implements AuthFailure {
 			}
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 
@@ -78,6 +79,7 @@ public class LogAuthFailure implements AuthFailure {
 			}
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 
@@ -99,6 +101,7 @@ public class LogAuthFailure implements AuthFailure {
 			}
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 

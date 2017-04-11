@@ -46,11 +46,11 @@ public class BladePollProcessor extends BasePollerProcessor {
 			_log.debug("Recevied the poller request" + pollerRequest);
 		}
 
-		JSONObject responseJSON = JSONFactoryUtil.createJSONObject();
+		JSONObject responseObject = JSONFactoryUtil.createJSONObject();
 		PollerResponse pollerResponse = new DefaultPollerResponse();
-		responseJSON.put(
+		responseObject.put(
 			"message", "Hello from BLADE Poller, time now is:" + new Date());
-		pollerResponse.setParameter("content", responseJSON);
+		pollerResponse.setParameter("content", responseObject);
 
 		return pollerResponse;
 	}
