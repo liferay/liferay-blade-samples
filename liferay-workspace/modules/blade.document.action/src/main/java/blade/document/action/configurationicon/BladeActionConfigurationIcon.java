@@ -18,6 +18,8 @@ package blade.document.action.configurationicon;
 
 import com.liferay.document.library.kernel.service.DLAppService;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.configuration.icon.BasePortletConfigurationIcon;
@@ -57,16 +59,12 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 
-	@Reference private DLAppService _dlAppService;
-	@Reference private Portal _portal;
-
 	public String getMessage(PortletRequest portletRequest) {
 		return "Blade Basic Info";
 	}
 
 	public String getURL(
-		PortletRequest portletRequest, PortletResponse portletResponse)
-			{
+		PortletRequest portletRequest, PortletResponse portletResponse) {
 
 		HttpServletRequest servletRequest = _portal.getHttpServletRequest(
 			portletRequest);
@@ -93,6 +91,7 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 				fileEntry.getLatestFileVersion().getStatus());
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 
 		portletURL.setParameter("fileName", fileName);
@@ -106,12 +105,18 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 		}
 		catch (WindowStateException wse) {
+			_log.error(wse);
 		}
 
-		return "javascript:Liferay.Util.openWindow(" +
-			"{dialog: {cache: false,width:800,modal: true}," +
-				"title: 'basic information',id: 'testPopupIdUnique',uri: '" +
-					portletURL.toString() + "'});";
+		StringBuilder stringBuilder = new StringBuilder();
+
+		stringBuilder.append("javascript:Liferay.Util.openWindow(");
+		stringBuilder.append("{dialog: {cache: false,width:800,modal: true},");
+		stringBuilder.append("title: 'basic information',id: ");
+		stringBuilder.append("'testPopupIdUnique',uri: '");
+		stringBuilder.append(portletURL.toString() + "'});");
+
+		return stringBuilder.toString();
 	}
 
 	public boolean isShow(PortletRequest portletRequest) {
@@ -143,8 +148,18 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 			return fileEntry;
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 			return null;
 		}
 	}
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeActionConfigurationIcon.class);
+
+	@Reference
+	private DLAppService _dlAppService;
+
+	@Reference
+	private Portal _portal;
 
 }

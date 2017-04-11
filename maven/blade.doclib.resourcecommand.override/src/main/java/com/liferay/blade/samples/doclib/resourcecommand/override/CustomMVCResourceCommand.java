@@ -51,7 +51,8 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 
 		if (cmd.equals("BOOKMARK_ORDERABLE")) {
 			serveOlderUserBookmarks(resourceRequest, resourceResponse);
-		} else {
+		}
+		else {
 			_editFolderMVCResourceCommand.serveResource(
 				resourceRequest, resourceResponse);
 		}

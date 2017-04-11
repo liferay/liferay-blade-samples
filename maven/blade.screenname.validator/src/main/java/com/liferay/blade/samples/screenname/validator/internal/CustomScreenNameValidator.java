@@ -66,6 +66,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 			javascript.append(")}");
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 
 		return javascript.toString();
@@ -119,7 +120,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 					companyId, CustomScreenName.SETTINGS_ID));
 		}
 		catch (ConfigurationException ce) {
-			_log.error("Error initializing the configuration.");
+			_log.error("Error initializing the configuration.", ce);
 		}
 
 		return null;

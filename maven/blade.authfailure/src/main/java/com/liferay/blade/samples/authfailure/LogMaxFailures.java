@@ -56,6 +56,7 @@ public class LogMaxFailures implements AuthFailure {
 			}
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 
@@ -76,6 +77,7 @@ public class LogMaxFailures implements AuthFailure {
 					(lockout ? "" : "not") + " locked out.");
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 
@@ -95,6 +97,7 @@ public class LogMaxFailures implements AuthFailure {
 					(lockout ? "" : "not") + " locked out.");
 		}
 		catch (PortalException pe) {
+			_log.error(pe);
 		}
 	}
 

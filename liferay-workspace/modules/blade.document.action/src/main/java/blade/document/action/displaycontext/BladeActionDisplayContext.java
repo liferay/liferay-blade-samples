@@ -19,6 +19,8 @@ package blade.document.action.displaycontext;
 import com.liferay.document.library.display.context.BaseDLViewFileVersionDisplayContext;
 import com.liferay.document.library.display.context.DLViewFileVersionDisplayContext;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.repository.model.FileVersion;
@@ -50,6 +52,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Custom Display Context.<br/>
  * see <a href="https://dev.liferay.com/participate/liferaypedia/-/wiki/Main/Display+Context">DISPLAY CONTEXT</a>.
+ *
  * @author liferay
  */
 public class BladeActionDisplayContext
@@ -129,12 +132,18 @@ public class BladeActionDisplayContext
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 		}
 		catch (WindowStateException wse) {
+			_log.error(wse);
 		}
 
-		return "Liferay.Util.openWindow({" +
-			"dialog: {cache: false,width:800,modal: true}," +
-				"title: 'basic information',id: 'testPopupIdUnique',uri: '" +
-					portletURL.toString() + "'});";
+		StringBuilder stringBuilder = new StringBuilder();
+
+		stringBuilder.append("Liferay.Util.openWindow({");
+		stringBuilder.append("dialog: {cache: false,width:800,modal: true},");
+		stringBuilder.append("title: 'basic information',id: ");
+		stringBuilder.append("'testPopupIdUnique',uri: '");
+		stringBuilder.append(portletURL.toString() + "'});");
+
+		return stringBuilder.toString();
 	}
 
 	/**
@@ -158,6 +167,9 @@ public class BladeActionDisplayContext
 
 		return typedSettings.getBooleanValue("showActions");
 	}
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeActionDisplayContext.class);
 
 	private ThemeDisplay _themeDisplay;
 
