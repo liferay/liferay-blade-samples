@@ -18,8 +18,12 @@ repositories {
 	}
 }
 
+startTestableTomcat {
+	checkTimeout = 10 * 60 * 1000
+}
+
 test {
-	dependsOn ":initBundle"
+	dependsOn ":initBundle", startTestableTomcat
 
 	beforeSuite {
 		def moduleOutputPaths = []
@@ -40,4 +44,16 @@ test {
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+
+	finalizedBy {
+		stopTestableTomcat
+	}
+}
+
+stopTestableTomcat {
+	dependsOn test
+	mustRunAfter test
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
 }

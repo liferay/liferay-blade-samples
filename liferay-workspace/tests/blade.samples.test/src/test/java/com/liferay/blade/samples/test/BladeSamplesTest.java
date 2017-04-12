@@ -23,21 +23,13 @@ import aQute.bnd.osgi.Jar;
 
 import aQute.lib.io.IO;
 
-import com.liferay.portal.kernel.util.StringUtil;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Writer;
 
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,53 +54,8 @@ import org.junit.Test;
  */
 public class BladeSamplesTest {
 
-	public static void delFileTree(Path path) throws IOException {
-		Files.walkFileTree(
-			path,
-			new SimpleFileVisitor<Path>() {
-
-				@Override
-				public FileVisitResult postVisitDirectory(
-						Path dir, IOException exc)
-					throws IOException {
-
-					Files.delete(dir);
-
-					return FileVisitResult.CONTINUE;
-				}
-
-				@Override
-				public FileVisitResult visitFile(
-						Path file, BasicFileAttributes attrs)
-					throws IOException {
-
-					Files.delete(file);
-
-					return FileVisitResult.CONTINUE;
-				}
-
-			});
-	}
-
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		Path currentRoot = new File(System.getProperty("user.dir")).getParentFile().getParentFile().toPath();
-
-		Path path = Paths.get(currentRoot.toString(), "bundles/data");
-
-		delFileTree(path);
-
-		if (_isWindows()) {
-			BladeCLITest.startServerWindows(
-				new File(System.getProperty("user.dir")).getParentFile(),
-				"server", "start", "-b");
-		}
-		else {
-			BladeCLITest.execute(
-				new File(System.getProperty("user.dir")).getParentFile(),
-				"server", "start", "-b");
-		}
-
 		OkHttpClient client = new OkHttpClient();
 		Request request = new Builder().url("http://localhost:8080").build();
 
@@ -129,16 +76,9 @@ public class BladeSamplesTest {
 
 	@AfterClass
 	public static void tearDownClass() throws Exception {
-		BladeCLITest.execute("server", "stop");
-
-		if (BladeCLITest.bladeJar.exists()) {
-			IO.delete(BladeCLITest.bladeJar);
-			assertFalse(BladeCLITest.bladeJar.exists());
-		}
-
-		if (_bundleDir.exists()) {
-			IO.delete(_bundleDir);
-			assertFalse(_bundleDir.exists());
+		if (BladeCLIUtil.bladeJar.exists()) {
+			IO.delete(BladeCLIUtil.bladeJar);
+			assertFalse(BladeCLIUtil.bladeJar.exists());
 		}
 	}
 
@@ -171,7 +111,7 @@ public class BladeSamplesTest {
 		}
 
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
-			String installBundleOutput = BladeCLITest.installBundle(
+			String installBundleOutput = BladeCLIUtil.installBundle(
 				new File(sampleBundleFile));
 
 			String printFileName = new File(sampleBundleFile).getName();
@@ -187,17 +127,17 @@ public class BladeSamplesTest {
 		}
 
 		for (String startBundleIO : bundleIDStartMap.keySet()) {
-			BladeCLITest.startBundle(startBundleIO);
+			BladeCLIUtil.startBundle(startBundleIO);
 		}
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {
-			BladeCLITest.uninstallBundle(allBundleID);
+			BladeCLIUtil.uninstallBundle(allBundleID);
 		}
 	}
 
 	@Test
 	public void testControlMenuEntryGradleTemplates() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "control-menu-entry", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
@@ -210,16 +150,16 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
 	public void testMVCPortletGradleTemplates() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "mvc-portlet", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
@@ -232,16 +172,16 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
 	public void testPanelAppGradleTemplates() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "panel-app", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
@@ -254,16 +194,16 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
 	public void testPortletGradleTemplates() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "portlet", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
@@ -276,16 +216,16 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
 	public void testPortletProviderGradleTemplates() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "portlet-provider", "helloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
@@ -298,11 +238,11 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
@@ -357,18 +297,18 @@ public class BladeSamplesTest {
 		assertTrue(buildApiOutput.exists());
 		assertTrue(buildServiceOutput.exists());
 
-		String bundleIDApi = BladeCLITest.installBundle(buildApiOutput);
-		String bundleIDService = BladeCLITest.installBundle(buildServiceOutput);
+		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
+		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
 
-		BladeCLITest.startBundle(bundleIDApi);
-		BladeCLITest.startBundle(bundleIDService);
+		BladeCLIUtil.startBundle(bundleIDApi);
+		BladeCLIUtil.startBundle(bundleIDService);
 
-		BladeCLITest.uninstallBundle(bundleIDApi, bundleIDService);
+		BladeCLIUtil.uninstallBundle(bundleIDApi, bundleIDService);
 	}
 
 	@Test
 	public void testServiceBuilderGradleTemplate() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "service-builder", "guestbook", "-p",
 			"com.liferay.docs.guestbook");
 
@@ -392,18 +332,18 @@ public class BladeSamplesTest {
 		assertTrue(buildApiOutput.exists());
 		assertTrue(buildServiceOutput.exists());
 
-		String bundleIDApi = BladeCLITest.installBundle(buildApiOutput);
-		String bundleIDService = BladeCLITest.installBundle(buildServiceOutput);
+		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
+		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
 
-		BladeCLITest.startBundle(bundleIDApi);
-		BladeCLITest.startBundle(bundleIDService);
+		BladeCLIUtil.startBundle(bundleIDApi);
+		BladeCLIUtil.startBundle(bundleIDService);
 
-		BladeCLITest.uninstallBundle(bundleIDApi, bundleIDService);
+		BladeCLIUtil.uninstallBundle(bundleIDApi, bundleIDService);
 	}
 
 	@Test
 	public void testServiceGradleTemplate() throws Exception {
-		BladeCLITest.createProject(
+		BladeCLIUtil.createProject(
 			_testDir, "service", "helloworld", "-s",
 			"com.liferay.portal.kernel.events.LifecycleAction", "-c",
 			"FooAction");
@@ -456,16 +396,16 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
 	@Test
 	public void testServiceWrapperGradleTemplate() throws Exception {
-		File projectPath = BladeCLITest.createProject(
+		File projectPath = BladeCLIUtil.createProject(
 			_testDir, "service-wrapper", "serviceoverride", "-s",
 			"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
 
@@ -479,22 +419,12 @@ public class BladeSamplesTest {
 
 		assertTrue(buildOutput.exists());
 
-		String bundleID = BladeCLITest.installBundle(buildOutput);
+		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
-		BladeCLITest.startBundle(bundleID);
+		BladeCLIUtil.startBundle(bundleID);
 
-		BladeCLITest.uninstallBundle(bundleID);
+		BladeCLIUtil.uninstallBundle(bundleID);
 	}
-
-	private static boolean _isWindows() {
-		String systemProp = System.getProperty("os.name");
-
-		StringUtil.toLowerCase(systemProp);
-
-		return systemProp.contains("windows");
-	}
-
-	private static final File _bundleDir = IO.getFile("../bundles");
 
 	private File _testDir;
 
