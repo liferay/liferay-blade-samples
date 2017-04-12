@@ -76,7 +76,7 @@ public class BladeServiceBuilderWebTest {
 
 	@Test
 	public void testCreateFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portalURL.toExternalForm());
+		_webDriver.get(_portletURL.toExternalForm());
 
 		customClick(_webDriver, _addButton);
 
@@ -99,7 +99,7 @@ public class BladeServiceBuilderWebTest {
 
 	@Test
 	public void testDeleteFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portalURL.toExternalForm());
+		_webDriver.get(_portletURL.toExternalForm());
 
 		List<WebElement> rows = _webDriver.findElements(
 			By.xpath(
@@ -148,18 +148,18 @@ public class BladeServiceBuilderWebTest {
 
 	@Test
 	public void testReadFoo() throws PortalException {
-		_webDriver.get(_portalURL.toExternalForm());
+		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(isVisible(_firstRowField1));
 
-		_firstRowField1.getText().contains("new field1 entry");
+		Assert.assertTrue(_firstRowField1.getText().contains("new field1 entry"));
 
-		_secondRowField1.getText().contains("new field1 entry");
+		Assert.assertTrue(_secondRowField1.getText().contains("new field1 entry"));
 	}
 
 	@Test
 	public void testUpdateFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portalURL.toExternalForm());
+		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(isVisible(_lfrIconMenu));
 
@@ -233,7 +233,7 @@ public class BladeServiceBuilderWebTest {
 	private WebElement _lfrMenuEdit;
 
 	@PortalURL("com_liferay_blade_samples_servicebuilder_web")
-	private URL _portalURL;
+	private URL _portletURL;
 
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
