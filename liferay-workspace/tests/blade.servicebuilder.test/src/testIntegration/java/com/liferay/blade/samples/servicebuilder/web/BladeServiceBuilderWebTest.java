@@ -92,9 +92,9 @@ public class BladeServiceBuilderWebTest {
 
 		Assert.assertTrue(isVisible(_table));
 
-		_table.getText().contains("Hello");
+		Assert.assertTrue(_table.getText().contains("Hello"));
 
-		_table.getText().contains("World");
+		Assert.assertTrue(_table.getText().contains("World"));
 	}
 
 	@Test
@@ -179,7 +179,7 @@ public class BladeServiceBuilderWebTest {
 
 		Assert.assertTrue(isVisible(_table));
 
-		_table.getText().contains("field1 with Updated Name");
+		Assert.assertTrue(_table.getText().contains("field1 with Updated Name"));
 	}
 
 	protected static boolean isAlertPresent(WebDriver webDriver) {
