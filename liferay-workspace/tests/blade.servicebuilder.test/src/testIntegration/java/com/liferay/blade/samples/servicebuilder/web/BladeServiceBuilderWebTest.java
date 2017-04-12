@@ -152,9 +152,9 @@ public class BladeServiceBuilderWebTest {
 
 		Assert.assertTrue(isVisible(_firstRowField1));
 
-		_firstRowField1.getText().contains("new field1 entry");
+		Assert.assertTrue(_firstRowField1.getText().contains("new field1 entry"));
 
-		_secondRowField1.getText().contains("new field1 entry");
+		Assert.assertTrue(_secondRowField1.getText().contains("new field1 entry"));
 	}
 
 	@Test
