@@ -23,8 +23,6 @@ import java.io.File;
 
 import java.net.URL;
 
-import java.util.List;
-
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -36,14 +34,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -66,10 +59,15 @@ public class BladeLanguageWebTest {
 		_webDriver.get(_portalURL.toExternalForm());
 
 		Assert.assertTrue(isVisible(_bladeSampleLanguagePortlet));
-		Assert.assertTrue(_languageKeyFirst.getText().contentEquals("Hello from BLADE LANGUAGE WEB!"));
-		Assert.assertTrue(_languageKeySecond.getText().contentEquals("Hello from the BLADE Language Module!"));
-		Assert.assertTrue(_languageKeyThird.getText().contentEquals("I have overriden the key fom BLADE Language Module!"));
-
+		Assert.assertTrue(
+			_languageKeyFirst.getText().contentEquals(
+				"Hello from BLADE LANGUAGE WEB!"));
+		Assert.assertTrue(
+			_languageKeySecond.getText().contentEquals(
+				"Hello from the BLADE Language Module!"));
+		Assert.assertTrue(
+			_languageKeyThird.getText().contentEquals(
+				"I have overriden the key fom BLADE Language Module!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {

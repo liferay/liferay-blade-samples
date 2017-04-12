@@ -15,10 +15,10 @@ configurations {
 }
 
 dependencies {
+	compileOnly  project(':modules:blade.servicebuilder.api')
 	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
 	compileOnly 'javax.portlet:portlet-api:2.0'
 	compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
-	compileOnly  project(':modules:blade.servicebuilder.api')
 	compileOnly 'org.osgi:osgi.cmpn:6.0.0'
 
 	testFunctionalCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.5"
