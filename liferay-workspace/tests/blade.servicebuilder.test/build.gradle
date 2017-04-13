@@ -1,3 +1,19 @@
+sourceSets {
+    testFunctional {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/testFunctional/java')
+        }
+        resources.srcDir file('src/testFunctional/resources')
+    }
+}
+
+configurations {
+    testFunctionalCompile.extendsFrom testCompile
+    testFunctionalRuntime.extendsFrom testRuntime
+}
+
 dependencies {
 	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
 	compileOnly 'javax.portlet:portlet-api:2.0'
@@ -5,26 +21,36 @@ dependencies {
 	compileOnly  project(':modules:blade.servicebuilder.api')
 	compileOnly 'org.osgi:osgi.cmpn:6.0.0'
 
-	testIntegrationCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.5"
-	testIntegrationCompile group: "junit", name: "junit", version: "4.12"
-	testIntegrationCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
-	testIntegrationCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+	testFunctionalCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.5"
+	testFunctionalCompile group: "junit", name: "junit", version: "4.12"
+	testFunctionalCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
+	testFunctionalCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 }
 
 startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-testIntegration {
-	dependsOn jar, ":initBundle"
+task testFunctional(type: Test) {
+    testClassesDir = sourceSets.testFunctional.output.classesDir
+    classpath = sourceSets.testFunctional.runtimeClasspath
+    outputs.upToDateWhen { false }
+
+	dependsOn jar, ":initBundle", startTestableTomcat
 	dependsOn ":modules:blade.servicebuilder.api:deploy"
 	dependsOn ":modules:blade.servicebuilder.svc:deploy"
 	dependsOn ":modules:blade.servicebuilder.web:deploy"
 
 	systemProperty 'jarFile', jar.archivePath
+
+	finalizedBy {
+		stopTestableTomcat
+	}
 }
 
 stopTestableTomcat {
+	dependsOn testFunctional
+	mustRunAfter testFunctional
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}

@@ -1,3 +1,19 @@
+sourceSets {
+    testFunctional {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/testFunctional/java')
+        }
+        resources.srcDir file('src/testFunctional/resources')
+    }
+}
+
+configurations {
+    testFunctionalCompile.extendsFrom testCompile
+    testFunctionalRuntime.extendsFrom testRuntime
+}
+
 apply plugin: 'groovy'
 
 dependencies {
@@ -22,7 +38,11 @@ startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-test {
+task testFunctional(type: Test) {
+    testClassesDir = sourceSets.testFunctional.output.classesDir
+    classpath = sourceSets.testFunctional.runtimeClasspath
+    outputs.upToDateWhen { false }
+
 	dependsOn ":initBundle", startTestableTomcat
 
 	beforeSuite {
