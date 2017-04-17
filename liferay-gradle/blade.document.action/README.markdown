@@ -1,18 +1,38 @@
 # Document Action
 
-The Document Action sample shows how to add a context menu to an entry in the
-Documents and Media portlet according to this
-[article](https://blogs.aca-it.be/liferay-dxp-document-actions/). You can see
-the effect in Documents and Media Admin portlet (Control Panel &rarr; Liferay
-&rarr; Content &rarr; Documents and Media). See the images below:
+The Document Action sample shows how to add a context menu option to an entry in
+the Documents and Media portlet. When deploying this sample with no
+customizations, an additional menu option is available in the Documents and
+Media Admin portlet and the Documents and Media portlet. For example, the Admin
+portlet provides new options as illustrated in the images below:
 
 ![Documents And Media Admin Portlet](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-admin-portlet.png)
 
 ![Documents And Media Admin Portlet Detail](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-admin-portlet-detail.png)
 
-Also you can see the same effect in the Documents and Media portlet, but you
-should check `Show Actions` in `Configuration` of the portlet first.
+Likewise, the Documents and Media portlet shows similar options after selecting
+`Show Actions` from the portlet's `Configuration` menu.
 
 ![Documents And Media Portlet](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-portlet.png)
 
 ![Documents And Media Portlet Detail](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-portlet-detail.png)
+
+There are four Java classes used in this sample:
+
+- `BladeActionConfigurationIcon`: Adds the new context menu option to the
+   Document Detail screen options (top right corner) of the Documents and Media
+   Admin portlet. See the
+   [Configuring Your App's Actions Menu](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/applying-lexicon-styles-to-your-app#configuring-your-apps-actions-menu)
+   tutorial for more details.
+- `BladeActionDisplayContext`: Adds the
+   [Display Context](https://dev.liferay.com/participate/liferaypedia/-/wiki/Main/Display+Context)
+   for the document action.
+- `BladeActionDisplayContextFactory`: Adds the
+   [Display Context](https://dev.liferay.com/participate/liferaypedia/-/wiki/Main/Display+Context)
+   factory for the document action.
+- `BladeDocumentActionPortlet`: Provides the portlet class, which extends the
+   [GenericPortlet](https://portals.apache.org/pluto/portlet-2.0-apidocs/javax/portlet/GenericPortlet.html).
+   This class generates what is shown when the context menu option is selected.
+
+This sample creates a *Blade Basic Info* option that displays basic information
+about the entry (e.g., file name, type, version, etc.).
