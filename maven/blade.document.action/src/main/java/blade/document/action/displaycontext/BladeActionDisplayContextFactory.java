@@ -30,7 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * register a DLDisplayContextFactory to provide custom Display Context
+ * Implements the <code>DLDisplayContextFactory</code> to provide custom display contexts.
+ *
  * @author liferay
  */
 @Component(immediate = true, service = DLDisplayContextFactory.class)

@@ -50,8 +50,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Custom Display Context.<br/>
- * see <a href="https://dev.liferay.com/participate/liferaypedia/-/wiki/Main/Display+Context">DISPLAY CONTEXT</a>.
+ * Provides the Custom Display Context, which provides access to the Documents
+ * and Media portlet's UI elements.
  *
  * @author liferay
  */
