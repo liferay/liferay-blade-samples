@@ -3,15 +3,17 @@
 The Document Action sample shows how to add a context menu option to an entry in
 the Documents and Media portlet. When deploying this sample with no
 customizations, an additional menu option is available in the Documents and
-Media Admin portlet and the Documents and Media portlet. For example, the Admin
-portlet provides new options as illustrated in the images below:
+Media Admin portlet and the Documents and Media portlet. This sample creates a
+*Blade Basic Info* option that displays basic information about the entry (e.g.,
+file name, type, version, etc.). For example, the Admin portlet provides the new
+option as illustrated in the images below:
 
 ![Documents And Media Admin Portlet](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-admin-portlet.png)
 
 ![Documents And Media Admin Portlet Detail](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-admin-portlet-detail.png)
 
-Likewise, the Documents and Media portlet shows similar options after selecting
-`Show Actions` from the portlet's `Configuration` menu.
+Likewise, the Documents and Media portlet provides the same option after
+selecting `Show Actions` from the portlet's `Configuration` menu.
 
 ![Documents And Media Portlet](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/documents-and-media-portlet.png)
 
@@ -33,6 +35,3 @@ There are four Java classes used in this sample:
 - `BladeDocumentActionPortlet`: Provides the portlet class, which extends the
    [GenericPortlet](https://portals.apache.org/pluto/portlet-2.0-apidocs/javax/portlet/GenericPortlet.html).
    This class generates what is shown when the context menu option is selected.
-
-This sample creates a *Blade Basic Info* option that displays basic information
-about the entry (e.g., file name, type, version, etc.).
