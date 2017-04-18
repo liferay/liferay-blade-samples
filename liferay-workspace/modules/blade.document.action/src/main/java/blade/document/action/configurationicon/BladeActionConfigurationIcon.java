@@ -43,10 +43,9 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * This class is for adding context menu to Document Detail screen options(top right corner) in
- * Documents and Media admin portlet.<br/>
- * see
- * <a href="https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/applying-lexicon-styles-to-your-app#configuring-your-apps-actions-menu">CONFIGURING YOUR APPS ACTIONS MENU</a>.
+ * Adds the new context menu option to the Document Detail screen options (top
+ * right corner) of the Documents and Media Admin portlet.
+ *
  * @author liferay
  */
 @Component(
