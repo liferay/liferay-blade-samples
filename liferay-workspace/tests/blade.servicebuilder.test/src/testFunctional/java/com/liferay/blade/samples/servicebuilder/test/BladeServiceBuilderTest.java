@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.servicebuilder.web;
+package com.liferay.blade.samples.servicebuilder.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -52,7 +52,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladeServiceBuilderWebTest {
+public class BladeServiceBuilderTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {

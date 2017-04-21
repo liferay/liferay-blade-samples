@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.servicebuilder.test;
+package com.liferay.blade.samples.servicebuilder.web.test;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
