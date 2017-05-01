@@ -1,7 +1,6 @@
 Bundle-Version: 1.0.0
 
 Provide-Capability:\
-	\
 	liferay.resource.bundle;\
 		resource.bundle.base.name:String="(bundle.symbolic.name=blade.language.web)";\
 		resource.bundle.base.name="content.Language",\
