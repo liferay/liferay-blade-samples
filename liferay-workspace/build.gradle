@@ -1,7 +1,30 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
+	}
+}
+
 subprojects {
-	afterEvaluate { Project project ->
-		if (project.plugins.hasPlugin("java")) {
-			project.sourceCompatibility = 1.8
+	buildscript {
+		repositories {
+			maven {
+				url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+			}
+		}
+	}
+
+	plugins.withId("java") {
+		sourceCompatibility = "1.8"
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
 	}
 }

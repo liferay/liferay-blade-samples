@@ -57,7 +57,7 @@
 					<dependency>
 						<groupId>com.liferay</groupId>
 						<artifactId>com.liferay.ant.bnd</artifactId>
-						<version>2.0.28</version>
+						<version>2.0.37</version>
 					</dependency>
 				</dependencies>
 			</plugin>
