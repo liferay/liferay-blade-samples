@@ -53,5 +53,8 @@ stopTestableTomcat {
 	mustRunAfter testFunctional
 	doLast {
 		delete new File(liferay.liferayHome, "data")
+		delete new File("target/drone-phantomjs")
 	}
 }
+
+check.dependsOn testFunctional
