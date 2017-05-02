@@ -1,21 +1,7 @@
 Bundle-Version: 1.0.0
 
-Provide-Capability:\
-	\
-	liferay.resource.bundle;\
-		resource.bundle.base.name:String="(bundle.symbolic.name=blade.language.web)";\
-		resource.bundle.base.name="content.Language",\
-	liferay.resource.bundle;\
-		resource.bundle.aggregate:String="(&(bundle.symbolic.name=blade.language.web)(!(aggregate=true))),(bundle.symbolic.name=blade.language)";\
-		bundle.symbolic.name=blade.language.web;\
-		resource.bundle.base.name="content.Language";\
-		service.ranking:long="1";\
-		aggregate=true;\
-		servlet.context.name=blade-language-web
-
-Require-Capability:\
-	liferay.resource.bundle;\
-		filter:="(bundle.symbolic.name=blade.language)"
+-liferay-aggregate-resource-bundles: \
+	blade.language
 
 Web-ContextPath: /blade-language-web
 
