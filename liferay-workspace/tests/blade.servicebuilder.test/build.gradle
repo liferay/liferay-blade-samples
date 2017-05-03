@@ -46,6 +46,10 @@ task testFunctional(type: Test) {
 	finalizedBy {
 		stopTestableTomcat
 	}
+
+	doLast {
+		delete new File("target/drone-phantomjs")
+	}
 }
 
 stopTestableTomcat {
@@ -53,7 +57,6 @@ stopTestableTomcat {
 	mustRunAfter testFunctional
 	doLast {
 		delete new File(liferay.liferayHome, "data")
-		delete new File("target/drone-phantomjs")
 	}
 }
 

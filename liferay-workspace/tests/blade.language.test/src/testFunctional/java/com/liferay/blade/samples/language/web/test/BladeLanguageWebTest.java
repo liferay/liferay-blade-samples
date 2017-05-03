@@ -56,7 +56,7 @@ public class BladeLanguageWebTest {
 
 	@Test
 	public void testBladeSamplesLanguage() throws PortalException {
-		_webDriver.get(_portalURL.toExternalForm());
+		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_bladeSampleLanguagePortlet));
@@ -99,8 +99,8 @@ public class BladeLanguageWebTest {
 	@FindBy(xpath = "//div[@class='portlet-body']/p[3]")
 	private WebElement _languageKeyThird;
 
-	@PortalURL("com_liferay_blade_samples_language_web_LanguageWebPortlet")
-	private URL _portalURL;
+	@PortalURL("com_liferay_blade_samples_language_web")
+	private URL _portletURL;
 
 	@Drone
 	private WebDriver _webDriver;
