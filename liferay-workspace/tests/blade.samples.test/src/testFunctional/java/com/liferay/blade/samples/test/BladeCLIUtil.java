@@ -90,9 +90,21 @@ public class BladeCLIUtil {
 
 		InputStream errorStream = process.getErrorStream();
 
-		String errors = new String(IO.read(errorStream));
-
-		assertTrue(errors, errors == null || errors.isEmpty());
+		List<String> errorList = new ArrayList<>();
+				
+		if (errorStream != null) {
+			errorList.add(new String(IO.read(errorStream)));
+		}
+		
+		List<String> filteredErrorList = new ArrayList<>();
+		
+		for (String string : errorList) {
+			if (string != null && string.length() > 0 && !string.contains("Picked up JAVA_TOOL_OPTIONS:")){
+				filteredErrorList.add(string);
+			}
+		}
+				
+		assertTrue(filteredErrorList.toString(), filteredErrorList.isEmpty());
 
 		output = StringUtil.toLowerCase(output);
 
