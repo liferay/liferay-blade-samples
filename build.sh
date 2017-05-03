@@ -4,7 +4,7 @@ repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
   cd liferay-gradle
-  ./gradlew clean build
+  ./gradlew checkSourceFormatting clean build
   cd "$repoDir"
   cd maven
   mvn --fail-at-end clean package
