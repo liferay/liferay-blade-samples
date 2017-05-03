@@ -58,16 +58,20 @@ public class BladeLanguageWebTest {
 	public void testBladeSamplesLanguage() throws PortalException {
 		_webDriver.get(_portalURL.toExternalForm());
 
-		Assert.assertTrue(isVisible(_bladeSampleLanguagePortlet));
 		Assert.assertTrue(
+			"Portlet was not deployed", isVisible(_bladeSampleLanguagePortlet));
+		Assert.assertTrue(
+			_languageKeyFirst.getText(),
 			_languageKeyFirst.getText().contentEquals(
-				"Hello from BLADE LANGUAGE WEB!"));
+				"Hello from BLADE Language Web!"));
 		Assert.assertTrue(
+			_languageKeySecond.getText(),
 			_languageKeySecond.getText().contentEquals(
 				"Hello from the BLADE Language Module!"));
 		Assert.assertTrue(
+			_languageKeyThird.getText(),
 			_languageKeyThird.getText().contentEquals(
-				"I have overriden the key fom BLADE Language Module!"));
+				"I have overridden the key from BLADE Language Module!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
