@@ -21,9 +21,14 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
+<<<<<<< HEAD
+ * Screen Name validator, providing methods to validate the screen name
+ * client and server.
+=======
  * Provides methods to validate the user's screen name client-side and
  * server-side.
  *
+>>>>>>> liferay/master
  * @author Romeo Sheshi
  */
 @Component(
@@ -32,12 +37,20 @@ import org.osgi.service.component.annotations.Reference;
 	service = ScreenNameValidator.class
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {
+<<<<<<< HEAD
+    /**
+     * Returns the javascript function to validate the screenName client side.
+     *
+     * @return the javascript function
+     */
+=======
 
 	/**
 	 * Returns the JavaScript function to validate the screen name client-side.
 	 *
 	 * @return the JavaScript function
 	 */
+>>>>>>> liferay/master
 	@Override
 	public String getAUIValidatorJS() {
 		StringBuilder javascript = new StringBuilder();
@@ -72,6 +85,13 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return javascript.toString();
 	}
 
+<<<<<<< HEAD
+    /**
+     * Returns the error message that display to user it can be localized using resource bundle.
+     * @param locale  the error message locale
+     * @return the error message to display
+     */
+=======
 	/**
 	 * Returns the error message to display to the user. The message can be
 	 * localized using a resource bundle.
@@ -79,11 +99,20 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 	 * @param  locale the error message's locale
 	 * @return the error message to display
 	 */
+>>>>>>> liferay/master
 	@Override
 	public String getDescription(Locale locale) {
 		return "The screen name contains reserved words";
 	}
 
+<<<<<<< HEAD
+    /**
+     *  Returns the  validation of screen name true if is valid.
+     * @param companyId  the company id  of portal instance that the user belong
+     * @param screenName the user input of the screen name
+     * @return true if user is valid else false
+     */
+=======
 	/**
 	 * Returns <code>true</code> if the user's screen name is valid.
 	 *
@@ -92,6 +121,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 	 * @return <code>true</code> if the user's screen name is valid else;
 	 *         <code>false</code> otherwise
 	 */
+>>>>>>> liferay/master
 	@Override
 	public boolean validate(long companyId, String screenName) {
 		String safeScreenName = StringUtil.toLowerCase(screenName);
@@ -106,12 +136,20 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return true;
 	}
 
+<<<<<<< HEAD
+    /**
+     * Returns the configuration of the plugin based on companyId.
+     * @param companyId the company id  of portal instance that the user belong
+     * @return  {@link com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration}
+     */
+=======
 	/**
 	 * Returns the plugin's configuration based on the company ID.
 	 *
 	 * @param  companyId the ID of the portal instance to which the user belongs
 	 * @return {@link CustomScreenNameConfiguration}
 	 */
+>>>>>>> liferay/master
 	private CustomScreenNameConfiguration _getConfiguration(long companyId) {
 		try {
 			return _configurationProvider.getConfiguration(
@@ -126,6 +164,13 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 		return null;
 	}
 
+<<<<<<< HEAD
+    /**
+     * Returns the reserved words configured in fondation settings.
+     * @param companyId   the company id  of portal instance that the user belong
+     * @return String[] the reserved words default to "admin|user"
+     */
+=======
 	/**
 	 * Returns the reserved words configured in the Control Panel &rarr;
 	 * Configuration &rarr; System Settings &rarr; Foundation &rarr; ScreenName
@@ -134,6 +179,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 	 * @param  companyId the ID of the portal instance to which the user belongs
 	 * @return the reserved words, which by default are <code>admin|user</code>
 	 */
+>>>>>>> liferay/master
 	private String[] _getReservedWords(long companyId) {
 		CustomScreenNameConfiguration configuration = _getConfiguration(
 			companyId);
