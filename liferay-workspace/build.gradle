@@ -28,3 +28,26 @@ subprojects {
 		}
 	}
 }
+
+configurations {
+	aries
+}
+
+dependencies {
+	aries 'org.apache.aries.jmx:org.apache.aries.jmx.api:1.1.5'
+	aries 'org.apache.aries.jmx:org.apache.aries.jmx.core:1.1.7'
+	aries 'org.apache.aries:org.apache.aries.util:1.1.3'
+}
+
+repositories {
+	maven {
+		url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+	}
+}
+
+task deployAries(type: Copy) {
+	from configurations.aries
+	into "bundles/osgi/test"
+}
+
+initBundle.finalizedBy deployAries
