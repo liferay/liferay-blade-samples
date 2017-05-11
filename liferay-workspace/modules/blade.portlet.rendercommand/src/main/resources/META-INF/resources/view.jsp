@@ -20,4 +20,4 @@
 	<portlet:param name="mvcRenderCommandName" value="/blade/render" />
 </portlet:renderURL>
 
-<aui:button href="<%= bladeRender %>" value="goto render page" />
+<aui:button href="<%= bladeRender %>" value="goto page render" />
