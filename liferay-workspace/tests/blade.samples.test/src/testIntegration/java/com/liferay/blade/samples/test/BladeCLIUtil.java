@@ -140,8 +140,11 @@ public class BladeCLIUtil {
 
 	public static String installBundle(File file) throws Exception {
 		String output = execute("sh", "install", file.toURI().toString());
-
-		String bundleID = output.substring(output.length() - 3);
+		
+		String bundleID = output.substring(
+			output.indexOf("bundle id:") + 11,
+			output.indexOf("\n",
+				output.indexOf("bundle id:")));
 
 		if (output.contains("Failed") || output.contains("IOException")) {
 			throw new Exception(output);
