@@ -1,7 +1,7 @@
 dependencies {
-	compileOnly 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
-	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
-	compileOnly 'com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0'
-	compileOnly 'com.liferay:com.liferay.osgi.util:3.0.0'
-	compileOnly 'org.osgi:org.osgi.core:6.0.0'
+	compileOnly "biz.aQute.bnd:biz.aQute.bndlib:3.1.0"
+	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
+	compileOnly "com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0"
+	compileOnly "com.liferay:com.liferay.osgi.util:3.0.0"
+	compileOnly "org.osgi:org.osgi.core:6.0.0"
 }

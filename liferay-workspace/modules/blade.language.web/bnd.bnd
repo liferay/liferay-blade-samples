@@ -1,8 +1,7 @@
 Bundle-Version: 1.0.0
 
--liferay-aggregate-resource-bundles: \
-	blade.language
-
 Web-ContextPath: /blade-language-web
+
+-liferay-aggregate-resource-bundles: blade.language
 
 -sources: true
