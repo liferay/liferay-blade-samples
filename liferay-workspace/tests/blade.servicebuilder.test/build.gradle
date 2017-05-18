@@ -53,8 +53,6 @@ task testFunctional(type: Test) {
 }
 
 stopTestableTomcat {
-	dependsOn testFunctional
-	mustRunAfter testFunctional
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}

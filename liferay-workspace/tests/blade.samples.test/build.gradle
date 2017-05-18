@@ -53,8 +53,6 @@ testIntegration {
 }
 
 stopTestableTomcat {
-	dependsOn testIntegration
-	mustRunAfter testIntegration
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}
