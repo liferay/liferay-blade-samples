@@ -32,7 +32,18 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	property = {"indexer.class.name=com.liferay.blogs.kernel.model.BlogsEntry"},
+	property = {
+		/* Since the Blogs API has been modularized since 7.0 GA3
+		we need to register it up both model names. */
+
+		// 7.0 GA3 model name
+
+		"indexer.class.name=com.liferay.blogs.kernel.model.BlogsEntry",
+
+		// 7.0 DXP SP3 and future model name
+
+		"indexer.class.name=com.liferay.blogs.model.BlogsEntry"
+	},
 	service = IndexerPostProcessor.class
 )
 public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
