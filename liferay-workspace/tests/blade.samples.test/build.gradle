@@ -8,8 +8,8 @@ dependencies {
 	compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
 	compile group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
 
-	testCompile group: 'com.liferay.portal', name: 'com.liferay.portal.kernel', version: '2.20.0'
-	testCompile group: 'commons-io', name: 'commons-io', version: '2.5'
+	testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
+	testCompile group: "commons-io", name: "commons-io", version: "2.5"
 }
 
 repositories {
@@ -23,7 +23,7 @@ startTestableTomcat {
 }
 
 testIntegration {
-    outputs.upToDateWhen { false }
+	outputs.upToDateWhen { false }
 
 	dependsOn ":initBundle", startTestableTomcat
 
@@ -53,8 +53,6 @@ testIntegration {
 }
 
 stopTestableTomcat {
-	dependsOn testIntegration
-	mustRunAfter testIntegration
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}
