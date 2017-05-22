@@ -14,8 +14,6 @@
 
 package com.liferay.blade.samples.servicebuilder.service.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl;
 
 /**
@@ -32,7 +30,6 @@ import com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl;
  * @see FooServiceBaseImpl
  * @see com.liferay.blade.samples.servicebuilder.service.FooServiceUtil
  */
-@ProviderType
 public class FooServiceImpl extends FooServiceBaseImpl {
 
 	/**
