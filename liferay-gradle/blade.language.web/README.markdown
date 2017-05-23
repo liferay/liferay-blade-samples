@@ -2,46 +2,31 @@
 
 ## What does this sample accomplish?
 
-The BLADE Language Web sample is a simple JSP Portlet which displays Liferay's
+The Language Web sample is a simple JSP portlet that conveys Liferay's
 recommended approach to sharing language keys through OSGI services.
 
 ## How does this sample work?
 
-By default, our ResourceBundleLoaderAnalyzerPlugin expands modules with
-content/Language.properties files to add a couple of provided capabilities:
+You must deploy this sample with the `blade.language` sample module. This
+sample uses language keys shared by the Language module. When you place this
+sample portlet on a Liferay Portal page, you're presented with three language
+keys.
 
-bundle.symbolic.name
-resource.bundle.base.name
+![Figure 1: The Language Web portlet displays three phrases, two of which are shared from a different module.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/language-web-portlet.png)
 
-Then, our deployed LanguageExtender scans modules with those capabilities to
-automatically register an associated ResourceBundleLoader.
+The first message is provided by the Language Web module. The second message is
+from the Language module. The third message is provided by both modules. As you
+can see, the Language Web's message is used, overriding the Language module's
+identically named language key.
 
-You can use this to leverage and use keys from common language modules
-republishing an aggregate ResourceBundleLoader as your own in two different
-ways:
+This sample shows what takes precedence when displaying language keys. The order
+for this example goes
 
-1. Via Components
+1.  Language Web module language keys
+2.  Language module language keys
+3.  Liferay Portal language keys
 
-You can simply get a reference to the registered service in your components as
-detailed in the Overriding a Modules Language Keys tutorial.
-
-The main disadvantage of this approach is that it forces you to provide a
-specific implementation of ResourceBundleLoader, making it potentially harder to
-modularize in the future.
-
-2. Via Provide Capability
-
-The same LanguageExtender that registers the services supports an extended
-syntax that allows you to register an aggregate of a collection of bundles as
-your own declaratively.
-
--liferay-aggregate-resource-bundles: \
-	blade.language
-
-This last approach has the advantadge of easier extensibility. Only the common
-lang modules need to be built and redeployed when keys change for all modules
-using them to automatically pick up the changes while staying clear of
-implementation details.
-
-You should deploy this sample with BLADE Language module to get the entire
-picture.
+You can visit the
+[blade.language README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language.web/README.markdown)
+for more information on how language keys are used from modules and shared
+between modules.
