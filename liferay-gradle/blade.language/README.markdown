@@ -9,7 +9,7 @@ module which only holds language keys.
 ## How does this sample work?
 
 You should deploy this sample with the `blade.language.web` sample module. This
-sample shares language keys with the Language Web module.
+sample shares language keys with the Language Web module. How does this work?
 
 By default, the `ResourceBundleLoaderAnalyzerPlugin` expands modules with
 `/content/Language.properties` files to add provided capabilities:
@@ -44,3 +44,8 @@ republishing an aggregate `ResourceBundleLoader`. This can be done two ways:
     language modules need to be built and redeployed when keys change for all
     modules using them to automatically pick up the changes while staying clear
     of implementation details.
+
+Visit the
+[blade.language.web README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language.web/README.markdown)
+to see how the Language sample module shares its language keys with a JSP
+portlet.

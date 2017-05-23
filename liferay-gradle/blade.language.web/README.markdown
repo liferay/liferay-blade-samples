@@ -8,9 +8,9 @@ recommended approach to sharing language keys through OSGI services.
 ## How does this sample work?
 
 You must deploy this sample with the `blade.language` sample module. This
-sample uses language keys shared by the Language module. When you place this
-sample portlet on a Liferay Portal page, you're presented with three language
-keys.
+portlet sample uses language keys shared by the Language module. When you place
+this sample portlet on a Liferay Portal page, you're presented with the
+portlet's name followed by three language keys.
 
 ![Figure 1: The Language Web portlet displays three phrases, two of which are shared from a different module.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/language-web-portlet.png)
 
@@ -27,6 +27,6 @@ for this example goes
 3.  Liferay Portal language keys
 
 You can visit the
-[blade.language README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language.web/README.markdown)
+[blade.language README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language/README.markdown)
 for more information on how language keys are used from modules and shared
 between modules.
