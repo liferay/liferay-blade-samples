@@ -36,10 +36,9 @@ republishing an aggregate `ResourceBundleLoader`. This can be done two ways:
         -liferay-aggregate-resource-bundles: \
             blade.language
 
-    This approach has the advantage of easier extensibility. Only the common
-    language modules need to be built and redeployed when keys change for all
-    modules using them to automatically pick up the changes while staying clear
-    of implementation details.
+    This approach has the advantage of easier extensibility. When language keys
+    change, only the common language modules must be built and redeployed for
+    the modules referencing them to recognize their updates.
 
 Visit the
 [blade.language.web README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language.web/README.markdown)
