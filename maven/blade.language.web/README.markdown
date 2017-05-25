@@ -1,21 +1,17 @@
 # Language Web
 
-## What does this sample accomplish?
-
 The Language Web sample is a simple JSP portlet that conveys Liferay's
 recommended approach to sharing language keys through OSGI services.
 
-## How does this sample work?
-
-You must deploy this sample with the `blade.language` sample module. This
-portlet sample uses language keys shared by the Language module. When you place
-this sample portlet on a Liferay Portal page, you're presented with the
-portlet's name followed by three language keys.
+You must deploy this sample with the `blade.language` sample module. The
+Language Web portlet sample uses language keys shared by the Language module.
+When you place this sample portlet on a Liferay Portal page, you're presented
+with the portlet's name followed by three language keys.
 
 ![Figure 1: The Language Web portlet displays three phrases, two of which are shared from a different module.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/language-web-portlet.png)
 
 The first message is provided by the Language Web module. The second message is
-from the Language module. The third message is provided by both modules. As you
+from the Language module. The third message is provided by both modules; as you
 can see, the Language Web's message is used, overriding the Language module's
 identically named language key.
 
