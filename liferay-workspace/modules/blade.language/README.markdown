@@ -1,12 +1,8 @@
 # Language
 
-## What does this sample accomplish?
-
 The Language sample conveys Liferay's recommended approach to sharing
 language keys through OSGI services. This particular sample provides a resource
 module which only holds language keys.
-
-## How does this sample work?
 
 You should deploy this sample with the `blade.language.web` sample module. This
 sample shares language keys with the Language Web module. How does this work?
