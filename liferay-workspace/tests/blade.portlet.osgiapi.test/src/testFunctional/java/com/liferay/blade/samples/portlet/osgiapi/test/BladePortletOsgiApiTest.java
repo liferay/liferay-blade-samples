@@ -73,8 +73,7 @@ public class BladePortletOsgiApiTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleOsgiApiPortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleOsgiApiPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade OSGI API Portlet, but saw " +
@@ -82,10 +81,10 @@ public class BladePortletOsgiApiTest {
 			_portletTitle.getText().contentEquals("OSGi API Portlet"));
 
 		Assert.assertTrue(
-			"Expected OSGi API Portlet - Hello World! , but saw " +
+			"Expected OSGi API Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
 			_portletBody.getText().contentEquals(
-				"OSGi API Portlet - Hello World! "));
+				"OSGi API Portlet - Hello World!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {

@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import java.io.File;
 
 import java.net.URL;
+
 import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -79,20 +80,35 @@ public class BladePortletActionCommandTest {
 
 		Assert.assertTrue(isVisible(_nameField));
 
+		_webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
 		_nameField.clear();
 
 		_nameField.sendKeys("tester");
 
 		customClick(_webDriver, _saveButton);
 
-		_webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-		Assert.assertTrue(isVisible(_portletBody));
-
-		Assert.assertTrue(_portletBody.getText() +
-			" does not equal Hello tester! Welcome to OSGi Hello from BLADE!",
-			_portletBody.getText().contains(
+		Assert.assertTrue(
+			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
+				_portletBody.getText(),
+			isTextPresent(
+				_portletBody,
 				"Hello tester! Welcome to OSGi Hello from BLADE!"));
+	}
+
+	protected boolean isTextPresent(WebElement webelement, String string) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.textToBePresentInElement(
+					webelement, string));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -111,16 +127,16 @@ public class BladePortletActionCommandTest {
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]")
 	private WebElement _bladeSampleActionCommandGreeterPortlet;
 
-	@FindBy(xpath = "//form[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]/div/input")
+	@FindBy(xpath = "//input[@type='text' and contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]")
 	private WebElement _nameField;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]/section/div/div/div")
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]//..//div/div")
 	private WebElement _portletBody;
 
 	@PortalURL("com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet")
 	private URL _portletURL;
 
-	@FindBy(css = "button[type=submit]")
+	@FindBy(xpath = "//button[@type='submit' and contains(.,'Save')]")
 	private WebElement _saveButton;
 
 	@Drone

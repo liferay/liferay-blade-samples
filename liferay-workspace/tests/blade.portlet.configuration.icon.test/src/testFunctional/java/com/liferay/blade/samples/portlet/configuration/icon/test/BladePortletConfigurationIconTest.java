@@ -21,8 +21,6 @@ import java.io.File;
 
 import java.net.URL;
 
-import java.util.concurrent.TimeUnit;
-
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -83,13 +81,23 @@ public class BladePortletConfigurationIconTest {
 
 		customClick(_webDriver, _lfrMenuSampleLink);
 
-		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
-			_webDriver.getCurrentUrl().contentEquals(
-				"https://www.liferay.com/"));
+			isPageLoaded("https://www.liferay.com/"));
+	}
+
+	protected boolean isPageLoaded(String string) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+
+		try {
+			webDriverWait.until(ExpectedConditions.urlMatches(string));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
 	}
 
 	protected boolean isVisible(WebElement webelement) {

@@ -89,7 +89,22 @@ public class BladePortletRenderCommandTest {
 
 		Assert.assertTrue(
 			"Expected render page, but saw " + _portletBody.getText(),
-			_portletBody.getText().contentEquals("render page"));
+			isTextPresent(_portletBody, "render page"));
+	}
+
+	protected boolean isTextPresent(WebElement webelement, String string) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.textToBePresentInElement(
+					webelement, string));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
 	}
 
 	protected boolean isVisible(WebElement webelement) {
