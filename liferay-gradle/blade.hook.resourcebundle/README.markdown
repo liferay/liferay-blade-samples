@@ -8,9 +8,8 @@ This example overrides the default `add-blog-entry` language key (English and
 Spanish) for Portal's default Blogs application. After deploying this sample
 hook to Portal, the Blogs application's *Add Blog Entry* button is modified to
 display *Overriden Add Blog Entry*. If you change the Portal's default language
-to Spanish, the language key is translated to display in that language. For
-example, if the Portal's language is set to Spanish, the text changes to *Añadir
-entrada sobreescrita*.
+to Spanish, the modified language key is translated to display in that language.
+For example, the text changes to *Añadir entrada sobreescrita*.
 
 ![Figure 1: The customized Blogs application displays the new `add-blog-entry` language key in English.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/hook-resourcebundle.png)
 
@@ -31,10 +30,8 @@ bundle:
 
     @Override
     public ResourceBundle loadResourceBundle(String languageId) {
-        return \_resourceBundleLoader.loadResourceBundle(languageId);
+        return _resourceBundleLoader.loadResourceBundle(languageId);
     }
-
-<!-- TODO: \^ -->
 
 Then you must set the resource bundle loader to load the resource bundles as an
 `AggregateResourceBundleLoader`.
@@ -43,15 +40,13 @@ Then you must set the resource bundle loader to load the resource bundles as an
     public void setResourceBundleLoader(
         ResourceBundleLoader resourceBundleLoader) {
 
-        \_resourceBundleLoader = new AggregateResourceBundleLoader(
+        _resourceBundleLoader = new AggregateResourceBundleLoader(
             new CacheResourceBundleLoader(
                 new ClassResourceBundleLoader(
                     "content.Language",
                     ResourceBundleLoaderComponent.class.getClassLoader())),
         resourceBundleLoader);
     }
-
-<!-- TODO: \^ -->
 
 The `@Reference` annotation targets the original Blogs module by specifying
 its symbolic name `com.liferay.blogs.web`. This sample's own component name
@@ -89,7 +84,7 @@ Lastly, the new `language.properties` files should be added to the folder
 example's goal is to only override the English and Spanish keys, the
 `Language_en.properties` and `Language_es.properties` are added.
 
-This approach can be used to override any application's language keys, (i.e.,
+This approach can be used to override any application's language keys (i.e.,
 `language.properties` files that are inside a module deployed to Portal's OSGi
 runtime). If you need to override Portal's core language keys, see the
 [Modifying Liferay's Language Keys](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-language-keys#modifying-liferays-language-keys)
