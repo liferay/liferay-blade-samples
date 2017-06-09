@@ -1,48 +1,44 @@
 # JSP Hook
 
-The JSP Hook sample conveys Liferay's recommended approach to hook an
-application JSP by leveraging on OSGi fragment modules.
+The JSP Hook sample conveys Liferay's recommended approach to override an
+application's JSP by leveraging OSGi fragment modules. This example overrides
+the default `login.jsp` file in the `com.liferay.login.web` bundle by adding the
+red text *changed* to the Sign In form.
 
-This specific example overrides the default login.jsp in com.liferay.login.web
-bundle, by adding the text "changed" in red, to the top of the Sign In form.
+![Figure 1: The customized Sign In form with the new *changed* text.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/hook-jsp.png)
 
-![Figure 1: The customized Sign In form with the "Changed" text.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/hook-jsp.png)
+You can create your own JSP hook by
 
-A closer look to this example source code will reveal that the end goal is
-achieved through the following steps:
+- Declaring the fragment host.
+- Providing the JSP that will override the original one.
 
-- Declaring the fragment host
-- Providing the JSP that will override the original one
+To properly declare the fragment host in the `bnd.bnd` file, you must specify
+the host module's (where the original JSP is located) Bundle Symbolic Name and
+the host module's exact version to which the fragment belongs. In this example,
+this is configured like this:
 
-To properly declare the fragment host in the bnd.bnd file, we need to specify
-the Bundle Symbolic Name of the host module (where the original JSP is located)
-and the exact version of the host module to which the fragment belongs. In this
-example, this would look like
-	
-	Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
+    Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
 
-The only thing that is left to do is providing the new JSP, which will override
-the original one. One important thing to keep in mind is to make sure that you
-mimic the host module’s folder structure when overriding its JAR. For this
-example, as the original JSP is in the folder `/META-INF/resources/login.jsp`,
-we have our new JSP file in the folder
-`src/main/resource/META-INF/resource/login.jsp`.
+Then you must provide the new JSP intended to override the original one. Be sure
+to mimic the host module's folder structure when overriding its JAR. For this
+example, since the original JSP is in the folder
+`/META-INF/resources/login.jsp`, you should have your new JSP file reside in the
+folder `src/main/resources/META-INF/resources/login.jsp`.
 
-If needed, you can also target the original JSP, following one of the two
-possible naming conventions: `portal` or `original`. The pattern that can be
-used would look like the following example:
+If needed, you can also target the original JSP following one of the two
+possible naming conventions: `portal` or `original`. This pattern looks like
+this:
 
-	<liferay-util:include 
-    page="/login.original.jsp" (or login.portal.jsp) 
-    servletContext="<%= application %>" 
-	/> 
+    <liferay-util:include 
+        page="/login.original.jsp"
+        servletContext="<%= application %>" 
+    /> 
 
-Please bear in mind that this approach can be used to override any application
-JSP, which means JSPs that are inside a module. If you need to override a core
-JSP, please visit the
-[blade.corejsphook README](https://github.com/liferay/liferay-blade-samples/blob/master/liferay-gradle/blade.corejsphook/README.markdown)
-to learn more about how to override a core JSP.
+This approach can be used to override any application JSP (i.e., JSPs residing
+in a module). If you need to override a core JSP, see the `blade.corejsphook`
+sample.
 
-More information about how to use fragment modules to override application JSPs
-can be found in
-[Liferay Developer Network](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-a-modules-jsps)
+For more information on using fragment bundles to override application JSPs, see
+the
+[Overriding App JSPs](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-a-modules-jsps)
+tutorial.
