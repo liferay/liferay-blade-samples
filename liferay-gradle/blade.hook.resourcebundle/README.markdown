@@ -1,96 +1,101 @@
 # Resource Bundle Hook
 
-The Resource Bundle Hook sample illustrates the recommended approach to hook an
-application language keys file for any module that is deployed to Liferay’s OSGi
-runtime (not applicable to Liferay's core language keys). 
+The Resource Bundle Hook sample illustrates the recommended approach to override
+an application's language keys file for any module that is deployed to Liferay
+Portal's OSGi runtime (not applicable to Liferay Portal's core language keys).
 
-This specific example overrides the default `add-blog-entry` key for Liferay's
-default blogs application, which is located in
-`liferay-portal/blob/master/modules/apps/collaboration/blogs/blogs-web/src/main/resources/content`,
-for both English and Spanish. 
+This example overrides the default `add-blog-entry` language key (English and
+Spanish) for Portal's default Blogs application. After deploying this sample
+hook to Portal, the Blogs application's *Add Blog Entry* button is modified to
+display *Overriden Add Blog Entry*. If you change the Portal's default language
+to Spanish, the language key is translated to display in that language. For
+example, if the Portal's language is set to Spanish, the text changes to *Añadir
+entrada sobreescrita*.
 
-When this sample hook gets deployed on a Liferay DXP portal, if we add the blogs
-application to a page in English, the button to add a new blog entry will
-display the text "Overriden Add Blog Entry". If the language is then changed to
-Spanish, we will see the text "Añadir entrada sobreescrita".
+![Figure 1: The customized Blogs application displays the new `add-blog-entry` language key in English.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/hook-resourcebundle.png)
 
-![Figure 1: The customized Blog application with the new add-blog-entry messages for English.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/hook-resourcebundle.png)
+For reference, the Blogs application's language keys are stored in the
+[liferay-portal](https://github.com/liferay/liferay-portal) Github repo's
+`modules/apps/collaboration/blogs/blogs-web/src/main/resources/content` folder.
 
-This example highlights the main steps to hook and override applications
-language keys, which are:
+The steps to hook and override applications' language keys are
 
-- Implementing a resource bundle loader
-- Registering the service
-- Providing the new language keys which will override the original ones
+- Implement a resource bundle loader.
+- Register the service.
+- Provide the new language keys that will override the original ones.
 
 The resource bundle loader is a class that should implement the interface
-`com.liferay.portal.kernel.util.ResourceBundleLoader`. A closer look to our
-sample source code will show that we need to implement the `loadResourceBundle`
-method, returning our loaded resource bundle:
+`com.liferay.portal.kernel.util.ResourceBundleLoader`. Specifically, you must
+implement the `loadResourceBundle` method, which returns the loaded resource
+bundle:
 
-	@Override
-	public ResourceBundle loadResourceBundle(String languageId) {
-		return _resourceBundleLoader.loadResourceBundle(languageId);
-	}
-	
-The rest of the code is setting the resource bundle loader into which the
-resource bundles are loaded as an AggregateResourceBundleLoader.
+    @Override
+    public ResourceBundle loadResourceBundle(String languageId) {
+        return \_resourceBundleLoader.loadResourceBundle(languageId);
+    }
 
-	@Reference(target = "(&(bundle.symbolic.name=com.liferay.blogs.web)(!(component.name=com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent)))")
-	public void setResourceBundleLoader(
-		ResourceBundleLoader resourceBundleLoader) {
+<!-- TODO: \^ -->
 
-		_resourceBundleLoader = new AggregateResourceBundleLoader(
-			new CacheResourceBundleLoader(
-				new ClassResourceBundleLoader(
-					"content.Language",
-					ResourceBundleLoaderComponent.class.getClassLoader())),
-			resourceBundleLoader);
-	}
+Then you must set the resource bundle loader to load the resource bundles as an
+`AggregateResourceBundleLoader`.
 
-Notice that in the @Reference annotation, we are specifying that we want to
-target the original bundle, with `com.liferay.blogs.web` as symbolic name, which
-is not the component
-`com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent`. 
+    @Reference(target = "(&(bundle.symbolic.name=com.liferay.blogs.web)(!(component.name=com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent)))")
+    public void setResourceBundleLoader(
+        ResourceBundleLoader resourceBundleLoader) {
 
-Also note the required parameters for the ClassResourceBundleLoader, which are:
+        \_resourceBundleLoader = new AggregateResourceBundleLoader(
+            new CacheResourceBundleLoader(
+                new ClassResourceBundleLoader(
+                    "content.Language",
+                    ResourceBundleLoaderComponent.class.getClassLoader())),
+        resourceBundleLoader);
+    }
 
-- `content.Language` as the base name
-- The classloader for your resource bundle loader
-- The resource bundle loader from the method’s parameter
+<!-- TODO: \^ -->
 
-Your class should also register the resource bundle loader in the OSGi runtime.
-To accomplish that, the following three properties should be set:
+The `@Reference` annotation targets the original Blogs module by specifying
+its symbolic name `com.liferay.blogs.web`. This sample's own component name
+(i.e., `com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent`)
+is not the targeted module for this resource bundle.
 
-- `bundle.symbolic.name=` - The symbolic name of the target module (the module
-	whose keys you're overriding)
-- `resource.bundle.base.name=` - The resource bundle base name that points to
-  your language files
-- `servlet.context.name=` - The servlet context name of the target module
+Also note the required parameters to set the resource bundle loader:
 
-For this example, the @Component annotation looks like this:
+- The base language file name (e.g., `content.Language`).
+- The classloader for your resource bundle loader.
+- The resource bundle loader from the method's parameter.
 
-	@Component(
-		immediate = true,
-		property = {
-			"bundle.symbolic.name=com.liferay.blogs.web",
-			"resource.bundle.base.name=content.Language",
-			"servlet.context.name=blogs-web"
-		}
-	)
+The class should also register the resource bundle loader in the OSGi runtime.
+This is done by setting the following three properties:
 
-The last step to do is adding the new language.properties files to the folder
-`src/content` for each locale whose keys you want to override. As for this
-example we are interested in override only the English and Spanish keys, we
-added two new language.properties files `Language_en.properties` and
-`Language_es.properties`.
+- `bundle.symbolic.name`: The symbolic name of the target module (i.e., the
+	module's keys you're overriding).
+- `resource.bundle.base.name`: The resource bundle base name that points to
+  your language files.
+- `servlet.context.name` - The servlet context name of the target module.
 
-Please bear in mind that this approach can be used to override any application
-language keys, which means `language.properties` files that are inside a module
-deployed to Liferay’s OSGi runtime. If you need to override any Liferay's core
-language keys, please visit
-[Liferay Developer Network - Modifying Liferay's Language Keys](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/modifying-liferays-language-keys).
+These properties are set in your class's `@Component` annotation like this:
 
-More information on how to use a resource bundle hook to override applications
-language keys can be found in
-[Liferay Developer Network - Overriding a Module's Language Keys](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-a-modules-language-keys#implementing-a-resource-bundle-loader).
+    @Component(
+        immediate = true,
+        property = {
+            "bundle.symbolic.name=com.liferay.blogs.web",
+            "resource.bundle.base.name=content.Language",
+            "servlet.context.name=blogs-web"
+        }
+    )
+
+Lastly, the new `language.properties` files should be added to the folder
+`src/content` for each locale's keys you want to override. Since this
+example's goal is to only override the English and Spanish keys, the
+`Language_en.properties` and `Language_es.properties` are added.
+
+This approach can be used to override any application's language keys, (i.e.,
+`language.properties` files that are inside a module deployed to Portal's OSGi
+runtime). If you need to override Portal's core language keys, see the
+[Modifying Liferay's Language Keys](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-language-keys#modifying-liferays-language-keys)
+tutorial.
+
+For more information on using a resource bundle hook to override an
+application's language keys, see the
+[Overriding a Module's Language Keys](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/overriding-language-keys#overriding-a-modules-language-keys)
+tutorial.
