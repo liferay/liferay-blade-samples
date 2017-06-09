@@ -1,7 +1,7 @@
 # Resource Bundle Hook
 
-The Resource Bundle Hook sample illustrates the recommended approach to override
-an application's language keys file for any module that is deployed to Liferay
+The Resource Bundle Hook sample conveys the recommended approach to override an
+application's language keys file for any module that is deployed to Liferay
 Portal's OSGi runtime (not applicable to Liferay Portal's core language keys).
 
 This example overrides the default `add-blog-entry` language key (English and
