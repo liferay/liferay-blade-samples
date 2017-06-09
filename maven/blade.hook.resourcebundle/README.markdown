@@ -51,7 +51,7 @@ Then you must set the resource bundle loader to load the resource bundles as an
 The `@Reference` annotation targets the original Blogs module by specifying
 its symbolic name `com.liferay.blogs.web`. This sample's own component name
 (i.e., `com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent`)
-is not the targeted module for this resource bundle.
+is not targeted to use this resource bundle.
 
 Also note the required parameters to set the resource bundle loader:
 
@@ -66,7 +66,7 @@ This is done by setting the following three properties:
 	module's keys you're overriding).
 - `resource.bundle.base.name`: The resource bundle base name that points to
   your language files.
-- `servlet.context.name` - The servlet context name of the target module.
+- `servlet.context.name`: The servlet context name of the target module.
 
 These properties are set in your class's `@Component` annotation like this:
 
