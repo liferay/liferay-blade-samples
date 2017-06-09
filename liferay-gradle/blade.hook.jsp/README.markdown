@@ -22,17 +22,23 @@ this is configured like this:
 Then you must provide the new JSP intended to override the original one. Be sure
 to mimic the host module's folder structure when overriding its JAR. For this
 example, since the original JSP is in the folder
-`/META-INF/resources/login.jsp`, you should have your new JSP file reside in the
-folder `src/main/resources/META-INF/resources/login.jsp`.
+`/META-INF/resources/login.jsp`, the new JSP file resides in the folder
+`src/main/resources/META-INF/resources/login.jsp`.
 
 If needed, you can also target the original JSP following one of the two
-possible naming conventions: `portal` or `original`. This pattern looks like
-this:
+possible naming conventions: `original` or `portal`. This pattern looks like
 
-    <liferay-util:include 
+    <liferay-util:include
         page="/login.original.jsp"
-        servletContext="<%= application %>" 
-    /> 
+        servletContext="<%= application %>"
+    />
+
+or
+
+    <liferay-util:include
+        page="/login.portal.jsp"
+        servletContext="<%= application %>"
+    />
 
 This approach can be used to override any application JSP (i.e., JSPs residing
 in a module). If you need to override a core JSP, see the `blade.corejsphook`
