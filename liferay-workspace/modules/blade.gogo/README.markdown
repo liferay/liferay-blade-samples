@@ -1,53 +1,56 @@
 # Gogo Shell Command
 
-The Gogo Shell Command sample shows how to add a custom command to a Liferay DXP
-gogo shell environment.
+The Gogo Shell Command sample demonstrates adding a custom command to Liferay
+Portal's Gogo shell environment. All Liferay Portal installations have a Gogo
+shell environment, which lets system administrators interact with Liferay
+Portal's module framework on a local server machine.
 
-Any Liferay DXP installation has its own gogo shell environment, allowing system
-administrators to interact with Liferay Portal’s module framework on a local
-server machine.
+This example adds a new custom Gogo shell command called `usercount` under the
+`blade` scope. It prints out the number of registered users on a specific
+Liferay Portal installation.
 
-This example adds a new custom gogo shell command called `usercount`, under the
-`blade` scope, which will print out the number of users currently created on a
-specific Liferay DXP installation.
+To test this sample, follow the instructions below:
 
-To see this example in action, those are the main steps that need to be
-accomplished:
+1.  Start a Liferay Portal installation.
+2.  Using a command line tool, connect to your local Gogo shell. For example,
+    you can do this by typing `telnet localhost 11311`.
+3.  Run `help` to view all the available commands. The sample Gogo shell command
+    is listed.
 
-- Have Liferay DXP running
-- Connect to your local gogo shell (type `telnet localhost 11311`)
-- Type `help` to see all your available commands
-- Type `usercount` to execute our new custom command and get how many users we have created on our Liferay DXP installation
+		![Figure 1: The sample Gogo shell command is listed with all the available commands.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/gogo-shell-1.png)
 
-![Figure 1: Gogo shell connection and listing all the available commands.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/gogo-shell-1.png)
+4.  Execute `usercount` to execute the new custom command. The number of users
+    on the running Liferay Portal installation is provided.
 
-![Figure 2: The outcome of executing the usercount command.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/gogo-shell-2.png)
+    ![Figure 2: The outcome of executing the `usercount` command.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/gogo-shell-2.png)
 
-For this example, to add this new gogo shell command, we've implemented the
-logic in a Java simple class , with the following two properties:
+To add this new Gogo shell command, you must implement the logic in a Java
+class with the following two properties:
 
-- `osgi.command.function=usercount` to specify the command's name and it must match the method name in the registered service implementation
-- `osgi.command.scope` for the general scope or namespace for the command
+- `osgi.command.function`: specifies the command's name, which must match the
+   method name in the registered service implementation.
+- `osgi.command.scope`: specifies the general scope or namespace for the
+   command.
 
 These properties are set in your class's `@Component` annotation like this:
 
-	@Component(
-		property = {"osgi.command.function=usercount", "osgi.command.scope=blade"},
-		service = Object.class
-	)
+    @Component(
+        property = {"osgi.command.function=usercount", "osgi.command.scope=blade"},
+        service = Object.class
+    )
 
-And the logic is inside the method with the same name as specified in our
-`osgi.command.function` property.
+The logic for the `usercount` command is specified in the method with the same
+name:
 
-	public void usercount() {
-		System.out.println(
-			"# of users: " + getUserLocalService().getUsersCount());
-	}
+    public void usercount() {
+        System.out.println(
+            "# of users: " + getUserLocalService().getUsersCount());
+    }
 
-Lastly, we are using *Declarative Services* to get a reference for the
-*UserLocalService* to invoke the *getUsersCount*, which allow us to know how
-many users we currently have in the system. 
+In this method, *Declarative Services* is used to get a reference for the
+`UserLocalService` to invoke the `getUsersCount` method. This lets us find the
+number of users currently in the system.
 
-For more information on using the gogo shell, see the
+For more information on using the Gogo shell, see the
 [Using the Felix Gogo Shell](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/using-the-felix-gogo-shell)
-tutorial on Liferay Developer Network.
+tutorial on Liferay's Developer Network.
