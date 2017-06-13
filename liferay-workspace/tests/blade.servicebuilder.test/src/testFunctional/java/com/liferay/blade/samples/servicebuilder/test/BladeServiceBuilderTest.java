@@ -150,9 +150,11 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(isVisible(_firstRowField1));
 
-		Assert.assertTrue(_firstRowField1.getText().contains("new field1 entry"));
+		Assert.assertTrue(
+			_firstRowField1.getText().contains("new field1 entry"));
 
-		Assert.assertTrue(_secondRowField1.getText().contains("new field1 entry"));
+		Assert.assertTrue(
+			_secondRowField1.getText().contains("new field1 entry"));
 	}
 
 	@Test
@@ -177,7 +179,8 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(isVisible(_table));
 
-		Assert.assertTrue(_table.getText().contains("field1 with Updated Name"));
+		Assert.assertTrue(
+			_table.getText().contains("field1 with Updated Name"));
 	}
 
 	protected static boolean isAlertPresent(WebDriver webDriver) {

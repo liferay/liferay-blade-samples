@@ -84,8 +84,7 @@ public class BladePortletJSPTest {
 		Assert.assertTrue(
 			"Expected Hello from BLADE JSP!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"Hello from BLADE JSP!"));
+			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
 
 		Assert.assertTrue(
 			"Expected redBackground, but saw " +
