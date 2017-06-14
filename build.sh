@@ -3,7 +3,7 @@ set -xe
 repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
-  cd liferay-gradle
+  cd gradle
   ./gradlew checkSourceFormatting clean build
   cd "$repoDir"
   cd maven

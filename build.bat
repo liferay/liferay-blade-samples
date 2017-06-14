@@ -1,6 +1,6 @@
 set repoDir=%cd%
 
-call cd liferay-gradle
+call cd gradle
 call gradlew.bat clean build
 call cd %repoDir%
 call cd maven

@@ -25,17 +25,8 @@ gradle/*/.classpath
 gradle/*/.metadata
 gradle/*/.project
 gradle/*/.settings
-gradle/*/build
 gradle/*/bin
-
-liferay-gradle/.project
-liferay-gradle/.settings
-liferay-gradle/*/.classpath
-liferay-gradle/*/.metadata
-liferay-gradle/*/.project
-liferay-gradle/*/.settings
-liferay-gradle/*/bin
-liferay-gradle/*/build
+gradle/*/build
 
 liferay-workspace/.project
 liferay-workspace/.settings
