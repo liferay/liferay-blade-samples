@@ -23,6 +23,6 @@ for this example goes
 3.  Liferay Portal language keys
 
 You can visit the
-[blade.language README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language/README.markdown)
+[blade.language README](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/blade.language/README.markdown)
 for more information on how language keys are used from modules and shared
 between modules.

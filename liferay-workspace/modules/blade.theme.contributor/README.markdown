@@ -36,7 +36,7 @@ If you add your own `SCSS` files, you must add them to the list of imports in
 the `blade.theme.contributor.scss` file.
 
 The sample
-[`blade.theme.contributor.js` file](https://raw.githubusercontent.com/liferay/liferay-blade-samples/master/liferay-gradle/blade.theme.contributor/src/main/resources/META-INF/resources/js/blade.theme.contributor.js)
+[`blade.theme.contributor.js` file](https://raw.githubusercontent.com/liferay/liferay-blade-samples/master/gradle/blade.theme.contributor/src/main/resources/META-INF/resources/js/blade.theme.contributor.js)
 logs a message to the console window, but you can write whatever JavaScript you
 want:
 

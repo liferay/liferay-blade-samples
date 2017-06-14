@@ -42,6 +42,6 @@ republishing an aggregate `ResourceBundleLoader`. This can be done two ways:
     of implementation details.
 
 Visit the
-[blade.language.web README](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-gradle/blade.language.web/README.markdown)
+[blade.language.web README](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/blade.language.web/README.markdown)
 to see how the Language sample module shares its language keys with a JSP
 portlet.
