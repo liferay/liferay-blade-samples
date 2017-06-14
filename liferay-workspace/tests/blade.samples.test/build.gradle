@@ -1,54 +1,66 @@
-apply plugin: 'groovy'
-
-dependencies {
-	compile gradleApi()
-	compile gradleTestKit()
-	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
-	compile group: "com.squareup.okhttp3", name: "okhttp", version: "3.3.1"
-	compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
-	compile group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
-
-	testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
-	testCompile group: "commons-io", name: "commons-io", version: "2.5"
+sourceSets {
+	testFunctional {
+		java {
+			compileClasspath += main.output + test.output
+			runtimeClasspath += main.output + test.output
+			srcDir file('src/testFunctional/java')
+		}
+		resources.srcDir file('src/testFunctional/resources')
+	}
 }
 
-repositories {
-	maven {
-		url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
-	}
+configurations {
+	testFunctionalCompile.extendsFrom testCompile
+	testFunctionalRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
+	compileOnly "javax.portlet:portlet-api:2.0"
+	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
+	compileOnly "org.osgi:org.osgi.service.component.annotations:1.3.0"
+
+	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
+	testCompile group: "junit", name: "junit", version: "4.12"
+	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
+	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 }
 
 startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-testIntegration {
+task testFunctional(type: Test) {
+	testClassesDir = sourceSets.testFunctional.output.classesDir
+	classpath = sourceSets.testFunctional.runtimeClasspath
 	outputs.upToDateWhen { false }
 
 	dependsOn ":initBundle", startTestableTomcat
+	dependsOn ":modules:blade.language:deploy"
+	dependsOn ":modules:blade.language.web:jar"
+	dependsOn ":modules:blade.portlet.actioncommand:jar"
+	dependsOn ":modules:blade.portlet.configuration.icon:jar"
+	dependsOn ":modules:blade.portlet.freemarker:jar"
+	dependsOn ":modules:blade.portlet.jsp:jar"
+	dependsOn ":modules:blade.portlet.osgiapi:jar"
+	dependsOn ":modules:blade.portlet.rendercommand:jar"
+	dependsOn ":modules:blade.portlet.toolbar.contributor:jar"
 
-	beforeSuite {
-		def moduleOutputPaths = []
-
-		project(":modules").subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
-			}
-		}
-
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
-	}
-
-	project(":modules").subprojects { p ->
-		p.plugins.withType(JavaPlugin) {
-			dependsOn p.tasks["build"]
-		}
-	}
-
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
+	systemProperty 'portletActionommandJarFile', project(':modules:blade.portlet.actioncommand').jar.archivePath
+	systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
+	systemProperty 'portletFreemarkerJarFile', project(':modules:blade.portlet.freemarker').jar.archivePath
+	systemProperty 'portletJspJarFile', project(':modules:blade.portlet.jsp').jar.archivePath
+	systemProperty 'portletOsgiApiJarFile', project(':modules:blade.portlet.osgiapi').jar.archivePath
+	systemProperty 'portletRenderCommandJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
+	systemProperty 'portletToolbarContributorJarFile', project(':modules:blade.portlet.toolbar.contributor').jar.archivePath
 
 	finalizedBy {
 		stopTestableTomcat
+	}
+
+	doLast {
+		delete new File("target/drone-phantomjs")
 	}
 }
 
@@ -57,3 +69,5 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
+
+check.dependsOn testFunctional
