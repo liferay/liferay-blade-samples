@@ -50,8 +50,8 @@ public class BladePortletFreemarkerTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty(
-			"portletFreemarkerJarFile"));
+		final File jarFile = new File(
+			System.getProperty("portletFreemarkerJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}

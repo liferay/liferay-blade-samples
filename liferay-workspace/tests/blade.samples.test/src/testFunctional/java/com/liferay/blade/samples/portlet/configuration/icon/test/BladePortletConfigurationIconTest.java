@@ -50,8 +50,8 @@ public class BladePortletConfigurationIconTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty(
-			"portletConfigurationIconJarFile"));
+		final File jarFile = new File(
+			System.getProperty("portletConfigurationIconJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -80,7 +80,8 @@ public class BladePortletConfigurationIconTest {
 
 		customClick(_webDriver, _verticalEllipsis);
 
-		Assert.assertTrue("Sample Link is not visible",
+		Assert.assertTrue(
+			"Sample Link is not visible",
 			isVisible(_lfrMenuSampleLink));
 
 		customClick(_webDriver, _lfrMenuSampleLink);
