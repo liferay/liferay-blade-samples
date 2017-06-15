@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.language.web.test;
+package com.liferay.blade.samples.portlet.osgiapi.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -36,42 +36,58 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * @author Liferay
+ * @author Lawrence Lee
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladeLanguageWebTest {
+public class BladePortletOsgiApiTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("jarFile"));
+		final File jarFile = new File(System.getProperty(
+			"portletOsgiApiJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	public void customClick(WebDriver webDriver, WebElement webElement) {
+		Actions action = new Actions(webDriver);
+
+		action.moveToElement(webElement).build().perform();
+
+		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+
+		WebElement element = wait.until(
+			ExpectedConditions.visibilityOf(webElement));
+
+		element.click();
+	}
+
 	@Test
-	public void testBladeSamplesLanguage() throws PortalException {
+	public void testBladePortletOsgiApi()
+		throws InterruptedException, PortalException {
+
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleLanguagePortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleOsgiApiPortlet));
+
 		Assert.assertTrue(
-			_languageKeyFirst.getText(),
-			_languageKeyFirst.getText().contentEquals(
-				"Hello from BLADE Language Web!"));
+			"Expected Blade OSGI API Portlet, but saw " +
+				_portletTitle.getText(),
+			_portletTitle.getText().contentEquals("OSGi API Portlet"));
+
 		Assert.assertTrue(
-			_languageKeySecond.getText(),
-			_languageKeySecond.getText().contentEquals(
-				"Hello from the BLADE Language Module!"));
-		Assert.assertTrue(
-			_languageKeyThird.getText(),
-			_languageKeyThird.getText().contentEquals(
-				"I have overridden the key from BLADE Language Module!"));
+			"Expected OSGi API Portlet - Hello World!, but saw " +
+				_portletBody.getText(),
+			_portletBody.getText().contentEquals(
+				"OSGi API Portlet - Hello World!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -87,19 +103,16 @@ public class BladeLanguageWebTest {
 		}
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_language_web')]")
-	private WebElement _bladeSampleLanguagePortlet;
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]")
+	private WebElement _bladeSampleOsgiApiPortlet;
 
-	@FindBy(xpath = "//div[@class='portlet-body']/p[1]")
-	private WebElement _languageKeyFirst;
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div/div")
+	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[@class='portlet-body']/p[2]")
-	private WebElement _languageKeySecond;
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//h2")
+	private WebElement _portletTitle;
 
-	@FindBy(xpath = "//div[@class='portlet-body']/p[3]")
-	private WebElement _languageKeyThird;
-
-	@PortalURL("com_liferay_blade_samples_language_web")
+	@PortalURL("com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet")
 	private URL _portletURL;
 
 	@Drone

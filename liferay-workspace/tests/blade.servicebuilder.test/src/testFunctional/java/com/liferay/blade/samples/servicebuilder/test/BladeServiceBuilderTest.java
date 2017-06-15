@@ -78,7 +78,7 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _addButton);
 
-		Assert.assertTrue(isVisible(_field1Form));
+		Assert.assertTrue("Field1 is not visible",isVisible(_field1Form));
 
 		_field1Form.sendKeys("Hello");
 
@@ -88,11 +88,14 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _saveButton);
 
-		Assert.assertTrue(isVisible(_table));
+		Assert.assertTrue("Service Builder Table is not visible",
+			isVisible(_table));
 
-		Assert.assertTrue(_table.getText().contains("Hello"));
+		Assert.assertTrue("Hello World is not present in table",
+			_table.getText().contains("Hello"));
 
-		Assert.assertTrue(_table.getText().contains("World"));
+		Assert.assertTrue("Hello World is not present in table",
+			_table.getText().contains("World"));
 	}
 
 	@Test
@@ -105,13 +108,15 @@ public class BladeServiceBuilderTest {
 
 		int originalRows = rows.size();
 
-		Assert.assertTrue(isVisible(_lfrIconMenu));
+		Assert.assertTrue("Liferay Icon Menus is not visible",
+			isVisible(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
-		Assert.assertTrue(isVisible(_lfrMenuDelete));
+		Assert.assertTrue("Action Menu Delete is not visible",
+			isVisible(_lfrMenuDelete));
 
 		String source = _webDriver.getPageSource();
 
@@ -129,7 +134,8 @@ public class BladeServiceBuilderTest {
 
 		_webDriver.navigate().refresh();
 
-		Assert.assertTrue(isVisible(_table));
+		Assert.assertTrue("Service Builder Table is not visible",
+			isVisible(_table));
 
 		rows = _webDriver.findElements(
 			By.xpath(
@@ -148,26 +154,32 @@ public class BladeServiceBuilderTest {
 	public void testReadFoo() throws PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue(isVisible(_firstRowField1));
+		Assert.assertTrue("First Row Field 1 is not visible",
+			isVisible(_firstRowField1));
 
-		Assert.assertTrue(_firstRowField1.getText().contains("new field1 entry"));
+		Assert.assertTrue("First row field 1 does not contain entry",
+			_firstRowField1.getText().contains("new field1 entry"));
 
-		Assert.assertTrue(_secondRowField1.getText().contains("new field1 entry"));
+		Assert.assertTrue("Second row field 1 does not contain entry",
+			_secondRowField1.getText().contains("new field1 entry"));
 	}
 
 	@Test
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue(isVisible(_lfrIconMenu));
+		Assert.assertTrue("Liferay Icon menu is not visible",
+			isVisible(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
-		Assert.assertTrue(isVisible(_lfrMenuEdit));
+		Assert.assertTrue("Liferay Menu Edit is not visible",
+			isVisible(_lfrMenuEdit));
 
 		customClick(_webDriver, _lfrMenuEdit);
 
-		Assert.assertTrue(isVisible(_field1Form));
+		Assert.assertTrue("Field 1 form is not visible",
+			isVisible(_field1Form));
 
 		_field1Form.clear();
 
@@ -175,9 +187,11 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _saveButton);
 
-		Assert.assertTrue(isVisible(_table));
-
-		Assert.assertTrue(_table.getText().contains("field1 with Updated Name"));
+		Assert.assertTrue("Service Builder Table is not visible",
+			isVisible(_table));
+		
+		Assert.assertTrue("Service Builder Table does not contain Updated Name",
+			_table.getText().contains("field1 with Updated Name"));
 	}
 
 	protected static boolean isAlertPresent(WebDriver webDriver) {
