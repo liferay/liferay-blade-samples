@@ -36,6 +36,7 @@ task testFunctional(type: Test) {
 	outputs.upToDateWhen { false }
 
 	dependsOn ":initBundle", startTestableTomcat
+	dependsOn ":modules:blade.controlmenuentry:jar"
 	dependsOn ":modules:blade.language:deploy"
 	dependsOn ":modules:blade.language.web:jar"
 	dependsOn ":modules:blade.portlet.actioncommand:jar"
@@ -46,6 +47,7 @@ task testFunctional(type: Test) {
 	dependsOn ":modules:blade.portlet.rendercommand:jar"
 	dependsOn ":modules:blade.portlet.toolbar.contributor:jar"
 
+	systemProperty 'controlMenuEntryJarFile', project(':modules:blade.controlmenuentry').jar.archivePath
 	systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
 	systemProperty 'portletActionommandJarFile', project(':modules:blade.portlet.actioncommand').jar.archivePath
 	systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
