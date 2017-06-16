@@ -50,8 +50,8 @@ public class BladePortletToolbarContributorTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty(
-			"portletToolbarContributorJarFile"));
+		final File jarFile = new File(
+			System.getProperty("portletToolbarContributorJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -80,7 +80,8 @@ public class BladePortletToolbarContributorTest {
 
 		customClick(_webDriver, _portletTopperToolbar);
 
-		Assert.assertTrue("Liferay Menus is not visible",
+		Assert.assertTrue(
+			"Liferay Menus is not visible",
 			isVisible(_lfrMenuLiferay));
 
 		customClick(_webDriver, _lfrMenuLiferay);

@@ -52,8 +52,8 @@ public class BladePortletActionCommandTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty(
-			"portletActionommandJarFile"));
+		final File jarFile = new File(
+			System.getProperty("portletActionommandJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -81,7 +81,7 @@ public class BladePortletActionCommandTest {
 			"Portlet was not deployed",
 			isVisible(_bladeSampleActionCommandGreeterPortlet));
 
-		Assert.assertTrue("Name Field is not visible",isVisible(_nameField));
+		Assert.assertTrue("Name Field is not visible", isVisible(_nameField));
 
 		_webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 

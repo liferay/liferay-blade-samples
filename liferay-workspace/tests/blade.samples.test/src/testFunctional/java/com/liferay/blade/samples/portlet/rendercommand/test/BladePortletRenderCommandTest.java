@@ -50,8 +50,8 @@ public class BladePortletRenderCommandTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty(
-			"portletRenderCommandJarFile"));
+		final File jarFile = new File(
+			System.getProperty("portletRenderCommandJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -83,7 +83,8 @@ public class BladePortletRenderCommandTest {
 				_portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Blade Render Portlet"));
 
-		Assert.assertTrue("Render Command Button is not visible",
+		Assert.assertTrue(
+			"Render Command Button is not visible",
 			isVisible(_portletButton));
 
 		customClick(_webDriver, _portletButton);

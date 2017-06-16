@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.osgiapi.test;
+package com.liferay.blade.samples.controlmenu.entry.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -31,6 +31,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,12 +47,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletOsgiApiTest {
+public class BladeControlMenuEntryTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("portletOsgiApiJarFile"));
+			System.getProperty("controlMenuEntryJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -69,25 +70,56 @@ public class BladePortletOsgiApiTest {
 		element.click();
 	}
 
+	@Ignore
 	@Test
-	public void testBladePortletOsgiApi()
+	public void testBladeControlMenuEntry()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleOsgiApiPortlet));
+			"Control Menu Entry Link is not visible",
+			isVisible(_controlMenuLink));
 
 		Assert.assertTrue(
-			"Expected Blade OSGI API Portlet, but saw " +
-				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("OSGi API Portlet"));
+			"Control Menu Entry Link text is not visible",
+			isTextPresent(_controlMenuLinkText,
+				"Blade Menu Entry Custom Message"));
+
+		customClick(_webDriver, _controlMenuLink);
 
 		Assert.assertTrue(
-			"Expected OSGi API Portlet - Hello World!, but saw " +
-				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"OSGi API Portlet - Hello World!"));
+			"Expected: https://www.liferay.com/, but saw " +
+				_webDriver.getCurrentUrl(),
+			isPageLoaded("https://www.liferay.com/"));
+	}
+
+	protected boolean isPageLoaded(String string) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+
+		try {
+			webDriverWait.until(ExpectedConditions.urlMatches(string));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
+	}
+
+	protected boolean isTextPresent(WebElement webelement, String string) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.textToBePresentInElement(
+					webelement, string));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -103,16 +135,13 @@ public class BladePortletOsgiApiTest {
 		}
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]")
-	private WebElement _bladeSampleOsgiApiPortlet;
+	@FindBy(xpath = "//li[contains(@class,'control-menu-nav-item')]//..//span/*[name()='svg'][contains(@class,'lexicon-icon-link')]")
+	private WebElement _controlMenuLink;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div/div")
-	private WebElement _portletBody;
+	@FindBy(xpath = "//li[contains(@class,'control-menu-nav-item')]//..//span[contains(.,'Blade')]")
+	private WebElement _controlMenuLinkText;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//h2")
-	private WebElement _portletTitle;
-
-	@PortalURL("com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet")
+	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
 	private URL _portletURL;
 
 	@Drone
