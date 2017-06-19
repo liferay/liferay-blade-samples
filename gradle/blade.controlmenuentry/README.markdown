@@ -38,7 +38,7 @@ There are also two properties provided via the `@Component` annotation:
    *SITES* (left portion), *TOOLS* (middle portion), and *USER* (right portion).
 - `product.navigation.control.menu.entry.order:Integer`: the order in which your
    entry will be displayed in the category.
- 
+
 This sample also implements the `ProductNavigationControlMenuEntry` interface.
 The following methods are implemented:
 
