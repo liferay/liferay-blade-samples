@@ -25,8 +25,7 @@ an OSGi service via the `@Component` annotation:
     @Component(
         immediate = true,
         property = {
-            "product.navigation.control.menu.category.key=" +
-                ProductNavigationControlMenuCategoryKeys.USER,
+            "product.navigation.control.menu.category.key=" + ProductNavigationControlMenuCategoryKeys.USER,
             "product.navigation.control.menu.entry.order:Integer=1"
         },
         service = ProductNavigationControlMenuEntry.class
