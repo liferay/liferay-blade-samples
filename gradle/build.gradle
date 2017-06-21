@@ -31,3 +31,8 @@ subprojects {
 		}
 	}
 }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.0'
+	jarFile = "${project.projectDir}/.gradle-wrapper/gradle-wrapper.jar"
+}

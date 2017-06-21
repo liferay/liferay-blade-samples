@@ -1,6 +1,8 @@
 buildscript {
 	dependencies {
 		classpath group: "net.diibadaaba.zipdiff", name: "zipdiff", version: "1.0"
+		classpath group: "org.apache.commons", name: "commons-io", version: "1.3.2"
+
 	}
 	repositories {
 		mavenCentral()
@@ -10,6 +12,7 @@ buildscript {
 import net.diibadaaba.zipdiff.DifferenceCalculator
 import net.diibadaaba.zipdiff.Differences
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.io.FileUtils
 
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
 FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
@@ -53,7 +56,7 @@ warsTest.dependsOn warsSizeTest
 
 task replicateSources << {
 	Closure projectFilter = {
-		it.isDirectory() && it.name.startsWith("blade") && !it.name.matches("\\..*")
+		it.isDirectory() && !it.name.matches("\\..*") && (it.getParent().matches("apps") || it.getParent().matches("extensions") || it.getParent().matches("overrides") || it.getParent().matches("themes"))
 	}
 
 	def canonicalSource
@@ -65,8 +68,10 @@ task replicateSources << {
 		canonicalSource = 'gradle'
 	}
 
-	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
+	def canonicalProjects = file(canonicalSource).listFiles(.,*,true).findAll(projectFilter)
 	def replicationParents = files(['gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
+
+	println canonicalProjects
 
 	canonicalProjects.each { canonicalProject ->
 		if ((new File(canonicalProject, "bnd.bnd").exists())) {

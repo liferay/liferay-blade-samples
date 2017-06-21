@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>blade</groupId>
+	<artifactId>blade-apps</artifactId>
+	<version>1.0.0</version>
+	<name>BLADE Maven Apps</name>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>blade-maven</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<modules>
+		<module>configuration-action</module>
+		<module>portlet-action-command</module>
+		<module>portlet-blueprint</module>
+		<module>portlet-control-panel</module>
+		<module>portlet-ds</module>
+		<module>portlet-filter</module>
+		<module>portlet-freemarker</module>
+		<module>portlet-jsp</module>
+		<module>portlet-osgi</module>
+		<module>portlet-render-command</module>
+		<module>portlet-resource-command</module>
+		<module>portlet-springmvc</module>
+		<module>rest</module>
+		<module>servicebuilder</module>
+		<module>shared-language-keys</module>
+		<module>simulation-panel-app</module>
+	</modules>
+</project>

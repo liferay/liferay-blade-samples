@@ -1,5 +1,0 @@
-Bundle-Description: Packages UI resources independent of a theme to include on a Liferay Portal page.
-Bundle-Version: 1.0.0
-Liferay-Theme-Contributor-Type: blade.theme.contributor
-Web-ContextPath: /blade.theme.contributor-theme-contributor
--sources: true

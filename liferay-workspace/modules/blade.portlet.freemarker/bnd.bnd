@@ -1,5 +1,0 @@
-Bundle-Version: 1.0.0
--includeresource:\
-	@com.liferay.util.bridges-[0-9]*.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
-	@com.liferay.util.taglib-[0-9]*.jar!/META-INF/*.tld
--sources: true

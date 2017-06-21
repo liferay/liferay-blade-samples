@@ -10,13 +10,6 @@ atlassian-ide-plugin.xml
 
 */.gradle
 
-bndtools/*/.settings
-bndtools/*/bin
-bndtools/*/bin_test
-bndtools/*/generated
-bndtools/cnf/cache/
-bndtools/dist/
-
 build/*
 
 gradle/.project
@@ -25,8 +18,10 @@ gradle/*/.classpath
 gradle/*/.metadata
 gradle/*/.project
 gradle/*/.settings
-gradle/*/bin
-gradle/*/build
+gradle/*/*/bin
+gradle/*/*/*/bin
+gradle/*/*/build/
+gradle/*/*/*/build/
 
 liferay-workspace/.project
 liferay-workspace/.settings
@@ -34,8 +29,10 @@ liferay-workspace/*/.classpath
 liferay-workspace/*/.metadata
 liferay-workspace/*/.project
 liferay-workspace/*/.settings
-liferay-workspace/*/bin
-liferay-workspace/*/build
+liferay-workspace/*/*/bin
+liferay-workspace/*/*/*/bin
+liferay-workspace/*/*/build
+liferay-workspace/*/*/*/build
 
 maven/.project
 maven/.settings
@@ -43,13 +40,13 @@ maven/*/.classpath
 maven/*/.metadata
 maven/*/.project
 maven/*/.settings
-maven/*/bin
-maven/*/target
+maven/*/*/bin
+maven/*/*/*/bin
+maven/*/*/target
+maven/*/*/*/target
 maven/*/*/.classpath
 maven/*/*/.metadata
 maven/*/*/.project
 maven/*/*/.settings
-maven/*/*/bin
-maven/*/*/target
 
 **/.sass-cache
