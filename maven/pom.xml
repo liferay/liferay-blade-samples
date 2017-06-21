@@ -5,7 +5,6 @@
 	<groupId>blade</groupId>
 	<artifactId>maven</artifactId>
 	<version>1.0.0</version>
-	<name>BLADE Maven</name>
 	<packaging>pom</packaging>
 
 	<repositories>

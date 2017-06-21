@@ -4,7 +4,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>overrides</artifactId>
-	<name>BLADE Overrides</name>
 	<packaging>pom</packaging>
 
 	<parent>

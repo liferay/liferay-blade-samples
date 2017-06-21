@@ -4,7 +4,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>apps</artifactId>
-	<name>BLADE Apps</name>
 	<packaging>pom</packaging>
 
 	<parent>
