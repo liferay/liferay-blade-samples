@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>foo-web</artifactId>
-	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -18,7 +17,7 @@
 
 	<dependencies>
 		 <dependency>
-			<groupId>blade-servicebuilder</groupId>
+			<groupId>blade</groupId>
 			<artifactId>foo-api</artifactId>
 			<version>1.0.0</version>
 			<scope>provided</scope>

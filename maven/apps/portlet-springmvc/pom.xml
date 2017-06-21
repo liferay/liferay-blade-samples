@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.liferay.blade.samples</groupId>
+	<artifactId>portlet-springmvc</artifactId>
+	<packaging>war</packaging>
+
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
-	<groupId>com.liferay.blade.samples</groupId>
-	<artifactId>portlet-springmvc</artifactId>
-	<version>1.0.0</version>
-	<packaging>war</packaging>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.spring>4.1.9.RELEASE</version.spring>
@@ -64,7 +66,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>blade-servicebuilder</groupId>
+			<groupId>blade</groupId>
 			<artifactId>foo-api</artifactId>
 			<version>1.0.0</version>
 			<scope>provided</scope>

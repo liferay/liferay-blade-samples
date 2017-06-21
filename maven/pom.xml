@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>blade</groupId>
-	<artifactId>blade-maven</artifactId>
+	<artifactId>maven</artifactId>
 	<version>1.0.0</version>
 	<name>BLADE Maven</name>
 	<packaging>pom</packaging>

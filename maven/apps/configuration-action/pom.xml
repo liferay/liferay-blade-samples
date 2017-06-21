@@ -6,7 +6,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>configuration-action</artifactId>
-	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<parent>
