@@ -45,7 +45,7 @@ testIntegration {
 		}
 	}
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/150/artifact/build/generated/p2/plugins/com.liferay.blade.cli_2.2.0.201706201908.jar")
 
 	finalizedBy {
 		stopTestableTomcat
