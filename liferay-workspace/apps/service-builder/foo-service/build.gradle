@@ -1,5 +1,5 @@
 dependencies {
-	compileOnly  project(":apps:servicebuilder:foo-api")
+	compileOnly  project(":apps:service-builder:foo-api")
 	compileOnly "biz.aQute.bnd:biz.aQute.bndlib:3.1.0"
 	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.6.0"
 	compileOnly "com.liferay:com.liferay.osgi.service.tracker.collections:2.0.0"

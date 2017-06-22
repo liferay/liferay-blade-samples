@@ -21,7 +21,7 @@
 		<module>document-action</module>
 		<module>friendly-url</module>
 		<module>gogo</module>
-		<module>indexer-postprocessor</module>
+		<module>indexer-post-processor</module>
 		<module>lifecycle-login-preaction</module>
 		<module>model-listener</module>
 		<module>poll-processor</module>
@@ -29,7 +29,7 @@
 		<module>portlet-toolbar-contributor</module>
 		<module>resource-bundle</module>
 		<module>scheduler-entry</module>
-		<module>screenname-validator</module>
+		<module>screen-name-validator</module>
 		<module>user-service-wrapper</module>
 		<module>struts-action</module>
 		<module>struts-portlet-action</module>

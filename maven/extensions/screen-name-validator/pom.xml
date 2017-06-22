@@ -5,7 +5,7 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>screenname-validator</artifactId>
+	<artifactId>screen-name-validator</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

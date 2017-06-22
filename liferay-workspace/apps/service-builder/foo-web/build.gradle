@@ -3,5 +3,5 @@ dependencies {
 	compileOnly "javax.portlet:portlet-api:2.0"
 	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
 	compileOnly "org.osgi:org.osgi.service.component.annotations:1.3.0"
-	compileOnly project(":apps:servicebuilder:foo-api")
+	compileOnly project(":apps:service-builder:foo-api")
 }

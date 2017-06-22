@@ -26,7 +26,7 @@
 		<module>portlet-resource-command</module>
 		<module>portlet-springmvc</module>
 		<module>rest</module>
-		<module>servicebuilder</module>
+		<module>service-builder</module>
 		<module>shared-language-keys</module>
 		<module>simulation-panel-app</module>
 	</modules>
