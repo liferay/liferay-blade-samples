@@ -13,21 +13,21 @@
 	</parent>
 
 	<modules>
+		<module>action-command-portlet</module>
+		<module>blueprint-portlet</module>
 		<module>configuration-action</module>
-		<module>portlet-action-command</module>
-		<module>portlet-blueprint</module>
-		<module>portlet-control-panel</module>
-		<module>portlet-ds</module>
-		<module>portlet-filter</module>
-		<module>portlet-freemarker</module>
-		<module>portlet-jsp</module>
-		<module>portlet-osgi</module>
-		<module>portlet-render-command</module>
-		<module>portlet-resource-command</module>
-		<module>portlet-springmvc</module>
+		<module>control-panel-portlet</module>
+		<module>ds-portlet</module>
+		<module>filter-portlet</module>
+		<module>freemarker-portlet</module>
+		<module>jsp-portlet</module>
+		<module>osgi-portlet</module>
+		<module>render-command-portlet</module>
+		<module>resource-command-portlet</module>
 		<module>rest</module>
 		<module>service-builder</module>
 		<module>shared-language-keys</module>
 		<module>simulation-panel-app</module>
+		<module>springmvc-portlet</module>
 	</modules>
 </project>

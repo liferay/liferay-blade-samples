@@ -5,7 +5,7 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>portlet-render-command</artifactId>
+	<artifactId>jsp-portlet</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

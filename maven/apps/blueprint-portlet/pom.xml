@@ -5,7 +5,7 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>override-module-jsp</artifactId>
+	<artifactId>blueprint-portlet</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
@@ -15,4 +15,14 @@
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
 </project>

@@ -5,7 +5,8 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>portlet-osgi</artifactId>
+	<artifactId>action-command-portlet</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -15,7 +16,24 @@
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
+	<properties>
+		<bridges.version>2.0.0</bridges.version>
+		<taglib.version>2.0.0</taglib.version>
+	</properties>
+
 	<dependencies>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>com.liferay.portal.kernel</artifactId>
+			<version>2.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>com.liferay.util.taglib</artifactId>
+			<version>${taglib.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
@@ -23,8 +41,14 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
+			<artifactId>osgi.cmpn</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>

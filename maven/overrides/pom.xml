@@ -14,7 +14,7 @@
 
 	<modules>
 		<module>core-jsp-override</module>
-		<module>override-module-jsp</module>
-		<module>override-resource-bundle</module>
+		<module>module-jsp-override</module>
+		<module>resource-bundle-override</module>
 	</modules>
 </project>
