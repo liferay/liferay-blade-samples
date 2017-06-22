@@ -128,6 +128,34 @@ integration point.
 | Liferay Workspace | [./liferay-workspace/modules/blade.corejsphook](./liferay-workspace/modules/blade.corejsphook)   |
 | Maven      | [./maven/blade.corejsphook](./maven/blade.corejsphook)          |
 
+### `document.action`
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.document.action](./gradle/blade.document.action) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.document.action](./liferay-workspace/modules/blade.document.action)   |
+| Maven      | [./maven/blade.doclib.resourcecommand.override](./maven/blade.document.action)        |
+
+### `doclib.resourcecommand.override`
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.doclib.resourcecommand.override](./gradle/blade.doclib.resourcecommand.override) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.doclib.resourcecommand.override](./liferay-workspace/modules/blade.doclib.resourcecommand.override)   |
+| Maven      | [./maven/blade.doclib.resourcecommand.override](./maven/blade.doclib.resourcecommand.override)        |
+
 ### `FriendlyURLMapper`
 
 **Extension point description**: Lets a developer provide (or overwrite)
@@ -210,6 +238,34 @@ Liferay services through DS (Declarative Services).
 | Gradle | [./gradle/blade.indexerpostprocessor](./gradle/blade.indexerpostprocessor) |
 | Liferay Workspace | [./liferay-workspace/modules/blade.indexerpostprocessor](./liferay-workspace/modules/blade.indexerpostprocessor)   |
 | Maven      | [./maven/blade.indexerpostprocessor](./maven/blade.indexerpostprocessor)        |
+
+### Language Web
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.language.web](./gradle/blade.language.web) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.language.web](./liferay-workspace/modules/blade.language.web)   |
+| Maven      | [./maven/blade.language.web](./maven/blade.language.web)        |
+
+### Language
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.language.web](./gradle/blade.language) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.language](./liferay-workspace/modules/blade.language)   |
+| Maven      | [./maven/blade.language](./maven/blade.language)        |
 
 ### `login.events.pre`
 
@@ -341,6 +397,20 @@ Services) framework for registering a portlet.
 | Liferay Workspace | [./liferay-workspace/modules/blade.portlet.ds](./liferay-workspace/modules/blade.portlet.ds)   |
 | Maven      | [./maven/blade.portlet.ds](./maven/blade.portlet.ds)        |
 
+#### FreeMarker Portlet 
+
+**Extension point description**: 
+
+**Template project description**:  Demonstrates a simple FreeMarker portlet.
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.portlet.freemarker](./gradle/blade.portlet.freemarker) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.portlet.freemarker](./liferay-workspace/modules/blade.portlet.freemarker)   |
+| Maven      | [./maven/blade.portlet.freemarker](./maven/blade.portlet.freemarker)        |
+
 #### JSP Portlet 
 
 **Extension point description**: 
@@ -367,6 +437,48 @@ registering a portlet.
 | Gradle | [./gradle/blade.portlet.osgiapi](./gradle/blade.portlet.osgiapi) |
 | Liferay Workspace | [./liferay-workspace/modules/blade.portlet.osgiapi](./liferay-workspace/modules/blade.portlet.osgiapi)   |
 | Maven      | [./maven/blade.portlet.osgiapi](./maven/blade.portlet.osgiapi)        |
+
+#### Render Command
+
+**Extension point description**: 
+
+**Template project description**:
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.portlet.rendercommand](./gradle/blade.portlet.rendercommand) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.portlet.rendercommand](./liferay-workspace/modules/blade.portlet.rendercommand)   |
+| Maven      | [./maven/blade.portlet.rendercommand](./maven/blade.portlet.rendercommand)        |
+
+#### Resource Command
+
+**Extension point description**: 
+
+**Template project description**:
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.portlet.resourcecommand](./gradle/blade.portlet.resourcecommand) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.portlet.resourcecommand](./liferay-workspace/modules/blade.portlet.resourcecommand)   |
+| Maven      | [./maven/blade.portlet.resourcecommand](./maven/blade.portlet.resourcecommand)   
+
+#### Spring MVC Portlet 
+
+**Extension point description**: 
+
+**Template project description**:  Demonstrates a simple Spring MVC portlet.
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.portlet.springmvc](./gradle/blade.portlet.springmvc) |
+| Liferay Workspace | [./liferay-workspace/wars/blade.portlet.springmvc](./liferay-workspace/wars/blade.portlet.springmvc)   |
+| Maven      | [./maven/blade.portlet.springmvc](./maven/blade.portlet.springmvc)        |
 
 ### Configuration Icon
 
@@ -580,6 +692,34 @@ project separated into three bundles:
 | Liferay Workspace | [./liferay-workspace/modules/blade.template.context.contributor](./liferay-workspace/modules/blade.template.context.contributor)   |
 | Maven      | [./maven/blade.template.context.contributor](./maven/blade.template.context.contributor)        |
 
+### Theme Contributor
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.theme.contributor](./gradle/blade.theme.contributor) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.theme.contributor](./liferay-workspace/modules/blade.theme.contributor)   |
+| Maven      | [./maven/blade.theme.contributor](./maven/blade.theme.contributor)        |
+
+### Theme
+
+**Extension point description**: 
+
+**Template project description**: 
+
+**Template projects links**:
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/blade.theme](./gradle/blade.theme) |
+| Liferay Workspace | [./liferay-workspace/wars/blade.theme](./liferay-workspace/wars/blade.theme)   |
+| Maven      | [./maven/blade.theme](./maven/blade.theme)        |
+
 ## Liferay Extension Points Without Template Projects
 
 This project does not yet have template projects for the following extension
@@ -596,7 +736,6 @@ points. We encourage you to contribute some!
 * com.liferay.portal.kernel.portlet.FriendlyURLMapper
 * com.liferay.portal.kernel.portlet.PortletLayoutListener
 * com.liferay.portal.kernel.sanitizer.Sanitizer 
-* com.liferay.portal.kernel.scheduler.SchedulerEntry
 * com.liferay.portal.kernel.scheduler.SchedulerEntry
 * com.liferay.portal.kernel.search.Indexer
 * com.liferay.portal.kernel.search.OpenSearch
@@ -628,7 +767,6 @@ points. We encourage you to contribute some!
 * com.liferay.portal.security.pwd.Toolkit
 * com.liferay.portal.verify.VerifyProcess
 * com.liferay.portlet.asset.model.AssetRendererFactory
-* com.liferay.portlet.ControlPanelEntry
 * com.liferay.portlet.ControlPanelEntry
 * com.liferay.portlet.DefaultControlPanelEntryFactory
 * com.liferay.portlet.dynamicdatamapping.render.DDMFormFieldRenderer
