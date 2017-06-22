@@ -11,4 +11,4 @@ call gradlew.bat clean build
 call cd %repoDir%
 call gradlew.bat bundlesTest warsTest diff
 call cd liferay-workspace
-call gradlew.bat check -Pliferay.workspace.modules.dir=modules,tests %*
+call gradlew.bat check -Pliferay.workspace.modules.dir=modules,tests -Pliferay.workspace.modules.jsp.precompile.enabled=true %*
