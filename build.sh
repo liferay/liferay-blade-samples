@@ -14,6 +14,6 @@ function buildAll() {
   cd "$repoDir"
   ./gradlew bundlesTest warsTest diff
   cd liferay-workspace
-  ./gradlew check -Pliferay.workspace.modules.dir=modules,tests $@
+  ./gradlew check -Pliferay.workspace.modules.dir=modules,tests -Pliferay.workspace.modules.jsp.precompile.enabled=true $@
 }
 buildAll
