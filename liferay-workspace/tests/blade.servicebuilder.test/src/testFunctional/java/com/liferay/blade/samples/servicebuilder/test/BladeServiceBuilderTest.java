@@ -189,7 +189,7 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue("Service Builder Table is not visible",
 			isVisible(_table));
-		
+
 		Assert.assertTrue("Service Builder Table does not contain Updated Name",
 			_table.getText().contains("field1 with Updated Name"));
 	}
@@ -211,7 +211,7 @@ public class BladeServiceBuilderTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
