@@ -102,11 +102,7 @@ integration point.
 
 ### Control Menu Entry
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -116,11 +112,7 @@ integration point.
 
 ### Core JSP Hook
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -130,11 +122,7 @@ integration point.
 
 ### `document.action`
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -182,12 +170,7 @@ URLs:
 
 ### Gogo Command
 
-**Extension point description**: 
-
-**Template project description**: Demonstrates Felix Gogo commands and consuming
-Liferay services through DS (Declarative Services).
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -197,12 +180,7 @@ Liferay services through DS (Declarative Services).
 
 ### JSP Hook
 
-**Extension point description**: 
-
-**Template project description**: Demonstrates a JSP hook for `login.jsp` in the
-`com.liferay.login.web` bundle via a fragment bundle.
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -210,13 +188,9 @@ Liferay services through DS (Declarative Services).
 | Liferay Workspace | [./liferay-workspace/modules/blade.hook.jsp](./liferay-workspace/modules/blade.hook.jsp)   |
 | Maven      | [./maven/blade.hook.jsp](./maven/blade.hook.jsp)          |
 
-### Resource Bundle
+### Resource Bundle Hook
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -241,11 +215,7 @@ Liferay services through DS (Declarative Services).
 
 ### Language Web
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -255,11 +225,7 @@ Liferay services through DS (Declarative Services).
 
 ### Language
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -367,7 +333,7 @@ redeploy the Portlet plugin).
 | Liferay Workspace | [./liferay-workspace/modules/blade.portlet.actioncommand](./liferay-workspace/modules/blade.portlet.actioncommand)   |
 | Maven      | [./maven/blade.portlet.actioncommand](./maven/blade.portlet.actioncommand)        |
 
-### Portlet
+### Portlets
 
 Below are examples of building portlets using different frameworks: 
 
@@ -468,11 +434,7 @@ registering a portlet.
 
 #### Spring MVC Portlet 
 
-**Extension point description**: 
-
-**Template project description**:  Demonstrates a simple Spring MVC portlet.
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -637,11 +599,7 @@ project separated into three bundles:
 
 ### Simulation Panel
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -680,11 +638,7 @@ project separated into three bundles:
 
 ### Context Contributor
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -694,11 +648,7 @@ project separated into three bundles:
 
 ### Theme Contributor
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -708,11 +658,7 @@ project separated into three bundles:
 
 ### Theme
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
