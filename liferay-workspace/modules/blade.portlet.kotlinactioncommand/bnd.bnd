@@ -1,0 +1,11 @@
+Bundle-Version: 1.0.0
+-sources: true
+Import-Package: \
+    !kotlin; version="[1.1.0,2.0.0)";\
+    com.liferay.portal.kernel.log;version="[7.0,8)",\
+    com.liferay.portal.kernel.portlet.bridges.mvc;version="[1.0,2)",\
+    com.liferay.portal.kernel.servlet;version="[7.0,8)",\
+    com.liferay.portal.kernel.util;version="[7.0,8)",\
+    javax.portlet;version="[2.0,3)",\
+    javax.servlet;version="[3.0,4)",\
+    javax.servlet.http;version="[3.0,4)"
