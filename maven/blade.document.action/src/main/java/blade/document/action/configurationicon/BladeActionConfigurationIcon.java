@@ -146,6 +146,7 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		}
 		catch (PortalException pe) {
 			_log.error(pe);
+
 			return null;
 		}
 	}
