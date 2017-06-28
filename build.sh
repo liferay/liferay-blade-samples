@@ -4,7 +4,7 @@ repoDir=`pwd`
 function buildAll() {
   cd "$repoDir"
   cd gradle
-  ./gradlew checkSourceFormatting clean build
+  ./gradlew clean build
   cd "$repoDir"
   cd maven
   mvn --fail-at-end clean package
