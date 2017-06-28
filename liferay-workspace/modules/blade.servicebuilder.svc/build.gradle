@@ -6,6 +6,7 @@ dependencies {
 	compileOnly "com.liferay:com.liferay.portal.spring.extender:2.0.0"
 	compileOnly project(":modules:blade.servicebuilder.api")
 
+	testCompile "biz.aQute.bnd:biz.aQute.remote.api:3.3.0"
 	testCompile "org.osgi:osgi.cmpn:6.0.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
@@ -28,8 +29,9 @@ testIntegration {
 	outputs.upToDateWhen { false }
 
 	dependsOn jar, ":initBundle", startTestableTomcat
-	dependsOn ":modules:blade.servicebuilder.api:deploy"
+	dependsOn ":modules:blade.servicebuilder.api:jar"
 
+	systemProperty 'dependency1', project(':modules:blade.servicebuilder.api').jar.archivePath
 	systemProperty 'jarFile', jar.archivePath
 
 	finalizedBy {
