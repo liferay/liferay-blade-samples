@@ -282,7 +282,7 @@ public class BladeSamplesTest {
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.svc:build");
+			projectPath, ":modules:blade.servicebuilder.svc:assemble");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
 
