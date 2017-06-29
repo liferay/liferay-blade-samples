@@ -30,7 +30,7 @@ testIntegration {
 	beforeSuite {
 		def moduleOutputPaths = []
 
-		project(":modules").subprojects { p ->
+		rootProject.subprojects { p ->
 			p.plugins.withType(JavaPlugin) {
 				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
 			}
@@ -39,7 +39,7 @@ testIntegration {
 		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
 	}
 
-	project(":modules").subprojects { p ->
+	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
 		}
