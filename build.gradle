@@ -15,7 +15,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import org.apache.commons.io.FileUtils
 
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
-FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
+FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar')
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
 int canonicalBundlesSize = gradleBundles.size()
@@ -68,8 +68,8 @@ task replicateSources << {
 		canonicalSource = 'gradle'
 	}
 
-	def canonicalProjects = file(canonicalSource).listFiles(.,*,true).findAll(projectFilter)
-	def replicationParents = files(['gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
+	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
+	def replicationParents = files(['gradle', 'liferay-workspace', 'maven'] - canonicalSource)
 
 	println canonicalProjects
 
@@ -218,6 +218,11 @@ task warsDiffTest << {
 			}
 		}
 	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.0'
+	jarFile = "${project.projectDir}/gradle/.gradle-wrapper/gradle-wrapper.jar"
 }
 
 task diff << {}
