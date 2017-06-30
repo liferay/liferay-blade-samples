@@ -44,3 +44,5 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
+
+check.dependsOn testIntegration

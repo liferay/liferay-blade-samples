@@ -39,24 +39,32 @@ task testFunctional(type: Test) {
 	dependsOn ":initBundle", startTestableTomcat
 
 	dependsOn ":apps:action-command-portlet:jar"
-	systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
 	dependsOn ":apps:freemarker-portlet:jar"
-	systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
 	dependsOn ":apps:jsp-portlet:jar"
-	systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
 	dependsOn ":apps:osgi-portlet:jar"
-	systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
 	dependsOn ":apps:render-command-portlet:jar"
-	systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
 	dependsOn ":apps:shared-language-keys:language:jar"
 	dependsOn ":apps:shared-language-keys:language-web:jar"
-//	systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
 	dependsOn ":extensions:control-menu-entry:jar"
-	systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
 	dependsOn ":extensions:portlet-configuration-icon:jar"
-	systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 	dependsOn ":extensions:portlet-toolbar-contributor:jar"
+
+	systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
+	systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
+	systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
+	systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
+	systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
+	systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
+	systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 	systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
+
+	project(':apps:shared-language-keys:language').afterEvaluate { project ->
+		systemProperty 'languageJarFile', project.jar.archivePath
+	}
+
+	project(':apps:shared-language-keys:language-web').afterEvaluate { project ->
+		systemProperty 'languageWebJarFile', project.jar.archivePath
+	}
 
 	finalizedBy {
 		stopTestableTomcat

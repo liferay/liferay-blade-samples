@@ -61,7 +61,7 @@ public class BladePortletConfigurationIconTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 
 		WebElement element = wait.until(
 			ExpectedConditions.visibilityOf(webElement));
@@ -83,6 +83,10 @@ public class BladePortletConfigurationIconTest {
 		Assert.assertTrue(
 			"Sample Link is not visible",
 			isVisible(_lfrMenuSampleLink));
+		
+		Assert.assertTrue(
+			_lfrMenuSampleLink.getText(),
+			_lfrMenuSampleLink.getText().contentEquals("Sample Link"));
 
 		customClick(_webDriver, _lfrMenuSampleLink);
 
@@ -93,7 +97,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.urlMatches(string));
@@ -106,7 +110,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));

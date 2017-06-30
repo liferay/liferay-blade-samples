@@ -14,6 +14,8 @@
 
 package com.liferay.blade.samples.servicebuilder.test;
 
+import aQute.remote.util.JMXBundleDeployer;
+
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
 
@@ -30,6 +32,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +59,23 @@ public class BladeServiceBuilderTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jarFile"));
 
+		final File fooApiJar = new File(System.getProperty("fooApiJarFile"));
+		final File fooServiceJar = new File(
+			System.getProperty("fooServiceJarFile"));
+		final File fooWebJar = new File(System.getProperty("fooWebJarFile"));
+
+		new JMXBundleDeployer().deploy(fooApiJarBSN, fooApiJar);
+		new JMXBundleDeployer().deploy(fooServiceJarBSN, fooServiceJar);
+		new JMXBundleDeployer().deploy(fooWebJarBSN, fooWebJar);
+
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
+	}
+
+	@AfterClass
+	public static void cleanUpDependencies() throws Exception {
+		new JMXBundleDeployer().uninstall(fooApiJarBSN);
+		new JMXBundleDeployer().uninstall(fooServiceJarBSN);
+		new JMXBundleDeployer().uninstall(fooWebJarBSN);
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
@@ -234,6 +253,10 @@ public class BladeServiceBuilderTest {
 
 	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table/tbody/tr/td[2]")
 	private WebElement _firstRowField1;
+
+	private static String fooApiJarBSN = "foo-api";
+	private static String fooServiceJarBSN = "foo-service";
+	private static String fooWebJarBSN = "foo-web";
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
 	private WebElement _lfrIconMenu;

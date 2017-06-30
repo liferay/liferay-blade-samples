@@ -51,7 +51,7 @@ public class BladePortletOsgiApiTest {
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("portletOsgiJarFile"));
+			System.getProperty("osgiPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
