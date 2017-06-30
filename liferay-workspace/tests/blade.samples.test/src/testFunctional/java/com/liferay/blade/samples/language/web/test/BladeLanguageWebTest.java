@@ -17,6 +17,8 @@
 
 package com.liferay.blade.samples.language.web.test;
 
+import aQute.remote.util.JMXBundleDeployer;
+
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
 
@@ -31,6 +33,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,9 +51,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @RunWith(Arquillian.class)
 public class BladeLanguageWebTest {
 
+	@AfterClass
+	public static void cleanUpDependencies() throws Exception {
+		new JMXBundleDeployer().uninstall(_languageJarBSN);
+	}
+
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("languageWebJarFile"));
+
+		final File languageJar = new File(
+			System.getProperty("languageJarFile"));
+
+		new JMXBundleDeployer().deploy(_languageJarBSN, languageJar);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -87,6 +100,8 @@ public class BladeLanguageWebTest {
 			return false;
 		}
 	}
+
+	private static String _languageJarBSN = "language";
 
 	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_language_web')]")
 	private WebElement _bladeSampleLanguagePortlet;

@@ -61,7 +61,7 @@ public class BladePortletConfigurationIconTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		WebDriverWait wait = new WebDriverWait(webDriver, 15);
 
 		WebElement element = wait.until(
 			ExpectedConditions.visibilityOf(webElement));
@@ -78,15 +78,14 @@ public class BladePortletConfigurationIconTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
+		Assert.assertTrue(
+			"Veritcal Ellipsis is not visible", isClickable(_verticalEllipsis));
+
 		customClick(_webDriver, _verticalEllipsis);
 
 		Assert.assertTrue(
-			"Sample Link is not visible",
-			isVisible(_lfrMenuSampleLink));
-		
-		Assert.assertTrue(
-			_lfrMenuSampleLink.getText(),
-			_lfrMenuSampleLink.getText().contentEquals("Sample Link"));
+			"Expected Sample Link, but saw: " + _lfrMenuSampleLink.getText(),
+			isClickable(_lfrMenuSampleLink));
 
 		customClick(_webDriver, _lfrMenuSampleLink);
 
@@ -94,6 +93,20 @@ public class BladePortletConfigurationIconTest {
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
 			isPageLoaded("https://www.liferay.com/"));
+	}
+
+	protected boolean isClickable(WebElement webelement) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.elementToBeClickable(webelement));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
 	}
 
 	protected boolean isPageLoaded(String string) {
@@ -110,7 +123,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));

@@ -52,8 +52,6 @@ public class BladePortletActionCommandTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		String jarPath = System.getProperty("actionCommandPortletJarFile");
-		
 		final File jarFile = new File(
 			System.getProperty("actionCommandPortletJarFile"));
 

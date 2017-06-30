@@ -55,6 +55,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @RunWith(Arquillian.class)
 public class BladeServiceBuilderTest {
 
+	@AfterClass
+	public static void cleanUpDependencies() throws Exception {
+		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
+		new JMXBundleDeployer().uninstall(_fooServiceJarBSN);
+		new JMXBundleDeployer().uninstall(_fooWebJarBSN);
+	}
+
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jarFile"));
@@ -64,18 +71,11 @@ public class BladeServiceBuilderTest {
 			System.getProperty("fooServiceJarFile"));
 		final File fooWebJar = new File(System.getProperty("fooWebJarFile"));
 
-		new JMXBundleDeployer().deploy(fooApiJarBSN, fooApiJar);
-		new JMXBundleDeployer().deploy(fooServiceJarBSN, fooServiceJar);
-		new JMXBundleDeployer().deploy(fooWebJarBSN, fooWebJar);
+		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
+		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
+		new JMXBundleDeployer().deploy(_fooWebJarBSN, fooWebJar);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
-	}
-
-	@AfterClass
-	public static void cleanUpDependencies() throws Exception {
-		new JMXBundleDeployer().uninstall(fooApiJarBSN);
-		new JMXBundleDeployer().uninstall(fooServiceJarBSN);
-		new JMXBundleDeployer().uninstall(fooWebJarBSN);
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
@@ -97,7 +97,7 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _addButton);
 
-		Assert.assertTrue("Field1 is not visible",isVisible(_field1Form));
+		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
 
 		_field1Form.sendKeys("Hello");
 
@@ -107,13 +107,16 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _saveButton);
 
-		Assert.assertTrue("Service Builder Table is not visible",
+		Assert.assertTrue(
+			"Service Builder Table is not visible",
 			isVisible(_table));
 
-		Assert.assertTrue("Hello World is not present in table",
+		Assert.assertTrue(
+			"Hello World is not present in table",
 			_table.getText().contains("Hello"));
 
-		Assert.assertTrue("Hello World is not present in table",
+		Assert.assertTrue(
+			"Hello World is not present in table",
 			_table.getText().contains("World"));
 	}
 
@@ -127,14 +130,16 @@ public class BladeServiceBuilderTest {
 
 		int originalRows = rows.size();
 
-		Assert.assertTrue("Liferay Icon Menus is not visible",
+		Assert.assertTrue(
+			"Liferay Icon Menus is not visible",
 			isVisible(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
-		Assert.assertTrue("Action Menu Delete is not visible",
+		Assert.assertTrue(
+			"Action Menu Delete is not visible",
 			isVisible(_lfrMenuDelete));
 
 		String source = _webDriver.getPageSource();
@@ -153,7 +158,8 @@ public class BladeServiceBuilderTest {
 
 		_webDriver.navigate().refresh();
 
-		Assert.assertTrue("Service Builder Table is not visible",
+		Assert.assertTrue(
+			"Service Builder Table is not visible",
 			isVisible(_table));
 
 		rows = _webDriver.findElements(
@@ -173,13 +179,16 @@ public class BladeServiceBuilderTest {
 	public void testReadFoo() throws PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue("First Row Field 1 is not visible",
+		Assert.assertTrue(
+			"First Row Field 1 is not visible",
 			isVisible(_firstRowField1));
 
-		Assert.assertTrue("First row field 1 does not contain entry",
+		Assert.assertTrue(
+			"First row field 1 does not contain entry",
 			_firstRowField1.getText().contains("new field1 entry"));
 
-		Assert.assertTrue("Second row field 1 does not contain entry",
+		Assert.assertTrue(
+			"Second row field 1 does not contain entry",
 			_secondRowField1.getText().contains("new field1 entry"));
 	}
 
@@ -187,17 +196,20 @@ public class BladeServiceBuilderTest {
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue("Liferay Icon menu is not visible",
-			isVisible(_lfrIconMenu));
+		Assert.assertTrue(
+			"Liferay Icon menu is not visible",
+			isClickable(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
-		Assert.assertTrue("Liferay Menu Edit is not visible",
-			isVisible(_lfrMenuEdit));
+		Assert.assertTrue(
+			"Liferay Menu Edit is not visible",
+			isClickable(_lfrMenuEdit));
 
 		customClick(_webDriver, _lfrMenuEdit);
 
-		Assert.assertTrue("Field 1 form is not visible",
+		Assert.assertTrue(
+			"Field 1 form is not visible",
 			isVisible(_field1Form));
 
 		_field1Form.clear();
@@ -206,10 +218,12 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _saveButton);
 
-		Assert.assertTrue("Service Builder Table is not visible",
+		Assert.assertTrue(
+			"Service Builder Table is not visible",
 			isVisible(_table));
 
-		Assert.assertTrue("Service Builder Table does not contain Updated Name",
+		Assert.assertTrue(
+			"Service Builder Table does not contain Updated Name",
 			_table.getText().contains("field1 with Updated Name"));
 	}
 
@@ -221,6 +235,20 @@ public class BladeServiceBuilderTest {
 				ExpectedConditions.alertIsPresent();
 
 			webDriverWait.until(alert);
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
+	}
+
+	protected boolean isClickable(WebElement webelement) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.elementToBeClickable(webelement));
 
 			return true;
 		}
@@ -242,6 +270,10 @@ public class BladeServiceBuilderTest {
 		}
 	}
 
+	private static String _fooApiJarBSN = "foo-api";
+	private static String _fooServiceJarBSN = "foo-service";
+	private static String _fooWebJarBSN = "foo-web";
+
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
 	private WebElement _addButton;
 
@@ -253,10 +285,6 @@ public class BladeServiceBuilderTest {
 
 	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table/tbody/tr/td[2]")
 	private WebElement _firstRowField1;
-
-	private static String fooApiJarBSN = "foo-api";
-	private static String fooServiceJarBSN = "foo-service";
-	private static String fooWebJarBSN = "foo-web";
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
 	private WebElement _lfrIconMenu;

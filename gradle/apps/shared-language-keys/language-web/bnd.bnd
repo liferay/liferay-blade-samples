@@ -2,8 +2,8 @@ Bundle-Description: Provides a simple JSP portlet that conveys Liferay's recomme
 Bundle-Version: 1.0.0
 
 -liferay-aggregate-resource-bundles: \
-	blade.language
+	language
 
-Web-ContextPath: /blade-language-web
+Web-ContextPath: /language-web
 
 -sources: true

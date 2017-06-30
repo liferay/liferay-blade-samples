@@ -84,8 +84,7 @@ public class BladePortletRenderCommandTest {
 			_portletTitle.getText().contentEquals("Blade Render Portlet"));
 
 		Assert.assertTrue(
-			"Render Command Button is not visible",
-			isVisible(_portletButton));
+			"Render Command Button is not visible", isVisible(_portletButton));
 
 		customClick(_webDriver, _portletButton);
 

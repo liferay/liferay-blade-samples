@@ -119,8 +119,8 @@ public class BladeSamplesTest {
 			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
 				if (jar.getManifest().getMainAttributes().getValue(
 						"Fragment-Host") == null) {
-							bundleIDStartMap.put(
-								installBundleOutput, printFileName);
+
+					bundleIDStartMap.put(installBundleOutput, printFileName);
 				}
 			}
 		}
@@ -359,19 +359,32 @@ public class BladeSamplesTest {
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
 
-				if (line.equals("import com.liferay.portal.kernel.events.LifecycleAction;")) {
-					lines.add("import com.liferay.portal.kernel.events.LifecycleEvent;");
-					lines.add("import com.liferay.portal.kernel.events.ActionException;");
+				if (line.equals(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleAction;"))
+					{
+
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleEvent;");
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"ActionException;");
 				}
 
 				if (line.equals(
-						"public class FooAction implements LifecycleAction {")) {
+						"public class FooAction implements LifecycleAction {"))
+					{
 
 					String s =
 						new StringBuilder().append("@Override\n").
-							append("public void processLifecycleEvent(LifecycleEvent lifecycleEvent)\n").
+							append(
+								"public void processLifecycleEvent(" +
+									"LifecycleEvent lifecycleEvent)\n").
 							append("throws ActionException {\n").
-							append("System.out.println(\"login.event.pre=\" + lifecycleEvent);\n").
+							append(
+								"System.out.println(\"login.event.pre=\" +" +
+									" lifecycleEvent);\n").
 							append("}\n").toString();
 
 					lines.add(s);

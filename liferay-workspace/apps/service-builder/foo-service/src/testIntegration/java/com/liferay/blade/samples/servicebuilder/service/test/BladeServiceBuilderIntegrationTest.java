@@ -45,16 +45,16 @@ public class BladeServiceBuilderIntegrationTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jarFile"));
 
-		final File dependency1 = new File(System.getProperty("dependency1"));
+		final File fooApiJar = new File(System.getProperty("fooApiJarFile"));
 
-		new JMXBundleDeployer().deploy(dependency1BSN, dependency1);
+		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
 	@AfterClass
 	public static void cleanUpDependencies() throws Exception {
-		new JMXBundleDeployer().uninstall(dependency1BSN);
+		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
 	}
 
 	@Before
@@ -183,5 +183,5 @@ public class BladeServiceBuilderIntegrationTest {
 			fooEntry.getField5().contentEquals("updatedFooEntryField5"));
 	}
 
-	private static String dependency1BSN = "blade.servicebuilder.api";
+	private static String _fooApiJarBSN = "foo-api";
 }
