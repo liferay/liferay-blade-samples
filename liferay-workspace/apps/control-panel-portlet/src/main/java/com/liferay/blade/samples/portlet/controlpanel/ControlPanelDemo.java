@@ -37,8 +37,8 @@ public class ControlPanelDemo extends BasePanelApp {
 
 	@Override
 	public String getPortletId() {
-		return "com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
-	}
+		return "com_liferay_blade_samples_portlet_controlpanel_" +
+			"ControlPanelAppPortlet";	}
 
 	@Override
 	@Reference(

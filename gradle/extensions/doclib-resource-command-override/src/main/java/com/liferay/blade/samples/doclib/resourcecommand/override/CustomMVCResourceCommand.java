@@ -65,7 +65,9 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 
 	}
 
-	@Reference(target = "(component.name=com.liferay.document.library.web.portlet.action.EditFolderMVCResourceCommand)")
+	@Reference(
+		target = "(component.name=com.liferay.document.library.web.portlet.action.EditFolderMVCResourceCommand)"
+	)
 	private MVCResourceCommand _editFolderMVCResourceCommand;
 
 }

@@ -42,7 +42,9 @@ public class ResourceBundleLoaderComponent implements ResourceBundleLoader {
 		return _resourceBundleLoader.loadResourceBundle(languageId);
 	}
 
-	@Reference(target = "(&(bundle.symbolic.name=com.liferay.blogs.web)(!(component.name=com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent)))")
+	@Reference(
+		target = "(&(bundle.symbolic.name=com.liferay.blogs.web)(!(component.name=com.liferay.blade.samples.hook.resourcebundle.ResourceBundleLoaderComponent)))"
+	)
 	public void setResourceBundleLoader(
 		ResourceBundleLoader resourceBundleLoader) {
 
