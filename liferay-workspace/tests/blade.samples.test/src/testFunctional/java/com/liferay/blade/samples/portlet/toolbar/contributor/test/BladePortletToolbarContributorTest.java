@@ -64,7 +64,7 @@ public class BladePortletToolbarContributorTest {
 		WebDriverWait wait = new WebDriverWait(webDriver, 15);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
@@ -78,15 +78,7 @@ public class BladePortletToolbarContributorTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
-		Assert.assertTrue(
-			"Portlet Topper Toolbar is not visible",
-			isClickable(_portletTopperToolbar));
-
 		customClick(_webDriver, _portletTopperToolbar);
-
-		Assert.assertTrue(
-			"Expected Liferay Menu, but saw: " + _lfrMenuLiferay.getText(),
-			isClickable(_lfrMenuLiferay));
 
 		customClick(_webDriver, _lfrMenuLiferay);
 

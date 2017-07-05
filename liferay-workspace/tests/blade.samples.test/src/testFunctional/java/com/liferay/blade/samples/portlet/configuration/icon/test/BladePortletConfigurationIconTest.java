@@ -64,7 +64,7 @@ public class BladePortletConfigurationIconTest {
 		WebDriverWait wait = new WebDriverWait(webDriver, 15);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
@@ -78,14 +78,7 @@ public class BladePortletConfigurationIconTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
-		Assert.assertTrue(
-			"Veritcal Ellipsis is not visible", isClickable(_verticalEllipsis));
-
 		customClick(_webDriver, _verticalEllipsis);
-
-		Assert.assertTrue(
-			"Expected Sample Link, but saw: " + _lfrMenuSampleLink.getText(),
-			isClickable(_lfrMenuSampleLink));
 
 		customClick(_webDriver, _lfrMenuSampleLink);
 
