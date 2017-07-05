@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
+		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
@@ -42,7 +42,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>blade.maven-jar-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
 					<excludes>

@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
+		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../../../parent.bnd.bundle.plugin</relativePath>
 	</parent>

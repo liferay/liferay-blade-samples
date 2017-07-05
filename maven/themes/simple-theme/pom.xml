@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
+		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
@@ -18,7 +18,7 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>blade.maven-compiler-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
 					<source>1.8</source>
@@ -26,7 +26,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>blade.maven-war-plugin</artifactId>
+				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
 					<packagingExcludes>**/*.scss</packagingExcludes>
