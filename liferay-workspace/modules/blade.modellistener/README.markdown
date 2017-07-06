@@ -2,13 +2,21 @@
 
 ## What does this sample do when it's deployed?
 
-The Model Listener sample demonstrates adding a custom model listener to a Liferay Portal's out of the box entity. When deploying this sample with no customizations, a custom model listener will be added to `layouts`, listening for `onBeforeCreate` events. This means that any page creation will trigger this listener, which will execute before the new page being created.
+The Model Listener sample demonstrates adding a custom model listener to a
+Liferay Portal's out of the box entity. When deploying this sample with no
+customizations, a custom model listener will be added to `layouts`, listening
+for `onBeforeCreate` events. This means that any page creation will trigger this
+listener, which will execute before the new page being created.
 
-As an example, having this module deployed and started in a running Liferay DXP installation, if a new page is added with the name `My Test Page`, the following message should be printed to the standard output:
+As an example, having this module deployed and started in a running Liferay DXP
+installation, if a new page is added with the name `My Test Page`, the following
+message should be printed to the standard output:
 
 	![Figure 1: The sample model listener's message on the standard output.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-1.png)
 
-It should be also possible to verify that the  model listener sample was executed by going to the `SEO` tab on the `Configure Page` option, where the `HTML Title` should be the following:
+It should be also possible to verify that the  model listener sample was
+executed by going to the `SEO` tab on the `Configure Page` option, where the
+`HTML Title` should be the following:
 
 	![Figure 2: Page's updated HTML title by the model listener sample.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-2.png)
 
@@ -20,14 +28,20 @@ extension point.
 
 ## How does this sample leverage the API(s) and/or code component?
 
-Model Listeners can be used to listen for persistence events on models and take actions as a result of those events. Actions can be executed before or after a create, remove, update, addAssociation and removeAssociation events, on an entity's database table. It's important to bear in mind that it's possible to have more than one model listener on a single model and the execution order is not guaranteed.
+Model Listeners can be used to listen for persistence events on models and take
+actions as a result of those events. Actions can be executed before or after a
+create, remove, update, addAssociation and removeAssociation events, on an
+entity's database table. It's important to bear in mind that it's possible to
+have more than one model listener on a single model and the execution order is
+not guaranteed.
 
 To create a new model listener, there are two main steps that need to be done:
 
 - Implement a `Model Listener` class
 - Register the new service in Liferay’s OSGi runtime
 
-This sample is adding the model listener logic in a new Java class named `CustomLayoutListener`, that extends `BaseModelListener`.
+This sample is adding the model listener logic in a new Java class named
+`CustomLayoutListener`, that extends `BaseModelListener`.
 
 	public class CustomLayoutListener extends BaseModelListener<Layout> {
 
@@ -43,9 +57,12 @@ This sample is adding the model listener logic in a new Java class named `Custom
 
 Important things to note on the previous snippet are:
 
-- The entity to be targeted by this model listener should be specified on the parameterized type (E.g. `Layout`)
-- The overridden methods will dictate the type of event(s) that should be listen to (E.g. `onBeforeCreate`), and which should trigger the logic execution
+- The entity to be targeted by this model listener should be specified on the
+parameterized type (E.g. `Layout`)
+- The overridden methods will dictate the type of event(s) that should be listen
+to (E.g. `onBeforeCreate`), and which should trigger the logic execution
 
-Final step is registering the service in Liferay’s OSGi runtime, which is accomplished by the following annotation (if using Declarative Services):
+Final step is registering the service in Liferay’s OSGi runtime, which is
+accomplished by the following annotation (if using Declarative Services):
 
 	@Component(immediate = true, service = ModelListener.class)
