@@ -30,7 +30,7 @@ testIntegration {
 
 	dependsOn jar, ":initBundle", startTestableTomcat
 	dependsOn ":apps:service-builder:foo-api:jar"
-	
+
 	systemProperty 'jarFile', jar.archivePath
 	systemProperty 'fooApiJarFile', project(':apps:service-builder:foo-api').jar.archivePath
 

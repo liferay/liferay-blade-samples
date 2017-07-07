@@ -16,7 +16,13 @@ package com.liferay.blade.samples.servicebuilder.service.test;
 
 import aQute.remote.util.JMXBundleDeployer;
 
+import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.exception.PortalException;
+
 import java.io.File;
+
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +30,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -31,16 +38,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
-import com.liferay.portal.kernel.exception.PortalException;
-
 /**
  * @author Lawrence Lee
  */
 @RunWith(Arquillian.class)
 public class BladeServiceBuilderIntegrationTest {
+
+	@AfterClass
+	public static void cleanUpDependencies() throws Exception {
+		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
+	}
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
@@ -53,35 +60,20 @@ public class BladeServiceBuilderIntegrationTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@AfterClass
-	public static void cleanUpDependencies() throws Exception {
-		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
-	}
-
-
 	@Before
 	public void setUp() throws Exception {
-		cleanupFoos();
-	}
-
-	private void cleanupFoos() {
-		List<Foo> foos = FooLocalServiceUtil.getFoos(-1, -1);
-
-		if (!foos.isEmpty()) {
-			for (Foo foo : foos) {
-				FooLocalServiceUtil.deleteFoo(foo);
-			}
-		}
+		_cleanupFoos();
 	}
 
 	@After
 	public void tearDown() {
-		cleanupFoos();
+		_cleanupFoos();
 	}
 
 	@Test
 	public void testCreateFoo() throws PortalException {
-		Foo foo = FooLocalServiceUtil.createFoo(CounterLocalServiceUtil.increment());
+		Foo foo = FooLocalServiceUtil.createFoo(
+			CounterLocalServiceUtil.increment());
 
 		foo.setField1("createFooEntryField1");
 		foo.setField2(true);
@@ -187,5 +179,16 @@ public class BladeServiceBuilderIntegrationTest {
 			fooEntry.getField5().contentEquals("updatedFooEntryField5"));
 	}
 
+	private void _cleanupFoos() {
+		List<Foo> foos = FooLocalServiceUtil.getFoos(-1, -1);
+
+		if (!foos.isEmpty()) {
+			for (Foo foo : foos) {
+				FooLocalServiceUtil.deleteFoo(foo);
+			}
+		}
+	}
+
 	private static String _fooApiJarBSN = "foo-api";
+
 }
