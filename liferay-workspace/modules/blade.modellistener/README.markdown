@@ -67,5 +67,5 @@ accomplished by the following annotation (if using Declarative Services):
     @Component(immediate = true, service = ModelListener.class)
 
 For more information on model listeners, see the
-[Creating Model Listeners]([ModelListener](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/model-listeners)
+[Creating Model Listeners](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/model-listeners)
 tutorial.
