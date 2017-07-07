@@ -30,13 +30,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 /**
@@ -64,37 +61,27 @@ public class BladeServiceBuilderIntegrationTest {
 
 	@Before
 	public void setUp() throws Exception {
-		BundleContext context = FrameworkUtil.getBundle(BladeServiceBuilderIntegrationTest.class).getBundleContext();
+		cleanupFoos();
+	}
 
-		ServiceTracker<FooLocalService, FooLocalService> tracker = new ServiceTracker<>(context, FooLocalService.class, null);
-
-		FooLocalService service = tracker.waitForService(10000);// 10 seconds
-
-		Assert.assertNotNull(service);
-
+	private void cleanupFoos() {
 		List<Foo> foos = FooLocalServiceUtil.getFoos(-1, -1);
 
 		if (!foos.isEmpty()) {
-			Foo foo = foos.get(0);
-
-			FooLocalServiceUtil.deleteFoo(foo);
+			for (Foo foo : foos) {
+				FooLocalServiceUtil.deleteFoo(foo);
+			}
 		}
 	}
 
 	@After
 	public void tearDown() {
-		List<Foo> foos = FooLocalServiceUtil.getFoos(-1, -1);
-
-		if (!foos.isEmpty()) {
-			Foo foo = foos.get(0);
-
-			FooLocalServiceUtil.deleteFoo(foo);
-		}
+		cleanupFoos();
 	}
 
 	@Test
 	public void testCreateFoo() throws PortalException {
-		Foo foo = FooLocalServiceUtil.createFoo(0);
+		Foo foo = FooLocalServiceUtil.createFoo(CounterLocalServiceUtil.increment());
 
 		foo.setField1("createFooEntryField1");
 		foo.setField2(true);
@@ -128,7 +115,9 @@ public class BladeServiceBuilderIntegrationTest {
 
 	@Test
 	public void testDeleteFoo() throws PortalException {
-		Foo foo = FooLocalServiceUtil.createFoo(0);
+		long id = CounterLocalServiceUtil.increment();
+
+		Foo foo = FooLocalServiceUtil.createFoo(id);
 
 		foo.setField1("deleteFooEntryField1");
 		foo.setField2(false);
@@ -152,7 +141,9 @@ public class BladeServiceBuilderIntegrationTest {
 
 	@Test
 	public void testUpdateFoo() throws PortalException {
-		Foo foo = FooLocalServiceUtil.createFoo(0);
+		long id = CounterLocalServiceUtil.increment();
+
+		Foo foo = FooLocalServiceUtil.createFoo(id);
 
 		foo.setField1("updateFooEntryField1");
 		foo.setField2(true);
