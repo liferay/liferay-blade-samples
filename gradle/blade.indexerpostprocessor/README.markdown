@@ -2,7 +2,7 @@
 
 ## What does this sample do when it's deployed?
 
-The Indexer Post Processor sample demonstrates the use of `IndexerPostProcessor` interface, which is provided to customize search queries and documents before they're sent to teh search engine, and/or result summaries when they're returned to end users. This basic demonstration prints a message in the log when onee of the `*IndexerPostProcessor` methods is called.
+The Indexer Post Processor sample demonstrates the use of `IndexerPostProcessor` interface, which is provided to customize search queries and documents before they're sent to the search engine, and/or result summaries when they're returned to end users. This basic demonstration prints a message in the log when one of the `*IndexerPostProcessor` methods is called.
 
 ## What API(s) and/or code components does this sample highlight?
 
