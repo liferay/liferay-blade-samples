@@ -30,8 +30,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.util.tracker.ServiceTracker;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
+import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
 import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
@@ -57,8 +61,17 @@ public class BladeServiceBuilderIntegrationTest {
 		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
 	}
 
+
 	@Before
-	public void setUp() {
+	public void setUp() throws Exception {
+		BundleContext context = FrameworkUtil.getBundle(BladeServiceBuilderIntegrationTest.class).getBundleContext();
+
+		ServiceTracker<FooLocalService, FooLocalService> tracker = new ServiceTracker<>(context, FooLocalService.class, null);
+
+		FooLocalService service = tracker.waitForService(10000);// 10 seconds
+
+		Assert.assertNotNull(service);
+
 		List<Foo> foos = FooLocalServiceUtil.getFoos(-1, -1);
 
 		if (!foos.isEmpty()) {
