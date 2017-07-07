@@ -3,45 +3,44 @@
 ## What does this sample do when it's deployed?
 
 The Model Listener sample demonstrates adding a custom model listener to a
-Liferay Portal's out of the box entity. When deploying this sample with no
-customizations, a custom model listener will be added to `layouts`, listening
-for `onBeforeCreate` events. This means that any page creation will trigger this
-listener, which will execute before the new page being created.
+Liferay Portal out-of-the-box entity. When deploying this sample with no
+customizations, a custom model listener is added to the portal's layouts,
+listening for `onBeforeCreate` events. This means that any page creation will
+trigger this listener, which will execute before the new page is created.
 
-As an example, having this module deployed and started in a running Liferay DXP
-installation, if a new page is added with the name `My Test Page`, the following
-message should be printed to the standard output:
+For example, if a new page is added with the name *My Test Page*, the following
+message is printed to the console:
 
-![Figure 1: The sample model listener's message on the standard output.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-1.png)
+![Figure 1: The sample model listener's message in the console.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-1.png)
 
-It should be also possible to verify that the  model listener sample was
-executed by going to the `SEO` tab on the `Configure Page` option, where the
-`HTML Title` should be the following:
+You can also verify that the  model listener sample was executed by navigating
+to the new page's *Configure Page* &rarr; *SEO* option. The HTML Title field
+looks like this:
 
-![Figure 2: Page's updated HTML title by the model listener sample.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-2.png)
+![Figure 2: The page's HTML title updated by the model listener sample.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/model-listener-2.png)
 
 ## What API(s) and/or code components does this sample highlight?
 
 This sample leverages the
-[Model Listeners](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/model-listeners)
+[ModelListener](https://docs.liferay.com/ce/portal/7.0-latest/javadocs/portal-kernel/com/liferay/portal/kernel/model/ModelListener.html)
 extension point.
 
 ## How does this sample leverage the API(s) and/or code component?
 
-Model Listeners can be used to listen for persistence events on models and take
-actions as a result of those events. Actions can be executed before or after a
-create, remove, update, addAssociation and removeAssociation events, on an
-entity's database table. It's important to bear in mind that it's possible to
-have more than one model listener on a single model and the execution order is
-not guaranteed.
+Model Listeners are used to listen for persistence events on models and take
+actions as a result of those events. Actions can be executed on an entity's
+database table before or after a `create`, `remove`, `update`, `addAssociation`,
+or `removeAssociation` event. It's possible to have more than one model listener
+on a single model too; the execution order is not guaranteed.
 
-To create a new model listener, there are two main steps that need to be done:
+There are two steps to create a new model listener:
 
-- Implement a `Model Listener` class
+- Implement a Model Listener class
 - Register the new service in Liferay's OSGi runtime
 
-This sample is adding the model listener logic in a new Java class named
-`CustomLayoutListener`, that extends `BaseModelListener`.
+This sample adds the model listener logic in a new Java class named
+`CustomLayoutListener` that extends
+[BaseModelListener](https://docs.liferay.com/ce/portal/7.0-latest/javadocs/portal-kernel/com/liferay/portal/kernel/model/BaseModelListener.html).
 
     public class CustomLayoutListener extends BaseModelListener<Layout> {
 
@@ -55,14 +54,18 @@ This sample is adding the model listener logic in a new Java class named
 
     }
 
-Important things to note on the previous snippet are:
+Important things to note in this code snippet are
 
-- The entity to be targeted by this model listener should be specified on the
-parameterized type (E.g. `Layout`)
-- The overridden methods will dictate the type of event(s) that should be listen
-to (E.g. `onBeforeCreate`), and which should trigger the logic execution
+- The entity to be targeted by this model listener is specified as the
+  parameterized type (e.g., `Layout`).
+- The overridden methods dictate the type of event(s) that are listened for
+  (e.g., `onBeforeCreate`); they also trigger the logic execution.
 
-Final step is registering the service in Liferay's OSGi runtime, which is
+The final step is registering the service in Liferay's OSGi runtime, which is
 accomplished by the following annotation (if using Declarative Services):
 
     @Component(immediate = true, service = ModelListener.class)
+
+For more information on model listeners, see the
+[Creating Model Listeners]([ModelListener](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/model-listeners)
+tutorial.
