@@ -1,9 +1,0 @@
-Bundle-Description: Provides a simple JSP portlet that conveys Liferay's recommended approach to sharing language keys through OSGI services.
-Bundle-Version: 1.0.0
-
--liferay-aggregate-resource-bundles: \
-	blade.language
-
-Web-ContextPath: /blade-language-web
-
--sources: true

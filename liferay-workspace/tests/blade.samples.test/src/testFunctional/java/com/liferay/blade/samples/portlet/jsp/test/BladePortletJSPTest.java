@@ -50,7 +50,7 @@ public class BladePortletJSPTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("portletJspJarFile"));
+		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}

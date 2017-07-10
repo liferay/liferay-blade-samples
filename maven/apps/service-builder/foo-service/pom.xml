@@ -1,0 +1,88 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>foo-service</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>parent.bnd.bundle.plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../../../parent.bnd.bundle.plugin</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.portal.spring.extender</artifactId>
+			<version>2.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.osgi.service.tracker.collections</artifactId>
+			<version>2.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>blade</groupId>
+			<artifactId>foo-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>com.liferay.portal.kernel</artifactId>
+			<version>2.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bnd.annotation</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
+				<version>1.0.143</version>
+				<configuration>
+					<apiDirName>../foo-api/src/main/java</apiDirName>
+					<autoImportDefaultReferences>true</autoImportDefaultReferences>
+					<autoNamespaceTables>true</autoNamespaceTables>
+					<buildNumberIncrement>true</buildNumberIncrement>
+					<hbmFileName>src/main/resources/META-INF/module-hbm.xml</hbmFileName>
+					<implDirName>src/main/java</implDirName>
+					<inputFileName>service.xml</inputFileName>
+					<modelHintsFileName>src/main/resources/META-INF/portlet-model-hints.xml</modelHintsFileName>
+					<mergeModelHintsConfigs>src/main/resources/META-INF/portlet-model-hints.xml</mergeModelHintsConfigs>
+					<osgiModule>true</osgiModule>
+					<propsUtil>com.liferay.blade.samples.servicebuilder.service.util.PropsUtil</propsUtil>
+					<resourcesDirName>src/main/resources</resourcesDirName>
+					<springFileName>src/main/resources/META-INF/spring/module-spring.xml</springFileName>
+					<springNamespaces>beans,osgi</springNamespaces>
+					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
+					<sqlFileName>tables.sql</sqlFileName>
+					<testDirName>src/java/test</testDirName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
+				<version>1.0.3</version>
+				<configuration>
+					<inputFileName>service.xml</inputFileName>
+					<outputDirName>src/main/java</outputDirName>
+					<serverConfigFileName>src/main/resources/server-config.wsdd</serverConfigFileName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

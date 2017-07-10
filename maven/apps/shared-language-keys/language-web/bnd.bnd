@@ -1,0 +1,14 @@
+Bundle-Description: Provides a simple JSP portlet that conveys Liferay's recommended approach to sharing language keys through OSGI services.
+Bundle-Version: 1.0.0
+
+-liferay-aggregate-resource-bundles: \
+	language
+
+Web-ContextPath: /language-web
+
+-sources: true
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-sass: *

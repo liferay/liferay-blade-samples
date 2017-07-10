@@ -1,4 +1,0 @@
-dependencies {
-	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
-	compileOnly "javax.portlet:portlet-api:2.0"
-}

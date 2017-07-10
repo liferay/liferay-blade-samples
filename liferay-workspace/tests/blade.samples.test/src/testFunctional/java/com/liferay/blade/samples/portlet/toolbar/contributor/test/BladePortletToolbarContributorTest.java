@@ -61,10 +61,10 @@ public class BladePortletToolbarContributorTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 15);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
@@ -80,10 +80,6 @@ public class BladePortletToolbarContributorTest {
 
 		customClick(_webDriver, _portletTopperToolbar);
 
-		Assert.assertTrue(
-			"Liferay Menus is not visible",
-			isVisible(_lfrMenuLiferay));
-
 		customClick(_webDriver, _lfrMenuLiferay);
 
 		Assert.assertTrue(
@@ -92,8 +88,22 @@ public class BladePortletToolbarContributorTest {
 			isPageLoaded("https://www.liferay.com/"));
 	}
 
+	protected boolean isClickable(WebElement webelement) {
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+
+		try {
+			webDriverWait.until(
+				ExpectedConditions.elementToBeClickable(webelement));
+
+			return true;
+		}
+		catch (org.openqa.selenium.TimeoutException te) {
+			return false;
+		}
+	}
+
 	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.urlMatches(string));
@@ -106,7 +116,7 @@ public class BladePortletToolbarContributorTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));

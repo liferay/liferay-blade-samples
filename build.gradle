@@ -1,6 +1,8 @@
 buildscript {
 	dependencies {
 		classpath group: "net.diibadaaba.zipdiff", name: "zipdiff", version: "1.0"
+		classpath group: "org.apache.commons", name: "commons-io", version: "1.3.2"
+
 	}
 	repositories {
 		mavenCentral()
@@ -10,14 +12,17 @@ buildscript {
 import net.diibadaaba.zipdiff.DifferenceCalculator
 import net.diibadaaba.zipdiff.Differences
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.io.FileUtils
 
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
-FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace/modules', include: '**/libs/*.jar')
+FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', exclude: 'tests/*')
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
 int canonicalBundlesSize = gradleBundles.size()
 
-task bundlesSizeTest << {
+task bundlesSizeTest
+
+bundlesSizeTest.doLast {
 	assert canonicalBundlesSize == liferayWorkspaceBundles.size()
 	assert canonicalBundlesSize == mavenBundles.size()
 }
@@ -28,13 +33,17 @@ FileTree mavenWars = fileTree(dir: 'maven', include: '**/target/*.war')
 
 int canonicalWarsSize = gradleWars.size()
 
-task warsSizeTest << {
+task warsSizeTest
+
+warsSizeTest.doLast {
 	assert canonicalWarsSize == gradleWars.size()
 	assert canonicalWarsSize == liferayWorkspaceWars.size()
 	assert canonicalWarsSize == mavenWars.size()
 }
 
-task bundlesSortTest << {
+task bundlesSortTest
+
+bundlesSortTest.doLast {
 	def fileNamesDiff = gradleBundles.files.name.sort() - liferayWorkspaceBundles.files.name.sort()
 	assert [] == fileNamesDiff : "gradle vs liferay-workspace"
 
@@ -42,18 +51,20 @@ task bundlesSortTest << {
 	assert [] == fileNamesDiff : "gradle vs maven"
 }
 
-task bundlesTest << {}
+task bundlesTest
 
 bundlesTest.dependsOn bundlesSizeTest
 bundlesTest.dependsOn bundlesSortTest
 
-task warsTest << {}
+task warsTest
 
 warsTest.dependsOn warsSizeTest
 
-task replicateSources << {
+task replicateSources
+
+replicateSources.doLast {
 	Closure projectFilter = {
-		it.isDirectory() && it.name.startsWith("blade") && !it.name.matches("\\..*")
+		it.isDirectory() && !it.name.matches("\\..*") && (it.getParent().matches("apps") || it.getParent().matches("extensions") || it.getParent().matches("overrides") || it.getParent().matches("themes"))
 	}
 
 	def canonicalSource
@@ -66,7 +77,9 @@ task replicateSources << {
 	}
 
 	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
-	def replicationParents = files(['gradle', 'liferay-workspace/modules', 'maven'] - canonicalSource)
+	def replicationParents = files(['gradle', 'liferay-workspace', 'maven'] - canonicalSource)
+
+	println canonicalProjects
 
 	canonicalProjects.each { canonicalProject ->
 		if ((new File(canonicalProject, "bnd.bnd").exists())) {
@@ -116,7 +129,9 @@ repositories {
 	mavenCentral()
 }
 
-task bundlesDiffTest << {
+task bundlesDiffTest
+
+bundlesDiffTest.doLast{
 	def errorList = []
 
 	[liferayWorkspaceBundles, mavenBundles].each { replicationFiles ->
@@ -151,7 +166,9 @@ task bundlesDiffTest << {
 	}
 }
 
-task warsDiffTest << {
+task warsDiffTest
+
+warsDiffTest.doLast{
 	[mavenWars, liferayWorkspaceWars].each { replicationWars ->
 		replicationWars.each { replicationWar ->
 
@@ -215,7 +232,12 @@ task warsDiffTest << {
 	}
 }
 
-task diff << {}
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.0'
+	jarFile = "${project.projectDir}/gradle/.gradle-wrapper/gradle-wrapper.jar"
+}
+
+task diff
 
 diff.dependsOn bundlesDiffTest
 diff.dependsOn warsDiffTest

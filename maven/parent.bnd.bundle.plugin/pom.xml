@@ -4,14 +4,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>blade</groupId>
-	<artifactId>blade.parent.bnd.bundle.plugin</artifactId>
+	<artifactId>parent.bnd.bundle.plugin</artifactId>
 	<version>1.0.0</version>
 	<name>BLADE Maven BND Bundle Plugin Parent</name>
 	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>blade.maven</artifactId>
+		<artifactId>maven</artifactId>
 		<version>1.0.0</version>
 	</parent>
 

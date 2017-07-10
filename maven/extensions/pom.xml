@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>extensions</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>maven</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<modules>
+		<module>authenticator-shiro</module>
+		<module>auth-failure</module>
+		<module>auto-login</module>
+		<module>control-menu-entry</module>
+		<module>doclib-resource-command-override</module>
+		<module>document-action</module>
+		<module>friendly-url</module>
+		<module>gogo</module>
+		<module>indexer-post-processor</module>
+		<module>lifecycle-login-preaction</module>
+		<module>model-listener</module>
+		<module>poll-processor</module>
+		<module>portlet-configuration-icon</module>
+		<module>portlet-toolbar-contributor</module>
+		<module>resource-bundle</module>
+		<module>scheduler-entry</module>
+		<module>screen-name-validator</module>
+		<module>user-service-wrapper</module>
+		<module>struts-action</module>
+		<module>struts-portlet-action</module>
+	</modules>
+</project>

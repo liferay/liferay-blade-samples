@@ -20,6 +20,7 @@ dependencies {
 	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
 	compileOnly "org.osgi:org.osgi.service.component.annotations:1.3.0"
 
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
@@ -36,26 +37,30 @@ task testFunctional(type: Test) {
 	outputs.upToDateWhen { false }
 
 	dependsOn ":initBundle", startTestableTomcat
-	dependsOn ":modules:blade.controlmenuentry:jar"
-	dependsOn ":modules:blade.language:deploy"
-	dependsOn ":modules:blade.language.web:jar"
-	dependsOn ":modules:blade.portlet.actioncommand:jar"
-	dependsOn ":modules:blade.portlet.configuration.icon:jar"
-	dependsOn ":modules:blade.portlet.freemarker:jar"
-	dependsOn ":modules:blade.portlet.jsp:jar"
-	dependsOn ":modules:blade.portlet.osgiapi:jar"
-	dependsOn ":modules:blade.portlet.rendercommand:jar"
-	dependsOn ":modules:blade.portlet.toolbar.contributor:jar"
 
-	systemProperty 'controlMenuEntryJarFile', project(':modules:blade.controlmenuentry').jar.archivePath
-	systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
-	systemProperty 'portletActionommandJarFile', project(':modules:blade.portlet.actioncommand').jar.archivePath
-	systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
-	systemProperty 'portletFreemarkerJarFile', project(':modules:blade.portlet.freemarker').jar.archivePath
-	systemProperty 'portletJspJarFile', project(':modules:blade.portlet.jsp').jar.archivePath
-	systemProperty 'portletOsgiApiJarFile', project(':modules:blade.portlet.osgiapi').jar.archivePath
-	systemProperty 'portletRenderCommandJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
-	systemProperty 'portletToolbarContributorJarFile', project(':modules:blade.portlet.toolbar.contributor').jar.archivePath
+	dependsOn ":apps:action-command-portlet:jar"
+	dependsOn ":apps:freemarker-portlet:jar"
+	dependsOn ":apps:jsp-portlet:jar"
+	dependsOn ":apps:osgi-portlet:jar"
+	dependsOn ":apps:render-command-portlet:jar"
+	dependsOn ":apps:shared-language-keys:language:jar"
+	dependsOn ":apps:shared-language-keys:language-web:jar"
+	dependsOn ":extensions:control-menu-entry:jar"
+	dependsOn ":extensions:portlet-configuration-icon:jar"
+	dependsOn ":extensions:portlet-toolbar-contributor:jar"
+
+	doFirst {
+		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
+		systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
+		systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
+		systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
+		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
+		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
+		systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
+		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
+		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
+		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
+	}
 
 	finalizedBy {
 		stopTestableTomcat

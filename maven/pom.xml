@@ -3,9 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>blade</groupId>
-	<artifactId>blade.maven</artifactId>
+	<artifactId>maven</artifactId>
 	<version>1.0.0</version>
-	<name>BLADE Maven</name>
 	<packaging>pom</packaging>
 
 	<repositories>
@@ -20,50 +19,9 @@
 	</properties>
 
 	<modules>
-		<module>blade.authenticator.shiro</module>
-		<module>blade.authfailure</module>
-		<module>blade.autologin</module>
-		<module>blade.configurationaction</module>
-		<module>blade.controlmenuentry</module>
-		<module>blade.corejsphook</module>
-		<module>blade.doclib.resourcecommand.override</module>
-		<module>blade.document.action</module>
-		<module>blade.friendlyurl</module>
-		<module>blade.gogo</module>
-		<module>blade.hook.jsp</module>
-		<module>blade.hook.resourcebundle</module>
-		<module>blade.indexerpostprocessor</module>
-		<module>blade.language</module>
-		<module>blade.language.web</module>
-		<module>blade.lifecycle.loginpreaction</module>
-		<module>blade.modellistener</module>
-		<module>blade.pollprocessor</module>
-		<module>blade.portlet.actioncommand</module>
-		<module>blade.portlet.blueprint</module>
-		<module>blade.portlet.configuration.icon</module>
-		<module>blade.portlet.controlpanel</module>
-		<module>blade.portlet.ds</module>
-		<module>blade.portlet.freemarker</module>
-		<module>blade.portlet.filter</module>
-		<module>blade.portlet.jsp</module>
-		<module>blade.portlet.osgiapi</module>
-		<module>blade.portlet.rendercommand</module>
-		<module>blade.portlet.resourcecommand</module>
-		<module>blade.portlet.springmvc</module>
-		<module>blade.portlet.toolbar.contributor</module>
-		<module>blade.resourcebundle</module>
-		<module>blade.rest</module>
-		<module>blade.schedulerentry</module>
-		<module>blade.screenname.validator</module>
-		<module>blade.service.hook.user</module>
-		<module>blade.servicebuilder.api</module>
-		<module>blade.servicebuilder.svc</module>
-		<module>blade.servicebuilder.web</module>
-		<module>blade.simulation.panel.app</module>
-		<module>blade.strutsaction</module>
-		<module>blade.strutsportletaction</module>
-		<module>blade.template.context.contributor</module>
-		<module>blade.theme</module>
-		<module>blade.theme.contributor</module>
+		<module>apps</module>
+		<module>extensions</module>
+		<module>overrides</module>
+		<module>themes</module>
 	</modules>
 </project>

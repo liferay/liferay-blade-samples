@@ -119,8 +119,8 @@ public class BladeSamplesTest {
 			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
 				if (jar.getManifest().getMainAttributes().getValue(
 						"Fragment-Host") == null) {
-							bundleIDStartMap.put(
-								installBundleOutput, printFileName);
+
+					bundleIDStartMap.put(installBundleOutput, printFileName);
 				}
 			}
 		}
@@ -251,7 +251,7 @@ public class BladeSamplesTest {
 
 		File serviceProperties = new File(
 			projectPath,
-			"modules/blade.servicebuilder.svc/src/main/resources" +
+			"apps/service-builder/foo-service/src/main/resources" +
 				"/service.properties");
 
 		File servicePropertiesBackup = new File("service.properties.bak");
@@ -259,7 +259,7 @@ public class BladeSamplesTest {
 		IO.copy(serviceProperties, servicePropertiesBackup);
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.svc:buildService");
+			projectPath, ":apps:service-builder:foo-service:buildService");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
 
@@ -267,31 +267,31 @@ public class BladeSamplesTest {
 		IO.delete(servicePropertiesBackup);
 
 		BuildTask cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.api:clean");
+			projectPath, ":apps:service-builder:foo-api:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildApiTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.api:build");
+			projectPath, ":apps:service-builder:foo-api:build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildApiTask);
 
 		cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.svc:clean");
+			projectPath, ":apps:service-builder:foo-service:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
-		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":modules:blade.servicebuilder.svc:assemble");
+		BuildTask buildServiceTask = GradleRunnerUtil.executeGradleRunner(
+			projectPath, ":apps:service-builder:foo-service:assemble");
 
-		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildServiceTask);
 
 		File buildApiOutput = new File(
-			projectPath + "/modules/blade.servicebuilder.api/build/libs" +
-				"/blade.servicebuilder.api-1.0.0.jar");
+			projectPath + "/apps/service-builder/foo-api/build/libs" +
+				"/foo-api-1.0.0.jar");
 		File buildServiceOutput = new File(
-			projectPath + "/modules/blade.servicebuilder.svc/build/libs" +
-				"/blade.servicebuilder.svc-1.0.0.jar");
+			projectPath + "/apps/service-builder/foo-service/build/libs" +
+				"/foo-service-1.0.0.jar");
 
 		assertTrue(buildApiOutput.exists());
 		assertTrue(buildServiceOutput.exists());
@@ -359,19 +359,32 @@ public class BladeSamplesTest {
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
 
-				if (line.equals("import com.liferay.portal.kernel.events.LifecycleAction;")) {
-					lines.add("import com.liferay.portal.kernel.events.LifecycleEvent;");
-					lines.add("import com.liferay.portal.kernel.events.ActionException;");
+				if (line.equals(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleAction;"))
+					{
+
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleEvent;");
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"ActionException;");
 				}
 
 				if (line.equals(
-						"public class FooAction implements LifecycleAction {")) {
+						"public class FooAction implements LifecycleAction {"))
+					{
 
 					String s =
 						new StringBuilder().append("@Override\n").
-							append("public void processLifecycleEvent(LifecycleEvent lifecycleEvent)\n").
+							append(
+								"public void processLifecycleEvent(" +
+									"LifecycleEvent lifecycleEvent)\n").
 							append("throws ActionException {\n").
-							append("System.out.println(\"login.event.pre=\" + lifecycleEvent);\n").
+							append(
+								"System.out.println(\"login.event.pre=\" +" +
+									" lifecycleEvent);\n").
 							append("}\n").toString();
 
 					lines.add(s);

@@ -15,12 +15,13 @@ configurations {
 }
 
 dependencies {
-	compileOnly  project(":modules:blade.servicebuilder.api")
+	compileOnly  project(":apps:service-builder:foo-api")
 	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
 	compileOnly "javax.portlet:portlet-api:2.0"
 	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
 	compileOnly "org.osgi:osgi.cmpn:6.0.0"
 
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
@@ -37,9 +38,21 @@ task testFunctional(type: Test) {
 	outputs.upToDateWhen { false }
 
 	dependsOn jar, ":initBundle", startTestableTomcat
-	dependsOn ":modules:blade.servicebuilder.api:deploy"
-	dependsOn ":modules:blade.servicebuilder.svc:deploy"
-	dependsOn ":modules:blade.servicebuilder.web:deploy"
+
+	project(':apps:service-builder:foo-api').afterEvaluate { project ->
+		dependsOn project.jar
+		systemProperty 'fooApiJarFile', project.jar.archivePath
+	}
+
+	project(':apps:service-builder:foo-service').afterEvaluate { project ->
+		dependsOn project.jar
+		systemProperty 'fooServiceJarFile', project.jar.archivePath
+	}
+
+	project(':apps:service-builder:foo-web').afterEvaluate { project ->
+		dependsOn project.jar
+		systemProperty 'fooWebJarFile', project.jar.archivePath
+	}
 
 	systemProperty 'jarFile', jar.archivePath
 

@@ -1,7 +1,0 @@
-dependencies {
-	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
-	compileOnly "com.liferay.portal:com.liferay.util.taglib:2.0.0"
-	compileOnly "javax.portlet:portlet-api:2.0"
-	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
-	compileOnly "org.osgi:osgi.cmpn:6.0.0"
-}

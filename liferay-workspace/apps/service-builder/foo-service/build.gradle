@@ -1,0 +1,48 @@
+dependencies {
+	compileOnly  project(":apps:service-builder:foo-api")
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.1.0"
+	compileOnly group: "com.liferay", name: "com.liferay.osgi.service.tracker.collections", version: "2.0.0"
+	compileOnly group: "com.liferay", name: "com.liferay.osgi.util", version: "3.0.0"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
+	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
+	testCompile group: "junit", name: "junit", version: "4.12"
+	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+	testCompile group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
+	testCompile project(":apps:service-builder:foo-api")
+}
+
+buildService {
+	apiDir = "../foo-api/src/main/java"
+	osgiModule = true
+	propsUtil = "com.liferay.blade.samples.servicebuilder.service.util.PropsUtil"
+	testDir = "src/java/test"
+}
+
+startTestableTomcat {
+	checkTimeout = 10 * 60 * 1000
+}
+
+testIntegration {
+	outputs.upToDateWhen { false }
+
+	dependsOn jar, ":initBundle", startTestableTomcat
+	dependsOn ":apps:service-builder:foo-api:jar"
+
+	systemProperty 'jarFile', jar.archivePath
+	systemProperty 'fooApiJarFile', project(':apps:service-builder:foo-api').jar.archivePath
+
+	finalizedBy {
+		stopTestableTomcat
+	}
+}
+
+stopTestableTomcat {
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
+}
+
+check.dependsOn testIntegration
