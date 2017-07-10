@@ -4,9 +4,10 @@
 
 The Model Listener sample demonstrates adding a custom model listener to a
 Liferay Portal out-of-the-box entity. When deploying this sample with no
-customizations, a custom model listener is added to the portal's layouts,
-listening for `onBeforeCreate` events. This means that any page creation will
-trigger this listener, which will execute before the new page is created.
+customizations, a custom model listener is added to the portal's `layout`
+entities, listening for `onBeforeCreate` events. This means that any page
+creation will trigger this listener, which will execute before the new page is
+created.
 
 For example, if a new page is added with the name *My Test Page*, the following
 message is printed to the console:
