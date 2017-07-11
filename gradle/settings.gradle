@@ -41,6 +41,9 @@ include(
 	'overrides:core-jsp-override',
 	'overrides:module-jsp-override',
 	'overrides:resource-bundle-override',
+	'overrides:service-override:service-api',
+	'overrides:service-override:service-override',
+	'overrides:service-override:service-reference',
 	'themes:simple-theme',
 	'themes:template-context-contributor',
 	'themes:theme-contributor'
