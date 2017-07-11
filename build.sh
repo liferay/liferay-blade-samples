@@ -10,7 +10,7 @@ function buildAll() {
   mvn --fail-at-end clean package
   cd "$repoDir"
   cd liferay-workspace
-  ./gradlew clean build
+  ./gradlew clean build -x testIntegration
   cd "$repoDir"
   ./gradlew bundlesTest warsTest diff
   cd liferay-workspace

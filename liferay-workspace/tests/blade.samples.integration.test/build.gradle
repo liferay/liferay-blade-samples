@@ -41,7 +41,7 @@ testIntegration {
 
 	project(":modules").subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
-			dependsOn p.tasks["build"]
+			dependsOn p.tasks["jar"]
 		}
 	}
 
