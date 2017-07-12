@@ -15,7 +15,6 @@
 package com.liferay.blade.samples.configurationaction;
 
 import com.liferay.blade.samples.configurationaction.constants.BladeMessagePortletKeys;
-
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
