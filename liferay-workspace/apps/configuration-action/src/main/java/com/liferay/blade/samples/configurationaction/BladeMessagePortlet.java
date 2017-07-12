@@ -14,6 +14,8 @@
 
 package com.liferay.blade.samples.configurationaction;
 
+import com.liferay.blade.samples.configurationaction.constants.BladeMessagePortletKeys;
+
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -44,6 +46,7 @@ import org.osgi.service.component.annotations.Modified;
 		"javax.portlet.init-param.config-template=/configuration.jsp",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
+		"javax.portlet.name=" + BladeMessagePortletKeys.BladeMessagePortlet,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
