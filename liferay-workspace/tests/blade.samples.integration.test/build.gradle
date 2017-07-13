@@ -41,11 +41,11 @@ testIntegration {
 
 	project(":modules").subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
-			dependsOn p.tasks["build"]
+			dependsOn p.tasks["jar"]
 		}
 	}
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://liferay-test-01.ci.cloudbees.com/job/liferay-blade-cli/150/artifact/build/generated/p2/plugins/com.liferay.blade.cli_2.2.0.201706201908.jar")
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
 
 	finalizedBy {
 		stopTestableTomcat
