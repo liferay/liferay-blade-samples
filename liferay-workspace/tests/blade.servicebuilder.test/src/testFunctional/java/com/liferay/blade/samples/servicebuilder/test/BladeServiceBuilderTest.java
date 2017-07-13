@@ -270,9 +270,9 @@ public class BladeServiceBuilderTest {
 		}
 	}
 
-	private static String _fooApiJarBSN = "foo-api";
-	private static String _fooServiceJarBSN = "foo-service";
-	private static String _fooWebJarBSN = "foo-web";
+	private static String _fooApiJarBSN = "blade.servicebuilder.api";
+	private static String _fooServiceJarBSN = "blade.servicebuilder.svc";
+	private static String _fooWebJarBSN = "blade.servicebuilder.web";
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
 	private WebElement _addButton;
