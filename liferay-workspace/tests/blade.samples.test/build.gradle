@@ -40,6 +40,8 @@ task testFunctional(type: Test) {
 
 	dependsOn ":apps:action-command-portlet:jar"
 	dependsOn ":apps:freemarker-portlet:jar"
+	dependsOn ":apps:greedy-policy-option-portlet:higher-ranked-service:jar"
+	dependsOn ":apps:greedy-policy-option-portlet:service-reference:jar"
 	dependsOn ":apps:jsp-portlet:jar"
 	dependsOn ":apps:osgi-portlet:jar"
 	dependsOn ":apps:render-command-portlet:jar"
@@ -53,9 +55,13 @@ task testFunctional(type: Test) {
 		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
 		systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
 		systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
+		systemProperty 'greedyHigherRankedServiceJarFile', project(':apps:greedy-policy-option-portlet:higher-ranked-service').jar.archivePath
+		systemProperty 'greedyServiceReferenceJarFile', project(':apps:greedy-policy-option-portlet:service-reference').jar.archivePath
+		systemProperty 'greedyServiceReferenceProjectdir', project(':apps:greedy-policy-option-portlet:service-reference').projectDir
 		systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
 		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
+		systemProperty 'liferayHome', liferay.liferayHome
 		systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
