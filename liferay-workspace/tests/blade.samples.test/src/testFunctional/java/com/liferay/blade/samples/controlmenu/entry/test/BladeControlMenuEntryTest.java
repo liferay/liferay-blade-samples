@@ -84,8 +84,7 @@ public class BladeControlMenuEntryTest {
 		Assert.assertTrue(
 			"Control Menu Entry Link text is not visible",
 			isTextPresent(
-				_controlMenuLinkText,
-				"Blade Menu Entry Custom Message"));
+				_controlMenuLinkText, "Blade Menu Entry Custom Message"));
 
 		customClick(_webDriver, _controlMenuLink);
 
