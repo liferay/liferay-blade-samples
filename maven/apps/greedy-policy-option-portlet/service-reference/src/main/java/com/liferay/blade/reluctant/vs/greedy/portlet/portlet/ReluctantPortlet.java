@@ -48,8 +48,9 @@ import org.osgi.service.component.annotations.Reference;
 public class ReluctantPortlet extends MVCPortlet {
 
 	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse 
-		renderResponse) throws IOException, PortletException {
+	public void doView(
+			RenderRequest renderRequest, RenderResponse renderResponse)
+		throws IOException, PortletException {
 
 		renderRequest.setAttribute("doSomething", _someService.doSomething());
 

@@ -49,8 +49,9 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
 public class GreedyPortlet extends MVCPortlet {
 
 	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse 
-		renderResponse) throws IOException, PortletException {
+	public void doView(
+			RenderRequest renderRequest, RenderResponse renderResponse)
+		throws IOException, PortletException {
 
 		renderRequest.setAttribute("doSomething", _someService.doSomething());
 

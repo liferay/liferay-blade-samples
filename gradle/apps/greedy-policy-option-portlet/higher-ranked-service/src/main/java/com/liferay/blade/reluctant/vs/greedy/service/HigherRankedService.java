@@ -32,4 +32,5 @@ public class HigherRankedService implements SomeService {
 	public String doSomething() {
 		return "I am better, use me!";
 	}
+
 }

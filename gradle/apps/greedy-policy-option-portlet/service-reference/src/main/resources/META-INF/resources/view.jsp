@@ -17,5 +17,5 @@
 <%@ include file="/init.jsp" %>
 
 <p>
-	<b>SomeService says <%=renderRequest.getAttribute("doSomething") %></b>
+	<b>SomeService says <%= renderRequest.getAttribute("doSomething") %></b>
 </p>
