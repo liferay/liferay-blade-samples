@@ -20,6 +20,7 @@
 		<module>ds-portlet</module>
 		<module>filter-portlet</module>
 		<module>freemarker-portlet</module>
+		<module>greedy-policy-option-portlet</module>
 		<module>jsp-portlet</module>
 		<module>osgi-portlet</module>
 		<module>render-command-portlet</module>
