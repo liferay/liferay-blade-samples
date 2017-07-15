@@ -159,6 +159,10 @@ public class BladePortletGreedyPolicyOptionTest {
 				"ReluctantPortlet.cfg");
 
 		IO.copy(greedyServiceReferenceConfigFile, configFile);
+		
+		Thread.sleep(10000);
+		
+		_webDriver.navigate().refresh();
 
 		Assert.assertTrue(
 			"Expected SomeService says I am better, use me!, but saw " +
@@ -169,11 +173,9 @@ public class BladePortletGreedyPolicyOptionTest {
 	}
 
 	protected boolean isTextVisible(WebElement webelement, String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 60);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
-			_webDriver.navigate().refresh();
-
 			webDriverWait.until(
 				ExpectedConditions.textToBePresentInElement(
 					webelement, string));
