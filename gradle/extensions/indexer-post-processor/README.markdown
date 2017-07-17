@@ -13,8 +13,8 @@ category to the portal. Navigate to *Control Panel* &rarr; *Configuration*
 &rarr; *Server Administration* and click on *Log Levels* &rarr; *Add Category*.
 Then fill out the form:
 
-*Logger Name*: `com.liferay.blade.samples.indexerpostprocessor`
-*Log Level*: `INFO`
+- *Logger Name*: `com.liferay.blade.samples.indexerpostprocessor`
+- *Log Level*: `INFO`
 
 Once you save the new logging category, you can witness the sample indexer post
 processor in action. For example, you can test the sample's
