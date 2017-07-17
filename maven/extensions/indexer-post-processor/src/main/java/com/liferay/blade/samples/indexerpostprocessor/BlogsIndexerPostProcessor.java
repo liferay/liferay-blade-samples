@@ -33,8 +33,8 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		/* Since the Blogs API's modularization in 7.0 GA3,
-		we need to register it using both model names listed below. */
+		/* Since the Blogs API's modularization in 7.0 GA3, we need to register
+		it using both model names listed below. */
 
 		// 7.0 GA3 (and before) model name
 
