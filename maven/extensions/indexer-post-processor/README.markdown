@@ -69,5 +69,5 @@ the following methods:
 - `postProcessSummary`
 
 For more information on Liferay's Search API, refer to the
-[Introduction to Liferay Search](/developer/tutorials/-/knowledge_base/7-0/introduction-to-liferay-search)
+[Introduction to Liferay Search](https://dev.liferay.com/developer/tutorials/-/knowledge_base/7-0/introduction-to-liferay-search)
 tutorial.
