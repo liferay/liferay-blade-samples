@@ -35,6 +35,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
+import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
+
 import aQute.bnd.osgi.Jar;
 import aQute.lib.io.IO;
 import okhttp3.OkHttpClient;
@@ -462,6 +465,6 @@ public class BladeSamplesTest {
 
 		BladeCLIUtil.uninstallBundle(bundleID);
 	}
-	
+
 	private File _testDir;
 }

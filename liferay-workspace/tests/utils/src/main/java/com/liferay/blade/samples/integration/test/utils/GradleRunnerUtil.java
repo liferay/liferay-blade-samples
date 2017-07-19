@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.blade.samples.integration.test;
+package com.liferay.blade.samples.integration.test.utils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

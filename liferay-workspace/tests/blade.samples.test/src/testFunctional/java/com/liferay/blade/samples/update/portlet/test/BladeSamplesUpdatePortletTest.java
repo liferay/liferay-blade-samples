@@ -46,8 +46,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.samples.integration.test.BladeCLIUtil;
-import com.liferay.blade.samples.integration.test.GradleRunnerUtil;
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
+import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
 
 import aQute.lib.io.IO;
 
@@ -57,7 +57,7 @@ import aQute.lib.io.IO;
 @RunAsClient
 @RunWith(Arquillian.class)
 public class BladeSamplesUpdatePortletTest {
-	
+
 	@AfterClass
 	public static void tearDownClass() throws Exception {
 		if (BladeCLIUtil.bladeJar.exists()) {
@@ -65,26 +65,26 @@ public class BladeSamplesUpdatePortletTest {
 			assertFalse(BladeCLIUtil.bladeJar.exists());
 		}
 	}
-	
+
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		_testIntegrationDir = new File(
 			System.getProperty("user.dir")).getParentFile();
-		
+
 		_projectPath = BladeCLIUtil.createProject(
 			_testIntegrationDir, "mvc-portlet", "helloworld");
-		
+
 		File buildPath = new File(
 			_projectPath.getParentFile().getParentFile().getAbsolutePath());
-		
+
 		BuildTask assembletask = GradleRunnerUtil.executeGradleRunner(
 			buildPath, ":tests:helloworld:assemble");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(assembletask);
-		
+
 		File buildOutput = new File(
 			_projectPath + "/build/libs/helloworld-1.0.0.jar");
-		
+
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, buildOutput);
 	}
 
@@ -95,9 +95,9 @@ public class BladeSamplesUpdatePortletTest {
 			assertFalse(_testIntegrationDir.exists());
 		}
 	}
-	
+
 	@Test
-	public void testUpdateMVCPortletProject() throws Exception {	
+	public void testUpdateMVCPortletProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -136,21 +136,21 @@ public class BladeSamplesUpdatePortletTest {
 				}
 			}
 		}
-		
+
 		try (Writer writer = new FileWriter(file)) {
 			for (String string : lines) {
 				writer.write(string + "\n");
 			}
 		}
-		
+
 		_webDriver.navigate().refresh();
-		
+
 		Assert.assertTrue(
 			_portletBody.getText(),
 			_portletBody.getText().contentEquals(
 				"Hello from BLADE Language Web!"));
 	}
-	
+
 	protected boolean isVisible(WebElement webelement) {
 		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
 
@@ -163,10 +163,10 @@ public class BladeSamplesUpdatePortletTest {
 			return false;
 		}
 	}
-	
+
 	private static File _projectPath;
 	private static File _testIntegrationDir;
-	
+
 	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]")
 	private WebElement _helloWorldPortlet;
 
