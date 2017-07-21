@@ -11,17 +11,17 @@ Here are the modules:
     service automatically. The other portlet is reluctant to use new higher
     ranked instances and continues to use its bound service. The reluctant
     portlet can however, be configured dynamically to use other service
-    instances. 
+    instances.
 
--   `higher-ranked-service`: Has a higher ranked `SomeService` implementation. 
+-   `higher-ranked-service`: Has a higher ranked `SomeService` implementation.
 
-Here are each module's file structures: 
+Here are each module's file structures:
 
 `service-reference/`
 -   `bnd.bnd`
 -   `configs/`
-    -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.cfg` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Pack 8 or later
-    -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.config` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Packs earlier than Fix Pack 8 and Liferay CE Portal 7.0 GA3 or earlier
+    -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.config` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Pack 8 or later and Liferay CE Portal 7.0 GA4 or later
+    -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.cfg` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Packs earlier than Fix Pack 8 and Liferay CE Portal 7.0 GA3 or earlier
 -   `src/main/java/com/liferay/blade/reluctant/vs/geedy/portlet/`
     -   `api/`
         -   `SomeService.java` &rarr; Service interface
@@ -34,7 +34,7 @@ Here are each module's file structures:
 
 `higher-ranked-service/`
 -   `bnd.bnd`
--   `src/main/java/com/liferay/blade/reluctant/vs/geedy/svc/HigherRankedService.java` &rarr; Service implementation with service ranking value of `100` 
+-   `src/main/java/com/liferay/blade/reluctant/vs/geedy/svc/HigherRankedService.java` &rarr; Service implementation with service ranking value of `100`
 
 Here are the things you can learn using the sample modules:
 
@@ -44,12 +44,12 @@ Here are the things you can learn using the sample modules:
 
 3.  [Configuring a component to reference a different service instance dynamically.](#configuration)
 
-Let's walk through the demonstration. 
+Let's walk through the demonstration.
 
 ## <a name="initial-binding"></a>Binding a newly deployed component's service reference to the highest ranking service instance that's available initially
 
 On deploying a component that references a service, it binds to the highest
-ranking service instance that matches its target filter (if specified). 
+ranking service instance that matches its target filter (if specified).
 
 The portlet classes refer to instances of interface `SomeService`. The
 `doSomething` method returns a `String`.
@@ -58,7 +58,7 @@ The portlet classes refer to instances of interface `SomeService`. The
 
     	public String doSomething();
 
-    } 
+    }
 
 Class `DefaultSomeService` implements `SomeService`. Its `doSomething` method
 returns the `String` "I am Default!".
@@ -74,12 +74,12 @@ returns the `String` "I am Default!".
     }
 
 When module's portlets refer to `DefaultSomeService`, they display the `String`
-"I am Default!". 
+"I am Default!".
 
 The `ReluctantPortlet` class's `SomeService` reference's policy option is the
 default: static and reluctant. This policy option keeps the reference bound to
 its current service instance unless that instance stops or the reference is
-reconfigured to refer to a different service instance. 
+reconfigured to refer to a different service instance.
 
     @Component(
        immediate = true,
@@ -114,11 +114,11 @@ reconfigured to refer to a different service instance.
 
 The `ReluctantPortlet`'s method `doView` sets render request attribute
 `doSomething` to the value returned from the `SomeService` instance's
-`doSomething` method (e.g., `DefaultService` returns "I am default!"). 
+`doSomething` method (e.g., `DefaultService` returns "I am default!").
 
 The `GreedyPortlet` class is similar to `ReluctantPortlet`, except its
 `SomeService` reference's policy option is static and greedy (i.e.,
-`ReferencePolicyOption.GREEDY`). 
+`ReferencePolicyOption.GREEDY`).
 
     public class GreedyPortlet extends MVCPortlet {
 
@@ -141,86 +141,86 @@ The greedy policy option lets the component switch to using a higher ranked
 `SomeService` instance if one becomes active in the system. The section
 [*Deploying a module with a higher ranked service instance for binding to
 greedy references immediately*](#higher-ranked-service) demonstrates this
-portlet switching to a higher ranked service. 
+portlet switching to a higher ranked service.
 
-It's time to see this module's portlets and service in action. 
+It's time to see this module's portlets and service in action.
 
-1.  Stop module `higher-ranked-service` if it's active. 
+1.  Stop module `higher-ranked-service` if it's active.
 2.  Deploy the `service-reference` module.
 3.  Add the *Reluctant Portlet* from the *Add* &rarr; *Applications* &rarr;
-    *Sample* category to a site page. 
+    *Sample* category to a site page.
 
     The portlet displays the message "SomeService says I am default!"--whose
     latter part comes from the render request attribute set by the
-    `DefaultService` instance. 
+    `DefaultService` instance.
 
     ![*Reluctant Portlet* displays the message "SomeService says I am default!"](reluctant-portlet-using-default.png)
 
 4.  Add the *Greedy Portlet* from the *Add* &rarr; *Applications* &rarr;
-    *Sample* category to a site page. 
+    *Sample* category to a site page.
 
     The portlet displays the message "SomeService says I am better, use me!".
-    Both portlets are referencing a `DefaultService` instance. 
+    Both portlets are referencing a `DefaultService` instance.
 
     ![*Greedy Portlet* displays the message "SomeService says I am better, use me!"](greedy-portlet-using-default.png)
 
 Since `DefaultService` is the only active `SomeService` instance in the system,
-the portlets refer to it for their `SomeService` fields. 
+the portlets refer to it for their `SomeService` fields.
 
 The `DefaultService` and portlets *Reluctant Portlet* and *Greedy Portlet* are
 active. Let's activate a higher ranked `SomeService` instance and see how the
-portlets react to it. 
+portlets react to it.
 
 ## <a name="higher-ranked-service"></a>Deploying a module with a higher ranked service instance for binding to greedy references immediately
 
 Module `higher-ranked-service` provides a `SomeService` implementation called
 `HigherRankedService`. `HigherRankedService`'s service ranking is `100`--that's
 `100` more than `DefaultService`'s ranking `0`. Its `doSomething` method returns
-the `String` "I am better, use me!". 
+the `String` "I am better, use me!".
 
-1.  Deploy the `higher-ranked-service` module. 
-2.  Refresh your page that has the portlets *Reluctant Portlet* and *Greedy Portlet*. 
+1.  Deploy the `higher-ranked-service` module.
+2.  Refresh your page that has the portlets *Reluctant Portlet* and *Greedy Portlet*.
 
 *Reluctant Portlet* continues displaying message "SomeService says I am better,
 *use me!". It's "reluctant" to unbind from the `DefaultService` instance and
-*bind to the newly activated `HigherRankedService` service. 
+*bind to the newly activated `HigherRankedService` service.
 
 *Greedy Portlet* displays a new message "SomeService says I am better, use me!".
 *The part of the message "I am better, use me!" comes from the
-*`HigherRankedService` instance to which it refers. 
+*`HigherRankedService` instance to which it refers.
 
 ![The *Greedy Portlet* is using a `HigherRankedService` instance](greedy-portlet-using-higher-ranked-service.png)
 
 Next, learn how to bind the *Reluctant Portlet* to a `HigherRankedService`
-instance. 
+instance.
 
 ## <a name="configuration"></a>Configuring a component to reference a different service instance dynamically
 
 The *Reluctant Portlet* is currently bound to a `DefaultService` instance. It's
 "reluctant" to unbind from it and bind to a different service. OSGi
 Configuration Administration lets you reconfigure service references to filter
-on and bind to different service instances. 
+on and bind to different service instances.
 
 The `service-reference` module's configuration files and
 `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.config`
 and `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.cfg`
 configure the `ReluctantPortlet` component to use a `HigherRankedService`
-instance. 
+instance.
 
     _someService.target=(component.name=com.liferay.blade.reluctant.vs.greedy.service.HigherRankedService)
 
 The service configuration filters on a service whose `component.name` is
-`com.liferay.blade.reluctant.vs.greedy.service.HigherRankedService`. 
+`com.liferay.blade.reluctant.vs.greedy.service.HigherRankedService`.
 
 Note: For deploying to Liferay DXP DE 7.0 Fix Pack 8 or later or Liferay CE
 Portal 7.0 GA4 or later, use file with suffix `.config`. For earlier versions,
-use the file with suffix `.cfg`. 
+use the file with suffix `.cfg`.
 
 Here are the steps to reconfigure `ReluctantPortlet` to use
 `HigherRankedService`:
 
 1.  Copy the configuration file to `[Liferay-Home]/osgi/configs`.
-2.  Refresh your browser. 
+2.  Refresh your browser.
 
 *Reluctant Portlet* displays a new message "SomeService says I am better, use
 *me!".
