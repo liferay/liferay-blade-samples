@@ -6,7 +6,7 @@ The Indexer Post Processor sample demonstrates using the `IndexerPostProcessor`
 interface, which is provided to customize search queries and documents before
 they're sent to the search engine, and/or customize result summaries when
 they're returned to end users. This basic demonstration prints a message in the
-log when one of the `*IndexerPostProcessor` methods is called. 
+log when one of the `*IndexerPostProcessor` methods is called.
 
 To see this sample's messages in Liferay Portal's log, you must add a logging
 category to the portal. Navigate to *Control Panel* &rarr; *Configuration*
