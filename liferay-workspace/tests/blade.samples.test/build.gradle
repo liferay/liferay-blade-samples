@@ -15,10 +15,10 @@ configurations {
 }
 
 dependencies {
-	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
-	compileOnly "javax.portlet:portlet-api:2.0"
-	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
-	compileOnly "org.osgi:org.osgi.service.component.annotations:1.3.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
+	compileOnly group: "javax.portlet", name: "portlet-api", version: "2.0"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
 
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
@@ -40,6 +40,8 @@ task testFunctional(type: Test) {
 
 	dependsOn ":apps:action-command-portlet:jar"
 	dependsOn ":apps:freemarker-portlet:jar"
+	dependsOn ":apps:greedy-policy-option-portlet:higher-ranked-service:jar"
+	dependsOn ":apps:greedy-policy-option-portlet:service-reference:jar"
 	dependsOn ":apps:jsp-portlet:jar"
 	dependsOn ":apps:osgi-portlet:jar"
 	dependsOn ":apps:render-command-portlet:jar"
@@ -53,9 +55,13 @@ task testFunctional(type: Test) {
 		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
 		systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
 		systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
+		systemProperty 'greedyHigherRankedServiceJarFile', project(':apps:greedy-policy-option-portlet:higher-ranked-service').jar.archivePath
+		systemProperty 'greedyServiceReferenceJarFile', project(':apps:greedy-policy-option-portlet:service-reference').jar.archivePath
+		systemProperty 'greedyServiceReferenceProjectdir', project(':apps:greedy-policy-option-portlet:service-reference').projectDir
 		systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
 		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
+		systemProperty 'liferayHome', liferay.liferayHome
 		systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath

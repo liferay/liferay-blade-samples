@@ -1,0 +1,8 @@
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.reluctant.vs.greedy.portlet.api,\
+	com.liferay.blade.reluctant.vs.greedy.portlet.constants
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true

@@ -6,6 +6,8 @@ include(
 	'apps:ds-portlet',
 	'apps:filter-portlet',
 	'apps:freemarker-portlet',
+	'apps:greedy-policy-option-portlet:higher-ranked-service',
+	'apps:greedy-policy-option-portlet:service-reference',
 	'apps:jsp-portlet',
 	'apps:osgi-portlet',
 	'apps:render-command-portlet',
