@@ -12,7 +12,9 @@ buildscript {
 import net.diibadaaba.zipdiff.DifferenceCalculator
 import net.diibadaaba.zipdiff.Differences
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
-import org.apache.commons.io.FileUtils
+import groovy.io.FileType
+
+
 
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
 FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', exclude: 'tests/*')
@@ -63,55 +65,66 @@ warsTest.dependsOn warsSizeTest
 task replicateSources
 
 replicateSources.doLast {
-	Closure projectFilter = {
-		it.isDirectory() && !it.name.matches("\\..*") && (it.getParent().matches("apps") || it.getParent().matches("extensions") || it.getParent().matches("overrides") || it.getParent().matches("themes"))
-	}
-
 	def canonicalSource
 
 	if (project.hasProperty('sourceProjectProp')) {
-		canonicalSource = sourceProjectProp
+		canonicalSource = file(project.getProperty('sourceProjectProp'))
 	}
 	else {
-		canonicalSource = 'gradle'
+		canonicalSource = file('gradle')
 	}
 
-	def canonicalProjects = file(canonicalSource).listFiles().findAll(projectFilter)
-	def replicationParents = files(['gradle', 'liferay-workspace', 'maven'] - canonicalSource)
+	def replicationParents = files(['gradle', 'liferay-workspace', 'maven']) - canonicalSource
 
-	println canonicalProjects
+	def canonicalProjects = []
+
+	canonicalSource.eachFileRecurse (FileType.DIRECTORIES) { dir ->
+		if(new File(dir,"bnd.bnd").exists()) {
+			canonicalProjects.add(dir);
+		}
+		if((new File(dir,"build.gradle").exists() && new File(dir,"build.gradle").text.contains("apply plugin: \'war\'")) || (new File(dir, "pom.xml").exists() && new File(dir, "pom.xml").text.contains("maven-war-plugin"))){
+			canonicalProjects.add(dir);
+		}
+		if ((new File(dir, "build.gradle").exists() && new File(dir,"build.gradle").text.contains("apply plugin: \"com.liferay.portal.tools.theme.builder\""))) {
+			canonicalProjects.add(dir);
+		}
+
+		canonicalProjects.removeAll { it.name.contains("test") }
+	}
 
 	canonicalProjects.each { canonicalProject ->
-		if ((new File(canonicalProject, "bnd.bnd").exists())) {
-			replicationParents.each { replicationParent ->
-				def replicationProjects = replicationParent.listFiles().findAll(projectFilter)
+		replicationParents.each { replicationParent ->
+			def replicationProjects = []
 
-				def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+			replicationParent.eachFileRecurse (FileType.DIRECTORIES) { replicationProject ->
 
-				if (replicationProject == null) {
-					replicationProject = new File(replicationParent, canonicalProject.name)
-					replicationProject.mkdirs()
+				replicationProjects.add(replicationProject);
+			}
 
-					def buildFilesProject = new File(replicationParent, "blade.portlet.jsp")
+			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
 
-					ant.copy(todir: replicationProject) {
-						fileset(dir: buildFilesProject, includes: "*")
-					}
-				}
-
+			if ((canonicalSource == ("gradle" || "liferay-workspace")) && (replicationProject == ("gradle" || "liferay-workspace"))) {
 				ant.copy(todir: replicationProject) {
-					fileset(dir: canonicalProject, includes: "*.markdown")
+					fileset(dir: canonicalProject, includes: "bnd.bnd", "build.gradle")
 				}
+			}
 
-				def replicationSrc = new File( replicationProject, 'src/' )
+			ant.copy(todir: replicationProject) {
+				fileset(dir: canonicalProject, includes: "*.markdown")
+			}
 
-				replicationSrc.deleteDir()
+			def replicationSrc = new File( replicationProject, 'src/' )
 
-				def canonicalSrc = new File( canonicalProject, 'src/' )
-
-				ant.copy(todir: replicationSrc) {
-					fileset(dir: canonicalSrc, includes: "**")
+			replicationSrc.listFiles().each { dir ->
+				if (!dir.name.startsWith("test")) {
+					dir.deleteDir()
 				}
+			}
+
+			def canonicalSrc = new File( canonicalProject, 'src/' )
+
+			ant.copy(todir: replicationSrc) {
+				fileset(dir: canonicalSrc, includes: "**", excludes: "**/test**/")
 			}
 		}
 	}
