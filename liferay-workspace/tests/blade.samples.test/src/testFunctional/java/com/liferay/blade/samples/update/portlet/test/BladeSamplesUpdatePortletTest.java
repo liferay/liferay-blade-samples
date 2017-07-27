@@ -27,14 +27,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gradle.testkit.runner.BuildTask;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,9 +45,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
-import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
 
 import aQute.lib.io.IO;
+import aQute.remote.util.JMXBundleDeployer;
 
 /**
  * @author Lawrence Lee
@@ -60,42 +58,44 @@ public class BladeSamplesUpdatePortletTest {
 
 	@AfterClass
 	public static void tearDownClass() throws Exception {
-		if (BladeCLIUtil.bladeJar.exists()) {
-			IO.delete(BladeCLIUtil.bladeJar);
-			assertFalse(BladeCLIUtil.bladeJar.exists());
+		new JMXBundleDeployer().uninstall(_helloWorldJarBSN);
+		
+		if (_projectPath.exists()) {
+			IO.delete(_projectPath);
+			assertFalse(_projectPath.exists());
 		}
 	}
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
+		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
+		
 		_testIntegrationDir = new File(
 			System.getProperty("user.dir")).getParentFile();
 
-		_projectPath = BladeCLIUtil.createProject(
-			_testIntegrationDir, "mvc-portlet", "helloworld");
-
-		File buildPath = new File(
-			_projectPath.getParentFile().getParentFile().getAbsolutePath());
-
-		BuildTask assembletask = GradleRunnerUtil.executeGradleRunner(
-			buildPath, ":tests:helloworld:assemble");
-
-		GradleRunnerUtil.verifyGradleRunnerOutput(assembletask);
-
+		try {
+			_projectPath = BladeCLIUtil.createProject(
+				_testIntegrationDir, "mvc-portlet", "helloworld");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		File buildOutput = new File(
 			_projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		return ShrinkWrap.createFromZipFile(JavaArchive.class, buildOutput);
-	}
+		new JMXBundleDeployer().deploy(_helloWorldJarBSN, buildOutput);
 
-	@After
-	public void tearDown() throws Exception {
-		if (_testIntegrationDir.exists()) {
-			IO.delete(_testIntegrationDir);
-			assertFalse(_testIntegrationDir.exists());
-		}
+		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
-
+	
 	@Test
 	public void testUpdateMVCPortletProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -110,49 +110,121 @@ public class BladeSamplesUpdatePortletTest {
 			_portletBody.getText(),
 			_portletBody.getText().contentEquals(
 				"Hello from helloworld JSP!"));
-
-		File file = new File(
+		
+		File dynamicFile = new File(
 			_projectPath +
 			"/src/main/java/helloworld/portlet/HelloworldPortlet.java");
 
 		List<String> lines = new ArrayList<>();
 		String line = null;
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(dynamicFile))) {
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
-
+				
+				if (line.equals("import javax.portlet.Portlet;")) {	
+					String s = 
+						new StringBuilder().
+						append("import java.io.IOException;\n").
+						append("import javax.portlet.PortletException;\n").
+						append("import javax.portlet.RenderRequest;\n").
+						append("import javax.portlet.RenderResponse;\n").
+						toString();
+					
+					lines.add(s);
+						
+				}
 				if (line.equals(
 						"public class HelloworldPortlet extends MVCPortlet {"))
 					{
 
 					String s =
 						new StringBuilder().
-							append("public void print() throws Exception {\n").
-							append("System.out.println(\"Edited\");\n").
-							append("}\n").toString();
+							append("public void doView(\n").
+							append("RenderRequest renderRequest," +
+								" RenderResponse renderResponse)\n").
+							append("throws IOException, PortletException {\n").
+							append("renderRequest.setAttribute(\n").
+							append("\"foo\", \"bar\");\n").
+							append("super.doView(renderRequest, " +
+								"renderResponse);\n").
+							append("}\n").
+							toString();
 
 					lines.add(s);
 				}
 			}
 		}
-
-		try (Writer writer = new FileWriter(file)) {
+		
+		try (Writer writer = new FileWriter(dynamicFile)) {
 			for (String string : lines) {
 				writer.write(string + "\n");
 			}
 		}
+		
+		File staticFile = new File(
+			_projectPath +
+			"/src/main/resources/META-INF/resources/view.jsp");
 
-		_webDriver.navigate().refresh();
+		lines = new ArrayList<>();
+		line = null;
 
+		try (BufferedReader reader = new BufferedReader(new FileReader(staticFile))) {
+			while ((line = reader.readLine()) != null) {
+				lines.add(line);
+				
+				if (line.contains("liferay-ui:message key=")) {	
+					String s = 
+						new StringBuilder().
+						append("<b><%= renderRequest.getAttribute(\"foo\") %></b>").
+						toString();
+					
+					lines.add(s);
+						
+				}
+			}
+		}
+
+		try (Writer writer = new FileWriter(staticFile)) {
+			for (String string : lines) {
+				writer.write(string + "\n");
+			}
+		}
+		
+		try {
+			_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Assert.assertTrue(
+			"Expected Build Successful, but saw: " + _buildStatus,
+			!_buildStatus.contains("failed"));
+		
+		File buildOutput = new File(
+			_projectPath + "/build/libs/helloworld-1.0.0.jar");
+		
+		new JMXBundleDeployer().deploy(_helloWorldJarBSN, buildOutput);
+		
+		Thread.sleep(10000);
+		
+		_webDriver.get(_portletURL.toExternalForm());
+		
+		Assert.assertTrue(
+			"Portlet was not deployed", isVisible(_helloWorldPortlet));
+		Assert.assertTrue(
+			_portletTitle.getText(),
+			_portletTitle.getText().contentEquals(
+				"helloworld Portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
 			_portletBody.getText().contentEquals(
-				"Hello from BLADE Language Web!"));
+				"Hello from helloworld JSP! bar"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 60);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -164,9 +236,13 @@ public class BladeSamplesUpdatePortletTest {
 		}
 	}
 
-	private static File _projectPath;
-	private static File _testIntegrationDir;
-
+	static File _buildPath;
+	static String _buildStatus;
+	static File _projectPath;
+	static File _testIntegrationDir;
+	
+	private static String _helloWorldJarBSN = "helloworld";
+	
 	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]")
 	private WebElement _helloWorldPortlet;
 
@@ -181,5 +257,4 @@ public class BladeSamplesUpdatePortletTest {
 
 	@Drone
 	private WebDriver _webDriver;
-
 }
