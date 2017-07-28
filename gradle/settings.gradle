@@ -11,6 +11,7 @@ include(
 	'apps:greedy-policy-option-portlet:higher-ranked-service',
 	'apps:greedy-policy-option-portlet:service-reference',
 	'apps:jsp-portlet',
+	'apps:jsp-portlet-war',
 	'apps:osgi-portlet',
 	'apps:render-command-portlet',
 	'apps:resource-command-portlet',
