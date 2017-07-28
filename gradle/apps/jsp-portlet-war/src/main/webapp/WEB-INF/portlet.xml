@@ -2,8 +2,8 @@
 
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
 	<portlet>
-		<portlet-name>blade-liferay-mvc</portlet-name>
-		<display-name>Blade JSP Portlet</display-name>
+		<portlet-name>jsp-portlet-war</portlet-name>
+		<display-name>JSP Portlet War</display-name>
 		<portlet-class>com.liferay.blade.samples.portlet.JSPPortlet</portlet-class>
 		<init-param>
 			<name>template-path</name>
@@ -17,7 +17,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
-		<resource-bundle>content/Language</resource-bundle>
+		<resource-bundle>content.Language</resource-bundle>
 		<portlet-info>
 			<title>Liferay MVC</title>
 			<short-title>Liferay MVC</short-title>

@@ -1,5 +1,4 @@
-<%@ page import="com.liferay.portal.kernel.log.Log" %>
-<%@ page import="com.liferay.portal.kernel.log.LogFactoryUtil" %><%--
+<%--
 /**
  * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
@@ -15,16 +14,19 @@
  */
 --%>
 
+<%@ page import="com.liferay.portal.kernel.log.Log" %><%@
+page import="com.liferay.portal.kernel.log.LogFactoryUtil" %>
+
 <%@ include file="/init.jsp" %>
 
 <strong><liferay-ui:message key="welcome-to-the-blade-liferay-mvc-service-builder-web" /></strong>
+
 <%
 	int count = fooLocalService.getFoosCount();
 
 	Log log = LogFactoryUtil.getLog("com.liferay.blade.samples.portlet.jsp.view");
 
 	log.info("Have " + count + " records.");
-
 %>
 
 <aui:button-row>

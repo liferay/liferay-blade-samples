@@ -9,4 +9,3 @@ Although this project is built and deployed as a portlet war, it still relies on
 NOTE: The javax.portlet.name value comes from the &lt;portlet-name /&gt; tag value from the liferay-portlet.xml file, except all punctuation will be removed.  For example, "blade-liferay-mvc-sample-portlet" would become "bladeliferaymvcsampleportlet".
 
 The web context path comes from the Web-ContextPath key value from the liferay-plugin-package.properties file.
-

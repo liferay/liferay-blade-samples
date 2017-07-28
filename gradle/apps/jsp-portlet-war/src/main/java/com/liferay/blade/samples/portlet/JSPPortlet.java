@@ -24,102 +24,107 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 
+import java.io.IOException;
+
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-
-import org.osgi.service.component.annotations.Component;
-
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @author Liferay
  */
 public class JSPPortlet extends MVCPortlet {
 
-    @Override
-    public void render(RenderRequest request, RenderResponse response)
-            throws IOException, PortletException {
+	public void deleteFoo(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws Exception {
 
-        //set service bean
-        request.setAttribute("fooLocalService", getFooLocalService());
+		if (_log.isInfoEnabled()) {
+			_log.info("Deleting a new foo...");
+		}
 
-        super.render(request, response);
-    }
+		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
-    public void deleteFoo(
-        ActionRequest actionRequest, ActionResponse actionResponse)
-        throws Exception {
+		getFooLocalService().deleteFoo(fooId);
+	}
 
-        _log.info("Deleting a new foo...");
+	public FooLocalService getFooLocalService() {
+		return FooLocalServiceUtil.getService();
+	}
 
-        long fooId = ParamUtil.getLong(actionRequest, "fooId");
+	@Override
+	public void render(RenderRequest request, RenderResponse response)
+		throws IOException, PortletException {
 
-        getFooLocalService().deleteFoo(fooId);
-    }
+		//set service bean
+		request.setAttribute("fooLocalService", getFooLocalService());
 
-    public void updateFoo(
-        ActionRequest actionRequest, ActionResponse actionResponse)
-        throws Exception {
-        long fooId = ParamUtil.getLong(actionRequest, "fooId");
+		super.render(request, response);
+	}
 
-        String field1 = ParamUtil.getString(actionRequest, "field1");
-        boolean field2 = ParamUtil.getBoolean(actionRequest, "field2");
-        int field3 = ParamUtil.getInteger(actionRequest, "field3");
-        String field5 = ParamUtil.getString(actionRequest, "field5");
+	public void updateFoo(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws Exception {
 
-        int dateMonth = ParamUtil.getInteger(actionRequest, "field4Month");
-        int dateDay = ParamUtil.getInteger(actionRequest, "field4Day");
-        int dateYear = ParamUtil.getInteger(actionRequest, "field4Year");
-        int dateHour = ParamUtil.getInteger(actionRequest, "field4Hour");
-        int dateMinute = ParamUtil.getInteger(actionRequest, "field4Minute");
-        int dateAmPm = ParamUtil.getInteger(actionRequest, "field4AmPm");
+		long fooId = ParamUtil.getLong(actionRequest, "fooId");
 
-        if (dateAmPm == Calendar.PM) {
-            dateHour += 12;
-        }
+		String field1 = ParamUtil.getString(actionRequest, "field1");
+		boolean field2 = ParamUtil.getBoolean(actionRequest, "field2");
+		int field3 = ParamUtil.getInteger(actionRequest, "field3");
+		String field5 = ParamUtil.getString(actionRequest, "field5");
 
-        Date field4 = PortalUtil.getDate(
-                dateMonth, dateDay, dateYear, dateHour, dateMinute,
-                PortalException.class);
+		int dateMonth = ParamUtil.getInteger(actionRequest, "field4Month");
+		int dateDay = ParamUtil.getInteger(actionRequest, "field4Day");
+		int dateYear = ParamUtil.getInteger(actionRequest, "field4Year");
+		int dateHour = ParamUtil.getInteger(actionRequest, "field4Hour");
+		int dateMinute = ParamUtil.getInteger(actionRequest, "field4Minute");
+		int dateAmPm = ParamUtil.getInteger(actionRequest, "field4AmPm");
 
-        if (fooId <= 0) {
-            _log.info("Adding a new foo...");
+		if (dateAmPm == Calendar.PM) {
+			dateHour += 12;
+		}
 
-            Foo foo = getFooLocalService().createFoo(0);
+		Date field4 = PortalUtil.getDate(
+			dateMonth, dateDay, dateYear, dateHour, dateMinute,
+			PortalException.class);
 
-            foo.setField1(field1);
-            foo.setField2(field2);
-            foo.setField3(field3);
-            foo.setField4(field4);
-            foo.setField5(field5);
-            foo.isNew();
-            getFooLocalService().addFooWithoutId(foo);
-        }
-        else {
-            _log.info("Updating a new foo...");
+		if (fooId <= 0) {
+			if (_log.isInfoEnabled()) {
+				_log.info("Adding a new foo...");
+			}
 
-            Foo foo = getFooLocalService().fetchFoo(fooId);
+			Foo foo = getFooLocalService().createFoo(0);
 
-            foo.setFooId(fooId);
-            foo.setField1(field1);
-            foo.setField2(field2);
-            foo.setField3(field3);
-            foo.setField4(field4);
-            foo.setField5(field5);
-            getFooLocalService().updateFoo(foo);
-        }
-    }
+			foo.setField1(field1);
+			foo.setField2(field2);
+			foo.setField3(field3);
+			foo.setField4(field4);
+			foo.setField5(field5);
+			foo.isNew();
+			getFooLocalService().addFooWithoutId(foo);
+		}
+		else {
+			if (_log.isInfoEnabled()) {
+				_log.info("Updating a new foo...");
+			}
 
-    public FooLocalService getFooLocalService() {
-        return FooLocalServiceUtil.getService();
-    }
+			Foo foo = getFooLocalService().fetchFoo(fooId);
 
-    private static final Log _log =
-            LogFactoryUtil.getLog(JSPPortlet.class);
+			foo.setFooId(fooId);
+			foo.setField1(field1);
+			foo.setField2(field2);
+			foo.setField3(field3);
+			foo.setField4(field4);
+			foo.setField5(field5);
+			getFooLocalService().updateFoo(foo);
+		}
+	}
+
+	private static final Log _log = LogFactoryUtil.getLog(JSPPortlet.class);
+
 }
