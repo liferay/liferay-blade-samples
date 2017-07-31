@@ -122,23 +122,29 @@ public class BladeSamplesTest {
 				installBundleOutput = output.substring(
 					output.indexOf("bundle id:") + 11,
 					output.indexOf("\n",
-					output.indexOf("bundle id:")));			
+					output.indexOf("bundle id:")));		
+				
+				bundleIDAllMap.put(installBundleOutput, printFileName);
+				bundleIDStartMap.put(installBundleOutput, printFileName);
 			}
+			
 			else {
 				printFileName = new File(sampleBundleFile).getName();
 	
 				installBundleOutput = BladeCLIUtil.installBundle(
 					new File(sampleBundleFile));
-			}
 			
-			bundleIDAllMap.put(installBundleOutput, printFileName);
-
-			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
-				if (jar.getManifest().getMainAttributes().getValue(
-						"Fragment-Host") == null) {
-
-					bundleIDStartMap.put(installBundleOutput, printFileName);
+				bundleIDAllMap.put(installBundleOutput, printFileName);
+			
+				try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
+					if (jar.getManifest().getMainAttributes().getValue(
+							"Fragment-Host") == null) {
+	
+						bundleIDStartMap.put(
+							installBundleOutput, printFileName);
+					}
 				}
+				
 			}
 		}
 
