@@ -145,7 +145,7 @@ public class BladeCLIUtil {
 			output.indexOf("bundle id:") + 11,
 			output.indexOf("\n", output.indexOf("bundle id:")));
 
-		if (output.contains("Failed") || output.contains("IOException")) {
+		if (output.contains("Failed") || output.contains("Exception")) {
 			throw new Exception(output);
 		}
 
