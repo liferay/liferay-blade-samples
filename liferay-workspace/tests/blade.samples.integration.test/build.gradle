@@ -31,22 +31,27 @@ testIntegration {
 		def moduleOutputPaths = []
 
 		rootProject.subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
-			}
+			def tempOutput
 
 			p.plugins.withType(WarPlugin) {
-				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+				tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
 			}
 
-			p.plugins.withId("com.liferay.portal.tools.theme.builder") {
-				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+			if (tempOutput == null) {
+				p.plugins.withType(JavaPlugin) {
+					tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
+				}
 			}
+
+			if (tempOutput != null) {
+				moduleOutputPaths << tempOutput
+			}
+
 		}
 
 		moduleOutputPaths.removeAll { it.contains("test") }
 
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
+		systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
 	}
 
 	rootProject.subprojects { p ->
@@ -58,9 +63,6 @@ testIntegration {
 			dependsOn p.tasks["war"]
 		}
 
-		p.plugins.withId("com.liferay.portal.tools.theme.builder") {
-			dependsOn p.tasks["war"]
-		}
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
@@ -74,28 +76,4 @@ stopTestableTomcat {
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}
-}
-
-task print
-
-print.doLast {
-		def moduleOutputPaths = []
-
-		rootProject.subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
-			}
-
-			p.plugins.withType(WarPlugin) {
-				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
-			}
-
-			p.plugins.withId("com.liferay.portal.tools.theme.builder") {
-				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
-			}
-		}
-
-		moduleOutputPaths.removeAll { it.contains("test") }
-
-		println moduleOutputPaths.join(",")
 }

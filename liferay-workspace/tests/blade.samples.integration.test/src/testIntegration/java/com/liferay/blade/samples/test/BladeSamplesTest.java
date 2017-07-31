@@ -109,11 +109,28 @@ public class BladeSamplesTest {
 		}
 
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
-			String installBundleOutput = BladeCLIUtil.installBundle(
-				new File(sampleBundleFile));
+			String printFileName;
+			String installBundleOutput;
+			
+			if (sampleBundleFile.endsWith(".war")) {
+				printFileName = new File(sampleBundleFile).getName();
 
-			String printFileName = new File(sampleBundleFile).getName();
-
+				String output = BladeCLIUtil.execute(
+					"sh", "install", "webbundle:file://" + sampleBundleFile + 
+					"?Web-ContextPath=/" + printFileName);
+				
+				installBundleOutput = output.substring(
+					output.indexOf("bundle id:") + 11,
+					output.indexOf("\n",
+					output.indexOf("bundle id:")));			
+			}
+			else {
+				printFileName = new File(sampleBundleFile).getName();
+	
+				installBundleOutput = BladeCLIUtil.installBundle(
+					new File(sampleBundleFile));
+			}
+			
 			bundleIDAllMap.put(installBundleOutput, printFileName);
 
 			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
@@ -125,8 +142,8 @@ public class BladeSamplesTest {
 			}
 		}
 
-		for (String startBundleIO : bundleIDStartMap.keySet()) {
-			BladeCLIUtil.startBundle(startBundleIO);
+		for (String startBundleID : bundleIDStartMap.keySet()) {
+			BladeCLIUtil.startBundle(startBundleID);
 		}
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {
