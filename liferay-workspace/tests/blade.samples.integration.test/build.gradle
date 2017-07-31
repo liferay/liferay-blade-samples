@@ -34,7 +34,17 @@ testIntegration {
 			p.plugins.withType(JavaPlugin) {
 				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
 			}
+
+			p.plugins.withType(WarPlugin) {
+				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+			}
+
+			p.plugins.withId("com.liferay.portal.tools.theme.builder") {
+				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+			}
 		}
+
+		moduleOutputPaths.removeAll { it.contains("test") }
 
 		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
 	}
@@ -42,6 +52,14 @@ testIntegration {
 	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
+		}
+
+		p.plugins.withType(WarPlugin) {
+			dependsOn p.tasks["war"]
+		}
+
+		p.plugins.withId("com.liferay.portal.tools.theme.builder") {
+			dependsOn p.tasks["war"]
 		}
 	}
 
@@ -56,4 +74,28 @@ stopTestableTomcat {
 	doLast {
 		delete new File(liferay.liferayHome, "data")
 	}
+}
+
+task print
+
+print.doLast {
+		def moduleOutputPaths = []
+
+		rootProject.subprojects { p ->
+			p.plugins.withType(JavaPlugin) {
+				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
+			}
+
+			p.plugins.withType(WarPlugin) {
+				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+			}
+
+			p.plugins.withId("com.liferay.portal.tools.theme.builder") {
+				moduleOutputPaths << p.tasks["war"].outputs.files.singleFile.absolutePath
+			}
+		}
+
+		moduleOutputPaths.removeAll { it.contains("test") }
+
+		println moduleOutputPaths.join(",")
 }
