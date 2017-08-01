@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<suppressions>
+	<suppress checks="XMLPortletFileCheck" files="src/main/webapp/WEB-INF/liferay-portlet\.xml" />
+	<suppress checks="XMLPortletFileCheck" files="src/main/webapp/WEB-INF/portlet\.xml" />
+</suppressions>
