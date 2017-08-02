@@ -111,46 +111,48 @@ public class BladeSamplesTest {
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
 			String printFileName;
 			String installBundleOutput;
-			
+
 			if (sampleBundleFile.endsWith(".war")) {
 				printFileName = new File(sampleBundleFile).getName();
 
+				printFileName = printFileName.substring(
+					0, printFileName.lastIndexOf('.'));
+
 				String output = BladeCLIUtil.execute(
-					"sh", "install", "webbundle:file://" + sampleBundleFile + 
+					"sh", "install", "webbundle:file://" + sampleBundleFile +
 					"?Web-ContextPath=/" + printFileName);
-				
+
 				installBundleOutput = output.substring(
-					output.indexOf("bundle id:") + 11,
-					output.indexOf("\n",
-					output.indexOf("bundle id:")));		
-				
+					output.indexOf("bundle id:") + 11, output.indexOf("\n",
+					output.indexOf("bundle id:")));
+
 				bundleIDAllMap.put(installBundleOutput, printFileName);
 				bundleIDStartMap.put(installBundleOutput, printFileName);
 			}
-			
-			else {			
-				File file = new File(sampleBundleFile);
-				
-				if (file.exists()) {		
+			else {File file = new File(sampleBundleFile);
+
+				if (file.exists()) {
 					printFileName = new File(sampleBundleFile).getName();
-		
+
+					printFileName = printFileName.substring(
+						0, printFileName.lastIndexOf('.'));
+
 					installBundleOutput = BladeCLIUtil.installBundle(
 						new File(sampleBundleFile));
-				
-					bundleIDAllMap.put(installBundleOutput, printFileName);
-					
-					
-				
-					try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
+				bundleIDAllMap.put(installBundleOutput, printFileName);
+
+					try (Jar jar =
+					new Jar(sampleBundleFile, sampleBundleFile)) {
+
 						if (jar.getManifest().getMainAttributes().getValue(
 								"Fragment-Host") == null) {
-		
+
 							bundleIDStartMap.put(
 								installBundleOutput, printFileName);
 						}
 					}
 				}
-			
+
 			}
 		}
 
