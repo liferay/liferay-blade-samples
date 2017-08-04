@@ -107,7 +107,7 @@ public class BladeCLIUtil {
 		    Pattern p = Pattern.compile(exclusion, Pattern.DOTALL);
 		    Matcher m = p.matcher(string);
 		    
-		    while (m.find()) {
+		    while (m.matches()) {
 		    	filteredErrorList.add(string);
 		    }
 		    
