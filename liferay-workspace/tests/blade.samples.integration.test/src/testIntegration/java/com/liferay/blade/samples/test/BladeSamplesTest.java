@@ -109,24 +109,55 @@ public class BladeSamplesTest {
 		}
 
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
-			String installBundleOutput = BladeCLIUtil.installBundle(
-				new File(sampleBundleFile));
+			String printFileName;
+			String installBundleOutput;
 
-			String printFileName = new File(sampleBundleFile).getName();
+			if (sampleBundleFile.endsWith(".war")) {
+				printFileName = new File(sampleBundleFile).getName();
 
-			bundleIDAllMap.put(installBundleOutput, printFileName);
+				printFileName = printFileName.substring(
+					0, printFileName.lastIndexOf('.'));
 
-			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
-				if (jar.getManifest().getMainAttributes().getValue(
-						"Fragment-Host") == null) {
+				String output = BladeCLIUtil.execute(
+					"sh", "install", "webbundle:file://" + sampleBundleFile +
+					"?Web-ContextPath=/" + printFileName);
 
-					bundleIDStartMap.put(installBundleOutput, printFileName);
+				installBundleOutput = output.substring(
+					output.indexOf("bundle id:") + 11, output.indexOf("\n",
+					output.indexOf("bundle id:")));
+
+				bundleIDAllMap.put(installBundleOutput, printFileName);
+				bundleIDStartMap.put(installBundleOutput, printFileName);
+			}
+			else {File file = new File(sampleBundleFile);
+
+				if (file.exists()) {
+					printFileName = new File(sampleBundleFile).getName();
+
+					printFileName = printFileName.substring(
+						0, printFileName.lastIndexOf('.'));
+
+					installBundleOutput = BladeCLIUtil.installBundle(
+						new File(sampleBundleFile));
+				bundleIDAllMap.put(installBundleOutput, printFileName);
+
+					try (Jar jar =
+					new Jar(sampleBundleFile, sampleBundleFile)) {
+
+						if (jar.getManifest().getMainAttributes().getValue(
+								"Fragment-Host") == null) {
+
+							bundleIDStartMap.put(
+								installBundleOutput, printFileName);
+						}
+					}
 				}
+
 			}
 		}
 
-		for (String startBundleIO : bundleIDStartMap.keySet()) {
-			BladeCLIUtil.startBundle(startBundleIO);
+		for (String startBundleID : bundleIDStartMap.keySet()) {
+			BladeCLIUtil.startBundle(startBundleID);
 		}
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {

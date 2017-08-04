@@ -31,18 +31,38 @@ testIntegration {
 		def moduleOutputPaths = []
 
 		rootProject.subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
+			def tempOutput
+
+			p.plugins.withType(WarPlugin) {
+				tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
 			}
+
+			if (tempOutput == null) {
+				p.plugins.withType(JavaPlugin) {
+					tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
+				}
+			}
+
+			if (tempOutput != null) {
+				moduleOutputPaths << tempOutput
+			}
+
 		}
 
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
+		moduleOutputPaths.removeAll { it.contains("test") }
+
+		systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
 	}
 
 	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
 		}
+
+		p.plugins.withType(WarPlugin) {
+			dependsOn p.tasks["war"]
+		}
+
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
