@@ -212,7 +212,7 @@ public class BladeSamplesUpdatePortletTest {
 
 		new JMXBundleDeployer().deploy(_helloWorldJarBSN, buildOutput);
 
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 
 		_webDriver.get(_portletURL.toExternalForm());
 
