@@ -28,7 +28,7 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 )
 @Meta.OCD(
 	id = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
-	localization = "content/Language", name = "custom.screen.name"
+	localization = "content/Language", name = "custom-screen-name"
 )
 public interface CustomScreenNameConfiguration {
 
