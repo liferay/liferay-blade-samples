@@ -22,7 +22,7 @@ Here are each module's file structures:
 -   `configs/`
     -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.config` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Pack 8 or later and Liferay CE Portal 7.0 GA4 or later
     -   `com.liferay.blade.reluctant.vs.greedy.portlet.portlet.ReluctantPortlet.cfg` &rarr; `ReluctantPortlet` configuration file for Liferay DXP DE 7.0 Fix Packs earlier than Fix Pack 8 and Liferay CE Portal 7.0 GA3 or earlier
--   `src/main/java/com/liferay/blade/reluctant/vs/geedy/portlet/`
+-   `src/main/java/com/liferay/blade/reluctant/vs/greedy/portlet/`
     -   `api/`
         -   `SomeService.java` &rarr; Service interface
     -   `constants/`
@@ -34,7 +34,7 @@ Here are each module's file structures:
 
 `higher-ranked-service/`
 -   `bnd.bnd`
--   `src/main/java/com/liferay/blade/reluctant/vs/geedy/svc/HigherRankedService.java` &rarr; Service implementation with service ranking value of `100`
+-   `src/main/java/com/liferay/blade/reluctant/vs/greedy/svc/HigherRankedService.java` &rarr; Service implementation with service ranking value of `100`
 
 Here are the things you can learn using the sample modules:
 
