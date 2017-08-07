@@ -1,21 +1,20 @@
 /**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ * Copyright 2000-present Liferay, Inc.
  *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.liferay.blade.samples.integration.test;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import aQute.bnd.osgi.Jar;
 
@@ -36,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -46,6 +47,7 @@ import org.gradle.testkit.runner.BuildTask;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -79,7 +81,7 @@ public class BladeSamplesTest {
 	public static void tearDownClass() throws Exception {
 		if (BladeCLIUtil.bladeJar.exists()) {
 			IO.delete(BladeCLIUtil.bladeJar);
-			assertFalse(BladeCLIUtil.bladeJar.exists());
+			Assert.assertFalse(BladeCLIUtil.bladeJar.exists());
 		}
 	}
 
@@ -94,7 +96,7 @@ public class BladeSamplesTest {
 	public void tearDown() throws Exception {
 		if (_testDir.exists()) {
 			IO.delete(_testDir);
-			assertFalse(_testDir.exists());
+			Assert.assertFalse(_testDir.exists());
 		}
 	}
 
@@ -122,17 +124,19 @@ public class BladeSamplesTest {
 					0, printFileName.lastIndexOf('.'));
 
 				String output = BladeCLIUtil.execute(
-					"sh", "install", "webbundle:file://" + sampleBundleFile +
-					"?Web-ContextPath=/" + printFileName);
+					"sh", "install",
+					"webbundle:file://" + sampleBundleFile +
+						"?Web-ContextPath=/" + printFileName);
 
 				installBundleOutput = output.substring(
-					output.indexOf("bundle id:") + 11, output.indexOf("\n",
-					output.indexOf("bundle id:")));
+					output.indexOf("bundle id:") + 11,
+					output.indexOf("\n", output.indexOf("bundle id:")));
 
 				bundleIDAllMap.put(installBundleOutput, printFileName);
 				bundleIDStartMap.put(installBundleOutput, printFileName);
 			}
-			else {File file = new File(sampleBundleFile);
+			else {
+				File file = new File(sampleBundleFile);
 
 				if (file.exists()) {
 					printFileName = new File(sampleBundleFile).getName();
@@ -142,20 +146,23 @@ public class BladeSamplesTest {
 
 					installBundleOutput = BladeCLIUtil.installBundle(
 						new File(sampleBundleFile));
-				bundleIDAllMap.put(installBundleOutput, printFileName);
+
+					bundleIDAllMap.put(installBundleOutput, printFileName);
 
 					try (Jar jar =
-					new Jar(sampleBundleFile, sampleBundleFile)) {
+							new Jar(sampleBundleFile, sampleBundleFile)) {
 
-						if (jar.getManifest().getMainAttributes().getValue(
-								"Fragment-Host") == null) {
+						Manifest manifest = jar.getManifest();
 
+						Attributes mainAttributes =
+							manifest.getMainAttributes();
+
+						if (mainAttributes.getValue("Fragment-Host") == null) {
 							bundleIDStartMap.put(
 								installBundleOutput, printFileName);
 						}
 					}
 				}
-
 			}
 		}
 
@@ -181,7 +188,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -203,7 +210,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -225,7 +232,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -247,7 +254,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -269,7 +276,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -327,8 +334,8 @@ public class BladeSamplesTest {
 			projectPath + "/apps/service-builder/foo-service/build/libs" +
 				"/foo-service-1.0.0.jar");
 
-		assertTrue(buildApiOutput.exists());
-		assertTrue(buildServiceOutput.exists());
+		Assert.assertTrue(buildApiOutput.exists());
+		Assert.assertTrue(buildServiceOutput.exists());
 
 		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
@@ -362,8 +369,8 @@ public class BladeSamplesTest {
 			projectPath + "/guestbook-service/build/libs" +
 				"/com.liferay.docs.guestbook.service-1.0.0.jar");
 
-		assertTrue(buildApiOutput.exists());
-		assertTrue(buildServiceOutput.exists());
+		Assert.assertTrue(buildApiOutput.exists());
+		Assert.assertTrue(buildServiceOutput.exists());
 
 		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
@@ -393,10 +400,9 @@ public class BladeSamplesTest {
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
 
-				if (line.equals(
+				if (line.startsWith(
 						"import com.liferay.portal.kernel.events." +
-							"LifecycleAction;"))
-					{
+							"LifecycleAction;")) {
 
 					lines.add(
 						"import com.liferay.portal.kernel.events." +
@@ -407,21 +413,28 @@ public class BladeSamplesTest {
 				}
 
 				if (line.equals(
-						"public class FooAction implements LifecycleAction {"))
-					{
+						"public class FooAction implements LifecycleAction " +
+							"{")) {
 
-					String s =
-						new StringBuilder().append("@Override\n").
-							append(
-								"public void processLifecycleEvent(" +
-									"LifecycleEvent lifecycleEvent)\n").
-							append("throws ActionException {\n").
-							append(
-								"System.out.println(\"login.event.pre=\" +" +
-									" lifecycleEvent);\n").
-							append("}\n").toString();
+					StringBuilder sb = new StringBuilder();
 
-					lines.add(s);
+					sb.append(
+						"@Override\n"
+					).append(
+						"public void processLifecycleEvent"
+					).append(
+						"(LifecycleEvent lifecycleEvent)\n"
+					).append(
+						"throws ActionException {\n"
+					).append(
+						"System.out.println"
+					).append(
+						"(\"login.event.pre=\" + lifecycleEvent);\n"
+					).append(
+						"}\n"
+					);
+
+					lines.add(sb.toString());
 				}
 			}
 		}
@@ -440,7 +453,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -463,7 +476,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/serviceoverride-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 

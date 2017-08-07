@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.update.portlet.test;
 
-import static org.junit.Assert.assertFalse;
-
 import aQute.lib.io.IO;
 
 import aQute.remote.util.JMXBundleDeployer;
@@ -99,7 +97,7 @@ public class BladeSamplesUpdatePortletTest {
 
 		if (_projectPath.exists()) {
 			IO.delete(_projectPath);
-			assertFalse(_projectPath.exists());
+			Assert.assertFalse(_projectPath.exists());
 		}
 	}
 
@@ -130,32 +128,42 @@ public class BladeSamplesUpdatePortletTest {
 				lines.add(line);
 
 				if (line.equals("import javax.portlet.Portlet;")) {
-					String s =
-						new StringBuilder().
-						append("import java.io.IOException;\n").
-						append("import javax.portlet.PortletException;\n").
-						append("import javax.portlet.RenderRequest;\n").
-						append("import javax.portlet.RenderResponse;\n").
-						toString();
+					StringBuilder sb = new StringBuilder();
 
-					lines.add(s);
+					sb.append(
+						"import java.io.IOException;\n"
+					).append(
+						"import javax.portlet.PortletException;\n"
+					).append(
+						"import javax.portlet.RenderRequest;\n"
+					).append(
+						"import javax.portlet.RenderResponse;\n"
+					);
+
+					lines.add(sb.toString());
 				}
 
 				if (line.equals(
-						"public class HelloworldPortlet extends MVCPortlet {"))
-					{
+						"public class HelloworldPortlet extends MVCPortlet {"
+					)) {
 
-					String s =
-						new StringBuilder().append("public void doView(\n").
-							append("RenderRequest renderRequest," +
-								" RenderResponse renderResponse)\n").
-							append("throws IOException, PortletException {\n").
-							append("renderRequest.setAttribute(\n").
-							append("\"foo\", \"bar\");\n").
-							append("super.doView(renderRequest, " +
-								"renderResponse);\n").append("}\n").toString();
+					StringBuilder sb = new StringBuilder();
 
-					lines.add(s);
+					sb.append(
+						"public void doView(\nRenderRequest renderRequest,"
+					).append(
+						" RenderResponse renderResponse)\n"
+					).append(
+						"throws IOException, PortletException {\n"
+					).append(
+						"renderRequest.setAttribute(\n"
+					).append(
+						"\"foo\", \"bar\");\nsuper.doView(renderRequest, "
+					).append(
+						"renderResponse);\n}\n"
+					);
+
+					lines.add(sb.toString());
 				}
 			}
 		}
@@ -179,10 +187,8 @@ public class BladeSamplesUpdatePortletTest {
 				lines.add(line);
 
 				if (line.contains("liferay-ui:message key=")) {
-					String s =
-						new StringBuilder().
-							append("<b><%= renderRequest.getAttribute(" +
-								"\"foo\") %></b>").toString();
+					String s = 
+						"<b><%= renderRequest.getAttribute(\"foo\") %></b>";
 
 					lines.add(s);
 				}
