@@ -181,8 +181,8 @@ public class BladeSamplesUpdatePortletTest {
 				if (line.contains("liferay-ui:message key=")) {
 					String s =
 						new StringBuilder().
-							append("<b><%= renderRequest.getAttribute(\"foo\"" +
-								" %></b>").toString();
+							append("<b><%= renderRequest.getAttribute(" +
+								"\"foo\") %></b>").toString();
 
 					lines.add(s);
 				}
