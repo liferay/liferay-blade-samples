@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.blade.samples.test;
+package com.liferay.blade.samples.integration.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -20,6 +20,9 @@ import static org.junit.Assert.assertTrue;
 import aQute.bnd.osgi.Jar;
 
 import aQute.lib.io.IO;
+
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
+import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
 
 import java.io.BufferedReader;
 import java.io.File;

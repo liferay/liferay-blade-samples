@@ -12,10 +12,7 @@
  * details.
  */
 
-package com.liferay.blade.samples.test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+package com.liferay.blade.samples.integration.test.utils;
 
 import java.io.File;
 
@@ -23,6 +20,8 @@ import org.gradle.testkit.runner.BuildResult;
 import org.gradle.testkit.runner.BuildTask;
 import org.gradle.testkit.runner.GradleRunner;
 import org.gradle.testkit.runner.TaskOutcome;
+
+import org.junit.Assert;
 
 /**
  * @author Lawrence Lee
@@ -49,9 +48,9 @@ public class GradleRunnerUtil {
 	}
 
 	public static void verifyGradleRunnerOutput(BuildTask buildtask) {
-		assertNotNull(buildtask);
+		Assert.assertNotNull(buildtask);
 
-		assertEquals(TaskOutcome.SUCCESS, buildtask.getOutcome());
+		Assert.assertEquals(TaskOutcome.SUCCESS, buildtask.getOutcome());
 	}
 
 }

@@ -1,0 +1,9 @@
+dependencies {
+	compile gradleApi()
+	compile gradleTestKit()
+	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
+	compile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
+	compile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
+	compile group: "commons-io", name: "commons-io", version: "2.5"
+	compile group: "junit", name: "junit", version: "4.12"
+}

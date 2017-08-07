@@ -1,0 +1,3 @@
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.blade.samples.integration.test
+-sources: true

@@ -20,11 +20,15 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
 
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+    testCompile (project(':tests:utils')) {
+        transitive = false
+    }
 }
 
 startTestableTomcat {
@@ -67,12 +71,15 @@ task testFunctional(type: Test) {
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
 		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
 	}
+	
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")	
 
 	finalizedBy {
 		stopTestableTomcat
 	}
 
 	doLast {
+		delete new File("blade.jar")
 		delete new File("target/drone-phantomjs")
 	}
 }

@@ -12,9 +12,7 @@
  * details.
  */
 
-package com.liferay.blade.samples.test;
-
-import static org.junit.Assert.assertTrue;
+package com.liferay.blade.samples.integration.test.utils;
 
 import aQute.bnd.osgi.Domain;
 import aQute.bnd.version.Version;
@@ -30,8 +28,12 @@ import java.net.URL;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+
+import org.junit.Assert;
 
 /**
  * @author Lawrence Lee
@@ -90,21 +92,40 @@ public class BladeCLIUtil {
 
 		List<String> errorList = new ArrayList<>();
 
+		String stringStream = null;
+		
 		if (errorStream != null) {
-			errorList.add(new String(IO.read(errorStream)));
+			stringStream = new String(IO.read(errorStream));
+			errorList.add(stringStream);
 		}
-
+		
 		List<String> filteredErrorList = new ArrayList<>();
-
+				
 		for (String string : errorList) {
-			if (!string.isEmpty() &&
-				!string.contains("Picked up JAVA_TOOL_OPTIONS:")) {
-
-				filteredErrorList.add(string);
-			}
+			String exclusion = "(.*setlocale.*)";
+			
+		    Pattern p = Pattern.compile(exclusion, Pattern.DOTALL);
+		    Matcher m = p.matcher(string);
+		    
+		    while (m.find()) {
+		    	filteredErrorList.add(string);
+		    }
+		    
+		    if (string.contains("Picked up JAVA_TOOL_OPTIONS:")) {
+		    	filteredErrorList.add(string);
+		    }
 		}
+		
+		errorList.removeAll(filteredErrorList);
 
-		assertTrue(filteredErrorList.toString(), filteredErrorList.isEmpty());
+		Assert.assertTrue(
+			errorList.toString(), errorList.size() <= 1);
+
+		if (errorList.size() == 1) {
+			Assert.assertTrue(
+				errorList.get(0),
+				errorList.get(0).isEmpty());
+		}
 
 		output = StringUtil.toLowerCase(output);
 
