@@ -118,13 +118,13 @@ public class BladeSamplesUpdatePortletTest {
 
 		File dynamicFile = new File(
 			_projectPath +
-			"/src/main/java/helloworld/portlet/HelloworldPortlet.java");
+				"/src/main/java/helloworld/portlet/HelloworldPortlet.java");
 
 		List<String> lines = new ArrayList<>();
 		String line = null;
 
 		try (BufferedReader reader =
-		new BufferedReader(new FileReader(dynamicFile))) {
+				new BufferedReader(new FileReader(dynamicFile))) {
 
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
@@ -167,14 +167,13 @@ public class BladeSamplesUpdatePortletTest {
 		}
 
 		File staticFile = new File(
-			_projectPath +
-			"/src/main/resources/META-INF/resources/view.jsp");
+			_projectPath + "/src/main/resources/META-INF/resources/view.jsp");
 
 		lines = new ArrayList<>();
 		line = null;
 
 		try (BufferedReader reader =
-		new BufferedReader(new FileReader(staticFile))) {
+				new BufferedReader(new FileReader(staticFile))) {
 
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
@@ -182,8 +181,8 @@ public class BladeSamplesUpdatePortletTest {
 				if (line.contains("liferay-ui:message key=")) {
 					String s =
 						new StringBuilder().
-						append("<b><%= renderRequest.getAttribute(\"foo\") %></b>").
-						toString();
+							append("<b><%= renderRequest.getAttribute(\"foo\"" +
+								" %></b>").toString();
 
 					lines.add(s);
 				}
@@ -240,12 +239,10 @@ public class BladeSamplesUpdatePortletTest {
 		}
 	}
 
-	static File _buildPath;
-	static String _buildStatus;
-	static File _projectPath;
-	static File _appsDir;
-
+	private static File _appsDir;
+	private static String _buildStatus;
 	private static String _helloWorldJarBSN = "helloworld";
+	private static File _projectPath;
 
 	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]")
 	private WebElement _helloWorldPortlet;

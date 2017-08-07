@@ -159,9 +159,9 @@ public class BladePortletGreedyPolicyOptionTest {
 				"ReluctantPortlet.cfg");
 
 		IO.copy(greedyServiceReferenceConfigFile, configFile);
-		
+
 		Thread.sleep(10000);
-		
+
 		_webDriver.navigate().refresh();
 
 		Assert.assertTrue(

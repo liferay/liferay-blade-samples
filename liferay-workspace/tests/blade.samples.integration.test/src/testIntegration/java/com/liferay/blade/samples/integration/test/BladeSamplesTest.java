@@ -17,32 +17,38 @@ package com.liferay.blade.samples.integration.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import aQute.bnd.osgi.Jar;
+
+import aQute.lib.io.IO;
+
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
+import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Writer;
+
 import java.nio.file.Files;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
+import okhttp3.Request.Builder;
+
 import org.gradle.testkit.runner.BuildTask;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
-import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
-
-import aQute.bnd.osgi.Jar;
-import aQute.lib.io.IO;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
 
 /**
  * @author Lawrence Lee
@@ -467,4 +473,5 @@ public class BladeSamplesTest {
 	}
 
 	private File _testDir;
+
 }
