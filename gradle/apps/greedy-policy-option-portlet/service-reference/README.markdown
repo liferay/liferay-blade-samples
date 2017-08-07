@@ -154,7 +154,7 @@ It's time to see this module's portlets and service in action.
     latter part comes from the render request attribute set by the
     `DefaultService` instance.
 
-    ![*Reluctant Portlet* displays the message "SomeService says I am default!"](reluctant-portlet-using-default.png)
+    ![*Reluctant Portlet* displays the message "SomeService says I am default!"](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/reluctant-portlet-using-default.png)
 
 4.  Add the *Greedy Portlet* from the *Add* &rarr; *Applications* &rarr;
     *Sample* category to a site page.
@@ -162,7 +162,7 @@ It's time to see this module's portlets and service in action.
     The portlet displays the message "SomeService says I am better, use me!".
     Both portlets are referencing a `DefaultService` instance.
 
-    ![*Greedy Portlet* displays the message "SomeService says I am better, use me!"](greedy-portlet-using-default.png)
+    ![*Greedy Portlet* displays the message "SomeService says I am better, use me!"](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/greedy-portlet-using-default.png)
 
 Since `DefaultService` is the only active `SomeService` instance in the system,
 the portlets refer to it for their `SomeService` fields.
@@ -189,7 +189,7 @@ the `String` "I am better, use me!".
 *The part of the message "I am better, use me!" comes from the
 *`HigherRankedService` instance to which it refers.
 
-![The *Greedy Portlet* is using a `HigherRankedService` instance](greedy-portlet-using-higher-ranked-service.png)
+![The *Greedy Portlet* is using a `HigherRankedService` instance](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/greedy-portlet-using-higher-ranked-service.png)
 
 Next, learn how to bind the *Reluctant Portlet* to a `HigherRankedService`
 instance.
@@ -225,7 +225,7 @@ Here are the steps to reconfigure `ReluctantPortlet` to use
 *Reluctant Portlet* displays a new message "SomeService says I am better, use
 *me!".
 
-![*Reluctant Portlet* is using `HigherRankedService` instance instead of a `DefaultService` instance.](reluctant-portlet-using-higher-ranked-service.png)
+![*Reluctant Portlet* is using `HigherRankedService` instance instead of a `DefaultService` instance.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/reluctant-portlet-using-higher-ranked-service.png)
 
 *Reluctant Portlet* is using `HigherRankedService` instance instead of a
 *`DefaultService` instance. You've configured *Reluctant Portlet* to use a
