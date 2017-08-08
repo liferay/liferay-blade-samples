@@ -1,15 +1,17 @@
 /**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ * Copyright 2000-present Liferay, Inc.
  *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.liferay.blade.samples.servicebuilder.test;
@@ -108,8 +110,7 @@ public class BladeServiceBuilderTest {
 		customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible",
-			isVisible(_table));
+			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
 			"Hello World is not present in table",
@@ -131,16 +132,14 @@ public class BladeServiceBuilderTest {
 		int originalRows = rows.size();
 
 		Assert.assertTrue(
-			"Liferay Icon Menus is not visible",
-			isVisible(_lfrIconMenu));
+			"Liferay Icon Menus is not visible", isVisible(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
 		Assert.assertTrue(
-			"Action Menu Delete is not visible",
-			isVisible(_lfrMenuDelete));
+			"Action Menu Delete is not visible", isVisible(_lfrMenuDelete));
 
 		String source = _webDriver.getPageSource();
 
@@ -159,12 +158,9 @@ public class BladeServiceBuilderTest {
 		_webDriver.navigate().refresh();
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible",
-			isVisible(_table));
+			"Service Builder Table is not visible", isVisible(_table));
 
-		rows = _webDriver.findElements(
-			By.xpath(
-				"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr"));
+		rows = _webDriver.findElements(By.xpath(_tableRow));
 
 		int newRows = rows.size();
 
@@ -180,8 +176,7 @@ public class BladeServiceBuilderTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"First Row Field 1 is not visible",
-			isVisible(_firstRowField1));
+			"First Row Field 1 is not visible", isVisible(_firstRowField1));
 
 		Assert.assertTrue(
 			"First row field 1 does not contain entry",
@@ -197,20 +192,17 @@ public class BladeServiceBuilderTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Liferay Icon menu is not visible",
-			isClickable(_lfrIconMenu));
+			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
 
 		customClick(_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
-			"Liferay Menu Edit is not visible",
-			isClickable(_lfrMenuEdit));
+			"Liferay Menu Edit is not visible", isClickable(_lfrMenuEdit));
 
 		customClick(_webDriver, _lfrMenuEdit);
 
 		Assert.assertTrue(
-			"Field 1 form is not visible",
-			isVisible(_field1Form));
+			"Field 1 form is not visible", isVisible(_field1Form));
 
 		_field1Form.clear();
 
@@ -219,8 +211,7 @@ public class BladeServiceBuilderTest {
 		customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible",
-			isVisible(_table));
+			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
 			"Service Builder Table does not contain Updated Name",
@@ -306,6 +297,9 @@ public class BladeServiceBuilderTest {
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;
+
+	private String _tableRow =
+		"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
 
 	@Drone
 	private WebDriver _webDriver;

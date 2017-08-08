@@ -1,4 +1,3 @@
-
 /**
  * Copyright 2000-present Liferay, Inc.
  *
