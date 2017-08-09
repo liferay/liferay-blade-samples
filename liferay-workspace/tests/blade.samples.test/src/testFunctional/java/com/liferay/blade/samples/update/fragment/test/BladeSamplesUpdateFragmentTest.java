@@ -16,21 +16,12 @@
 
 package com.liferay.blade.samples.update.fragment.test;
 
-import aQute.lib.io.IO;
-
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Writer;
-
 import java.net.URL;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Files;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -38,17 +29,17 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import aQute.lib.io.IO;
 
 /**
  * @author Lawrence Lee
@@ -72,24 +63,14 @@ public class BladeSamplesUpdateFragmentTest {
 
 		IO.copy(moduleJspPath, _projectPath);
 
-		try {
-			BladeCLIUtil.execute(_projectPath, "deploy");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		BladeCLIUtil.execute(_projectPath, "deploy");
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
 	@AfterClass
 	public static void tearDownClass() throws Exception {
-		try {
-			BladeCLIUtil.uninstallBundle(_moduleJspOverrideJarBSN);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		BladeCLIUtil.uninstallBundle(_moduleJspOverrideJarBSN);
 
 		if (_projectPath.exists()) {
 			IO.delete(_projectPath);
@@ -115,33 +96,14 @@ public class BladeSamplesUpdateFragmentTest {
 			_projectPath +
 			"/src/main/resources/META-INF/resources/login.jsp");
 
-		List<String> lines = new ArrayList<>();
+		String content = new String(Files.readAllBytes(staticFile.toPath()));
+		
+		// do some regex to modify this string
+		// lines.set(17, "<p style=\"color: red\">samples work!</p>");
 
-		String line = null;
-
-		try (BufferedReader reader =
-		new BufferedReader(new FileReader(staticFile))) {
-
-			while ((line = reader.readLine()) != null) {
-				lines.add(line);
-			}
-
-		}
-
-		lines.set(17, "<p style=\"color: red\">samples work!</p>");
-
-		try (Writer writer = new FileWriter(staticFile)) {
-			for (String string : lines) {
-				writer.write(string + "\n");
-			}
-		}
-
-		try {
-			BladeCLIUtil.execute(_projectPath, "deploy");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		Files.write(staticFile.toPath(), content.getBytes());
+		
+		BladeCLIUtil.execute(_projectPath, "deploy");
 
 		Thread.sleep(1000);
 
