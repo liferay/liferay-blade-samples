@@ -3,7 +3,7 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>jsp-portlet-war</portlet-name>
+		<portlet-name>jsp-war-portlet</portlet-name>
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<requires-namespaced-parameters>false</requires-namespaced-parameters>

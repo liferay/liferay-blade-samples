@@ -3,6 +3,6 @@
 
 <display>
 	<category name="category.sample">
-		<portlet id="blade-liferay-mvc" />
+		<portlet id="jsp-war-portlet" />
 	</category>
 </display>

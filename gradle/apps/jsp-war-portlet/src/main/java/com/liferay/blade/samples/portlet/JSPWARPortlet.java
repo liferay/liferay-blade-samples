@@ -38,7 +38,7 @@ import javax.portlet.RenderResponse;
 /**
  * @author Liferay
  */
-public class JSPPortlet extends MVCPortlet {
+public class JSPWARPortlet extends MVCPortlet {
 
 	public void deleteFoo(
 			ActionRequest actionRequest, ActionResponse actionResponse)
@@ -125,6 +125,6 @@ public class JSPPortlet extends MVCPortlet {
 		}
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(JSPPortlet.class);
+	private static final Log _log = LogFactoryUtil.getLog(JSPWARPortlet.class);
 
 }
