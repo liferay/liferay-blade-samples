@@ -78,6 +78,10 @@ public class BladePortletConfigurationIconTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
+		Assert.assertTrue(
+			"Vertical Ellipsis is not clickable",
+			isClickable(_verticalEllipsis));
+
 		customClick(_webDriver, _verticalEllipsis);
 
 		customClick(_webDriver, _lfrMenuSampleLink);
@@ -89,7 +93,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isClickable(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(
