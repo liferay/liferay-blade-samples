@@ -30,7 +30,7 @@ import java.io.FileWriter;
 import java.io.Writer;
 
 import java.net.URL;
-
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,20 +68,10 @@ public class BladeSamplesUpdatePortletTest {
 
 		_appsDir = new File(_appsDir, "apps");
 
-		try {
-			_projectPath = BladeCLIUtil.createProject(
-				_appsDir, "mvc-portlet", "helloworld");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		_projectPath = BladeCLIUtil.createProject(
+			_appsDir, "mvc-portlet", "helloworld");
 
-		try {
-			_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
 
 		File buildOutput = new File(
 			_projectPath + "/build/libs/helloworld-1.0.0.jar");
@@ -177,36 +167,17 @@ public class BladeSamplesUpdatePortletTest {
 		File staticFile = new File(
 			_projectPath + "/src/main/resources/META-INF/resources/view.jsp");
 
-		lines = new ArrayList<>();
-		line = null;
+		String content = new String(Files.readAllBytes(staticFile.toPath()));
 
-		try (BufferedReader reader =
-				new BufferedReader(new FileReader(staticFile))) {
+		StringBuilder sb = new StringBuilder(content);
 
-			while ((line = reader.readLine()) != null) {
-				lines.add(line);
+		sb.insert(
+			content.lastIndexOf("b") + 2,
+			"<b><%= renderRequest.getAttribute(\"foo\") %></b>\n");
 
-				if (line.contains("liferay-ui:message key=")) {
-					String s = 
-						"<b><%= renderRequest.getAttribute(\"foo\") %></b>";
+		Files.write(staticFile.toPath(), sb.toString().getBytes());
 
-					lines.add(s);
-				}
-			}
-		}
-
-		try (Writer writer = new FileWriter(staticFile)) {
-			for (String string : lines) {
-				writer.write(string + "\n");
-			}
-		}
-
-		try {
-			_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
 
 		Assert.assertTrue(
 			"Expected Build Successful, but saw: " + _buildStatus,
@@ -229,7 +200,7 @@ public class BladeSamplesUpdatePortletTest {
 		Assert.assertTrue(
 			_portletBody.getText(),
 			_portletBody.getText().contentEquals(
-				"Hello from helloworld JSP! bar"));
+				"Hello from helloworld JSP!bar"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
