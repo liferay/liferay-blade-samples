@@ -78,6 +78,10 @@ public class BladePortletToolbarContributorTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
+		Assert.assertTrue(
+			"Portlet Topper Toolbar is not clickable",
+			isClickable(_portletTopperToolbar));
+
 		customClick(_webDriver, _portletTopperToolbar);
 
 		customClick(_webDriver, _lfrMenuLiferay);
@@ -89,7 +93,7 @@ public class BladePortletToolbarContributorTest {
 	}
 
 	protected boolean isClickable(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(
