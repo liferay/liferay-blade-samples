@@ -50,9 +50,9 @@ import org.osgi.service.component.annotations.Component;
 		"osgi.command.scope=blade"
 	}
 )
-public class SelfVerify {
+public class VerifySample {
 
-	public SelfVerify() {
+	public VerifySample() {
 		_messages = new StringBuilder();
 	}
 
@@ -173,7 +173,7 @@ public class SelfVerify {
 	}
 
 	private static final BundleContext _bundleContext = FrameworkUtil.getBundle(
-		SelfVerify.class).getBundleContext();
+		VerifySample.class).getBundleContext();
 
 	private StringBuilder _messages;
 
