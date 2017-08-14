@@ -1,4 +1,6 @@
 Bundle-Description: Packages UI resources independent of a theme to include on a Liferay Portal page.
+Bundle-Name: com.liferay.blade.theme.contributor
+Bundle-SymbolicName: com.liferay.blade.theme.contributor
 Bundle-Version: 1.0.0
 Liferay-Theme-Contributor-Type: blade.theme.contributor
 Web-ContextPath: /blade.theme.contributor-theme-contributor

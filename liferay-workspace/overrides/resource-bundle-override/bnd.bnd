@@ -1,3 +1,4 @@
 Bundle-Description: Conveys the recommended approach to override an application's language keys file for any module that is deployed to Liferay Portal's OSGi runtime.
+Bundle-SymbolicName: com.liferay.blade.resource.bundle.override
 Bundle-Version: 1.0.0
 -sources: true

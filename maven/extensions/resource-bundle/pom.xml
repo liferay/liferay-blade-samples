@@ -30,4 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.resource.bundle-${project.version}</finalName>
+	</build>
 </project>

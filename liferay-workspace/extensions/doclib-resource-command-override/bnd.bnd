@@ -1,2 +1,3 @@
+Bundle-SymbolicName: com.liferay.blade.doclib.resource.command.override
 Bundle-Version: 1.0.0
 -sources: true

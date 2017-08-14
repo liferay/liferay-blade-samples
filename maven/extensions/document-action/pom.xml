@@ -60,4 +60,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.document.action-${project.version}</finalName>
+	</build>
 </project>

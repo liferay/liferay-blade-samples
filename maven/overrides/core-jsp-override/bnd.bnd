@@ -1,4 +1,6 @@
 Bundle-Description: Overrides core/kernel JSPs by providing new JSPs in the META-INF/jsps folder.
+Bundle-Name: com.liferay.blade.core.jsp.override
+Bundle-SymbolicName: com.liferay.blade.core.jsp.override
 Bundle-Version: 1.0.0
 -sources: true
 

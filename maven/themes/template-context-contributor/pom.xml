@@ -42,4 +42,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.template.context.contributor-${project.version}</finalName>
+	</build>
 </project>

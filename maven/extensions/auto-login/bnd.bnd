@@ -1,2 +1,4 @@
+Bundle-Name: com.liferay.blade.auto.login
+Bundle-SymbolicName: com.liferay.blade.auto.login
 Bundle-Version: 1.0.0
 -sources: true

@@ -1,4 +1,6 @@
 Bundle-Description: Provides a way to validate a user's inputted screen name.
+Bundle-Name: com.liferay.blade.screen.name.validator
+Bundle-SymbolicName: com.liferay.blade.screen.name.validator
 Bundle-Version: 1.0.0
 -sources: true
 

@@ -1,4 +1,5 @@
 Bundle-Description: Provides a new application in Liferay Portal's Simulation Menu.
+Bundle-SymbolicName: com.liferay.blade.simulation.panel.app
 Bundle-Version: 1.0.0
 Web-ContextPath: /simulation-panel-app-blade.simulation.panel.app
 -sources: true

@@ -48,4 +48,8 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.foo.api-${project.version}</finalName>
+	</build>
+
 </project>

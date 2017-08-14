@@ -48,6 +48,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>com.liferay.blade.foo.service-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay</groupId>

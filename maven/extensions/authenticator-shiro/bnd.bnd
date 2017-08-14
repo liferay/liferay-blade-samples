@@ -1,3 +1,5 @@
+Bundle-Name: com.liferay.blade.authenticator.shiro
+Bundle-SymbolicName: com.liferay.blade.authenticator.shiro
 Bundle-Version: 1.0.0
 -includeresource: @shiro-core-${shiro.version}.jar
 -sources: true

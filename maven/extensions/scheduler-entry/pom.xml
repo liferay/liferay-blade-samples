@@ -30,4 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.scheduler.entry-${project.version}</finalName>
+	</build>
 </project>

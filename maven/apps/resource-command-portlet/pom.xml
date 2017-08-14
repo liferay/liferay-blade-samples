@@ -17,6 +17,7 @@
 	</parent>
 
 	<build>
+		<finalName>com.liferay.blade.resource.command.portlet-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay</groupId>

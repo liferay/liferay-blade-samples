@@ -1,2 +1,4 @@
+Bundle-Name: com.liferay.blade.friendly.url
+Bundle-SymbolicName: com.liferay.blade.friendly.url
 Bundle-Version: 1.0.0
 -sources: true

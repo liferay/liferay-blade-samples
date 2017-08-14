@@ -42,4 +42,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.control.menu.entry-${project.version}</finalName>
+	</build>
 </project>

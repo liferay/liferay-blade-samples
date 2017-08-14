@@ -36,4 +36,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.struts.portlet.action-${project.version}</finalName>
+	</build>
 </project>

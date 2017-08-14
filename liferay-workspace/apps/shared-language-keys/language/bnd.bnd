@@ -1,3 +1,4 @@
 Bundle-Description: Conveys Liferay's recommended approach to sharing language keys through OSGI services. This sample provides a resource module which only holds language keys.
+Bundle-SymbolicName: com.liferay.blade.language
 Bundle-Version: 1.0.0
 -sources: true
