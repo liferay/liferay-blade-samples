@@ -329,10 +329,10 @@ public class BladeSamplesTest {
 
 		File buildApiOutput = new File(
 			projectPath + "/apps/service-builder/foo-api/build/libs" +
-				"/foo-api-1.0.0.jar");
+				"/com.liferay.blade.foo.api-1.0.0.jar");
 		File buildServiceOutput = new File(
 			projectPath + "/apps/service-builder/foo-service/build/libs" +
-				"/foo-service-1.0.0.jar");
+				"/com.liferay.blade.foo.service-1.0.0.jar");
 
 		Assert.assertTrue(buildApiOutput.exists());
 		Assert.assertTrue(buildServiceOutput.exists());

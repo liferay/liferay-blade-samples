@@ -266,8 +266,8 @@ public class BladeSpringMVCPortletTest {
 		}
 	}
 
-	private static String _fooApiJarBSN = "foo-api";
-	private static String _fooServiceJarBSN = "foo-service";
+	private static String _fooApiJarBSN = "com.liferay.blade.foo.api";
+	private static String _fooServiceJarBSN = "com.liferay.blade.foo.service";
 	private static String _springmvcPortletWarBSN = "springmvc-portlet";
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
