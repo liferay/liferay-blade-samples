@@ -13,6 +13,7 @@ include(
 	'apps:render-command-portlet',
 	'apps:resource-command-portlet',
 	'apps:rest',
+	'apps:sample-verifier',
 	'apps:service-builder:foo-api',
 	'apps:service-builder:foo-service',
 	'apps:service-builder:foo-web',
