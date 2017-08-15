@@ -93,7 +93,7 @@ public class BladeControlMenuEntryTest {
 	}
 
 	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.urlMatches(string));

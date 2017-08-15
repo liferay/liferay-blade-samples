@@ -26,6 +26,7 @@
 		<module>render-command-portlet</module>
 		<module>resource-command-portlet</module>
 		<module>rest</module>
+		<module>sample-verifier</module>
 		<module>service-builder</module>
 		<module>shared-language-keys</module>
 		<module>simulation-panel-app</module>
