@@ -1,6 +1,6 @@
 (function(Liferay, angular) {
 
-  var portletName = "com_liferay_blade_samples_portlet_angularjs_simple_AngularJSSimplePortlet";
+  var portletName = "AngularJSSimplePortlet";
 	
   angular.portlet.add(portletName,
     function(portletId) {

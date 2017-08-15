@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.angularjs.simple;
+package com.liferay.blade.samples.angularjs.simple.portlet;
 
+import com.liferay.blade.samples.angularjs.simple.constants.AngularJSSimplePortletKeys;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
 import javax.portlet.Portlet;
@@ -33,6 +34,7 @@ import org.osgi.service.component.annotations.Component;
 		"javax.portlet.display-name=AngularJS Simple Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
+		"javax.portlet.name=" + AngularJSSimplePortletKeys.AngularJSSimplePortlet,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
