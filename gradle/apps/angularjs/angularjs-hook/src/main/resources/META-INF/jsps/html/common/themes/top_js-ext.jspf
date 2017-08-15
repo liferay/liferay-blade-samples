@@ -1,0 +1,3 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/angular-ui-router@0.4.0/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="/o/angularjs-hook/js/main.js"></script>

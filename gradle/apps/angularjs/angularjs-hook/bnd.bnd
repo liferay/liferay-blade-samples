@@ -1,0 +1,5 @@
+Bundle-Name: AngularJS Hook
+Bundle-Description: Loads AngularJS v1.x globally
+Bundle-Version: 1.0.0
+Web-ContextPath: /angularjs-hook
+-sources: true
