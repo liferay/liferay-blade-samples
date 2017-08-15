@@ -1,5 +1,7 @@
 include(
 	'apps:action-command-portlet',
+	'apps:angularjs:angularjs-hook',
+	'apps:angularjs:angularjs-simple-portlet',
 	'apps:blueprint-portlet',
 	'apps:configuration-action',
 	'apps:control-panel-portlet',
