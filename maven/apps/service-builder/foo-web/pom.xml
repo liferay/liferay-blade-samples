@@ -48,4 +48,7 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.foo.web-${project.version}</finalName>
+	</build>
 </project>

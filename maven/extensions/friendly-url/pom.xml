@@ -30,4 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.friendly.url-${project.version}</finalName>
+	</build>
 </project>

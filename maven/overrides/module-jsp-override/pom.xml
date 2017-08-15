@@ -15,4 +15,8 @@
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
+
+	<build>
+		<finalName>com.liferay.blade.module.jsp.override-${project.version}</finalName>
+	</build>
 </project>

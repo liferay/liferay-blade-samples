@@ -1,3 +1,4 @@
 Bundle-Description: Provides a simple customizable button that is added to Liferay's default Control Menu.
+Bundle-SymbolicName: com.liferay.blade.control.menu.entry
 Bundle-Version: 1.0.0
 -sources: true

@@ -1,3 +1,5 @@
+Bundle-Name: com.liferay.blade.doclib.resource.command.override
+Bundle-SymbolicName: com.liferay.blade.doclib.resource.command.override
 Bundle-Version: 1.0.0
 -jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin

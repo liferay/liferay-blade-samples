@@ -46,4 +46,7 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.authenticator.shiro-${project.version}</finalName>
+	</build>
 </project>

@@ -42,4 +42,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.portlet.toolbar.contributor-${project.version}</finalName>
+	</build>
 </project>

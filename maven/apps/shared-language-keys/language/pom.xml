@@ -16,4 +16,7 @@
 		<relativePath>../../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
+	<build>
+		<finalName>com.liferay.blade.language-${project.version}</finalName>
+	</build>
 </project>

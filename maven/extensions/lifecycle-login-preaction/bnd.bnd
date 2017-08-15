@@ -1,2 +1,4 @@
+Bundle-Name: com.liferay.blade.lifecycle.login.preaction
+Bundle-SymbolicName: com.liferay.blade.lifecycle.login.preaction
 Bundle-Version: 1.0.0
 -sources: true

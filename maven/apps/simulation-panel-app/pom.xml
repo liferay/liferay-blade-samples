@@ -66,4 +66,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.simulation.panel.app-${project.version}</finalName>
+	</build>
 </project>

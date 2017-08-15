@@ -1,3 +1,5 @@
 Bundle-Description: Adds a custom command to Liferay Portal's Gogo shell environment.
+Bundle-Name: com.liferay.blade.gogo
+Bundle-SymbolicName: com.liferay.blade.gogo
 Bundle-Version: 1.0.0
 -sources: true

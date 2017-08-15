@@ -31,7 +31,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -62,10 +61,15 @@ public class BladePortletConfigurationIconTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		webElement.click();
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+
+		WebElement element = wait.until(
+			ExpectedConditions.elementToBeClickable(webElement));
+
+		element.click();
 	}
 
-	@Ignore
+
 	@Test
 	public void testBladePortletConfigurationIcon()
 		throws InterruptedException, PortalException {
@@ -74,6 +78,8 @@ public class BladePortletConfigurationIconTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
+
+		_bodyWebElement.click();
 
 		customClick(_webDriver, _verticalEllipsis);
 
@@ -111,6 +117,9 @@ public class BladePortletConfigurationIconTest {
 		}
 	}
 
+	@FindBy(xpath = "//body")
+	private WebElement _bodyWebElement;
+
 	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']")
 	private WebElement _helloWorldPortlet;
 
@@ -123,7 +132,7 @@ public class BladePortletConfigurationIconTest {
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
 	private URL _portletURL;
 
-	@FindBy(xpath = "//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
+	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
 	private WebElement _verticalEllipsis;
 
 	@Drone

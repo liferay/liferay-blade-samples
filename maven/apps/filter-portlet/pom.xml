@@ -30,4 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.filter.portlet-${project.version}</finalName>
+	</build>
 </project>

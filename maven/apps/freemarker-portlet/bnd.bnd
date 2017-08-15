@@ -1,3 +1,5 @@
+Bundle-Name: com.liferay.blade.freemarker.portlet
+Bundle-SymbolicName: com.liferay.blade.freemarker.portlet
 Bundle-Version: 1.0.0
 -includeresource:\
 	@com.liferay.util.bridges-${bridges.version}.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\

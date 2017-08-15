@@ -30,4 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.gogo-${project.version}</finalName>
+	</build>
 </project>

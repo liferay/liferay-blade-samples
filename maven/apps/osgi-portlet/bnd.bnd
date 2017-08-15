@@ -1,3 +1,5 @@
 Bundle-Activator: com.liferay.blade.samples.portlet.osgiapi.Activator
+Bundle-Name: com.liferay.blade.osgi.portlet
+Bundle-SymbolicName: com.liferay.blade.osgi.portlet
 Bundle-Version: 1.0.0
 -sources: true

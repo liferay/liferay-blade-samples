@@ -100,7 +100,7 @@ public class BladeLanguageWebTest {
 		}
 	}
 
-	private static String _languageJarBSN = "language";
+	private static String _languageJarBSN = "com.liferay.blade.language";
 
 	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_language_web')]")
 	private WebElement _bladeSampleLanguagePortlet;

@@ -1,2 +1,4 @@
+Bundle-Name: com.liferay.blade.scheduler.entry
+Bundle-SymbolicName: com.liferay.blade.scheduler.entry
 Bundle-Version: 1.0.0
 -sources: true

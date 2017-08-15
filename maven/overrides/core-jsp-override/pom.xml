@@ -40,4 +40,7 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.core.jsp.override-${project.version}</finalName>
+	</build>
 </project>

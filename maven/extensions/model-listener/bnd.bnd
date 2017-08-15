@@ -1,2 +1,4 @@
+Bundle-Name: com.liferay.blade.model.listener
+Bundle-SymbolicName: com.liferay.blade.model.listener
 Bundle-Version: 1.0.0
 -sources: true

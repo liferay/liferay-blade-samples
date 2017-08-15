@@ -1,4 +1,6 @@
 Bundle-Description: Conveys Liferay's recommended approach to override an application's JSP by leveraging OSGi fragment modules.
+Bundle-Name: com.liferay.blade.module.jsp.override
+Bundle-SymbolicName: com.liferay.blade.module.jsp.override
 Bundle-Version: 1.0.0
 Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
 -sources: true

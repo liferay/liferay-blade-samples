@@ -1,4 +1,6 @@
 Bundle-Description: Injects a new variable into Liferay Portal's theme context usable by non-JSP templates (e.g., FreeMarker, Velocity, etc.).
+Bundle-Name: com.liferay.blade.template.context.contributor
+Bundle-SymbolicName: com.liferay.blade.template.context.contributor
 Bundle-Version: 1.0.0
 -jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin

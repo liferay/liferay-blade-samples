@@ -1,3 +1,5 @@
+Bundle-Name: com.liferay.blade.struts.action
+Bundle-SymbolicName: com.liferay.blade.struts.action
 Bundle-Version: 1.0.0
 Web-ContextPath: /bladestrutsaction
 -jsp: *.jsp,*.jspf

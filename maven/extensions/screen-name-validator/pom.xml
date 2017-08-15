@@ -17,6 +17,7 @@
 	</parent>
 
 	<build>
+		<finalName>com.liferay.blade.screen.name.validator-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

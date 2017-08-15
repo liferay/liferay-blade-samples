@@ -54,4 +54,8 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.action.command.portlet-${project.version}</finalName>
+	</build>
+
 </project>

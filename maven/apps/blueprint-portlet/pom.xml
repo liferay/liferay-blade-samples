@@ -25,4 +25,8 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>com.liferay.blade.blueprint.portlet-${project.version}</finalName>
+	</build>
+
 </project>
