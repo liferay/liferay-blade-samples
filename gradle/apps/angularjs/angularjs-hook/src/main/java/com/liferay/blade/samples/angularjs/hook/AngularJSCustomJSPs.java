@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.angularjs;
+package com.liferay.blade.samples.angularjs.hook;
 
 import com.liferay.portal.deploy.hot.CustomJspBag;
 import com.liferay.portal.kernel.url.URLContainer;
@@ -38,11 +38,11 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"context.id=AngularJSHook", "context.name=Liferay AngularJS Hook",
+		"context.id=AngularJSCustomJSPs", "context.name=Liferay AngularJS Custom JSPs",
 		"service.ranking:Integer=100"
 	}
 )
-public class AngularJSHook implements CustomJspBag {
+public class AngularJSCustomJSPs implements CustomJspBag {
 
 	@Override
 	public String getCustomJspDir() {
