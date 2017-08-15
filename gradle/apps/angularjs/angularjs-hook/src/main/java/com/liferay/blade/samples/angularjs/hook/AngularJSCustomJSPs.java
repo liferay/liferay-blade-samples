@@ -38,7 +38,8 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"context.id=AngularJSCustomJSPs", "context.name=Liferay AngularJS Custom JSPs",
+		"context.id=AngularJSCustomJSPs",
+		"context.name=Liferay AngularJS Custom JSPs",
 		"service.ranking:Integer=100"
 	}
 )
