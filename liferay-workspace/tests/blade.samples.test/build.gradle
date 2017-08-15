@@ -90,13 +90,9 @@ task testFunctional(type: Test) {
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
 
-	finalizedBy {
-		stopTestableTomcat
-	}
-
 	doLast {
 		delete new File("blade.jar")
-		delete new File("target/drone-phantomjs")
+		delete new File("target")
 	}
 }
 
