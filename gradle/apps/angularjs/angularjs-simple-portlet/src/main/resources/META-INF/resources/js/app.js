@@ -1,35 +1,34 @@
 (function(Liferay, angular) {
 
-  var portletName = "AngularJSSimplePortlet";
-	
-  angular.portlet.add(portletName,
-    function(portletId) {
+var portletName = "AngularJSSimplePortlet";
 
-      var mymodule = angular.module(portletId + '.submodule', ['ui.router', 'sharedService']);
+angular.portlet.add(portletName,
+	function(portletId) {
 
-      mymodule
-        .config(function ($stateProvider) {
+	  var mymodule = angular.module(portletId + '.submodule', ['ui.router', 'sharedService']);
 
-          $stateProvider.   
-              state('home', {
-                  url: '',
-                  templateUrl: '/o/angularjs-simple-portlet/partial/home.html',
-                  controller: 'HomeCtrl'
-              });        
-        })
-        .controller('HomeCtrl', function($scope, SharedService) {
-          $scope.portletId = portletId;
-          $scope.sharedModel = function (value) {
-            if (angular.isDefined(value)) {
-              SharedService.change('sharedModel', value)
-            } else {        
-              return SharedService.get().sharedModel
-            }
-          }
-        });   
-        
+	  mymodule
+		.config(function ($stateProvider) {
 
-      return [ mymodule.name ];
-    });  
+		  $stateProvider.
+			  state('home', {
+				  url: '',
+				  templateUrl: '/o/angularjs-simple-portlet/partial/home.html',
+				  controller: 'HomeCtrl'
+			  });
+		})
+		.controller('HomeCtrl', function($scope, SharedService) {
+		  $scope.portletId = portletId;
+		  $scope.sharedModel = function(value) {
+			if (angular.isDefined(value)) {
+			  SharedService.change('sharedModel', value)
+			} else {
+			  return SharedService.get().sharedModel
+			}
+		  }
+		});
 
-})(Liferay, angular);        
+	  return [ mymodule.name ];
+	});
+
+})(Liferay, angular);
