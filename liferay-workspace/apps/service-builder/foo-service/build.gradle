@@ -33,10 +33,6 @@ testIntegration {
 
 	systemProperty 'jarFile', jar.archivePath
 	systemProperty 'fooApiJarFile', project(':apps:service-builder:foo-api').jar.archivePath
-
-	finalizedBy {
-		stopTestableTomcat
-	}
 }
 
 stopTestableTomcat {
