@@ -2,7 +2,7 @@
 *.iml
 *.ipr
 *.iws
-/.gradle
+.gradle
 .idea/
 .project
 .settings/
@@ -10,6 +10,7 @@
 .metadata
 bin/
 build/
+node_modules/
 target/
 atlassian-ide-plugin.xml
 

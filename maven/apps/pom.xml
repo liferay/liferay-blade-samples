@@ -14,6 +14,7 @@
 
 	<modules>
 		<module>action-command-portlet</module>
+		<module>angularjs</module>
 		<module>blueprint-portlet</module>
 		<module>configuration-action</module>
 		<module>control-panel-portlet</module>

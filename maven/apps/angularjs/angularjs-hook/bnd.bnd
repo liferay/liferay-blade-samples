@@ -1,0 +1,6 @@
+Bundle-Description: Loads AngularJS v1.x globally
+Bundle-Version: 1.0.0
+Web-ContextPath: /angularjs-hook
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true
