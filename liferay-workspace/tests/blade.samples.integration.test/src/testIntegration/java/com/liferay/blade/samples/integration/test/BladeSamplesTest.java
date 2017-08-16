@@ -115,53 +115,39 @@ public class BladeSamplesTest {
 
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
 			String printFileName;
-			String installBundleOutput;
+			String bundleID;
 
-			if (sampleBundleFile.endsWith(".war")) {
+			File file = new File(sampleBundleFile);
+
+			if (file.exists()) {
 				printFileName = new File(sampleBundleFile).getName();
 
 				printFileName = printFileName.substring(
 					0, printFileName.lastIndexOf('.'));
 
-				String output = BladeCLIUtil.execute(
-					"sh", "install",
-					"webbundle:file://" + sampleBundleFile +
-						"?Web-ContextPath=/" + printFileName);
+				bundleID = BladeCLIUtil.installBundle(
+					file);
 
-				installBundleOutput = output.substring(
-					output.indexOf("bundle id:") + 11,
-					output.indexOf("\n", output.indexOf("bundle id:")));
+				bundleIDAllMap.put(bundleID, printFileName);
 
-				bundleIDAllMap.put(installBundleOutput, printFileName);
-				bundleIDStartMap.put(installBundleOutput, printFileName);
-			}
-			else {
-				File file = new File(sampleBundleFile);
-
-				if (file.exists()) {
-					printFileName = new File(sampleBundleFile).getName();
-
-					printFileName = printFileName.substring(
-						0, printFileName.lastIndexOf('.'));
-
-					installBundleOutput = BladeCLIUtil.installBundle(
-						new File(sampleBundleFile));
-
-					bundleIDAllMap.put(installBundleOutput, printFileName);
-
+				if (file.getName().endsWith(".jar")) {
 					try (Jar jar =
 							new Jar(sampleBundleFile, sampleBundleFile)) {
 
 						Manifest manifest = jar.getManifest();
 
 						Attributes mainAttributes =
-							manifest.getMainAttributes();
+								manifest.getMainAttributes();
 
 						if (mainAttributes.getValue("Fragment-Host") == null) {
 							bundleIDStartMap.put(
-								installBundleOutput, printFileName);
+									bundleID, printFileName);
 						}
 					}
+				}
+
+				else {
+					bundleIDStartMap.put(bundleID, printFileName);
 				}
 			}
 		}

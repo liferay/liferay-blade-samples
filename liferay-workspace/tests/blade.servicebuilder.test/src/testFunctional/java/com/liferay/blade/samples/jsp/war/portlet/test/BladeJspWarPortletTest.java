@@ -78,19 +78,7 @@ public class BladeJspWarPortletTest {
 
 		final File jspPortletWarFile = new File(System.getProperty("jspPortletWarFile"));
 
-		String printFileName = jspPortletWarFile.getName();
-
-		printFileName = printFileName.substring(
-			0, printFileName.lastIndexOf('.'));
-
-		String output = BladeCLIUtil.execute(
-			"sh", "install",
-			"webbundle:file://" + jspPortletWarFile +
-				"?Web-ContextPath=/" + printFileName);
-
-		String bundleID = output.substring(
-			output.indexOf("bundle id:") + 11,
-			output.indexOf("\n", output.indexOf("bundle id:")));
+		String bundleID = BladeCLIUtil.installBundle(jspPortletWarFile);
 
 		BladeCLIUtil.startBundle(bundleID);
 
