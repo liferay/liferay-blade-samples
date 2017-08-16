@@ -33,6 +33,6 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '4.0'
+	gradleVersion = '4.1'
 	jarFile = "${project.projectDir}/.gradle-wrapper/gradle-wrapper.jar"
 }
