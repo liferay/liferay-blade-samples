@@ -19,6 +19,7 @@ package com.liferay.blade.samples.spring.mvc.portlet.test;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,7 +37,6 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -77,8 +77,10 @@ public class BladeSpringMVCPortletTest {
 
 		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
-		new JMXBundleDeployer().deploy(
-			_springmvcPortletWarBSN, springmvcPortletWar);
+
+		String bundleID = BladeCLIUtil.installBundle(springmvcPortletWar);
+
+		BladeCLIUtil.startBundle(bundleID);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -96,7 +98,6 @@ public class BladeSpringMVCPortletTest {
 		element.click();
 	}
 
-	@Ignore
 	@Test
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -125,7 +126,6 @@ public class BladeSpringMVCPortletTest {
 			_table.getText().contains("World"));
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -174,7 +174,6 @@ public class BladeSpringMVCPortletTest {
 			newRows == expectedFoos);
 	}
 
-	@Ignore
 	@Test
 	public void testReadFoo() throws PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -191,7 +190,6 @@ public class BladeSpringMVCPortletTest {
 			_secondRowField1.getText().contains("new field1 entry"));
 	}
 
-	@Ignore
 	@Test
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -279,7 +277,7 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(css = "input[id$='field5']")
 	private WebElement _field5Form;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table/tbody/tr/td[2]")
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table/tbody/tr/td[2]")
 	private WebElement _firstRowField1;
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
@@ -291,13 +289,13 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Edit')]")
 	private WebElement _lfrMenuEdit;
 
-	@PortalURL("bladespringmvc_WAR_bladespringmvc")
+	@PortalURL("bladespringmvc_WAR_springmvcportlet")
 	private URL _portletURL;
 
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table/tbody/tr[2]/td[2]")
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table/tbody/tr[2]/td[2]")
 	private WebElement _secondRowField1;
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
