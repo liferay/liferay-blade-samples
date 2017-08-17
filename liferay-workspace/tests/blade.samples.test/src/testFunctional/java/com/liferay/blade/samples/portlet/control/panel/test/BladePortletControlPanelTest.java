@@ -50,7 +50,7 @@ public class BladePortletControlPanelTest {
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("configurationActionJarFile"));
+			System.getProperty("controlPanelPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
