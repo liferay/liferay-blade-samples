@@ -61,12 +61,8 @@ task testFunctional(type: Test) {
 
 	systemProperty 'jarFile', jar.archivePath
 
-	finalizedBy {
-		stopTestableTomcat
-	}
-
 	doLast {
-		delete new File("target/drone-phantomjs")
+		delete new File("target")
 	}
 }
 
