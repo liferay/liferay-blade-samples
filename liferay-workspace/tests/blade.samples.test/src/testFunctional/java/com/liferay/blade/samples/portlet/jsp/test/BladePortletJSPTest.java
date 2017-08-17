@@ -75,8 +75,7 @@ public class BladePortletJSPTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleJSPPortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleJSPPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade JSP Portlet, but saw " +

@@ -16,7 +16,6 @@
 
 package com.liferay.blade.samples.portlet.filter.test;
 
-
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
 
@@ -47,9 +46,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @RunAsClient
 @RunWith(Arquillian.class)
 public class BladeSamplesPortletFilterTest {
+
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("filterPortletJarFile"));
+		final File jarFile = new File(
+			System.getProperty("filterPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -61,8 +62,7 @@ public class BladeSamplesPortletFilterTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleFilterPortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleFilterPortlet));
 
 		Assert.assertTrue(
 			"Expected Example Filter Portlet, but saw " +
@@ -73,7 +73,6 @@ public class BladeSamplesPortletFilterTest {
 			"Expected Custom Attribute = My Custom Attribute Value, but saw " +
 				_portletBody.getText(),
 			_portletBody.getText().contentEquals("Custom Attribute = My Custom Attribute Value"));
-
 	}
 
 	protected boolean isVisible(WebElement webelement) {

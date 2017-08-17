@@ -34,6 +34,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -57,6 +58,8 @@ public class BladeConfigurationActionTest {
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
+		Assert.assertTrue("Element is not visible", isVisible(webElement));
+
 		Actions action = new Actions(webDriver);
 
 		action.moveToElement(webElement).build().perform();
@@ -69,12 +72,13 @@ public class BladeConfigurationActionTest {
 		element.click();
 	}
 
-
 	@Test
 	public void testBladeConfigurationAction()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
+
+		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_bladeMessagePortlet));
@@ -83,21 +87,30 @@ public class BladeConfigurationActionTest {
 
 		customClick(_webDriver, _verticalEllipsis);
 
-		customClick(_webDriver, _lfrMenuConfiguration);
+		WebElement configuration = _webDriver.findElement(
+			By.linkText("Configuration"));
 
-		customClick(_webDriver, _saveButton);
+		String configurationLink = configuration.getAttribute("href");
+
+		_newWebDriverWindow.get(configurationLink);
+
+		customClick(_newWebDriverWindow, _saveButton);
+
+		Assert.assertTrue(
+			"Success Message is not visible", isVisible(_successMessage));
+
+		_webDriver.get(url);
 
 		Assert.assertTrue(
 				"Expected Blade Message Portlet, but saw: " + _portletTitle.getText(),
 				_portletTitle.getText().contentEquals("Blade Message Portlet"));
 
 		Assert.assertTrue("Expected Hello from BLADE JSP!, but saw: " + _portletBody.getText(),
-				_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
-
+			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -109,14 +122,17 @@ public class BladeConfigurationActionTest {
 		}
 	}
 
+	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")
+	private WebElement _bladeMessagePortlet;
+
 	@FindBy(xpath = "//body")
 	private WebElement _bodyWebElement;
 
-	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")
-	private WebElement _bladeMessagePortlet;;
-
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[contains(@class,'configuration')]")
 	private WebElement _lfrMenuConfiguration;
+
+	@Drone
+	private WebDriver _newWebDriverWindow;
 
 	@FindBy(xpath = "//div[contains(@id,'BladeMessagePortlet')]//..//p")
 	private WebElement _portletBody;
@@ -129,6 +145,9 @@ public class BladeConfigurationActionTest {
 
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
+
+	@FindBy(xpath = "//div[contains(@class,'alert') and contains(@class,'alert-success')]")
+	private WebElement _successMessage;
 
 	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
 	private WebElement _verticalEllipsis;

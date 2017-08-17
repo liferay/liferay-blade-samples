@@ -61,8 +61,7 @@ public class BladePortletDSTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleDSPortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleDSPortlet));
 
 		Assert.assertTrue(
 			"Expected DS Portlet, but saw " +
@@ -73,7 +72,6 @@ public class BladePortletDSTest {
 			"Expected DS Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
 			_portletBody.getText().contentEquals("DS Portlet - Hello World!"));
-
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -103,4 +101,5 @@ public class BladePortletDSTest {
 
 	@Drone
 	private WebDriver _webDriver;
+
 }

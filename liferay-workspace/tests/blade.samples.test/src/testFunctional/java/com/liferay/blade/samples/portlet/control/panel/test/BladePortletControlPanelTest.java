@@ -19,6 +19,7 @@ package com.liferay.blade.samples.portlet.control.panel.test;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -68,12 +69,13 @@ public class BladePortletControlPanelTest {
 		element.click();
 	}
 
-
 	@Test
 	public void testBladePortletControlPanel()
-		throws InterruptedException, PortalException, MalformedURLException {
+		throws InterruptedException, MalformedURLException, PortalException {
 
-		URL url = new URL("http://localhost:8080/group/control_panel/manage?p_p_id=" + _portletName);
+		URL url = new URL(
+			"http://localhost:8080/group/control_panel/manage?p_p_id=" +
+				_portletName);
 
 		_webDriver.get(url.toExternalForm());
 
@@ -85,8 +87,7 @@ public class BladePortletControlPanelTest {
 				_portletTitle.getText().contentEquals("Control Panel Demo"));
 
 		Assert.assertTrue("Expected We are in the control panel, but saw: " + _portletBody.getText(),
-				_portletBody.getText().contentEquals("We are in the control panel"));
-
+			_portletBody.getText().contentEquals("We are in the control panel"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -102,13 +103,14 @@ public class BladePortletControlPanelTest {
 		}
 	}
 
-	private String _portletName = "com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
-
 	@FindBy(xpath = "//section[contains(@id,'ControlPanelAppPortlet')]")
-	private WebElement _controlPanelPortlet;;
+	private WebElement _controlPanelPortlet;
 
 	@FindBy(xpath = "//div[contains(@id,'ControlPanelAppPortlet')]//..//p")
 	private WebElement _portletBody;
+
+	private String _portletName =
+		"com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
 
 	@FindBy(xpath = "//div[contains(@id,'ControlPanelAppPortlet')]//..//span")
 	private WebElement _portletTitle;

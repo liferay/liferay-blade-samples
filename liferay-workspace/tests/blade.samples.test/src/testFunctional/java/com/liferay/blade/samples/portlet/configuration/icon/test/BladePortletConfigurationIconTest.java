@@ -69,7 +69,6 @@ public class BladePortletConfigurationIconTest {
 		element.click();
 	}
 
-
 	@Test
 	public void testBladePortletConfigurationIcon()
 		throws InterruptedException, PortalException {
