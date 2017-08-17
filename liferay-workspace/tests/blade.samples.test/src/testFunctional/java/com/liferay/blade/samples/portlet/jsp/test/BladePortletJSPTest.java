@@ -76,7 +76,7 @@ public class BladePortletJSPTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			isVisible(_bladeSampleFreemarkerPortlet));
+			isVisible(_bladeSampleJSPPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade JSP Portlet, but saw " +
@@ -109,7 +109,7 @@ public class BladePortletJSPTest {
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_jsp_JSPPortlet')]")
-	private WebElement _bladeSampleFreemarkerPortlet;
+	private WebElement _bladeSampleJSPPortlet;
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_jsp_JSPPortlet')]//..//b")
 	private WebElement _portletBody;
