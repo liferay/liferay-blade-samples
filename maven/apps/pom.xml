@@ -24,6 +24,7 @@
 		<module>greedy-policy-option-portlet</module>
 		<module>jsp-portlet</module>
 		<module>jsp-war-portlet</module>
+		<module>kotlin-portlet</module>
 		<module>osgi-portlet</module>
 		<module>render-command-portlet</module>
 		<module>resource-command-portlet</module>
