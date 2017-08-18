@@ -33,11 +33,11 @@ DEFAULT_JVM_OPTS=""
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD="maximum"
 
-warn () {
+warn ( ) {
     echo "$*"
 }
 
-die () {
+die ( ) {
     echo
     echo "$*"
     echo
@@ -64,7 +64,7 @@ case "`uname`" in
     ;;
 esac
 
-CLASSPATH=$APP_HOME/gradle/.gradle-wrapper/gradle-wrapper.jar
+CLASSPATH=$APP_HOME/.gradle/gradle-wrapper.jar
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
@@ -155,7 +155,7 @@ if $cygwin ; then
 fi
 
 # Escape application args
-save () {
+save ( ) {
     for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
     echo " "
 }

@@ -246,8 +246,8 @@ warsDiffTest.doLast{
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '4.0'
-	jarFile = "${project.projectDir}/gradle/.gradle-wrapper/gradle-wrapper.jar"
+	gradleVersion = '4.1'
+	jarFile = "${projectDir}/.gradle/gradle-wrapper.jar"
 }
 
 task diff
