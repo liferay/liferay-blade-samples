@@ -1,0 +1,38 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.source.formatter", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.css.builder", version: "latest.release"
+	}
+}
+
+apply plugin: "com.liferay.css.builder"
+apply plugin: "com.liferay.source.formatter"
+apply plugin: 'war'
+
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+	compileOnly group: "javax.portlet", name: "portlet-api", version: "2.0"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
+	compileOnly group: "javax.servlet.jsp.jstl", name: "jstl-api", version: "1.2"
+	compileOnly group: "org.glassfish.web", name: "jstl-impl", version: "1.2"
+	compileOnly project(":apps:service-builder:foo-api")
+}
+
+war {
+	dependsOn buildCSS
+
+	exclude('**/*.scss')
+
+	filesMatching("**/.sass-cache/") {
+		it.path = it.path.replace(".sass-cache/", "")
+	}
+
+	includeEmptyDirs = false
+}
