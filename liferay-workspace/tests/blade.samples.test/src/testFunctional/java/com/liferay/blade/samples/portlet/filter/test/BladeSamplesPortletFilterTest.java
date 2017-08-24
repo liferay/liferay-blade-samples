@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.configuration.icon.test;
+package com.liferay.blade.samples.portlet.filter.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -36,7 +36,6 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,65 +45,38 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletConfigurationIconTest {
+public class BladeSamplesPortletFilterTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("portletConfigurationIconJarFile"));
+			System.getProperty("filterPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
-
-		WebElement element = wait.until(
-			ExpectedConditions.elementToBeClickable(webElement));
-
-		element.click();
-	}
-
 	@Test
-	public void testBladePortletConfigurationIcon()
+	public void testBladePortletFilter()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_helloWorldPortlet));
-
-		_bodyWebElement.click();
-
-		customClick(_webDriver, _verticalEllipsis);
-
-		customClick(_webDriver, _lfrMenuSampleLink);
+			"Portlet was not deployed", isVisible(_bladeSampleFilterPortlet));
 
 		Assert.assertTrue(
-			"Expected: https://www.liferay.com/, but saw " +
-				_webDriver.getCurrentUrl(),
-			isPageLoaded("https://www.liferay.com/"));
-	}
+			"Expected Example Filter Portlet, but saw " +
+				_portletTitle.getText(),
+			_portletTitle.getText().contentEquals("Example Filter Portlet"));
 
-	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
-
-		try {
-			webDriverWait.until(ExpectedConditions.urlMatches(string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+		Assert.assertTrue(
+			"Expected Custom Attribute = My Custom Attribute Value, but saw " +
+				_portletBody.getText(),
+			_portletBody.getText().contentEquals("Custom Attribute = My Custom Attribute Value"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -116,23 +88,17 @@ public class BladePortletConfigurationIconTest {
 		}
 	}
 
-	@FindBy(xpath = "//body")
-	private WebElement _bodyWebElement;
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]")
+	private WebElement _bladeSampleFilterPortlet;
 
-	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']")
-	private WebElement _helloWorldPortlet;
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]//..//div[@class='portlet-body']")
+	private WebElement _portletBody;
 
-	@FindBy(xpath = "//header[@id='banner']")
-	private WebElement _lfrBanner;
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]//..//h2")
+	private WebElement _portletTitle;
 
-	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Sample Link')]")
-	private WebElement _lfrMenuSampleLink;
-
-	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
+	@PortalURL("blade_portlet_filter_ExamplePortlet")
 	private URL _portletURL;
-
-	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
-	private WebElement _verticalEllipsis;
 
 	@Drone
 	private WebDriver _webDriver;

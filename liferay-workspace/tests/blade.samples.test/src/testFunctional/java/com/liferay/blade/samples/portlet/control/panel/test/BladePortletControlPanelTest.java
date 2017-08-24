@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.configuration.icon.test;
+package com.liferay.blade.samples.portlet.control.panel.test;
 
-import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -46,12 +46,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletConfigurationIconTest {
+public class BladePortletControlPanelTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("portletConfigurationIconJarFile"));
+			System.getProperty("controlPanelPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -70,37 +70,24 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	@Test
-	public void testBladePortletConfigurationIcon()
-		throws InterruptedException, PortalException {
+	public void testBladePortletControlPanel()
+		throws InterruptedException, MalformedURLException, PortalException {
 
-		_webDriver.get(_portletURL.toExternalForm());
+		URL url = new URL(
+			"http://localhost:8080/group/control_panel/manage?p_p_id=" +
+				_portletName);
 
-		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_helloWorldPortlet));
-
-		_bodyWebElement.click();
-
-		customClick(_webDriver, _verticalEllipsis);
-
-		customClick(_webDriver, _lfrMenuSampleLink);
+		_webDriver.get(url.toExternalForm());
 
 		Assert.assertTrue(
-			"Expected: https://www.liferay.com/, but saw " +
-				_webDriver.getCurrentUrl(),
-			isPageLoaded("https://www.liferay.com/"));
-	}
+			"Portlet was not deployed", isVisible(_controlPanelPortlet));
 
-	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
+		Assert.assertTrue(
+				"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
+				_portletTitle.getText().contentEquals("Control Panel Demo"));
 
-		try {
-			webDriverWait.until(ExpectedConditions.urlMatches(string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+		Assert.assertTrue("Expected We are in the control panel, but saw: " + _portletBody.getText(),
+			_portletBody.getText().contentEquals("We are in the control panel"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -116,23 +103,17 @@ public class BladePortletConfigurationIconTest {
 		}
 	}
 
-	@FindBy(xpath = "//body")
-	private WebElement _bodyWebElement;
+	@FindBy(xpath = "//section[contains(@id,'ControlPanelAppPortlet')]")
+	private WebElement _controlPanelPortlet;
 
-	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']")
-	private WebElement _helloWorldPortlet;
+	@FindBy(xpath = "//div[contains(@id,'ControlPanelAppPortlet')]//..//p")
+	private WebElement _portletBody;
 
-	@FindBy(xpath = "//header[@id='banner']")
-	private WebElement _lfrBanner;
+	private String _portletName =
+		"com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
 
-	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Sample Link')]")
-	private WebElement _lfrMenuSampleLink;
-
-	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
-	private URL _portletURL;
-
-	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
-	private WebElement _verticalEllipsis;
+	@FindBy(xpath = "//span[@data-qa-id='headerTitle']")
+	private WebElement _portletTitle;
 
 	@Drone
 	private WebDriver _webDriver;

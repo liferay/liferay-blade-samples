@@ -30,9 +30,9 @@ dependencies {
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 
-    testCompile (project(':tests:utils')) {
-        transitive = false
-    }
+	testCompile (project(':tests:utils')) {
+		transitive = false
+	}
 }
 
 task deployAutoLogin(type: Copy) {
@@ -59,6 +59,10 @@ task testFunctional(type: Test) {
 	dependsOn ":initBundle", startTestableTomcat
 
 	dependsOn ":apps:action-command-portlet:jar"
+	dependsOn ":apps:configuration-action:jar"
+	dependsOn ":apps:control-panel-portlet:jar"
+	dependsOn ":apps:ds-portlet:jar"
+	dependsOn ":apps:filter-portlet:jar"
 	dependsOn ":apps:freemarker-portlet:jar"
 	dependsOn ":apps:greedy-policy-option-portlet:higher-ranked-service:jar"
 	dependsOn ":apps:greedy-policy-option-portlet:service-reference:jar"
@@ -73,7 +77,11 @@ task testFunctional(type: Test) {
 
 	doFirst {
 		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
+		systemProperty 'configurationActionJarFile', project(':apps:configuration-action').jar.archivePath
 		systemProperty 'controlMenuEntryJarFile', project(':extensions:control-menu-entry').jar.archivePath
+		systemProperty 'controlPanelPortletJarFile', project(':apps:control-panel-portlet').jar.archivePath
+		systemProperty 'dsPortletJarFile', project(':apps:ds-portlet').jar.archivePath
+		systemProperty 'filterPortletJarFile', project(':apps:filter-portlet').jar.archivePath
 		systemProperty 'freemarkerPortletJarFile', project(':apps:freemarker-portlet').jar.archivePath
 		systemProperty 'greedyHigherRankedServiceJarFile', project(':apps:greedy-policy-option-portlet:higher-ranked-service').jar.archivePath
 		systemProperty 'greedyServiceReferenceJarFile', project(':apps:greedy-policy-option-portlet:service-reference').jar.archivePath

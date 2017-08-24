@@ -200,7 +200,8 @@ public class BladePortletGreedyPolicyOptionTest {
 		}
 	}
 
-	private static String _higherRankedServiceJarBSN = "com.liferay.blade.higher.ranked.service";
+	private static String _higherRankedServiceJarBSN =
+		"com.liferay.blade.higher.ranked.service";
 
 	@FindBy(xpath = "//div[contains(@id,'Greedy')]")
 	private WebElement _bladeSampleGreedyPortlet;
