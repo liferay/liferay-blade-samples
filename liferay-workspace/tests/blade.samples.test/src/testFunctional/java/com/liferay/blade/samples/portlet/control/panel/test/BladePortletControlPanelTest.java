@@ -112,7 +112,7 @@ public class BladePortletControlPanelTest {
 	private String _portletName =
 		"com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
 
-	@FindBy(xpath = "//div[contains(@id,'ControlPanelAppPortlet')]//..//span")
+	@FindBy(xpath = "//span[@data-qa-id='headerTitle']")
 	private WebElement _portletTitle;
 
 	@Drone
