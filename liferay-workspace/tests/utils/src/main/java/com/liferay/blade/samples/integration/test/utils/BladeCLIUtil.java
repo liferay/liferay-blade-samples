@@ -161,11 +161,33 @@ public class BladeCLIUtil {
 	}
 
 	public static String installBundle(File file) throws Exception {
-		String output = execute("sh", "install", file.toURI().toString());
+		String printFileName;
+		String bundleID;
+		String output;
 
-		String bundleID = output.substring(
-			output.indexOf("bundle id:") + 11,
-			output.indexOf("\n", output.indexOf("bundle id:")));
+		if (file.getName().endsWith(".war")) {
+			printFileName = file.getName();
+
+			printFileName = printFileName.substring(
+				0, printFileName.lastIndexOf('.'));
+
+			output = BladeCLIUtil.execute(
+				"sh", "install",
+				"webbundle:file://" + file +
+					"?Web-ContextPath=/" + printFileName);
+
+			bundleID = output.substring(
+				output.indexOf("bundle id:") + 11,
+				output.indexOf("\n", output.indexOf("bundle id:")));
+		}
+
+		else {
+			output = execute("sh", "install", file.toURI().toASCIIString());
+
+			bundleID = output.substring(
+					output.indexOf("bundle id:") + 11,
+					output.indexOf("\n", output.indexOf("bundle id:")));
+		}
 
 		if (output.contains("Failed") || output.contains("Exception")) {
 			throw new Exception(output);
