@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.blade.samples.jndiservicebuilder.model.Region">
+		<field name="regionId" type="long" />
+		<field name="regionName" type="String" />
+	</model>
+</model-hints>
