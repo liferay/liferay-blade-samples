@@ -102,6 +102,8 @@ public class BladeSpringMVCPortletTest {
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		String url = _webDriver.getCurrentUrl();
+
 		customClick(_webDriver, _addButton);
 
 		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
@@ -113,6 +115,8 @@ public class BladeSpringMVCPortletTest {
 		_field5Form.sendKeys("World");
 
 		customClick(_webDriver, _saveButton);
+
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible", isVisible(_table));
@@ -194,6 +198,8 @@ public class BladeSpringMVCPortletTest {
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		String url = _webDriver.getCurrentUrl();
+
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
 
@@ -212,6 +218,8 @@ public class BladeSpringMVCPortletTest {
 		_field1Form.sendKeys("field1 with Updated Name");
 
 		customClick(_webDriver, _saveButton);
+
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible", isVisible(_table));
