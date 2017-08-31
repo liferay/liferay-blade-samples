@@ -42,14 +42,14 @@ This XML file defines the log level for the classes in the `com.liferay.blade.sa
 
 1. Build and deploy each of the three modules that comprise the BLADE sample application:
 
-- `jdbc-service-builder-api`
-- `jdbc-service-builder-service`
-- `jdbc-service-builder-web`
+- `jdbc-api`
+- `jdbc-service`
+- `jdbc-web`
 
-2. After these modules have been deployed, add the `jdbc-service-builder-web` portlet to a Liferay page. When you view the page, the `CountryLocalService.useJDBC` method will be invoked. This method accesses the database defined by the JDBC connection you specified and logs information about the rows in the `country` table to Liferay's log. Check Liferay's log to make sure that the database connection is working correctly.
+2. After these modules have been deployed, add the `-web` portlet to a Liferay page. When you view the page, the `CountryLocalService.useJDBC` method will be invoked. This method accesses the database defined by the JDBC connection you specified and logs information about the rows in the `country` table to Liferay's log. Check Liferay's log to make sure that the database connection is working correctly.
 
 ## Explanation
 
 This BLADE sample demonstrates two ways to access data from an external database defined by a JDBC connection. The first way is to extract data directly from the raw data source by explicitly specifying a SQL query. This technique is demonstrated by the `CountryLocalServiceImpl.useJDBC` method. That method obtains the Spring-defined data source that's injected into the `countryPersistence` bean, opens a new connection, and reads data from the data source. This is the technique used by the sample application to write the data to Liferay's log.
 
-The second way is to read data using the helper methods that Service Builder generates in your application's persistence layer. This technique is demonstrated by the `UseJDBC.getCountries` method which first obtains an instance of the `CountryLocalService` OSGi service and then invokes `countryLocalService.getCountries`. `countryLocalService.getCountries` and `countryLocalService.getCountriesCount` are two examples of the persistence layer helper methods that Service Builder generates. This is the technique used by the sample application to actually display the data. The portlet's `view.jsp` uses the `<search-container>` JSP tag to display a list of results. The results are obtained by the `UseJDBC.getCountries` method mentioned above. 
+The second way is to read data using the helper methods that Service Builder generates in your application's persistence layer. This technique is demonstrated by the `UseJDBC.getCountries` method which first obtains an instance of the `CountryLocalService` OSGi service and then invokes `countryLocalService.getCountries`. `countryLocalService.getCountries` and `countryLocalService.getCountriesCount` are two examples of the persistence layer helper methods that Service Builder generates. This is the technique used by the sample application to actually display the data. The portlet's `view.jsp` uses the `<search-container>` JSP tag to display a list of results. The results are obtained by the `UseJDBC.getCountries` method mentioned above.

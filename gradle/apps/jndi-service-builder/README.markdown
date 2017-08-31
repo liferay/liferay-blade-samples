@@ -57,11 +57,11 @@ This XML file defines the log level for the classes in the `com.liferay.blade.sa
 
 1. Build and deploy each of the three modules that comprise the BLADE sample application:
 
-- `jndi-service-builder-api`
-- `jndi-service-builder-service`
-- `jndi-service-builder-web`
+- `jndi-api`
+- `jndi-service`
+- `jndi-web`
 
-2. After these modules have been deployed, add the `jndi-service-builder-web` portlet to a Liferay page. When you view the page, the `RegionLocalServiceUtil.useJDBC` method will be invoked. This method accesses the database defined by the JNDI connection you specified and logs information about the rows in the `region` table to Liferay's log. Check Liferay's log to make sure that the database connection is working correctly.
+2. After these modules have been deployed, add the `jndi-web` portlet to a Liferay page. When you view the page, the `RegionLocalServiceUtil.useJDBC` method will be invoked. This method accesses the database defined by the JNDI connection you specified and logs information about the rows in the `region` table to Liferay's log. Check Liferay's log to make sure that the database connection is working correctly.
 
 ## Explanation
 
