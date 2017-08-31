@@ -40,14 +40,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -139,24 +137,12 @@ public class BladeJspWarPortletTest {
 
 		customClick(_webDriver, _lfrIconMenu);
 
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
-
 		Assert.assertTrue(
-			"Action Menu Delete is not visible", isVisible(_lfrMenuDelete));
+			"Action Menu Delete is not visible", isClickable(_lfrMenuDelete));
 
-		String source = _webDriver.getPageSource();
+		customClick(_webDriver, _lfrMenuDelete);
 
-		String executescript = source.substring(
-			source.indexOf("item-remove") + 1,
-			source.indexOf("foosSearchContainer__10__menu__delete"));
-
-		String script = executescript.substring(
-			executescript.indexOf("submitForm") - 1,
-			executescript.indexOf("else") - 2);
-
-		javascriptExecutor.executeScript(script);
-
-		Thread.sleep(1000);
+		confirmDialog(_webDriver);
 
 		_webDriver.navigate().refresh();
 
@@ -221,20 +207,13 @@ public class BladeJspWarPortletTest {
 			_table.getText().contains("field1 with Updated Name"));
 	}
 
-	protected static boolean isAlertPresent(WebDriver webDriver) {
-		WebDriverWait webDriverWait = new WebDriverWait(webDriver, 3);
-
-		try {
-			ExpectedCondition<Alert> alert =
-				ExpectedConditions.alertIsPresent();
-
-			webDriverWait.until(alert);
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+	private static void confirmDialog(WebDriver webDriver) {
+	    if (webDriver instanceof PhantomJSDriver) {
+	        PhantomJSDriver phantom = (PhantomJSDriver) webDriver;
+	        phantom.executeScript("window.alert = function(){}");
+	        phantom.executeScript("window.confirm = function(){return true;}");
+	    }
+	    else webDriver.switchTo().alert().accept();
 	}
 
 	protected boolean isClickable(WebElement webelement) {
