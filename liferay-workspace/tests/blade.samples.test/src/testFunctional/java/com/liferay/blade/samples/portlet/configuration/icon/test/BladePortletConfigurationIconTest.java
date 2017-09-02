@@ -84,6 +84,8 @@ public class BladePortletConfigurationIconTest {
 
 		customClick(_webDriver, _lfrMenuSampleLink);
 
+		Thread.sleep(2000);
+
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
