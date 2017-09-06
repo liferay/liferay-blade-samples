@@ -39,14 +39,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -101,11 +99,11 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
 
-		_field1Form.sendKeys("Hello");
+		_field1Form.sendKeys("ServiceBuilderWebTest");
 
 		_field5Form.clear();
 
-		_field5Form.sendKeys("World");
+		_field5Form.sendKeys("field5");
 
 		customClick(_webDriver, _saveButton);
 
@@ -113,12 +111,8 @@ public class BladeServiceBuilderTest {
 			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
-			"Hello World is not present in table",
-			_table.getText().contains("Hello"));
-
-		Assert.assertTrue(
-			"Hello World is not present in table",
-			_table.getText().contains("World"));
+			"ServiceBuilderWebTest is not present in table",
+			_table.getText().contains("ServiceBuilderWebTest"));
 	}
 
 	@Test
@@ -139,13 +133,15 @@ public class BladeServiceBuilderTest {
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
 		Assert.assertTrue(
-			"Action Menu Delete is not visible", isVisible(_lfrMenuDelete));
+			"Action Menu Delete is not clickable", isClickable(_lfrMenuDelete));
+
+		customClick(_webDriver, _lfrMenuDelete);
 
 		String source = _webDriver.getPageSource();
 
 		String executescript = source.substring(
-			source.indexOf("item-remove") + 1,
-			source.indexOf("foosSearchContainer__10__menu__delete"));
+				source.indexOf("item-remove") + 1,
+				source.indexOf("<span class=\"taglib-text-icon\">Delete</span>"));
 
 		String script = executescript.substring(
 			executescript.indexOf("submitForm") - 1,
@@ -176,15 +172,11 @@ public class BladeServiceBuilderTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"First Row Field 1 is not visible", isVisible(_firstRowField1));
+			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
-			"First row field 1 does not contain entry",
-			_firstRowField1.getText().contains("new field1 entry"));
-
-		Assert.assertTrue(
-			"Second row field 1 does not contain entry",
-			_secondRowField1.getText().contains("new field1 entry"));
+			"new field5 entry is not present in table",
+			_table.getText().contains("new field5 entry"));
 	}
 
 	@Test
@@ -216,22 +208,6 @@ public class BladeServiceBuilderTest {
 		Assert.assertTrue(
 			"Service Builder Table does not contain Updated Name",
 			_table.getText().contains("field1 with Updated Name"));
-	}
-
-	protected static boolean isAlertPresent(WebDriver webDriver) {
-		WebDriverWait webDriverWait = new WebDriverWait(webDriver, 3);
-
-		try {
-			ExpectedCondition<Alert> alert =
-				ExpectedConditions.alertIsPresent();
-
-			webDriverWait.until(alert);
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	protected boolean isClickable(WebElement webelement) {
@@ -274,8 +250,8 @@ public class BladeServiceBuilderTest {
 	@FindBy(css = "input[id$='field5']")
 	private WebElement _field5Form;
 
-	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table/tbody/tr/td[2]")
-	private WebElement _firstRowField1;
+	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table//..//tr/td[6]")
+	private WebElement _firstRowField5;
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
 	private WebElement _lfrIconMenu;
@@ -292,8 +268,8 @@ public class BladeServiceBuilderTest {
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
 
-	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table/tbody/tr[2]/td[2]")
-	private WebElement _secondRowField1;
+	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table//..//tr[2]/td[6]")
+	private WebElement _secondRowField5;
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;

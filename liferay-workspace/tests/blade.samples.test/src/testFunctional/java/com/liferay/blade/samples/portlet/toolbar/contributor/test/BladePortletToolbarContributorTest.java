@@ -86,6 +86,8 @@ public class BladePortletToolbarContributorTest {
 
 		customClick(_webDriver, _lfrMenuLiferay);
 
+		Thread.sleep(2000);
+
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),

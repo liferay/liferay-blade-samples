@@ -19,6 +19,7 @@ package com.liferay.blade.samples.spring.mvc.portlet.test;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.net.URL;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -36,18 +38,15 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -59,7 +58,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BladeSpringMVCPortletTest {
 
 	@AfterClass
-	public static void cleanUpDependencies() throws Exception {
+	public static void cleanUp() throws Exception {
 		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
 		new JMXBundleDeployer().uninstall(_fooServiceJarBSN);
 		new JMXBundleDeployer().uninstall(_springmvcPortletWarBSN);
@@ -77,8 +76,10 @@ public class BladeSpringMVCPortletTest {
 
 		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
-		new JMXBundleDeployer().deploy(
-			_springmvcPortletWarBSN, springmvcPortletWar);
+
+		String bundleID = BladeCLIUtil.installBundle(springmvcPortletWar);
+
+		BladeCLIUtil.startBundle(bundleID);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -88,7 +89,7 @@ public class BladeSpringMVCPortletTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 
 		WebElement element = wait.until(
 			ExpectedConditions.visibilityOf(webElement));
@@ -96,36 +97,40 @@ public class BladeSpringMVCPortletTest {
 		element.click();
 	}
 
-	@Ignore
 	@Test
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
+
+		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		String url = _webDriver.getCurrentUrl();
 
 		customClick(_webDriver, _addButton);
 
 		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
 
-		_field1Form.sendKeys("Hello");
+		_field1Form.clear();
+
+		_field1Form.sendKeys("SpringMVCPortletTest");
 
 		_field5Form.clear();
 
-		_field5Form.sendKeys("World");
+		_field5Form.sendKeys("field5");
 
 		customClick(_webDriver, _saveButton);
+
+		Thread.sleep(1000);
+
+		_webDriver.navigate().to(url);;
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
-			"Hello World is not present in table",
-			_table.getText().contains("Hello"));
-
-		Assert.assertTrue(
-			"Hello World is not present in table",
-			_table.getText().contains("World"));
+			"SpringMVCPortletTest is not present in table" + _table.getText(),
+			_table.getText().contains("SpringMVCPortletTest"));
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -142,13 +147,15 @@ public class BladeSpringMVCPortletTest {
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
 		Assert.assertTrue(
-			"Action Menu Delete is not visible", isVisible(_lfrMenuDelete));
+			"Action Menu Delete is not clickable", isClickable(_lfrMenuDelete));
+
+		customClick(_webDriver, _lfrMenuDelete);
 
 		String source = _webDriver.getPageSource();
 
 		String executescript = source.substring(
 			source.indexOf("item-remove") + 1,
-			source.indexOf("foosSearchContainer__10__menu__delete"));
+			source.indexOf("<span class=\"taglib-text-icon\">Delete</span>"));
 
 		String script = executescript.substring(
 			executescript.indexOf("submitForm") - 1,
@@ -174,27 +181,25 @@ public class BladeSpringMVCPortletTest {
 			newRows == expectedFoos);
 	}
 
-	@Ignore
 	@Test
 	public void testReadFoo() throws PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"First Row Field 1 is not visible", isVisible(_firstRowField1));
+			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
-			"First row field 1 does not contain entry",
-			_firstRowField1.getText().contains("new field1 entry"));
-
-		Assert.assertTrue(
-			"Second row field 1 does not contain entry",
-			_secondRowField1.getText().contains("new field1 entry"));
+			"new field5 entry is not present in table",
+			_table.getText().contains("new field5 entry"));
 	}
 
-	@Ignore
 	@Test
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
+
+		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
@@ -211,32 +216,21 @@ public class BladeSpringMVCPortletTest {
 
 		_field1Form.clear();
 
-		_field1Form.sendKeys("field1 with Updated Name");
+		_field1Form.sendKeys("Spring Updated Name");
 
 		customClick(_webDriver, _saveButton);
+
+		Thread.sleep(1000);
+
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible", isVisible(_table));
 
 		Assert.assertTrue(
-			"Service Builder Table does not contain Updated Name",
-			_table.getText().contains("field1 with Updated Name"));
-	}
-
-	protected static boolean isAlertPresent(WebDriver webDriver) {
-		WebDriverWait webDriverWait = new WebDriverWait(webDriver, 3);
-
-		try {
-			ExpectedCondition<Alert> alert =
-				ExpectedConditions.alertIsPresent();
-
-			webDriverWait.until(alert);
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			"Service Builder Table does not contain Spring Updated Name" +
+			_table.getText(),
+			_table.getText().contains("Spring Updated Name"));
 	}
 
 	protected boolean isClickable(WebElement webelement) {
@@ -279,8 +273,8 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(css = "input[id$='field5']")
 	private WebElement _field5Form;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table/tbody/tr/td[2]")
-	private WebElement _firstRowField1;
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr/td[6]")
+	private WebElement _firstRowField5;
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
 	private WebElement _lfrIconMenu;
@@ -291,14 +285,14 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Edit')]")
 	private WebElement _lfrMenuEdit;
 
-	@PortalURL("bladespringmvc_WAR_bladespringmvc")
+	@PortalURL("bladespringmvc_WAR_springmvcportlet")
 	private URL _portletURL;
 
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table/tbody/tr[2]/td[2]")
-	private WebElement _secondRowField1;
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr[2]/td[6]")
+	private WebElement _secondRowField5;
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;

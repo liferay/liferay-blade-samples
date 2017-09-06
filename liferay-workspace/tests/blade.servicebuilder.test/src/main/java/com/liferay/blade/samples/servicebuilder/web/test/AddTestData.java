@@ -33,7 +33,7 @@ public class AddTestData {
 
 	@Activate
 	public void addTestData() {
-		int entries = 10;
+		int entries = 2;
 
 		while (entries > 0) {
 			Foo foo = _fooLocalService.createFoo(0);
