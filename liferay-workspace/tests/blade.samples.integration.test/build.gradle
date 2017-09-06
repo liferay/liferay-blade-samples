@@ -3,13 +3,12 @@ apply plugin: 'groovy'
 dependencies {
 	compile gradleApi()
 	compile gradleTestKit()
-	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
+	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
 	compile group: "com.squareup.okhttp3", name: "okhttp", version: "3.3.1"
 	compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
 	compile group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
 
-	testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
-	testCompile group: "commons-io", name: "commons-io", version: "2.5"
+	testCompile project(":tests:utils")
 }
 
 repositories {
@@ -46,10 +45,6 @@ testIntegration {
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
-
-	finalizedBy {
-		stopTestableTomcat
-	}
 }
 
 stopTestableTomcat {

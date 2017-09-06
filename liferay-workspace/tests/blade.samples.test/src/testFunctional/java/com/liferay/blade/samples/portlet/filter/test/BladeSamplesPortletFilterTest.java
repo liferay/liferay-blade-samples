@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.freemarker.test;
+package com.liferay.blade.samples.portlet.filter.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -36,7 +36,6 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,55 +45,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletFreemarkerTest {
+public class BladeSamplesPortletFilterTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("freemarkerPortletJarFile"));
+			System.getProperty("filterPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
-	public void testBladePortletFreemarker()
+	public void testBladePortletFilter()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleFreemarkerPortlet));
+			"Portlet was not deployed", isVisible(_bladeSampleFilterPortlet));
 
 		Assert.assertTrue(
-			"Expected Blade FreeMarker Portlet, but saw " +
+			"Expected Example Filter Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade FreeMarker Portlet"));
+			_portletTitle.getText().contentEquals("Example Filter Portlet"));
 
 		Assert.assertTrue(
-			"Expected Hello from BLADE Freemarker!, but saw " +
+			"Expected Custom Attribute = My Custom Attribute Value, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"Hello from BLADE Freemarker!"));
-
-		Assert.assertTrue(
-			"Expected redBackground, but saw " +
-				_portletBody.getAttribute("class").toString(),
-			_portletBody.getAttribute(
-				"class").toString().contentEquals("redBackground"));
+			_portletBody.getText().contentEquals("Custom Attribute = My Custom Attribute Value"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
@@ -110,16 +88,16 @@ public class BladePortletFreemarkerTest {
 		}
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]")
-	private WebElement _bladeSampleFreemarkerPortlet;
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]")
+	private WebElement _bladeSampleFilterPortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//b")
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]//..//div[@class='portlet-body']")
 	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//h2")
+	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]//..//h2")
 	private WebElement _portletTitle;
 
-	@PortalURL("com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet")
+	@PortalURL("blade_portlet_filter_ExamplePortlet")
 	private URL _portletURL;
 
 	@Drone

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.freemarker.test;
+package com.liferay.blade.samples.portlet.control.panel.test;
 
-import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -46,12 +46,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletFreemarkerTest {
+public class BladePortletControlPanelTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("freemarkerPortletJarFile"));
+			System.getProperty("controlPanelPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -61,44 +61,37 @@ public class BladePortletFreemarkerTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
 
 	@Test
-	public void testBladePortletFreemarker()
-		throws InterruptedException, PortalException {
+	public void testBladePortletControlPanel()
+		throws InterruptedException, MalformedURLException, PortalException {
 
-		_webDriver.get(_portletURL.toExternalForm());
+		URL url = new URL(
+			"http://localhost:8080/group/control_panel/manage?p_p_id=" +
+				_portletName);
 
-		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleFreemarkerPortlet));
-
-		Assert.assertTrue(
-			"Expected Blade FreeMarker Portlet, but saw " +
-				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade FreeMarker Portlet"));
+		_webDriver.get(url.toExternalForm());
 
 		Assert.assertTrue(
-			"Expected Hello from BLADE Freemarker!, but saw " +
-				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"Hello from BLADE Freemarker!"));
+			"Portlet was not deployed", isVisible(_controlPanelPortlet));
 
 		Assert.assertTrue(
-			"Expected redBackground, but saw " +
-				_portletBody.getAttribute("class").toString(),
-			_portletBody.getAttribute(
-				"class").toString().contentEquals("redBackground"));
+				"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
+				_portletTitle.getText().contentEquals("Control Panel Demo"));
+
+		Assert.assertTrue("Expected We are in the control panel, but saw: " + _portletBody.getText(),
+			_portletBody.getText().contentEquals("We are in the control panel"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -110,17 +103,17 @@ public class BladePortletFreemarkerTest {
 		}
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]")
-	private WebElement _bladeSampleFreemarkerPortlet;
+	@FindBy(xpath = "//section[contains(@id,'ControlPanelAppPortlet')]")
+	private WebElement _controlPanelPortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//b")
+	@FindBy(xpath = "//div[contains(@id,'ControlPanelAppPortlet')]//..//p")
 	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//h2")
-	private WebElement _portletTitle;
+	private String _portletName =
+		"com_liferay_blade_samples_portlet_controlpanel_ControlPanelAppPortlet";
 
-	@PortalURL("com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet")
-	private URL _portletURL;
+	@FindBy(xpath = "//span[@data-qa-id='headerTitle']")
+	private WebElement _portletTitle;
 
 	@Drone
 	private WebDriver _webDriver;

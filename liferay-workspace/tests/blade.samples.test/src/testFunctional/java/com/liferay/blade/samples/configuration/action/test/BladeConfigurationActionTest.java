@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.portlet.freemarker.test;
+package com.liferay.blade.samples.configuration.action.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -34,6 +34,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -46,59 +47,70 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladePortletFreemarkerTest {
+public class BladeConfigurationActionTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("freemarkerPortletJarFile"));
+			System.getProperty("configurationActionJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
+		Assert.assertTrue("Element is not visible", isVisible(webElement));
+
 		Actions action = new Actions(webDriver);
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
 
 	@Test
-	public void testBladePortletFreemarker()
+	public void testBladeConfigurationAction()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue(
-			"Portlet was not deployed",
-			isVisible(_bladeSampleFreemarkerPortlet));
+		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
-			"Expected Blade FreeMarker Portlet, but saw " +
-				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade FreeMarker Portlet"));
+			"Portlet was not deployed", isVisible(_bladeMessagePortlet));
+
+		_bodyWebElement.click();
+
+		customClick(_webDriver, _verticalEllipsis);
+
+		WebElement configuration = _webDriver.findElement(
+			By.linkText("Configuration"));
+
+		String configurationLink = configuration.getAttribute("href");
+
+		_newWebDriverWindow.get(configurationLink);
+
+		customClick(_newWebDriverWindow, _saveButton);
 
 		Assert.assertTrue(
-			"Expected Hello from BLADE Freemarker!, but saw " +
-				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"Hello from BLADE Freemarker!"));
+			"Success Message is not visible", isVisible(_successMessage));
+
+		_webDriver.get(url);
 
 		Assert.assertTrue(
-			"Expected redBackground, but saw " +
-				_portletBody.getAttribute("class").toString(),
-			_portletBody.getAttribute(
-				"class").toString().contentEquals("redBackground"));
+				"Expected Blade Message Portlet, but saw: " + _portletTitle.getText(),
+				_portletTitle.getText().contentEquals("Blade Message Portlet"));
+
+		Assert.assertTrue("Expected Hello from BLADE JSP!, but saw: " + _portletBody.getText(),
+			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -110,17 +122,35 @@ public class BladePortletFreemarkerTest {
 		}
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]")
-	private WebElement _bladeSampleFreemarkerPortlet;
+	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")
+	private WebElement _bladeMessagePortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//b")
+	@FindBy(xpath = "//body")
+	private WebElement _bodyWebElement;
+
+	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[contains(@class,'configuration')]")
+	private WebElement _lfrMenuConfiguration;
+
+	@Drone
+	private WebDriver _newWebDriverWindow;
+
+	@FindBy(xpath = "//div[contains(@id,'BladeMessagePortlet')]//..//p")
 	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]//..//h2")
+	@FindBy(xpath = "//div[contains(@id,'BladeMessagePortlet')]//..//h2")
 	private WebElement _portletTitle;
 
-	@PortalURL("com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet")
+	@PortalURL("BladeMessagePortlet")
 	private URL _portletURL;
+
+	@FindBy(css = "button[type=submit]")
+	private WebElement _saveButton;
+
+	@FindBy(xpath = "//div[contains(@class,'alert') and contains(@class,'alert-success')]")
+	private WebElement _successMessage;
+
+	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
+	private WebElement _verticalEllipsis;
 
 	@Drone
 	private WebDriver _webDriver;

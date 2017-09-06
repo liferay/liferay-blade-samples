@@ -31,7 +31,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -70,7 +69,6 @@ public class BladeControlMenuEntryTest {
 		element.click();
 	}
 
-	@Ignore
 	@Test
 	public void testBladeControlMenuEntry()
 		throws InterruptedException, PortalException {
@@ -83,8 +81,8 @@ public class BladeControlMenuEntryTest {
 
 		Assert.assertTrue(
 			"Control Menu Entry Link text is not visible",
-			isTextPresent(_controlMenuLinkText,
-				"Blade Menu Entry Custom Message"));
+			isTextPresent(
+				_controlMenuLinkText, "Blade Menu Entry Custom Message"));
 
 		customClick(_webDriver, _controlMenuLink);
 
@@ -95,7 +93,7 @@ public class BladeControlMenuEntryTest {
 	}
 
 	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.urlMatches(string));

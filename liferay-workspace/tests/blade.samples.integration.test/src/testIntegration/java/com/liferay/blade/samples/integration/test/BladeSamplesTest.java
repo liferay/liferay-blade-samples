@@ -1,25 +1,27 @@
 /**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ * Copyright 2000-present Liferay, Inc.
  *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
-package com.liferay.blade.samples.test;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+package com.liferay.blade.samples.integration.test;
 
 import aQute.bnd.osgi.Jar;
 
 import aQute.lib.io.IO;
+
+import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
+import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -43,6 +47,7 @@ import org.gradle.testkit.runner.BuildTask;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -76,7 +81,7 @@ public class BladeSamplesTest {
 	public static void tearDownClass() throws Exception {
 		if (BladeCLIUtil.bladeJar.exists()) {
 			IO.delete(BladeCLIUtil.bladeJar);
-			assertFalse(BladeCLIUtil.bladeJar.exists());
+			Assert.assertFalse(BladeCLIUtil.bladeJar.exists());
 		}
 	}
 
@@ -91,7 +96,7 @@ public class BladeSamplesTest {
 	public void tearDown() throws Exception {
 		if (_testDir.exists()) {
 			IO.delete(_testDir);
-			assertFalse(_testDir.exists());
+			Assert.assertFalse(_testDir.exists());
 		}
 	}
 
@@ -109,24 +114,46 @@ public class BladeSamplesTest {
 		}
 
 		for (String sampleBundleFile : bladeSampleOutputFiles) {
-			String installBundleOutput = BladeCLIUtil.installBundle(
-				new File(sampleBundleFile));
+			String printFileName;
+			String bundleID;
 
-			String printFileName = new File(sampleBundleFile).getName();
+			File file = new File(sampleBundleFile);
 
-			bundleIDAllMap.put(installBundleOutput, printFileName);
+			if (file.exists()) {
+				printFileName = new File(sampleBundleFile).getName();
 
-			try (Jar jar = new Jar(sampleBundleFile, sampleBundleFile)) {
-				if (jar.getManifest().getMainAttributes().getValue(
-						"Fragment-Host") == null) {
+				printFileName = printFileName.substring(
+					0, printFileName.lastIndexOf('.'));
+
+				bundleID = BladeCLIUtil.installBundle(
+					file);
+
+				bundleIDAllMap.put(bundleID, printFileName);
+
+				if (file.getName().endsWith(".jar")) {
+					try (Jar jar =
+							new Jar(sampleBundleFile, sampleBundleFile)) {
+
+						Manifest manifest = jar.getManifest();
+
+						Attributes mainAttributes =
+								manifest.getMainAttributes();
+
+						if (mainAttributes.getValue("Fragment-Host") == null) {
 							bundleIDStartMap.put(
-								installBundleOutput, printFileName);
+									bundleID, printFileName);
+						}
+					}
+				}
+
+				else {
+					bundleIDStartMap.put(bundleID, printFileName);
 				}
 			}
 		}
 
-		for (String startBundleIO : bundleIDStartMap.keySet()) {
-			BladeCLIUtil.startBundle(startBundleIO);
+		for (String startBundleID : bundleIDStartMap.keySet()) {
+			BladeCLIUtil.startBundle(startBundleID);
 		}
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {
@@ -147,7 +174,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -169,7 +196,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -191,7 +218,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -213,7 +240,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -235,7 +262,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -281,10 +308,10 @@ public class BladeSamplesTest {
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
-		BuildTask buildSvcTask = GradleRunnerUtil.executeGradleRunner(
+		BuildTask buildServiceTask = GradleRunnerUtil.executeGradleRunner(
 			projectPath, ":modules:blade.servicebuilder.svc:assemble");
 
-		GradleRunnerUtil.verifyGradleRunnerOutput(buildSvcTask);
+		GradleRunnerUtil.verifyGradleRunnerOutput(buildServiceTask);
 
 		File buildApiOutput = new File(
 			projectPath + "/modules/blade.servicebuilder.api/build/libs" +
@@ -293,8 +320,8 @@ public class BladeSamplesTest {
 			projectPath + "/modules/blade.servicebuilder.svc/build/libs" +
 				"/blade.servicebuilder.svc-1.0.0.jar");
 
-		assertTrue(buildApiOutput.exists());
-		assertTrue(buildServiceOutput.exists());
+		Assert.assertTrue(buildApiOutput.exists());
+		Assert.assertTrue(buildServiceOutput.exists());
 
 		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
@@ -328,8 +355,8 @@ public class BladeSamplesTest {
 			projectPath + "/guestbook-service/build/libs" +
 				"/com.liferay.docs.guestbook.service-1.0.0.jar");
 
-		assertTrue(buildApiOutput.exists());
-		assertTrue(buildServiceOutput.exists());
+		Assert.assertTrue(buildApiOutput.exists());
+		Assert.assertTrue(buildServiceOutput.exists());
 
 		String bundleIDApi = BladeCLIUtil.installBundle(buildApiOutput);
 		String bundleIDService = BladeCLIUtil.installBundle(buildServiceOutput);
@@ -359,22 +386,41 @@ public class BladeSamplesTest {
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
 
-				if (line.equals("import com.liferay.portal.kernel.events.LifecycleAction;")) {
-					lines.add("import com.liferay.portal.kernel.events.LifecycleEvent;");
-					lines.add("import com.liferay.portal.kernel.events.ActionException;");
+				if (line.startsWith(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleAction;")) {
+
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"LifecycleEvent;");
+					lines.add(
+						"import com.liferay.portal.kernel.events." +
+							"ActionException;");
 				}
 
 				if (line.equals(
-						"public class FooAction implements LifecycleAction {")) {
+						"public class FooAction implements LifecycleAction " +
+							"{")) {
 
-					String s =
-						new StringBuilder().append("@Override\n").
-							append("public void processLifecycleEvent(LifecycleEvent lifecycleEvent)\n").
-							append("throws ActionException {\n").
-							append("System.out.println(\"login.event.pre=\" + lifecycleEvent);\n").
-							append("}\n").toString();
+					StringBuilder sb = new StringBuilder();
 
-					lines.add(s);
+					sb.append(
+						"@Override\n"
+					).append(
+						"public void processLifecycleEvent"
+					).append(
+						"(LifecycleEvent lifecycleEvent)\n"
+					).append(
+						"throws ActionException {\n"
+					).append(
+						"System.out.println"
+					).append(
+						"(\"login.event.pre=\" + lifecycleEvent);\n"
+					).append(
+						"}\n"
+					);
+
+					lines.add(sb.toString());
 				}
 			}
 		}
@@ -393,7 +439,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/helloworld-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 
@@ -416,7 +462,7 @@ public class BladeSamplesTest {
 		File buildOutput = new File(
 			projectPath + "/build/libs/serviceoverride-1.0.0.jar");
 
-		assertTrue(buildOutput.exists());
+		Assert.assertTrue(buildOutput.exists());
 
 		String bundleID = BladeCLIUtil.installBundle(buildOutput);
 

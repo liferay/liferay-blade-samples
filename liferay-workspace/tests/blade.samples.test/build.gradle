@@ -10,24 +10,45 @@ sourceSets {
 }
 
 configurations {
+	autoLogin
 	testFunctionalCompile.extendsFrom testCompile
 	testFunctionalRuntime.extendsFrom testRuntime
 }
 
 dependencies {
-	compileOnly "com.liferay.portal:com.liferay.portal.kernel:2.0.0"
-	compileOnly "javax.portlet:portlet-api:2.0"
-	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
-	compileOnly "org.osgi:org.osgi.service.component.annotations:1.3.0"
+	autoLogin project(':tests:test-auto-login')
 
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
+	compileOnly group: "javax.portlet", name: "portlet-api", version: "2.0"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
+
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
+
+	testCompile (project(':tests:utils')) {
+		transitive = false
+	}
 }
+
+task deployAutoLogin(type: Copy) {
+	from configurations.autoLogin
+	into new File(liferay.liferayHome, "osgi/modules")
+}
+
+deployAutoLogin.dependsOn ":tests:test-auto-login:jar"
 
 startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
+
+	finalizedBy {
+		deployAutoLogin
+	}
+
 }
 
 task testFunctional(type: Test) {
@@ -37,32 +58,43 @@ task testFunctional(type: Test) {
 
 	dependsOn ":initBundle", startTestableTomcat
 	dependsOn ":modules:blade.controlmenuentry:jar"
-	dependsOn ":modules:blade.language:deploy"
+	dependsOn ":modules:blade.language:jar"
 	dependsOn ":modules:blade.language.web:jar"
 	dependsOn ":modules:blade.portlet.actioncommand:jar"
 	dependsOn ":modules:blade.portlet.configuration.icon:jar"
+	dependsOn ":modules:blade.portlet.controlpanel:jar"
+	dependsOn ":modules:blade.portlet.ds:jar"
+	dependsOn ":modules:blade.portlet.filter:jar"
 	dependsOn ":modules:blade.portlet.freemarker:jar"
 	dependsOn ":modules:blade.portlet.jsp:jar"
 	dependsOn ":modules:blade.portlet.osgiapi:jar"
+	dependsOn ":modules:blade.language.web:jar"
+	dependsOn ":modules:blade.language:jar"
 	dependsOn ":modules:blade.portlet.rendercommand:jar"
 	dependsOn ":modules:blade.portlet.toolbar.contributor:jar"
 
-	systemProperty 'controlMenuEntryJarFile', project(':modules:blade.controlmenuentry').jar.archivePath
-	systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
-	systemProperty 'portletActionommandJarFile', project(':modules:blade.portlet.actioncommand').jar.archivePath
-	systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
-	systemProperty 'portletFreemarkerJarFile', project(':modules:blade.portlet.freemarker').jar.archivePath
-	systemProperty 'portletJspJarFile', project(':modules:blade.portlet.jsp').jar.archivePath
-	systemProperty 'portletOsgiApiJarFile', project(':modules:blade.portlet.osgiapi').jar.archivePath
-	systemProperty 'portletRenderCommandJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
-	systemProperty 'portletToolbarContributorJarFile', project(':modules:blade.portlet.toolbar.contributor').jar.archivePath
-
-	finalizedBy {
-		stopTestableTomcat
+	doFirst {
+		systemProperty 'actionCommandPortletJarFile', project(':modules:blade.portlet.actioncommand').jar.archivePath
+		systemProperty 'controlMenuEntryJarFile', project(':modules:blade.controlmenuentry').jar.archivePath
+		systemProperty 'controlPanelPortletJarFile', project(':modules:blade.portlet.controlpanel').jar.archivePath
+		systemProperty 'dsPortletJarFile', project(':modules:blade.portlet.ds').jar.archivePath
+		systemProperty 'filterPortletJarFile', project(':modules:blade.portlet.filter').jar.archivePath
+		systemProperty 'freemarkerPortletJarFile', project(':modules:blade.portlet.freemarker').jar.archivePath
+		systemProperty 'jspPortletJarFile', project(':modules:blade.portlet.jsp').jar.archivePath
+		systemProperty 'languageJarFile', project(':modules:blade.language').jar.archivePath
+		systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
+		systemProperty 'liferayHome', liferay.liferayHome
+		systemProperty 'osgiPortletJarFile', project(':modules:blade.portlet.osgiapi').jar.archivePath
+		systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
+		systemProperty 'portletToolbarContributorJarFile', project(':modules:blade.portlet.toolbar.contributor').jar.archivePath
+		systemProperty 'renderCommandPortletJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
 	}
 
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+
 	doLast {
-		delete new File("target/drone-phantomjs")
+		delete new File("blade.jar")
+		delete new File("target")
 	}
 }
 

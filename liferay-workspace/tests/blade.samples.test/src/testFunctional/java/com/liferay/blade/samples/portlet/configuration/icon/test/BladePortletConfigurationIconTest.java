@@ -61,10 +61,10 @@ public class BladePortletConfigurationIconTest {
 
 		action.moveToElement(webElement).build().perform();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 
 		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
+			ExpectedConditions.elementToBeClickable(webElement));
 
 		element.click();
 	}
@@ -78,13 +78,13 @@ public class BladePortletConfigurationIconTest {
 		Assert.assertTrue(
 			"Portlet was not deployed", isVisible(_helloWorldPortlet));
 
+		_bodyWebElement.click();
+
 		customClick(_webDriver, _verticalEllipsis);
 
-		Assert.assertTrue(
-			"Sample Link is not visible",
-			isVisible(_lfrMenuSampleLink));
-
 		customClick(_webDriver, _lfrMenuSampleLink);
+
+		Thread.sleep(2000);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
@@ -93,7 +93,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
 
 		try {
 			webDriverWait.until(ExpectedConditions.urlMatches(string));
@@ -106,7 +106,7 @@ public class BladePortletConfigurationIconTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
@@ -117,6 +117,9 @@ public class BladePortletConfigurationIconTest {
 			return false;
 		}
 	}
+
+	@FindBy(xpath = "//body")
+	private WebElement _bodyWebElement;
 
 	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']")
 	private WebElement _helloWorldPortlet;
@@ -130,7 +133,7 @@ public class BladePortletConfigurationIconTest {
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
 	private URL _portletURL;
 
-	@FindBy(xpath = "//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
+	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
 	private WebElement _verticalEllipsis;
 
 	@Drone
