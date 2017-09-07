@@ -61,7 +61,7 @@ public class BladeSpringMVCPortletTest {
 	public static void cleanUp() throws Exception {
 		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
 		new JMXBundleDeployer().uninstall(_fooServiceJarBSN);
-		new JMXBundleDeployer().uninstall(_springmvcPortletWarBSN);
+		BladeCLIUtil.uninstallBundle(_springmvcbundleId);
 	}
 
 	@Deployment
@@ -77,9 +77,9 @@ public class BladeSpringMVCPortletTest {
 		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
 
-		String bundleID = BladeCLIUtil.installBundle(springmvcPortletWar);
+		_springmvcbundleId = BladeCLIUtil.installBundle(springmvcPortletWar);
 
-		BladeCLIUtil.startBundle(bundleID);
+		BladeCLIUtil.startBundle(_springmvcbundleId);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -260,9 +260,9 @@ public class BladeSpringMVCPortletTest {
 		}
 	}
 
-	private static String _fooApiJarBSN = "com.liferay.blade.foo.api";
-	private static String _fooServiceJarBSN = "com.liferay.blade.foo.service";
-	private static String _springmvcPortletWarBSN = "springmvc-portlet";
+	private static String _fooApiJarBSN = "blade.servicebuilder.api";
+	private static String _fooServiceJarBSN = "blade.servicebuilder.svc";
+	private static String _springmvcbundleId;
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
 	private WebElement _addButton;
@@ -273,7 +273,7 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(css = "input[id$='field5']")
 	private WebElement _field5Form;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr/td[6]")
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table//..//tr/td[6]")
 	private WebElement _firstRowField5;
 
 	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
@@ -285,13 +285,13 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Edit')]")
 	private WebElement _lfrMenuEdit;
 
-	@PortalURL("bladespringmvc_WAR_springmvcportlet")
+	@PortalURL("bladespringmvc_WAR_bladespringmvc")
 	private URL _portletURL;
 
 	@FindBy(css = "button[type=submit]")
 	private WebElement _saveButton;
 
-	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr[2]/td[6]")
+	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_bladespringmvc')]/table//..//tr[2]/td[6]")
 	private WebElement _secondRowField5;
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")

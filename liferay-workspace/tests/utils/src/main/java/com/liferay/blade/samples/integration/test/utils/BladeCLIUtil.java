@@ -21,8 +21,6 @@ import aQute.bnd.version.Version;
 
 import aQute.lib.io.IO;
 
-import com.liferay.portal.kernel.util.StringUtil;
-
 import java.io.File;
 import java.io.InputStream;
 
@@ -127,8 +125,6 @@ public class BladeCLIUtil {
 		if (errorList.size() == 1) {
 			Assert.assertTrue(errorList.get(0), errorList.get(0).isEmpty());
 		}
-
-		output = StringUtil.toLowerCase(output);
 
 		return output;
 	}

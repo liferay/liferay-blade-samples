@@ -34,9 +34,6 @@ testIntegration {
 	systemProperty 'dependency1', project(':modules:blade.servicebuilder.api').jar.archivePath
 	systemProperty 'jarFile', jar.archivePath
 
-	finalizedBy {
-		stopTestableTomcat
-	}
 }
 
 stopTestableTomcat {

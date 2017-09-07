@@ -237,9 +237,9 @@ public class BladeServiceBuilderTest {
 		}
 	}
 
-	private static String _fooApiJarBSN = "com.liferay.blade.foo.api";
-	private static String _fooServiceJarBSN = "com.liferay.blade.foo.service";
-	private static String _fooWebJarBSN = "com.liferay.blade.foo.web";
+	private static String _fooApiJarBSN = "blade.servicebuilder.api";
+	private static String _fooServiceJarBSN = "blade.servicebuilder.svc";
+	private static String _fooWebJarBSN = "blade.servicebuilder.web";
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
 	private WebElement _addButton;
