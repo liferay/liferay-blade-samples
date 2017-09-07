@@ -9,7 +9,7 @@ buildscript {
 	}
 }
 
-subprojects {
+subprojects { subproject ->
 	buildscript {
 		repositories {
 			maven {
@@ -28,14 +28,16 @@ subprojects {
 		}
 	}
 
-	liferay {
-		appServers {
-			tomcat {
-				if (project.hasProperty('latestBranch')) {
-					version = "8.5.20"
-				}
-				else {
-				version = "8.0.32"
+	subproject.plugins.withId("com.liferay.plugin") {
+		liferay {
+			appServers {
+				tomcat {
+					if (project.hasProperty('latestBranch')) {
+						version = "8.5.20"
+					}
+					else {
+					version = "8.0.32"
+					}
 				}
 			}
 		}
