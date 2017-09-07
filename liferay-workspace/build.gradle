@@ -27,6 +27,19 @@ subprojects {
 			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
 	}
+
+	liferay {
+		appServers {
+			tomcat {
+				if (project.hasProperty('latestBranch')) {
+					version = "8.5.20"
+				}
+				else {
+				version = "8.0.32"
+				}
+			}
+		}
+	}
 }
 
 configurations {
