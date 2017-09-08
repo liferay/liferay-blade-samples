@@ -105,3 +105,4 @@ stopTestableTomcat {
 }
 
 check.dependsOn testFunctional
+stopTestableTomcat.mustRunAfter testFunctional

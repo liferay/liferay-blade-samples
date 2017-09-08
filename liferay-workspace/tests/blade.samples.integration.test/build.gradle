@@ -52,3 +52,5 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
+
+stopTestableTomcat.mustRunAfter testIntegration
