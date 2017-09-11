@@ -24,24 +24,44 @@ startTestableTomcat {
 testIntegration {
 	outputs.upToDateWhen { false }
 
-	dependsOn ":initBundle", startTestableTomcat
+	//dependsOn ":initBundle", startTestableTomcat
 
 	beforeSuite {
 		def moduleOutputPaths = []
 
-		project(":modules").subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
+		rootProject.subprojects { p ->
+			def tempOutput
+
+			p.plugins.withType(WarPlugin) {
+				tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
 			}
+
+			if (tempOutput == null) {
+				p.plugins.withType(JavaPlugin) {
+					tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
+				}
+			}
+
+			if (tempOutput != null) {
+				moduleOutputPaths << tempOutput
+			}
+
 		}
 
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
+		moduleOutputPaths.removeAll { it.contains("test") }
+
+		systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
 	}
 
-	project(":modules").subprojects { p ->
+	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
 		}
+
+		p.plugins.withType(WarPlugin) {
+			dependsOn p.tasks["war"]
+		}
+
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
