@@ -172,17 +172,14 @@ public class BladeCLIUtil {
 				"webbundle:file://" + file +
 					"?Web-ContextPath=/" + printFileName);
 
-			bundleID = output.substring(
-				output.indexOf("bundle id:") + 11,
-				output.indexOf("\n", output.indexOf("bundle id:")));
+			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
+
 		}
 
 		else {
 			output = execute("sh", "install", file.toURI().toASCIIString());
 
-			bundleID = output.substring(
-					output.indexOf("bundle id:") + 11,
-					output.indexOf("\n", output.indexOf("bundle id:")));
+			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
 		}
 
 		if (output.contains("Failed") || output.contains("Exception")) {
