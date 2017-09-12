@@ -63,10 +63,7 @@ public class BladeSamplesUpdatePortletTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
-		_modulesDir = new File(
-			System.getProperty("user.dir")).getParentFile();
-
-		_modulesDir = new File(_modulesDir, "modules");
+		_modulesDir = new File(System.getProperty("modulesDir"));
 
 		_projectPath = BladeCLIUtil.createProject(
 			_modulesDir, "mvc-portlet", "helloworld");
