@@ -21,8 +21,6 @@ import aQute.bnd.version.Version;
 
 import aQute.lib.io.IO;
 
-import com.liferay.portal.kernel.util.StringUtil;
-
 import java.io.File;
 import java.io.InputStream;
 
@@ -128,8 +126,6 @@ public class BladeCLIUtil {
 			Assert.assertTrue(errorList.get(0), errorList.get(0).isEmpty());
 		}
 
-		output = StringUtil.toLowerCase(output);
-
 		return output;
 	}
 
@@ -177,19 +173,21 @@ public class BladeCLIUtil {
 					"?Web-ContextPath=/" + printFileName);
 
 			bundleID = output.substring(
-				output.indexOf("bundle id:") + 11,
-				output.indexOf("\n", output.indexOf("bundle id:")));
+				output.indexOf("ID:") + 4,
+				output.lastIndexOf("\n"));
+
 		}
 
 		else {
 			output = execute("sh", "install", file.toURI().toASCIIString());
 
 			bundleID = output.substring(
-					output.indexOf("bundle id:") + 11,
-					output.indexOf("\n", output.indexOf("bundle id:")));
+				output.indexOf("ID:") + 4,
+				output.lastIndexOf("\n"));
 		}
 
-		if (output.contains("Failed") || output.contains("Exception")) {
+		if (output.toLowerCase().contains("failed") ||
+			output.toLowerCase().contains("exception")) {
 			throw new Exception(output);
 		}
 
@@ -199,7 +197,7 @@ public class BladeCLIUtil {
 	public static String startBundle(String bundleID) throws Exception {
 		String output = execute("sh", "start", bundleID);
 
-		if (output.contains("Exception")) {
+		if (output.toLowerCase().contains("exception")) {
 			throw new Exception(output);
 		}
 
