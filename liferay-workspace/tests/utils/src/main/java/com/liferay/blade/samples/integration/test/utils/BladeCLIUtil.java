@@ -1,27 +1,25 @@
 /**
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ * Copyright 2000-present Liferay, Inc.
  *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
-package com.liferay.blade.samples.test;
-
-import static org.junit.Assert.assertTrue;
+package com.liferay.blade.samples.integration.test.utils;
 
 import aQute.bnd.osgi.Domain;
 import aQute.bnd.version.Version;
 
 import aQute.lib.io.IO;
-
-import com.liferay.portal.kernel.util.StringUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -30,8 +28,12 @@ import java.net.URL;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+
+import org.junit.Assert;
 
 /**
  * @author Lawrence Lee
@@ -90,23 +92,39 @@ public class BladeCLIUtil {
 
 		List<String> errorList = new ArrayList<>();
 
+		String stringStream = null;
+
 		if (errorStream != null) {
-			errorList.add(new String(IO.read(errorStream)));
+			stringStream = new String(IO.read(errorStream));
+
+			errorList.add(stringStream);
 		}
 
 		List<String> filteredErrorList = new ArrayList<>();
 
 		for (String string : errorList) {
-			if (!string.isEmpty() &&
-				!string.contains("Picked up JAVA_TOOL_OPTIONS:")) {
+			String exclusion = "(.*setlocale.*)";
 
+			Pattern p = Pattern.compile(exclusion, Pattern.DOTALL);
+
+			Matcher m = p.matcher(string);
+
+			while (m.find()) {
+				filteredErrorList.add(string);
+			}
+
+			if (string.contains("Picked up JAVA_TOOL_OPTIONS:")) {
 				filteredErrorList.add(string);
 			}
 		}
 
-		assertTrue(filteredErrorList.toString(), filteredErrorList.isEmpty());
+		errorList.removeAll(filteredErrorList);
 
-		output = StringUtil.toLowerCase(output);
+		Assert.assertTrue(errorList.toString(), errorList.size() <= 1);
+
+		if (errorList.size() == 1) {
+			Assert.assertTrue(errorList.get(0), errorList.get(0).isEmpty());
+		}
 
 		return output;
 	}
@@ -139,13 +157,32 @@ public class BladeCLIUtil {
 	}
 
 	public static String installBundle(File file) throws Exception {
-		String output = execute("sh", "install", file.toURI().toString());
+		String printFileName;
+		String bundleID;
+		String output;
 
-		String bundleID = output.substring(
-			output.indexOf("bundle id:") + 11,
-			output.indexOf("\n", output.indexOf("bundle id:")));
+		if (file.getName().endsWith(".war")) {
+			printFileName = file.getName();
 
-		if (output.contains("Failed") || output.contains("IOException")) {
+			printFileName = printFileName.substring(
+				0, printFileName.lastIndexOf('.'));
+
+			output = BladeCLIUtil.execute(
+				"sh", "install",
+				"webbundle:file://" + file +
+					"?Web-ContextPath=/" + printFileName);
+
+			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
+
+		}
+
+		else {
+			output = execute("sh", "install", file.toURI().toASCIIString());
+
+			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
+		}
+
+		if (output.contains("Failed") || output.contains("Exception")) {
 			throw new Exception(output);
 		}
 

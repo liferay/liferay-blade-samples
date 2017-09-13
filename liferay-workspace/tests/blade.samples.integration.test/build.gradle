@@ -3,13 +3,12 @@ apply plugin: 'groovy'
 dependencies {
 	compile gradleApi()
 	compile gradleTestKit()
-	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.1.0"
+	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
 	compile group: "com.squareup.okhttp3", name: "okhttp", version: "3.3.1"
 	compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
 	compile group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
 
-	testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
-	testCompile group: "commons-io", name: "commons-io", version: "2.5"
+	testCompile project(":tests:utils")
 }
 
 repositories {
@@ -25,31 +24,47 @@ startTestableTomcat {
 testIntegration {
 	outputs.upToDateWhen { false }
 
-	dependsOn ":initBundle", startTestableTomcat
+	//dependsOn ":initBundle", startTestableTomcat
 
 	beforeSuite {
 		def moduleOutputPaths = []
 
-		project(":modules").subprojects { p ->
-			p.plugins.withType(JavaPlugin) {
-				moduleOutputPaths << p.tasks["jar"].outputs.files.singleFile.absolutePath
+		rootProject.subprojects { p ->
+			def tempOutput
+
+			p.plugins.withType(WarPlugin) {
+				tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
 			}
+
+			if (tempOutput == null) {
+				p.plugins.withType(JavaPlugin) {
+					tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
+				}
+			}
+
+			if (tempOutput != null) {
+				moduleOutputPaths << tempOutput
+			}
+
 		}
 
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.join(",")
+		moduleOutputPaths.removeAll { it.contains("test") }
+
+		systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
 	}
 
-	project(":modules").subprojects { p ->
+	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
 		}
+
+		p.plugins.withType(WarPlugin) {
+			dependsOn p.tasks["war"]
+		}
+
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
-
-	finalizedBy {
-		stopTestableTomcat
-	}
 }
 
 stopTestableTomcat {
@@ -57,3 +72,5 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
+
+stopTestableTomcat.mustRunAfter testIntegration

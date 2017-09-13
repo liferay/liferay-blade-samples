@@ -53,7 +53,7 @@ public class BladePortletActionCommandTest {
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("portletActionommandJarFile"));
+			System.getProperty("actionCommandPortletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
