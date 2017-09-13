@@ -56,12 +56,9 @@ public class BladeSamplesUpdateFragmentTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
-		_overridesPath = new File(
-			System.getProperty("user.dir")).getParentFile().getParentFile();
+		_overridesPath = new File(System.getProperty("projectDir"), "overrides");
 
-		_overridesPath = new File(_overridesPath, "overrides");
-
-		File moduleJspPath = new File(_overridesPath, "module-jsp-override");
+		File moduleJspPath = new File(System.getProperty("projectDir"), "overrides/module-jsp-override");
 
 		_projectPath = new File(_overridesPath, "module-jsp-override-samples");
 

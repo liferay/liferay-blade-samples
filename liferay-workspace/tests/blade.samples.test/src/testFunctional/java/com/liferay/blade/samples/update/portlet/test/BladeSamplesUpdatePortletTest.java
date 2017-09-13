@@ -63,15 +63,12 @@ public class BladeSamplesUpdatePortletTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
-		_appsDir = new File(
-			System.getProperty("user.dir")).getParentFile().getParentFile();
-
-		_appsDir = new File(_appsDir, "apps");
+		_appsDir = new File(System.getProperty("projectDir"), "apps");
 
 		_projectPath = BladeCLIUtil.createProject(
 			_appsDir, "mvc-portlet", "helloworld");
 
-		_buildStatus = BladeCLIUtil.execute(_projectPath, "gw", "assemble");
+		BladeCLIUtil.execute(_projectPath, "gw", "assemble");
 
 		File buildOutput = new File(
 			_projectPath + "/build/libs/helloworld-1.0.0.jar");

@@ -93,6 +93,7 @@ task testFunctional(type: Test) {
 		systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
+		systemProperty 'projectDir', rootProject.projectDir
 		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
 	}
 
