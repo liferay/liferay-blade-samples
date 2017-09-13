@@ -113,18 +113,13 @@ replicateSources.doLast {
 				fileset(dir: canonicalProject, includes: "*.markdown")
 			}
 
-			def replicationSrc = new File( replicationProject, 'src/' )
-
-			replicationSrc.listFiles().each { dir ->
-				if (!dir.name.startsWith("test")) {
-					dir.deleteDir()
+			ant.copy(todir: replicationProject) {
+				fileset(dir: canonicalProject) {
+					include(name: 'src/')
+					include(name: 'service.xml')
+					include(name: '*.properties')
+					exclude(name: '**/test**/')
 				}
-			}
-
-			def canonicalSrc = new File( canonicalProject, 'src/' )
-
-			ant.copy(todir: replicationSrc) {
-				fileset(dir: canonicalSrc, includes: "**", excludes: "**/test**/")
 			}
 		}
 	}
