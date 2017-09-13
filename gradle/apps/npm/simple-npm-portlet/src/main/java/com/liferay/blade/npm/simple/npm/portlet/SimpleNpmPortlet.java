@@ -7,7 +7,7 @@ import javax.portlet.Portlet;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * @author Iván Zaera Avellón
+ * @author Liferay
  */
 @Component(
 	immediate = true,
