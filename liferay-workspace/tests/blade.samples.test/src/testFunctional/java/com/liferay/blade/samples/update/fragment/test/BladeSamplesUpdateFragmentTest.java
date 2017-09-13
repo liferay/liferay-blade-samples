@@ -56,10 +56,7 @@ public class BladeSamplesUpdateFragmentTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
-		_modulesDir = new File(
-			System.getProperty("user.dir")).getParentFile().getParentFile();
-
-		_modulesDir = new File(_modulesDir, "modules");
+		_modulesDir = new File(System.getProperty("projectDir"), "modules");
 
 		File moduleJspPath = new File(_modulesDir, "blade.hook.jsp");
 

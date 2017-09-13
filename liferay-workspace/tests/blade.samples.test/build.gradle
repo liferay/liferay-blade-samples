@@ -84,10 +84,10 @@ task testFunctional(type: Test) {
 		systemProperty 'languageJarFile', project(':modules:blade.language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':modules:blade.language.web').jar.archivePath
 		systemProperty 'liferayHome', liferay.liferayHome
-		systemProperty 'modulesDir', project(':modules').projectDir
 		systemProperty 'osgiPortletJarFile', project(':modules:blade.portlet.osgiapi').jar.archivePath
 		systemProperty 'portletConfigurationIconJarFile', project(':modules:blade.portlet.configuration.icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':modules:blade.portlet.toolbar.contributor').jar.archivePath
+		systemProperty 'projectDir', rootProject.projectDir
 		systemProperty 'renderCommandPortletJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
 	}
 
