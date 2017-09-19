@@ -7,7 +7,10 @@ Liferay Portal's default Control Menu. When deploying this sample with no
 customizations, an additional button is added to the User (right side) portion
 of the Control Menu.
 
-![Figure 1: The User area of the Control Menu is provided an additional link button when the Control Menu Entry Blade sample is deployed to Liferay.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/controlmenuentry.png)
+<figure>
+  <img src="https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/controlmenuentry.png" alt="Control Menu Entry"/>
+  <figcaption>Figure 1: The User area of the Control Menu is provided an additional link button when the Control Menu Entry Blade sample is deployed to Liferay.</figcaption>
+</figure><br><br>
 
 The button navigates the user to Liferay's website: https://www.liferay.com.
 
@@ -37,7 +40,10 @@ There are also two properties provided via the `@Component` annotation:
    entry should reside. The default Control Menu provides three categories:
    *SITES* (left portion), *TOOLS* (middle portion), and *USER* (right portion).
 - `product.navigation.control.menu.entry.order:Integer`: the order in which your
-   entry will be displayed in the category.
+   entry will be displayed in the category. Entries are ordered from left to
+   right. For example, an entry with order `1` will be listed to the left of an
+   entry with order `2`. If the order is not specified, it's chosen at random
+   based on which service was registered first in the OSGi container.
 
 This sample also implements the `ProductNavigationControlMenuEntry` interface.
 The following methods are implemented:
