@@ -7,7 +7,10 @@ Liferay Portal's default Control Menu. When deploying this sample with no
 customizations, an additional button is added to the User (right side) portion
 of the Control Menu.
 
-![Figure 1: The User area of the Control Menu is provided an additional link button when the Control Menu Entry Blade sample is deployed to Liferay.](https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/controlmenuentry.png)
+<figure>
+  <img src="https://github.com/codyhoag/liferay-docs/blob/blade-sample-images/develop/tutorials/blade-images/controlmenuentry.png" alt="Control Menu Entry"/>
+  <figcaption>Figure 1: The User area of the Control Menu is provided an additional link button when the Control Menu Entry Blade sample is deployed to Liferay.</figcaption>
+</figure><br><br>
 
 The button navigates the user to Liferay's website: https://www.liferay.com.
 
