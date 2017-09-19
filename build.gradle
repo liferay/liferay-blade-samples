@@ -100,9 +100,10 @@ replicateSources.doLast {
 				replicationProjects.add(replicationProject);
 			}
 
-			def replicationProject = replicationProjects.find{ it.name == canonicalProject.name }
+			def replicationProjectName = replicationProjects.find{ it.name == canonicalProject.name }
+			File replicateProject = file(replicationProjectName)
 
-			if ((canonicalSource == ("gradle" || "liferay-workspace")) && (replicationProject == ("gradle" || "liferay-workspace"))) {
+			if ((canonicalSource == "gradle" || canonicalSource == "liferay-workspace") && (replicationProjectName == "gradle" || replicationProjectName == "liferay-workspace")) {
 				ant.copy(todir: replicationProject) {
 					fileset(dir: canonicalProject, includes: "bnd.bnd", "build.gradle")
 				}
