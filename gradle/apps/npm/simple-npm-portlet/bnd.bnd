@@ -1,0 +1,4 @@
+Bundle-Name: Simple npm Portlet
+Bundle-SymbolicName: com.liferay.blade.npm.simple.npm.portlet
+Bundle-Version: 1.0.0
+Web-ContextPath: /simple-npm-portlet
