@@ -1,7 +1,25 @@
+<%--
+/**
+ * Copyright 2000-present Liferay, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+--%>
+
 <%@ include file="/init.jsp" %>
 
 <!-- Temporary workaround to obtain the library stylesheets -->
-<link rel="stylesheet" href="/o/billboardjs-portlet/node_modules/billboard.js@1.0.1/dist/billboard.css">
+<link href="/o/billboardjs-portlet/node_modules/billboard.js@1.0.1/dist/billboard.css" rel="stylesheet">
 
 <aui:script require="billboardjs-portlet@1.0.0">
 	billboardjsPortlet100.default('<portlet:namespace />');
@@ -24,14 +42,15 @@
 	<h2>D3 custom charts</h2>
 	<style>
 		.links line {
-		  stroke: #999;
-		  stroke-opacity: 0.6;
+		stroke: #999;
+		stroke-opacity: 0.6;
 		}
-		
+
 		.nodes circle {
-		  stroke: #fff;
-		  stroke-width: 1.5px;
+		stroke: #fff;
+		stroke-width: 1.5px;
 		}
 	</style>
-	<svg id="<portlet:namespace />-D3Graph" width="960" height="600"></svg>
+
+	<svg height="600" id="<portlet:namespace />-D3Graph" width="960"></svg>
 </div>

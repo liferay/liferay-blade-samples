@@ -1,9 +1,4 @@
 {
-	"description": "Angular Portlet",
-	"name": "angular-portlet",
-	"version": "1.0.0",
-	"main": "lib/angular-loader.js",
-	"private": true,
 	"dependencies": {
 		"@angular/common": "~4.2.5",
 		"@angular/compiler": "~4.2.5",
@@ -23,6 +18,7 @@
 		"rxjs": "5.4.1",
 		"zone.js": "^0.8.12"
 	},
+	"description": "Angular Portlet",
 	"devDependencies": {
 		"@types/angular": "^1.5.16",
 		"@types/angular-animate": "^1.5.5",
@@ -56,8 +52,11 @@
 		"tslint": "^5.4.3",
 		"typescript": "^2.3.4"
 	},
+	"main": "lib/angular-loader.js",
+	"name": "angular-portlet",
+	"private": true,
 	"scripts": {
-		"build":
-			"tsc && babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
-	}
+		"build": "tsc && babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+	},
+	"version": "1.0.0"
 }
