@@ -1,12 +1,8 @@
 {
-	"description": "Isomorphic npm Portlet",
-	"name": "isomorphic-npm-portlet",
-	"version": "1.0.0",
-	"main": "lib/index.es.js",
-	"private": true,
 	"dependencies": {
 		"liferay-npm-examples-isomorphic": "^1.0.0"
 	},
+	"description": "Isomorphic npm Portlet",
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
 		"babel-preset-es2015": "^6.24.1",
@@ -14,8 +10,11 @@
 		"liferay-npm-bundler": "^1.0.0",
 		"liferay-npm-bundler-preset-isomorphic": "^1.0.0"
 	},
+	"main": "lib/index.es.js",
+	"name": "isomorphic-npm-portlet",
+	"private": true,
 	"scripts": {
-		"build":
-			"babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
-	}
+		"build": "babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+	},
+	"version": "1.0.0"
 }
