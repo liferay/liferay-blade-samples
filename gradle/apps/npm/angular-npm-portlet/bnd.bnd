@@ -1,0 +1,4 @@
+Bundle-Name: Angular NPM Portlet
+Bundle-SymbolicName: com.liferay.blade.npm.angular.portlet
+Bundle-Version: 1.0.0
+Web-ContextPath: /angular-npm-portlet

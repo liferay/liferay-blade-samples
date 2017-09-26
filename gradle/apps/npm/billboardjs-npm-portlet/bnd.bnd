@@ -1,0 +1,4 @@
+Bundle-Name: Billboard.js Portlet
+Bundle-SymbolicName: com.liferay.blade.npm.billboardjs.portlet
+Bundle-Version: 1.0.0
+Web-ContextPath: /billboardjs-npm-portlet

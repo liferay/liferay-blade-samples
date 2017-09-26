@@ -1,0 +1,23 @@
+{
+	"dependencies": {
+		"metal-component": "^2.13.2",
+		"metal-incremental-dom": "^2.13.1",
+		"metal-soy": "^2.13.2"
+	},
+	"description": "Metal.js Portlet",
+	"devDependencies": {
+		"babel-cli": "^6.24.1",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-liferay-project": "^1.0.0",
+		"liferay-npm-bundler": "^1.0.0",
+		"liferay-npm-bundler-preset-standard": "^1.0.0",
+		"metal-tools-soy": "^4.2.6"
+	},
+	"main": "lib/index.es.js",
+	"name": "metaljs-npm-portlet",
+	"private": true,
+	"scripts": {
+		"build": "metalsoy && babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+	},
+	"version": "1.0.0"
+}
