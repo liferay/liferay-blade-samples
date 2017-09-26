@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.service.persistence.impl;
@@ -39,6 +37,7 @@ import com.liferay.portal.kernel.service.persistence.CompanyProvider;
 import com.liferay.portal.kernel.service.persistence.CompanyProviderWrapper;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
@@ -47,6 +46,8 @@ import com.liferay.portal.kernel.uuid.PortalUUIDUtil;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
 import java.io.Serializable;
+
+import java.lang.reflect.Field;
 
 import java.util.Collections;
 import java.util.Date;
@@ -97,7 +98,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid",
 			new String[] {
 				String.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -886,7 +887,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid_C",
 			new String[] {
 				String.class.getName(), Long.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -988,7 +989,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID_C;
 			finderArgs = new Object[] {
 					uuid, companyId,
-
+					
 					start, end, orderByComparator
 				};
 		}
@@ -1465,7 +1466,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByField2",
 			new String[] {
 				Boolean.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -1958,6 +1959,22 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 	public FooPersistenceImpl() {
 		setModelClass(Foo.class);
+
+		try {
+			Field field = ReflectionUtil.getDeclaredField(BasePersistenceImpl.class,
+					"_dbColumnNames");
+
+			Map<String, String> dbColumnNames = new HashMap<String, String>();
+
+			dbColumnNames.put("uuid", "uuid_");
+
+			field.set(this, dbColumnNames);
+		}
+		catch (Exception e) {
+			if (_log.isDebugEnabled()) {
+				_log.debug(e, e);
+			}
+		}
 	}
 
 	/**
@@ -2025,7 +2042,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 
-		clearUniqueFindersCache((FooModelImpl)foo);
+		clearUniqueFindersCache((FooModelImpl)foo, true);
 	}
 
 	@Override
@@ -2037,48 +2054,35 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			entityCache.removeResult(FooModelImpl.ENTITY_CACHE_ENABLED,
 				FooImpl.class, foo.getPrimaryKey());
 
-			clearUniqueFindersCache((FooModelImpl)foo);
+			clearUniqueFindersCache((FooModelImpl)foo, true);
 		}
 	}
 
-	protected void cacheUniqueFindersCache(FooModelImpl fooModelImpl,
-		boolean isNew) {
-		if (isNew) {
-			Object[] args = new Object[] {
-					fooModelImpl.getUuid(), fooModelImpl.getGroupId()
-				};
-
-			finderCache.putResult(FINDER_PATH_COUNT_BY_UUID_G, args,
-				Long.valueOf(1));
-			finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G, args,
-				fooModelImpl);
-		}
-		else {
-			if ((fooModelImpl.getColumnBitmask() &
-					FINDER_PATH_FETCH_BY_UUID_G.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] {
-						fooModelImpl.getUuid(), fooModelImpl.getGroupId()
-					};
-
-				finderCache.putResult(FINDER_PATH_COUNT_BY_UUID_G, args,
-					Long.valueOf(1));
-				finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G, args,
-					fooModelImpl);
-			}
-		}
-	}
-
-	protected void clearUniqueFindersCache(FooModelImpl fooModelImpl) {
+	protected void cacheUniqueFindersCache(FooModelImpl fooModelImpl) {
 		Object[] args = new Object[] {
 				fooModelImpl.getUuid(), fooModelImpl.getGroupId()
 			};
 
-		finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_G, args);
-		finderCache.removeResult(FINDER_PATH_FETCH_BY_UUID_G, args);
+		finderCache.putResult(FINDER_PATH_COUNT_BY_UUID_G, args,
+			Long.valueOf(1), false);
+		finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G, args, fooModelImpl,
+			false);
+	}
+
+	protected void clearUniqueFindersCache(FooModelImpl fooModelImpl,
+		boolean clearCurrent) {
+		if (clearCurrent) {
+			Object[] args = new Object[] {
+					fooModelImpl.getUuid(), fooModelImpl.getGroupId()
+				};
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_G, args);
+			finderCache.removeResult(FINDER_PATH_FETCH_BY_UUID_G, args);
+		}
 
 		if ((fooModelImpl.getColumnBitmask() &
 				FINDER_PATH_FETCH_BY_UUID_G.getColumnBitmask()) != 0) {
-			args = new Object[] {
+			Object[] args = new Object[] {
 					fooModelImpl.getOriginalUuid(),
 					fooModelImpl.getOriginalGroupId()
 				};
@@ -2250,8 +2254,34 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-		if (isNew || !FooModelImpl.COLUMN_BITMASK_ENABLED) {
+		if (!FooModelImpl.COLUMN_BITMASK_ENABLED) {
 			finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+		}
+		else
+		 if (isNew) {
+			Object[] args = new Object[] { fooModelImpl.getUuid() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID,
+				args);
+
+			args = new Object[] {
+					fooModelImpl.getUuid(), fooModelImpl.getCompanyId()
+				};
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
+				args);
+
+			args = new Object[] { fooModelImpl.getField2() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
+				args);
+
+			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
+				FINDER_ARGS_EMPTY);
 		}
 
 		else {
@@ -2309,8 +2339,8 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		entityCache.putResult(FooModelImpl.ENTITY_CACHE_ENABLED, FooImpl.class,
 			foo.getPrimaryKey(), foo, false);
 
-		clearUniqueFindersCache(fooModelImpl);
-		cacheUniqueFindersCache(fooModelImpl, isNew);
+		clearUniqueFindersCache(fooModelImpl, false);
+		cacheUniqueFindersCache(fooModelImpl);
 
 		foo.resetOriginalValues();
 
@@ -2491,7 +2521,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		query.append(_SQL_SELECT_FOO_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append(String.valueOf(primaryKey));
+			query.append((long)primaryKey);
 
 			query.append(StringPool.COMMA);
 		}
