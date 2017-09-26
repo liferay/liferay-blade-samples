@@ -16,6 +16,7 @@
 
 package com.liferay.blade.samples.portlet.control.panel.test;
 
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -56,19 +54,6 @@ public class BladePortletControlPanelTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
-
-		WebElement element = wait.until(
-			ExpectedConditions.elementToBeClickable(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletControlPanel()
 		throws InterruptedException, MalformedURLException, PortalException {
@@ -80,27 +65,16 @@ public class BladePortletControlPanelTest {
 		_webDriver.get(url.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_controlPanelPortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _controlPanelPortlet));
 
 		Assert.assertTrue(
-				"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
-				_portletTitle.getText().contentEquals("Control Panel Demo"));
+			"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
+			_portletTitle.getText().contentEquals("Control Panel Demo"));
 
 		Assert.assertTrue("Expected We are in the control panel, but saw: " + _portletBody.getText(),
 			_portletBody.getText().contentEquals("We are in the control panel"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'ControlPanelAppPortlet')]")

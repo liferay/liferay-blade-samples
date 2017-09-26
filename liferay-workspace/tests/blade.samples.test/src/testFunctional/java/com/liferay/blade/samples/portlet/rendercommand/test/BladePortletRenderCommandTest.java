@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.rendercommand.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -56,19 +54,6 @@ public class BladePortletRenderCommandTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletRender()
 		throws InterruptedException, PortalException {
@@ -76,7 +61,7 @@ public class BladePortletRenderCommandTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleRenderPortlet));
+			"Portlet was not deployed", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _bladeSampleRenderPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade Render Portlet, but saw " +
@@ -84,44 +69,16 @@ public class BladePortletRenderCommandTest {
 			_portletTitle.getText().contentEquals("Blade Render Portlet"));
 
 		Assert.assertTrue(
-			"Render Command Button is not visible", isVisible(_portletButton));
+			"Render Command Button is not visible", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _portletButton));
 
-		customClick(_webDriver, _portletButton);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletButton);
 
 		Assert.assertTrue(
-			"Render Page is not available", isVisible(_portletBody));
+			"Render Page is not available", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _portletBody));
 
 		Assert.assertTrue(
 			"Expected render page, but saw " + _portletBody.getText(),
-			isTextPresent(_portletBody, "render page"));
-	}
-
-	protected boolean isTextPresent(WebElement webelement, String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(
-				ExpectedConditions.textToBePresentInElement(
-					webelement, string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			BladeSampleFunctionalActionUtil.isTextPresent(_webDriver, _portletBody, "render page"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]")

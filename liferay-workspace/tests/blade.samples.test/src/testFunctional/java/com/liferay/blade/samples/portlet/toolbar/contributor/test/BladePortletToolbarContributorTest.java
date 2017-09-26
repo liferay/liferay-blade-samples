@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.toolbar.contributor.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -56,19 +54,6 @@ public class BladePortletToolbarContributorTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 15);
-
-		WebElement element = wait.until(
-			ExpectedConditions.elementToBeClickable(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletToolbarContributor()
 		throws InterruptedException, PortalException {
@@ -76,62 +61,23 @@ public class BladePortletToolbarContributorTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_helloWorldPortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _helloWorldPortlet));
 
 		Assert.assertTrue(
 			"Portlet Topper Toolbar is not clickable",
-			isClickable(_portletTopperToolbar));
+			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _portletTopperToolbar));
 
-		customClick(_webDriver, _portletTopperToolbar);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletTopperToolbar);
 
-		customClick(_webDriver, _lfrMenuLiferay);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuLiferay);
 
 		Thread.sleep(2000);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
-			isPageLoaded("https://www.liferay.com/"));
-	}
-
-	protected boolean isClickable(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
-
-		try {
-			webDriverWait.until(
-				ExpectedConditions.elementToBeClickable(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isPageLoaded(String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
-
-		try {
-			webDriverWait.until(ExpectedConditions.urlMatches(string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			BladeSampleFunctionalActionUtil.isPageLoaded(_webDriver, "https://www.liferay.com/"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet')]")

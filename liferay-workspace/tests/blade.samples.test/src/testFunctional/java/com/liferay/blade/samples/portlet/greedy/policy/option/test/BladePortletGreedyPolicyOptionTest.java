@@ -21,6 +21,7 @@ import aQute.lib.io.IO;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 import java.io.File;
 
@@ -40,10 +41,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -65,25 +63,14 @@ public class BladePortletGreedyPolicyOptionTest {
 		new JMXBundleDeployer().uninstall(_higherRankedServiceJarBSN);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletGreedy() throws Exception {
 		_webDriver.get(_greedyPortletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleGreedyPortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleGreedyPortlet));
 
 		Assert.assertTrue(
 			"Expected Greedy Portlet, but saw " +
@@ -107,8 +94,9 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am better, use me!, but saw " +
 				_greedyPortletBody.getText(),
-			isTextVisible(
-				_greedyPortletBody, "SomeService says I am better, use me!"));
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _greedyPortletBody,
+				"SomeService says I am better, use me!"));
 	}
 
 	@Test
@@ -117,7 +105,8 @@ public class BladePortletGreedyPolicyOptionTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			isVisible(_bladeSampleReluctantPortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleReluctantPortlet));
 
 		Assert.assertTrue(
 			"Expected Reluctant Portlet, but saw " +
@@ -142,8 +131,9 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am Default!, but saw " +
 				_reluctantPortletBody.getText(),
-			isTextVisible(
-				_reluctantPortletBody, "SomeService says I am Default!"));
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _reluctantPortletBody,
+				"SomeService says I am Default!"));
 
 		final File greedyServiceReferenceConfigFile = new File(
 			System.getProperty("greedyServiceReferenceProjectdir"),
@@ -167,37 +157,9 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am better, use me!, but saw " +
 				_reluctantPortletBody.getText(),
-			isTextVisible(
-				_reluctantPortletBody,
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _reluctantPortletBody,
 				"SomeService says I am better, use me!"));
-	}
-
-	protected boolean isTextVisible(WebElement webelement, String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
-
-		try {
-			webDriverWait.until(
-				ExpectedConditions.textToBePresentInElement(
-					webelement, string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	private static String _higherRankedServiceJarBSN =
