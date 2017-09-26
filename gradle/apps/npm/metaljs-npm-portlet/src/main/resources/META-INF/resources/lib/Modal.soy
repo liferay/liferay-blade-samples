@@ -1,0 +1,31 @@
+{namespace Modal}
+
+/**
+ * This renders the component's whole content.
+ * Note: has to be called ".render".
+ * @param body
+ * @param close
+ * @param header
+ * @param shown
+ */
+{template .render}
+	<div class="liferay-npm-example-metal-modal modal {$shown ? '': 'hide'}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				{call CloseHeader.render}
+					{param cssClass: 'modal-header' /}
+					{param onClick: $close /}
+					{param title: $header /}
+				{/call}
+				<section class="modal-body">
+					{$body}
+				</section>
+				<footer class="modal-footer">
+					<button type="button" class="btn btn-primary" onClick="{$close}">
+						OK
+					</button>
+				</footer>
+			</div>
+		</div>
+	</div>
+{/template}
