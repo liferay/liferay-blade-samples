@@ -16,7 +16,7 @@ import groovy.io.FileType
 
 
 
-FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar')
+FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar', exclude: '**/npm/**/libs/*.jar')
 FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', exclude: 'tests/*')
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
