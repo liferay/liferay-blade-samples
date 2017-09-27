@@ -1,0 +1,9 @@
+Bundle-Name: jndi-api
+Bundle-SymbolicName: com.liferay.blade.samples.jndiservicebuilder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.samples.jndiservicebuilder.exception,\
+	com.liferay.blade.samples.jndiservicebuilder.model,\
+	com.liferay.blade.samples.jndiservicebuilder.service,\
+	com.liferay.blade.samples.jndiservicebuilder.service.persistence
+-includeresource: META-INF/service.xml=../jndi-service/service.xml
