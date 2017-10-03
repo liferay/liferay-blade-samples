@@ -18,12 +18,6 @@
 
 <%@ include file="/init.jsp" %>
 
-<aui:script require="vuejs-npm-portlet@1.0.0">
-	vuejsNpmPortlet100.default('<portlet:namespace />');
-</aui:script>
-
-<hr />
-
 <div id="<portlet:namespace />-1">
 	<p>A friendly reversible message from Vue.js:</p>
 	<p>{{message}}</p>
@@ -42,3 +36,7 @@
 		/>
 	</ol>
 </div>
+
+<aui:script require="vuejs-npm-portlet@1.0.0">
+	vuejsNpmPortlet100.default('<portlet:namespace />');
+</aui:script>

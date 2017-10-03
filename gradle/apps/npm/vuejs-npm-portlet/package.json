@@ -1,14 +1,14 @@
 {
 	"dependencies": {
-		"vue": "^2.3.3"
+		"vue": "2.4.4"
 	},
 	"description": "Vue.js Portlet",
 	"devDependencies": {
-		"babel-cli": "^6.24.1",
-		"babel-preset-es2015": "^6.24.1",
-		"babel-preset-liferay-project": "^1.0.0",
-		"liferay-npm-bundler": "^1.0.0",
-		"liferay-npm-bundler-preset-vue": "^1.0.0"
+		"babel-cli": "6.26.0",
+		"babel-preset-es2015": "6.24.1",
+		"babel-preset-liferay-project": "1.2.2",
+		"liferay-npm-bundler": "1.2.2",
+		"liferay-npm-bundler-preset-vue": "1.2.2"
 	},
 	"main": "lib/index.es.js",
 	"name": "vuejs-npm-portlet",

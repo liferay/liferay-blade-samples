@@ -4,11 +4,11 @@
 	},
 	"description": "jQuery Portlet",
 	"devDependencies": {
-		"babel-cli": "^6.24.1",
-		"babel-preset-es2015": "^6.24.1",
-		"babel-preset-liferay-project": "^1.0.0",
-		"liferay-npm-bundler": "^1.0.0",
-		"liferay-npm-bundler-preset-amd": "^1.0.0"
+		"babel-cli": "6.26.0",
+		"babel-preset-es2015": "6.24.1",
+		"babel-preset-liferay-project": "1.2.2",
+		"liferay-npm-bundler": "1.2.2",
+		"liferay-npm-bundler-preset-amd": "1.2.2"
 	},
 	"main": "lib/index.es.js",
 	"name": "jquery-npm-portlet",

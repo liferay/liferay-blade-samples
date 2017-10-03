@@ -14,8 +14,6 @@ import net.diibadaaba.zipdiff.Differences
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import groovy.io.FileType
 
-
-
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar', exclude: '**/npm/**/libs/*.jar')
 FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', exclude: 'tests/*')
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
@@ -90,6 +88,7 @@ replicateSources.doLast {
 		}
 
 		canonicalProjects.removeAll { it.name.contains("test") }
+		canonicalProjects.removeAll { it.name.contains("npm") }
 	}
 
 	canonicalProjects.each { canonicalProject ->

@@ -18,8 +18,8 @@
 
 <%@ include file="/init.jsp" %>
 
+<div id="<portlet:namespace />-root"></div>
+
 <aui:script require="react-npm-portlet@1.0.0">
 	reactNpmPortlet100.default('<portlet:namespace />-root');
 </aui:script>
-
-<div id="<portlet:namespace />-root"></div>

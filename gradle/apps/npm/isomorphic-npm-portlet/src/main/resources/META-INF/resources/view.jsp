@@ -18,8 +18,10 @@
 
 <%@ include file="/init.jsp" %>
 
+<pre id="<portlet:namespace />-output">
+</pre>
+
 <aui:script require="isomorphic-npm-portlet@1.0.0">
-	debugger
 	var out = document.getElementById('<portlet:namespace />-output');
 
 	out.innerHTML += 'Portlet main module loaded.\n';
@@ -32,6 +34,3 @@
 		}
 	});
 </aui:script>
-
-<pre id="<portlet:namespace />-output">
-</pre>
