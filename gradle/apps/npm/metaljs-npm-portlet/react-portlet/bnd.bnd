@@ -1,4 +1,0 @@
-Bundle-Name: React Portlet
-Bundle-SymbolicName: com.liferay.blade.npm.react.portlet
-Bundle-Version: 1.0.0
-Web-ContextPath: /react-npm-portlet
