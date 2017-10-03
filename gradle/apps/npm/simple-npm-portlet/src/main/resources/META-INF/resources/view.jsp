@@ -18,6 +18,9 @@
 
 <%@ include file="/init.jsp" %>
 
+<pre id="<portlet:namespace />-output">
+</pre>
+
 <aui:script require="simple-npm-portlet@1.0.0">
 	window.out = document.getElementById('<portlet:namespace />-output');
 
@@ -26,6 +29,3 @@
 
 	simpleNpmPortlet100.default();
 </aui:script>
-
-<pre id="<portlet:namespace />-output">
-</pre>
