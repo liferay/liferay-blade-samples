@@ -229,7 +229,7 @@ public class BladeJspWarPortletTest {
 	@FindBy(xpath = "//div[contains(@id,'jspwarportlet_WAR_jspwarportlet')]/table//..//tr/td[2]")
 	private WebElement _firstRowField5;
 
-	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
+	@FindBy(xpath = "//div[@class='btn-group lfr-icon-menu']/a")
 	private WebElement _lfrIconMenu;
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[2]/a[contains(.,'Delete')]")

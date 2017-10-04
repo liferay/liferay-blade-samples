@@ -226,7 +226,7 @@ public class BladeServiceBuilderTest {
 	@FindBy(xpath = "//div[contains(@id,'_com_liferay_blade_samples_servicebuilder_web')]/table//..//tr/td[6]")
 	private WebElement _firstRowField5;
 
-	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
+	@FindBy(xpath = "//div[@class='btn-group lfr-icon-menu']/a")
 	private WebElement _lfrIconMenu;
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[2]/a[contains(.,'Delete')]")
