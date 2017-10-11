@@ -17,13 +17,12 @@
 package com.liferay.blade.samples.portlet.actioncommand.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
 
 import java.net.URL;
-
-import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -38,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -58,73 +54,35 @@ public class BladePortletActionCommandTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletActionCommand()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			isVisible(_bladeSampleActionCommandGreeterPortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleActionCommandGreeterPortlet));
 
-		Assert.assertTrue("Name Field is not visible", isVisible(_nameField));
-
-		_webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		Assert.assertTrue(
+			"Name Field is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _nameField));
 
 		_nameField.clear();
 
 		_nameField.sendKeys("tester");
 
-		customClick(_webDriver, _saveButton);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
 				_portletBody.getText(),
-			isTextPresent(
-				_portletBody,
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _portletBody,
 				"Hello tester! Welcome to OSGi Hello from BLADE!"));
-	}
-
-	protected boolean isTextPresent(WebElement webelement, String string) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(
-				ExpectedConditions.textToBePresentInElement(
-					webelement, string));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]")

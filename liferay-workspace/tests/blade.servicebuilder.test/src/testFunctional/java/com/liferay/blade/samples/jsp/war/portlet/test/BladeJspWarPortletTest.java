@@ -19,6 +19,7 @@ package com.liferay.blade.samples.jsp.war.portlet.test;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
@@ -44,10 +45,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Liferay
@@ -83,26 +81,15 @@ public class BladeJspWarPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		customClick(_webDriver, _addButton);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _addButton);
 
-		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
+		Assert.assertTrue(
+			"Field1 is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _field1Form));
 
 		_field1Form.sendKeys("JSPWarPortletTest");
 
@@ -110,10 +97,11 @@ public class BladeJspWarPortletTest {
 
 		_field5Form.sendKeys("field5");
 
-		customClick(_webDriver, _saveButton);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
+			"Service Builder Table is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _table));
 
 		Assert.assertTrue(
 			"JSPWarPortletTest is not present in table",
@@ -124,21 +112,25 @@ public class BladeJspWarPortletTest {
 	public void testDeleteFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		List<WebElement> rows = _webDriver.findElements(By.xpath(_tableRow));
 
 		int originalRows = rows.size();
 
 		Assert.assertTrue(
-			"Liferay Icon Menus is not visible", isVisible(_lfrIconMenu));
+			"Liferay Icon Menus is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrIconMenu));
 
-		customClick(_webDriver, _lfrIconMenu);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrIconMenu);
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
 
 		Assert.assertTrue(
-			"Action Menu Delete is not clickable", isClickable(_lfrMenuDelete));
+			"Action Menu Delete is not clickable",
+			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuDelete));
 
-		customClick(_webDriver, _lfrMenuDelete);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuDelete);
 
 		String source = _webDriver.getPageSource();
 
@@ -157,7 +149,8 @@ public class BladeJspWarPortletTest {
 		_webDriver.navigate().refresh();
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
+			"Service Builder Table is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _table));
 
 		rows = _webDriver.findElements(By.xpath(_tableRow));
 
@@ -175,7 +168,8 @@ public class BladeJspWarPortletTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
+			"Service Builder Table is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _table));
 
 		Assert.assertTrue(
 			"new field5 entry is not present in table",
@@ -186,58 +180,37 @@ public class BladeJspWarPortletTest {
 	public void testUpdateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue(
-			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
-
-		customClick(_webDriver, _lfrIconMenu);
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Liferay Menu Edit is not visible", isClickable(_lfrMenuEdit));
+			"Liferay Icon menu is not visible",
+			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrIconMenu));
 
-		customClick(_webDriver, _lfrMenuEdit);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
-			"Field 1 form is not visible", isVisible(_field1Form));
+			"Liferay Menu Edit is not visible",
+			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuEdit));
+
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuEdit);
+
+		Assert.assertTrue(
+			"Field 1 form is not visible",
+			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _field1Form));
 
 		_field1Form.clear();
 
 		_field1Form.sendKeys("field1 with Updated Name");
 
-		customClick(_webDriver, _saveButton);
+		BladeSampleFunctionalActionUtil.customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
+			"Service Builder Table is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _table));
 
 		Assert.assertTrue(
 			"Service Builder Table does not contain Updated Name",
 			_table.getText().contains("field1 with Updated Name"));
-	}
-
-	protected boolean isClickable(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
-
-		try {
-			webDriverWait.until(
-				ExpectedConditions.elementToBeClickable(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	private static String _fooApiJarBSN = "com.liferay.blade.foo.api";
@@ -256,7 +229,7 @@ public class BladeJspWarPortletTest {
 	@FindBy(xpath = "//div[contains(@id,'jspwarportlet_WAR_jspwarportlet')]/table//..//tr/td[2]")
 	private WebElement _firstRowField5;
 
-	@FindBy(xpath = "//a[contains(@id,'foosSearchContainer')]")
+	@FindBy(xpath = "//div[@class='btn-group lfr-icon-menu']/a")
 	private WebElement _lfrIconMenu;
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[2]/a[contains(.,'Delete')]")

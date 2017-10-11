@@ -33,9 +33,11 @@ public class GradleRunnerUtil {
 	public static BuildTask executeGradleRunner(
 		File projectDir, String... taskPath) {
 
-		BuildResult buildResult =
-			GradleRunner.create().withProjectDir(projectDir).withArguments(
-				taskPath).build();
+		GradleRunner runner = GradleRunner.create().withProjectDir(projectDir);
+
+		GradleRunner runnerWithArguments = runner.withArguments(taskPath);
+
+		BuildResult buildResult = runnerWithArguments.build();
 
 		BuildTask buildtask = null;
 

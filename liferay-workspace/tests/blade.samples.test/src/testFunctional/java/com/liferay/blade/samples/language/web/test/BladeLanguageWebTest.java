@@ -19,6 +19,7 @@ package com.liferay.blade.samples.language.web.test;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -40,8 +41,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -72,7 +71,8 @@ public class BladeLanguageWebTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleLanguagePortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _bladeSampleLanguagePortlet));
 		Assert.assertTrue(
 			_languageKeyFirst.getText(),
 			_languageKeyFirst.getText().contentEquals(
@@ -85,19 +85,6 @@ public class BladeLanguageWebTest {
 			_languageKeyThird.getText(),
 			_languageKeyThird.getText().contentEquals(
 				"I have overridden the key from BLADE Language Module!"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	private static String _languageJarBSN = "com.liferay.blade.language";
