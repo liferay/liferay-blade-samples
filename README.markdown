@@ -2,7 +2,9 @@
 
 Liferay's Blade samples provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
-start quickly and easily.
+start quickly and easily. These templates can be copied freely and contributions
+are welcome. See the [Contribution Guidelines](#contribution-guidelines) for
+more information on how to contribute new sample projects and/or documentation.
 
 ## Build Tools
 
@@ -15,6 +17,36 @@ The template projects are categorized under three build tools:
   environment.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
+
+## Contribution Guidelines
+
+When contributing a new sample, you **must** include accompanying documentation.
+
+### Sample Code
+
+You can contribute additional template samples by creating the project for one
+of the three build tools and sending a pull request to
+`liferay/liferay-blade-samples`. A repository admin will review the submission
+and replicate the project for the other three build tools, once the submission
+is approved.
+
+### Sample Docs
+
+You can contribute documentation by adding a `README.markdown` file to the root
+folder of a sample project. This article should include the following sections:
+
+- *What does this sample do when it's deployed?*
+- *What API(s) and/or code components does this sample highlight?*
+- *How does this sample leverage the API(s) and/or code component?*
+
+For example, the
+[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/resource-bundle-override)
+article explains the `resource-bundle-override` sample using the aforementioned
+sections.
+
+You can send a pull request to `codyhoag/liferay-blade-samples` for
+documentation-only submissions, or tag `@codyhoag` in a new sample contributed
+to `liferay/liferay-blade-samples` that includes documentation.
 
 ## Frameworks
 
@@ -728,14 +760,6 @@ points. We encourage you to contribute some!
 ## License
 
 [License](/LICENSE.txt)
-
-## Contribution
-
-These templates can be copied freely and contributions are welcome. You can
-contribute additional template samples by creating the project for one of the
-three build tools and sending a pull request to `liferay/liferay-blade-samples`.
-A repository admin will review the submission and replicate the project for the
-other three build tools, once the submission is approved.
 
 ## References
 
