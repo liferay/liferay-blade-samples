@@ -95,6 +95,24 @@ redeploy the Portlet plugin).
 | Liferay Workspace | [./liferay-workspace/apps/action-command-portlet](./liferay-workspace/apps/action-command-portlet)   |
 | Maven      | [./maven/apps/action-command-portlet](./maven/apps/action-command-portlet)        |
 
+### AngularJS
+
+#### AngularJS Hook
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/angularjs/angularjs-hook](./gradle/apps/angularjs/angularjs-hook) |
+| Liferay Workspace | [./liferay-workspace/apps/angularjs/angularjs-hook](./liferay-workspace/apps/angularjs/angularjs-hook)   |
+| Maven      | [./maven/apps/angularjs/angularjs-hook](./maven/apps/angularjs/angularjs-hook)        |
+
+#### AngularJS Simple Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/angularjs/angularjs-simple-portlet](./gradle/apps/angularjs/angularjs-simple-portlet) |
+| Liferay Workspace | [./liferay-workspace/apps/angularjs/angularjs-simple-portlet](./liferay-workspace/apps/angularjs/angularjs-simple-portlet)   |
+| Maven      | [./maven/apps/angularjs/angularjs-simple-portlet](./maven/apps/angularjs/angularjs-simple-portlet)        |
+
 ### Blueprint Portlet
 
 **Template project description**: Demonstrates how to use the Blueprint
@@ -178,7 +196,15 @@ Services) framework for registering a Liferay MVC portlet.
 | Liferay Workspace | [./liferay-workspace/apps/freemarker-portlet](./liferay-workspace/apps/freemarker-portlet)   |
 | Maven      | [./maven/apps/freemarker-portlet](./maven/apps/freemarker-portlet)        |
 
-### JSP Portlet 
+### Greedy Policy Option Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/greedy-policy-option-portlet](./gradle/apps/greedy-policy-option-portlet) |
+| Liferay Workspace | [./liferay-workspace/apps/greedy-policy-option-portlet](./liferay-workspace/apps/greedy-policy-option-portlet)   |
+| Maven      | [./maven/apps/greedy-policy-option-portlet](./maven/apps/greedy-policy-option-portlet)        |
+
+### JSP Portlet
 
 **Extension point description**: 
 
@@ -191,6 +217,64 @@ Services) framework for registering a Liferay MVC portlet.
 | Gradle | [./gradle/apps/jsp-portlet](./gradle/apps/jsp-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/jsp-portlet](./liferay-workspace/apps/jsp-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-portlet)        |
+
+### JSP WAR Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/jsp-war-portlet](./gradle/apps/jsp-war-portlet) |
+| Liferay Workspace | [./liferay-workspace/wars/jsp-war-portlet](./liferay-workspace/wars/jsp-war-portlet)   |
+| Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-war-portlet)        |
+
+### npm
+
+#### Angular npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/angular-npm-portlet](./gradle/apps/npm/angular-npm-portlet) |
+
+#### Billboard.js npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/billboardjs-npm-portlet](./gradle/apps/npm/billboardjs-npm-portlet) |
+
+#### Isomorphic npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/isomorphic-npm-portlet](./gradle/apps/npm/isomorphic-npm-portlet) |
+
+#### jQuery npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/jquery-npm-portlet](./gradle/apps/npm/jquery-npm-portlet) |
+
+#### Metal.js npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/metaljs-npm-portlet](./gradle/apps/npm/metaljs-npm-portlet) |
+
+#### Reactnpm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/react-npm-portlet](./gradle/apps/npm/react-npm-portlet) |
+
+#### Simple npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/simple-npm-portlet](./gradle/apps/npm/simple-npm-portlet) |
+
+#### Vue.js npm Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/vuejs-npm-portlet](./gradle/apps/npm/vuejs-npm-portlet) |
 
 ### OSGi Portlet
 
@@ -263,6 +347,14 @@ Then you can access the service via
 | Gradle | [./gradle/apps/rest](./gradle/apps/rest) |
 | Liferay Workspace | [./liferay-workspace/apps/rest](./liferay-workspace/apps/rest)   |
 | Maven      | [./maven/apps/rest](./maven/apps/rest)        |
+
+### Sample Verifier
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/sample-verifier](./gradle/apps/sample-verifier) |
+| Liferay Workspace | [./liferay-workspace/apps/sample-verifier](./liferay-workspace/apps/sample-verifier)   |
+| Maven      | [./maven/apps/sample-verifier](./maven/apps/sample-verifier)        |
 
 ### Service Builder
 
