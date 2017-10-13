@@ -76,8 +76,6 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ### Action Command Portlet
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates the `MVCActionCommand` extension
 point. It integrates the action command named `greet` with portlet `greeter`. To
 see how this example works, a portlet plugin with a portlet named **greeter**
@@ -86,8 +84,6 @@ see how this example works, a portlet plugin with a portlet named **greeter**
 `GREETER_MESSAGE`. You can independently deploy the bundle
 `blade.portlet.actioncommand` (i.e., refresh the bundle without the need to
 redeploy the Portlet plugin).
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -118,8 +114,6 @@ redeploy the Portlet plugin).
 **Template project description**: Demonstrates how to use the Blueprint
 framework for registering a Liferay MVC portlet.
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/blueprint-portlet](./gradle/apps/blueprint-portlet) |
@@ -128,12 +122,8 @@ framework for registering a Liferay MVC portlet.
 
 ### Configuration Action
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates the `ConfigurationAction`
 integration point.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -142,12 +132,6 @@ integration point.
 | Maven      | [./maven/apps/configuration-action](./maven/apps/configuration-action)          |
 
 ### Control Panel Portlet
-
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -160,8 +144,6 @@ integration point.
 **Template project description**: Demonstrates how to use the DS (Declarative
 Services) framework for registering a Liferay MVC portlet.
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/ds-portlet](./gradle/apps/ds-portlet) |
@@ -170,11 +152,7 @@ Services) framework for registering a Liferay MVC portlet.
 
 ### Filter Portlet
 
-**Extension point description**: 
-
 **Template project description**:  Demonstrates how to apply `PortletFilter`s.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -182,13 +160,9 @@ Services) framework for registering a Liferay MVC portlet.
 | Liferay Workspace | [./liferay-workspace/apps/filter-portlet](./liferay-workspace/apps/filter-portlet)   |
 | Maven      | [./maven/apps/filter-portlet](./maven/apps/filter-portlet)        |
 
-### FreeMarker Portlet 
-
-**Extension point description**: 
+### FreeMarker Portlet
 
 **Template project description**:  Demonstrates a simple FreeMarker portlet.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -198,6 +172,8 @@ Services) framework for registering a Liferay MVC portlet.
 
 ### Greedy Policy Option Portlet
 
+Refer to this sample's Readmes for more information.
+
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/greedy-policy-option-portlet](./gradle/apps/greedy-policy-option-portlet) |
@@ -206,11 +182,7 @@ Services) framework for registering a Liferay MVC portlet.
 
 ### JSP Portlet
 
-**Extension point description**: 
-
 **Template project description**:  Demonstrates a simple JSP portlet.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -281,8 +253,6 @@ Services) framework for registering a Liferay MVC portlet.
 **Template project description**: Demonstrates how to use the raw OSGI APIs for
 registering a Liferay MVC portlet.
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/osgi-portlet](./gradle/apps/osgi-portlet) |
@@ -291,12 +261,6 @@ registering a Liferay MVC portlet.
 
 ### Render Command Portlet
 
-**Extension point description**: 
-
-**Template project description**:
-
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/render-command-portlet](./gradle/apps/render-command-portlet) |
@@ -304,12 +268,6 @@ registering a Liferay MVC portlet.
 | Maven      | [./maven/apps/render-command-portlet](./maven/apps/render-command-portlet)        |
 
 ### Resource Command Portlet
-
-**Extension point description**: 
-
-**Template project description**:
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -340,8 +298,6 @@ endpoints for it. To do so, go to the Control Panel &rarr; *System* &rarr;
 Then you can access the service via
 [http://localhost:8080/o/rest-test/blade.users/list/](http://localhost:8080/o/rest-test/blade.users/list/).
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/rest](./gradle/apps/rest) |
@@ -358,16 +314,12 @@ Then you can access the service via
 
 ### Service Builder
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates how to create a Service Builder
 project separated into three bundles:
 
 * `api` bundle is for interfaces
 * `svc` bundle is for implementations
 * `web` bundle is a portlet calling the generated services 
-
-**Template projects links**:
 
 | Build tool | subproject   | Link to project's source code                                                   |
 | ---------- | ------------ | ------------------------------------------------------------------------------- |
@@ -383,7 +335,7 @@ project separated into three bundles:
 
 ### Shared Language Keys
 
-Refer to this sample's Readmes for more information.
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -415,12 +367,8 @@ Refer to this sample's Readme for more information.
 
 ### Auth Failure
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates a hook for `auth.failure` and
 `auth.max.failures`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -430,12 +378,8 @@ Refer to this sample's Readme for more information.
 
 ### Authenticator Shiro 
 
-**Extension point description**: 
-
 **Template project description**: Uses Apache Shiro for hooking
 `auth.pipeline.pre`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -445,12 +389,8 @@ Refer to this sample's Readme for more information.
 
 ### Auto Login
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates the `AutoLogin` integration
 point.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -469,12 +409,6 @@ Refer to this sample's Readme for more information.
 | Maven      | [./maven/extensions/control-menu-entry](./maven/extensions/control-menu-entry)          |
 
 ### Doclib Resource Command Override
-
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -508,8 +442,6 @@ URLs:
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
 * http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/friendly-url](./gradle/extensions/friendly-url) |
@@ -528,12 +460,7 @@ Refer to this sample's Readme for more information.
 
 ### Indexer Post Processor
 
-**Extension point description**: 
-
-**Template project description**: Demonstrates how to create a custom
-`IndexerPostProcessor`.
-
-**Template projects links**:
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -578,8 +505,6 @@ following keys are supported:
   
 **Template project description**:  Demonstrates a hook for `login.events.pre`.
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/lifecycle-login-preaction](./gradle/extensions/lifecycle-login-preaction) |
@@ -590,8 +515,6 @@ following keys are supported:
 
 Refer to this sample's Readme for more information.
 
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/model-listener](./gradle/extensions/model-listener) |
@@ -600,12 +523,8 @@ Refer to this sample's Readme for more information.
 
 ### Poll Processor
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates how to make a hook for a
 `PollerProcessor`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -615,12 +534,6 @@ Refer to this sample's Readme for more information.
 
 ### Portlet Configuration Icon
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/portlet-configuration-icon](./gradle/extensions/portlet-configuration-icon) |
@@ -628,12 +541,6 @@ Refer to this sample's Readme for more information.
 | Maven      | [./maven/extensions/portlet-configuration-icon](./maven/extensions/portlet-configuration-icon)        |
 
 ### Portlet Toolbar Contributor
-
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -643,12 +550,6 @@ Refer to this sample's Readme for more information.
 
 ### Resource Bundle
 
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
-
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/resource-bundle](./gradle/extensions/resource-bundle) |
@@ -656,12 +557,6 @@ Refer to this sample's Readme for more information.
 | Maven      | [./maven/extensions/resource-bundle](./maven/extensions/resource-bundle)        |
 
 ### Scheduler Entry
-
-**Extension point description**: 
-
-**Template project description**: 
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -681,11 +576,7 @@ Refer to this sample's Readme for more information.
 
 ### Struts Action
 
-**Extension point description**: 
-
 **Template project description**:  Demonstrates how to write a `StrutsAction`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -695,12 +586,8 @@ Refer to this sample's Readme for more information.
 
 ### Struts Portlet Action
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates how to write a
 `StrutsPortletAction`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -710,12 +597,8 @@ Refer to this sample's Readme for more information.
 
 ### User Service Wrapper
 
-**Extension point description**: 
-
 **Template project description**: Demonstrates how to wrap the
 `UserLocalService` with custom a `UserLocalServiceWrapper`.
-
-**Template projects links**:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
