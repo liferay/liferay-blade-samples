@@ -6,9 +6,10 @@
 
 	<!-- To define an external data source, the liferayDataSource Spring bean 
 		must be overridden. Other default Spring beans like liferaySessionFactory 
-		and liferayTransactionManager may optionally be overridden. You must define 
-		a prefix for your data source in your portal-ext.properties file and specify 
-		that prefix here. Here, we use the jdbc.ext prefix. -->
+		and liferayTransactionManager may optionally be overridden. 
+
+		liferayDataSourceFactory refers to the data source configured on the
+		application server. -->
 	<bean class="com.liferay.portal.dao.jdbc.spring.DataSourceFactoryBean"
 		id="liferayDataSourceFactory">
 		<property name="propertyPrefix" value="custom." />
@@ -19,6 +20,8 @@
 		</property>
 	</bean>
 
+    <!-- The data source bean refers to the factory to access the data source.
+	-->
 	<bean
 		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy"
 		id="liferayDataSource">
