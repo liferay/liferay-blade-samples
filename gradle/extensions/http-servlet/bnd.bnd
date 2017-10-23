@@ -1,0 +1,4 @@
+Bundle-Name: Demonstrates how to implement HttpServlet in Liferay
+Bundle-SymbolicName: com.liferay.blade.samples.httpservlet
+Bundle-Version: 1.0.0
+-sources: true
