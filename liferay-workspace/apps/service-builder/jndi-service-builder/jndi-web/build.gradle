@@ -10,7 +10,7 @@ dependencies {
 	compileOnly group: "org.osgi", name: "org.osgi.core", version: "5.0.0"
 	compileOnly group: "org.slf4j", name: "slf4j-api", version: "1.7.2"
 
-	compileOnly project(":apps:jndi-service-builder:jndi-api")
+	compileOnly project(":apps:service-builder:jndi-service-builder:jndi-api")
 }
 
 repositories {

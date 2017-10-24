@@ -1,5 +1,5 @@
 dependencies {
-	compileOnly project(":apps:service-builder:foo-api")
+	compileOnly  project(":apps:service-builder:simple:foo-api")
 	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.1.0"
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.service.tracker.collections", version: "2.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.util", version: "3.0.0"
@@ -11,7 +11,7 @@ dependencies {
 	testCompile group: "junit", name: "junit", version: "4.12"
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 	testCompile group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
-	testCompile project(":apps:service-builder:foo-api")
+	testCompile project(":apps:service-builder:simple:foo-api")
 }
 
 buildService {
@@ -29,10 +29,10 @@ testIntegration {
 	outputs.upToDateWhen { false }
 
 	dependsOn jar, ":initBundle", startTestableTomcat
-	dependsOn ":apps:service-builder:foo-api:jar"
+	dependsOn ":apps:service-builder:simple:foo-api:jar"
 
 	systemProperty 'jarFile', jar.archivePath
-	systemProperty 'fooApiJarFile', project(':apps:service-builder:foo-api').jar.archivePath
+	systemProperty 'fooApiJarFile', project(':apps:service-builder:simple:foo-api').jar.archivePath
 }
 
 stopTestableTomcat {

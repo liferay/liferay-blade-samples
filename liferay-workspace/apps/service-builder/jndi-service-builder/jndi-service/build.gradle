@@ -5,7 +5,7 @@ dependencies {
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
 	compileOnly group: "org.slf4j", name: "slf4j-api", version: "1.7.2"
 
-	compileOnly project(":apps:jndi-service-builder:jndi-api")
+	compileOnly project(":apps:service-builder:jndi-service-builder:jndi-api")
 }
 
 buildService {
