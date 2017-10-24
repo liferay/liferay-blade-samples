@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<beans default-destroy-method="destroy" default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- To define an external data source, the liferayDataSource Spring bean
+		must be overridden. Other default Spring beans like liferaySessionFactory
+		and liferayTransactionManager may optionally be overridden. You must define
+		a prefix for your data source in your portal-ext.properties file and specify
+		that prefix here. Here, we use the jdbc.ext prefix. -->
+	<bean class="com.liferay.portal.dao.jdbc.spring.DataSourceFactoryBean"
+		id="liferayDataSourceFactory">
+		<property name="propertyPrefix" value="jdbc.ext." />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy"
+		id="liferayDataSource"
+	>
+		<property name="targetDataSource" ref="liferayDataSourceFactory" />
+	</bean>
+
+	<!-- In service.xml, we associated our entity with the extDataSource. To
+		associate the extDataSource with our overridden liferayDataSource, we define
+		this alias. -->
+	<alias alias="extDataSource" name="liferayDataSource" />
+</beans>

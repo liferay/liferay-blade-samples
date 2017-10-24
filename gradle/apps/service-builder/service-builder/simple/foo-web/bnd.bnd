@@ -1,0 +1,3 @@
+Bundle-SymbolicName: com.liferay.blade.foo.web
+Bundle-Version: 1.0.0
+-sources: true
