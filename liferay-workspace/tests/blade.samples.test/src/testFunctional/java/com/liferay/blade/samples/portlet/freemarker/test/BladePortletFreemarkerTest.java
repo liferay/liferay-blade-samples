@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.freemarker.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -56,19 +54,6 @@ public class BladePortletFreemarkerTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletFreemarker()
 		throws InterruptedException, PortalException {
@@ -77,7 +62,8 @@ public class BladePortletFreemarkerTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			isVisible(_bladeSampleFreemarkerPortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleFreemarkerPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade FreeMarker Portlet, but saw " +
@@ -90,24 +76,11 @@ public class BladePortletFreemarkerTest {
 			_portletBody.getText().contentEquals(
 				"Hello from BLADE Freemarker!"));
 
+		String portletBodyAttributeClass = _portletBody.getAttribute("class");
+
 		Assert.assertTrue(
-			"Expected redBackground, but saw " +
-				_portletBody.getAttribute("class").toString(),
-			_portletBody.getAttribute(
-				"class").toString().contentEquals("redBackground"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			"Expected redBackground, but saw: " + portletBodyAttributeClass,
+			portletBodyAttributeClass.contentEquals("redBackground"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]")

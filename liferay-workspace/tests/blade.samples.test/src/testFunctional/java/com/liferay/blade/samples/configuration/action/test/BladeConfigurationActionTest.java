@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.configuration.action.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -37,10 +38,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -57,21 +55,6 @@ public class BladeConfigurationActionTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Assert.assertTrue("Element is not visible", isVisible(webElement));
-
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
-
-		WebElement element = wait.until(
-			ExpectedConditions.elementToBeClickable(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladeConfigurationAction()
 		throws InterruptedException, PortalException {
@@ -81,11 +64,14 @@ public class BladeConfigurationActionTest {
 		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeMessagePortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeMessagePortlet));
 
 		_bodyWebElement.click();
 
-		customClick(_webDriver, _verticalEllipsis);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _verticalEllipsis);
 
 		WebElement configuration = _webDriver.findElement(
 			By.linkText("Configuration"));
@@ -94,32 +80,23 @@ public class BladeConfigurationActionTest {
 
 		_newWebDriverWindow.get(configurationLink);
 
-		customClick(_newWebDriverWindow, _saveButton);
+		BladeSampleFunctionalActionUtil.customClick(
+			_newWebDriverWindow, _saveButton);
 
 		Assert.assertTrue(
-			"Success Message is not visible", isVisible(_successMessage));
+			"Success Message is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _successMessage));
 
 		_webDriver.get(url);
 
 		Assert.assertTrue(
-				"Expected Blade Message Portlet, but saw: " + _portletTitle.getText(),
-				_portletTitle.getText().contentEquals("Blade Message Portlet"));
+			"Expected Blade Message Portlet, but saw: " + _portletTitle.getText(),
+			_portletTitle.getText().contentEquals("Blade Message Portlet"));
 
-		Assert.assertTrue("Expected Hello from BLADE JSP!, but saw: " + _portletBody.getText(),
+		Assert.assertTrue(
+			"Expected Hello from BLADE JSP!, but saw: " + _portletBody.getText(),
 			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")

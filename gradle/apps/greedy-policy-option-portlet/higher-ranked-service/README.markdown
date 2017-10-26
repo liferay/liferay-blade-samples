@@ -1,6 +1,11 @@
 # Higher Ranked Service
 
-This module provides a `SomeService` implementation that has a service ranking
-of `100`. The module is meant to be used along with module `service-reference`.
+This sample module is one of two modules in the Greedy Policy Option portlet
+used to demonstrate how to reference services using greedy and reluctant policy
+options. The other module required for this demonstration is the
+[`service-reference`](../service-reference) module.
 
-See the `service-reference/README` file for instructions on using this module.
+For more details explaining how the `higher-ranked-service` and
+`service-reference` modules function together, see the following
+[reference article](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/greedy-policy-option-portlet)
+on Liferay's Developer Network.

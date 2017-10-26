@@ -19,6 +19,7 @@ package com.liferay.blade.samples.update.fragment.test;
 import aQute.lib.io.IO;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 
 import java.io.File;
@@ -42,8 +43,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -56,9 +55,11 @@ public class BladeSamplesUpdateFragmentTest {
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
 
-		_overridesPath = new File(System.getProperty("projectDir"), "overrides");
+		_overridesPath = new File(
+			System.getProperty("projectDir"), "overrides");
 
-		File moduleJspPath = new File(System.getProperty("projectDir"), "overrides/module-jsp-override");
+		File moduleJspPath = new File(
+			System.getProperty("projectDir"), "overrides/module-jsp-override");
 
 		_projectPath = new File(_overridesPath, "module-jsp-override-samples");
 
@@ -83,12 +84,17 @@ public class BladeSamplesUpdateFragmentTest {
 	public void testUpdateModuleJSPFragmentProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue("Portlet was not deployed", isVisible(_loginPortlet));
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _loginPortlet));
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Sign In"));
 		Assert.assertTrue(
-			"Portlet Body is not visible", isVisible(_portletBody));
+			"Portlet Body is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletBody));
 		Assert.assertTrue(
 			"Expected changed, but saw: " + _portletStyle.getText(),
 			_portletStyle.getText().contentEquals("changed"));
@@ -108,28 +114,20 @@ public class BladeSamplesUpdateFragmentTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
-		Assert.assertTrue("Portlet was not deployed", isVisible(_loginPortlet));
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _loginPortlet));
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Sign In"));
 		Assert.assertTrue(
-			"Portlet Body is not visible", isVisible(_portletBody));
+			"Portlet Body is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletBody));
 		Assert.assertTrue(
 			"Expected samples work!, but saw: " + _portletStyle.getText(),
 			_portletStyle.getText().contentEquals("samples work!"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 60);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	private static String _moduleJspOverrideJarBSN =
