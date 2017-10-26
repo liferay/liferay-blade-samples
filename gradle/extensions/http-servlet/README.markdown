@@ -1,6 +1,6 @@
 # Custom Servlet on Liferay
 
-This sample demonstrate how to implement HttpServlet on Liferay 7 / DXP. 
+This sample demonstrate how to implement HttpServlet on Liferay 7 / DXP.
 
 ## Usage
 1. Set up Liferay Workspace.
@@ -11,4 +11,4 @@ This sample demonstrate how to implement HttpServlet on Liferay 7 / DXP.
 6. Sign in to Liferay as Administrator
 7. Navigate to Control Panel -> Configuration -> Server Administration -> Log Levels -> Add Category
 8. Configure ```com.liferay.blade.samples.httpservlet.BladeHttpServlet``` and the log level to ```INFO```
-9. Access to ```http://localhost:8080/o/blade/httpservlet``` You'll see error page (no actual implementations have existed yet) and info log on your console. 
+9. Access to ```http://localhost:8080/o/blade/httpservlet``` You'll see "Hello World" and info log on your console.
