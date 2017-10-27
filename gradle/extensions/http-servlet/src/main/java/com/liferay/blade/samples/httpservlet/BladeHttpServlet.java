@@ -25,9 +25,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"dynamic.data.mapping.form.builder.servlet=true",
 		"osgi.http.whiteboard.context.path=/",
-		"osgi.http.whiteboard.servlet.name=liferay.blade.samples.httpservlet.BladeHttpServlet",
 		"osgi.http.whiteboard.servlet.pattern=/blade/httpservlet/*",
 	},
 	service = Servlet.class
