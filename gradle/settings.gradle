@@ -12,6 +12,7 @@ include(
 	'apps:greedy-policy-option-portlet:service-reference',
 	'apps:jsp-portlet',
 	'apps:jsp-war-portlet',
+	'apps:kotlin-portlet',
 	'apps:npm:angular-npm-portlet',
 	'apps:npm:billboardjs-npm-portlet',
 	'apps:npm:isomorphic-npm-portlet',

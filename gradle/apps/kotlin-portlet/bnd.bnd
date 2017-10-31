@@ -1,0 +1,7 @@
+Bundle-SymbolicName: com.liferay.blade.kotlin.portlet
+Bundle-Version: 1.0.0
+Import-Package:\
+	!kotlin,\
+	\
+	*
+-sources: true
