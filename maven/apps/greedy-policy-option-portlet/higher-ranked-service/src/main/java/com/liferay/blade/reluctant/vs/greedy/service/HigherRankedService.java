@@ -26,7 +26,6 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true, property = {"service.ranking:Integer=100"},
 	service = SomeService.class
-
 )
 public class HigherRankedService implements SomeService {
 
