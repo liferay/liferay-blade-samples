@@ -198,6 +198,13 @@ Refer to this sample's Readmes for more information.
 | Liferay Workspace | [./liferay-workspace/wars/jsp-war-portlet](./liferay-workspace/wars/jsp-war-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-war-portlet)        |
 
+### Kotlin Portlet
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/kotlin-portlet](./gradle/apps/kotlin-portlet) |
+| Liferay Workspace | [./liferay-workspace/modules/blade.portlet.kotlinactioncommand](./liferay-workspace/modules/blade.portlet.kotlinactioncommand)   |
+
 ### npm
 
 #### Angular npm Portlet
