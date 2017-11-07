@@ -60,7 +60,9 @@ public class BladePortletOsgiApiTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _bladeSampleOsgiApiPortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleOsgiApiPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade OSGI API Portlet, but saw " +

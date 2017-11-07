@@ -72,7 +72,8 @@ public class BladeLanguageWebTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _bladeSampleLanguagePortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleLanguagePortlet));
 		Assert.assertTrue(
 			_languageKeyFirst.getText(),
 			_languageKeyFirst.getText().contentEquals(

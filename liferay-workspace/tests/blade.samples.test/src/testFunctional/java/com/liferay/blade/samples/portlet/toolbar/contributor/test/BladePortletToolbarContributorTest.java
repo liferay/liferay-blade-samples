@@ -62,22 +62,27 @@ public class BladePortletToolbarContributorTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _helloWorldPortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _helloWorldPortlet));
 
 		Assert.assertTrue(
 			"Portlet Topper Toolbar is not clickable",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _portletTopperToolbar));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _portletTopperToolbar));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletTopperToolbar);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _portletTopperToolbar);
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuLiferay);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _lfrMenuLiferay);
 
 		Thread.sleep(2000);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
-			BladeSampleFunctionalActionUtil.isPageLoaded(_webDriver, "https://www.liferay.com/"));
+			BladeSampleFunctionalActionUtil.isPageLoaded(
+				_webDriver, "https://www.liferay.com/"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet')]")
