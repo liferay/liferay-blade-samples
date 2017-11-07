@@ -72,6 +72,7 @@ task testFunctional(type: Test) {
 	dependsOn ":apps:shared-language-keys:language:jar"
 	dependsOn ":apps:shared-language-keys:language-web:jar"
 	dependsOn ":extensions:control-menu-entry:jar"
+	dependsOn ":extensions:http-servlet:jar"
 	dependsOn ":extensions:portlet-configuration-icon:jar"
 	dependsOn ":extensions:portlet-toolbar-contributor:jar"
 
@@ -86,6 +87,7 @@ task testFunctional(type: Test) {
 		systemProperty 'greedyHigherRankedServiceJarFile', project(':apps:greedy-policy-option-portlet:higher-ranked-service').jar.archivePath
 		systemProperty 'greedyServiceReferenceJarFile', project(':apps:greedy-policy-option-portlet:service-reference').jar.archivePath
 		systemProperty 'greedyServiceReferenceProjectdir', project(':apps:greedy-policy-option-portlet:service-reference').projectDir
+		systemProperty 'httpServletJarFile', project(':extensions:http-servlet').jar.archivePath
 		systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
 		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
