@@ -50,6 +50,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>com.liferay.blade.http.servlet-${project.version}</finalName>
+		<finalName>com.liferay.blade.samples.http.servlet-${project.version}</finalName>
 	</build>
 </project>
