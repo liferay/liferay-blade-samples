@@ -79,7 +79,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>${project.build.outputDirectory}</docrootDirName>
+					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
 				</configuration>
 			</plugin>
 		</plugins>
