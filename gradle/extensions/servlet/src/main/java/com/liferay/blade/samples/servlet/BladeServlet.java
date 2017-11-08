@@ -25,10 +25,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import java.io.IOException;
 
 import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,30 +48,10 @@ public class BladeServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		if (_log.isInfoEnabled()) {
-			_log.info("init");
+			_log.info("BladeServlet init");
 		}
 
 		super.init();
-	}
-
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		if (_log.isInfoEnabled()) {
-			_log.info("init2");
-		}
-
-		super.init(config);
-	}
-
-	@Override
-	public void service(ServletRequest request, ServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("service2");
-		}
-
-		super.service(request, response);
 	}
 
 	@Override
@@ -86,67 +63,7 @@ public class BladeServlet extends HttpServlet {
 			_log.info("doGet");
 		}
 
-		writeSampleHTML(response);
-	}
-
-	@Override
-	protected void doHead(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("doHead");
-		}
-
-		super.doHead(request, response);
-	}
-
-	@Override
-	protected void doOptions(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("doOptions");
-		}
-
-		super.doOptions(request, response);
-	}
-
-	@Override
-	protected void doPost(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("doPost");
-		}
-
-		writeSampleHTML(response);
-	}
-
-	@Override
-	protected void doPut(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("doPut");
-		}
-
-		super.doPut(request, response);
-	}
-
-	@Override
-	protected void doTrace(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("doTrace");
-		}
-
-		super.doTrace(request, response);
+		_writeSampleHTML(response);
 	}
 
 	/**
@@ -154,7 +71,7 @@ public class BladeServlet extends HttpServlet {
 	 *
 	 * @return dummy contents string
 	 */
-	protected String generateSampleHTML() {
+	private String _generateSampleHTML() {
 		StringBuffer sb = new StringBuffer();
 
 		sb.append("<html>");
@@ -167,30 +84,18 @@ public class BladeServlet extends HttpServlet {
 		return new String(sb);
 	}
 
-	@Override
-	protected void service(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("service1");
-		}
-
-		super.service(request, response);
-	}
-
 	/**
 	 * Write sample HTML
 	 *
 	 * @param resp
 	 */
-	protected void writeSampleHTML(HttpServletResponse resp) {
+	private void _writeSampleHTML(HttpServletResponse resp) {
 		resp.setCharacterEncoding(StringPool.UTF8);
 		resp.setContentType(ContentTypes.TEXT_HTML_UTF8);
 		resp.setStatus(HttpServletResponse.SC_OK);
 
 		try {
-			ServletResponseUtil.write(resp, generateSampleHTML());
+			ServletResponseUtil.write(resp, _generateSampleHTML());
 		}
 		catch (Exception e) {
 			if (_log.isWarnEnabled()) {
@@ -201,8 +106,7 @@ public class BladeServlet extends HttpServlet {
 		}
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		BladeHttpServlet.class);
+	private static final Log _log = LogFactoryUtil.getLog(BladeServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
