@@ -169,7 +169,7 @@ public class BladeCLIUtil {
 
 			output = execute(
 				"sh", "install",
-				"webbundle:file://" + file + "?Web-ContextPath=/" +
+				"webbundle:" + file.toURI().toASCIIString() + "?Web-ContextPath=/" +
 					printFileName);
 
 			bundleID = output.substring(

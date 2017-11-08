@@ -1,7 +1,0 @@
-Bundle-Name: com.liferay.blade.foo.web
-Bundle-SymbolicName: com.liferay.blade.foo.web
-Bundle-Version: 1.0.0
--jsp: *.jsp,*.jspf
--plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
--sources: true

@@ -1,0 +1,6 @@
+Bundle-Name: jndi-service
+Bundle-SymbolicName: com.liferay.blade.samples.jndiservicebuilder.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-sources: true

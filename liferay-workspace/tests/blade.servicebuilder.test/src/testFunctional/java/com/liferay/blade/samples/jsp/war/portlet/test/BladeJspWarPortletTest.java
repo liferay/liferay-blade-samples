@@ -72,7 +72,8 @@ public class BladeJspWarPortletTest {
 		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
 
-		final File jspPortletWarFile = new File(System.getProperty("jspPortletWarFile"));
+		final File jspPortletWarFile = new File(
+			System.getProperty("jspPortletWarFile"));
 
 		String bundleID = BladeCLIUtil.installBundle(jspPortletWarFile);
 
@@ -213,8 +214,8 @@ public class BladeJspWarPortletTest {
 			_table.getText().contains("field1 with Updated Name"));
 	}
 
-	private static String _fooApiJarBSN = "com.liferay.blade.foo.api";
-	private static String _fooServiceJarBSN = "com.liferay.blade.foo.service";
+	private static String _fooApiJarBSN = "com.liferay.blade.basic.api";
+	private static String _fooServiceJarBSN = "com.liferay.blade.basic.service";
 	private static String _jspPortletWarBSN = "jsp-war-portlet";
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
@@ -250,7 +251,8 @@ public class BladeJspWarPortletTest {
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;
 
-	private String _tableRow = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
+	private String _tableRow =
+		"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
 
 	@Drone
 	private WebDriver _webDriver;

@@ -13,8 +13,8 @@
 	</parent>
 
 	<modules>
-		<module>foo-api</module>
-		<module>foo-service</module>
-		<module>foo-web</module>
+		<module>basic</module>
+		<module>jdbc</module>
+		<module>jndi</module>
 	</modules>
 </project>

@@ -1,0 +1,9 @@
+Bundle-Name: jndi-service
+Bundle-SymbolicName: com.liferay.blade.samples.jndiservicebuilder.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-sources: true
+-plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
+-plugin.spring: com.liferay.ant.bnd.spring.SpringDependencyAnalyzerPlugin
+-plugin.springcomponent: aQute.lib.spring.SpringComponent

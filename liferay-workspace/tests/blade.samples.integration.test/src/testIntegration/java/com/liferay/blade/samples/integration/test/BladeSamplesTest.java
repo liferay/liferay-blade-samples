@@ -125,8 +125,7 @@ public class BladeSamplesTest {
 				printFileName = printFileName.substring(
 					0, printFileName.lastIndexOf('.'));
 
-				bundleID = BladeCLIUtil.installBundle(
-					file);
+				bundleID = BladeCLIUtil.installBundle(file);
 
 				bundleIDAllMap.put(bundleID, printFileName);
 
@@ -137,15 +136,13 @@ public class BladeSamplesTest {
 						Manifest manifest = jar.getManifest();
 
 						Attributes mainAttributes =
-								manifest.getMainAttributes();
+							manifest.getMainAttributes();
 
 						if (mainAttributes.getValue("Fragment-Host") == null) {
-							bundleIDStartMap.put(
-									bundleID, printFileName);
+							bundleIDStartMap.put(bundleID, printFileName);
 						}
 					}
 				}
-
 				else {
 					bundleIDStartMap.put(bundleID, printFileName);
 				}
@@ -278,7 +275,7 @@ public class BladeSamplesTest {
 
 		File serviceProperties = new File(
 			projectPath,
-			"apps/service-builder/foo-service/src/main/resources" +
+			"apps/service-builder/basic/basic-service/src/main/resources" +
 				"/service.properties");
 
 		File servicePropertiesBackup = new File("service.properties.bak");
@@ -286,7 +283,7 @@ public class BladeSamplesTest {
 		IO.copy(serviceProperties, servicePropertiesBackup);
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:foo-service:buildService");
+			projectPath, ":apps:service-builder:basic:basic-service:buildService");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
 
@@ -294,31 +291,31 @@ public class BladeSamplesTest {
 		IO.delete(servicePropertiesBackup);
 
 		BuildTask cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:foo-api:clean");
+			projectPath, ":apps:service-builder:basic:basic-api:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildApiTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:foo-api:build");
+			projectPath, ":apps:service-builder:basic:basic-api:build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildApiTask);
 
 		cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:foo-service:clean");
+			projectPath, ":apps:service-builder:basic:basic-service:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildServiceTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:foo-service:assemble");
+			projectPath, ":apps:service-builder:basic:basic-service:assemble");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildServiceTask);
 
 		File buildApiOutput = new File(
-			projectPath + "/apps/service-builder/foo-api/build/libs" +
-				"/com.liferay.blade.foo.api-1.0.0.jar");
+			projectPath + "/apps/service-builder/basic/basic-api/build/libs" +
+				"/com.liferay.blade.basic.api-1.0.0.jar");
 		File buildServiceOutput = new File(
-			projectPath + "/apps/service-builder/foo-service/build/libs" +
-				"/com.liferay.blade.foo.service-1.0.0.jar");
+			projectPath + "/apps/service-builder/basic/basic-service/build/libs" +
+				"/com.liferay.blade.basic.service-1.0.0.jar");
 
 		Assert.assertTrue(buildApiOutput.exists());
 		Assert.assertTrue(buildServiceOutput.exists());
