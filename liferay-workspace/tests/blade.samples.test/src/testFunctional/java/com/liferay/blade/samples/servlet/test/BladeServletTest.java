@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.http.servlet.test;
+package com.liferay.blade.samples.servlet.test;
 
 import java.io.File;
 
@@ -36,18 +36,18 @@ import org.openqa.selenium.WebDriver;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladeHttpServletTest {
+public class BladeServletTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("httpServletJarFile"));
+		final File jarFile = new File(System.getProperty("servletJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
 	@Test
-	public void testBladeHttpServlet() throws Exception {
-		String url = "http://localhost:8080/o/blade/httpservlet";
+	public void testBladeServlet() throws Exception {
+		String url = "http://localhost:8080/o/blade/servlet";
 
 		_webDriver.get(url);
 
