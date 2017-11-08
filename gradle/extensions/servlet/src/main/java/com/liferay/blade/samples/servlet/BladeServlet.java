@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.httpservlet;
+package com.liferay.blade.samples.servlet;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -42,16 +42,16 @@ import org.osgi.service.component.annotations.Component;
 	immediate = true,
 	property = {
 		"osgi.http.whiteboard.context.path=/",
-		"osgi.http.whiteboard.servlet.pattern=/blade/httpservlet/*"
+		"osgi.http.whiteboard.servlet.pattern=/blade/servlet/*"
 	},
 	service = Servlet.class
 )
-public class BladeHttpServlet extends HttpServlet {
+public class BladeServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
 		if (_log.isInfoEnabled()) {
-			_log.info("init1");
+			_log.info("init");
 		}
 
 		super.init();
