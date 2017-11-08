@@ -50,6 +50,7 @@ include(
 	'extensions:resource-bundle',
 	'extensions:scheduler-entry',
 	'extensions:screen-name-validator',
+	'extensions:servlet',
 	'extensions:struts-action',
 	'extensions:struts-portlet-action',
 	'extensions:user-service-wrapper',

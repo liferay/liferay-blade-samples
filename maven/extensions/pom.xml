@@ -30,8 +30,9 @@
 		<module>resource-bundle</module>
 		<module>scheduler-entry</module>
 		<module>screen-name-validator</module>
-		<module>user-service-wrapper</module>
+		<module>servlet</module>
 		<module>struts-action</module>
 		<module>struts-portlet-action</module>
+		<module>user-service-wrapper</module>
 	</modules>
 </project>

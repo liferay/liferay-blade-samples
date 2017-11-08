@@ -61,7 +61,9 @@ public class BladePortletRenderCommandTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _bladeSampleRenderPortlet));
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeSampleRenderPortlet));
 
 		Assert.assertTrue(
 			"Expected Blade Render Portlet, but saw " +
@@ -69,16 +71,21 @@ public class BladePortletRenderCommandTest {
 			_portletTitle.getText().contentEquals("Blade Render Portlet"));
 
 		Assert.assertTrue(
-			"Render Command Button is not visible", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _portletButton));
+			"Render Command Button is not visible",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletButton));
 
 		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletButton);
 
 		Assert.assertTrue(
-			"Render Page is not available", BladeSampleFunctionalActionUtil.isVisible(_webDriver, _portletBody));
+			"Render Page is not available",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletBody));
 
 		Assert.assertTrue(
 			"Expected render page, but saw " + _portletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(_webDriver, _portletBody, "render page"));
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _portletBody, "render page"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]")

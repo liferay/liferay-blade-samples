@@ -62,14 +62,17 @@ public class BladeControlMenuEntryTest {
 
 		Assert.assertTrue(
 			"Control Menu Entry Link is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _controlMenuLink));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _controlMenuLink));
 
 		Assert.assertTrue(
 			"Control Menu Entry Link text is not visible",
 			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _controlMenuLinkText, "Blade Menu Entry Custom Message"));
+				_webDriver, _controlMenuLinkText,
+				"Blade Menu Entry Custom Message"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _controlMenuLink);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _controlMenuLink);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +

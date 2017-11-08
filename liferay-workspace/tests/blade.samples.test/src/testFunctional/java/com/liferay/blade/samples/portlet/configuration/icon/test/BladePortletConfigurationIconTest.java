@@ -62,13 +62,16 @@ public class BladePortletConfigurationIconTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _helloWorldPortlet));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _helloWorldPortlet));
 
 		_bodyWebElement.click();
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _verticalEllipsis);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _verticalEllipsis);
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuSampleLink);
+		BladeSampleFunctionalActionUtil.customClick(
+			_webDriver, _lfrMenuSampleLink);
 
 		Thread.sleep(2000);
 
