@@ -47,5 +47,5 @@ dependencies {
 	compileOnly group: "javax.servlet.jsp.jstl", name: "jstl-api", version: "1.2"
 	compileOnly group: "org.glassfish.web", name: "jstl-impl", version: "1.2"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
-	compileOnly project(":apps:service-builder:foo-api")
+	compileOnly project(":apps:service-builder:basic:basic-api")
 }

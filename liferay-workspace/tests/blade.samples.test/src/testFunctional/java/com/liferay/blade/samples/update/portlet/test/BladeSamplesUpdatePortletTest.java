@@ -134,17 +134,23 @@ public class BladeSamplesUpdatePortletTest {
 				if (line.equals(
 						"public class HelloworldPortlet extends MVCPortlet {")) {
 
-					String doView = StringTestUtil.merge(
-						Arrays.asList(
-							"public void doView(",
-							"RenderRequest renderRequest, RenderResponse renderResponse)",
-							"throws IOException, PortletException {",
-							"renderRequest.setAttribute(", "\"foo\", \"bar\");",
-							"super.doView(renderRequest, renderResponse);",
-							"}"),
-						"\n");
+					StringBuilder sb = new StringBuilder();
 
-					lines.add(doView);
+					sb.append(
+						"public void doView(\nRenderRequest renderRequest,"
+					).append(
+						" RenderResponse renderResponse)\n"
+					).append(
+						"throws IOException, PortletException {\n"
+					).append(
+						"renderRequest.setAttribute(\n"
+					).append(
+						"\"foo\", \"bar\");\nsuper.doView(renderRequest, "
+					).append(
+						"renderResponse);\n}\n"
+					);
+
+					lines.add(sb.toString());
 				}
 			}
 		}

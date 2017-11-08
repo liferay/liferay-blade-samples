@@ -28,7 +28,7 @@ war {
 }
 
 dependencies {
-	compileOnly project(':apps:service-builder:foo-api')
+	compileOnly project(':apps:service-builder:basic:basic-api')
 	compileOnly 'com.liferay.portal:com.liferay.portal.kernel:2.6.0'
 	compileOnly 'javax.portlet:portlet-api:2.0'
 	compileOnly 'javax.servlet:javax.servlet-api:3.0.1'

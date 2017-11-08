@@ -67,7 +67,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>blade</groupId>
-			<artifactId>foo-api</artifactId>
+			<artifactId>basic-api</artifactId>
 			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>

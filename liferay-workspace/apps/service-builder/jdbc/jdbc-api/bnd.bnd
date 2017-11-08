@@ -1,0 +1,9 @@
+Bundle-Name: jdbc-api
+Bundle-SymbolicName: com.liferay.blade.samples.jdbcservicebuilder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.samples.jdbcservicebuilder.exception,\
+	com.liferay.blade.samples.jdbcservicebuilder.model,\
+	com.liferay.blade.samples.jdbcservicebuilder.service,\
+	com.liferay.blade.samples.jdbcservicebuilder.service.persistence
+-includeresource: META-INF/service.xml=../jdbc-service/service.xml

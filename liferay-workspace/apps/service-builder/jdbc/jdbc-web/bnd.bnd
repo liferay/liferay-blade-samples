@@ -1,0 +1,5 @@
+Bundle-Name: jdbc-web
+Bundle-SymbolicName: com.liferay.blade.samples.jdbcservicebuilder.web
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.blade.samples.jdbcservicebuilder.web.constants
+-sources: true

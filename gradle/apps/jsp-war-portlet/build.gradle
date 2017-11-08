@@ -22,7 +22,7 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
 	compileOnly group: "javax.servlet.jsp.jstl", name: "jstl-api", version: "1.2"
 	compileOnly group: "org.glassfish.web", name: "jstl-impl", version: "1.2"
-	compileOnly project(":apps:service-builder:foo-api")
+	compileOnly project(":apps:service-builder:basic:basic-api")
 }
 
 war {

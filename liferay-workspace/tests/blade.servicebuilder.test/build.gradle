@@ -19,7 +19,7 @@ dependencies {
 	compileOnly group: "javax.portlet", name: "portlet-api", version: "2.0"
 	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
 	compileOnly group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
-	compileOnly project(":apps:service-builder:foo-api")
+	compileOnly project(":apps:service-builder:basic:basic-api")
 
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.5.0"
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.5.0"
@@ -28,9 +28,9 @@ dependencies {
 	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 
-    testCompile (project(':tests:utils')) {
-        transitive = false
-    }
+	testCompile (project(':tests:utils')) {
+		transitive = false
+	}
 }
 
 startTestableTomcat {
@@ -44,17 +44,17 @@ task testFunctional(type: Test) {
 
 	dependsOn jar, ":initBundle", startTestableTomcat
 
-	project(':apps:service-builder:foo-api').afterEvaluate { project ->
+	project(':apps:service-builder:basic:basic-api').afterEvaluate { project ->
 		dependsOn project.jar
 		systemProperty 'fooApiJarFile', project.jar.archivePath
 	}
 
-	project(':apps:service-builder:foo-service').afterEvaluate { project ->
+	project(':apps:service-builder:basic:basic-service').afterEvaluate { project ->
 		dependsOn project.jar
 		systemProperty 'fooServiceJarFile', project.jar.archivePath
 	}
 
-	project(':apps:service-builder:foo-web').afterEvaluate { project ->
+	project(':apps:service-builder:basic:basic-web').afterEvaluate { project ->
 		dependsOn project.jar
 		systemProperty 'fooWebJarFile', project.jar.archivePath
 	}

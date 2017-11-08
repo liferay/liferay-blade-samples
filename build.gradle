@@ -23,7 +23,16 @@ int canonicalBundlesSize = gradleBundles.size()
 task bundlesSizeTest
 
 bundlesSizeTest.doLast {
+	if (canonicalBundlesSize != liferayWorkspaceBundles.size()) {
+		println gradleBundles.files
+		println liferayWorkspaceBundles.files
+	}
 	assert canonicalBundlesSize == liferayWorkspaceBundles.size()
+
+	if (canonicalBundlesSize != mavenBundles.size()) {
+		println gradleBundles.files
+		println mavenBundles.files
+	}
 	assert canonicalBundlesSize == mavenBundles.size()
 }
 

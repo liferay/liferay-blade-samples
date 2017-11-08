@@ -1,0 +1,8 @@
+Bundle-Name: jndi-web
+Bundle-SymbolicName: com.liferay.blade.samples.jndiservicebuilder.web
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.blade.samplesjndiservicebuilder.web.constants
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true

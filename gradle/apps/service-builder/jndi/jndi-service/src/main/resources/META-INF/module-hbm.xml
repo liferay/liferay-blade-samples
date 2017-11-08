@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.liferay.blade.samples.jndiservicebuilder.model.Region" />
+	<class name="com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl" table="region">
+		<id column="id" name="regionId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property column="name" name="regionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,5 @@
+Bundle-SymbolicName: com.liferay.blade.basic.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-sources: true
