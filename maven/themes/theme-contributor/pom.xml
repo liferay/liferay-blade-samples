@@ -72,7 +72,7 @@
 				<executions>
 					<execution>
 						<id>default-build-css</id>
-						<phase>process-classes</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>

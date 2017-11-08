@@ -26,7 +26,7 @@
 				<executions>
 					<execution>
 						<id>default-build-css</id>
-						<phase>compile</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>
