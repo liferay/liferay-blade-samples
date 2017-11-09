@@ -12,7 +12,7 @@ function buildAll() {
   cd liferay-workspace
   ./gradlew clean assemble
   cd "$repoDir"
-  ./gradlew bundlesTest warsTest diff
+  ./gradlew diff
   cd liferay-workspace
   ./gradlew check -Pliferay.workspace.modules.dir=apps,extensions,overrides,tests,themes -Pliferay.workspace.modules.jsp.precompile.enabled=true $@
 }

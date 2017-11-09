@@ -177,7 +177,7 @@ bundlesDiffTest.doLast{
 		}
 	}
 
-		if (!errorList.empty) {
+	if (!errorList.empty) {
 		throw new GradleException(errorList.toListString())
 	}
 }
@@ -255,5 +255,7 @@ task wrapper(type: Wrapper) {
 
 task diff
 
+diff.dependsOn bundlesTest
+diff.dependsOn warsTest
 diff.dependsOn bundlesDiffTest
 diff.dependsOn warsDiffTest
