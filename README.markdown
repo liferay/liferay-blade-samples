@@ -203,11 +203,12 @@ Refer to this sample's Readmes for more information.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/kotlin-portlet](./gradle/apps/kotlin-portlet) |
-| Liferay Workspace | [./liferay-workspace/modules/blade.portlet.kotlinactioncommand](./liferay-workspace/modules/blade.portlet.kotlinactioncommand)   |
 
 ### npm
 
 #### Angular npm Portlet
+
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -215,11 +216,15 @@ Refer to this sample's Readmes for more information.
 
 #### Billboard.js npm Portlet
 
+Refer to this sample's Readme for more information.
+
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/billboardjs-npm-portlet](./gradle/apps/npm/billboardjs-npm-portlet) |
 
 #### Isomorphic npm Portlet
+
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -227,17 +232,23 @@ Refer to this sample's Readmes for more information.
 
 #### jQuery npm Portlet
 
+Refer to this sample's Readme for more information.
+
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/jquery-npm-portlet](./gradle/apps/npm/jquery-npm-portlet) |
 
 #### Metal.js npm Portlet
 
+Refer to this sample's Readme for more information.
+
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/metaljs-npm-portlet](./gradle/apps/npm/metaljs-npm-portlet) |
 
-#### Reactnpm Portlet
+#### React npm Portlet
+
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -245,11 +256,15 @@ Refer to this sample's Readmes for more information.
 
 #### Simple npm Portlet
 
+Refer to this sample's Readme for more information.
+
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/simple-npm-portlet](./gradle/apps/npm/simple-npm-portlet) |
 
 #### Vue.js npm Portlet
+
+Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -321,24 +336,40 @@ Then you can access the service via
 
 ### Service Builder
 
+#### Basic
+
 **Template project description**: Demonstrates how to create a Service Builder
 project separated into three bundles:
 
 * `api` bundle is for interfaces
-* `svc` bundle is for implementations
+* `service` bundle is for implementations
 * `web` bundle is a portlet calling the generated services 
 
-| Build tool | subproject   | Link to project's source code                                                   |
-| ---------- | ------------ | ------------------------------------------------------------------------------- |
-| Gradle | API          | [./gradle/apps/service-builder/foo-api](./gradle/apps/service-builder/foo-api)  |
-| Gradle | Service      | [./gradle/apps/service-builder/foo-service](./gradle/apps/service-builder/foo-service)  |
-| Gradle | Web          | [./gradle/apps/service-builder/foo-web](./gradle/apps/service-builder/foo-web)  |
-| Liferay Workspace | API          | [./liferay-workspace/apps/service-builder/foo-api](./liferay-workspace/apps/service-builder/foo-api)   |
-| Liferay Workspace | Service      | [./liferay-workspace/apps/service-builder/foo-service](./liferay-workspace/apps/service-builder/foo-service)   |
-| Liferay Workspace | Web          | [./liferay-workspace/apps/service-builder/foo-web](./liferay-workspace/apps/service-builder/foo-web)   |
-| Maven  | API         | [./maven/apps/service-builder/foo-api](./maven/apps/service-builder/foo-api)  |
-| Maven  | Service     | [./maven/apps/service-builder/foo-service](./maven/apps/service-builder/foo-service)  |
-| Maven  | Web         | [./maven/apps/service-builder/foo-web](./maven/apps/service-builder/foo-web)  |
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/service-builder/basic](./gradle/apps/service-builder/basic)  |
+| Liferay Workspace | [./liferay-workspace/apps/service-builder/basic](./liferay-workspace/apps/service-builder/basic)   |
+| Maven  | [./maven/apps/service-builder/basic](./maven/apps/service-builder/basic)  |
+
+#### JDBC
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/service-builder/jdbc](./gradle/apps/service-builder/jdbc)  |
+| Liferay Workspace | [./liferay-workspace/apps/service-builder/jdbc](./liferay-workspace/apps/service-builder/jdbc)   |
+| Maven  | [./maven/apps/service-builder/jdbc](./maven/apps/service-builder/jdbc)  |
+
+#### JNDI
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/service-builder/jndi](./gradle/apps/service-builder/jndi)  |
+| Liferay Workspace | [./liferay-workspace/apps/service-builder/jndi](./liferay-workspace/apps/service-builder/jndi)   |
+| Maven  | [./maven/apps/service-builder/jndi](./maven/apps/service-builder/jndi)  |
 
 ### Shared Language Keys
 
