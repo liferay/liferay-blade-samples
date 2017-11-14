@@ -91,24 +91,6 @@ redeploy the Portlet plugin).
 | Liferay Workspace | [./liferay-workspace/apps/action-command-portlet](./liferay-workspace/apps/action-command-portlet)   |
 | Maven      | [./maven/apps/action-command-portlet](./maven/apps/action-command-portlet)        |
 
-### AngularJS
-
-#### AngularJS Hook
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/angularjs/angularjs-hook](./gradle/apps/angularjs/angularjs-hook) |
-| Liferay Workspace | [./liferay-workspace/apps/angularjs/angularjs-hook](./liferay-workspace/apps/angularjs/angularjs-hook)   |
-| Maven      | [./maven/apps/angularjs/angularjs-hook](./maven/apps/angularjs/angularjs-hook)        |
-
-#### AngularJS Simple Portlet
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/angularjs/angularjs-simple-portlet](./gradle/apps/angularjs/angularjs-simple-portlet) |
-| Liferay Workspace | [./liferay-workspace/apps/angularjs/angularjs-simple-portlet](./liferay-workspace/apps/angularjs/angularjs-simple-portlet)   |
-| Maven      | [./maven/apps/angularjs/angularjs-simple-portlet](./maven/apps/angularjs/angularjs-simple-portlet)        |
-
 ### Blueprint Portlet
 
 **Template project description**: Demonstrates how to use the Blueprint
