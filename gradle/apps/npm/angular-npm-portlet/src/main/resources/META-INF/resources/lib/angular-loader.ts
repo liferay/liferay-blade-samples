@@ -7,7 +7,10 @@ declare var Liferay: any;
 
 // Launch application
 export default function(rootId: string) {
-	Liferay.Loader.require('angular-npm-portlet@1.0.0/lib/main', (main: any) => {
-		main.default();
-	});
+	Liferay.Loader.require(
+		'angular-npm-portlet@1.0.0/lib/main',
+		(main: any) => {
+			main.default(rootId);
+		},
+	);
 }
