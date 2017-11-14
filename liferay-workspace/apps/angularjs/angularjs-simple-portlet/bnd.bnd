@@ -1,4 +1,0 @@
-Bundle-Description: AngularJS Simple Portlet
-Bundle-Version: 1.0.0
-Web-ContextPath: /angularjs-simple-portlet
--sources: true
