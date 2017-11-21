@@ -25,7 +25,7 @@ import java.io.File;
 
 import java.net.URL;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -39,8 +39,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -59,13 +59,10 @@ public class BladeServiceBuilderTest {
 	public static void cleanUpDependencies() throws Exception {
 		new JMXBundleDeployer().uninstall(_fooApiJarBSN);
 		new JMXBundleDeployer().uninstall(_fooServiceJarBSN);
-		new JMXBundleDeployer().uninstall(_fooWebJarBSN);
 	}
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("jarFile"));
-
 		final File fooApiJar = new File(System.getProperty("fooApiJarFile"));
 		final File fooServiceJar = new File(
 			System.getProperty("fooServiceJarFile"));
@@ -73,9 +70,8 @@ public class BladeServiceBuilderTest {
 
 		new JMXBundleDeployer().deploy(_fooApiJarBSN, fooApiJar);
 		new JMXBundleDeployer().deploy(_fooServiceJarBSN, fooServiceJar);
-		new JMXBundleDeployer().deploy(_fooWebJarBSN, fooWebJar);
 
-		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
+		return ShrinkWrap.createFromZipFile(JavaArchive.class, fooWebJar);
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
@@ -92,96 +88,30 @@ public class BladeServiceBuilderTest {
 	}
 
 	@Test
-	public void testCreateFoo() throws InterruptedException, PortalException {
+	public void testSBBasic() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
+
+		String url = _webDriver.getCurrentUrl();
+
+		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		String windowHandler = _webDriver.getWindowHandle();
 
 		customClick(_webDriver, _addButton);
 
 		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
 
-		_field1Form.sendKeys("ServiceBuilderWebTest");
+		_field1Form.sendKeys("aSBDeletableEntry");
 
 		_field5Form.clear();
 
-		_field5Form.sendKeys("field5");
+		_field5Form.sendKeys("aSBDeletableEntryfield5");
 
 		customClick(_webDriver, _saveButton);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		Assert.assertTrue(
-			"ServiceBuilderWebTest is not present in table",
-			_table.getText().contains("ServiceBuilderWebTest"));
-	}
-
-	@Test
-	public void testDeleteFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
-
-		List<WebElement> rows = _webDriver.findElements(
-			By.xpath(
-				"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr"));
-
-		int originalRows = rows.size();
-
-		Assert.assertTrue(
-			"Liferay Icon Menus is not visible", isVisible(_lfrIconMenu));
-
-		customClick(_webDriver, _lfrIconMenu);
-
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
-
-		Assert.assertTrue(
-			"Action Menu Delete is not clickable", isClickable(_lfrMenuDelete));
-
-		customClick(_webDriver, _lfrMenuDelete);
-
-		String source = _webDriver.getPageSource();
-
-		String executescript = source.substring(
-				source.indexOf("item-remove") + 1,
-				source.indexOf("<span class=\"taglib-text-icon\">Delete</span>"));
-
-		String script = executescript.substring(
-			executescript.indexOf("submitForm") - 1,
-			executescript.indexOf("else") - 2);
-
-		javascriptExecutor.executeScript(script);
-
-		Thread.sleep(1000);
-
-		_webDriver.navigate().refresh();
-
-		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		rows = _webDriver.findElements(By.xpath(_tableRow));
-
-		int newRows = rows.size();
-
-		int expectedFoos = originalRows - 1;
-
-		Assert.assertTrue(
-			"Expected " + expectedFoos + " foos, but saw " + newRows + " foos",
-			newRows == expectedFoos);
-	}
-
-	@Test
-	public void testReadFoo() throws PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
-
-		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		Assert.assertTrue(
-			"new field5 entry is not present in table",
-			_table.getText().contains("new field5 entry"));
-	}
-
-	@Test
-	public void testUpdateFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
+			"Service Builder Table does not contain aSBDeletableEntry",
+			_table.getText().contains("aSBDeletableEntry"));
 
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
@@ -208,6 +138,50 @@ public class BladeServiceBuilderTest {
 		Assert.assertTrue(
 			"Service Builder Table does not contain Updated Name",
 			_table.getText().contains("field1 with Updated Name"));
+
+		Assert.assertTrue(
+				"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
+
+		customClick(_webDriver, _lfrIconMenu);
+
+		Assert.assertTrue(
+			"Liferay Menu Delete is not visible", isClickable(_lfrMenuDelete));
+
+		customClick(_webDriver, _lfrMenuDelete);
+
+		Assert.assertTrue(
+				"Alert is not present!",
+				isAlertPresent());
+
+		_webDriver.switchTo().window(windowHandler);
+
+		_webDriver.navigate().to(url);
+
+		Assert.assertTrue(
+			_table.getText(), !_table.getText().contains("aSBDeletableEntry"));
+	}
+
+	protected boolean isAlertPresent() {
+		try{
+			WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+
+			Alert alert = webDriverWait.until(
+				ExpectedConditions.alertIsPresent());
+
+			if(alert != null) {
+				_webDriver.switchTo().alert().accept();
+
+				return true;
+			}
+
+			else{
+				throw new NoAlertPresentException();
+			}
+		}
+
+		catch (NoAlertPresentException e) {
+			return false;
+		}
 	}
 
 	protected boolean isClickable(WebElement webelement) {
@@ -239,7 +213,6 @@ public class BladeServiceBuilderTest {
 
 	private static String _fooApiJarBSN = "blade.servicebuilder.api";
 	private static String _fooServiceJarBSN = "blade.servicebuilder.svc";
-	private static String _fooWebJarBSN = "blade.servicebuilder.web";
 
 	@FindBy(xpath = "//span[@class='lfr-btn-label']")
 	private WebElement _addButton;
@@ -273,9 +246,6 @@ public class BladeServiceBuilderTest {
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;
-
-	private String _tableRow =
-		"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
 
 	@Drone
 	private WebDriver _webDriver;

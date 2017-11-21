@@ -26,7 +26,6 @@ import java.io.File;
 
 import java.net.URL;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -41,8 +40,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -66,11 +65,10 @@ public class BladeSpringMVCPortletTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(System.getProperty("jarFile"));
-
 		final File fooApiJar = new File(System.getProperty("fooApiJarFile"));
 		final File fooServiceJar = new File(
 			System.getProperty("fooServiceJarFile"));
+		final File fooWebJar = new File(System.getProperty("fooWebJarFile"));
 		final File springmvcPortletWar = new File(
 			System.getProperty("springmvcPortletWarFile"));
 
@@ -81,7 +79,7 @@ public class BladeSpringMVCPortletTest {
 
 		BladeCLIUtil.startBundle(_springmvcbundleId);
 
-		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
+		return ShrinkWrap.createFromZipFile(JavaArchive.class, fooWebJar);
 	}
 
 	public void customClick(WebDriver webDriver, WebElement webElement) {
@@ -98,10 +96,12 @@ public class BladeSpringMVCPortletTest {
 	}
 
 	@Test
-	public void testCreateFoo() throws InterruptedException, PortalException {
+	public void testSpringBasic() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		String windowHandler = _webDriver.getWindowHandle();
 
 		String url = _webDriver.getCurrentUrl();
 
@@ -109,97 +109,19 @@ public class BladeSpringMVCPortletTest {
 
 		Assert.assertTrue("Field1 is not visible", isVisible(_field1Form));
 
-		_field1Form.clear();
-
-		_field1Form.sendKeys("SpringMVCPortletTest");
+		_field1Form.sendKeys("aSpringDeletableEntry");
 
 		_field5Form.clear();
 
-		_field5Form.sendKeys("field5");
+		_field5Form.sendKeys("aSpringDeletableEntryfield5");
 
 		customClick(_webDriver, _saveButton);
 
-		Thread.sleep(1000);
-
-		_webDriver.navigate().to(url);;
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		Assert.assertTrue(
-			"SpringMVCPortletTest is not present in table" + _table.getText(),
-			_table.getText().contains("SpringMVCPortletTest"));
-	}
-
-	@Test
-	public void testDeleteFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
-
-		List<WebElement> rows = _webDriver.findElements(By.xpath(_tableRow));
-
-		int originalRows = rows.size();
-
-		Assert.assertTrue(
-			"Liferay Icon Menus is not visible", isVisible(_lfrIconMenu));
-
-		customClick(_webDriver, _lfrIconMenu);
-
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
-
-		Assert.assertTrue(
-			"Action Menu Delete is not clickable", isClickable(_lfrMenuDelete));
-
-		customClick(_webDriver, _lfrMenuDelete);
-
-		String source = _webDriver.getPageSource();
-
-		String executescript = source.substring(
-			source.indexOf("item-remove") + 1,
-			source.indexOf("<span class=\"taglib-text-icon\">Delete</span>"));
-
-		String script = executescript.substring(
-			executescript.indexOf("submitForm") - 1,
-			executescript.indexOf("else") - 2);
-
-		javascriptExecutor.executeScript(script);
-
-		Thread.sleep(1000);
-
-		_webDriver.navigate().refresh();
-
-		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		rows = _webDriver.findElements(By.xpath(_tableRow));
-
-		int newRows = rows.size();
-
-		int expectedFoos = originalRows - 1;
-
-		Assert.assertTrue(
-			"Expected " + expectedFoos + " foos, but saw " + newRows + " foos",
-			newRows == expectedFoos);
-	}
-
-	@Test
-	public void testReadFoo() throws PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
-
-		Assert.assertTrue(
-			"Service Builder Table is not visible", isVisible(_table));
-
-		Assert.assertTrue(
-			"new field5 entry is not present in table",
-			_table.getText().contains("new field5 entry"));
-	}
-
-	@Test
-	public void testUpdateFoo() throws InterruptedException, PortalException {
-		_webDriver.get(_portletURL.toExternalForm());
-
-		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		String url = _webDriver.getCurrentUrl();
+			"Spring Service Builder Table does not contain aSpringDeletableEntry",
+			_table.getText().contains("aSpringDeletableEntry"));
 
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
@@ -231,6 +153,52 @@ public class BladeSpringMVCPortletTest {
 			"Service Builder Table does not contain Spring Updated Name" +
 			_table.getText(),
 			_table.getText().contains("Spring Updated Name"));
+
+		Assert.assertTrue(
+			"Liferay Icon menu is not visible", isClickable(_lfrIconMenu));
+
+		customClick(_webDriver, _lfrIconMenu);
+
+		Assert.assertTrue(
+			"Liferay Menu Delete is not visible", isClickable(_lfrMenuDelete));
+
+		customClick(_webDriver, _lfrMenuDelete);
+
+		Assert.assertTrue(
+			"Alert is not present!",
+			isAlertPresent());
+
+		_webDriver.switchTo().window(windowHandler);
+
+		_webDriver.navigate().to(url);
+
+		Assert.assertTrue(
+			_table.getText(),
+			!_table.getText().contains("aSpringDeletableEntry"));
+
+	}
+
+	protected boolean isAlertPresent() {
+		try{
+			WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 15);
+
+			Alert alert = webDriverWait.until(
+				ExpectedConditions.alertIsPresent());
+
+			if(alert != null) {
+				_webDriver.switchTo().alert().accept();
+
+				return true;
+			}
+
+			else{
+				throw new NoAlertPresentException();
+			}
+		}
+
+		catch (NoAlertPresentException e) {
+			return false;
+		}
 	}
 
 	protected boolean isClickable(WebElement webelement) {
@@ -296,8 +264,6 @@ public class BladeSpringMVCPortletTest {
 
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;
-
-	private String _tableRow = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
 
 	@Drone
 	private WebDriver _webDriver;

@@ -42,13 +42,12 @@ task testFunctional(type: Test) {
 	classpath = sourceSets.testFunctional.runtimeClasspath
 	outputs.upToDateWhen { false }
 
-	dependsOn jar, ":initBundle", startTestableTomcat
+	dependsOn ":initBundle", startTestableTomcat
 	dependsOn ":modules:blade.servicebuilder.api:jar"
 	dependsOn ":modules:blade.servicebuilder.svc:jar"
 	dependsOn ":modules:blade.servicebuilder.web:jar"
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
-	systemProperty 'jarFile', jar.archivePath
 	systemProperty 'fooApiJarFile', project(":modules:blade.servicebuilder.api").jar.archivePath
 	systemProperty 'fooServiceJarFile', project(":modules:blade.servicebuilder.svc").jar.archivePath
 	systemProperty 'fooWebJarFile', project(":modules:blade.servicebuilder.web").jar.archivePath
