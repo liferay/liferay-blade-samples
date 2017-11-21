@@ -1,3 +1,4 @@
+<%--
 /**
  * Copyright 2000-present Liferay, Inc.
  *
@@ -13,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+--%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
