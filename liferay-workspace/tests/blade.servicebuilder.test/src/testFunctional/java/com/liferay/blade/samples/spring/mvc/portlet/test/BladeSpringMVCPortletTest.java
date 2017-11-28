@@ -117,6 +117,8 @@ public class BladeSpringMVCPortletTest {
 
 		customClick(_webDriver, _saveButton);
 
+		Thread.sleep(1000);
+
 		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
@@ -170,6 +172,8 @@ public class BladeSpringMVCPortletTest {
 
 		_webDriver.switchTo().window(windowHandler);
 
+		Thread.sleep(1000);
+
 		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
@@ -216,7 +220,7 @@ public class BladeSpringMVCPortletTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));

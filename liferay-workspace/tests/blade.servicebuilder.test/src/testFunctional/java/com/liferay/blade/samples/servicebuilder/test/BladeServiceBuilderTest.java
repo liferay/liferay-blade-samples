@@ -109,6 +109,10 @@ public class BladeServiceBuilderTest {
 
 		customClick(_webDriver, _saveButton);
 
+		Thread.sleep(1000);
+
+		_webDriver.navigate().to(url);
+
 		Assert.assertTrue(
 			"Service Builder Table does not contain aSBDeletableEntry",
 			_table.getText().contains("aSBDeletableEntry"));
@@ -131,6 +135,10 @@ public class BladeServiceBuilderTest {
 		_field1Form.sendKeys("field1 with Updated Name");
 
 		customClick(_webDriver, _saveButton);
+
+		Thread.sleep(1000);
+
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible", isVisible(_table));
@@ -155,6 +163,8 @@ public class BladeServiceBuilderTest {
 
 		_webDriver.switchTo().window(windowHandler);
 
+		Thread.sleep(1000);
+
 		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
@@ -178,7 +188,6 @@ public class BladeServiceBuilderTest {
 				throw new NoAlertPresentException();
 			}
 		}
-
 		catch (NoAlertPresentException e) {
 			return false;
 		}
@@ -199,7 +208,7 @@ public class BladeServiceBuilderTest {
 	}
 
 	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 10);
+		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 30);
 
 		try {
 			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
