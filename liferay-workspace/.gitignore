@@ -4,7 +4,6 @@
 **/.project
 **/.sass-cache
 **/.settings
-**/bin
 **/build
 **/build_gradle
 **/node_modules
