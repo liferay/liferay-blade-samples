@@ -24,7 +24,7 @@ startTestableTomcat {
 testIntegration {
 	outputs.upToDateWhen { false }
 
-	//dependsOn ":initBundle", startTestableTomcat
+	dependsOn ":initBundle", startTestableTomcat
 
 	beforeSuite {
 		def moduleOutputPaths = []
