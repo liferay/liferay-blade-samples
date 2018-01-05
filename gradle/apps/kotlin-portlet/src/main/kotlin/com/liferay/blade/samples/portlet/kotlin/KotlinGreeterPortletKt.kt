@@ -34,7 +34,7 @@ import org.osgi.service.component.annotations.Component
 		"javax.portlet.display-name=Kotlin Greeter Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-    "javax.portlet.name=KotlinGreeterPortletKt",
+		"javax.portlet.name=KotlinGreeterPortletKt",
 		"javax.portlet.security-role-ref=power-user,user"
 	),
 	service = arrayOf(Portlet::class))
