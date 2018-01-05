@@ -29,8 +29,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
@@ -60,15 +58,8 @@ public class BladeOverrideSearchPortletTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Expected Blade Sample AUI Form Extension Test, but saw: " + _portletHeader.getText(),
-			_portletHeader.getText().contentEquals("Blade Sample AUI Form Extension Test"));
+			_webDriver.getPageSource().contains("Blade Sample AUI Form Extension Test"));
 	}
-
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_portal_search_web_portlet_SearchPortlet')]")
-	private WebElement comLiferaySearchPortlet;
-
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_portal_search_web_portlet_SearchPortlet')]//..//div/div/h2")
-	private WebElement _portletHeader;
 
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
 	private URL _portletURL;
