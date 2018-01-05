@@ -40,13 +40,16 @@ public class SampleFormTagDynamicInclude implements TagDynamicInclude {
 
 		PrintWriter printWriter = response.getWriter();
 
-		if (tagDynamicId.contentEquals("com_liferay_portal_search_web_portlet_SearchPortlet-fm")) {
-			printWriter.println("<h2>Blade Sample AUI Form Extension Test</h2><br />");
-		}
+		if (tagDynamicId.contentEquals(
+				"com_liferay_portal_search_web_portlet_SearchPortlet-fm")) {
 
+			printWriter.println(
+				"<h2>Blade Sample AUI Form Extension Test</h2><br />");
+		}
 		else {
 			printWriter.println(
-				"<h2>Liferay Portal Taglib AUI Form Extension Sample</h2><br />");
+				"<h2>Liferay Portal Taglib AUI Form Extension Sample</h2><br " +
+					"/>");
 		}
 	}
 
