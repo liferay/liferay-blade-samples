@@ -56,7 +56,7 @@ class KotlinGreeterActionCommandKt : MVCActionCommand {
 			_log.info("Hello " + name)
 		}
 
-		val greetingMessage = "Hello $name! Welcome to OSGi"
+		val greetingMessage = "Hello $name!"
 
 		actionRequest?.setAttribute("GREETER_MESSAGE", greetingMessage)
 
