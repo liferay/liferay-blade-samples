@@ -18,7 +18,14 @@
 
 <%@ include file="/init.jsp" %>
 
-<%= renderRequest.getAttribute("GREETER_MESSAGE") %>
+<%
+String greeting = (String)renderRequest.getAttribute("GREETER_MESSAGE");
+if (greeting == null) {
+	greeting = "";
+}
+%>
+
+<%= greeting %>
 
 <liferay-ui:message key="blade_portlet_kotlinactioncommand_KotlinGreeterPortlet.caption" />
 
