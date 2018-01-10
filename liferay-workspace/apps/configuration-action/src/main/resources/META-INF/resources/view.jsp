@@ -20,9 +20,7 @@
 
 <%
 boolean doConfigure =
-	Validator.isNull(fontFamily) &&
-		Validator.isNull(fontColor) &&
-		(Validator.isNull(fontSize) || "0".equals(fontSize));
+	Validator.isNull(fontFamily) && Validator.isNull(fontColor) && (Validator.isNull(fontSize) || "0".equals(fontSize));
 %>
 
 <c:choose>

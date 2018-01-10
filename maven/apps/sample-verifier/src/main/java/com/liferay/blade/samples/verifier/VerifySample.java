@@ -141,6 +141,7 @@ public class VerifySample {
 		switch (bundle.getState()) {
 			case Bundle.ACTIVE:
 				_messages.append("\t" + _CHECK + "\tBundle is " + state + "\n");
+
 				break;
 			case Bundle.RESOLVED:
 				URL manifestURL = bundle.getEntry("META-INF/MANIFEST.MF");

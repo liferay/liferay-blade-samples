@@ -16,9 +16,15 @@
 
 package com.liferay.blade.samples.portlet.kotlin
 
+import com.liferay.blade.samples.portlet.kotlin.constants.KotlinGreeterPortletKeys
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet
 
+import java.io.IOException
+
 import javax.portlet.Portlet
+import javax.portlet.PortletException
+import javax.portlet.RenderRequest
+import javax.portlet.RenderResponse
 
 import org.osgi.service.component.annotations.Component
 
@@ -34,8 +40,24 @@ import org.osgi.service.component.annotations.Component
 		"javax.portlet.display-name=Kotlin Greeter Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-    "javax.portlet.name=KotlinGreeterPortletKt",
+		"javax.portlet.name=" + KotlinGreeterPortletKeys.KotlinGreeterPortlet,
 		"javax.portlet.security-role-ref=power-user,user"
 	),
-	service = arrayOf(Portlet::class))
-class KotlinGreeterPortletKt : MVCPortlet()
+	service = arrayOf(Portlet::class)
+)
+class KotlinGreeterPortlet : MVCPortlet() {
+
+	@Throws(IOException::class, PortletException::class)
+	override fun doView(
+		renderRequest: RenderRequest, renderResponse: RenderResponse) {
+
+		val greeting: String? = renderRequest.getAttribute(KotlinGreeterPortletKeys.GreeterMessage) as String?
+
+		if (greeting == null) {
+			renderRequest.setAttribute(KotlinGreeterPortletKeys.GreeterMessage, "")
+		}
+
+		super.doView(renderRequest, renderResponse)
+	}
+
+}
