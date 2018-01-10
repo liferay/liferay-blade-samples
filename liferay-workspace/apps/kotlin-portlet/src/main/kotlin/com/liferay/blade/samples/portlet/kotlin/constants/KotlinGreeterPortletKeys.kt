@@ -1,4 +1,3 @@
-<%--
 /**
  * Copyright 2000-present Liferay, Inc.
  *
@@ -14,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
---%>
 
-<%@ include file="/init.jsp" %>
+package com.liferay.blade.samples.portlet.kotlin.constants
 
-<%=(String)renderRequest.getAttribute(KotlinGreeterPortletKeys.GreeterMessage)%>
+/**
+ * @author Liferay
+ */
+class KotlinGreeterPortletKeys {
 
-<liferay-ui:message key="blade_portlet_kotlinactioncommand_KotlinGreeterPortlet.caption" />
+	companion object {
+        const val KotlinGreeterPortlet = "KotlinGreeterPortlet"
+        const val GreeterMessage = "GREETER_MESSAGE"
+    }
 
-<liferay-portlet:actionURL name="greet" var="greetURL" />
-
-<aui:form action="<%= greetURL %>" method="post" name="fm">
-	<aui:input name="name" type="text" />
-
-	<aui:button-row>
-		<aui:button type="submit"></aui:button>
-	</aui:button-row>
-</aui:form>
+}

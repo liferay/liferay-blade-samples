@@ -16,6 +16,7 @@
 
 package com.liferay.blade.samples.portlet.kotlin
 
+import com.liferay.blade.samples.portlet.kotlin.constants.KotlinGreeterPortletKeys
 import com.liferay.portal.kernel.log.LogFactoryUtil
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand
 import com.liferay.portal.kernel.servlet.SessionMessages
@@ -34,11 +35,12 @@ import org.osgi.service.component.annotations.Component
 @Component(
 	immediate = true,
 	property = arrayOf(
-		"javax.portlet.name=KotlinGreeterPortletKt",
+		"javax.portlet.name=" + KotlinGreeterPortletKeys.KotlinGreeterPortlet,
 		"mvc.command.name=greet"
 	),
-	service = arrayOf(MVCActionCommand::class))
-class KotlinGreeterActionCommandKt : MVCActionCommand {
+	service = arrayOf(MVCActionCommand::class)
+)
+class KotlinGreeterActionCommand : MVCActionCommand {
 
 	@Throws(PortletException::class)
 	override fun processAction(
@@ -64,9 +66,8 @@ class KotlinGreeterActionCommandKt : MVCActionCommand {
 	}
 
 	companion object {
-
 		private val _log = LogFactoryUtil.getLog(
-			KotlinGreeterActionCommandKt::class.java)
+			KotlinGreeterActionCommand::class.java)
 	}
 
 }
