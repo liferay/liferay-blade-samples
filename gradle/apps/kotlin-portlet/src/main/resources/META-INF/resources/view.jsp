@@ -18,7 +18,7 @@
 
 <%@ include file="/init.jsp" %>
 
-<%=(String)renderRequest.getAttribute(KotlinGreeterPortletKeys.GreeterMessage)%>
+<%= (String)renderRequest.getAttribute(KotlinGreeterPortletKeys.GreeterMessage) %>
 
 <liferay-ui:message key="blade_portlet_kotlinactioncommand_KotlinGreeterPortlet.caption" />
 

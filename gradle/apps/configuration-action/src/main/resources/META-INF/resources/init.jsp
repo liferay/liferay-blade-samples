@@ -46,16 +46,12 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 	if (Validator.isNotNull(messageDisplayConfiguration)) {
 		fontFamily =
-			portletPreferences.getValue(
-				"fontFamily", messageDisplayConfiguration.fontFamily());
+			portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
 
 		fontColor =
-			portletPreferences.getValue(
-				"fontColor", messageDisplayConfiguration.fontColor());
+			portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
 
 		fontSize =
-			portletPreferences.getValue(
-				"fontSize",
-				String.valueOf(messageDisplayConfiguration.fontSize()));
+			portletPreferences.getValue("fontSize", String.valueOf(messageDisplayConfiguration.fontSize()));
 	}
 %>
