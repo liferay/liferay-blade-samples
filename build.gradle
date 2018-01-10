@@ -15,7 +15,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import groovy.io.FileType
 
 FileTree gradleBundles = fileTree(dir: 'gradle', include: '**/libs/*.jar', excludes: ['**/npm/**/libs/*.jar','**/kotlin-portlet/build/libs/*.jar'])
-FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', exclude: 'tests/*')
+FileTree liferayWorkspaceBundles = fileTree(dir: 'liferay-workspace', include: '**/libs/*.jar', excludes: ['**/kotlin-portlet/build/libs/*.jar','tests/*'])
 FileTree mavenBundles = fileTree(dir: 'maven', include: '**/target/*.jar')
 
 int canonicalBundlesSize = gradleBundles.size()
