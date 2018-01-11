@@ -44,7 +44,7 @@ public class BladeOverrideSearchPortletTest {
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(
-			System.getProperty("loginPortletOverrideJarFile"));
+			System.getProperty("portletFormTaglibOverrideJarFile"));
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}

@@ -14,8 +14,8 @@
 
 	<modules>
 		<module>core-jsp-override</module>
-		<module>login-portlet-override</module>
 		<module>module-jsp-override</module>
+		<module>portlet-form-taglib-override</module>
 		<module>resource-bundle-override</module>
 	</modules>
 </project>
