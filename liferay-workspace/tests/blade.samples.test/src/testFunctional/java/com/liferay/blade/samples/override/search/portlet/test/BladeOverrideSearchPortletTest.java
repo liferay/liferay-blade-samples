@@ -58,7 +58,7 @@ public class BladeOverrideSearchPortletTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			_webDriver.getPageSource().contains("Blade Sample AUI Form Extension Test"));
+			_webDriver.getPageSource().contains("Sample Search Portlet Form Override"));
 	}
 
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")

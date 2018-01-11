@@ -18,6 +18,7 @@ package com.liferay.blade.samples.tagdynamicinclude;
 
 import com.liferay.portal.kernel.servlet.taglib.TagDynamicInclude;
 import com.liferay.portal.kernel.util.PortletKeys;
+import com.liferay.taglib.aui.FormTag;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * @author Carlos Sierra Andrés
+ * @author Liferay
  */
 @Component(immediate = true, service = TagDynamicInclude.class)
 public class SampleLoginPortletFormTagDynamicInclude
@@ -42,16 +43,16 @@ public class SampleLoginPortletFormTagDynamicInclude
 		PrintWriter printWriter = response.getWriter();
 
 		printWriter.println(
-			"<h2>Liferay Portal Taglib AUI Form Extension Sample</h2><br />");
+			"<h2>Sample Login Portlet Form Taglib Override</h2><br />");
 	}
 
 	public void register(TagDynamicIncludeRegistry tagDynamicIncludeRegistry) {
 		tagDynamicIncludeRegistry.register(
-			"com.liferay.taglib.aui.FormTag", PortletKeys.LOGIN + "-loginForm",
+			FormTag.class.getCanonicalName(), PortletKeys.LOGIN + "-loginForm",
 			"doStartTag#before");
 
 		tagDynamicIncludeRegistry.register(
-			"com.liferay.taglib.aui.FormTag",
+			FormTag.class.getCanonicalName(),
 			PortletKeys.LOGIN + "-loginFormModal", "doStartTag#before");
 	}
 

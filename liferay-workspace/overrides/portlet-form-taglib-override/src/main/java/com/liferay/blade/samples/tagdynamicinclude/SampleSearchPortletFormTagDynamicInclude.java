@@ -18,6 +18,7 @@ package com.liferay.blade.samples.tagdynamicinclude;
 
 import com.liferay.portal.kernel.servlet.taglib.TagDynamicInclude;
 import com.liferay.portal.search.web.constants.SearchPortletKeys;
+import com.liferay.taglib.aui.FormTag;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,12 +43,12 @@ public class SampleSearchPortletFormTagDynamicInclude
 		PrintWriter printWriter = response.getWriter();
 
 		printWriter.println(
-			"<h2>Blade Sample AUI Form Extension Test</h2><br />");
+			"<h2>Sample Search Portlet Form Override</h2><br />");
 	}
 
 	public void register(TagDynamicIncludeRegistry tagDynamicIncludeRegistry) {
 		tagDynamicIncludeRegistry.register(
-			"com.liferay.taglib.aui.FormTag", SearchPortletKeys.SEARCH + "-fm",
+			FormTag.class.getCanonicalName(), SearchPortletKeys.SEARCH + "-fm",
 			"doStartTag#before");
 	}
 
