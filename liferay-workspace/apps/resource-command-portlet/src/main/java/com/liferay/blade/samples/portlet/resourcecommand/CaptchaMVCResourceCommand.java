@@ -17,8 +17,6 @@
 package com.liferay.blade.samples.portlet.resourcecommand;
 
 import com.liferay.portal.kernel.captcha.CaptchaUtil;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;
 
 import javax.portlet.PortletException;
@@ -26,6 +24,8 @@ import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -45,9 +45,7 @@ public class CaptchaMVCResourceCommand implements MVCResourceCommand {
 			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 		throws PortletException {
 
-		if (_log.isInfoEnabled()) {
-			_log.info("get captcha resource ");
-		}
+		_log.log(LogService.LOG_INFO, "get captcha resource ");
 
 		try {
 			CaptchaUtil.serveImage(resourceRequest, resourceResponse);
@@ -55,13 +53,13 @@ public class CaptchaMVCResourceCommand implements MVCResourceCommand {
 			return false;
 		}
 		catch (Exception e) {
-			_log.error(e, e);
+			_log.log(LogService.LOG_ERROR, e.getMessage(), e);
 
 			return true;
 		}
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		CaptchaMVCResourceCommand.class);
+	@Reference
+	private LogService _log;
 
 }

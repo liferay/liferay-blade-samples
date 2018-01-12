@@ -135,7 +135,7 @@ public class ConnectionTest {
 
 			props.setProperty("server.database.0", "mem:testdb;");
 			props.setProperty("server.dbname.0", "xdb");
-		    props.setProperty("server.port", "54322");
+			props.setProperty("server.port", "54322");
 
 			_sonicServer = new org.hsqldb.Server();
 

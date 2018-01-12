@@ -19,8 +19,6 @@ package blade.document.action.displaycontext;
 import com.liferay.document.library.display.context.BaseDLViewFileVersionDisplayContext;
 import com.liferay.document.library.display.context.DLViewFileVersionDisplayContext;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.repository.model.FileVersion;
@@ -50,6 +48,9 @@ import javax.portlet.WindowStateException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * Provides the Custom Display Context, which provides access to the Documents
@@ -139,7 +140,7 @@ public class BladeActionDisplayContext
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 		}
 		catch (WindowStateException wse) {
-			_log.error(wse);
+			_log.log(LogService.LOG_ERROR, wse.getMessage(), wse);
 		}
 
 		StringBuilder stringBuilder = new StringBuilder();
@@ -175,8 +176,8 @@ public class BladeActionDisplayContext
 		return typedSettings.getBooleanValue("showActions");
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		BladeActionDisplayContext.class);
+	@Reference
+	private LogService _log;
 
 	private ThemeDisplay _themeDisplay;
 
