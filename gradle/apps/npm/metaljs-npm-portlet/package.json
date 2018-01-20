@@ -1,8 +1,13 @@
 {
 	"dependencies": {
-		"metal-component": "2.13.2",
-		"metal-incremental-dom": "2.13.2",
-		"metal-soy": "2.13.2"
+		"metal": "^2.13.2",
+		"metal-component": "^2.13.2",
+		"metal-dom": "^2.13.2",
+		"metal-events": "^2.13.2",
+		"metal-incremental-dom": "^2.13.2",
+		"metal-soy": "^2.13.2",
+		"metal-soy-bundle": "^2.13.2",
+		"metal-state": "^2.13.2"
 	},
 	"description": "Metal.js Portlet",
 	"devDependencies": {
