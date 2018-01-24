@@ -21,6 +21,6 @@ package com.liferay.blade.samples.jndiservicebuilder.web.constants;
  */
 public class JNDIServiceBuilderPortletKeys {
 
-	public static final String JNDIServiceBuilder = "JNDIServiceBuilder";
+	public static final String JNDI_SERVICE_BUILDER = "JNDIServiceBuilder";
 
 }

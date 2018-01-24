@@ -42,7 +42,7 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
 		"javax.portlet.display-name=Greedy Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.name=" + ReluctantVsGreedyPortletKeys.Greedy,
+		"javax.portlet.name=" + ReluctantVsGreedyPortletKeys.GREEDY,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},

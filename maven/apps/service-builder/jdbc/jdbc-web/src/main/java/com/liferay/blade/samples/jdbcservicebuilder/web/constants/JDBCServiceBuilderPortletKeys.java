@@ -21,6 +21,6 @@ package com.liferay.blade.samples.jdbcservicebuilder.web.constants;
  */
 public class JDBCServiceBuilderPortletKeys {
 
-	public static final String JDBCServiceBuilder = "JDBCServiceBuilder";
+	public static final String JDBC_SERVICE_BUILDER = "JDBCServiceBuilder";
 
 }

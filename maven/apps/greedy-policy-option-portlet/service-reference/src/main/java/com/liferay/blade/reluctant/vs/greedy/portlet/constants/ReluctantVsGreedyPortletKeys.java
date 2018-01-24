@@ -21,7 +21,8 @@ package com.liferay.blade.reluctant.vs.greedy.portlet.constants;
  */
 public class ReluctantVsGreedyPortletKeys {
 
-	public static final String Greedy = "Greedy";
-	public static final String Reluctant = "Reluctant";
+	public static final String GREEDY = "Greedy";
+
+	public static final String RELUCTANT = "Reluctant";
 
 }

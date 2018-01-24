@@ -21,6 +21,7 @@ import com.liferay.blade.samples.jdbcservicebuilder.service.CountryLocalService;
 
 import java.util.List;
 
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
@@ -31,8 +32,9 @@ import org.osgi.util.tracker.ServiceTracker;
 public class UseJDBC {
 
 	public static List<Country> getCountries() {
-		BundleContext bundleContext = FrameworkUtil.getBundle(
-			UseJDBC.class).getBundleContext();
+		Bundle bundle = FrameworkUtil.getBundle(UseJDBC.class);
+
+		BundleContext bundleContext = bundle.getBundleContext();
 
 		ServiceTracker<CountryLocalService, CountryLocalService> tracker =
 			new ServiceTracker<>(
@@ -58,8 +60,9 @@ public class UseJDBC {
 	}
 
 	public static int getCountriesCount() {
-		BundleContext bundleContext = FrameworkUtil.getBundle(
-			UseJDBC.class).getBundleContext();
+		Bundle bundle = FrameworkUtil.getBundle(UseJDBC.class);
+
+		BundleContext bundleContext = bundle.getBundleContext();
 
 		ServiceTracker<CountryLocalService, CountryLocalService> tracker =
 			new ServiceTracker<>(
@@ -84,8 +87,9 @@ public class UseJDBC {
 	}
 
 	public static void useJDBC() {
-		BundleContext bundleContext = FrameworkUtil.getBundle(
-			UseJDBC.class).getBundleContext();
+		Bundle bundle = FrameworkUtil.getBundle(UseJDBC.class);
+
+		BundleContext bundleContext = bundle.getBundleContext();
 
 		ServiceTracker<CountryLocalService, CountryLocalService> tracker =
 			new ServiceTracker<>(

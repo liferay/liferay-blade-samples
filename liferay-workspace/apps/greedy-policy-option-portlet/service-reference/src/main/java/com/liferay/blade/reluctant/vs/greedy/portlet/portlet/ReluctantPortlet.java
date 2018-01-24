@@ -41,7 +41,7 @@ import org.osgi.service.component.annotations.Reference;
 		"javax.portlet.display-name=Reluctant Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.name=" + ReluctantVsGreedyPortletKeys.Reluctant,
+		"javax.portlet.name=" + ReluctantVsGreedyPortletKeys.RELUCTANT,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},

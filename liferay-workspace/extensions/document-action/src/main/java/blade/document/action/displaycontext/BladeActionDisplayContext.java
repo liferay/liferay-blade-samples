@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.repository.model.FileVersion;
 import com.liferay.portal.kernel.servlet.taglib.ui.JavaScriptMenuItem;
 import com.liferay.portal.kernel.servlet.taglib.ui.JavaScriptToolbarItem;
 import com.liferay.portal.kernel.servlet.taglib.ui.Menu;
+import com.liferay.portal.kernel.servlet.taglib.ui.MenuItem;
 import com.liferay.portal.kernel.servlet.taglib.ui.ToolbarItem;
 import com.liferay.portal.kernel.settings.PortletInstanceSettingsLocator;
 import com.liferay.portal.kernel.settings.Settings;
@@ -39,6 +40,7 @@ import com.liferay.portal.kernel.util.PortletKeys;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,7 +85,9 @@ public class BladeActionDisplayContext
 			jsMenuItem.setLabel("Blade Basic Info");
 			jsMenuItem.setOnClick(_getOnclick());
 
-			menu.getMenuItems().add(jsMenuItem);
+			List<MenuItem> list = menu.getMenuItems();
+
+			list.add(jsMenuItem);
 		}
 
 		return menu;
@@ -116,7 +120,10 @@ public class BladeActionDisplayContext
 		String fileName = fileVersion.getFileName();
 		String mimeType = fileVersion.getMimeType();
 		String version = fileVersion.getVersion();
-		String createdDate = fileVersion.getCreateDate().toString();
+		Date date = fileVersion.getCreateDate();
+
+		String createdDate = date.toString();
+
 		String createdUserName = fileVersion.getUserName();
 		String statusLabel = WorkflowConstants.getStatusLabel(
 			fileVersion.getStatus());

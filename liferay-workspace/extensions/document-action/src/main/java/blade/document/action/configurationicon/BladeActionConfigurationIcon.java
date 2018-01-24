@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.portlet.PortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.configuration.icon.BasePortletConfigurationIcon;
 import com.liferay.portal.kernel.portlet.configuration.icon.PortletConfigurationIcon;
 import com.liferay.portal.kernel.repository.model.FileEntry;
+import com.liferay.portal.kernel.repository.model.FileVersion;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
@@ -81,13 +82,16 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		String fileName = fileEntry.getFileName();
 		String mimeType = fileEntry.getMimeType();
 		String version = fileEntry.getVersion();
-		String createdDate = fileEntry.getCreateDate().toString();
+		String createdDate = String.valueOf(fileEntry.getCreateDate());
 		String createdUserName = fileEntry.getUserName();
 		String statusLabel = null;
 
 		try {
-			statusLabel = WorkflowConstants.getStatusLabel(
-				fileEntry.getLatestFileVersion().getStatus());
+			FileVersion fileVersion = fileEntry.getLatestFileVersion();
+
+			int status = fileVersion.getStatus();
+
+			statusLabel = WorkflowConstants.getStatusLabel(status);
 		}
 		catch (PortalException pe) {
 			_log.error(pe);
