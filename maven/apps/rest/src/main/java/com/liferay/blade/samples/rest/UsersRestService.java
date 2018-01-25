@@ -53,7 +53,8 @@ public class UsersRestService extends Application {
 		StringBuilder result = new StringBuilder();
 
 		for (User user : _userLocalService.getUsers(-1, -1)) {
-			result.append(user.getFullName()).append(",\n");
+			result.append(user.getFullName());
+			result.append(",\n");
 		}
 
 		return result.toString();

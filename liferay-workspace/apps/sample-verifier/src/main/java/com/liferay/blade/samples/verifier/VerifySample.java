@@ -23,6 +23,7 @@ import java.lang.reflect.Field;
 import java.net.URL;
 
 import java.util.Optional;
+import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 import java.util.stream.Stream;
 
@@ -148,8 +149,9 @@ public class VerifySample {
 
 				Manifest manifest = new Manifest(manifestURL.openStream());
 
-				String fragmentHost =
-					manifest.getMainAttributes().getValue("Fragment-Host");
+				Attributes attributes = manifest.getMainAttributes();
+
+				String fragmentHost = attributes.getValue("Fragment-Host");
 
 				if (fragmentHost != null) {
 					_messages.append(

@@ -60,6 +60,7 @@ include(
 	'extensions:user-service-wrapper',
 	'overrides:core-jsp-override',
 	'overrides:module-jsp-override',
+	'overrides:portlet-form-taglib-override',
 	'overrides:resource-bundle-override',
 	'themes:simple-theme',
 	'themes:template-context-contributor',

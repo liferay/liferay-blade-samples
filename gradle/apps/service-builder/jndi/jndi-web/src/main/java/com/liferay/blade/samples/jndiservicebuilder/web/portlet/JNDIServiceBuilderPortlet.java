@@ -34,7 +34,7 @@ import org.osgi.service.component.annotations.Component;
 		"javax.portlet.display-name=jndi-web Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.name=" + JNDIServiceBuilderPortletKeys.JNDIServiceBuilder,
+		"javax.portlet.name=" + JNDIServiceBuilderPortletKeys.JNDI_SERVICE_BUILDER,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},

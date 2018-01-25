@@ -21,6 +21,6 @@ package com.liferay.blade.samples.configurationaction.constants;
  */
 public class BladeMessagePortletKeys {
 
-	public static final String BladeMessagePortlet = "BladeMessagePortlet";
+	public static final String BLADE_MESSAGE_PORTLET = "BladeMessagePortlet";
 
 }

@@ -98,6 +98,7 @@ replicateSources.doLast {
 
 		canonicalProjects.removeAll { it.name.contains("test") }
 		canonicalProjects.removeAll { it.name.contains("npm") }
+		canonicalProjects.removeAll { it.name.contains("kotlin") }
 	}
 
 	canonicalProjects.each { canonicalProject ->

@@ -75,6 +75,7 @@ task testFunctional(type: Test) {
 	dependsOn ":extensions:servlet:jar"
 	dependsOn ":extensions:portlet-configuration-icon:jar"
 	dependsOn ":extensions:portlet-toolbar-contributor:jar"
+	dependsOn ":overrides:portlet-form-taglib-override:jar"
 
 	doFirst {
 		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
@@ -92,6 +93,7 @@ task testFunctional(type: Test) {
 		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
 		systemProperty 'liferayHome', liferay.liferayHome
+		systemProperty 'portletFormTaglibOverrideJarFile', project(':overrides:portlet-form-taglib-override').jar.archivePath
 		systemProperty 'osgiPortletJarFile', project(':apps:osgi-portlet').jar.archivePath
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
