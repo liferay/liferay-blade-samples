@@ -8,7 +8,3 @@ they're returned to end users.
 For more details on this sample, see the
 [Indexer Post Processor](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/indexer-post-processor)
 article on Liferay's Developer Network.
-
-For more details on how to use Module Logging, see the following
-[reference article](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/adjusting-module-logging)
-on Liferay's Developer Network.
