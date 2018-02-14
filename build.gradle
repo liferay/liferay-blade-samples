@@ -284,13 +284,13 @@ getLatestPortalBundleURL {
 			if (buildPage.toString().contains(tomcatBuild)) {
 				portalBundleURL = serverUrl + "/" + build + "/" + tomcatBuild;
 
-				return portalBundleURL;
+				break;
 			}
 
 			latestBuildInt--;
 		}
 
-		throw new IOException("Portal Bundle Link cannot be found!");
+		println portalBundleURL;
 	}
 }
 
