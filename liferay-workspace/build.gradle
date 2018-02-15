@@ -66,10 +66,12 @@ task deployAries(type: Copy) {
 	into "bundles/osgi/test"
 }
 
-task removeTestUtils(type: Delete) {
-    delete fileTree('bundles/osgi/test') {
-        include '**/com.liferay*'
-    }
-}
+initBundle.finalizedBy deployAries
 
-initBundle.finalizedBy deployAries,removeTestUtils
+initBundle {
+	doLast {
+		delete fileTree('bundles/osgi/test') {
+			include '**/com.liferay*'
+		}
+	}
+}
