@@ -257,7 +257,7 @@ warsDiffTest.doLast{
 task getLatestPortalBundleURL
 
 getLatestPortalBundleURL {
-	getLatestPortalBundleURL.doLast {
+	doLast {
 		String serverUrl = project.getProperty('serverUrl');
 
 		Document doc = Jsoup.connect(serverUrl).get();
@@ -301,7 +301,4 @@ task wrapper(type: Wrapper) {
 
 task diff
 
-diff.dependsOn bundlesTest
-diff.dependsOn warsTest
-diff.dependsOn bundlesDiffTest
-diff.dependsOn warsDiffTest
+diff.dependsOn bundlesTest, warsTest, bundlesDiffTest, warsDiffTest
