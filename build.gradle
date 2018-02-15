@@ -256,7 +256,4 @@ task wrapper(type: Wrapper) {
 
 task diff
 
-diff.dependsOn bundlesTest
-diff.dependsOn warsTest
-diff.dependsOn bundlesDiffTest
-diff.dependsOn warsDiffTest
+diff.dependsOn bundlesTest, warsTest, bundlesDiffTest, warsDiffTest
