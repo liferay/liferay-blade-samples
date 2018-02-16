@@ -17,8 +17,6 @@
 package com.liferay.blade.samples.authfailure;
 
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.security.auth.AuthException;
 import com.liferay.portal.kernel.security.auth.AuthFailure;
@@ -27,6 +25,8 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -49,14 +49,13 @@ public class LogMaxFailures implements AuthFailure {
 
 			boolean lockout = user.isLockout();
 
-			if (_log.isInfoEnabled()) {
-				_log.info(
-					"onFailureByEmailAddress: " + emailAddress + " is " +
-						(lockout ? "" : "not") + " locked out.");
-			}
+			_log.log(
+				LogService.LOG_INFO,
+				"onFailureByEmailAddress: " + emailAddress + " is " +
+					(lockout ? "" : "not") + " locked out.");
 		}
 		catch (PortalException pe) {
-			_log.error(pe);
+			_log.log(LogService.LOG_ERROR, pe.getMessage(), pe);
 		}
 	}
 
@@ -72,12 +71,13 @@ public class LogMaxFailures implements AuthFailure {
 
 			boolean lockout = user.isLockout();
 
-			_log.info(
+			_log.log(
+				LogService.LOG_INFO,
 				"onFailureByScreenName: " + screenName + " is " +
 					(lockout ? "" : "not") + " locked out.");
 		}
 		catch (PortalException pe) {
-			_log.error(pe);
+			_log.log(LogService.LOG_ERROR, pe.getMessage(), pe);
 		}
 	}
 
@@ -92,15 +92,17 @@ public class LogMaxFailures implements AuthFailure {
 
 			boolean lockout = user.isLockout();
 
-			_log.info(
+			_log.log(
+				LogService.LOG_INFO,
 				"onFailureById: userId " + userId + " is " +
 					(lockout ? "" : "not") + " locked out.");
 		}
 		catch (PortalException pe) {
-			_log.error(pe);
+			_log.log(LogService.LOG_ERROR, pe.getMessage(), pe);
 		}
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(LogMaxFailures.class);
+	@Reference
+	private LogService _log;
 
 }

@@ -25,8 +25,8 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * The implementation of the region local service.
@@ -61,25 +61,29 @@ public class RegionLocalServiceImpl extends RegionLocalServiceBaseImpl {
 				"select id, name from region");
 
 			while (resultSet.next()) {
-				_logger.info("Record from external database:");
+				_log.log(LogService.LOG_INFO, "Record from external database:");
+
 				String id = resultSet.getString("id");
 
-				_logger.info("ID: " + id);
+				_log.log(LogService.LOG_INFO, "ID: " + id);
 
 				String name = resultSet.getString("name");
 
-				_logger.info("Name: " + name + System.lineSeparator());
+				_log.log(
+					LogService.LOG_INFO,
+					"Name: " + name + System.lineSeparator());
 			}
 
 			connection.close();
 		}
 		catch (SQLException sqle) {
-			_logger.error("Failed to retrieve data from external database!");
-
-			sqle.printStackTrace();
+			_log.log(
+				LogService.LOG_ERROR,
+				"Failed to retrieve data from external database!", sqle);
 		}
 	}
 
-	private Logger _logger = LoggerFactory.getLogger(getClass().getName());
+	@Reference
+	private LogService _log;
 
 }

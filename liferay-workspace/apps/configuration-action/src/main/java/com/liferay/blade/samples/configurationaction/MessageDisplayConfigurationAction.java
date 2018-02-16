@@ -18,8 +18,6 @@ package com.liferay.blade.samples.configurationaction;
 
 import com.liferay.blade.samples.configurationaction.constants.BladeMessagePortletKeys;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
 import com.liferay.portal.kernel.util.ParamUtil;
@@ -37,6 +35,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -58,9 +58,8 @@ public class MessageDisplayConfigurationAction
 			HttpServletResponse httpServletResponse)
 		throws Exception {
 
-		if (_log.isDebugEnabled()) {
-			_log.debug("Blade Message Portlet configuration include");
-		}
+		_log.log(
+			LogService.LOG_INFO, "Blade Message Portlet configuration include");
 
 		httpServletRequest.setAttribute(
 			MessageDisplayConfiguration.class.getName(),
@@ -75,21 +74,22 @@ public class MessageDisplayConfigurationAction
 			ActionResponse actionResponse)
 		throws Exception {
 
-		if (_log.isDebugEnabled()) {
-			_log.debug("Blade Message Portlet configuration action");
-		}
+		_log.log(
+			LogService.LOG_INFO, "Blade Message Portlet configuration action");
 
 		String fontColor = ParamUtil.getString(actionRequest, "fontColor");
 		String fontFamily = ParamUtil.getString(actionRequest, "fontFamily");
 		String fontSize = ParamUtil.getString(actionRequest, "fontSize");
 
-		if (_log.isDebugEnabled()) {
-			_log.debug(
-				"Message Display Configuration: Font Family:" + fontFamily);
-			_log.debug("Message Display Configuration: Font Size:" + fontSize);
-			_log.debug(
-				"Message Display Configuration: Font Color:" + fontColor);
-		}
+		_log.log(
+			LogService.LOG_INFO,
+			"Message Display Configuration: Font Family: " + fontFamily);
+		_log.log(
+			LogService.LOG_INFO,
+			"Message Display Configuration: Font Size: " + fontSize);
+		_log.log(
+			LogService.LOG_INFO,
+			"Message Display Configuration: Font Color: " + fontColor);
 
 		setPreference(actionRequest, "fontColor", fontColor);
 		setPreference(actionRequest, "fontFamily", fontFamily);
@@ -105,8 +105,8 @@ public class MessageDisplayConfigurationAction
 			MessageDisplayConfiguration.class, properties);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		MessageDisplayConfigurationAction.class);
+	@Reference
+	private LogService _log;
 
 	private volatile MessageDisplayConfiguration _messageDisplayConfiguration;
 
