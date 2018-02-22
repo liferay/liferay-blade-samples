@@ -1,0 +1,15 @@
+{namespace CloseHeader}
+
+/**
+ * @param cssClass
+ * @param onClick
+ * @param title
+ */
+{template .render}
+	<header class="{$cssClass}">
+		<button onClick="{$onClick}" type="button" class="close">
+			<span>×</span>
+		</button>
+		<h4>{$title}</h4>
+	</header>
+{/template}

@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": ["es2015", "dom"],
+		"module": "amd",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noStrictGenericChecks": true,
+		"sourceMap": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"target": "es5",
+		"typeRoots": ["./node_modules/@types/"]
+	},
+	"include": [
+		"src/**/*.ts"
+	]
+}

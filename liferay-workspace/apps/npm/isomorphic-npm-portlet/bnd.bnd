@@ -1,0 +1,4 @@
+Bundle-Name: Isomorphic npm Portlet
+Bundle-SymbolicName: com.liferay.blade.npm.isomorphic.npm.portlet
+Bundle-Version: 1.0.0
+Web-ContextPath: /isomorphic-npm-portlet
