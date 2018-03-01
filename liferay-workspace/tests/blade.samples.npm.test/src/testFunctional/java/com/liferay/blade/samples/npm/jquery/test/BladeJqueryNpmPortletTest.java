@@ -61,6 +61,8 @@ public class BladeJqueryNpmPortletTest {
 
 		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmJQueryPortlet);
 
+		Thread.sleep(1000);
+
 		Assert.assertTrue(
 			"Expected: Liferay NPM jQuery Example, but saw: " + _portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Liferay NPM jQuery Example"));

@@ -61,6 +61,8 @@ public class BladeMetaljsNpmPortletTest {
 
 		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmMetaljsPortlet);
 
+		Thread.sleep(1000);
+
 		Assert.assertTrue(
 			"Expected: Metal.js Portlet, but saw: " + _portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Metal.js Portlet"));
