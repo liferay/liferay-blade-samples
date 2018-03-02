@@ -26,6 +26,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -50,6 +51,7 @@ public class BladeJqueryNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	@Ignore
 	@Test
 	public void testBladeJQueryNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());
