@@ -22,7 +22,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,16 +36,13 @@ public class BladeSampleFunctionalActionUtil {
 
 		Actions actionMoveTo = action.moveToElement(webElement);
 
-		Action buildActionMoveTo = actionMoveTo.build();
+		Actions actionOffset = actionMoveTo.moveByOffset(1, 1);
 
-		buildActionMoveTo.perform();
+		Actions revertOffset = actionOffset.moveByOffset(-1, -1);
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+		Actions clickElement = revertOffset.click();
 
-		WebElement element = wait.until(
-			ExpectedConditions.elementToBeClickable(webElement));
-
-		element.click();
+		clickElement.perform();
 	}
 
 	public static WebDriver implicitWait(WebDriver webDriver) {

@@ -71,7 +71,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.173</version>
+				<version>1.0.182</version>
 				<configuration>
 					<apiDirName>../jndi-api/src/main/java</apiDirName>
 					<autoImportDefaultReferences>true</autoImportDefaultReferences>
