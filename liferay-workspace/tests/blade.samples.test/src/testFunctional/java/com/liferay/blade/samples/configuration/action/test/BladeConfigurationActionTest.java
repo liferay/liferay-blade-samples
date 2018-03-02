@@ -68,10 +68,8 @@ public class BladeConfigurationActionTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeMessagePortlet));
 
-		_bodyWebElement.click();
-
-		BladeSampleFunctionalActionUtil.customClick(
-			_webDriver, _verticalEllipsis);
+		BladeSampleFunctionalActionUtil.twoPointClick(
+			_webDriver, _verticalEllipsis, _bodyWebElement);
 
 		WebElement configuration = _webDriver.findElement(
 			By.linkText("Configuration"));
@@ -102,7 +100,7 @@ public class BladeConfigurationActionTest {
 	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")
 	private WebElement _bladeMessagePortlet;
 
-	@FindBy(xpath = "//body")
+	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]//..//div[@class='portlet-body']")
 	private WebElement _bodyWebElement;
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[contains(@class,'configuration')]")
@@ -126,7 +124,7 @@ public class BladeConfigurationActionTest {
 	@FindBy(xpath = "//div[contains(@class,'alert') and contains(@class,'alert-success')]")
 	private WebElement _successMessage;
 
-	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
+	@FindBy(xpath = "//*[contains(@id,'BladeMessagePortlet')]/div/a")
 	private WebElement _verticalEllipsis;
 
 	@Drone
