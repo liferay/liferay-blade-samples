@@ -63,7 +63,7 @@ public class BladeAngularNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmAngularPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmAngularPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmAngularPortlet);
 
 		_webDriver.navigate().refresh();
 

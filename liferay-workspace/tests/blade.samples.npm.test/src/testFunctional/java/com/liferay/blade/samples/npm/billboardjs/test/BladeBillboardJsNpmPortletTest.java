@@ -59,7 +59,7 @@ public class BladeBillboardJsNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmBillboardPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmBillboardPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmBillboardPortlet);
 
 		Assert.assertTrue(
 			"Expected: Billboard.js Portlet, but saw: " + _portletTitle.getText(),

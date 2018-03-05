@@ -78,7 +78,7 @@ public class BladeConfigurationActionTest {
 
 		_newWebDriverWindow.get(configurationLink);
 
-		BladeSampleFunctionalActionUtil.customClick(
+		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_newWebDriverWindow, _saveButton);
 
 		Assert.assertTrue(

@@ -61,13 +61,13 @@ public class BladeReactNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmReactPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmReactPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmReactPortlet);
 
 		Assert.assertTrue(
 			"Expected: React Portlet, but saw: " + _portletTitle.getText(),
 			_portletTitle.getText().contentEquals("React Portlet"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletBody);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBody);
 
 		Thread.sleep(1000);
 
@@ -75,7 +75,7 @@ public class BladeReactNpmPortletTest {
 			_webDriver.getPageSource(),
 			_webDriver.getPageSource().contains("game-board"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletGameBoardBoardRow);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletGameBoardBoardRow);
 
 		Thread.sleep(500);
 

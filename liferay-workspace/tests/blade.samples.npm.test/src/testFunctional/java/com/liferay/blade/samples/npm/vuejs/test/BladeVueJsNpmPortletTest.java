@@ -73,7 +73,7 @@ public class BladeVueJsNpmPortletTest {
 			"Expected: Hello from Vue.js!, but saw: " + _portletReversibleMessage.getText(),
 			_portletReversibleMessage.getText().contentEquals("Hello from Vue.js!"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletBodyButton);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBodyButton);
 
 		Assert.assertTrue(
 			"Expected: !sj.euV morf olleH, but saw: " + _portletReversibleMessage.getText(),

@@ -61,7 +61,7 @@ public class BladeJqueryNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmJQueryPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmJQueryPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmJQueryPortlet);
 
 		Thread.sleep(1000);
 

@@ -61,7 +61,7 @@ public class BladeMetaljsNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmMetaljsPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmMetaljsPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmMetaljsPortlet);
 
 		Thread.sleep(1000);
 
@@ -71,7 +71,7 @@ public class BladeMetaljsNpmPortletTest {
 
 		Assert.assertTrue(BladeSampleFunctionalActionUtil.isClickable(_webDriver, _portletBodyButton));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletBodyButton);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBodyButton);
 
 		Assert.assertTrue(_webDriver.getPageSource().contains("A Metal.js Modal Dialog"));
 	}

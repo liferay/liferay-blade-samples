@@ -59,7 +59,7 @@ public class BladeIsomorphicNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmIsomorphicPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmIsomorphicPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmIsomorphicPortlet);
 
 		Assert.assertTrue(
 			"Expected: Isomorphic npm Portlet, but saw: " + _portletTitle.getText(),

@@ -70,7 +70,7 @@ public class BladePortletConfigurationIconTest {
 		BladeSampleFunctionalActionUtil.twoPointClick(
 			_webDriver, _verticalEllipsis, _bodyWebElement);
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuSampleLink);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuSampleLink);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +

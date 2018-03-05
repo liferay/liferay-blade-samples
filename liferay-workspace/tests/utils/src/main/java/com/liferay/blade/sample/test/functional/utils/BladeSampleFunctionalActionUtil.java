@@ -39,6 +39,23 @@ public class BladeSampleFunctionalActionUtil {
 
 		Actions actionMoveTo = action.moveToElement(webElement);
 
+		Action buildActionMoveTo = actionMoveTo.build();
+
+		buildActionMoveTo.perform();
+
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+
+		WebElement element = wait.until(
+			ExpectedConditions.elementToBeClickable(webElement));
+
+		element.click();
+	}
+
+	public static void mouseOverClick(WebDriver webDriver, WebElement webElement) {
+		Actions action = new Actions(webDriver);
+
+		Actions actionMoveTo = action.moveToElement(webElement);
+
 		Actions actionOffset = actionMoveTo.moveByOffset(1, 1);
 
 		Actions revertOffset = actionOffset.moveByOffset(-1, -1);

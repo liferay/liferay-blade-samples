@@ -75,7 +75,7 @@ public class BladePortletToolbarContributorTest {
 		BladeSampleFunctionalActionUtil.twoPointClick(
 			_webDriver, _portletTopperToolbar, _bodyWebElement);
 
-		BladeSampleFunctionalActionUtil.customClick(
+		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _lfrMenuLiferay);
 
 		Thread.sleep(2000);

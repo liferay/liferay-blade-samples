@@ -59,7 +59,7 @@ public class BladeSimpleNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmSimplePortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmSimplePortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmSimplePortlet);
 
 		Assert.assertTrue(
 			"Expected: Simple npm Portlet, but saw: " + _portletTitle.getText(),
