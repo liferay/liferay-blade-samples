@@ -56,7 +56,7 @@ task testFunctional(type: Test) {
 	classpath = sourceSets.testFunctional.runtimeClasspath
 	outputs.upToDateWhen { false }
 
-	//dependsOn ":initBundle", startTestableTomcat
+	dependsOn ":initBundle", startTestableTomcat
 
 	dependsOn ":apps:npm:angular-npm-portlet:jar"
 	dependsOn ":apps:npm:billboardjs-npm-portlet:jar"
@@ -81,6 +81,7 @@ task testFunctional(type: Test) {
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'portalVersion', project.getProperty("liferay.workspace.bundle.url")
 
 	doLast {
 		delete new File("blade.jar")

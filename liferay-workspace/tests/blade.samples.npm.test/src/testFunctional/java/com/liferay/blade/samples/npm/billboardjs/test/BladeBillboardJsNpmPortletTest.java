@@ -26,6 +26,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -52,6 +53,10 @@ public class BladeBillboardJsNpmPortletTest {
 
 	@Test
 	public void testBladeBillboardJsNpm() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -74,11 +79,42 @@ public class BladeBillboardJsNpmPortletTest {
 			_portletBodyHeader2.getText().contentEquals("Default charts"));
 	}
 
+	@Test
+	public void testBladeBillboardJsNpmMaster() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+
+		_webDriver.get(_portletURL.toExternalForm());
+
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeNpmBillboardPortlet));
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmBillboardPortlet);
+
+		Assert.assertTrue(
+			"Expected: Billboard.js Portlet, but saw: " + _portletTitleMaster.getText(),
+			_portletTitleMaster.getText().contentEquals("Billboard.js Portlet"));
+
+		Assert.assertTrue(
+			"Expected: An example from billboard.js, but saw: " + _portletBodyHeader1.getText(),
+			_portletBodyHeader1.getText().contentEquals("An example from billboard.js"));
+
+		Assert.assertTrue(
+			"Expected: Default charts, but saw: " + _portletBodyHeader2.getText(),
+			_portletBodyHeader2.getText().contentEquals("Default charts"));
+	}
+
 	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]")
 	private WebElement _bladeNpmBillboardPortlet;
 
 	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]/div/h2")
 	private WebElement _portletTitle;
+
+	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]/div/div/div/h2")
+	private WebElement _portletTitleMaster;
 
 	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]//..//div[@class='portlet-body']/div/h1")
 	private WebElement _portletBodyHeader1;

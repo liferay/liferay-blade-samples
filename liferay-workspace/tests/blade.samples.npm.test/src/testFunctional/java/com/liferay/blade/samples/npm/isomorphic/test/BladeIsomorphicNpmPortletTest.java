@@ -26,6 +26,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -52,6 +53,10 @@ public class BladeIsomorphicNpmPortletTest {
 
 	@Test
 	public void testBladeIsomorphicNpm() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -70,11 +75,38 @@ public class BladeIsomorphicNpmPortletTest {
 			_portletBodyPre.getText().contains("Portlet main module loaded."));
 	}
 
+	@Test
+	public void testBladeIsomorphicNpmMaster() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+
+		_webDriver.get(_portletURL.toExternalForm());
+
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeNpmIsomorphicPortlet));
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmIsomorphicPortlet);
+
+		Assert.assertTrue(
+			"Expected: Isomorphic npm Portlet, but saw: " + _portletTitleMaster.getText(),
+			_portletTitleMaster.getText().contentEquals("Isomorphic npm Portlet"));
+
+		Assert.assertTrue(
+			"Expected: Portlet main module loaded..., but saw: " + _portletBodyPre.getText(),
+			_portletBodyPre.getText().contains("Portlet main module loaded."));
+	}
+
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]")
 	private WebElement _bladeNpmIsomorphicPortlet;
 
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
 	private WebElement _portletTitle;
+
+	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
+	private WebElement _portletTitleMaster;
 
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]//..//div/pre")
 	private WebElement _portletBodyPre;

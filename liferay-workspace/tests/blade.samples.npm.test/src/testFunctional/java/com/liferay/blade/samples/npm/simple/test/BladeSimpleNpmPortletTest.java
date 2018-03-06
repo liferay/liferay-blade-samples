@@ -26,6 +26,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -52,6 +53,10 @@ public class BladeSimpleNpmPortletTest {
 
 	@Test
 	public void testBladeSimpleNpm() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -70,11 +75,38 @@ public class BladeSimpleNpmPortletTest {
 			_portletBodyPre.getText().contains("Portlet main module loaded."));
 	}
 
+	@Test
+	public void testBladeSimpleNpmMaster() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+
+		_webDriver.get(_portletURL.toExternalForm());
+
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeNpmSimplePortlet));
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmSimplePortlet);
+
+		Assert.assertTrue(
+			"Expected: Simple npm Portlet, but saw: " + _portletTitleMaster.getText(),
+			_portletTitleMaster.getText().contentEquals("Simple npm Portlet"));
+
+		Assert.assertTrue(
+			"Expected: Portlet main module loaded..., but saw: " + _portletBodyPre.getText(),
+			_portletBodyPre.getText().contains("Portlet main module loaded."));
+	}
+
 	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]")
 	private WebElement _bladeNpmSimplePortlet;
 
 	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]/div/h2")
 	private WebElement _portletTitle;
+
+	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]/div/h2")
+	private WebElement _portletTitleMaster;
 
 	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]//..//div/pre")
 	private WebElement _portletBodyPre;

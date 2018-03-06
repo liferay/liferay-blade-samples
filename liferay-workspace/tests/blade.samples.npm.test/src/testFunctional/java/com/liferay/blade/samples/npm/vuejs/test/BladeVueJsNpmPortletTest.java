@@ -26,6 +26,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -52,6 +53,10 @@ public class BladeVueJsNpmPortletTest {
 
 	@Test
 	public void testBladeVuejsNpm() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -80,11 +85,48 @@ public class BladeVueJsNpmPortletTest {
 			_portletReversibleMessage.getText().contentEquals("!sj.euV morf olleH"));
 	}
 
+	@Test
+	public void testBladeVuejsNpmMaster() throws InterruptedException {
+		Assume.assumeTrue(
+			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+
+		_webDriver.get(_portletURL.toExternalForm());
+
+		Assert.assertTrue(
+			"Portlet was not deployed",
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _bladeNpmVuejsPortlet));
+
+		Assert.assertTrue(
+			"Expected: Vue.js Portlet, but saw: " + _portletTitleMaster.getText(),
+			_portletTitleMaster.getText().contentEquals("Vue.js Portlet"));
+
+		Thread.sleep(1000);
+
+		Assert.assertTrue(
+			"Expected:Whatever else humans are supposed to eat, but saw: " + _portletListItem.getText(),
+			_portletListItem.getText().contentEquals("Whatever else humans are supposed to eat"));
+
+		Assert.assertTrue(
+			"Expected: Hello from Vue.js!, but saw: " + _portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals("Hello from Vue.js!"));
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBodyButton);
+
+		Assert.assertTrue(
+			"Expected: !sj.euV morf olleH, but saw: " + _portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals("!sj.euV morf olleH"));
+	}
+
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]")
 	private WebElement _bladeNpmVuejsPortlet;
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
 	private WebElement _portletTitle;
+
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
+	private WebElement _portletTitleMaster;
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/button")
 	private WebElement _portletBodyButton;
