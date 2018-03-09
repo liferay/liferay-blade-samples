@@ -91,6 +91,8 @@ public class BladeIsomorphicNpmPortletTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		String url = _webDriver.getCurrentUrl();
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
 			BladeSampleFunctionalActionUtil.isVisible(
@@ -99,11 +101,19 @@ public class BladeIsomorphicNpmPortletTest {
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _bladeNpmIsomorphicPortlet);
 
+		_webDriver.navigate().to(url);
+
+		Thread.sleep(1000);
+
 		Assert.assertTrue(
 			"Expected: Isomorphic npm Portlet, but saw: " +
 				_portletTitleMaster.getText(),
 			_portletTitleMaster.getText().contentEquals(
 				"Isomorphic npm Portlet"));
+
+		Assert.assertTrue(
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletBodyPre));
 
 		Assert.assertTrue(
 			"Expected: Portlet main module loaded..., but saw: " +
@@ -120,7 +130,7 @@ public class BladeIsomorphicNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
 	private WebElement _portletTitle;
 
-	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
+	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/div/div/h2")
 	private WebElement _portletTitleMaster;
 
 	@PortalURL("com_liferay_blade_npm_isomorphic_npm_portlet_IsomorphicNpmPortlet")

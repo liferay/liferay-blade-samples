@@ -118,15 +118,19 @@ public class BladeVueJsNpmPortletTest {
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _portletListItemMaster));
+
+		Assert.assertTrue(
 			"Expected:Whatever else humans are supposed to eat, but saw: " +
-				_portletListItem.getText(),
-			_portletListItem.getText().contentEquals(
+				_portletListItemMaster.getText(),
+			_portletListItemMaster.getText().contentEquals(
 				"Whatever else humans are supposed to eat"));
 
 		Assert.assertTrue(
 			"Expected: Hello from Vue.js!, but saw: " +
-				_portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals(
+				_portletReversibleMessageMaster.getText(),
+			_portletReversibleMessageMaster.getText().contentEquals(
 				"Hello from Vue.js!"));
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(
@@ -134,8 +138,8 @@ public class BladeVueJsNpmPortletTest {
 
 		Assert.assertTrue(
 			"Expected: !sj.euV morf olleH, but saw: " +
-				_portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals(
+				_portletReversibleMessageMaster.getText(),
+			_portletReversibleMessageMaster.getText().contentEquals(
 				"!sj.euV morf olleH"));
 	}
 
@@ -148,13 +152,19 @@ public class BladeVueJsNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//ol/li[3]")
 	private WebElement _portletListItem;
 
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//div/ol/li[3]")
+	private WebElement _portletListItemMaster;
+
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p[2]")
 	private WebElement _portletReversibleMessage;
+
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p")
+	private WebElement _portletReversibleMessageMaster;
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
 	private WebElement _portletTitle;
 
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/div/div/h2")
 	private WebElement _portletTitleMaster;
 
 	@PortalURL("com_liferay_blade_npm_vuejs_portlet_VuejsPortlet")
