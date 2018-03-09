@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.npm.jquery.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,16 +29,15 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
  * @author Lawrence Lee
@@ -61,31 +64,35 @@ public class BladeJqueryNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmJQueryPortlet));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmJQueryPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _bladeNpmJQueryPortlet);
 
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected: Liferay NPM jQuery Example, but saw: " + _portletTitle.getText(),
+			"Expected: Liferay NPM jQuery Example, but saw: " +
+				_portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Liferay NPM jQuery Example"));
 
 		Assert.assertTrue(
-			"Expected: Hello from jQuery!..., but saw: " + _portletBodyBody.getText(),
+			"Expected: Hello from jQuery!..., but saw: " +
+				_portletBodyBody.getText(),
 			_portletBodyBody.getText().contains("Hello from jQuery!"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'JQueryPortlet')]")
 	private WebElement _bladeNpmJQueryPortlet;
 
+	@FindBy(xpath = "//section[contains(@id,'JQueryPortlet')]/div/div/div")
+	private WebElement _portletBodyBody;
+
 	@FindBy(xpath = "//section[contains(@id,'JQueryPortlet')]/header/div/span")
 	private WebElement _portletTitle;
 
-	@FindBy(xpath = "//section[contains(@id,'JQueryPortlet')]/div/div/div")
-	private WebElement _portletBodyBody;
+	@PortalURL("com_liferay_blade_npm_jquery_portlet_JQueryPortlet")
+	private URL _portletURL;
 
 	@Drone
 	private WebDriver _webDriver;
 
-	@PortalURL("com_liferay_blade_npm_jquery_portlet_JQueryPortlet")
-	private URL _portletURL;
 }

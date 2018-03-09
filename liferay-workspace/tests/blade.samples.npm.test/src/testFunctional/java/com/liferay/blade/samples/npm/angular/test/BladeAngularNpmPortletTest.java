@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.npm.angular.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,16 +29,15 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
  * @author Lawrence Lee
@@ -63,7 +66,8 @@ public class BladeAngularNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmAngularPortlet));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmAngularPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _bladeNpmAngularPortlet);
 
 		_webDriver.navigate().refresh();
 
@@ -74,11 +78,13 @@ public class BladeAngularNpmPortletTest {
 		Thread.sleep(500);
 
 		Assert.assertTrue(
-			"Expected: Tour of Heroes, but saw: " + _portletBodyHeader1.getText(),
+			"Expected: Tour of Heroes, but saw: " +
+				_portletBodyHeader1.getText(),
 			_portletBodyHeader1.getText().contentEquals("Tour of Heroes"));
 
 		Assert.assertTrue(
-			"Expected: Hello from WebDriver!, but saw: " + _portletBodyHeader2.getText(),
+			"Expected: Hello from WebDriver!, but saw: " +
+				_portletBodyHeader2.getText(),
 			_portletBodyHeader2.getText().contains("Hello from WebDriver!"));
 	}
 
@@ -94,10 +100,10 @@ public class BladeAngularNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'AngularPortlet')]//..//div[@class='portlet-body']/div/h2")
 	private WebElement _portletBodyHeader2;
 
-	@Drone
-	private WebDriver _webDriver;
-
 	@PortalURL("com_liferay_blade_npm_angular_portlet_AngularPortlet")
 	private URL _portletURL;
+
+	@Drone
+	private WebDriver _webDriver;
 
 }

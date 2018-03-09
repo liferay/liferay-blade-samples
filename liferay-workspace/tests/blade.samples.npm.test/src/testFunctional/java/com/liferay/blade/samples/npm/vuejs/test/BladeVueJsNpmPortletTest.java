@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.npm.vuejs.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,16 +29,15 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
  * @author Lawrence Lee
@@ -54,8 +57,9 @@ public class BladeVueJsNpmPortletTest {
 	@Test
 	public void testBladeVuejsNpm() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+			"Portal Version is: " +
+				BladeSampleFunctionalActionUtil.portalVersion(),
+			!BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -71,25 +75,33 @@ public class BladeVueJsNpmPortletTest {
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected:Whatever else humans are supposed to eat, but saw: " + _portletListItem.getText(),
-			_portletListItem.getText().contentEquals("Whatever else humans are supposed to eat"));
+			"Expected:Whatever else humans are supposed to eat, but saw: " +
+				_portletListItem.getText(),
+			_portletListItem.getText().contentEquals(
+				"Whatever else humans are supposed to eat"));
 
 		Assert.assertTrue(
-			"Expected: Hello from Vue.js!, but saw: " + _portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals("Hello from Vue.js!"));
+			"Expected: Hello from Vue.js!, but saw: " +
+				_portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals(
+				"Hello from Vue.js!"));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBodyButton);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletBodyButton);
 
 		Assert.assertTrue(
-			"Expected: !sj.euV morf olleH, but saw: " + _portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals("!sj.euV morf olleH"));
+			"Expected: !sj.euV morf olleH, but saw: " +
+				_portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals(
+				"!sj.euV morf olleH"));
 	}
 
 	@Test
 	public void testBladeVuejsNpmMaster() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+			"Portal Version is: " +
+				BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -99,28 +111,45 @@ public class BladeVueJsNpmPortletTest {
 				_webDriver, _bladeNpmVuejsPortlet));
 
 		Assert.assertTrue(
-			"Expected: Vue.js Portlet, but saw: " + _portletTitleMaster.getText(),
+			"Expected: Vue.js Portlet, but saw: " +
+				_portletTitleMaster.getText(),
 			_portletTitleMaster.getText().contentEquals("Vue.js Portlet"));
 
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected:Whatever else humans are supposed to eat, but saw: " + _portletListItem.getText(),
-			_portletListItem.getText().contentEquals("Whatever else humans are supposed to eat"));
+			"Expected:Whatever else humans are supposed to eat, but saw: " +
+				_portletListItem.getText(),
+			_portletListItem.getText().contentEquals(
+				"Whatever else humans are supposed to eat"));
 
 		Assert.assertTrue(
-			"Expected: Hello from Vue.js!, but saw: " + _portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals("Hello from Vue.js!"));
+			"Expected: Hello from Vue.js!, but saw: " +
+				_portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals(
+				"Hello from Vue.js!"));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _portletBodyButton);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletBodyButton);
 
 		Assert.assertTrue(
-			"Expected: !sj.euV morf olleH, but saw: " + _portletReversibleMessage.getText(),
-			_portletReversibleMessage.getText().contentEquals("!sj.euV morf olleH"));
+			"Expected: !sj.euV morf olleH, but saw: " +
+				_portletReversibleMessage.getText(),
+			_portletReversibleMessage.getText().contentEquals(
+				"!sj.euV morf olleH"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]")
 	private WebElement _bladeNpmVuejsPortlet;
+
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/button")
+	private WebElement _portletBodyButton;
+
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//ol/li[3]")
+	private WebElement _portletListItem;
+
+	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p[2]")
+	private WebElement _portletReversibleMessage;
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
 	private WebElement _portletTitle;
@@ -128,18 +157,10 @@ public class BladeVueJsNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
 	private WebElement _portletTitleMaster;
 
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/button")
-	private WebElement _portletBodyButton;
-
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p[2]")
-	private WebElement _portletReversibleMessage;
-
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//ol/li[3]")
-	private WebElement _portletListItem;
+	@PortalURL("com_liferay_blade_npm_vuejs_portlet_VuejsPortlet")
+	private URL _portletURL;
 
 	@Drone
 	private WebDriver _webDriver;
 
-	@PortalURL("com_liferay_blade_npm_vuejs_portlet_VuejsPortlet")
-	private URL _portletURL;
 }

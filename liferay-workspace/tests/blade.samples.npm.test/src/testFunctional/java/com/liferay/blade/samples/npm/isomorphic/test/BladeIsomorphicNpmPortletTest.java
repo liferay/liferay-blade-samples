@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.npm.isomorphic.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,16 +29,15 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
  * @author Lawrence Lee
@@ -54,8 +57,9 @@ public class BladeIsomorphicNpmPortletTest {
 	@Test
 	public void testBladeIsomorphicNpm() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion() != "master");
+			"Portal Version is: " +
+				BladeSampleFunctionalActionUtil.portalVersion(),
+			!BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -64,22 +68,26 @@ public class BladeIsomorphicNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmIsomorphicPortlet));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmIsomorphicPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _bladeNpmIsomorphicPortlet);
 
 		Assert.assertTrue(
-			"Expected: Isomorphic npm Portlet, but saw: " + _portletTitle.getText(),
+			"Expected: Isomorphic npm Portlet, but saw: " +
+				_portletTitle.getText(),
 			_portletTitle.getText().contentEquals("Isomorphic npm Portlet"));
 
 		Assert.assertTrue(
-			"Expected: Portlet main module loaded..., but saw: " + _portletBodyPre.getText(),
+			"Expected: Portlet main module loaded..., but saw: " +
+				_portletBodyPre.getText(),
 			_portletBodyPre.getText().contains("Portlet main module loaded."));
 	}
 
 	@Test
 	public void testBladeIsomorphicNpmMaster() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " + BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion() == "master");
+			"Portal Version is: " +
+				BladeSampleFunctionalActionUtil.portalVersion(),
+			BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -88,19 +96,26 @@ public class BladeIsomorphicNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmIsomorphicPortlet));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _bladeNpmIsomorphicPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _bladeNpmIsomorphicPortlet);
 
 		Assert.assertTrue(
-			"Expected: Isomorphic npm Portlet, but saw: " + _portletTitleMaster.getText(),
-			_portletTitleMaster.getText().contentEquals("Isomorphic npm Portlet"));
+			"Expected: Isomorphic npm Portlet, but saw: " +
+				_portletTitleMaster.getText(),
+			_portletTitleMaster.getText().contentEquals(
+				"Isomorphic npm Portlet"));
 
 		Assert.assertTrue(
-			"Expected: Portlet main module loaded..., but saw: " + _portletBodyPre.getText(),
+			"Expected: Portlet main module loaded..., but saw: " +
+				_portletBodyPre.getText(),
 			_portletBodyPre.getText().contains("Portlet main module loaded."));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]")
 	private WebElement _bladeNpmIsomorphicPortlet;
+
+	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]//..//div/pre")
+	private WebElement _portletBodyPre;
 
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
 	private WebElement _portletTitle;
@@ -108,12 +123,10 @@ public class BladeIsomorphicNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]/div/h2")
 	private WebElement _portletTitleMaster;
 
-	@FindBy(xpath = "//section[contains(@id,'IsomorphicNpmPortlet')]//..//div/pre")
-	private WebElement _portletBodyPre;
+	@PortalURL("com_liferay_blade_npm_isomorphic_npm_portlet_IsomorphicNpmPortlet")
+	private URL _portletURL;
 
 	@Drone
 	private WebDriver _webDriver;
 
-	@PortalURL("com_liferay_blade_npm_isomorphic_npm_portlet_IsomorphicNpmPortlet")
-	private URL _portletURL;
 }
