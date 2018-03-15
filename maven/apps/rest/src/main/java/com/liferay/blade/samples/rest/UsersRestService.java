@@ -30,6 +30,7 @@ import javax.ws.rs.core.Application;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -59,6 +60,13 @@ public class UsersRestService extends Application {
 
 		return result.toString();
 	}
+
+	public void showLog() {
+		_log.log(LogService.LOG_INFO, "Blade Rest Portlet Deployed!");
+	}
+
+	@Reference
+	private LogService _log;
 
 	@Reference
 	private volatile UserLocalService _userLocalService;
