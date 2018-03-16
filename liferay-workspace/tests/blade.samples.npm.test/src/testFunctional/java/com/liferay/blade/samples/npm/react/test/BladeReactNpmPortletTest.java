@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.npm.react.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,16 +29,15 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
  * @author Lawrence Lee
@@ -61,13 +64,15 @@ public class BladeReactNpmPortletTest {
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _bladeNpmReactPortlet));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _bladeNpmReactPortlet);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _bladeNpmReactPortlet);
 
 		Assert.assertTrue(
 			"Expected: React Portlet, but saw: " + _portletTitle.getText(),
 			_portletTitle.getText().contentEquals("React Portlet"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletBody);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletBody);
 
 		Thread.sleep(1000);
 
@@ -75,7 +80,8 @@ public class BladeReactNpmPortletTest {
 			_webDriver.getPageSource(),
 			_webDriver.getPageSource().contains("game-board"));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletGameBoardBoardRow);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletGameBoardBoardRow);
 
 		Thread.sleep(500);
 
@@ -87,9 +93,6 @@ public class BladeReactNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'ReactPortlet')]")
 	private WebElement _bladeNpmReactPortlet;
 
-	@FindBy(xpath = "//section[contains(@id,'ReactPortlet')]/div/h2")
-	private WebElement _portletTitle;
-
 	@FindBy(xpath = "//section[contains(@id,'ReactPortlet')]//..//div[@class='portlet-body']")
 	private WebElement _portletBody;
 
@@ -99,9 +102,13 @@ public class BladeReactNpmPortletTest {
 	@FindBy(xpath = "//div[@class='game-board']/div/div")
 	private WebElement _portletGameBoardStatus;
 
-	@Drone
-	private WebDriver _webDriver;
+	@FindBy(xpath = "//section[contains(@id,'ReactPortlet')]/div/h2")
+	private WebElement _portletTitle;
 
 	@PortalURL("com_liferay_blade_npm_react_portlet_ReactPortlet")
 	private URL _portletURL;
+
+	@Drone
+	private WebDriver _webDriver;
+
 }

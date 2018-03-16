@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,23 @@ public class BladeSampleFunctionalActionUtil {
 
 		Actions actionMoveTo = action.moveToElement(webElement);
 
+		Action buildActionMoveTo = actionMoveTo.build();
+
+		buildActionMoveTo.perform();
+
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+
+		WebElement element = wait.until(
+			ExpectedConditions.elementToBeClickable(webElement));
+
+		element.click();
+	}
+
+	public static void mouseOverClick(WebDriver webDriver, WebElement webElement) {
+		Actions action = new Actions(webDriver);
+
+		Actions actionMoveTo = action.moveToElement(webElement);
+
 		Actions actionOffset = actionMoveTo.moveByOffset(1, 1);
 
 		Actions revertOffset = actionOffset.moveByOffset(-1, -1);
@@ -43,6 +61,38 @@ public class BladeSampleFunctionalActionUtil {
 		Actions clickElement = revertOffset.click();
 
 		clickElement.perform();
+	}
+
+	public static void twoPointClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
+		Actions action = new Actions(webDriver);
+
+		Actions actionBody = action.moveToElement(weblElement2);
+
+		Actions actionBodyClick = actionBody.click();
+
+		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
+
+		Actions actionClick = actionMoveTo.click();
+
+		Action buildActionbuild = actionClick.build();
+
+		buildActionbuild.perform();
+	}
+
+	public static void twoPointDoubleClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
+		Actions action = new Actions(webDriver);
+
+		Actions actionBody = action.moveToElement(weblElement2);
+
+		Actions actionBodyClick = actionBody.doubleClick();
+
+		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
+
+		Actions actionClick = actionMoveTo.doubleClick();
+
+		Action buildActionbuild = actionClick.build();
+
+		buildActionbuild.perform();
 	}
 
 	public static WebDriver implicitWait(WebDriver webDriver) {
@@ -113,6 +163,18 @@ public class BladeSampleFunctionalActionUtil {
 		}
 		catch (org.openqa.selenium.TimeoutException te) {
 			return false;
+		}
+	}
+
+	public static String portalVersion() {
+		String portalVersion = System.getProperty("portalVersion");
+
+		if (portalVersion.contains("master")) {
+			return "master";
+		}
+
+		else {
+			return portalVersion;
 		}
 	}
 

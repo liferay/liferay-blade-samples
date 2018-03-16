@@ -60,6 +60,8 @@ public class BladePortletRenderCommandTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
 			BladeSampleFunctionalActionUtil.isVisible(
@@ -71,11 +73,11 @@ public class BladePortletRenderCommandTest {
 			_portletTitle.getText().contentEquals("Blade Render Portlet"));
 
 		Assert.assertTrue(
-			"Render Command Button is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(
+			"Render Command Button is not clickable",
+			BladeSampleFunctionalActionUtil.isClickable(
 				_webDriver, _portletButton));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _portletButton);
+		BladeSampleFunctionalActionUtil.twoPointClick(_webDriver, _portletButton, _portletBody);
 
 		Assert.assertTrue(
 			"Render Page is not available",
@@ -94,7 +96,7 @@ public class BladePortletRenderCommandTest {
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//div/div")
 	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//span[@class='lfr-btn-label']")
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//a[contains(@class,'btn')]")
 	private WebElement _portletButton;
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//h2")

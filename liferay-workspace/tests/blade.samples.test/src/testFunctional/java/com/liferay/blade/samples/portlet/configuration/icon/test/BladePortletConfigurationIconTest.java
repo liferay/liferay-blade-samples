@@ -60,29 +60,28 @@ public class BladePortletConfigurationIconTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		String url = _webDriver.getCurrentUrl();
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
 			BladeSampleFunctionalActionUtil.isVisible(
 				_webDriver, _helloWorldPortlet));
 
-		_bodyWebElement.click();
+		BladeSampleFunctionalActionUtil.twoPointClick(
+			_webDriver, _verticalEllipsis, _bodyWebElement);
 
-		BladeSampleFunctionalActionUtil.customClick(
-			_webDriver, _verticalEllipsis);
-
-		BladeSampleFunctionalActionUtil.customClick(
-			_webDriver, _lfrMenuSampleLink);
-
-		Thread.sleep(2000);
+		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuSampleLink);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
 			BladeSampleFunctionalActionUtil.isPageLoaded(
 				_webDriver, "https://www.liferay.com/"));
+
+		_webDriver.get(url);
 	}
 
-	@FindBy(xpath = "//body")
+	@FindBy(xpath = "//section[contains(@id,'HelloWorld')]//..//div[@class='portlet-body']")
 	private WebElement _bodyWebElement;
 
 	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']")
@@ -94,10 +93,13 @@ public class BladePortletConfigurationIconTest {
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Sample Link')]")
 	private WebElement _lfrMenuSampleLink;
 
+	@Drone
+	private WebDriver _newWebDriverWindow;
+
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
 	private URL _portletURL;
 
-	@FindBy(xpath = "//section[@id='portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet']//..//span/*[name()='svg'][contains(@class,'icon-ellipsis')]")
+	@FindBy(xpath = "//*[contains(@id,'HelloWorldPortlet')]/div/a")
 	private WebElement _verticalEllipsis;
 
 	@Drone

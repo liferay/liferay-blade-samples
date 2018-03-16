@@ -71,8 +71,8 @@ public class BladeControlMenuEntryTest {
 				_webDriver, _controlMenuLinkText,
 				"Blade Menu Entry Custom Message"));
 
-		BladeSampleFunctionalActionUtil.customClick(
-			_webDriver, _controlMenuLink);
+		BladeSampleFunctionalActionUtil.twoPointDoubleClick(
+			_webDriver, _controlMenuLink, _addMenuLink);
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
@@ -80,6 +80,9 @@ public class BladeControlMenuEntryTest {
 			BladeSampleFunctionalActionUtil.isPageLoaded(
 				_webDriver, "https://www.liferay.com/"));
 	}
+
+	@FindBy(xpath = "//li[contains(@class,'control-menu-nav-item')]//..//span/*[name()='svg'][contains(@class,'lexicon-icon-plus')]")
+	private WebElement _addMenuLink;
 
 	@FindBy(xpath = "//li[contains(@class,'control-menu-nav-item')]//..//span/*[name()='svg'][contains(@class,'lexicon-icon-link')]")
 	private WebElement _controlMenuLink;

@@ -60,6 +60,8 @@ public class BladePortletToolbarContributorTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
 			BladeSampleFunctionalActionUtil.isVisible(
@@ -70,10 +72,10 @@ public class BladePortletToolbarContributorTest {
 			BladeSampleFunctionalActionUtil.isClickable(
 				_webDriver, _portletTopperToolbar));
 
-		BladeSampleFunctionalActionUtil.customClick(
-			_webDriver, _portletTopperToolbar);
+		BladeSampleFunctionalActionUtil.twoPointClick(
+			_webDriver, _portletTopperToolbar, _bodyWebElement);
 
-		BladeSampleFunctionalActionUtil.customClick(
+		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _lfrMenuLiferay);
 
 		Thread.sleep(2000);
@@ -85,6 +87,9 @@ public class BladePortletToolbarContributorTest {
 				_webDriver, "https://www.liferay.com/"));
 	}
 
+	@FindBy(xpath = "//section[contains(@id,'HelloWorld')]//..//div[@class='portlet-body']")
+	private WebElement _bodyWebElement;
+
 	@FindBy(xpath = "//section[contains(@id,'portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet')]")
 	private WebElement _helloWorldPortlet;
 
@@ -94,7 +99,7 @@ public class BladePortletToolbarContributorTest {
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[1]/a[contains(.,'Liferay')]")
 	private WebElement _lfrMenuLiferay;
 
-	@FindBy(xpath = "//section[contains(@id,'portlet_com_liferay_hello_world_web_portlet_HelloWorldPortlet')]//..//*[name()='svg'][contains(@class,'lexicon-icon')]")
+	@FindBy(xpath = "//*[contains(@id,'HelloWorldPortlet')]/div/a")
 	private WebElement _portletTopperToolbar;
 
 	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")

@@ -125,6 +125,8 @@ public class BladeSpringMVCPortletTest {
 
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
+		String url = _webDriver.getCurrentUrl();
+
 		List<WebElement> rows = _webDriver.findElements(By.xpath(_tableRow));
 
 		int originalRows = rows.size();
@@ -157,7 +159,7 @@ public class BladeSpringMVCPortletTest {
 
 		Thread.sleep(1000);
 
-		_webDriver.navigate().refresh();
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible",

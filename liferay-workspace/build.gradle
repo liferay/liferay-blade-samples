@@ -66,10 +66,18 @@ task deployAries(type: Copy) {
 	into "bundles/osgi/test"
 }
 
-task removeTestUtils(type: Delete) {
-    delete fileTree('bundles/osgi/test') {
-        include '**/com.liferay*'
-    }
+task filepermission(type: Exec) {
+	workingDir 'bundles/tomcat-8.0.32/bin'
+
+    commandLine 'chmod', 'a+x', 'catalina.sh', 'setenv.sh', 'shutdown.sh'
 }
 
-initBundle.finalizedBy deployAries,removeTestUtils
+initBundle.finalizedBy deployAries, filepermission
+
+initBundle {
+	doLast {
+		delete fileTree('bundles/osgi/test') {
+			include '**/com.liferay*'
+		}
+	}
+}
