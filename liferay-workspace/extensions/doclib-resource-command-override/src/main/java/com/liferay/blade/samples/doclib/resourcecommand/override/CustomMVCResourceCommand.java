@@ -25,6 +25,7 @@ import javax.portlet.PortletException;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.log.LogService;
@@ -43,6 +44,12 @@ import org.osgi.service.log.LogService;
 )
 public class CustomMVCResourceCommand implements MVCResourceCommand {
 
+	@Activate
+	public void activate() {
+		_log.log(
+			LogService.LOG_INFO, "Blade Doclib Resource Command Deployed!");
+	}
+
 	@Override
 	public boolean serveResource(
 			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
@@ -59,11 +66,6 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 		}
 
 		return true;
-	}
-
-	public void showLog() {
-		_log.log(
-			LogService.LOG_INFO, "Blade Doclib Resource Command Deployed!");
 	}
 
 	protected void serveOlderUserBookmarks(

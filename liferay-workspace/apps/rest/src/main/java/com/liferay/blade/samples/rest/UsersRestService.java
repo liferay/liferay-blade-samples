@@ -28,6 +28,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.log.LogService;
@@ -41,6 +42,11 @@ import org.osgi.service.log.LogService;
 	service = Application.class
 )
 public class UsersRestService extends Application {
+
+	@Activate
+	public void activate() {
+		_log.log(LogService.LOG_INFO, "Blade Rest Portlet Deployed!");
+	}
 
 	@Override
 	public Set<Object> getSingletons() {
@@ -59,10 +65,6 @@ public class UsersRestService extends Application {
 		}
 
 		return result.toString();
-	}
-
-	public void showLog() {
-		_log.log(LogService.LOG_INFO, "Blade Rest Portlet Deployed!");
 	}
 
 	@Reference
