@@ -30,9 +30,9 @@
 	<p>A to do list made with Vue.js components:</p>
 	<ol>
 		<todo-item
-			v-for="item in groceryList"
-			v-bind:todo="item"
 			v-bind:key="item.id"
+			v-bind:todo="item"
+			v-for="item in groceryList"
 		/>
 	</ol>
 </div>
