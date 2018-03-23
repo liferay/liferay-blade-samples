@@ -20,26 +20,35 @@
 
 <%@ include file="/init.jsp" %>
 
-<liferay-portlet:actionURL portletConfiguration="<%= true %>"
+<liferay-portlet:actionURL
+	portletConfiguration="<%= true %>"
 	var="configurationActionURL"
 />
 
-<liferay-portlet:renderURL portletConfiguration="<%= true %>"
+<liferay-portlet:renderURL
+	portletConfiguration="<%= true %>"
 	var="configurationRenderURL"
 />
 
 <aui:form action="<%= configurationActionURL %>" method="post" name="fm">
-	<aui:input name="<%= Constants.CMD %>" type="hidden"
+	<aui:input
+		name="<%= Constants.CMD %>"
+		type="hidden"
 		value="<%= Constants.UPDATE %>"
 	/>
 
-	<aui:input name="redirect" type="hidden"
+	<aui:input
+		name="redirect"
+		type="hidden"
 		value="<%= configurationRenderURL %>"
 	/>
 
 	<aui:fieldset>
-		<aui:select name="fontFamily" label="Font Family"
-			value="<%= fontFamily %>">
+		<aui:select
+			label="Font Family"
+			name="fontFamily"
+			value="<%= fontFamily %>"
+		>
 			<aui:option value="Arial">Arial</aui:option>
 			<aui:option value="Comic Sans MS">Comic Sans MS</aui:option>
 			<aui:option value="Courier New">Courier New</aui:option>
@@ -56,8 +65,11 @@
 			<aui:option value="15">15</aui:option>
 		</aui:select>
 
-		<aui:select name="fontColor" label="Font Color"
-			value="<%= fontColor %>">
+		<aui:select
+			label="Font Color"
+			name="fontColor"
+			value="<%= fontColor %>"
+		>
 			<aui:option value="voilet">Voilet</aui:option>
 			<aui:option value="indigo">Indigo</aui:option>
 			<aui:option value="blue">Blue</aui:option>
