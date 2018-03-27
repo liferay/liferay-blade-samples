@@ -594,6 +594,16 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/screen-name-validator](./liferay-workspace/extensions/screen-name-validator)   |
 | Maven      | [./maven/extensions/screen-name-validator](./maven/extensions/screen-name-validator)        |
 
+### Servlet
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/extensions/servlet](./gradle/extensions/servlet) |
+| Liferay Workspace | [./liferay-workspace/extensions/servlet](./liferay-workspace/extensions/servlet)   |
+| Maven      | [./maven/extensions/servlet](./maven/extensions/servlet)        |
+
 ### Struts Action
 
 **Template project description**:  Demonstrates how to write a `StrutsAction`.
@@ -647,6 +657,14 @@ Refer to this sample's Readme for more information.
 | Gradle | [./gradle/overrides/module-jsp-override](./gradle/overrides/module-jsp-override) |
 | Liferay Workspace | [./liferay-workspace/overrides/module-jsp-override](./liferay-workspace/overrides/module-jsp-override)   |
 | Maven      | [./maven/overrides/module-jsp-override](./maven/overrides/module-jsp-override)          |
+
+### Portlet Form Taglib Override
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/overrides/portlet-form-taglib-override](./gradle/overrides/portlet-form-taglib-override) |
+| Liferay Workspace | [./liferay-workspace/overrides/portlet-form-taglib-override](./liferay-workspace/overrides/portlet-form-taglib-override)   |
+| Maven      | [./maven/overrides/portlet-form-taglib-override](./maven/overrides/portlet-form-taglib-override)          |
 
 ### Resource Bundle Override
 
