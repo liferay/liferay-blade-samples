@@ -25,8 +25,10 @@ import javax.portlet.PortletException;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -41,6 +43,12 @@ import org.osgi.service.component.annotations.Reference;
 	service = MVCResourceCommand.class
 )
 public class CustomMVCResourceCommand implements MVCResourceCommand {
+
+	@Activate
+	public void activate() {
+		_log.log(
+			LogService.LOG_INFO, "Blade Doclib Resource Command Deployed!");
+	}
 
 	@Override
 	public boolean serveResource(
@@ -71,5 +79,8 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 		target = "(component.name=com.liferay.document.library.web.portlet.action.EditFolderMVCResourceCommand)"
 	)
 	private MVCResourceCommand _editFolderMVCResourceCommand;
+
+	@Reference
+	private LogService _log;
 
 }

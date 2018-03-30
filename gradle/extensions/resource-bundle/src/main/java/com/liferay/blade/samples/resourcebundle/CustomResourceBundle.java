@@ -21,7 +21,10 @@ import com.liferay.portal.kernel.language.UTF8Control;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -32,6 +35,11 @@ import org.osgi.service.component.annotations.Component;
 )
 public class CustomResourceBundle extends ResourceBundle {
 
+	@Activate
+	public void activate() {
+		_log.log(LogService.LOG_INFO, "Blade Resource Bundle Deployed!");
+	}
+
 	@Override
 	public Enumeration<String> getKeys() {
 		return _resourceBundle.getKeys();
@@ -41,6 +49,9 @@ public class CustomResourceBundle extends ResourceBundle {
 	protected Object handleGetObject(String key) {
 		return _resourceBundle.getObject(key);
 	}
+
+	@Reference
+	private LogService _log;
 
 	private final ResourceBundle _resourceBundle = ResourceBundle.getBundle(
 		"content.Language", UTF8Control.INSTANCE);

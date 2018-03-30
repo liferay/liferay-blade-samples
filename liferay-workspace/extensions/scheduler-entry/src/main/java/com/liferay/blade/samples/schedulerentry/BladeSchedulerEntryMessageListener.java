@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.schedulerentry;
 
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.BaseSchedulerEntryMessageListener;
 import com.liferay.portal.kernel.messaging.DestinationNames;
 import com.liferay.portal.kernel.messaging.Message;
@@ -32,6 +30,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -59,13 +58,12 @@ public class BladeSchedulerEntryMessageListener
 
 	@Override
 	protected void doReceive(Message message) throws Exception {
-		if (_log.isInfoEnabled()) {
-			_log.info("Received message on schedule: " + message);
-		}
+		_log.log(
+			LogService.LOG_INFO, "Received message on schedule: " + message);
 	}
 
-	private final Log _log = LogFactoryUtil.getLog(
-		BladeSchedulerEntryMessageListener.class);
+	@Reference
+	private LogService _log;
 
 	@Reference(target = ModuleServiceLifecycle.PORTAL_INITIALIZED, unbind = "-")
 	private volatile ModuleServiceLifecycle _moduleServiceLifecycle;

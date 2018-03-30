@@ -21,6 +21,8 @@ import com.liferay.portal.kernel.events.LifecycleAction;
 import com.liferay.portal.kernel.events.LifecycleEvent;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -36,6 +38,11 @@ public class LoginPreAction implements LifecycleAction {
 		throws ActionException {
 
 		System.out.println("login.event.pre=" + lifecycleEvent);
+
+		_log.log(LogService.LOG_INFO, "Blade Login Pre Action");
 	}
+
+	@Reference
+	private LogService _log;
 
 }

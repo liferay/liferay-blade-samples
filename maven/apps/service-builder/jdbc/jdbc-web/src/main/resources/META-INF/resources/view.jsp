@@ -19,7 +19,7 @@
 <%@ include file="/init.jsp" %>
 
 <p>
-	<b><liferay-ui:message key="-web.caption"/></b>
+	<b><liferay-ui:message key="-web.caption" /></b>
 </p>
 
 <%
