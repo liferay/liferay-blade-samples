@@ -16,9 +16,9 @@
 
 package com.liferay.blade.samples.servlet;
 
+import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
-import com.liferay.portal.kernel.util.StringPool;
 
 import java.io.IOException;
 
