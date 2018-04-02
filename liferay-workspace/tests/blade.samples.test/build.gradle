@@ -91,7 +91,7 @@ task testFunctional(type: Test) {
 		systemProperty 'renderCommandPortletJarFile', project(':modules:blade.portlet.rendercommand').jar.archivePath
 	}
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/2.x/blade.jar")
 
 	doLast {
 		delete new File("blade.jar")
