@@ -166,8 +166,16 @@ public class BladeSampleFunctionalActionUtil {
 		}
 	}
 
-	public static String portalVersion() {
+	public static String getPortalVersion() {
 		String portalVersion = System.getProperty("portalVersion");
+
+		if (portalVersion.contains("7.0")) {
+			return "7.0";
+		}
+
+		if (portalVersion.contains("7.1")) {
+			return "7.1";
+		}
 
 		if (portalVersion.contains("master")) {
 			return "master";

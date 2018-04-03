@@ -58,9 +58,8 @@ public class BladeIsomorphicNpmPortletTest {
 	@Test
 	public void testBladeIsomorphicNpm() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			!BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -87,9 +86,7 @@ public class BladeIsomorphicNpmPortletTest {
 	@Test
 	public void testBladeIsomorphicNpmMaster() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 

@@ -58,9 +58,8 @@ public class BladeVueJsNpmPortletTest {
 	@Test
 	public void testBladeVuejsNpm() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			!BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -101,9 +100,7 @@ public class BladeVueJsNpmPortletTest {
 	@Test
 	public void testBladeVuejsNpmMaster() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
