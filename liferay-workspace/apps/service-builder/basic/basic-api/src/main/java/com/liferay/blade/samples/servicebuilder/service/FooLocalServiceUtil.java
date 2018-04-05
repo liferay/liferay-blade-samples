@@ -18,7 +18,8 @@ package com.liferay.blade.samples.servicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.osgi.util.ServiceTrackerFactory;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -99,77 +100,6 @@ public class FooLocalServiceUtil {
 		return getService().deleteFoo(fooId);
 	}
 
-	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFoo(
-		long fooId) {
-		return getService().fetchFoo(fooId);
-	}
-
-	/**
-	* Returns the foo matching the UUID and group.
-	*
-	* @param uuid the foo's UUID
-	* @param groupId the primary key of the group
-	* @return the matching foo, or <code>null</code> if a matching foo could not be found
-	*/
-	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId) {
-		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
-	}
-
-	/**
-	* Returns the foo with the primary key.
-	*
-	* @param fooId the primary key of the foo
-	* @return the foo
-	* @throws PortalException if a foo with the primary key could not be found
-	*/
-	public static com.liferay.blade.samples.servicebuilder.model.Foo getFoo(
-		long fooId) throws com.liferay.portal.kernel.exception.PortalException {
-		return getService().getFoo(fooId);
-	}
-
-	/**
-	* Returns the foo matching the UUID and group.
-	*
-	* @param uuid the foo's UUID
-	* @param groupId the primary key of the group
-	* @return the matching foo
-	* @throws PortalException if a matching foo could not be found
-	*/
-	public static com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-		return getService().getFooByUuidAndGroupId(uuid, groupId);
-	}
-
-	/**
-	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
-	*
-	* @param foo the foo
-	* @return the foo that was updated
-	*/
-	public static com.liferay.blade.samples.servicebuilder.model.Foo updateFoo(
-		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
-		return getService().updateFoo(foo);
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
-		return getService().getActionableDynamicQuery();
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery() {
-		return getService().dynamicQuery();
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		com.liferay.exportimport.kernel.lar.PortletDataContext portletDataContext) {
-		return getService().getExportActionableDynamicQuery(portletDataContext);
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
-		return getService().getIndexableActionableDynamicQuery();
-	}
-
 	/**
 	* @throws PortalException
 	*/
@@ -179,32 +109,8 @@ public class FooLocalServiceUtil {
 		return getService().deletePersistedModel(persistedModel);
 	}
 
-	public static com.liferay.portal.kernel.model.PersistedModel getPersistedModel(
-		java.io.Serializable primaryKeyObj)
-		throws com.liferay.portal.kernel.exception.PortalException {
-		return getService().getPersistedModel(primaryKeyObj);
-	}
-
-	/**
-	* Returns the number of foos.
-	*
-	* @return the number of foos
-	*/
-	public static int getFoosCount() {
-		return getService().getFoosCount();
-	}
-
-	public static java.lang.String fooLocal() {
-		return getService().fooLocal();
-	}
-
-	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
-	public static java.lang.String getOSGiServiceIdentifier() {
-		return getService().getOSGiServiceIdentifier();
+	public static com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery() {
+		return getService().dynamicQuery();
 	}
 
 	/**
@@ -258,6 +164,86 @@ public class FooLocalServiceUtil {
 	}
 
 	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @return the number of rows matching the dynamic query
+	*/
+	public static long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+		return getService().dynamicQueryCount(dynamicQuery);
+	}
+
+	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows matching the dynamic query
+	*/
+	public static long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection) {
+		return getService().dynamicQueryCount(dynamicQuery, projection);
+	}
+
+	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFoo(
+		long fooId) {
+		return getService().fetchFoo(fooId);
+	}
+
+	/**
+	* Returns the foo matching the UUID and group.
+	*
+	* @param uuid the foo's UUID
+	* @param groupId the primary key of the group
+	* @return the matching foo, or <code>null</code> if a matching foo could not be found
+	*/
+	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
+		java.lang.String uuid, long groupId) {
+		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static java.lang.String fooLocal() {
+		return getService().fooLocal();
+	}
+
+	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
+		return getService().getActionableDynamicQuery();
+	}
+
+	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
+		com.liferay.exportimport.kernel.lar.PortletDataContext portletDataContext) {
+		return getService().getExportActionableDynamicQuery(portletDataContext);
+	}
+
+	/**
+	* Returns the foo with the primary key.
+	*
+	* @param fooId the primary key of the foo
+	* @return the foo
+	* @throws PortalException if a foo with the primary key could not be found
+	*/
+	public static com.liferay.blade.samples.servicebuilder.model.Foo getFoo(
+		long fooId) throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getFoo(fooId);
+	}
+
+	/**
+	* Returns the foo matching the UUID and group.
+	*
+	* @param uuid the foo's UUID
+	* @param groupId the primary key of the group
+	* @return the matching foo
+	* @throws PortalException if a matching foo could not be found
+	*/
+	public static com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getFooByUuidAndGroupId(uuid, groupId);
+	}
+
+	/**
 	* Returns a range of all the foos.
 	*
 	* <p>
@@ -304,33 +290,58 @@ public class FooLocalServiceUtil {
 	}
 
 	/**
-	* Returns the number of rows matching the dynamic query.
+	* Returns the number of foos.
 	*
-	* @param dynamicQuery the dynamic query
-	* @return the number of rows matching the dynamic query
+	* @return the number of foos
 	*/
-	public static long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
-		return getService().dynamicQueryCount(dynamicQuery);
+	public static int getFoosCount() {
+		return getService().getFoosCount();
+	}
+
+	public static com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
+		return getService().getIndexableActionableDynamicQuery();
 	}
 
 	/**
-	* Returns the number of rows matching the dynamic query.
+	* Returns the OSGi service identifier.
 	*
-	* @param dynamicQuery the dynamic query
-	* @param projection the projection to apply to the query
-	* @return the number of rows matching the dynamic query
+	* @return the OSGi service identifier
 	*/
-	public static long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
-		com.liferay.portal.kernel.dao.orm.Projection projection) {
-		return getService().dynamicQueryCount(dynamicQuery, projection);
+	public static java.lang.String getOSGiServiceIdentifier() {
+		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static com.liferay.portal.kernel.model.PersistedModel getPersistedModel(
+		java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	*
+	* @param foo the foo
+	* @return the foo that was updated
+	*/
+	public static com.liferay.blade.samples.servicebuilder.model.Foo updateFoo(
+		com.liferay.blade.samples.servicebuilder.model.Foo foo) {
+		return getService().updateFoo(foo);
 	}
 
 	public static FooLocalService getService() {
 		return _serviceTracker.getService();
 	}
 
-	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker =
-		ServiceTrackerFactory.open(FooLocalService.class);
+	private static ServiceTracker<FooLocalService, FooLocalService> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(FooLocalService.class);
+
+		ServiceTracker<FooLocalService, FooLocalService> serviceTracker = new ServiceTracker<FooLocalService, FooLocalService>(bundle.getBundleContext(),
+				FooLocalService.class, null);
+
+		serviceTracker.open();
+
+		_serviceTracker = serviceTracker;
+	}
 }

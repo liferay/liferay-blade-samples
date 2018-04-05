@@ -160,58 +160,8 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public Foo toEscapedModel() {
-		return new FooWrapper(_foo.toEscapedModel());
-	}
-
-	@Override
-	public Foo toUnescapedModel() {
-		return new FooWrapper(_foo.toUnescapedModel());
-	}
-
-	/**
-	* Returns the field2 of this foo.
-	*
-	* @return the field2 of this foo
-	*/
-	@Override
-	public boolean getField2() {
-		return _foo.getField2();
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _foo.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _foo.isEscapedModel();
-	}
-
-	/**
-	* Returns <code>true</code> if this foo is field2.
-	*
-	* @return <code>true</code> if this foo is field2; <code>false</code> otherwise
-	*/
-	@Override
-	public boolean isField2() {
-		return _foo.isField2();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _foo.isNew();
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _foo.getExpandoBridge();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.model.CacheModel<Foo> toCacheModel() {
-		return _foo.toCacheModel();
+	public java.lang.Object clone() {
+		return new FooWrapper((Foo)_foo.clone());
 	}
 
 	@Override
@@ -220,28 +170,28 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Returns the field3 of this foo.
+	* Returns the company ID of this foo.
 	*
-	* @return the field3 of this foo
+	* @return the company ID of this foo
 	*/
 	@Override
-	public int getField3() {
-		return _foo.getField3();
+	public long getCompanyId() {
+		return _foo.getCompanyId();
+	}
+
+	/**
+	* Returns the create date of this foo.
+	*
+	* @return the create date of this foo
+	*/
+	@Override
+	public Date getCreateDate() {
+		return _foo.getCreateDate();
 	}
 
 	@Override
-	public int hashCode() {
-		return _foo.hashCode();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _foo.getPrimaryKeyObj();
-	}
-
-	@Override
-	public java.lang.Object clone() {
-		return new FooWrapper((Foo)_foo.clone());
+	public ExpandoBridge getExpandoBridge() {
+		return _foo.getExpandoBridge();
 	}
 
 	/**
@@ -255,6 +205,36 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
+	* Returns the field2 of this foo.
+	*
+	* @return the field2 of this foo
+	*/
+	@Override
+	public boolean getField2() {
+		return _foo.getField2();
+	}
+
+	/**
+	* Returns the field3 of this foo.
+	*
+	* @return the field3 of this foo
+	*/
+	@Override
+	public int getField3() {
+		return _foo.getField3();
+	}
+
+	/**
+	* Returns the field4 of this foo.
+	*
+	* @return the field4 of this foo
+	*/
+	@Override
+	public Date getField4() {
+		return _foo.getField4();
+	}
+
+	/**
 	* Returns the field5 of this foo.
 	*
 	* @return the field5 of this foo
@@ -262,6 +242,61 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	@Override
 	public java.lang.String getField5() {
 		return _foo.getField5();
+	}
+
+	/**
+	* Returns the foo ID of this foo.
+	*
+	* @return the foo ID of this foo
+	*/
+	@Override
+	public long getFooId() {
+		return _foo.getFooId();
+	}
+
+	/**
+	* Returns the group ID of this foo.
+	*
+	* @return the group ID of this foo
+	*/
+	@Override
+	public long getGroupId() {
+		return _foo.getGroupId();
+	}
+
+	/**
+	* Returns the modified date of this foo.
+	*
+	* @return the modified date of this foo
+	*/
+	@Override
+	public Date getModifiedDate() {
+		return _foo.getModifiedDate();
+	}
+
+	/**
+	* Returns the primary key of this foo.
+	*
+	* @return the primary key of this foo
+	*/
+	@Override
+	public long getPrimaryKey() {
+		return _foo.getPrimaryKey();
+	}
+
+	@Override
+	public Serializable getPrimaryKeyObj() {
+		return _foo.getPrimaryKeyObj();
+	}
+
+	/**
+	* Returns the user ID of this foo.
+	*
+	* @return the user ID of this foo
+	*/
+	@Override
+	public long getUserId() {
+		return _foo.getUserId();
 	}
 
 	/**
@@ -295,93 +330,33 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public java.lang.String toString() {
-		return _foo.toString();
+	public int hashCode() {
+		return _foo.hashCode();
 	}
 
 	@Override
-	public java.lang.String toXmlString() {
-		return _foo.toXmlString();
+	public boolean isCachedModel() {
+		return _foo.isCachedModel();
 	}
 
-	/**
-	* Returns the create date of this foo.
-	*
-	* @return the create date of this foo
-	*/
 	@Override
-	public Date getCreateDate() {
-		return _foo.getCreateDate();
+	public boolean isEscapedModel() {
+		return _foo.isEscapedModel();
 	}
 
 	/**
-	* Returns the field4 of this foo.
+	* Returns <code>true</code> if this foo is field2.
 	*
-	* @return the field4 of this foo
+	* @return <code>true</code> if this foo is field2; <code>false</code> otherwise
 	*/
 	@Override
-	public Date getField4() {
-		return _foo.getField4();
+	public boolean isField2() {
+		return _foo.isField2();
 	}
 
-	/**
-	* Returns the modified date of this foo.
-	*
-	* @return the modified date of this foo
-	*/
 	@Override
-	public Date getModifiedDate() {
-		return _foo.getModifiedDate();
-	}
-
-	/**
-	* Returns the company ID of this foo.
-	*
-	* @return the company ID of this foo
-	*/
-	@Override
-	public long getCompanyId() {
-		return _foo.getCompanyId();
-	}
-
-	/**
-	* Returns the foo ID of this foo.
-	*
-	* @return the foo ID of this foo
-	*/
-	@Override
-	public long getFooId() {
-		return _foo.getFooId();
-	}
-
-	/**
-	* Returns the group ID of this foo.
-	*
-	* @return the group ID of this foo
-	*/
-	@Override
-	public long getGroupId() {
-		return _foo.getGroupId();
-	}
-
-	/**
-	* Returns the primary key of this foo.
-	*
-	* @return the primary key of this foo
-	*/
-	@Override
-	public long getPrimaryKey() {
-		return _foo.getPrimaryKey();
-	}
-
-	/**
-	* Returns the user ID of this foo.
-	*
-	* @return the user ID of this foo
-	*/
-	@Override
-	public long getUserId() {
-		return _foo.getUserId();
+	public boolean isNew() {
+		return _foo.isNew();
 	}
 
 	@Override
@@ -415,14 +390,14 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_foo.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
 		_foo.setExpandoBridgeAttributes(baseModel);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
+		_foo.setExpandoBridgeAttributes(expandoBridge);
 	}
 
 	@Override
@@ -568,6 +543,31 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	@Override
 	public void setUuid(java.lang.String uuid) {
 		_foo.setUuid(uuid);
+	}
+
+	@Override
+	public com.liferay.portal.kernel.model.CacheModel<Foo> toCacheModel() {
+		return _foo.toCacheModel();
+	}
+
+	@Override
+	public Foo toEscapedModel() {
+		return new FooWrapper(_foo.toEscapedModel());
+	}
+
+	@Override
+	public java.lang.String toString() {
+		return _foo.toString();
+	}
+
+	@Override
+	public Foo toUnescapedModel() {
+		return new FooWrapper(_foo.toUnescapedModel());
+	}
+
+	@Override
+	public java.lang.String toXmlString() {
+		return _foo.toXmlString();
 	}
 
 	@Override

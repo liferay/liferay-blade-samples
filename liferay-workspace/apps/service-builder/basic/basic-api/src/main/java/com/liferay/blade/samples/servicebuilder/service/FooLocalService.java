@@ -109,62 +109,6 @@ public interface FooLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.DELETE)
 	public Foo deleteFoo(long fooId) throws PortalException;
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo fetchFoo(long fooId);
-
-	/**
-	* Returns the foo matching the UUID and group.
-	*
-	* @param uuid the foo's UUID
-	* @param groupId the primary key of the group
-	* @return the matching foo, or <code>null</code> if a matching foo could not be found
-	*/
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo fetchFooByUuidAndGroupId(java.lang.String uuid, long groupId);
-
-	/**
-	* Returns the foo with the primary key.
-	*
-	* @param fooId the primary key of the foo
-	* @return the foo
-	* @throws PortalException if a foo with the primary key could not be found
-	*/
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo getFoo(long fooId) throws PortalException;
-
-	/**
-	* Returns the foo matching the UUID and group.
-	*
-	* @param uuid the foo's UUID
-	* @param groupId the primary key of the group
-	* @return the matching foo
-	* @throws PortalException if a matching foo could not be found
-	*/
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo getFooByUuidAndGroupId(java.lang.String uuid, long groupId)
-		throws PortalException;
-
-	/**
-	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
-	*
-	* @param foo the foo
-	* @return the foo that was updated
-	*/
-	@Indexable(type = IndexableType.REINDEX)
-	public Foo updateFoo(Foo foo);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ActionableDynamicQuery getActionableDynamicQuery();
-
-	public DynamicQuery dynamicQuery();
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		PortletDataContext portletDataContext);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
-
 	/**
 	* @throws PortalException
 	*/
@@ -172,27 +116,7 @@ public interface FooLocalService extends BaseLocalService,
 	public PersistedModel deletePersistedModel(PersistedModel persistedModel)
 		throws PortalException;
 
-	@Override
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
-		throws PortalException;
-
-	/**
-	* Returns the number of foos.
-	*
-	* @return the number of foos
-	*/
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public int getFoosCount();
-
-	public java.lang.String fooLocal();
-
-	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
-	public java.lang.String getOSGiServiceIdentifier();
+	public DynamicQuery dynamicQuery();
 
 	/**
 	* Performs a dynamic query on the database and returns the matching rows.
@@ -232,6 +156,68 @@ public interface FooLocalService extends BaseLocalService,
 	*/
 	public <T> List<T> dynamicQuery(DynamicQuery dynamicQuery, int start,
 		int end, OrderByComparator<T> orderByComparator);
+
+	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @return the number of rows matching the dynamic query
+	*/
+	public long dynamicQueryCount(DynamicQuery dynamicQuery);
+
+	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows matching the dynamic query
+	*/
+	public long dynamicQueryCount(DynamicQuery dynamicQuery,
+		Projection projection);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Foo fetchFoo(long fooId);
+
+	/**
+	* Returns the foo matching the UUID and group.
+	*
+	* @param uuid the foo's UUID
+	* @param groupId the primary key of the group
+	* @return the matching foo, or <code>null</code> if a matching foo could not be found
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Foo fetchFooByUuidAndGroupId(java.lang.String uuid, long groupId);
+
+	public java.lang.String fooLocal();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public ActionableDynamicQuery getActionableDynamicQuery();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
+		PortletDataContext portletDataContext);
+
+	/**
+	* Returns the foo with the primary key.
+	*
+	* @param fooId the primary key of the foo
+	* @return the foo
+	* @throws PortalException if a foo with the primary key could not be found
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Foo getFoo(long fooId) throws PortalException;
+
+	/**
+	* Returns the foo matching the UUID and group.
+	*
+	* @param uuid the foo's UUID
+	* @param groupId the primary key of the group
+	* @return the matching foo
+	* @throws PortalException if a matching foo could not be found
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Foo getFooByUuidAndGroupId(java.lang.String uuid, long groupId)
+		throws PortalException;
 
 	/**
 	* Returns a range of all the foos.
@@ -274,20 +260,34 @@ public interface FooLocalService extends BaseLocalService,
 		OrderByComparator<Foo> orderByComparator);
 
 	/**
-	* Returns the number of rows matching the dynamic query.
+	* Returns the number of foos.
 	*
-	* @param dynamicQuery the dynamic query
-	* @return the number of rows matching the dynamic query
+	* @return the number of foos
 	*/
-	public long dynamicQueryCount(DynamicQuery dynamicQuery);
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getFoosCount();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
 	/**
-	* Returns the number of rows matching the dynamic query.
+	* Returns the OSGi service identifier.
 	*
-	* @param dynamicQuery the dynamic query
-	* @param projection the projection to apply to the query
-	* @return the number of rows matching the dynamic query
+	* @return the OSGi service identifier
 	*/
-	public long dynamicQueryCount(DynamicQuery dynamicQuery,
-		Projection projection);
+	public java.lang.String getOSGiServiceIdentifier();
+
+	@Override
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
+		throws PortalException;
+
+	/**
+	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	*
+	* @param foo the foo
+	* @return the foo that was updated
+	*/
+	@Indexable(type = IndexableType.REINDEX)
+	public Foo updateFoo(Foo foo);
 }
