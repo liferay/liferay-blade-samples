@@ -57,9 +57,8 @@ public class BladeBillboardJsNpmPortletTest {
 	@Test
 	public void testBladeBillboardJsNpm() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			!BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -91,9 +90,7 @@ public class BladeBillboardJsNpmPortletTest {
 	@Test
 	public void testBladeBillboardJsNpmMaster() throws InterruptedException {
 		Assume.assumeTrue(
-			"Portal Version is: " +
-				BladeSampleFunctionalActionUtil.portalVersion(),
-			BladeSampleFunctionalActionUtil.portalVersion().equals("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
 
 		_webDriver.get(_portletURL.toExternalForm());
 
