@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.osgiapi.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -36,10 +37,7 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -55,57 +53,36 @@ public class BladePortletOsgiApiTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	public void customClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
-
-		action.moveToElement(webElement).build().perform();
-
-		WebDriverWait wait = new WebDriverWait(webDriver, 5);
-
-		WebElement element = wait.until(
-			ExpectedConditions.visibilityOf(webElement));
-
-		element.click();
-	}
-
 	@Test
 	public void testBladePortletOsgiApi()
 		throws InterruptedException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleOsgiApiPortlet));
+			"Portlet was not deployed",
+			_bladeSampleOsgiApiPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade OSGI API Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("OSGi API Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("osgi api portlet"));
 
 		Assert.assertTrue(
 			"Expected OSGi API Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"OSGi API Portlet - Hello World!"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletBody).equals(
+					"osgi api portlet - hello world!"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]")
 	private WebElement _bladeSampleOsgiApiPortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div/div")
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div[@class='portlet-body']")
 	private WebElement _portletBody;
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//h2")

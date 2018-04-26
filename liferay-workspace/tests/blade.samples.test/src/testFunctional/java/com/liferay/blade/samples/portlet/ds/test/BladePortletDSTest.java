@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.ds.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -37,8 +38,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -60,31 +59,22 @@ public class BladePortletDSTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleDSPortlet));
+			"Portlet was not deployed",
+			_bladeSampleDSPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected DS Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("DS Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("ds portlet"));
 
 		Assert.assertTrue(
 			"Expected DS Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals("DS Portlet - Hello World!"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			_portletBody.getText().equals("DS Portlet - Hello World!"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_ds_DSPortlet')]")

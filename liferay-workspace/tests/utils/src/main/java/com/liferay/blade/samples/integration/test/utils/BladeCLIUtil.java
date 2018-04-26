@@ -167,22 +167,24 @@ public class BladeCLIUtil {
 			printFileName = printFileName.substring(
 				0, printFileName.lastIndexOf('.'));
 
-			output = BladeCLIUtil.execute(
+			output = execute(
 				"sh", "install",
-				"webbundle:file://" + file +
-					"?Web-ContextPath=/" + printFileName);
+				"webbundle:" + file.toURI().toASCIIString() + "?Web-ContextPath=/" +
+					printFileName);
 
-			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
-
+			bundleID = output.substring(
+				output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
 		}
-
 		else {
 			output = execute("sh", "install", file.toURI().toASCIIString());
 
-			bundleID = output.substring(output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
+			bundleID = output.substring(
+				output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
 		}
 
-		if (output.contains("Failed") || output.contains("Exception")) {
+		if (output.toLowerCase().contains("failed") ||
+			output.toLowerCase().contains("exception")) {
+
 			throw new Exception(output);
 		}
 
@@ -192,7 +194,7 @@ public class BladeCLIUtil {
 	public static String startBundle(String bundleID) throws Exception {
 		String output = execute("sh", "start", bundleID);
 
-		if (output.contains("Exception")) {
+		if (output.toLowerCase().contains("exception")) {
 			throw new Exception(output);
 		}
 

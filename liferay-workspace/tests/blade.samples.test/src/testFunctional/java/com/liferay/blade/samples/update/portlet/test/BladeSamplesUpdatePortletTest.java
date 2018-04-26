@@ -21,6 +21,8 @@ import aQute.lib.io.IO;
 import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+import com.liferay.blade.sample.test.functional.utils.StringTestUtil;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 
 import java.io.BufferedReader;
@@ -30,8 +32,11 @@ import java.io.FileWriter;
 import java.io.Writer;
 
 import java.net.URL;
+
 import java.nio.file.Files;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -49,8 +54,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -92,14 +95,18 @@ public class BladeSamplesUpdatePortletTest {
 	public void testUpdateMVCPortletProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_helloWorldPortlet));
+			"Portlet was not deployed",
+			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("helloworld Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
-			_portletBody.getText().contentEquals("Hello from helloworld JSP!"));
+			_portletBody.getText().equals("Hello from helloworld JSP!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -115,24 +122,19 @@ public class BladeSamplesUpdatePortletTest {
 				lines.add(line);
 
 				if (line.equals("import javax.portlet.Portlet;")) {
-					StringBuilder sb = new StringBuilder();
+					String imports = StringTestUtil.merge(
+						Arrays.asList(
+							"import java.io.IOException;",
+							"import javax.portlet.PortletException;",
+							"import javax.portlet.RenderRequest;",
+							"import javax.portlet.RenderResponse;"),
+						"\n");
 
-					sb.append(
-						"import java.io.IOException;\n"
-					).append(
-						"import javax.portlet.PortletException;\n"
-					).append(
-						"import javax.portlet.RenderRequest;\n"
-					).append(
-						"import javax.portlet.RenderResponse;\n"
-					);
-
-					lines.add(sb.toString());
+					lines.add(imports);
 				}
 
 				if (line.equals(
-						"public class HelloworldPortlet extends MVCPortlet {"
-					)) {
+						"public class HelloworldPortlet extends MVCPortlet {")) {
 
 					StringBuilder sb = new StringBuilder();
 
@@ -190,27 +192,16 @@ public class BladeSamplesUpdatePortletTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_helloWorldPortlet));
+			"Portlet was not deployed",
+			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("helloworld Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
-			_portletBody.getText().contentEquals(
+			_portletBody.getText().equals(
 				"Hello from helloworld JSP!bar"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 60);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
 	}
 
 	private static File _modulesDir;

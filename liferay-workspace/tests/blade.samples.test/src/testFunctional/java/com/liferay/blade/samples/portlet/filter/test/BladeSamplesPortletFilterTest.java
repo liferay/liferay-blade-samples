@@ -17,6 +17,7 @@
 package com.liferay.blade.samples.portlet.filter.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -37,8 +38,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Lawrence Lee
@@ -61,31 +60,23 @@ public class BladeSamplesPortletFilterTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
-			"Portlet was not deployed", isVisible(_bladeSampleFilterPortlet));
+			"Portlet was not deployed",
+			_bladeSampleFilterPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Example Filter Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Example Filter Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("example filter portlet"));
 
 		Assert.assertTrue(
 			"Expected Custom Attribute = My Custom Attribute Value, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals("Custom Attribute = My Custom Attribute Value"));
-	}
-
-	protected boolean isVisible(WebElement webelement) {
-		WebDriverWait webDriverWait = new WebDriverWait(_webDriver, 5);
-
-		try {
-			webDriverWait.until(ExpectedConditions.visibilityOf(webelement));
-
-			return true;
-		}
-		catch (org.openqa.selenium.TimeoutException te) {
-			return false;
-		}
+			_portletBody.getText().equals(
+				"Custom Attribute = My Custom Attribute Value"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]")
