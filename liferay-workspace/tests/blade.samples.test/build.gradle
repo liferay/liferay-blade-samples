@@ -56,7 +56,7 @@ task testFunctional(type: Test) {
 	classpath = sourceSets.testFunctional.runtimeClasspath
 	outputs.upToDateWhen { false }
 
-	//dependsOn ":initBundle", startTestableTomcat
+	dependsOn ":initBundle", startTestableTomcat
 
 	dependsOn ":modules:blade.portlet.actioncommand:jar"
 	dependsOn ":modules:blade.portlet.controlpanel:jar"
