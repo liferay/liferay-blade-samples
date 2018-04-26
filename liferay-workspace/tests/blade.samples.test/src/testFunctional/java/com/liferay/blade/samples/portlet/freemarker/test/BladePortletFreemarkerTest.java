@@ -60,27 +60,29 @@ public class BladePortletFreemarkerTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleFreemarkerPortlet));
+			_bladeSampleFreemarkerPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade FreeMarker Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade FreeMarker Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("blade freemarker portlet"));
 
 		Assert.assertTrue(
 			"Expected Hello from BLADE Freemarker!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
+			_portletBody.getText().equals(
 				"Hello from BLADE Freemarker!"));
 
 		String portletBodyAttributeClass = _portletBody.getAttribute("class");
 
 		Assert.assertTrue(
 			"Expected redBackground, but saw: " + portletBodyAttributeClass,
-			portletBodyAttributeClass.contentEquals("redBackground"));
+			portletBodyAttributeClass.equals("redBackground"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_freemarker_BladeFreeMarkerPortlet')]")

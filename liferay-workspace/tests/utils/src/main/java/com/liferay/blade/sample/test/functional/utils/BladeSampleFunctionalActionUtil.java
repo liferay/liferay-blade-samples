@@ -186,4 +186,12 @@ public class BladeSampleFunctionalActionUtil {
 		}
 	}
 
+	public static String getTextToLowerCase(WebElement webelement) {
+		String text = webelement.getText();
+
+		String textToLowerCase = text.toLowerCase();
+
+		return textToLowerCase;
+	}
+
 }

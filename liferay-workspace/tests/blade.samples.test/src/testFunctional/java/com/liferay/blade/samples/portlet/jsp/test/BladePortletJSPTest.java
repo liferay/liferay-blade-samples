@@ -59,26 +59,28 @@ public class BladePortletJSPTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleJSPPortlet));
+			_bladeSampleJSPPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade JSP Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade JSP Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("blade jsp portlet"));
 
 		Assert.assertTrue(
 			"Expected Hello from BLADE JSP!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
+			_portletBody.getText().equals("Hello from BLADE JSP!"));
 
 		String portletBodyAttributeClass = _portletBody.getAttribute("class");
 
 		Assert.assertTrue(
 			"Expected redBackground, but saw: " + portletBodyAttributeClass,
-			portletBodyAttributeClass.contentEquals("redBackground"));
+			portletBodyAttributeClass.equals("redBackground"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_jsp_JSPPortlet')]")

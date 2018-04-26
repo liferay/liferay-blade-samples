@@ -95,16 +95,18 @@ public class BladeSamplesUpdatePortletTest {
 	public void testUpdateMVCPortletProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _helloWorldPortlet));
+			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("helloworld Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
-			_portletBody.getText().contentEquals("Hello from helloworld JSP!"));
+			_portletBody.getText().equals("Hello from helloworld JSP!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -191,14 +193,14 @@ public class BladeSamplesUpdatePortletTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _helloWorldPortlet));
+			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("helloworld Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
-			_portletBody.getText().contentEquals(
+			_portletBody.getText().equals(
 				"Hello from helloworld JSP!bar"));
 	}
 

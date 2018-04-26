@@ -59,27 +59,30 @@ public class BladePortletOsgiApiTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleOsgiApiPortlet));
+			_bladeSampleOsgiApiPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade OSGI API Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("OSGi API Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("osgi api portlet"));
 
 		Assert.assertTrue(
 			"Expected OSGi API Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals(
-				"OSGi API Portlet - Hello World!"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletBody).equals(
+					"osgi api portlet - hello world!"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]")
 	private WebElement _bladeSampleOsgiApiPortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div/div")
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//div[@class='portlet-body']")
 	private WebElement _portletBody;
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]//..//h2")

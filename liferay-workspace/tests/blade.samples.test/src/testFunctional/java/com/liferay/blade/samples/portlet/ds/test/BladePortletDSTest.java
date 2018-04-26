@@ -59,20 +59,22 @@ public class BladePortletDSTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleDSPortlet));
+			_bladeSampleDSPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected DS Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("DS Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("ds portlet"));
 
 		Assert.assertTrue(
 			"Expected DS Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals("DS Portlet - Hello World!"));
+			_portletBody.getText().equals("DS Portlet - Hello World!"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_ds_DSPortlet')]")

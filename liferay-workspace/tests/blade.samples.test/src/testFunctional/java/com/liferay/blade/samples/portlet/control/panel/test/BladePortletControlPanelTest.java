@@ -62,19 +62,20 @@ public class BladePortletControlPanelTest {
 			"http://localhost:8080/group/control_panel/manage?p_p_id=" +
 				_portletName);
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		_webDriver.get(url.toExternalForm());
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _controlPanelPortlet));
+			_controlPanelPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Control Panel Demo"));
+			_portletTitle.getText().equals("Control Panel Demo"));
 
 		Assert.assertTrue("Expected We are in the control panel, but saw: " + _portletBody.getText(),
-			_portletBody.getText().contentEquals("We are in the control panel"));
+			_portletBody.getText().equals("We are in the control panel"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'ControlPanelAppPortlet')]")

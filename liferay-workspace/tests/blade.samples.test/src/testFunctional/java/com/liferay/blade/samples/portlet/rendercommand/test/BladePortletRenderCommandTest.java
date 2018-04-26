@@ -64,30 +64,24 @@ public class BladePortletRenderCommandTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleRenderPortlet));
+			_bladeSampleRenderPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade Render Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade Render Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("blade render portlet"));
 
-		Assert.assertTrue(
-			"Render Command Button is not clickable",
-			BladeSampleFunctionalActionUtil.isClickable(
-				_webDriver, _portletButton));
-
-		BladeSampleFunctionalActionUtil.twoPointClick(_webDriver, _portletButton, _portletBody);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletButton);
 
 		Assert.assertTrue(
 			"Render Page is not available",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _portletBody));
+			_portletBody.isDisplayed());
 
 		Assert.assertTrue(
-			"Expected render page, but saw " + _portletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _portletBody, "render page"));
+			"Expected render page, but saw " + _portletBodyMaster.getText(),
+			_portletBodyMaster.getText().equals("render page"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]")
@@ -95,6 +89,9 @@ public class BladePortletRenderCommandTest {
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//div/div")
 	private WebElement _portletBody;
+
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//div[@class='portlet-body']")
+	private WebElement _portletBodyMaster;
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]//..//a[contains(@class,'btn')]")
 	private WebElement _portletButton;
