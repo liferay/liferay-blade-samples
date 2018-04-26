@@ -23,11 +23,11 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
 
-	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
-	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.5.0"
+	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.5.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
 	testCompile group: "junit", name: "junit", version: "4.12"
-	testCompile group: "org.jboss.arquillian.graphene", name: "graphene-webdriver", version: "2.1.0.Final"
+	testCompile group: 'org.jboss.arquillian.graphene', name: 'graphene-webdriver', version: '2.3.2'
 	testCompile group: "org.jboss.arquillian.junit", name: "arquillian-junit-container", version: "1.1.11.Final"
 
 	testCompile (project(':tests:utils')) {
@@ -56,21 +56,20 @@ task testFunctional(type: Test) {
 	classpath = sourceSets.testFunctional.runtimeClasspath
 	outputs.upToDateWhen { false }
 
-	dependsOn ":initBundle", startTestableTomcat
-	dependsOn ":modules:blade.controlmenuentry:jar"
-	dependsOn ":modules:blade.language:jar"
-	dependsOn ":modules:blade.language.web:jar"
+	//dependsOn ":initBundle", startTestableTomcat
+
 	dependsOn ":modules:blade.portlet.actioncommand:jar"
-	dependsOn ":modules:blade.portlet.configuration.icon:jar"
 	dependsOn ":modules:blade.portlet.controlpanel:jar"
 	dependsOn ":modules:blade.portlet.ds:jar"
 	dependsOn ":modules:blade.portlet.filter:jar"
 	dependsOn ":modules:blade.portlet.freemarker:jar"
 	dependsOn ":modules:blade.portlet.jsp:jar"
 	dependsOn ":modules:blade.portlet.osgiapi:jar"
-	dependsOn ":modules:blade.language.web:jar"
-	dependsOn ":modules:blade.language:jar"
 	dependsOn ":modules:blade.portlet.rendercommand:jar"
+	dependsOn ":modules:blade.language:jar"
+	dependsOn ":modules:blade.language.web:jar"
+	dependsOn ":modules:blade.controlmenuentry:jar"
+	dependsOn ":modules:blade.portlet.configuration.icon:jar"
 	dependsOn ":modules:blade.portlet.toolbar.contributor:jar"
 
 	doFirst {
@@ -106,4 +105,3 @@ stopTestableTomcat {
 }
 
 check.dependsOn testFunctional
-stopTestableTomcat.mustRunAfter testFunctional
