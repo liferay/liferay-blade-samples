@@ -87,6 +87,8 @@ public class BladePortletRenderCommandTest {
 			"Render Command Button is not visible", isVisible(_portletButton));
 
 		customClick(_webDriver, _portletButton);
+		
+		Thread.sleep(500);
 
 		Assert.assertTrue(
 			"Render Page is not available", isVisible(_portletBody));
