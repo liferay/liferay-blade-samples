@@ -44,7 +44,7 @@ import org.osgi.service.component.annotations.Reference;
  */
 @Component(
 	configurationPid = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
-	immediate = true, property = {"service.ranking:Integer=100"},
+	immediate = true, property = "service.ranking:Integer=100",
 	service = ScreenNameValidator.class
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {

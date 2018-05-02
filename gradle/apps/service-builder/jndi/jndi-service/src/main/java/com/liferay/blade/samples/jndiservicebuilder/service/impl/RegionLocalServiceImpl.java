@@ -51,9 +51,9 @@ public class RegionLocalServiceImpl extends RegionLocalServiceBaseImpl {
 	 */
 	public void useJNDI() {
 		try {
-			DataSource datasource = regionPersistence.getDataSource();
+			DataSource dataSource = regionPersistence.getDataSource();
 
-			Connection connection = datasource.getConnection();
+			Connection connection = dataSource.getConnection();
 
 			Statement statement = connection.createStatement();
 

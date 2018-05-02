@@ -32,8 +32,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"key=auth.failure"},
-	service = AuthFailure.class
+	immediate = true, property = "key=auth.failure", service = AuthFailure.class
 )
 public class LogAuthFailure implements AuthFailure {
 

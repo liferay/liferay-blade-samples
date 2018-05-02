@@ -38,7 +38,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"key=auth.pipeline.pre"},
+	immediate = true, property = "key=auth.pipeline.pre",
 	service = Authenticator.class
 )
 public class ShiroAuthenticatorPre implements Authenticator {
@@ -82,6 +82,7 @@ public class ShiroAuthenticatorPre implements Authenticator {
 		}
 		catch (AuthenticationException ae) {
 			_log.log(LogService.LOG_ERROR, ae.getMessage(), ae);
+
 			throw new AuthException(ae.getMessage(), ae);
 		}
 	}

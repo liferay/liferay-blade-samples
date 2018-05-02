@@ -33,9 +33,7 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	property = {
-		"javax.portlet.name=com_liferay_hello_world_web_portlet_HelloWorldPortlet"
-	},
+	property = "javax.portlet.name=com_liferay_hello_world_web_portlet_HelloWorldPortlet",
 	service = PortletConfigurationIcon.class
 )
 public class BladePortletConfigurationIcon

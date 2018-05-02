@@ -32,7 +32,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"key=auth.max.failures"},
+	immediate = true, property = "key=auth.max.failures",
 	service = AuthFailure.class
 )
 public class LogMaxFailures implements AuthFailure {

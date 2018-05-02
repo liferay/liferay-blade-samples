@@ -24,7 +24,7 @@ import org.osgi.service.component.annotations.Component;
  * @author James Hinkey
  */
 @Component(
-	immediate = true, property = {"service.ranking:Integer=100"},
+	immediate = true, property = "service.ranking:Integer=100",
 	service = SomeService.class
 )
 public class HigherRankedService implements SomeService {

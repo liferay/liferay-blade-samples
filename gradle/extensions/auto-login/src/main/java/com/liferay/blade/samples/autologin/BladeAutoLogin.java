@@ -56,7 +56,7 @@ public class BladeAutoLogin extends BaseAutoLogin {
 		if (autoLoginUser != null) {
 			credentials = new String[3];
 
-			credentials[0] = Long.toString(autoLoginUser.getUserId());
+			credentials[0] = String.valueOf(autoLoginUser.getUserId());
 			credentials[1] = autoLoginUser.getPassword();
 			credentials[2] = Boolean.toString(true);
 		}
