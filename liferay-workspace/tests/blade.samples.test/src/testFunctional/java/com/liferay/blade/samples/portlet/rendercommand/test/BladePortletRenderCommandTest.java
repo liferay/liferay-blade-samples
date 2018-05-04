@@ -75,6 +75,8 @@ public class BladePortletRenderCommandTest {
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _portletButton);
 
+		customClick(_webDriver, _portletButton);
+
 		Thread.sleep(500);
 
 		Assert.assertTrue(
