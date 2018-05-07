@@ -62,7 +62,8 @@ public class BladeControlMenuEntryTest {
 
 		Assert.assertTrue(
 			"Control Menu Entry Link is not visible",
-			_controlMenuLink.isDisplayed());
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _controlMenuLink));
 
 		Assert.assertTrue(
 			"Expected: Blade Menu Entry Custom Message, but saw" +
@@ -73,12 +74,11 @@ public class BladeControlMenuEntryTest {
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _controlMenuLinkText);
 
-		Thread.sleep(1000);
-
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
-			_webDriver.getCurrentUrl().equals("https://www.liferay.com/"));
+			BladeSampleFunctionalActionUtil.isPageLoaded(
+				_webDriver, "https://www.liferay.com/"));
 	}
 
 	@FindBy(xpath = "//li[contains(@class,'control-menu-nav-item')]//..//span/*[name()='svg'][contains(@class,'lexicon-icon-plus')]")

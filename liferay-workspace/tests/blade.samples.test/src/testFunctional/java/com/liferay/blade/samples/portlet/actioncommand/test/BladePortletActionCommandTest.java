@@ -76,13 +76,12 @@ public class BladePortletActionCommandTest {
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
 
-		Thread.sleep(500);
-
 		Assert.assertTrue(
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contains(
-				"Hello tester! Welcome to OSGi Hello from BLADE!"));
+			BladeSampleFunctionalActionUtil.isTextPresent(_webDriver,
+				_portletBody, "Hello tester! Welcome to OSGi Hello from BLADE!"));
+
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]")

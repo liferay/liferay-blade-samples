@@ -75,17 +75,10 @@ public class BladePortletRenderCommandTest {
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _portletButton);
 
-		customClick(_webDriver, _portletButton);
-
-		Thread.sleep(500);
-
-		Assert.assertTrue(
-			"Render Page is not available",
-			_portletBody.isDisplayed());
-
 		Assert.assertTrue(
 			"Expected render page, but saw " + _portletBodyMaster.getText(),
-			_portletBodyMaster.getText().equals("render page"));
+			BladeSampleFunctionalActionUtil.isTextPresent(
+				_webDriver, _portletBodyMaster, "render page"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_rendercommand_BladeRenderPortlet')]")
