@@ -76,6 +76,8 @@ public class BladePortletActionCommandTest {
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
 
+		Thread.sleep(500);
+
 		Assert.assertTrue(
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
 				_portletBody.getText(),
