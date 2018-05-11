@@ -19,6 +19,8 @@ package com.liferay.blade.samples.servicebuilder.adq.web;
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalService;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.servlet.SessionErrors;
@@ -167,6 +169,15 @@ public class JSPPortlet extends MVCPortlet {
 	
 	protected void massUpdate() {
 		ActionableDynamicQuery adq = _barLocalService.getActionableDynamicQuery();
+		
+		adq.setAddCriteriaMethod(new ActionableDynamicQuery.AddCriteriaMethod() {
+			
+			@Override
+			public void addCriteria(DynamicQuery dynamicQuery) {
+				dynamicQuery.add(RestrictionsFactoryUtil.lt("field3", 100));
+			}
+			
+		});
 		
 		adq.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Bar>() {
 			
