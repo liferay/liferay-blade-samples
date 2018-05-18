@@ -168,35 +168,7 @@ public class JSPPortlet extends MVCPortlet {
 	}
 	
 	protected void massUpdate() {
-		ActionableDynamicQuery adq = _barLocalService.getActionableDynamicQuery();
-		
-		adq.setAddCriteriaMethod(new ActionableDynamicQuery.AddCriteriaMethod() {
-			
-			@Override
-			public void addCriteria(DynamicQuery dynamicQuery) {
-				dynamicQuery.add(RestrictionsFactoryUtil.lt("field3", 100));
-			}
-			
-		});
-		
-		adq.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Bar>() {
-			
-			@Override
-			public void performAction(Bar bar) {
-				int field3 = bar.getField3();
-				field3++;
-				bar.setField3(field3);
-				_barLocalService.updateBar(bar);
-			}
-			
-		});
-		
-		try {
-			adq.performActions();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		_barLocalService.massUpdate();
 	}
 
 	@Reference

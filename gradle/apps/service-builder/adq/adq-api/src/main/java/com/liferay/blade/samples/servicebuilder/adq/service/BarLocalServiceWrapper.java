@@ -324,6 +324,11 @@ public class BarLocalServiceWrapper implements BarLocalService,
 		return _barLocalService.getPersistedModel(primaryKeyObj);
 	}
 
+	@Override
+	public void massUpdate() {
+		_barLocalService.massUpdate();
+	}
+
 	/**
 	* Updates the bar in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*

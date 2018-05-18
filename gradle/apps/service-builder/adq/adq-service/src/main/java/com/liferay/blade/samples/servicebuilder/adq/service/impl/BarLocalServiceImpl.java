@@ -16,6 +16,9 @@ package com.liferay.blade.samples.servicebuilder.adq.service.impl;
 
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.base.BarLocalServiceBaseImpl;
+import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 
 /**
  * The implementation of the bar local service.
@@ -47,6 +50,38 @@ public class BarLocalServiceImpl extends BarLocalServiceBaseImpl {
 
 	public String barLocal() {
 		return "barLocal";
+	}
+	
+	public void massUpdate() {
+		ActionableDynamicQuery adq = getActionableDynamicQuery();
+		
+		adq.setAddCriteriaMethod(new ActionableDynamicQuery.AddCriteriaMethod() {
+			
+			@Override
+			public void addCriteria(DynamicQuery dynamicQuery) {
+				dynamicQuery.add(RestrictionsFactoryUtil.lt("field3", 100));
+			}
+			
+		});
+		
+		adq.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Bar>() {
+			
+			@Override
+			public void performAction(Bar bar) {
+				int field3 = bar.getField3();
+				field3++;
+				bar.setField3(field3);
+				updateBar(bar);
+			}
+			
+		});
+		
+		try {
+			adq.performActions();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
