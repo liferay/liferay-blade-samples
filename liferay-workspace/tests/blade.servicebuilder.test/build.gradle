@@ -47,7 +47,7 @@ task testFunctional(type: Test) {
 	dependsOn ":modules:blade.servicebuilder.svc:jar"
 	dependsOn ":modules:blade.servicebuilder.web:jar"
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/2.x/blade.jar")
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
 	systemProperty 'fooApiJarFile', project(":modules:blade.servicebuilder.api").jar.archivePath
 	systemProperty 'fooServiceJarFile', project(":modules:blade.servicebuilder.svc").jar.archivePath
 	systemProperty 'fooWebJarFile', project(":modules:blade.servicebuilder.web").jar.archivePath
