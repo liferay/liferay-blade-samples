@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean class="com.liferay.blade.samples.servicebuilder.adq.service.impl.BarLocalServiceImpl" id="com.liferay.blade.samples.servicebuilder.adq.service.BarLocalService" />
+	<bean class="com.liferay.blade.samples.servicebuilder.adq.service.impl.BarServiceImpl" id="com.liferay.blade.samples.servicebuilder.adq.service.BarService" />
+	<bean class="com.liferay.blade.samples.servicebuilder.adq.service.persistence.impl.BarPersistenceImpl" id="com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarPersistence" parent="basePersistence" />
+</beans>
