@@ -190,15 +190,15 @@ public class ADQTest {
 			bar5.getField3() == 200);
 	}
 
-	public final String BAR1 = "bar1";
+	private final String BAR1 = "bar1";
 
-	public final String BAR2 = "bar2";
+	private final String BAR2 = "bar2";
 
-	public final String BAR3 = "bar3";
+	private final String BAR3 = "bar3";
 
-	public final String BAR4 = "bar4";
+	private final String BAR4 = "bar4";
 
-	public final String BAR5 = "bar5";
+	private final String BAR5 = "bar5";
 
 	private static final Date _DATE = new Date();
 
