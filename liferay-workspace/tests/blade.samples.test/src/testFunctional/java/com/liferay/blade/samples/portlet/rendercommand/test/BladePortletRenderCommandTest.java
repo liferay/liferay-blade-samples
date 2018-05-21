@@ -69,8 +69,16 @@ public class BladePortletRenderCommandTest {
 		Assert.assertTrue(
 			"Expected Blade Render Portlet, but saw " +
 				_portletTitle.getText(),
-			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+
+      BladeSampleFunctionalActionUtil.getTextToLowerCase(
 				_portletTitle).equals("blade render portlet"));
+
+		Assert.assertTrue(
+			"Render Command Button is not visible", isVisible(_portletButton));
+
+		customClick(_webDriver, _portletButton);
+		
+		Thread.sleep(500);
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _portletButton);
