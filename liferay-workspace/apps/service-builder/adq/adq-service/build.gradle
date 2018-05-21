@@ -22,6 +22,7 @@ dependencies {
 
 startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
+	executableArgs = ["jpda", "start"]
 }
 
 testIntegration {
