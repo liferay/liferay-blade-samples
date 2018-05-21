@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.adq.service.persistence;
@@ -363,6 +361,134 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the number of matching bars
 	*/
 	public int countByUuid_C(String uuid, long companyId);
+
+	/**
+	* Returns all the bars where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @return the matching bars
+	*/
+	public java.util.List<Bar> findByField1(String field1);
+
+	/**
+	* Returns a range of all the bars where field1 = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param field1 the field1
+	* @param start the lower bound of the range of bars
+	* @param end the upper bound of the range of bars (not inclusive)
+	* @return the range of matching bars
+	*/
+	public java.util.List<Bar> findByField1(String field1, int start, int end);
+
+	/**
+	* Returns an ordered range of all the bars where field1 = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param field1 the field1
+	* @param start the lower bound of the range of bars
+	* @param end the upper bound of the range of bars (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching bars
+	*/
+	public java.util.List<Bar> findByField1(String field1, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
+
+	/**
+	* Returns an ordered range of all the bars where field1 = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param field1 the field1
+	* @param start the lower bound of the range of bars
+	* @param end the upper bound of the range of bars (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching bars
+	*/
+	public java.util.List<Bar> findByField1(String field1, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator,
+		boolean retrieveFromCache);
+
+	/**
+	* Returns the first bar in the ordered set where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching bar
+	* @throws NoSuchBarException if a matching bar could not be found
+	*/
+	public Bar findByField1_First(String field1,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException;
+
+	/**
+	* Returns the first bar in the ordered set where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching bar, or <code>null</code> if a matching bar could not be found
+	*/
+	public Bar fetchByField1_First(String field1,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
+
+	/**
+	* Returns the last bar in the ordered set where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching bar
+	* @throws NoSuchBarException if a matching bar could not be found
+	*/
+	public Bar findByField1_Last(String field1,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException;
+
+	/**
+	* Returns the last bar in the ordered set where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching bar, or <code>null</code> if a matching bar could not be found
+	*/
+	public Bar fetchByField1_Last(String field1,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
+
+	/**
+	* Returns the bars before and after the current bar in the ordered set where field1 = &#63;.
+	*
+	* @param barId the primary key of the current bar
+	* @param field1 the field1
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next bar
+	* @throws NoSuchBarException if a bar with the primary key could not be found
+	*/
+	public Bar[] findByField1_PrevAndNext(long barId, String field1,
+		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException;
+
+	/**
+	* Removes all the bars where field1 = &#63; from the database.
+	*
+	* @param field1 the field1
+	*/
+	public void removeByField1(String field1);
+
+	/**
+	* Returns the number of bars where field1 = &#63;.
+	*
+	* @param field1 the field1
+	* @return the number of matching bars
+	*/
+	public int countByField1(String field1);
 
 	/**
 	* Returns all the bars where field2 = &#63;.
