@@ -42,6 +42,12 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class ADQTest {
+	
+	public final String BAR1 = "bar1";
+	public final String BAR2 = "bar2";
+	public final String BAR3 = "bar3";
+	public final String BAR4 = "bar4";
+	public final String BAR5 = "bar5";
 
 	@AfterClass
 	public static void cleanUpDependencies() throws Exception {
@@ -68,7 +74,7 @@ public class ADQTest {
 		Bar bar1 = BarLocalServiceUtil.createBar(
 			CounterLocalServiceUtil.increment());
 
-		bar1.setField1(_TEST);
+		bar1.setField1(BAR1);
 		bar1.setField2(false);
 		bar1.setField3(0);
 		bar1.setField4(_DATE);
@@ -79,7 +85,7 @@ public class ADQTest {
 		Bar bar2 = BarLocalServiceUtil.createBar(
 			CounterLocalServiceUtil.increment());
 
-		bar2.setField1(_TEST);
+		bar2.setField1(BAR2);
 		bar2.setField2(false);
 		bar2.setField3(99);
 		bar2.setField4(_DATE);
@@ -90,7 +96,7 @@ public class ADQTest {
 		Bar bar3 = BarLocalServiceUtil.createBar(
 			CounterLocalServiceUtil.increment());
 
-		bar3.setField1(_TEST);
+		bar3.setField1(BAR3);
 		bar3.setField2(false);
 		bar3.setField3(100);
 		bar3.setField4(_DATE);
@@ -101,7 +107,7 @@ public class ADQTest {
 		Bar bar4 = BarLocalServiceUtil.createBar(
 			CounterLocalServiceUtil.increment());
 
-		bar4.setField1(_TEST);
+		bar4.setField1(BAR4);
 		bar4.setField2(false);
 		bar4.setField3(101);
 		bar4.setField4(_DATE);
@@ -112,7 +118,7 @@ public class ADQTest {
 		Bar bar5 = BarLocalServiceUtil.createBar(
 			CounterLocalServiceUtil.increment());
 
-		bar5.setField1(_TEST);
+		bar5.setField1(BAR5);
 		bar5.setField2(false);
 		bar5.setField3(200);
 		bar5.setField4(_DATE);
