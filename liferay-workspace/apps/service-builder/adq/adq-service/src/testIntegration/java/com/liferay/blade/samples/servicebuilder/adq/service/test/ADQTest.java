@@ -16,18 +16,7 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.test;
 
-import java.io.File;
-import java.util.Date;
-import java.util.List;
-
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
@@ -35,19 +24,26 @@ import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarUtil;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
-import aQute.remote.util.JMXBundleDeployer;
+import java.io.File;
+
+import java.util.Date;
+import java.util.List;
+
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * @author Jesse Rao
  */
 @RunWith(Arquillian.class)
 public class ADQTest {
-	
-	public final String BAR1 = "bar1";
-	public final String BAR2 = "bar2";
-	public final String BAR3 = "bar3";
-	public final String BAR4 = "bar4";
-	public final String BAR5 = "bar5";
 
 	@AfterClass
 	public static void cleanUpDependencies() throws Exception {
@@ -128,31 +124,31 @@ public class ADQTest {
 		// Perform 1st mass update and make assertions
 
 		BarLocalServiceUtil.massUpdate();
-		
+
 		List<Bar> bars = BarUtil.findByField1(BAR1);
 		bar1 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 1 + ", but saw " + bar1.getField3(),
 			bar1.getField3() == 1);
-		
+
 		bars = BarUtil.findByField1(BAR2);
 		bar2 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar2.getField3(),
 			bar2.getField3() == 100);
-		
+
 		bars = BarUtil.findByField1(BAR3);
 		bar3 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar3.getField3(),
 			bar3.getField3() == 100);
-		
+
 		bars = BarUtil.findByField1(BAR4);
 		bar4 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 101 + ", but saw " + bar4.getField3(),
 			bar4.getField3() == 101);
-		
+
 		bars = BarUtil.findByField1(BAR5);
 		bar5 = bars.get(0);
 		Assert.assertTrue(
@@ -168,31 +164,41 @@ public class ADQTest {
 		Assert.assertTrue(
 			"Expected " + 1 + ", but saw " + bar1.getField3(),
 			bar1.getField3() == 2);
-		
+
 		bars = BarUtil.findByField1(BAR2);
 		bar2 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar2.getField3(),
 			bar2.getField3() == 100);
-		
+
 		bars = BarUtil.findByField1(BAR3);
 		bar3 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar3.getField3(),
 			bar3.getField3() == 100);
-		
+
 		bars = BarUtil.findByField1(BAR4);
 		bar4 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 101 + ", but saw " + bar4.getField3(),
 			bar4.getField3() == 101);
-		
+
 		bars = BarUtil.findByField1(BAR5);
 		bar5 = bars.get(0);
 		Assert.assertTrue(
 			"Expected " + 200 + ", but saw " + bar5.getField3(),
 			bar5.getField3() == 200);
 	}
+
+	public final String BAR1 = "bar1";
+
+	public final String BAR2 = "bar2";
+
+	public final String BAR3 = "bar3";
+
+	public final String BAR4 = "bar4";
+
+	public final String BAR5 = "bar5";
 
 	private static final Date _DATE = new Date();
 
