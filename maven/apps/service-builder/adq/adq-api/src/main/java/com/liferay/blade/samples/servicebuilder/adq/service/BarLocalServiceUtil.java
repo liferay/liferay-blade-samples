@@ -56,6 +56,11 @@ public class BarLocalServiceUtil {
 		return getService().addBar(bar);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link BarLocalServiceUtil} to access the bar local service.
+	*/
 	public static com.liferay.blade.samples.servicebuilder.adq.model.Bar addBarWithoutId(
 		com.liferay.blade.samples.servicebuilder.adq.model.Bar bar) {
 		return getService().addBarWithoutId(bar);

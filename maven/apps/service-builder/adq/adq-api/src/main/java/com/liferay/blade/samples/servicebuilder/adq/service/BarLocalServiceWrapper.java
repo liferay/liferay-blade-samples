@@ -46,6 +46,11 @@ public class BarLocalServiceWrapper implements BarLocalService,
 		return _barLocalService.addBar(bar);
 	}
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link BarLocalServiceUtil} to access the bar local service.
+	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.adq.model.Bar addBarWithoutId(
 		com.liferay.blade.samples.servicebuilder.adq.model.Bar bar) {

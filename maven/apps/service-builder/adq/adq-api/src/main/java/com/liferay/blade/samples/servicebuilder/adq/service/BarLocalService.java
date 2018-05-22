@@ -75,6 +75,11 @@ public interface BarLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Bar addBar(Bar bar);
 
+	/**
+	* NOTE FOR DEVELOPERS:
+	*
+	* Never reference this class directly. Always use {@link BarLocalServiceUtil} to access the bar local service.
+	*/
 	public Bar addBarWithoutId(Bar bar);
 
 	public String barLocal();

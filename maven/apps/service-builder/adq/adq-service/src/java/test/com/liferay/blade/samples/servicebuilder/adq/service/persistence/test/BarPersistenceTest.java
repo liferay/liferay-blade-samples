@@ -201,6 +201,15 @@ public class BarPersistenceTest {
 	}
 
 	@Test
+	public void testCountByField1() throws Exception {
+		_persistence.countByField1("");
+
+		_persistence.countByField1("null");
+
+		_persistence.countByField1((String)null);
+	}
+
+	@Test
 	public void testCountByField2() throws Exception {
 		_persistence.countByField2(RandomTestUtil.randomBoolean());
 
