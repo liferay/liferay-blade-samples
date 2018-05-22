@@ -37,7 +37,8 @@ import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
  * @see com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil
  */
 public class BarLocalServiceImpl extends BarLocalServiceBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil} to access the bar local service.
@@ -57,26 +58,30 @@ public class BarLocalServiceImpl extends BarLocalServiceBaseImpl {
 	public void massUpdate() {
 		ActionableDynamicQuery adq = getActionableDynamicQuery();
 
-		adq.setAddCriteriaMethod(new ActionableDynamicQuery.AddCriteriaMethod() {
+		adq.setAddCriteriaMethod(
+			new ActionableDynamicQuery.AddCriteriaMethod() {
 
-			@Override
-			public void addCriteria(DynamicQuery dynamicQuery) {
-				dynamicQuery.add(RestrictionsFactoryUtil.lt("field3", 100));
-			}
+				@Override
+				public void addCriteria(DynamicQuery dynamicQuery) {
+					dynamicQuery.add(RestrictionsFactoryUtil.lt("field3", 100));
+				}
 
-		});
+			});
 
-		adq.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Bar>() {
+		adq.setPerformActionMethod(
+			new ActionableDynamicQuery.PerformActionMethod<Bar>() {
 
-			@Override
-			public void performAction(Bar bar) {
-				int field3 = bar.getField3();
-				field3++;
-				bar.setField3(field3);
-				updateBar(bar);
-			}
+				@Override
+				public void performAction(Bar bar) {
+					int field3 = bar.getField3();
 
-		});
+					field3++;
+					bar.setField3(field3);
+
+					updateBar(bar);
+				}
+
+			});
 
 		try {
 			adq.performActions();
