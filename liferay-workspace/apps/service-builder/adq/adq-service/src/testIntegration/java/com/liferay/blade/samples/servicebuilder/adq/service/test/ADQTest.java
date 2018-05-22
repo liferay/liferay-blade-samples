@@ -20,15 +20,12 @@ import aQute.remote.util.JMXBundleDeployer;
 
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
-import com.liferay.blade.samples.servicebuilder.adq.service.impl.BarLocalServiceImpl;
-import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarUtil;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
 
 import java.util.Date;
-import java.util.List;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -77,6 +74,7 @@ public class ADQTest {
 		bar1.setField5(_TEST);
 
 		bar1 = BarLocalServiceUtil.addBar(bar1);
+
 		long bar1Id = bar1.getBarId();
 
 		Bar bar2 = BarLocalServiceUtil.createBar(
@@ -89,6 +87,7 @@ public class ADQTest {
 		bar2.setField5(_TEST);
 
 		bar2 = BarLocalServiceUtil.addBar(bar2);
+
 		long bar2Id = bar2.getBarId();
 
 		Bar bar3 = BarLocalServiceUtil.createBar(
@@ -101,6 +100,7 @@ public class ADQTest {
 		bar3.setField5(_TEST);
 
 		bar3 = BarLocalServiceUtil.addBar(bar3);
+
 		long bar3Id = bar3.getBarId();
 
 		Bar bar4 = BarLocalServiceUtil.createBar(
@@ -113,6 +113,7 @@ public class ADQTest {
 		bar4.setField5(_TEST);
 
 		bar4 = BarLocalServiceUtil.addBar(bar4);
+
 		long bar4Id = bar4.getBarId();
 
 		Bar bar5 = BarLocalServiceUtil.createBar(
@@ -125,33 +126,39 @@ public class ADQTest {
 		bar5.setField5(_TEST);
 
 		bar5 = BarLocalServiceUtil.addBar(bar5);
+
 		long bar5Id = bar5.getBarId();
 
 		// Perform 1st mass update and make assertions
 
 		BarLocalServiceUtil.massUpdate();
-		
+
 		bar1 = BarLocalServiceUtil.getBar(bar1Id);
+
 		Assert.assertTrue(
 			"Expected " + 1 + ", but saw " + bar1.getField3(),
 			bar1.getField3() == 1);
 
 		bar2 = BarLocalServiceUtil.getBar(bar2Id);
+
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar2.getField3(),
 			bar2.getField3() == 100);
 
 		bar3 = BarLocalServiceUtil.getBar(bar3Id);
+
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar3.getField3(),
 			bar3.getField3() == 100);
 
 		bar4 = BarLocalServiceUtil.getBar(bar4Id);
+
 		Assert.assertTrue(
 			"Expected " + 101 + ", but saw " + bar4.getField3(),
 			bar4.getField3() == 101);
 
 		bar5 = BarLocalServiceUtil.getBar(bar5Id);
+
 		Assert.assertTrue(
 			"Expected " + 200 + ", but saw " + bar5.getField3(),
 			bar5.getField3() == 200);
@@ -161,26 +168,31 @@ public class ADQTest {
 		BarLocalServiceUtil.massUpdate();
 
 		bar1 = BarLocalServiceUtil.getBar(bar1Id);
+
 		Assert.assertTrue(
 			"Expected " + 1 + ", but saw " + bar1.getField3(),
 			bar1.getField3() == 2);
 
 		bar2 = BarLocalServiceUtil.getBar(bar2Id);
+
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar2.getField3(),
 			bar2.getField3() == 100);
 
 		bar3 = BarLocalServiceUtil.getBar(bar3Id);
+
 		Assert.assertTrue(
 			"Expected " + 100 + ", but saw " + bar3.getField3(),
 			bar3.getField3() == 100);
 
 		bar4 = BarLocalServiceUtil.getBar(bar4Id);
+
 		Assert.assertTrue(
 			"Expected " + 101 + ", but saw " + bar4.getField3(),
 			bar4.getField3() == 101);
 
 		bar5 = BarLocalServiceUtil.getBar(bar5Id);
+
 		Assert.assertTrue(
 			"Expected " + 200 + ", but saw " + bar5.getField3(),
 			bar5.getField3() == 200);
