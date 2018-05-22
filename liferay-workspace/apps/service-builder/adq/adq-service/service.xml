@@ -38,9 +38,6 @@
 
 		<!-- Finder methods -->
 
-		<finder name="Field1" return-type="Collection">
-			<finder-column name="field1" />
-		</finder>
 		<finder name="Field2" return-type="Collection">
 			<finder-column name="field2" />
 		</finder>

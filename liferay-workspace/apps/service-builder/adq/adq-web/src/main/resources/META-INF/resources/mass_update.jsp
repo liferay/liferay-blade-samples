@@ -20,6 +20,7 @@
 
 <%
 String redirect = ParamUtil.getString(request, "redirect");
+
 %>
 
 <aui:form action="<%= renderResponse.createActionURL() %>" method="post" name="fm">
@@ -28,11 +29,11 @@ String redirect = ParamUtil.getString(request, "redirect");
 
 	<liferay-ui:header
 		backURL="<%= redirect %>"
-		title="<%= JSPPortlet.MASS_UPDATE %>"
+		title='<%= JSPPortlet.MASS_UPDATE %>'
 	/>
-
+	
 	<p>This mass update will execute an actionable dynamic query (ADQ) to
-		increment the value of field3 for each Bar entity whose field3 value is less
+	increment the value of field3 for each Bar entity whose field3 value is less
 	than 100.</p>
 	<p>Are you sure you want to execute the mass update?</p>
 
