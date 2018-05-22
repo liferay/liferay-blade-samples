@@ -136,7 +136,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 					companyId, CustomScreenName.SETTINGS_ID));
 		}
 		catch (ConfigurationException ce) {
-			_log.error("Error initializing the configuration.", ce);
+			_log.error("Error initializing the configuration", ce);
 		}
 
 		return null;
