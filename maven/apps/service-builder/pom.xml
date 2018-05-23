@@ -13,6 +13,7 @@
 	</parent>
 
 	<modules>
+		<module>adq</module>
 		<module>basic</module>
 		<module>jdbc</module>
 		<module>jndi</module>

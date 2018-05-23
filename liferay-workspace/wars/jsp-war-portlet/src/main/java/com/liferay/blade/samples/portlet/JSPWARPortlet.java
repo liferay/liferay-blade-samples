@@ -108,6 +108,7 @@ public class JSPWARPortlet extends MVCPortlet {
 			foo.setField4(field4);
 			foo.setField5(field5);
 			foo.isNew();
+
 			getFooLocalService().addFooWithoutId(foo);
 		}
 		else {
@@ -123,6 +124,7 @@ public class JSPWARPortlet extends MVCPortlet {
 			foo.setField3(field3);
 			foo.setField4(field4);
 			foo.setField5(field5);
+
 			getFooLocalService().updateFoo(foo);
 		}
 	}

@@ -35,7 +35,7 @@ import org.osgi.service.log.LogService;
  */
 @Component(
 	immediate = true,
-	property = {"javax.portlet.name=blade_portlet_BladePollProcessorPortlet"},
+	property = "javax.portlet.name=blade_portlet_BladePollProcessorPortlet",
 	service = PollerProcessor.class
 )
 public class BladePollProcessor extends BasePollerProcessor {
@@ -51,6 +51,7 @@ public class BladePollProcessor extends BasePollerProcessor {
 		PollerResponse pollerResponse = new DefaultPollerResponse();
 		responseObject.put(
 			"message", "Hello from BLADE Poller, time now is:" + new Date());
+
 		pollerResponse.setParameter("content", responseObject);
 
 		return pollerResponse;

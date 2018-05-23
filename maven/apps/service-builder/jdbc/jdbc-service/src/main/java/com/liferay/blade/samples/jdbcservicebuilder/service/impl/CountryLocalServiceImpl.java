@@ -51,9 +51,9 @@ public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 	 */
 	public void useJDBC() {
 		try {
-			DataSource datasource = countryPersistence.getDataSource();
+			DataSource dataSource = countryPersistence.getDataSource();
 
-			Connection connection = datasource.getConnection();
+			Connection connection = dataSource.getConnection();
 
 			Statement statement = connection.createStatement();
 

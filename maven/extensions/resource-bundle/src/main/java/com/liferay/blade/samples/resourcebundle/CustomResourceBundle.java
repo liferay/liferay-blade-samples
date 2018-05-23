@@ -30,7 +30,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"language.id=en_US"},
+	immediate = true, property = "language.id=en_US",
 	service = ResourceBundle.class
 )
 public class CustomResourceBundle extends ResourceBundle {

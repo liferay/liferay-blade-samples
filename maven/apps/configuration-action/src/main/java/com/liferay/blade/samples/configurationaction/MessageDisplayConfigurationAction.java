@@ -44,9 +44,7 @@ import org.osgi.service.log.LogService;
 @Component(
 	configurationPid = "com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration",
 	configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
-	property = {
-		"javax.portlet.name=" + BladeMessagePortletKeys.BLADE_MESSAGE_PORTLET
-	},
+	property = "javax.portlet.name=" + BladeMessagePortletKeys.BLADE_MESSAGE_PORTLET,
 	service = ConfigurationAction.class
 )
 public class MessageDisplayConfigurationAction

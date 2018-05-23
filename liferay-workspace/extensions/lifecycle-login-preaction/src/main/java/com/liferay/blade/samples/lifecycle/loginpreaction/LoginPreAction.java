@@ -28,7 +28,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"key=login.events.pre"},
+	immediate = true, property = "key=login.events.pre",
 	service = LifecycleAction.class
 )
 public class LoginPreAction implements LifecycleAction {

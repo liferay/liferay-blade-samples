@@ -39,7 +39,7 @@ import org.osgi.service.log.LogService;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = {"path=/login/login"},
+	immediate = true, property = "path=/login/login",
 	service = StrutsPortletAction.class
 )
 public class BladePortletAction extends BaseStrutsPortletAction {

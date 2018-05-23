@@ -18,8 +18,6 @@ package com.liferay.blade.samples.verifier;
 
 import java.io.IOException;
 
-import java.lang.reflect.Field;
-
 import java.net.URL;
 
 import java.util.Optional;
@@ -30,7 +28,6 @@ import java.util.stream.Stream;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Component;
 
 /**
@@ -54,9 +51,9 @@ public class VerifySample {
 	}
 
 	public String verifySample(String bsn) {
-		Stream<Bundle> bundles = Stream.of(_bundleContext.getBundles());
-
-		bundles.filter(
+		Stream.of(
+			_bundleContext.getBundles()
+		).filter(
 			bundle -> bundle.getSymbolicName().equals(bsn)
 		).findFirst(
 		).ifPresent(
@@ -67,9 +64,9 @@ public class VerifySample {
 	}
 
 	private String _bundleStateToString(int state) {
-		Stream<Field> fields = Stream.of(Bundle.class.getFields());
-
-		return fields.filter(
+		return Stream.of(
+			Bundle.class.getFields()
+		).filter(
 			field -> field.getType().equals(int.class)
 		).filter(
 			field -> {
@@ -101,10 +98,9 @@ public class VerifySample {
 	}
 
 	private void _verifyBundleComponents(Bundle bundle) {
-		Stream<ServiceReference<?>> serviceReferences = Stream.of(
-			bundle.getRegisteredServices());
-
-		serviceReferences.filter(
+		Stream.of(
+			bundle.getRegisteredServices()
+		).filter(
 			sr -> sr.getProperty("objectClass") instanceof String[]
 		).forEach(
 			sr -> {

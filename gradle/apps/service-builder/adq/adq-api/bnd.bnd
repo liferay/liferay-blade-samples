@@ -1,0 +1,9 @@
+Bundle-SymbolicName: com.liferay.blade.adq.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.samples.servicebuilder.adq.exception,\
+	com.liferay.blade.samples.servicebuilder.adq.model,\
+	com.liferay.blade.samples.servicebuilder.adq.service,\
+	com.liferay.blade.samples.servicebuilder.adq.service.persistence
+-includeresource: META-INF/service.xml=../adq-service/service.xml
+-sources: true

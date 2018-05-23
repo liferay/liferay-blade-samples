@@ -44,7 +44,7 @@ import org.osgi.service.component.annotations.Reference;
  */
 @Component(
 	configurationPid = "com.liferay.blade.samples.screenname.validator.CustomScreenNameConfiguration",
-	immediate = true, property = {"service.ranking:Integer=100"},
+	immediate = true, property = "service.ranking:Integer=100",
 	service = ScreenNameValidator.class
 )
 public class CustomScreenNameValidator implements ScreenNameValidator {
@@ -136,7 +136,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 					companyId, CustomScreenName.SETTINGS_ID));
 		}
 		catch (ConfigurationException ce) {
-			_log.error("Error initializing the configuration.", ce);
+			_log.error("Error initializing the configuration", ce);
 		}
 
 		return null;

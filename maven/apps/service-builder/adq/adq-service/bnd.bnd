@@ -1,0 +1,10 @@
+Bundle-Name: com.liferay.blade.adq.service
+Bundle-SymbolicName: com.liferay.blade.adq.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-sources: true
+-includeresource: META-INF/service.xml=service.xml
+-liferay-service-xml: META-INF/service.xml
+-plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
+-plugin.spring: com.liferay.ant.bnd.spring.SpringDependencyAnalyzerPlugin

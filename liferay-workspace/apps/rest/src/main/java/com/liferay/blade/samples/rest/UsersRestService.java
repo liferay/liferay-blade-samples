@@ -38,7 +38,7 @@ import org.osgi.service.log.LogService;
  */
 @ApplicationPath("/blade.users")
 @Component(
-	immediate = true, property = {"jaxrs.application=true"},
+	immediate = true, property = "jaxrs.application=true",
 	service = Application.class
 )
 public class UsersRestService extends Application {

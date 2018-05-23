@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<suppressions>
+	<checkstyle>
+		<suppress checks="ArquillianCheck" files="src/testIntegration/java/com/liferay/blade/samples/servicebuilder/adq/service/test/ADQTest.java" />
+	</checkstyle>
+</suppressions>
