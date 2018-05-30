@@ -60,20 +60,23 @@ public class BladeSamplesPortletFilterTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleFilterPortlet));
+			_bladeSampleFilterPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Example Filter Portlet, but saw " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Example Filter Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("example filter portlet"));
 
 		Assert.assertTrue(
 			"Expected Custom Attribute = My Custom Attribute Value, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().contentEquals("Custom Attribute = My Custom Attribute Value"));
+			_portletBody.getText().equals(
+				"Custom Attribute = My Custom Attribute Value"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'blade_portlet_filter_ExamplePortlet')]")

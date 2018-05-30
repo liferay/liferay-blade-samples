@@ -61,15 +61,19 @@ public class BladeConfigurationActionTest {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+		BladeSampleFunctionalActionUtil.implicitWait(_newWebDriverWindow);
+
 		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeMessagePortlet));
+			_bladeMessagePortlet.isDisplayed());
 
-		BladeSampleFunctionalActionUtil.twoPointClick(
-			_webDriver, _verticalEllipsis, _bodyWebElement);
+		_bladeMessagePortlet.click();
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _verticalEllipsis);
 
 		WebElement configuration = _webDriver.findElement(
 			By.linkText("Configuration"));
@@ -83,18 +87,21 @@ public class BladeConfigurationActionTest {
 
 		Assert.assertTrue(
 			"Success Message is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _successMessage));
+			_successMessage.isDisplayed());
 
 		_webDriver.get(url);
 
 		Assert.assertTrue(
-			"Expected Blade Message Portlet, but saw: " + _portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Blade Message Portlet"));
+			"Expected Blade Message Portlet, but saw: " +
+				_portletTitle.getText(),
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).equals("blade message portlet"));
 
 		Assert.assertTrue(
-			"Expected Hello from BLADE JSP!, but saw: " + _portletBody.getText(),
-			_portletBody.getText().contentEquals("Hello from BLADE JSP!"));
+			"Expected Hello from BLADE JSP!, but saw: " +
+				_portletBody.getText(),
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletBody).equals("hello from blade jsp!"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'BladeMessagePortlet')]")

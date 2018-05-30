@@ -21,7 +21,7 @@ import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActio
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
-
+import java.io.IOException;
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -56,7 +56,7 @@ public class BladePortletToolbarContributorTest {
 
 	@Test
 	public void testBladePortletToolbarContributor()
-		throws InterruptedException, PortalException {
+		throws InterruptedException, PortalException, IOException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
@@ -64,27 +64,24 @@ public class BladePortletToolbarContributorTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _helloWorldPortlet));
+			_helloWorldPortlet.isDisplayed());
 
 		Assert.assertTrue(
-			"Portlet Topper Toolbar is not clickable",
-			BladeSampleFunctionalActionUtil.isClickable(
-				_webDriver, _portletTopperToolbar));
+			"Portlet Topper Toolbar is not displayed",
+			_portletTopperToolbar.isEnabled());
 
-		BladeSampleFunctionalActionUtil.twoPointClick(
-			_webDriver, _portletTopperToolbar, _bodyWebElement);
+		_helloWorldPortlet.click();
+
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _portletTopperToolbar);
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(
 			_webDriver, _lfrMenuLiferay);
 
-		Thread.sleep(2000);
-
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
-			BladeSampleFunctionalActionUtil.isPageLoaded(
-				_webDriver, "https://www.liferay.com/"));
+			_webDriver.getCurrentUrl().equals("https://www.liferay.com/"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'HelloWorld')]//..//div[@class='portlet-body']")

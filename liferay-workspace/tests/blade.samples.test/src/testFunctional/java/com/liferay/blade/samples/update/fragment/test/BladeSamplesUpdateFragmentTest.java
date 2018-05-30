@@ -84,20 +84,21 @@ public class BladeSamplesUpdateFragmentTest {
 	public void testUpdateModuleJSPFragmentProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _loginPortlet));
+			_loginPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Sign In"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).contentEquals("sign in"));
 		Assert.assertTrue(
 			"Portlet Body is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _portletBody));
+			_portletBody.isDisplayed());
 		Assert.assertTrue(
 			"Expected changed, but saw: " + _portletStyle.getText(),
-			_portletStyle.getText().contentEquals("changed"));
+			_portletStyle.getText().equals("changed"));
 
 		File staticFile = new File(
 			_projectPath + "/src/main/resources/META-INF/resources/login.jsp");
@@ -116,18 +117,17 @@ public class BladeSamplesUpdateFragmentTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _loginPortlet));
+			_loginPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Sign In"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_portletTitle).contentEquals("sign in"));
 		Assert.assertTrue(
 			"Portlet Body is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _portletBody));
+			_portletBody.isDisplayed());
 		Assert.assertTrue(
 			"Expected samples work!, but saw: " + _portletStyle.getText(),
-			_portletStyle.getText().contentEquals("samples work!"));
+			_portletStyle.getText().equals("samples work!"));
 	}
 
 	private static String _moduleJspOverrideJarBSN =

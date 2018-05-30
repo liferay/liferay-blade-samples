@@ -66,13 +66,7 @@ task deployAries(type: Copy) {
 	into "bundles/osgi/test"
 }
 
-task filepermission(type: Exec) {
-	workingDir 'bundles/tomcat-8.0.32/bin'
-
-    commandLine 'chmod', 'a+x', 'catalina.sh', 'setenv.sh', 'shutdown.sh'
-}
-
-initBundle.finalizedBy deployAries, filepermission
+initBundle.finalizedBy deployAries
 
 initBundle {
 	doLast {

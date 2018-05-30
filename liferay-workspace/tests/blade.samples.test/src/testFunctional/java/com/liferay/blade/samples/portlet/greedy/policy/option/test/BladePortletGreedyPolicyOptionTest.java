@@ -67,20 +67,22 @@ public class BladePortletGreedyPolicyOptionTest {
 	public void testBladePortletGreedy() throws Exception {
 		_webDriver.get(_greedyPortletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleGreedyPortlet));
+			_bladeSampleGreedyPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Greedy Portlet, but saw " +
 				_greedyPortletTitle.getText(),
-			_greedyPortletTitle.getText().contentEquals("Greedy Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_greedyPortletTitle).equals("greedy portlet"));
 
 		Assert.assertTrue(
 			"Expected SomeService says I am Default!, but saw " +
 				_greedyPortletBody.getText(),
-			_greedyPortletBody.getText().contentEquals(
+			_greedyPortletBody.getText().equals(
 				"SomeService says I am Default!"));
 
 		final File higherRankedServiceJar = new File(
@@ -94,8 +96,7 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am better, use me!, but saw " +
 				_greedyPortletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _greedyPortletBody,
+			_greedyPortletBody.getText().equals(
 				"SomeService says I am better, use me!"));
 	}
 
@@ -103,21 +104,22 @@ public class BladePortletGreedyPolicyOptionTest {
 	public void testBladePortletReluctant() throws Exception {
 		_webDriver.get(_reluctantPortletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleReluctantPortlet));
+			_bladeSampleReluctantPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Reluctant Portlet, but saw " +
 				_reluctantPortletTitle.getText(),
-			_reluctantPortletTitle.getText().contentEquals(
-				"Reluctant Portlet"));
+			BladeSampleFunctionalActionUtil.getTextToLowerCase(
+				_reluctantPortletTitle).equals("reluctant portlet"));
 
 		Assert.assertTrue(
 			"Expected SomeService says I am Default!, but saw " +
 				_reluctantPortletBody.getText(),
-			_reluctantPortletBody.getText().contentEquals(
+			_reluctantPortletBody.getText().equals(
 				"SomeService says I am Default!"));
 
 		final File higherRankedServiceJar = new File(
@@ -131,8 +133,7 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am Default!, but saw " +
 				_reluctantPortletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _reluctantPortletBody,
+			_reluctantPortletBody.getText().equals(
 				"SomeService says I am Default!"));
 
 		final File greedyServiceReferenceConfigFile = new File(
@@ -157,8 +158,7 @@ public class BladePortletGreedyPolicyOptionTest {
 		Assert.assertTrue(
 			"Expected SomeService says I am better, use me!, but saw " +
 				_reluctantPortletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _reluctantPortletBody,
+			_reluctantPortletBody.getText().equals(
 				"SomeService says I am better, use me!"));
 	}
 

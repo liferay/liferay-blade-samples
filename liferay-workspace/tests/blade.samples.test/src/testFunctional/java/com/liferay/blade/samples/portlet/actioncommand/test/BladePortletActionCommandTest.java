@@ -64,12 +64,11 @@ public class BladePortletActionCommandTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeSampleActionCommandGreeterPortlet));
+			_bladeSampleActionCommandGreeterPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Name Field is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _nameField));
+			_nameField.isDisplayed());
 
 		_nameField.clear();
 
@@ -80,8 +79,7 @@ public class BladePortletActionCommandTest {
 		Assert.assertTrue(
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
 				_portletBody.getText(),
-			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver, _portletBody,
+			_portletBody.getText().contains(
 				"Hello tester! Welcome to OSGi Hello from BLADE!"));
 	}
 
@@ -91,7 +89,7 @@ public class BladePortletActionCommandTest {
 	@FindBy(xpath = "//input[@type='text' and contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]")
 	private WebElement _nameField;
 
-	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]//..//div/div")
+	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet')]//..//div[@class='portlet-body']")
 	private WebElement _portletBody;
 
 	@PortalURL("com_liferay_blade_samples_portlet_actioncommand_GreeterPortlet")
