@@ -65,6 +65,7 @@ testIntegration {
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'portalVersion', project.getProperty("liferay.workspace.bundle.url")
 
 	finalizedBy {
 		stopTestableTomcat
