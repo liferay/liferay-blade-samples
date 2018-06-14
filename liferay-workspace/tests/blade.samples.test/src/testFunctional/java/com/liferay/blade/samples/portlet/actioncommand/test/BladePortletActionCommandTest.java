@@ -32,6 +32,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -54,6 +55,7 @@ public class BladePortletActionCommandTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	@Ignore
 	@Test
 	public void testBladePortletActionCommand()
 		throws InterruptedException, PortalException {
@@ -76,7 +78,7 @@ public class BladePortletActionCommandTest {
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
 
-		Thread.sleep(500);
+		Thread.sleep(1000);
 
 		Assert.assertTrue(
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!, but saw " +
