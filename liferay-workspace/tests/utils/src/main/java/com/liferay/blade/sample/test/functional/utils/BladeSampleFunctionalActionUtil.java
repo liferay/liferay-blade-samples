@@ -18,6 +18,8 @@ package com.liferay.blade.sample.test.functional.utils;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.Timeouts;
@@ -49,50 +51,31 @@ public class BladeSampleFunctionalActionUtil {
 		element.click();
 	}
 
-	public static void mouseOverClick(WebDriver webDriver, WebElement webElement) {
-		Actions action = new Actions(webDriver);
+	public static String getPortalVersion() {
+		String portalVersion = System.getProperty("portalVersion");
 
-		Actions actionMoveTo = action.moveToElement(webElement);
+		if (portalVersion.contains("7.0")) {
+			return "7.0";
+		}
 
-		Actions actionOffset = actionMoveTo.moveByOffset(1, 1);
+		if (portalVersion.contains("7.1")) {
+			return "7.1";
+		}
 
-		Actions revertOffset = actionOffset.moveByOffset(-1, -1);
-
-		Actions clickElement = revertOffset.click();
-
-		clickElement.perform();
+		if (portalVersion.contains("master")) {
+			return "master";
+		}
+		else {
+			return portalVersion;
+		}
 	}
 
-	public static void twoPointClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
-		Actions action = new Actions(webDriver);
+	public static String getTextToLowerCase(WebElement webelement) {
+		String text = webelement.getText();
 
-		Actions actionBody = action.moveToElement(weblElement2);
+		String textToLowerCase = text.toLowerCase();
 
-		Actions actionBodyClick = actionBody.click();
-
-		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
-
-		Actions actionClick = actionMoveTo.click();
-
-		Action buildActionbuild = actionClick.build();
-
-		buildActionbuild.perform();
-	}
-
-	public static void twoPointDoubleClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
-		Actions action = new Actions(webDriver);
-
-		Actions actionBody = action.moveToElement(weblElement2);
-
-		Actions actionBodyClick = actionBody.doubleClick();
-
-		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
-
-		Actions actionClick = actionMoveTo.doubleClick();
-
-		Action buildActionbuild = actionClick.build();
-
-		buildActionbuild.perform();
+		return textToLowerCase;
 	}
 
 	public static WebDriver implicitWait(WebDriver webDriver) {
@@ -103,6 +86,27 @@ public class BladeSampleFunctionalActionUtil {
 		timeouts.implicitlyWait(30, TimeUnit.SECONDS);
 
 		return webDriver;
+	}
+
+	public static boolean isAlertPresent(WebDriver webDriver) {
+		try {
+			WebDriverWait webDriverWait = new WebDriverWait(webDriver, 15);
+
+			Alert alert = webDriverWait.until(
+				ExpectedConditions.alertIsPresent());
+
+			if (alert != null) {
+				webDriver.switchTo().alert().accept();
+
+				return true;
+			}
+			else {
+				throw new NoAlertPresentException();
+			}
+		}
+		catch (NoAlertPresentException nape) {
+			return false;
+		}
 	}
 
 	public static boolean isClickable(
@@ -166,32 +170,60 @@ public class BladeSampleFunctionalActionUtil {
 		}
 	}
 
-	public static String getPortalVersion() {
-		String portalVersion = System.getProperty("portalVersion");
+	public static void mouseOverClick(
+		WebDriver webDriver, WebElement webElement) {
 
-		if (portalVersion.contains("7.0")) {
-			return "7.0";
-		}
+		WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
 
-		if (portalVersion.contains("7.1")) {
-			return "7.1";
-		}
+		webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
 
-		if (portalVersion.contains("master")) {
-			return "master";
-		}
+		Actions action = new Actions(webDriver);
 
-		else {
-			return portalVersion;
-		}
+		Actions actionMoveTo = action.moveToElement(webElement);
+
+		Actions actionOffset = actionMoveTo.moveByOffset(1, 1);
+
+		Actions revertOffset = actionOffset.moveByOffset(-1, -1);
+
+		Actions clickElement = revertOffset.click();
+
+		clickElement.perform();
 	}
 
-	public static String getTextToLowerCase(WebElement webelement) {
-		String text = webelement.getText();
+	public static void twoPointClick(
+		WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
 
-		String textToLowerCase = text.toLowerCase();
+		Actions action = new Actions(webDriver);
 
-		return textToLowerCase;
+		Actions actionBody = action.moveToElement(weblElement2);
+
+		Actions actionBodyClick = actionBody.click();
+
+		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
+
+		Actions actionClick = actionMoveTo.click();
+
+		Action buildActionbuild = actionClick.build();
+
+		buildActionbuild.perform();
+	}
+
+	public static void twoPointDoubleClick(
+		WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
+
+		Actions action = new Actions(webDriver);
+
+		Actions actionBody = action.moveToElement(weblElement2);
+
+		Actions actionBodyClick = actionBody.doubleClick();
+
+		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
+
+		Actions actionClick = actionMoveTo.doubleClick();
+
+		Action buildActionbuild = actionClick.build();
+
+		buildActionbuild.perform();
 	}
 
 }
