@@ -1,4 +1,4 @@
-# Bootstrap Liferay Advanced Developer Environments (BLADE)
+# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.0
 
 Liferay's Blade samples provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
@@ -70,7 +70,7 @@ Three bundles are needed:
 Simply download the bundles from [mvnrepository](https://mvnrepository.com/) and
 drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
-## Liferay Extension Points and Template Projects 
+## Liferay Extension Points and Template Projects
 
 ## Apps
 
@@ -277,7 +277,7 @@ registering a Liferay MVC portlet.
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/resource-command-portlet](./gradle/apps/resource-command-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/resource-command-portlet](./liferay-workspace/apps/resource-command-portlet)   |
-| Maven      | [./maven/apps/resource-command-portlet](./maven/apps/resource-command-portlet)   
+| Maven      | [./maven/apps/resource-command-portlet](./maven/apps/resource-command-portlet)
 
 ### REST
 
@@ -325,7 +325,7 @@ project separated into three bundles:
 
 * `api` bundle is for interfaces
 * `service` bundle is for implementations
-* `web` bundle is a portlet calling the generated services 
+* `web` bundle is a portlet calling the generated services
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -373,7 +373,7 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/apps/simulation-panel-app](./liferay-workspace/apps/simulation-panel-app)   |
 | Maven      | [./maven/apps/simulation-panel-app](./maven/apps/simulation-panel-app)        |
 
-### Spring MVC Portlet 
+### Spring MVC Portlet
 
 Refer to this sample's Readme for more information.
 
@@ -396,7 +396,7 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/auth-failure](./liferay-workspace/extensions/auth-failure)   |
 | Maven      | [./maven/extensions/auth-failure](./maven/extensions/auth-failure)          |
 
-### Authenticator Shiro 
+### Authenticator Shiro
 
 **Template project description**: Uses Apache Shiro for hooking
 `auth.pipeline.pre`.
@@ -522,7 +522,7 @@ following keys are supported:
   session.
 * `servlet.session.destroy.events` - fired during destruction of a portal's HTTP
   session.
-  
+
 **Template project description**:  Demonstrates a hook for `login.events.pre`.
 
 | Build tool | Link to project's source code                                                   |
@@ -723,7 +723,7 @@ points. We encourage you to contribute some!
 * com.liferay.portal.kernel.pop.MessageListener
 * com.liferay.portal.kernel.portlet.FriendlyURLMapper
 * com.liferay.portal.kernel.portlet.PortletLayoutListener
-* com.liferay.portal.kernel.sanitizer.Sanitizer 
+* com.liferay.portal.kernel.sanitizer.Sanitizer
 * com.liferay.portal.kernel.scheduler.SchedulerEntry
 * com.liferay.portal.kernel.search.Indexer
 * com.liferay.portal.kernel.search.OpenSearch
@@ -738,7 +738,7 @@ points. We encourage you to contribute some!
 * com.liferay.portal.model.ModelListener
 * com.liferay.portal.security.auth.AuthToken
 * com.liferay.portal.security.auth.AuthVerifierConfiguration
-* com.liferay.portal.security.auth.AutoLogin 
+* com.liferay.portal.security.auth.AutoLogin
 * com.liferay.portal.security.auth.EmailAddressGenerator
 * com.liferay.portal.security.auth.EmailAddressValidator
 * com.liferay.portal.security.auth.FullNameGenerator
