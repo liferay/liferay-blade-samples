@@ -35,7 +35,7 @@ if (fooId > 0) {
 </portlet:actionURL>
 
 <aui:form action="<%= fooURL %>" method="post" name="fm">
-	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= foo == null ? Constants.ADD : Constants.UPDATE %>" />
+	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= (foo == null) ? Constants.ADD : Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
 	<aui:input name="fooId" type="hidden" value="<%= fooId %>" />
 
