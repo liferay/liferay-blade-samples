@@ -114,7 +114,7 @@ public class BladePortletGreedyPolicyOptionTest {
 			"Expected Reluctant Portlet, but saw " +
 				_reluctantPortletTitle.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-				_reluctantPortletTitle).equals("reluctant portlet"));
+				_reluctantPortletTitle).equals("reluctant"));
 
 		Assert.assertTrue(
 			"Expected SomeService says I am Default!, but saw " +

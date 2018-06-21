@@ -166,7 +166,7 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testControlMenuEntryGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals(7.0)) {
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
 		}
@@ -217,15 +217,8 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPanelAppGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals(7.0)) {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "panel-app", "pahelloworld", "-v", "7.1");
-		}
-
-		else {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "panel-app", "pahelloworld");
-		}
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "panel-app", "pahelloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -268,7 +261,7 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPortletProviderGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals(7.0)) {
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "portlet-provider", "pphelloworld", "-v", "7.1");
 		}
@@ -298,8 +291,8 @@ public class BladeSamplesTest {
 	@Test
 	public void testServiceBuilderBladeSample() throws Exception {
 		Assume.assumeTrue(
-				BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-				!System.getProperty("portalVersion").contains("master"));
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
 
 		_projectPath = new File(
 			System.getProperty("user.dir")).getParentFile().getParentFile();
@@ -362,7 +355,7 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderGradleTemplate() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals(7.0)) {
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "service-builder", "guestbook", "-p",
 				"com.liferay.docs.guestbook", "-v", "7.1");
