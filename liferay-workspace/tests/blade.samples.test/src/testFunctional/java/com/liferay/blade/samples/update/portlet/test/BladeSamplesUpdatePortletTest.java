@@ -103,10 +103,10 @@ public class BladeSamplesUpdatePortletTest {
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-				_portletTitle).equals("helloworld"));
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
-			_portletBody.getText().equals("Hello from Helloworld!"));
+			_portletBody.getText().equals("Hello from helloworld JSP!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -197,11 +197,11 @@ public class BladeSamplesUpdatePortletTest {
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-				_portletTitle).equals("helloworld"));
+				_portletTitle).equals("helloworld portlet"));
 		Assert.assertTrue(
 			_portletBody.getText(),
 			_portletBody.getText().equals(
-				"Hello from Helloworld!bar"));
+				"Hello from helloworld JSP!bar"));
 	}
 
 	private static File _appsDir;
@@ -209,16 +209,16 @@ public class BladeSamplesUpdatePortletTest {
 	private static String _helloWorldJarBSN = "helloworld";
 	private static File _projectPath;
 
-	@FindBy(xpath = "//div[contains(@id,'_helloworld')]")
+	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]")
 	private WebElement _helloWorldPortlet;
 
-	@FindBy(xpath = "//div[contains(@id,'_helloworld')]//..//p")
+	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]//..//p")
 	private WebElement _portletBody;
 
-	@FindBy(xpath = "//div[contains(@id,'_helloworld')]//..//h2")
+	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]//..//h2")
 	private WebElement _portletTitle;
 
-	@PortalURL("helloworld")
+	@PortalURL("Helloworld")
 	private URL _portletURL;
 
 	@Drone
