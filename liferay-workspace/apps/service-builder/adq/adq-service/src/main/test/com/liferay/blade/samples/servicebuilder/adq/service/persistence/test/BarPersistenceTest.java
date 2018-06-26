@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.servicebuilder.service.persistence.test;
+package com.liferay.blade.samples.servicebuilder.adq.service.persistence.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 
-import com.liferay.blade.samples.servicebuilder.exception.NoSuchBarException;
-import com.liferay.blade.samples.servicebuilder.model.Bar;
-import com.liferay.blade.samples.servicebuilder.service.BarLocalServiceUtil;
-import com.liferay.blade.samples.servicebuilder.service.persistence.BarPersistence;
-import com.liferay.blade.samples.servicebuilder.service.persistence.BarUtil;
+import com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException;
+import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
+import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
+import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarPersistence;
+import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarUtil;
 
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -71,7 +71,7 @@ public class BarPersistenceTest {
 	public static final AggregateTestRule aggregateTestRule = new AggregateTestRule(new LiferayIntegrationTestRule(),
 			PersistenceTestRule.INSTANCE,
 			new TransactionalTestRule(Propagation.REQUIRED,
-				"com.liferay.blade.samples.servicebuilder.service"));
+				"com.liferay.blade.samples.servicebuilder.adq.service"));
 
 	@Before
 	public void setUp() {
