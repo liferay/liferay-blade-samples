@@ -2,7 +2,7 @@ buildService {
 	apiDir = "../adq-api/src/main/java"
 	osgiModule = true
 	propsUtil = "com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil"
-	testDir = "src/java/test"
+	testDir = "src/main/test"
 }
 
 dependencies {

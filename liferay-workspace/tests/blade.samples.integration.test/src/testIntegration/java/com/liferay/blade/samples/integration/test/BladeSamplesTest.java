@@ -22,6 +22,7 @@ import aQute.lib.io.IO;
 
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -48,6 +49,7 @@ import org.gradle.testkit.runner.BuildTask;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -102,6 +104,10 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testAllBladeSamples() throws Exception {
+		Assume.assumeTrue(
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
+
 		List<String> bladeSampleOutputFiles = new ArrayList<>();
 		Map<String, String> bundleIDAllMap = new HashMap<>();
 		Map<String, String> bundleIDStartMap = new HashMap<>();
@@ -160,16 +166,23 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testControlMenuEntryGradleTemplates() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "control-menu-entry", "helloworld");
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
+		}
+
+		else {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "control-menu-entry", "cmehelloworld");
+		}
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/cmehelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -182,16 +195,16 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testMVCPortletGradleTemplates() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "mvc-portlet", "helloworld");
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "mvc-portlet", "mvcphelloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/mvcphelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -204,16 +217,16 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPanelAppGradleTemplates() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "panel-app", "helloworld");
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "panel-app", "pahelloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/pahelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -226,16 +239,16 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPortletGradleTemplates() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "portlet", "helloworld");
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "portlet", "phelloworld");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/phelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -248,16 +261,23 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPortletProviderGradleTemplates() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "portlet-provider", "helloworld");
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "portlet-provider", "pphelloworld", "-v", "7.1");
+		}
+
+		else {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "portlet-provider", "pphelloworld");
+		}
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/pphelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -270,11 +290,15 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderBladeSample() throws Exception {
-		File projectPath = new File(
+		Assume.assumeTrue(
+			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
+			!System.getProperty("portalVersion").contains("master"));
+
+		_projectPath = new File(
 			System.getProperty("user.dir")).getParentFile().getParentFile();
 
 		File serviceProperties = new File(
-			projectPath,
+			_projectPath,
 			"apps/service-builder/basic/basic-service/src/main/resources" +
 				"/service.properties");
 
@@ -283,7 +307,7 @@ public class BladeSamplesTest {
 		IO.copy(serviceProperties, servicePropertiesBackup);
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:basic:basic-service:buildService");
+			_projectPath, ":apps:service-builder:basic:basic-service:buildService");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
 
@@ -291,30 +315,30 @@ public class BladeSamplesTest {
 		IO.delete(servicePropertiesBackup);
 
 		BuildTask cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:basic:basic-api:clean");
+			_projectPath, ":apps:service-builder:basic:basic-api:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildApiTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:basic:basic-api:build");
+			_projectPath, ":apps:service-builder:basic:basic-api:build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildApiTask);
 
 		cleanTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:basic:basic-service:clean");
+			_projectPath, ":apps:service-builder:basic:basic-service:clean");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(cleanTask);
 
 		BuildTask buildServiceTask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, ":apps:service-builder:basic:basic-service:assemble");
+			_projectPath, ":apps:service-builder:basic:basic-service:assemble");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildServiceTask);
 
 		File buildApiOutput = new File(
-			projectPath + "/apps/service-builder/basic/basic-api/build/libs" +
+			_projectPath + "/apps/service-builder/basic/basic-api/build/libs" +
 				"/com.liferay.blade.basic.api-1.0.0.jar");
 		File buildServiceOutput = new File(
-			projectPath + "/apps/service-builder/basic/basic-service/build/libs" +
+			_projectPath + "/apps/service-builder/basic/basic-service/build/libs" +
 				"/com.liferay.blade.basic.service-1.0.0.jar");
 
 		Assert.assertTrue(buildApiOutput.exists());
@@ -331,25 +355,33 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderGradleTemplate() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
-			_testDir, "service-builder", "guestbook", "-p",
-			"com.liferay.docs.guestbook");
+		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "service-builder", "guestbook", "-p",
+				"com.liferay.docs.guestbook", "-v", "7.1");
+		}
+
+		else {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "service-builder", "guestbook", "-p",
+				"com.liferay.docs.guestbook");
+		}
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "buildService");
+			_projectPath, "buildService");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildApiOutput = new File(
-			projectPath + "/guestbook-api/build/libs" +
+			_projectPath + "/guestbook-api/build/libs" +
 				"/com.liferay.docs.guestbook.api-1.0.0.jar");
 		File buildServiceOutput = new File(
-			projectPath + "/guestbook-service/build/libs" +
+			_projectPath + "/guestbook-service/build/libs" +
 				"/com.liferay.docs.guestbook.service-1.0.0.jar");
 
 		Assert.assertTrue(buildApiOutput.exists());
@@ -367,14 +399,14 @@ public class BladeSamplesTest {
 	@Test
 	public void testServiceGradleTemplate() throws Exception {
 		BladeCLIUtil.createProject(
-			_testDir, "service", "helloworld", "-s",
+			_testDir, "service", "shelloworld", "-s",
 			"com.liferay.portal.kernel.events.LifecycleAction", "-c",
 			"FooAction");
 
-		File projectPath = new File(_testDir + "/helloworld");
+		_projectPath = new File(_testDir + "/shelloworld");
 
 		File file = new File(
-			projectPath + "/src/main/java/helloworld/FooAction.java");
+			_projectPath + "/src/main/java/shelloworld/FooAction.java");
 
 		List<String> lines = new ArrayList<>();
 		String line = null;
@@ -429,12 +461,12 @@ public class BladeSamplesTest {
 		}
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/helloworld-1.0.0.jar");
+			_projectPath + "/build/libs/shelloworld-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -447,17 +479,17 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceWrapperGradleTemplate() throws Exception {
-		File projectPath = BladeCLIUtil.createProject(
+		_projectPath = BladeCLIUtil.createProject(
 			_testDir, "service-wrapper", "serviceoverride", "-s",
 			"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
-			projectPath, "build");
+			_projectPath, "build");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildtask);
 
 		File buildOutput = new File(
-			projectPath + "/build/libs/serviceoverride-1.0.0.jar");
+			_projectPath + "/build/libs/serviceoverride-1.0.0.jar");
 
 		Assert.assertTrue(buildOutput.exists());
 
@@ -468,6 +500,7 @@ public class BladeSamplesTest {
 		BladeCLIUtil.uninstallBundle(bundleID);
 	}
 
+	private File _projectPath;
 	private File _testDir;
 
 }

@@ -41,7 +41,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -109,6 +108,12 @@ public class BladeServiceBuilderTest {
 
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
+		String url = _webDriver.getCurrentUrl();
+
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
+		String windowHandler = _webDriver.getWindowHandle();
+
 		List<WebElement> rows = _webDriver.findElements(
 			By.xpath(
 				"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr"));
@@ -121,27 +126,21 @@ public class BladeServiceBuilderTest {
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
 
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)_webDriver;
-
 		Assert.assertTrue(
 			"Action Menu Delete is not clickable",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuDelete));
+			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrMenuDelete));
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuDelete);
 
-		String source = _webDriver.getPageSource();
+		Assert.assertTrue(
+			"Alert is not present!",
+			BladeSampleFunctionalActionUtil.isAlertPresent(_webDriver));
 
-		String executescript = source.substring(
-				source.indexOf("item-remove") + 1,
-				source.indexOf("<span class=\"taglib-text-icon\">Delete</span>"));
-
-		String script = executescript.substring(
-			executescript.indexOf("submitForm") - 1,
-			executescript.indexOf("else") - 2);
-
-		javascriptExecutor.executeScript(script);
+		_webDriver.switchTo().window(windowHandler);
 
 		Thread.sleep(1000);
+
+		_webDriver.navigate().to(url);
 
 		_webDriver.navigate().refresh();
 
