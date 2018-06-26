@@ -33,11 +33,9 @@ import com.liferay.blade.samples.servicebuilder.adq.service.base.BarServiceBaseI
  * @see com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil
  */
 public class BarServiceImpl extends BarServiceBaseImpl {
-
-	/**
+	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil} to access the bar remote service.
 	 */
-
 }

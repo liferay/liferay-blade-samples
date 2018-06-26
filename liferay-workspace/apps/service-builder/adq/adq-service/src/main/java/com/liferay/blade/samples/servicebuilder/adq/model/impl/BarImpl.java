@@ -29,13 +29,11 @@ import aQute.bnd.annotation.ProviderType;
  */
 @ProviderType
 public class BarImpl extends BarBaseImpl {
-
-	/**
+	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a bar model instance should use the {@link com.liferay.blade.samples.servicebuilder.adq.model.Bar} interface instead.
 	 */
 	public BarImpl() {
 	}
-
 }
