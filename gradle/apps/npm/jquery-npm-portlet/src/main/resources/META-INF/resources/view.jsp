@@ -20,6 +20,6 @@
 
 <div id="<portlet:namespace />-root" style="cursor:pointer;"></div>
 
-<aui:script require="jquery-npm-portlet@1.0.0">
-	jqueryNpmPortlet100.default('<portlet:namespace />-root');
+<aui:script require="<%= mainRequire %>">
+	main.default('<portlet:namespace />-root');
 </aui:script>
