@@ -1,7 +1,7 @@
 # jQuery npm Portlet
 
 **Important:** This sample works for Liferay DXP Fix Pack 30+ and Liferay Portal
-CE GA5+.
+CE GA7+.
 
 The jQuery npm Portlet sample provides a portlet that uses the
 [jQuery](https://jquery.com/) framework to render its output.
