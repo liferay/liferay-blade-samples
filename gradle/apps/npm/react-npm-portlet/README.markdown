@@ -1,6 +1,6 @@
 # React npm Portlet
 
-**Important:** This sample works for Liferay DXP Fix Pack 30+ and Liferay Portal
+**Important:** This sample works for Liferay DXP Fix Pack 44+ and Liferay Portal
 CE GA7+.
 
 The React npm Portlet sample provides a portlet that uses the
