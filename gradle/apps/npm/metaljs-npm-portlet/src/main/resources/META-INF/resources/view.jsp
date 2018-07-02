@@ -22,6 +22,6 @@
 	Click me to open a superb modal dialog!
 </button>
 
-<aui:script require="metaljs-npm-portlet@1.0.0">
-	metaljsNpmPortlet100.default('<portlet:namespace />-button');
+<aui:script require="<%= mainRequire %>">
+	main.default('<portlet:namespace />-button');
 </aui:script>

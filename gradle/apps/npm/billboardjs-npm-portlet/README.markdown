@@ -1,7 +1,7 @@
 # Billboard.js npm Portlet
 
-**Important:** This sample works for Liferay DXP Fix Pack 30+ and Liferay Portal
-CE GA5+.
+**Important:** This sample works for Liferay DXP Fix Pack 44+ and Liferay Portal
+CE GA7+.
 
 The Billboard.js npm Portlet sample provides a portlet that uses the
 [Billboard.js](https://naver.github.io/billboard.js/) framework to render its
