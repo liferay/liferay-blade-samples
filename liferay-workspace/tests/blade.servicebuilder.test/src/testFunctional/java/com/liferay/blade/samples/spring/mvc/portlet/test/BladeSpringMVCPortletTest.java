@@ -122,9 +122,11 @@ public class BladeSpringMVCPortletTest {
 	public void testDeleteFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		String url = _webDriver.getCurrentUrl();
+
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
-		String url = _webDriver.getCurrentUrl();
+		String windowHandler = _webDriver.getWindowHandle();
 
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
@@ -234,19 +236,19 @@ public class BladeSpringMVCPortletTest {
 	private static String _fooServiceJarBSN = "com.liferay.blade.basic.service";
 	private static String _springmvcPortletWarBSN = "springmvc-portlet";
 
-	@FindBy(xpath = "//span[@class='lfr-btn-label']")
+	@FindBy(xpath = "//span[@class='lfr-btn-label' and contains(.,'Add')]")
 	private WebElement _addButton;
 
-	@FindBy(css = "input[id$='field1']")
+	@FindBy(xpath = "//input[contains(@id,'field1')]")
 	private WebElement _field1Form;
 
-	@FindBy(css = "input[id$='field5']")
+	@FindBy(xpath = "//input[contains(@id,'field5')]")
 	private WebElement _field5Form;
 
 	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr/td[6]")
 	private WebElement _firstRowField5;
 
-	@FindBy(xpath = "//div[@class='btn-group lfr-icon-menu']/a")
+	@FindBy(xpath = "//table//..//div[@class='btn-group lfr-icon-menu']/a")
 	private WebElement _lfrIconMenu;
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]/li[2]/a[contains(.,'Delete')]")
@@ -258,7 +260,7 @@ public class BladeSpringMVCPortletTest {
 	@PortalURL("bladespringmvc_WAR_springmvcportlet")
 	private URL _portletURL;
 
-	@FindBy(css = "button[type=submit]")
+	@FindBy(xpath = "//span[@class='lfr-btn-label' and contains(.,'Save')]")
 	private WebElement _saveButton;
 
 	@FindBy(xpath = "//div[contains(@id,'bladespringmvc_WAR_springmvcportlet')]/table//..//tr[2]/td[6]")

@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.service;
@@ -200,11 +198,11 @@ public class FooLocalServiceUtil {
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId) {
+		String uuid, long groupId) {
 		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
-	public static java.lang.String fooLocal() {
+	public static String fooLocal() {
 		return getService().fooLocal();
 	}
 
@@ -238,7 +236,7 @@ public class FooLocalServiceUtil {
 	* @throws PortalException if a matching foo could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId)
+		String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getFooByUuidAndGroupId(uuid, groupId);
 	}
@@ -267,7 +265,7 @@ public class FooLocalServiceUtil {
 	* @return the matching foos, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		java.lang.String uuid, long companyId) {
+		String uuid, long companyId) {
 		return getService().getFoosByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -282,7 +280,7 @@ public class FooLocalServiceUtil {
 	* @return the range of matching foos, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		java.lang.String uuid, long companyId, int start, int end,
+		String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.model.Foo> orderByComparator) {
 		return getService()
 				   .getFoosByUuidAndCompanyId(uuid, companyId, start, end,
@@ -307,7 +305,7 @@ public class FooLocalServiceUtil {
 	*
 	* @return the OSGi service identifier
 	*/
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

@@ -9,6 +9,7 @@ Bundle-Version: 1.0.0
 Web-ContextPath: /language-web
 
 -sources: true
+-contract: JavaPortlet
 -jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin

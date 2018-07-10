@@ -1,7 +1,7 @@
 dependencies {
 	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.5.0"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
 	compileOnly group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
 	compileOnly group: "org.osgi", name: "osgi.core", version: "5.0.0"
 	compileOnly project(":apps:service-builder:jndi:jndi-api")
@@ -35,11 +35,10 @@ task (foobar) {
 }
 
 testIntegration {
-
 	testClassesDir = sourceSets.testIntegration.output.classesDir
 	outputs.upToDateWhen { false }
 
-	dependsOn jar, ":initBundle", startTestableTomcat
+	dependsOn jar
 
 	systemProperty 'jarFile', jar.archivePath
 
@@ -47,6 +46,9 @@ testIntegration {
 
 	systemProperty 'jndiApiJarFile', project(':apps:service-builder:jndi:jndi-api').jar.archivePath
 
+	finalizedBy {
+		stopTestableTomcat
+	}
 }
 
 stopTestableTomcat {
@@ -54,5 +56,3 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
-
-check.dependsOn testIntegration

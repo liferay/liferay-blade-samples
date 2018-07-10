@@ -2,14 +2,14 @@ buildService {
 	apiDir = "../adq-api/src/main/java"
 	osgiModule = true
 	propsUtil = "com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil"
-	testDir = "src/main/test"
+	testDir = "src/unused"
 }
 
 dependencies {
 	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.5.0"
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.service.tracker.collections", version: "2.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
 	compileOnly project(":apps:service-builder:adq:adq-api")
 
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
@@ -27,13 +27,17 @@ startTestableTomcat {
 testIntegration {
 	outputs.upToDateWhen { false }
 
-	dependsOn jar, ":initBundle", startTestableTomcat
+	dependsOn jar
 
 	dependsOn ":apps:service-builder:adq:adq-api:jar"
 
 	systemProperty 'adqApiJarFile', project(':apps:service-builder:adq:adq-api').jar.archivePath
 
 	systemProperty 'jarFile', jar.archivePath
+
+	finalizedBy {
+		stopTestableTomcat
+	}
 }
 
 stopTestableTomcat {
@@ -41,5 +45,3 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
-
-check.dependsOn testIntegration

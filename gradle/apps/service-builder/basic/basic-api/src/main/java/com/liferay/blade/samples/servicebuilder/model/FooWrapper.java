@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.model;
@@ -70,7 +68,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("field1", getField1());
-		attributes.put("field2", getField2());
+		attributes.put("field2", isField2());
 		attributes.put("field3", getField3());
 		attributes.put("field4", getField4());
 		attributes.put("field5", getField5());
@@ -160,7 +158,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public java.lang.Object clone() {
+	public Object clone() {
 		return new FooWrapper((Foo)_foo.clone());
 	}
 
@@ -200,7 +198,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @return the field1 of this foo
 	*/
 	@Override
-	public java.lang.String getField1() {
+	public String getField1() {
 		return _foo.getField1();
 	}
 
@@ -240,7 +238,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @return the field5 of this foo
 	*/
 	@Override
-	public java.lang.String getField5() {
+	public String getField5() {
 		return _foo.getField5();
 	}
 
@@ -305,7 +303,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @return the user name of this foo
 	*/
 	@Override
-	public java.lang.String getUserName() {
+	public String getUserName() {
 		return _foo.getUserName();
 	}
 
@@ -315,7 +313,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @return the user uuid of this foo
 	*/
 	@Override
-	public java.lang.String getUserUuid() {
+	public String getUserUuid() {
 		return _foo.getUserUuid();
 	}
 
@@ -325,7 +323,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @return the uuid of this foo
 	*/
 	@Override
-	public java.lang.String getUuid() {
+	public String getUuid() {
 		return _foo.getUuid();
 	}
 
@@ -411,7 +409,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @param field1 the field1 of this foo
 	*/
 	@Override
-	public void setField1(java.lang.String field1) {
+	public void setField1(String field1) {
 		_foo.setField1(field1);
 	}
 
@@ -451,7 +449,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @param field5 the field5 of this foo
 	*/
 	@Override
-	public void setField5(java.lang.String field5) {
+	public void setField5(String field5) {
 		_foo.setField5(field5);
 	}
 
@@ -521,7 +519,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @param userName the user name of this foo
 	*/
 	@Override
-	public void setUserName(java.lang.String userName) {
+	public void setUserName(String userName) {
 		_foo.setUserName(userName);
 	}
 
@@ -531,7 +529,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @param userUuid the user uuid of this foo
 	*/
 	@Override
-	public void setUserUuid(java.lang.String userUuid) {
+	public void setUserUuid(String userUuid) {
 		_foo.setUserUuid(userUuid);
 	}
 
@@ -541,7 +539,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	* @param uuid the uuid of this foo
 	*/
 	@Override
-	public void setUuid(java.lang.String uuid) {
+	public void setUuid(String uuid) {
 		_foo.setUuid(uuid);
 	}
 
@@ -556,7 +554,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public java.lang.String toString() {
+	public String toString() {
 		return _foo.toString();
 	}
 
@@ -566,7 +564,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	@Override
-	public java.lang.String toXmlString() {
+	public String toXmlString() {
 		return _foo.toXmlString();
 	}
 

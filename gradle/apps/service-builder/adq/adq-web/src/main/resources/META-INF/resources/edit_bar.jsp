@@ -30,7 +30,7 @@ if (barId > 0) {
 }
 %>
 
-<aui:form action="<%= renderResponse.createActionURL() %>" method="post" name="fm">
+<aui:form action="<%= (javax.portlet.ActionURL)renderResponse.createActionURL() %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= (bar == null) ? Constants.ADD : Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
 	<aui:input name="barId" type="hidden" value="<%= barId %>" />

@@ -31,7 +31,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
-import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -56,10 +55,6 @@ public class BladeBillboardJsNpmPortletTest {
 
 	@Test
 	public void testBladeBillboardJsNpm() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -71,42 +66,9 @@ public class BladeBillboardJsNpmPortletTest {
 			_webDriver, _bladeNpmBillboardPortlet);
 
 		Assert.assertTrue(
-			"Expected: Billboard.js Portlet, but saw: " +
+			"Expected: BILLBOARD.JS PORTLET, but saw: " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("Billboard.js Portlet"));
-
-		Assert.assertTrue(
-			"Expected: An example from billboard.js, but saw: " +
-				_portletBodyHeader1.getText(),
-			_portletBodyHeader1.getText().contentEquals(
-				"An example from billboard.js"));
-
-		Assert.assertTrue(
-			"Expected: Default charts, but saw: " +
-				_portletBodyHeader2.getText(),
-			_portletBodyHeader2.getText().contentEquals("Default charts"));
-	}
-
-	@Test
-	public void testBladeBillboardJsNpmMaster() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
-
-		_webDriver.get(_portletURL.toExternalForm());
-
-		Assert.assertTrue(
-			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeNpmBillboardPortlet));
-
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _bladeNpmBillboardPortlet);
-
-		Assert.assertTrue(
-			"Expected: Billboard.js Portlet, but saw: " +
-				_portletTitleMaster.getText(),
-			_portletTitleMaster.getText().contentEquals(
-				"Billboard.js Portlet"));
+			_portletTitle.getText().contentEquals("BILLBOARD.JS PORTLET"));
 
 		Assert.assertTrue(
 			"Expected: An example from billboard.js, but saw: " +
@@ -129,11 +91,8 @@ public class BladeBillboardJsNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]//..//div[@class='portlet-body']/div/h2")
 	private WebElement _portletBodyHeader2;
 
-	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]/div/h2")
+	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]//..//div/h2")
 	private WebElement _portletTitle;
-
-	@FindBy(xpath = "//section[contains(@id,'BillboardjsPortlet')]/div/div/div/h2")
-	private WebElement _portletTitleMaster;
 
 	@PortalURL("com_liferay_blade_npm_billboardjs_portlet_BillboardjsPortlet")
 	private URL _portletURL;

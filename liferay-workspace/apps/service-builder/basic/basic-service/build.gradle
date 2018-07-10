@@ -4,7 +4,7 @@ dependencies {
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.service.tracker.collections", version: "2.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.util", version: "3.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
 
 	testCompile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.3.0"
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"
@@ -28,13 +28,17 @@ startTestableTomcat {
 testIntegration {
 	outputs.upToDateWhen { false }
 
-	dependsOn jar, ":initBundle", startTestableTomcat
+	dependsOn jar
 
 	dependsOn ":apps:service-builder:basic:basic-api:jar"
 
 	systemProperty 'fooApiJarFile', project(':apps:service-builder:basic:basic-api').jar.archivePath
 
 	systemProperty 'jarFile', jar.archivePath
+
+	finalizedBy {
+		stopTestableTomcat
+	}
 }
 
 stopTestableTomcat {
@@ -42,5 +46,3 @@ stopTestableTomcat {
 		delete new File(liferay.liferayHome, "data")
 	}
 }
-
-check.dependsOn testIntegration

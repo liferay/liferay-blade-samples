@@ -1,5 +1,6 @@
 Bundle-Name: com.liferay.blade.portlet.configuration.icon
 Bundle-SymbolicName: com.liferay.blade.portlet.configuration.icon
 Bundle-Version: 1.0.0
+-contract: JavaPortlet
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -sources: true

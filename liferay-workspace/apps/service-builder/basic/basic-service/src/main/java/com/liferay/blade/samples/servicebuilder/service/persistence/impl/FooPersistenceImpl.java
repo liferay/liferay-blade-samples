@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.service.persistence.impl;
@@ -39,6 +37,7 @@ import com.liferay.portal.kernel.service.persistence.CompanyProvider;
 import com.liferay.portal.kernel.service.persistence.CompanyProviderWrapper;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.Validator;
@@ -48,6 +47,7 @@ import com.liferay.portal.spring.extender.service.ServiceReference;
 import java.io.Serializable;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
 
 import java.util.Collections;
 import java.util.Date;
@@ -98,7 +98,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid",
 			new String[] {
 				String.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -767,12 +767,6 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 					result = foo;
 
 					cacheResult(foo);
-
-					if ((foo.getUuid() == null) || !foo.getUuid().equals(uuid) ||
-							(foo.getGroupId() != groupId)) {
-						finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G,
-							finderArgs, foo);
-					}
 				}
 			}
 			catch (Exception e) {
@@ -887,7 +881,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid_C",
 			new String[] {
 				String.class.getName(), Long.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -989,7 +983,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID_C;
 			finderArgs = new Object[] {
 					uuid, companyId,
-
+					
 					start, end, orderByComparator
 				};
 		}
@@ -1466,7 +1460,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByField2",
 			new String[] {
 				Boolean.class.getName(),
-
+				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
@@ -1568,7 +1562,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Foo foo : list) {
-					if ((field2 != foo.getField2())) {
+					if ((field2 != foo.isField2())) {
 						list = null;
 
 						break;
@@ -2168,8 +2162,6 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 	@Override
 	protected Foo removeImpl(Foo foo) {
-		foo = toUnwrappedModel(foo);
-
 		Session session = null;
 
 		try {
@@ -2199,9 +2191,23 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 
 	@Override
 	public Foo updateImpl(Foo foo) {
-		foo = toUnwrappedModel(foo);
-
 		boolean isNew = foo.isNew();
+
+		if (!(foo instanceof FooModelImpl)) {
+			InvocationHandler invocationHandler = null;
+
+			if (ProxyUtil.isProxyClass(foo.getClass())) {
+				invocationHandler = ProxyUtil.getInvocationHandler(foo);
+
+				throw new IllegalArgumentException(
+					"Implement ModelWrapper in foo proxy " +
+					invocationHandler.getClass());
+			}
+
+			throw new IllegalArgumentException(
+				"Implement ModelWrapper in custom Foo implementation " +
+				foo.getClass());
+		}
 
 		FooModelImpl fooModelImpl = (FooModelImpl)foo;
 
@@ -2275,7 +2281,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
 				args);
 
-			args = new Object[] { fooModelImpl.getField2() };
+			args = new Object[] { fooModelImpl.isField2() };
 
 			finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
@@ -2330,7 +2336,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
 					args);
 
-				args = new Object[] { fooModelImpl.getField2() };
+				args = new Object[] { fooModelImpl.isField2() };
 
 				finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
@@ -2347,33 +2353,6 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 		foo.resetOriginalValues();
 
 		return foo;
-	}
-
-	protected Foo toUnwrappedModel(Foo foo) {
-		if (foo instanceof FooImpl) {
-			return foo;
-		}
-
-		FooImpl fooImpl = new FooImpl();
-
-		fooImpl.setNew(foo.isNew());
-		fooImpl.setPrimaryKey(foo.getPrimaryKey());
-
-		fooImpl.setUuid(foo.getUuid());
-		fooImpl.setFooId(foo.getFooId());
-		fooImpl.setGroupId(foo.getGroupId());
-		fooImpl.setCompanyId(foo.getCompanyId());
-		fooImpl.setUserId(foo.getUserId());
-		fooImpl.setUserName(foo.getUserName());
-		fooImpl.setCreateDate(foo.getCreateDate());
-		fooImpl.setModifiedDate(foo.getModifiedDate());
-		fooImpl.setField1(foo.getField1());
-		fooImpl.setField2(foo.isField2());
-		fooImpl.setField3(foo.getField3());
-		fooImpl.setField4(foo.getField4());
-		fooImpl.setField5(foo.getField5());
-
-		return fooImpl;
 	}
 
 	/**

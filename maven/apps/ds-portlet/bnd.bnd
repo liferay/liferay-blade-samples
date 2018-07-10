@@ -1,4 +1,5 @@
 Bundle-Name: com.liferay.blade.ds.portlet
 Bundle-SymbolicName: com.liferay.blade.ds.portlet
 Bundle-Version: 1.0.0
+-contract: JavaPortlet
 -sources: true

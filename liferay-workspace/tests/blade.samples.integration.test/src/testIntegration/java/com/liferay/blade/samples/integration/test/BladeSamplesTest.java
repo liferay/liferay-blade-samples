@@ -154,13 +154,18 @@ public class BladeSamplesTest {
 				}
 			}
 		}
+		List<String> startErrorList = new ArrayList<>();
 
 		for (String startBundleID : bundleIDStartMap.keySet()) {
-			BladeCLIUtil.startBundle(startBundleID);
+			startErrorList.add(BladeCLIUtil.startBundle(startBundleID));
 		}
 
 		for (String allBundleID : bundleIDAllMap.keySet()) {
 			BladeCLIUtil.uninstallBundle(allBundleID);
+		}
+
+		if (startErrorList.toString().toLowerCase().contains("exception")) {
+			throw new Exception(startErrorList.toString());
 		}
 	}
 
@@ -290,10 +295,6 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderBladeSample() throws Exception {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		_projectPath = new File(
 			System.getProperty("user.dir")).getParentFile().getParentFile();
 

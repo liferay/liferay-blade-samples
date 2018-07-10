@@ -1,4 +1,5 @@
 Bundle-Name: com.liferay.blade.struts.portlet.action
 Bundle-SymbolicName: com.liferay.blade.struts.portlet.action
 Bundle-Version: 1.0.0
+-contract: JavaPortlet
 -sources: true

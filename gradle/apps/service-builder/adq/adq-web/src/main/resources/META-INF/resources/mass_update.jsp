@@ -22,7 +22,7 @@
 String redirect = ParamUtil.getString(request, "redirect");
 %>
 
-<aui:form action="<%= renderResponse.createActionURL() %>" method="post" name="fm">
+<aui:form action="<%= (javax.portlet.ActionURL)renderResponse.createActionURL() %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= JSPPortlet.MASS_UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
 

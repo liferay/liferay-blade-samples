@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.util.CacheResourceBundleLoader;
 import com.liferay.portal.kernel.util.ClassResourceBundleLoader;
 import com.liferay.portal.kernel.util.ResourceBundleLoader;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.osgi.service.component.annotations.Component;
@@ -40,8 +41,8 @@ import org.osgi.service.component.annotations.Reference;
 public class ResourceBundleLoaderComponent implements ResourceBundleLoader {
 
 	@Override
-	public ResourceBundle loadResourceBundle(String languageId) {
-		return _resourceBundleLoader.loadResourceBundle(languageId);
+	public ResourceBundle loadResourceBundle(Locale locale) {
+		return _resourceBundleLoader.loadResourceBundle(locale);
 	}
 
 	@Reference(

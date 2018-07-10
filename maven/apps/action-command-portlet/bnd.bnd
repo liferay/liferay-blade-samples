@@ -2,6 +2,7 @@ Bundle-Description: Demonstrates adding a custom model listener to a Liferay Por
 Bundle-Name: com.liferay.blade.action.command.portlet
 Bundle-SymbolicName: com.liferay.blade.action.command.portlet
 Bundle-Version: 1.0.0
+-contract: JavaPortlet
 -jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin

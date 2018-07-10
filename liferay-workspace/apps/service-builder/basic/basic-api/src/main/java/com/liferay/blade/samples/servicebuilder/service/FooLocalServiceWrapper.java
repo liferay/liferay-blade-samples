@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.service;
@@ -203,12 +201,12 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId) {
+		String uuid, long groupId) {
 		return _fooLocalService.fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
 	@Override
-	public java.lang.String fooLocal() {
+	public String fooLocal() {
 		return _fooLocalService.fooLocal();
 	}
 
@@ -246,7 +244,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
-		java.lang.String uuid, long groupId)
+		String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _fooLocalService.getFooByUuidAndGroupId(uuid, groupId);
 	}
@@ -277,7 +275,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		java.lang.String uuid, long companyId) {
+		String uuid, long companyId) {
 		return _fooLocalService.getFoosByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -293,7 +291,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		java.lang.String uuid, long companyId, int start, int end,
+		String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.model.Foo> orderByComparator) {
 		return _fooLocalService.getFoosByUuidAndCompanyId(uuid, companyId,
 			start, end, orderByComparator);
@@ -320,7 +318,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	* @return the OSGi service identifier
 	*/
 	@Override
-	public java.lang.String getOSGiServiceIdentifier() {
+	public String getOSGiServiceIdentifier() {
 		return _fooLocalService.getOSGiServiceIdentifier();
 	}
 

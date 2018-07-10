@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>2.6.0</version>
+			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -71,7 +71,7 @@
 					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
 					<sqlFileName>tables.sql</sqlFileName>
-					<testDirName>src/java/test</testDirName>
+					<testDirName>src/unused</testDirName>
 				</configuration>
 			</plugin>
 			<plugin>

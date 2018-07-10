@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.model.impl;
@@ -31,6 +29,7 @@ import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
+import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
@@ -149,7 +148,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setField1(soapModel.getField1());
-		model.setField2(soapModel.getField2());
+		model.setField2(soapModel.isField2());
 		model.setField3(soapModel.getField3());
 		model.setField4(soapModel.getField4());
 		model.setField5(soapModel.getField5());
@@ -226,7 +225,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("field1", getField1());
-		attributes.put("field2", getField2());
+		attributes.put("field2", isField2());
 		attributes.put("field3", getField3());
 		attributes.put("field4", getField4());
 		attributes.put("field5", getField5());
@@ -601,7 +600,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		fooImpl.setCreateDate(getCreateDate());
 		fooImpl.setModifiedDate(getModifiedDate());
 		fooImpl.setField1(getField1());
-		fooImpl.setField2(getField2());
+		fooImpl.setField2(isField2());
 		fooImpl.setField3(getField3());
 		fooImpl.setField4(getField4());
 		fooImpl.setField5(getField5());
@@ -738,7 +737,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 			fooCacheModel.field1 = null;
 		}
 
-		fooCacheModel.field2 = getField2();
+		fooCacheModel.field2 = isField2();
 
 		fooCacheModel.field3 = getField3();
 
@@ -785,7 +784,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		sb.append(", field1=");
 		sb.append(getField1());
 		sb.append(", field2=");
-		sb.append(getField2());
+		sb.append(isField2());
 		sb.append(", field3=");
 		sb.append(getField3());
 		sb.append(", field4=");
@@ -843,7 +842,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>field2</column-name><column-value><![CDATA[");
-		sb.append(getField2());
+		sb.append(isField2());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>field3</column-name><column-value><![CDATA[");
@@ -865,7 +864,7 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 
 	private static final ClassLoader _classLoader = Foo.class.getClassLoader();
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-			Foo.class
+			Foo.class, ModelWrapper.class
 		};
 	private String _uuid;
 	private String _originalUuid;
