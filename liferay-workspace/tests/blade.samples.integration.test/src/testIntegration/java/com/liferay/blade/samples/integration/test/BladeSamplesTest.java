@@ -22,7 +22,6 @@ import aQute.lib.io.IO;
 
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -49,7 +48,6 @@ import org.gradle.testkit.runner.BuildTask;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -104,10 +102,6 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testAllBladeSamples() throws Exception {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		List<String> bladeSampleOutputFiles = new ArrayList<>();
 		Map<String, String> bundleIDAllMap = new HashMap<>();
 		Map<String, String> bundleIDStartMap = new HashMap<>();
@@ -166,15 +160,8 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testControlMenuEntryGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
-		}
-
-		else {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "control-menu-entry", "cmehelloworld");
-		}
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -196,7 +183,7 @@ public class BladeSamplesTest {
 	@Test
 	public void testMVCPortletGradleTemplates() throws Exception {
 		_projectPath = BladeCLIUtil.createProject(
-			_testDir, "mvc-portlet", "mvcphelloworld");
+			_testDir, "mvc-portlet", "mvcphelloworld", "-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -218,7 +205,7 @@ public class BladeSamplesTest {
 	@Test
 	public void testPanelAppGradleTemplates() throws Exception {
 		_projectPath = BladeCLIUtil.createProject(
-			_testDir, "panel-app", "pahelloworld");
+			_testDir, "panel-app", "pahelloworld", "-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -240,7 +227,7 @@ public class BladeSamplesTest {
 	@Test
 	public void testPortletGradleTemplates() throws Exception {
 		_projectPath = BladeCLIUtil.createProject(
-			_testDir, "portlet", "phelloworld");
+			_testDir, "portlet", "phelloworld", "-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -261,15 +248,8 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPortletProviderGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "portlet-provider", "pphelloworld", "-v", "7.1");
-		}
-
-		else {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "portlet-provider", "pphelloworld");
-		}
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "portlet-provider", "pphelloworld", "-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
@@ -290,10 +270,6 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderBladeSample() throws Exception {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		_projectPath = new File(
 			System.getProperty("user.dir")).getParentFile().getParentFile();
 
@@ -355,17 +331,9 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderGradleTemplate() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "service-builder", "guestbook", "-p",
-				"com.liferay.docs.guestbook", "-v", "7.1");
-		}
-
-		else {
-			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "service-builder", "guestbook", "-p",
-				"com.liferay.docs.guestbook");
-		}
+		_projectPath = BladeCLIUtil.createProject(
+			_testDir, "service-builder", "guestbook", "-p",
+			"com.liferay.docs.guestbook", "-v", "7.0");
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "buildService");
@@ -401,7 +369,7 @@ public class BladeSamplesTest {
 		BladeCLIUtil.createProject(
 			_testDir, "service", "shelloworld", "-s",
 			"com.liferay.portal.kernel.events.LifecycleAction", "-c",
-			"FooAction");
+			"FooAction", "-v", "7.0");
 
 		_projectPath = new File(_testDir + "/shelloworld");
 
@@ -481,7 +449,8 @@ public class BladeSamplesTest {
 	public void testServiceWrapperGradleTemplate() throws Exception {
 		_projectPath = BladeCLIUtil.createProject(
 			_testDir, "service-wrapper", "serviceoverride", "-s",
-			"com.liferay.portal.kernel.service.UserLocalServiceWrapper");
+			"com.liferay.portal.kernel.service.UserLocalServiceWrapper",
+			"-v", "7.0");
 
 		BuildTask buildtask = GradleRunnerUtil.executeGradleRunner(
 			_projectPath, "build");
