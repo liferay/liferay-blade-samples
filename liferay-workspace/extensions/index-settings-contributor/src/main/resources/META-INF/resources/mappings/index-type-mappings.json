@@ -1,0 +1,18 @@
+{
+	"LiferayDocumentType": {
+		"properties": {
+			"sampleDate": {
+				"type": "date"
+			},
+			"sampleDouble": {
+				"type": "double"
+			},
+			"sampleLong": {
+				"type": "long"
+			},
+			"sampleText": {
+				"type": "text"
+			}
+		}
+	}
+}
