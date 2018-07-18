@@ -69,7 +69,7 @@ public class BladeSamplesUpdatePortletTest {
 		_modulesDir = new File(System.getProperty("projectDir"), "modules");
 
 		_projectPath = BladeCLIUtil.createProject(
-			_modulesDir, "mvc-portlet", "helloworld");
+			_modulesDir, "mvc-portlet", "helloworld", "-v", "7.0");
 
 		BladeCLIUtil.execute(_projectPath, "gw", "assemble");
 
@@ -102,7 +102,7 @@ public class BladeSamplesUpdatePortletTest {
 			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_helloWorldPortlet.getText().contains(
-				"Hello from helloworld JSP!"));
+				"Hello from Helloworld!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -192,7 +192,7 @@ public class BladeSamplesUpdatePortletTest {
 			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
 			_helloWorldPortlet.getText().contains(
-				"Hello from helloworld JSP!bar"));
+				"Hello from Helloworld!bar"));
 	}
 
 	private static File _modulesDir;
@@ -200,10 +200,10 @@ public class BladeSamplesUpdatePortletTest {
 	private static String _helloWorldJarBSN = "helloworld";
 	private static File _projectPath;
 
-	@FindBy(xpath = "//div[contains(@id,'_Helloworld')]")
+	@FindBy(xpath = "//div[contains(@id,'_helloworld')]")
 	private WebElement _helloWorldPortlet;
 
-	@PortalURL("Helloworld")
+	@PortalURL("helloworld")
 	private URL _portletURL;
 
 	@Drone
