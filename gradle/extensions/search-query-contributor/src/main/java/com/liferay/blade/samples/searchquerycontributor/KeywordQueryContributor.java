@@ -21,7 +21,6 @@ import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.search.query.QueryHelper;
 import com.liferay.portal.search.spi.model.query.contributor.helper.KeywordQueryContributorHelper;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -30,11 +29,7 @@ import org.osgi.service.component.annotations.Reference;
  */
 @Component(
 	immediate = true,
-	property = {
-		"indexer.class.name=com.liferay.calendar.model.Calendar",
-		"indexer.class.name=com.liferay.calendar.model.CalendarBooking",
-		"indexer.class.name=com.liferay.document.library.kernel.model.DLFileEntry"
-	},
+	property = "indexer.class.name=ALL",
 	service = com.liferay.portal.search.spi.model.query.contributor.KeywordQueryContributor.class
 )
 public class KeywordQueryContributor
