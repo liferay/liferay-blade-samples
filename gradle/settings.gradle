@@ -59,6 +59,7 @@ include(
 	'extensions:resource-bundle',
 	'extensions:scheduler-entry',
 	'extensions:screen-name-validator',
+	'extensions:search-query-contributor',
 	'extensions:servlet',
 	'extensions:struts-action',
 	'extensions:struts-portlet-action',
