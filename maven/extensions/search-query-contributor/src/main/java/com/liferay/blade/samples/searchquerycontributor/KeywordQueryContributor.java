@@ -29,13 +29,9 @@ import org.osgi.service.component.annotations.Reference;
  * @author Liferay
  */
 @Component(
-	immediate = true,
-	property = {
-		"indexer.class.name=com.liferay.calendar.model.Calendar",
-		"indexer.class.name=com.liferay.calendar.model.CalendarBooking",
-		"indexer.class.name=com.liferay.document.library.kernel.model.DLFileEntry"
-	},
-	service = com.liferay.portal.search.spi.model.query.contributor.KeywordQueryContributor.class
+		immediate = true,
+		property = "indexer.class.name=ALL",
+		service = com.liferay.portal.search.spi.model.query.contributor.KeywordQueryContributor.class
 )
 public class KeywordQueryContributor
 	implements com.liferay.portal.search.spi.model.query.contributor.KeywordQueryContributor {
