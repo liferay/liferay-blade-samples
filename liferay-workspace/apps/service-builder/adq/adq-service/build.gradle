@@ -24,6 +24,12 @@ startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
+stopTestableTomcat {
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
+}
+
 testIntegration {
 	outputs.upToDateWhen { false }
 
@@ -37,11 +43,5 @@ testIntegration {
 
 	finalizedBy {
 		stopTestableTomcat
-	}
-}
-
-stopTestableTomcat {
-	doLast {
-		delete new File(liferay.liferayHome, "data")
 	}
 }

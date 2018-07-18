@@ -74,7 +74,8 @@ public class ConnectionTest {
 
 	private static void _addData() throws Exception {
 		_executeNonQuery(
-			"create table country(id bigint not null primary key, name varchar(255));");
+			"create table country(id bigint not null primary key," +
+				"name varchar(255));");
 		_executeNonQuery(
 			"insert into country(id, name) values(1, 'Australia');");
 	}
