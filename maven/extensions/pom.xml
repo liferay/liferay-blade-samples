@@ -24,6 +24,7 @@
 		<module>indexer-post-processor</module>
 		<module>lifecycle-login-preaction</module>
 		<module>model-listener</module>
+		<module>model-summary-contributor</module>
 		<module>poll-processor</module>
 		<module>portlet-configuration-icon</module>
 		<module>portlet-toolbar-contributor</module>
