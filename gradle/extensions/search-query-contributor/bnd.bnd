@@ -1,4 +1,4 @@
 Bundle-Description: This sample demonstrates how to include a additional field to queries on Liferay Portal.
-Bundle-Name: com.liferay.blade.samples.searchquerycontributor
-Bundle-SymbolicName: com.liferay.blade.samples.searchquerycontributor
+Bundle-Name: com.liferay.blade.samples.search.query.contributor
+Bundle-SymbolicName: com.liferay.blade.samples.search.query.contributor
 Bundle-Version: 1.0.0
