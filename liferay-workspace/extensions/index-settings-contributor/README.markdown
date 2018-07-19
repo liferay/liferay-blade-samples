@@ -23,23 +23,22 @@ The mapping's features can be found at [elastic search's docs](https://www.elast
 2. Put the mapping into Elasticsearch.
 The `IndexSettingsContributor` components are invoked during the reindexing and receive a `TypeMappingsHelper` as a hook to add new mappings.
 
-The `ResouceUtil` is a utility class that read's the `.json` file. 
+The `ResouceUtil` is a utility class that read's the `.json` file.
 
 The `IndexSettingsContributor` is a class that allows the addition of type mappings on Liferay's search engine.
 
     @Override
     public void contribute(
         String indexName, TypeMappingsHelper typeMappingsHelper) {
-    
         try {
             String mappings = ResourceUtil.readResouceAsString(
                 "META-INF/resources/mappings/index-type-mappings.json");
-    
+
             typeMappingsHelper.addTypeMappings(indexName, mappings);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-    }`
-    
+    }
+
 On the `ResourceUtil.readResouceAsString` parameter you should pass the path for the `.json` that contains the properties to be added.
