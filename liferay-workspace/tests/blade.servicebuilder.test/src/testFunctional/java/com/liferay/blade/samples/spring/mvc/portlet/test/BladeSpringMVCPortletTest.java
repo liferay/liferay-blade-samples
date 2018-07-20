@@ -122,13 +122,9 @@ public class BladeSpringMVCPortletTest {
 	public void testDeleteFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
 		String url = _webDriver.getCurrentUrl();
-
-		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
-
-		String windowHandler = _webDriver.getWindowHandle();
-
-		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		String windowHandler = _webDriver.getWindowHandle();
 
