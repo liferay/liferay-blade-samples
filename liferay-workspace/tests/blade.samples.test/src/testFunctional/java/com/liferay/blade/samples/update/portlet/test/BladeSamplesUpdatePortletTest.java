@@ -101,12 +101,8 @@ public class BladeSamplesUpdatePortletTest {
 			"Portlet was not deployed",
 			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
-			_portletTitle.getText(),
-			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-				_portletTitle).equals("helloworld"));
-		Assert.assertTrue(
-			_portletBody.getText(),
-			_portletBody.getText().equals("Hello from Helloworld!"));
+			_helloWorldPortlet.getText().contains(
+				"Hello from Helloworld!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -195,21 +191,8 @@ public class BladeSamplesUpdatePortletTest {
 			"Portlet was not deployed",
 			_helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
-			_portletTitle.getText(),
-			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-<<<<<<< HEAD
-				_portletTitle).equals("helloworld portlet"));
-		Assert.assertTrue(
-			_portletBody.getText(),
-			_portletBody.getText().equals(
-				"Hello from helloworld JSP!bar"));
-=======
-				_portletTitle).equals("helloworld"));
-		Assert.assertTrue(
-			_portletBody.getText(),
-			_portletBody.getText().equals(
+			_helloWorldPortlet.getText().contains(
 				"Hello from Helloworld!bar"));
->>>>>>> 7.1 blade sample changes
 	}
 
 	private static File _appsDir;
