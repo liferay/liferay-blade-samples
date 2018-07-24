@@ -1,7 +1,7 @@
 # Angular npm Portlet
 
-**Important:** This sample works for Liferay DXP Fix Pack 30+ and Liferay Portal
-CE GA5+.
+**Important:** This sample works for Liferay DXP Fix Pack 44+ and Liferay Portal
+CE GA7+.
 
 The Angular npm Portlet sample provides a portlet that uses the
 [Angular](https://angular.io/) framework to render its output.

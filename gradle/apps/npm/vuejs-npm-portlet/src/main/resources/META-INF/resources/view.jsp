@@ -37,6 +37,6 @@
 	</ol>
 </div>
 
-<aui:script require="vuejs-npm-portlet@1.0.0">
-	vuejsNpmPortlet100.default('<portlet:namespace />');
+<aui:script require="<%= mainRequire %>">
+	main.default('<portlet:namespace />');
 </aui:script>
