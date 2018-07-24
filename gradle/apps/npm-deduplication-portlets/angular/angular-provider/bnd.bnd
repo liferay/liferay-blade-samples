@@ -1,0 +1,4 @@
+Bundle-Name: Angular Provider
+Bundle-SymbolicName: com.liferay.blade.angular.provider
+Bundle-Version: 1.0.0
+Web-ContextPath: /angular-provider
