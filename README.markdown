@@ -594,6 +594,17 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/screen-name-validator](./liferay-workspace/extensions/screen-name-validator)   |
 | Maven      | [./maven/extensions/screen-name-validator](./maven/extensions/screen-name-validator)        |
 
+### Search Keyword Query Contributor
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/extensions/search-keyword-query-contributor](gradle/extensions/search-keyword-query-contributor) |
+| Liferay Workspace | [./liferay-workspace/extensions/search-keyword-query-contributor](./liferay-workspace/extensions/search-keyword-query-contributor) |
+| Maven      | [./maven/extensions/search-keyword-query-contributor](maven/extensions/search-keyword-query-contributor) |
+
+
 ### Servlet
 
 Refer to this sample's Readme for more information.
