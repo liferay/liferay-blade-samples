@@ -1,4 +1,4 @@
-# Model Pre Filter Contributor [](id=model-pre-filter-contributor)
+# Search Model Pre Filter Contributor [](id=model-pre-filter-contributor)
 
 This sample demonstrates how to include pre-filter parameters to search queries on Liferay Portal.
 
@@ -40,6 +40,9 @@ public void contribute(
 }
 ```
 
+Notice that we are using a [date math expression](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html) as lower boundary parameter to `RangeTermFilter`.
+But, it supports string that represents a date on `ỳyyyMMddHHmmss` [format](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) too.
+
 Also, it is important to highlight the `@Component` annotation that register a new service to the OSGI:
 
 ```.java
@@ -51,9 +54,10 @@ Also, it is important to highlight the `@Component` annotation that register a n
 ```
 
 To chose between implementing a `KeywordQueryContributor` or a `ModelPreFilterContributor`
-Consider these below items:
+consider these below items:
 - Filters are cached and don't influence the score, therefore faster than queries.
 - Query is usually something that the users type and pretty much unpredictable, while filters help users narrowing down the search results , for example using facets.
+
 For more information read [Elasticsearch's documentation](https://www.elastic.co/guide/en/elasticsearch/guide/master/_queries_and_filters.html).
 
 ## Where Is This Sample? [](id=where-is-this-sample)
