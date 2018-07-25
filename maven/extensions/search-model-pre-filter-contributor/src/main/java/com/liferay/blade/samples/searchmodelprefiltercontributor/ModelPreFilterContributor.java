@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	property = "indexer.class.name=com.liferay.blogs.model.BlogsEntry",
+	property = "indexer.class.name=ALL",
 	service = com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor.class
 )
 public class ModelPreFilterContributor
