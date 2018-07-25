@@ -29,8 +29,7 @@ import org.osgi.service.component.annotations.Component;
  * @author Liferay
  */
 @Component(
-	immediate = true,
-	property = "indexer.class.name=ALL",
+	immediate = true, property = "indexer.class.name=ALL",
 	service = com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor.class
 )
 public class ModelPreFilterContributor
@@ -42,7 +41,7 @@ public class ModelPreFilterContributor
 		SearchContext searchContext) {
 
 		RangeTermFilter rangeTermFilter = new RangeTermFilter(
-			Field.CREATE_DATE, true, true, "20180101000000", null);
+			Field.CREATE_DATE, true, true, "now-1h", null);
 
 		booleanFilter.add(rangeTermFilter, BooleanClauseOccur.SHOULD);
 	}
