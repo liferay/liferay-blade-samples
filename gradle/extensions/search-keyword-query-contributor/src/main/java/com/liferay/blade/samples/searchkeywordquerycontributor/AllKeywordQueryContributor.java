@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.searchquerycontributor;
+package com.liferay.blade.samples.searchkeywordquerycontributor;
 
 import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Field;
@@ -30,7 +30,8 @@ import org.osgi.service.component.annotations.Reference;
  * @author Liferay
  */
 @Component(
-	immediate = true, property = "indexer.class.name=ALL",
+	immediate = true,
+	property = "indexer.class.name=com.liferay.calendar.model.Calendar",
 	service = KeywordQueryContributor.class
 )
 public class AllKeywordQueryContributor implements KeywordQueryContributor {
