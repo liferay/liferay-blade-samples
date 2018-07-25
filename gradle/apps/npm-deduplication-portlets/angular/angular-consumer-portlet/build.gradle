@@ -1,10 +1,6 @@
 dependencies {
-<<<<<<< HEAD:gradle/apps/npm/isomorphic-npm-portlet/build.gradle
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
-=======
 	compileOnly group: "com.liferay", name: "com.liferay.frontend.js.loader.modules.extender.api", version: "1.0.2"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
->>>>>>> Update npm samples to liferay-npm-bundler 2.x:gradle/apps/npm-deduplication-portlets/angular/angular-consumer-portlet/build.gradle
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib", version: "2.0.0"
 	compileOnly group: "javax.portlet", name: "portlet-api", version: "3.0.0"
 	compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
