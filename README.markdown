@@ -614,6 +614,15 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/search-keyword-query-contributor](./liferay-workspace/extensions/search-keyword-query-contributor) |
 | Maven      | [./maven/extensions/search-keyword-query-contributor](maven/extensions/search-keyword-query-contributor) |
 
+### Search Model Pre-Filter Contributor
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/extensions/search-model-pre-filter-contributor](./gradle/extensions/search-model-pre-filter-contributor) |
+| Liferay Workspace | [./liferay-workspace/extensions/search-model-pre-filter-contributor](./liferay-workspace/extensions/search-model-pre-filter-contributor)   |
+| Maven      | [./maven/extensions/search-model-pre-filter-contributor](./maven/extensions/search-model-pre-filter-contributor)     
 
 ### Servlet
 
