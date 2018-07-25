@@ -42,6 +42,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>com.liferay.blade.samples.search.query.contributor-${project.version}</finalName>
+		<finalName>com.liferay.blade.samples.search.keyword.query.contributor-${project.version}</finalName>
 	</build>
 </project>
