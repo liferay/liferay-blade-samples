@@ -39,7 +39,7 @@ Also, it is important to highlight the `@Component` annotation that register a n
 ```.java
 @Component(
 	immediate = true,
-	property = "indexer.class.name=com.liferay.blogs.model.BlogsEntry",
+	property = "indexer.class.name=ALL",
 	service = com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor.class
 )
 ```
