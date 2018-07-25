@@ -20,4 +20,4 @@
 
 <portlet:resourceURL id="/blade/captcha" var="captchaURL" />
 
-<liferay-ui:captcha url="<%= captchaURL %>" />
+<liferay-captcha:captcha url="<%= captchaURL %>" />
