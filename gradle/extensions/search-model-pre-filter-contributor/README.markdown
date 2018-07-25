@@ -1,10 +1,16 @@
 # Model Pre Filter Contributor [](id=model-pre-filter-contributor)
 
-This sample demonstrates how to include a pre-filter parameters to search queries on Liferay Portal.
+This sample demonstrates how to include pre-filter parameters to search queries on Liferay Portal.
+
+Steps to test this feature:
+- Add the "Search Bar" and "Search Results" portlets to a web page;
+- Try to search by a blog's entry on the search bar portlet using the title value. All matched entries must be displayed on search results portlet.
+- Deploy the module.
+- Try to search by a blog's entry on the search bar portlet using the title value. Only entries created on the last hour must be displayed on search results portlet.
 
 ## What does this sample do when it's deployed? [](id=what-does-this-sample-do-when-its-deployed)
 
-This sample change the all the queries search to pre-filter all entries created after 01/01/2018.
+This sample changes the all the search queries to pre-filter all entries created on the last hour.
 
 ## What API(s) and/or code components does this sample highlight? [](id=what-apis-and-or-code-components-does-this-sample-highlight)
 
@@ -14,9 +20,9 @@ API.
 
 ## How does this sample leverage the API(s) and/or code component? [](id=how-does-this-sample-leverage-the-apis-and-or-code-component)
 
-This sample conveys the recommended approach to adding a pre-filter, which may contribute to the relevance of the search, in keyword queries.
+This sample demonstrates how to include parameters to search queries, which are used to pre-filter the search results, in keyword queries.
 
-To achieve this goal, you need to create a component that implements the 
+To achieve this goal, you need to create a component that implements the
 `com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor`.
 
 Specifically, you must implement the `contribute` method, which is invoked when a user enters something in the search bars:
@@ -28,7 +34,7 @@ public void contribute(
     SearchContext searchContext) {
 
     RangeTermFilter rangeTermFilter = new RangeTermFilter(
-        Field.CREATE_DATE, true, true, "20180101000000", null);
+        Field.CREATE_DATE, true, true, "now-1h", null);
 
     booleanFilter.add(rangeTermFilter, BooleanClauseOccur.SHOULD);
 }
@@ -44,10 +50,16 @@ Also, it is important to highlight the `@Component` annotation that register a n
 )
 ```
 
+To chose between implementing a `KeywordQueryContributor` or a `ModelPreFilterContributor`
+Consider these below items:
+- Filters are cached and don't influence the score, therefore faster than queries.
+- Query is usually something that the users type and pretty much unpredictable, while filters help users narrowing down the search results , for example using facets.
+For more information read [Elasticsearch's documentation](https://www.elastic.co/guide/en/elasticsearch/guide/master/_queries_and_filters.html).
+
 ## Where Is This Sample? [](id=where-is-this-sample)
 
 There are three different versions of this sample, each built with a different build tool:
 
-- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/extensions/search-model-pre-filter-contributor)
-- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-workspace/extensions/search-model-pre-filter-contributor)
-- [Maven](https://github.com/liferay/liferay-blade-samples/tree/master/maven/extensions/search-model-pre-filter-contributor)
+- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/7.1/gradle/extensions/search-model-pre-filter-contributor)
+- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/7.1/liferay-workspace/extensions/search-model-pre-filter-contributor)
+- [Maven](https://github.com/liferay/liferay-blade-samples/tree/7.1/maven/extensions/search-model-pre-filter-contributor)
