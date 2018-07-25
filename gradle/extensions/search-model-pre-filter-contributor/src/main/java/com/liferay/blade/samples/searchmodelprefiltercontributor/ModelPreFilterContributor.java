@@ -43,7 +43,7 @@ public class ModelPreFilterContributor
 		RangeTermFilter rangeTermFilter = new RangeTermFilter(
 			Field.CREATE_DATE, true, true, "now-1h", null);
 
-		booleanFilter.add(rangeTermFilter, BooleanClauseOccur.SHOULD);
+		booleanFilter.add(rangeTermFilter, BooleanClauseOccur.MUST);
 	}
 
 }
