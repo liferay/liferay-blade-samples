@@ -30,7 +30,7 @@
 		<module>resource-bundle</module>
 		<module>scheduler-entry</module>
 		<module>screen-name-validator</module>
-		<module>search-query-contributor</module>
+		<module>search-keyword-query-contributor</module>
 		<module>servlet</module>
 		<module>struts-action</module>
 		<module>struts-portlet-action</module>
