@@ -18,7 +18,6 @@ package com.liferay.blade.samples.jdbcservicebuilder.service.test;
 
 import aQute.remote.util.JMXBundleDeployer;
 
-import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import com.liferay.blade.samples.jdbcservicebuilder.service.CountryLocalServiceUtil;
 
 import java.io.File;
@@ -31,6 +30,7 @@ import java.sql.Statement;
 import org.hsqldb.persist.HsqlProperties;
 
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
@@ -74,8 +74,7 @@ public class ConnectionTest {
 
 	private static void _addData() throws Exception {
 		_executeNonQuery(
-			"create table country(id bigint not null primary key," +
-				"name varchar(255));");
+			"create table country(id bigint not null primary key, name varchar(255));");
 		_executeNonQuery(
 			"insert into country(id, name) values(1, 'Australia');");
 	}
