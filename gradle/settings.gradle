@@ -50,6 +50,7 @@ include(
 	'extensions:document-action',
 	'extensions:friendly-url',
 	'extensions:gogo',
+	'extensions:index-settings-contributor',
 	'extensions:indexer-post-processor',
 	'extensions:lifecycle-login-preaction',
 	'extensions:model-listener',
