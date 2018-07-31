@@ -50,18 +50,18 @@ public class BillboardjsPortlet extends MVCPortlet {
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"billboardCss", 
+			"billboardCss",
 			"/o/billboardjs-npm-portlet/node_modules/" +
 				_npmResolver.resolveModuleName(
 					"billboardjs-npm-portlet$billboard.js/dist/billboard.css"));
 
 		renderRequest.setAttribute(
-			"mainRequire", 
-			_npmResolver.resolveModuleName(
-				"billboardjs-npm-portlet") + " as main");
-			
+			"mainRequire",
+			_npmResolver.resolveModuleName("billboardjs-npm-portlet") +
+				" as main");
+
 		super.doView(renderRequest, renderResponse);
 	}
 
