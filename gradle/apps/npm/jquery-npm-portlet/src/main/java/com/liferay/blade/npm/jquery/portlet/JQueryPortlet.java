@@ -45,17 +45,16 @@ import org.osgi.service.component.annotations.Reference;
 	service = Portlet.class
 )
 public class JQueryPortlet extends MVCPortlet {
-	
+
 	@Override
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"mainRequire", 
-			_npmResolver.resolveModuleName(
-				"jquery-npm-portlet") + " as main");
-			
+			"mainRequire",
+			_npmResolver.resolveModuleName("jquery-npm-portlet") + " as main");
+
 		super.doView(renderRequest, renderResponse);
 	}
 

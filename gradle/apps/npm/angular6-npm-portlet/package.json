@@ -38,8 +38,8 @@
 	"main": "lib/angular-loader.js",
 	"name": "angular6-npm-portlet",
 	"scripts": {
-		"tsc": "tsc",
-		"build": "tsc && liferay-npm-bundler"
+		"build": "tsc && liferay-npm-bundler",
+		"tsc": "tsc"
 	},
 	"version": "1.0.0"
 }

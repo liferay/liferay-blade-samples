@@ -16,7 +16,7 @@
 
 package com.liferay.blade.samples.portlet.resourcecommand;
 
-import com.liferay.portal.kernel.captcha.CaptchaUtil;
+import com.liferay.captcha.util.CaptchaUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;
 
 import javax.portlet.PortletException;
