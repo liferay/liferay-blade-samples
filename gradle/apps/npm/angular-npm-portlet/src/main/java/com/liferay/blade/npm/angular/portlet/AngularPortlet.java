@@ -50,12 +50,11 @@ public class AngularPortlet extends MVCPortlet {
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"mainRequire", 
-			_npmResolver.resolveModuleName(
-				"angular-npm-portlet") + " as main");
-			
+			"mainRequire",
+			_npmResolver.resolveModuleName("angular-npm-portlet") + " as main");
+
 		super.doView(renderRequest, renderResponse);
 	}
 
