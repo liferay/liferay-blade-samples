@@ -23,31 +23,43 @@ To achieve this goal, you need to create a component that implements the `com.li
 
 Specifically, you must implement the `contribute` method, which is invoked when a user enters something in the search bars:
 
-    @Override
-    public void contribute(
-        String keywords, BooleanQuery booleanQuery,
-        KeywordQueryContributorHelper keywordQueryContributorHelper) {
+```.java
+@Override
+public void contribute(
+    String keywords, BooleanQuery booleanQuery,
+    KeywordQueryContributorHelper keywordQueryContributorHelper) {
 
-        SearchContext searchContext =
-            keywordQueryContributorHelper.getSearchContext();
+    SearchContext searchContext =
+        keywordQueryContributorHelper.getSearchContext();
 
-        queryHelper.addSearchLocalizedTerm(
-            booleanQuery, searchContext, Field.CAPTION, true);
-    }
+    queryHelper.addSearchLocalizedTerm(
+        booleanQuery, searchContext, Field.CAPTION, true);
+}
+```
 
 This method uses Declarative Services to get a reference for the `QueryHelper` to invoke the `addSearchLocalizedTerm` method.
 
 Also, it is important to highlight the `@Component` annotation that register a new service to the OSGI:
 
-    @Component(
-        immediate = true, property = "indexer.class.name=ALL",
-        service = KeywordQueryContributor.class
-    )
+```.java
+@Component(
+	immediate = true,
+	property = "indexer.class.name=com.liferay.calendar.model.Calendar",
+	service = KeywordQueryContributor.class
+)
+```
+
+To chose between implementing a `KeywordQueryContributor` or a `ModelPreFilterContributor`
+consider these below items:
+- Filters are cached and don't influence the score, therefore faster than queries.
+- Query is usually something that the users type and pretty much unpredictable, while filters help users narrowing down the search results , for example using facets.
+
+For more information read [Elasticsearch's documentation](https://www.elastic.co/guide/en/elasticsearch/guide/master/_queries_and_filters.html).
 
 ## Where Is This Sample? [](id=where-is-this-sample)
 
 There are three different versions of this sample, each built with a different build tool:
 
-- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/extensions/search-query-contributor)
-- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-workspace/extensions/search-query-contributor)
-- [Maven](https://github.com/liferay/liferay-blade-samples/tree/master/maven/extensions/search-query-contributor)
+- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/7.1/gradle/extensions/search-keyword-query-contributor)
+- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/7.1/liferay-workspace/extensions/search-keyword-query-contributor)
+- [Maven](https://github.com/liferay/liferay-blade-samples/tree/7.1/maven/extensions/search-keyword-query-contributor)
