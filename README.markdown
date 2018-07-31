@@ -541,6 +541,16 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/model-listener](./liferay-workspace/extensions/model-listener)   |
 | Maven      | [./maven/extensions/model-listener](./maven/extensions/model-listener)        |
 
+### Model Summary Contributor
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/extensions/model-summary-contributor](./gradle/extensions/model-summary-contributor) |
+| Liferay Workspace | [./liferay-workspace/extensions/model-summary-contributor](./liferay-workspace/extensions/model-summary-contributor)   |
+| Maven      | [./maven/extensions/model-summary-contributor](./maven/extensions/model-summary-contributor)        | 
+
 ### Poll Processor
 
 **Template project description**: Demonstrates how to make a hook for a

@@ -53,6 +53,7 @@ include(
 	'extensions:indexer-post-processor',
 	'extensions:lifecycle-login-preaction',
 	'extensions:model-listener',
+	'extensions:model-summary-contributor',
 	'extensions:poll-processor',
 	'extensions:portlet-configuration-icon',
 	'extensions:portlet-toolbar-contributor',
