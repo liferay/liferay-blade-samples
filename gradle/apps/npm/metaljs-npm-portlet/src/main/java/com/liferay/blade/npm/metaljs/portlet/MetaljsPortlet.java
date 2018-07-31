@@ -46,16 +46,16 @@ import org.osgi.service.component.annotations.Reference;
 	service = Portlet.class
 )
 public class MetaljsPortlet extends MVCPortlet {
-	
+
 	@Override
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"mainRequire", 
+			"mainRequire",
 			_npmResolver.resolveModuleName("metaljs-npm-portlet") + " as main");
-			
+
 		super.doView(renderRequest, renderResponse);
 	}
 

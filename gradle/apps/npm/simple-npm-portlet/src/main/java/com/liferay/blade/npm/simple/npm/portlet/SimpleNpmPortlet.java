@@ -50,11 +50,11 @@ public class SimpleNpmPortlet extends MVCPortlet {
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"mainRequire", 
+			"mainRequire",
 			_npmResolver.resolveModuleName("simple-npm-portlet") + " as main");
-			
+
 		super.doView(renderRequest, renderResponse);
 	}
 

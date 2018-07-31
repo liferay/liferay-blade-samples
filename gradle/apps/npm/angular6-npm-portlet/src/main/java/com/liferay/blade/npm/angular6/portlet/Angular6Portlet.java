@@ -50,18 +50,16 @@ public class Angular6Portlet extends MVCPortlet {
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
-		
+
 		renderRequest.setAttribute(
-			"loaderRequire", 
-			_npmResolver.resolveModuleName(
-				"angular6-npm-portlet") + " as loader");
-			
+			"loaderRequire",
+			_npmResolver.resolveModuleName("angular6-npm-portlet") +
+				" as loader");
+
 		renderRequest.setAttribute(
-			"mainRequire", 
-			_npmResolver.resolveModuleName(
-				"angular6-npm-portlet/lib/main"));
-			
-			
+			"mainRequire",
+			_npmResolver.resolveModuleName("angular6-npm-portlet/lib/main"));
+
 		super.doView(renderRequest, renderResponse);
 	}
 
