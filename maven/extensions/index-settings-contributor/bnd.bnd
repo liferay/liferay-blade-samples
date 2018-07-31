@@ -1,0 +1,4 @@
+Bundle-Description: This samples demonstrate how to add type mapping on Liferay Portal.
+Bundle-Name: com.liferay.blade.index.settings.contributor
+Bundle-SymbolicName: com.liferay.blade.index.settings.contributor
+Bundle-Version: 1.0.0
