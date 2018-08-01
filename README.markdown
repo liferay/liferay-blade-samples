@@ -40,7 +40,7 @@ folder of a sample project. This article should include the following sections:
 - *How does this sample leverage the API(s) and/or code component?*
 
 For example, the
-[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/resource-bundle-override)
+[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/resource-bundle-override)
 article explains the `resource-bundle-override` sample using the aforementioned
 sections.
 
