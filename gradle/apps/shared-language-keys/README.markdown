@@ -7,5 +7,5 @@ provides language keys, which are shared with the JSP portlet.
 
 For more details explaining how the `language` and
 `language-web` modules function together, see the following
-[reference article](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/shared-language-keys)
+[reference article](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/shared-language-keys)
 on Liferay's Developer Network.
