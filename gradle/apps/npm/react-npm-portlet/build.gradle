@@ -1,5 +1,5 @@
 dependencies {
-	compileOnly group: "com.liferay", name: "com.liferay.frontend.js.loader.modules.extender.api", version: "12.0.2"
+	compileOnly group: "com.liferay", name: "com.liferay.frontend.js.loader.modules.extender.api", version: "2.0.2"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib", version: "2.0.0"
 	compileOnly group: "javax.portlet", name: "portlet-api", version: "3.0.0"
