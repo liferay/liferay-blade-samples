@@ -5,5 +5,5 @@ application's language keys file for any module that is deployed to Liferay
 Portal's OSGi runtime (not applicable to Liferay Portal's core language keys).
 
 For more details on this sample, see the
-[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/resource-bundle-override)
+[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/resource-bundle-override)
 article on Liferay's Developer Network.
