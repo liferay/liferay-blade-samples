@@ -12,6 +12,7 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<properties>
+		<com.liferay.css.builder.outputDir>${project.build.directory}/build-css</com.liferay.css.builder.outputDir>
 		<com.liferay.portal.tools.theme.builder.outputDir>target/build-theme</com.liferay.portal.tools.theme.builder.outputDir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -38,13 +39,16 @@
 								<exclude>**/*.sass-cache/</exclude>
 							</excludes>
 						</resource>
+						<resource>
+							<directory>${com.liferay.css.builder.outputDir}</directory>
+						</resource>
 					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>2.0.2</version>
+				<version>2.1.1</version>
 				<executions>
 					<execution>
 						<id>default-build-css</id>
@@ -55,8 +59,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>${com.liferay.portal.tools.theme.builder.outputDir}</docrootDirName>
-					<outputDirName>./</outputDirName>
+					<baseDir>${com.liferay.portal.tools.theme.builder.outputDir}</baseDir>
+					<outputDirName>${com.liferay.css.builder.outputDir}</outputDirName>
 					<precision>9</precision>
 				</configuration>
 			</plugin>
@@ -68,7 +72,7 @@
 					<execution>
 						<phase>generate-resources</phase>
 						<goals>
-							<goal>build-theme</goal>
+							<goal>build</goal>
 						</goals>
 						<configuration>
 							<diffsDir>src/main/webapp/</diffsDir>
@@ -82,4 +86,24 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.frontend.css.common</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.frontend.theme.styled</artifactId>
+			<version>3.0.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.frontend.theme.unstyled</artifactId>
+			<version>3.0.4</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
