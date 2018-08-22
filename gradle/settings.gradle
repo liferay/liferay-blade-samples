@@ -42,6 +42,7 @@ include(
 	'apps:shared-language-keys:language-web',
 	'apps:simulation-panel-app',
 	'apps:springmvc-portlet',
+	'ext:login-web-ext',
 	'extensions:auth-failure',
 	'extensions:authenticator-shiro',
 	'extensions:auto-login',

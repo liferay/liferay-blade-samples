@@ -1,0 +1,37 @@
+@import "bourbon";
+
+.portlet-login {
+	.hello {
+		background-color: red;
+	}
+
+	.form {
+		fieldset {
+			border-width: 0;
+			margin-bottom: 0;
+			padding: 0;
+		}
+
+		.button-holder, .form-column {
+			margin-bottom: 10px;
+		}
+	}
+
+	.navigation {
+		background: #EEE;
+		border-top: 1px solid #BFBFBF;
+		padding: 10px;
+	}
+
+	.signed-in {
+		display: inline-block;
+
+		@include hyphens;
+	}
+}
+
+.login-container {
+	background-color: red;
+	font-size: 60px;
+	width: 50px;
+}
