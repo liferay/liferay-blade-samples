@@ -1,4 +1,4 @@
-# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.0
+# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.1
 
 Liferay's Blade samples provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
