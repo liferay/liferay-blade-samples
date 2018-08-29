@@ -76,6 +76,7 @@ task testFunctional(type: Test) {
 	dependsOn ":extensions:portlet-configuration-icon:jar"
 	dependsOn ":extensions:portlet-toolbar-contributor:jar"
 	dependsOn ":overrides:portlet-form-taglib-override:jar"
+	dependsOn ":wars:jsp-war-portlet:war"
 
 	doFirst {
 		systemProperty 'actionCommandPortletJarFile', project(':apps:action-command-portlet').jar.archivePath
@@ -90,6 +91,7 @@ task testFunctional(type: Test) {
 		systemProperty 'greedyServiceReferenceProjectdir', project(':apps:greedy-policy-option-portlet:service-reference').projectDir
 		systemProperty 'servletJarFile', project(':extensions:servlet').jar.archivePath
 		systemProperty 'jspPortletJarFile', project(':apps:jsp-portlet').jar.archivePath
+		systemProperty 'jspPortletWarFile', project(':wars:jsp-war-portlet').war.archivePath
 		systemProperty 'languageJarFile', project(':apps:shared-language-keys:language').jar.archivePath
 		systemProperty 'languageWebJarFile', project(':apps:shared-language-keys:language-web').jar.archivePath
 		systemProperty 'liferayHome', liferay.liferayHome
