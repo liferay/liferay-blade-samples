@@ -60,7 +60,6 @@ task testFunctional(type: Test) {
 
 	dependsOn ":apps:npm:angular-npm-portlet:jar"
 	dependsOn ":apps:npm:billboardjs-npm-portlet:jar"
-	dependsOn ":apps:npm:isomorphic-npm-portlet:jar"
 	dependsOn ":apps:npm:jquery-npm-portlet:jar"
 	dependsOn ":apps:npm:metaljs-npm-portlet:jar"
 	dependsOn ":apps:npm:react-npm-portlet:jar"
@@ -70,7 +69,6 @@ task testFunctional(type: Test) {
 	doFirst {
 		systemProperty 'angularNpmPortletJarFile', project(':apps:npm:angular-npm-portlet').jar.archivePath
 		systemProperty 'billboardjsNpmPortletJarFile', project(':apps:npm:billboardjs-npm-portlet').jar.archivePath
-		systemProperty 'isomorphicNpmPortletJarFile', project(':apps:npm:isomorphic-npm-portlet').jar.archivePath
 		systemProperty 'jqueryNpmPortletJarFile', project(':apps:npm:jquery-npm-portlet').jar.archivePath
 		systemProperty 'metaljsNpmPortletJarFile', project(':apps:npm:metaljs-npm-portlet').jar.archivePath
 		systemProperty 'reactNpmPortletJarFile', project(':apps:npm:react-npm-portlet').jar.archivePath
