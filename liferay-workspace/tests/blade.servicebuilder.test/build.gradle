@@ -59,11 +59,6 @@ task testFunctional(type: Test) {
 		systemProperty 'fooWebJarFile', project.jar.archivePath
 	}
 
-	project(':wars:jsp-war-portlet').afterEvaluate { project ->
-		dependsOn project.war
-		systemProperty 'jspPortletWarFile', project.war.archivePath
-	}
-
 	project(':wars:springmvc-portlet').afterEvaluate { project ->
 		dependsOn project.war
 		systemProperty 'springmvcPortletWarFile', project.war.archivePath

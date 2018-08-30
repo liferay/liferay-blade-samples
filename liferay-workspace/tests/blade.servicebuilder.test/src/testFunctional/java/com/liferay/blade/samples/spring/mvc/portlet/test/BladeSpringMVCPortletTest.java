@@ -28,7 +28,6 @@ import java.io.File;
 import java.net.URL;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -68,6 +67,7 @@ public class BladeSpringMVCPortletTest {
 		final File fooApiJar = new File(System.getProperty("fooApiJarFile"));
 		final File fooServiceJar = new File(
 			System.getProperty("fooServiceJarFile"));
+
 		final File springmvcPortletWar = new File(
 			System.getProperty("springmvcPortletWarFile"));
 
@@ -85,7 +85,7 @@ public class BladeSpringMVCPortletTest {
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		_webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		String url = _webDriver.getCurrentUrl();
 
