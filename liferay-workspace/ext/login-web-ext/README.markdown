@@ -21,11 +21,11 @@ You can create your own ext module project by
 To properly declare the original module in the `build.gradle` file (only supports Gradle), you must specify the
 original module's Bundle Symbolic Name and the original module's exact version. In this example, this is configured like this:
 
-    originalModule group: "com.liferay", name: "com.liferay.login.web", version: "2.0.4"
+	originalModule group: "com.liferay", name: "com.liferay.login.web", version: "2.0.4"
 
 You should put your ext module project in `LiferayWorkspaceDir/ext` by default, or you can specify it in `gradle.properties` by adding:
 
-    liferay.workspace.ext.dir=ext
+	liferay.workspace.ext.dir=ext
 
 Then you need to provide your own code intended to replace the original one. **Be sure
 to mimic the original module's folder structure when overriding its JAR.**
@@ -33,7 +33,7 @@ to mimic the original module's folder structure when overriding its JAR.**
 If you are developing an ext module project in standalone mode(not associated with Liferay workspace),
 you also need to declare the ext gradle plugin in your `build.gradle`.
 
-    apply plugin: 'com.liferay.osgi.ext.plugin'
+	apply plugin: 'com.liferay.osgi.ext.plugin'
 
 ## What Is the Ext module difference with OSGI Fragment module? [](id=what-is-the-difference)
 
