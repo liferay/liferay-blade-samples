@@ -52,5 +52,5 @@ It depends on the [Ext Gradle Plugin](https://github.com/liferay/liferay-portal/
 There are two different versions of this sample, each built with a different
 build tool:
 
-- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/master/gradle/ext/login-web-ext)
-- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/master/liferay-workspace/ext/login-web-ext)
+- [Gradle](https://github.com/liferay/liferay-blade-samples/tree/7.1/gradle/ext/login-web-ext)
+- [Liferay Workspace](https://github.com/liferay/liferay-blade-samples/tree/7.1/liferay-workspace/ext/login-web-ext)
