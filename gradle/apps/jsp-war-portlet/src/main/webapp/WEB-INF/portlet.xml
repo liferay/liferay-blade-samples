@@ -4,7 +4,7 @@
 	<portlet>
 		<portlet-name>jsp-war-portlet</portlet-name>
 		<display-name>JSP WAR Portlet</display-name>
-		<portlet-class>com.liferay.blade.samples.portlet.JSPWARPortlet</portlet-class>
+		<portlet-class>com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>template-path</name>
 			<value>/</value>
