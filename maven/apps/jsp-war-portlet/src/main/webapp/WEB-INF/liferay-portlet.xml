@@ -8,7 +8,7 @@
 		<instanceable>true</instanceable>
 		<requires-namespaced-parameters>false</requires-namespaced-parameters>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<css-class-wrapper>portlet-jsp</css-class-wrapper>
+		<css-class-wrapper>jsp-war-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
