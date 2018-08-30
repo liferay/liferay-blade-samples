@@ -2,9 +2,9 @@
 
 ## What does this sample do when it's deployed? [](id=what-does-this-sample-do-when-its-deployed)
 
-The Login Ext Module sample lets you customize the original Liferay module almost source code. 
-This example replaces the default login.jsp file in the com.liferay.login.web bundle 
-by adding the addtional text `"Hello from com.liferay.login.web.ext module"` to the Sign In form 
+The Login Ext Module sample lets you customize the original Liferay module almost source code.
+This example replaces the default login.jsp file in the com.liferay.login.web bundle
+by adding the addtional text `"Hello from com.liferay.login.web.ext module"` to the Sign In form
 and replaces the `ForgotPasswordMVCRenderCommand` class to print the text `"In ForgotPasswordMVCRenderCommand render"` to the console.
 
 ## What API(s) and/or code components does this sample highlight? [](id=what-apis-and-or-code-components-does-this-sample-highlight)
@@ -18,7 +18,7 @@ You can create your own ext module project by
 - Declaring the original module name and version.
 - Providing the source code that will replace the original one's.
 
-To properly declare the original module in the `build.gradle` file (only support Gradle now), you must specify the 
+To properly declare the original module in the `build.gradle` file (only support Gradle now), you must specify the
 original module's Bundle Symbolic Name and the original module's exact version. In this example, this is configured like this:
 
     originalModule group: "com.liferay", name: "com.liferay.login.web", version: "2.0.4"
@@ -30,15 +30,14 @@ You should put your ext module project in `LiferayWorkspaceDir./ext` by default,
 Then you need provide your own code intended to replace the original one. **Be sure
 to mimic the original module's folder structure when overriding its JAR.**
 
-If you are developing ext module project in standealone mode(not associating with Liferay workspace), 
+If you are developing ext module project in standealone mode(not associating with Liferay workspace),
 you also need to declare the ext gradle plugin in your `build.gradle`.
 
     apply plugin: 'com.liferay.osgi.ext.plugin'
 
-
 ## What Is the Ext module difference with OSGGI Fragment module? [](id=what-is-the-difference)
 
-After you deployed your ext project in portal, you will see the original module will be stopped 
+After you deployed your ext project in portal, you will see the original module will be stopped
 (`com.liferay.login.web_2.0.4`), and then you bundle `com.liferay.login.web_2.0.4.ext` will be started,
  which is different from the fragment that still running the host bundle.
 
