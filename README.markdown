@@ -72,6 +72,15 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ## Liferay Extension Points and Template Projects
 
+## Ext
+
+### Login Web Ext
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/ext/login-web-ext](./gradle/ext/login-web-ext) |
+| Liferay Workspace | [./liferay-workspace/ext/login-web-ext](./liferay-workspace/ext/login-web-ext)   |
+
 ## Apps
 
 ### Action Command Portlet
