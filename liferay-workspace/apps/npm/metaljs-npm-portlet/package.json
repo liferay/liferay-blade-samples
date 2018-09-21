@@ -12,7 +12,6 @@
 	"description": "Metal.js Portlet",
 	"devDependencies": {
 		"liferay-npm-bundler": "2.0.0",
-		"liferay-npm-bundler-preset-standard": "2.0.0",
 		"metal-tools-soy": "4.2.7"
 	},
 	"main": "lib/index.es.js",

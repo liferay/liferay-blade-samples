@@ -4,8 +4,7 @@
 	},
 	"description": "jQuery Portlet",
 	"devDependencies": {
-		"liferay-npm-bundler": "2.0.0",
-		"liferay-npm-bundler-preset-amd": "2.0.0"
+		"liferay-npm-bundler": "2.0.0"
 	},
 	"main": "lib/index.es.js",
 	"name": "jquery-npm-portlet",

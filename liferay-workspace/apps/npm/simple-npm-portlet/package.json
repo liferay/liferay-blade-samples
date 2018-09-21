@@ -4,8 +4,7 @@
 	},
 	"description": "Simple npm Portlet",
 	"devDependencies": {
-		"liferay-npm-bundler": "2.0.0",
-		"liferay-npm-bundler-preset-standard": "2.0.0"
+		"liferay-npm-bundler": "2.0.0"
 	},
 	"main": "lib/index.es.js",
 	"name": "simple-npm-portlet",
