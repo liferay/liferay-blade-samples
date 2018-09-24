@@ -47,6 +47,8 @@ subprojects { subproject ->
 	}
 }
 
+apply plugin: "com.gradle.build-scan"
+
 configurations {
 	aries
 }
