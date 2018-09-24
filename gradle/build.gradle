@@ -32,6 +32,11 @@ subprojects {
 	}
 }
 
+buildScan {
+	termsOfServiceUrl = "https://gradle.com/terms-of-service"
+	termsOfServiceAgree = "yes"
+}
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '4.1'
 	jarFile = "${project.projectDir}/.gradle-wrapper/gradle-wrapper.jar"

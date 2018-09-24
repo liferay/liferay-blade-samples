@@ -61,6 +61,11 @@ repositories {
 	}
 }
 
+buildScan {
+	termsOfServiceUrl = "https://gradle.com/terms-of-service"
+	termsOfServiceAgree = "yes"
+}
+
 task deployAries(type: Copy) {
 	from configurations.aries
 	into "bundles/osgi/test"
