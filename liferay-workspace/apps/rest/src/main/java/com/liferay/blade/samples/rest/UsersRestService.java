@@ -36,7 +36,7 @@ import org.osgi.service.log.LogService;
 /**
  * @author Liferay
  */
-@ApplicationPath("/blade.users")
+@ApplicationPath("/users")
 @Component(
 	immediate = true, property = "jaxrs.application=true",
 	service = Application.class
@@ -45,7 +45,7 @@ public class UsersRestService extends Application {
 
 	@Activate
 	public void activate() {
-		_log.log(LogService.LOG_INFO, "Blade Rest Portlet Deployed!");
+		_log.log(LogService.LOG_INFO, "Users Rest service activated.");
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class UsersRestService extends Application {
 
 		for (User user : _userLocalService.getUsers(-1, -1)) {
 			result.append(user.getFullName());
-			result.append(",\n");
+			result.append("\n");
 		}
 
 		return result.toString();
