@@ -22,7 +22,6 @@ import com.liferay.portal.kernel.service.UserLocalService;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,21 +30,24 @@ import javax.ws.rs.core.Application;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
  */
-@ApplicationPath("/blade.users")
 @Component(
-	immediate = true, property = "jaxrs.application=true",
+	property = {
+		JaxrsWhiteboardConstants.JAX_RS_APPLICATION_BASE + "=/users",
+		JaxrsWhiteboardConstants.JAX_RS_NAME + "=Users"
+	},
 	service = Application.class
 )
 public class UsersRestService extends Application {
 
 	@Activate
 	public void activate() {
-		_log.log(LogService.LOG_INFO, "Blade Rest Portlet Deployed!");
+		_log.log(LogService.LOG_INFO, "User Rest service activated.");
 	}
 
 	@Override
@@ -60,8 +62,8 @@ public class UsersRestService extends Application {
 		StringBuilder result = new StringBuilder();
 
 		for (User user : _userLocalService.getUsers(-1, -1)) {
-			result.append(user.getFullName());
-			result.append(",\n");
+			result.append(user.isDefaultUser() ? "Guest" : user.getFullName());
+			result.append("\n");
 		}
 
 		return result.toString();
