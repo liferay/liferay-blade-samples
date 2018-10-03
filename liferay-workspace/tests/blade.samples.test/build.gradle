@@ -69,6 +69,7 @@ task testFunctional(type: Test) {
 	dependsOn ":apps:jsp-portlet:jar"
 	dependsOn ":apps:osgi-portlet:jar"
 	dependsOn ":apps:render-command-portlet:jar"
+	dependsOn ":apps:rest:jar"
 	dependsOn ":apps:shared-language-keys:language:jar"
 	dependsOn ":apps:shared-language-keys:language-web:jar"
 	dependsOn ":extensions:control-menu-entry:jar"
@@ -98,6 +99,7 @@ task testFunctional(type: Test) {
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
 		systemProperty 'projectDir', rootProject.projectDir
+		systemProperty 'restJarFile', project(':apps:rest').jar.archivePath
 		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
 	}
 
