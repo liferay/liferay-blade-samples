@@ -31,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
 import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 /**
@@ -48,6 +49,7 @@ public class BladeRestServiceTest {
 
 	@Test
 	public void testBladeRestService() throws MalformedURLException {
+		_webDriver.get(_portletURL.toExternalForm());
 
 		URL url = new URL(
 			"http://localhost:8080/o/" + _portletName + "/users/list");
@@ -62,6 +64,9 @@ public class BladeRestServiceTest {
 	}
 
 	private String _portletName = "com.liferay.blade.rest";
+
+	@PortalURL("com_liferay_hello_world_web_portlet_HelloWorldPortlet")
+	private URL _portletURL;
 
 	@Drone
 	private WebDriver _webDriver;
