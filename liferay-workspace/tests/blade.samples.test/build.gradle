@@ -99,8 +99,8 @@ task testFunctional(type: Test) {
 		systemProperty 'portletConfigurationIconJarFile', project(':extensions:portlet-configuration-icon').jar.archivePath
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
 		systemProperty 'projectDir', rootProject.projectDir
-		systemProperty 'restJarFile', project(':apps:rest').jar.archivePath
 		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
+		systemProperty 'restJarFile', project(':apps:rest').jar.archivePath
 	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
