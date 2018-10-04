@@ -21,7 +21,7 @@ You can create your own ext module project by
 To properly declare the original module in the `build.gradle` file (only supports Gradle), you must specify the
 original module's Bundle Symbolic Name and the original module's exact version. In this example, this is configured like this:
 
-	originalModule group: "com.liferay", name: "com.liferay.login.web", version: "2.0.4"
+	originalModule group: "com.liferay", name: "com.liferay.login.web", version: "3.0.4"
 
 You should put your ext module project in `LiferayWorkspaceDir/ext` by default, or you can specify it in `gradle.properties` by adding:
 
@@ -38,7 +38,7 @@ you also need to declare the ext gradle plugin in your `build.gradle`.
 ## What Is the Ext module difference with OSGI Fragment module? [](id=what-is-the-difference)
 
 After you deploy your ext project in portal, you will see the original module will be stopped
-(`com.liferay.login.web_2.0.4`), and then the new bundle `com.liferay.login.web_2.0.4.ext` will be started,
+(`com.liferay.login.web_3.0.4`), and then the new bundle `com.liferay.login.web_3.0.4.ext` will be started,
  which is different from the fragment running the host bundle.
 
 ## What kind of type's file could be overlay? [](id=what-kind-of-type)
