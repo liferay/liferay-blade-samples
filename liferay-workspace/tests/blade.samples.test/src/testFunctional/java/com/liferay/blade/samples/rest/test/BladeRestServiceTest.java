@@ -17,6 +17,8 @@
 package com.liferay.blade.samples.rest.test;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -30,7 +32,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
-import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Lawrence Lee
@@ -46,17 +47,21 @@ public class BladeRestServiceTest {
 	}
 
 	@Test
-	public void testBladePortletDS()
-		throws InterruptedException, PortalException {
+	public void testBladeRestService() throws MalformedURLException {
 
-		_webDriver.get("http://localhost:8080/o/com.liferay.blade.rest/users/list");
+		URL url = new URL(
+			"http://localhost:8080/o/" + _portletName + "/users/list");
 
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
+
+		_webDriver.get(url.toExternalForm());
 
 		String pageContent = _webDriver.getPageSource();
 
 		Assert.assertTrue(pageContent, pageContent.contains("Test Test"));
 	}
+
+	private String _portletName = "com.liferay.blade.rest";
 
 	@Drone
 	private WebDriver _webDriver;
