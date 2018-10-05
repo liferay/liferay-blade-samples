@@ -54,7 +54,6 @@ public class BladeJqueryNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore
 	@Test
 	public void testBladeJQueryNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());

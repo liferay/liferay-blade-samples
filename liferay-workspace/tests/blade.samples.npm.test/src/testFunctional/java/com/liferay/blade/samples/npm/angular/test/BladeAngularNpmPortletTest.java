@@ -54,7 +54,6 @@ public class BladeAngularNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore //only seems to work in firefox, not in phantomjs
 	@Test
 	public void testBladeAngularNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());

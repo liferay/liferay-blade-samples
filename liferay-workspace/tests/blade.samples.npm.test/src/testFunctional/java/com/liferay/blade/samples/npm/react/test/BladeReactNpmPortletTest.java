@@ -54,7 +54,6 @@ public class BladeReactNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore //react doesn't seem to work with phantomjs, only firefox
 	@Test
 	public void testBladeReactNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());
