@@ -1,6 +1,0 @@
-Bundle-Description: This samples demonstrates how to add summaries to Liferay Portal
-Bundle-Name: com.liferay.blade.samples.model.summary.contributor
-Bundle-SymbolicName: com.liferay.blade.samples.model.summary.contributor
-Bundle-Version: 1.0.0
-Liferay-Require-SchemaVersion: 1.0.0
-Liferay-Service: true
