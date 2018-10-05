@@ -54,7 +54,11 @@ public class VerifySample {
 		Stream.of(
 			_bundleContext.getBundles()
 		).filter(
-			bundle -> bundle.getSymbolicName().equals(bsn)
+			bundle -> {
+				String symbolicName = bundle.getSymbolicName();
+
+				return symbolicName.equals(bsn);
+			}
 		).findFirst(
 		).ifPresent(
 			this::_verify
@@ -67,11 +71,17 @@ public class VerifySample {
 		return Stream.of(
 			Bundle.class.getFields()
 		).filter(
-			field -> field.getType().equals(int.class)
+			field -> {
+				Class<?> type = field.getType();
+
+				return type.equals(int.class);
+			}
 		).filter(
 			field -> {
 				try {
-					return field.get(null).equals(Integer.valueOf(state));
+					Object object = field.get(null);
+
+					return object.equals(Integer.valueOf(state));
 				}
 				catch (Exception e) {
 					return false;
@@ -122,11 +132,14 @@ public class VerifySample {
 						"\t" + _WARNING + "\tNo using bundles for following " +
 							"service reference\n");
 
-					Stream.of(sr.getPropertyKeys()).forEach(
+					Stream.of(
+						sr.getPropertyKeys()
+					).forEach(
 						key -> {
 							_messages.append("\t\t\t" + key + "=");
 							_messages.append(sr.getProperty(key) + "\n");
-						});
+						}
+					);
 				}
 			}
 		);

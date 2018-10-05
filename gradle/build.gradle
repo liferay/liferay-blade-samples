@@ -1,11 +1,14 @@
 buildscript {
+	dependencies {
+		classpath group: "com.gradle", name: "build-scan-plugin", version: "1.16"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
+	}
+
 	repositories {
 		maven {
+			url "https://plugins.gradle.org/m2/"
 			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
 		}
-	}
-	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
 	}
 }
 
@@ -30,6 +33,13 @@ subprojects {
 			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
 		}
 	}
+}
+
+apply plugin: "com.gradle.build-scan"
+
+buildScan {
+	termsOfServiceUrl = "https://gradle.com/terms-of-service"
+	termsOfServiceAgree = "yes"
 }
 
 task wrapper(type: Wrapper) {
