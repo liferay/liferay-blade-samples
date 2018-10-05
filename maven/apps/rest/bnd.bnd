@@ -1,6 +1,7 @@
 Bundle-Name: com.liferay.blade.rest
 Bundle-SymbolicName: com.liferay.blade.rest
 Bundle-Version: 1.0.0
+Liferay-Configuration-Path: /configuration
 Require-Capability:\
 	osgi.contract;\
 		filter:="(&(osgi.contract=JavaJAXRS)(version=2))"

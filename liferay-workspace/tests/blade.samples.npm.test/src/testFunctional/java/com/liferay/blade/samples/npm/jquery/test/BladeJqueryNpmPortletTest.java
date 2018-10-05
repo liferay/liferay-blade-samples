@@ -31,6 +31,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -53,6 +54,7 @@ public class BladeJqueryNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	@Ignore
 	@Test
 	public void testBladeJQueryNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());
@@ -68,10 +70,10 @@ public class BladeJqueryNpmPortletTest {
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected: Liferay NPM jQuery Example, but saw: " +
+			"Expected: JQUERY PORTLET, but saw: " +
 				_portletTitle.getText(),
 			_portletTitle.getText().toLowerCase().contentEquals(
-				"liferay npm jquery example"));
+				"jquery portlet"));
 
 		Assert.assertTrue(
 			"Expected: Hello from jQuery!..., but saw: " +
