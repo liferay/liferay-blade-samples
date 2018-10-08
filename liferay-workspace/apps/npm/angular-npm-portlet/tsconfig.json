@@ -3,20 +3,16 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"lib": ["es2015", "dom"],
+		"module": "amd",
 		"moduleResolution": "node",
-		"outDir": "build/resources/main/META-INF/resources/lib",
+		"noImplicitAny": true,
+		"noStrictGenericChecks": true,
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",
-		"typeRoots": ["./node_modules/@types/"],
-
-		"module": "commonjs",
-		"strict": true,
-		"noFallthroughCasesInSwitch": true,
-		"inlineSources": true,
-		"declaration": false,
-		"skipLibCheck": true,
-		"types": ["jasmine", "node"]
+		"typeRoots": ["./node_modules/@types/"]
 	},
-	"include": ["src/main/resources/META-INF/resources/**/*.ts"]
+	"include": [
+		"src/**/*.ts"
+	]
 }
