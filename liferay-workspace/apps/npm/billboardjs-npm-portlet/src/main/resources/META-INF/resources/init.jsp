@@ -28,8 +28,3 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <liferay-theme:defineObjects />
 
 <portlet:defineObjects />
-
-<%
-String billboardCss = (String)renderRequest.getAttribute("billboardCss");
-String mainRequire = (String)renderRequest.getAttribute("mainRequire");
-%>
