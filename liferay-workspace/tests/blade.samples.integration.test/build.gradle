@@ -21,6 +21,12 @@ startTestableTomcat {
 	checkTimeout = 30 * 60 * 1000
 }
 
+stopTestableTomcat {
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
+}
+
 testIntegration {
 	outputs.upToDateWhen { false }
 
@@ -71,11 +77,5 @@ testIntegration {
 
 	doLast {
 		delete new File("target/drone-phantomjs")
-	}
-}
-
-stopTestableTomcat {
-	doLast {
-		delete new File(liferay.liferayHome, "data")
 	}
 }

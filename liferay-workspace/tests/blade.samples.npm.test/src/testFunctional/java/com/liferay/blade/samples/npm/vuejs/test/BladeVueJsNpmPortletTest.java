@@ -87,9 +87,7 @@ public class BladeVueJsNpmPortletTest {
 			"Expected: !sj.euV morf olleH, but saw: " +
 				_portletReversibleMessage.getText(),
 			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver,
-				_portletReversibleMessage,
-				"!sj.euV morf olleH"));
+				_webDriver, _portletReversibleMessage, "!sj.euV morf olleH"));
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]")

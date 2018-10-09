@@ -20,9 +20,9 @@ import aQute.bnd.osgi.Jar;
 
 import aQute.lib.io.IO;
 
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.blade.samples.integration.test.utils.BladeCLIUtil;
 import com.liferay.blade.samples.integration.test.utils.GradleRunnerUtil;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -70,6 +70,7 @@ public class BladeSamplesTest {
 			try {
 				client.newCall(request).execute();
 				pingSucceeded = true;
+
 				break;
 			}
 			catch (Exception e) {
@@ -154,6 +155,7 @@ public class BladeSamplesTest {
 				}
 			}
 		}
+
 		List<String> startErrorList = new ArrayList<>();
 
 		for (String startBundleID : bundleIDStartMap.keySet()) {
@@ -175,7 +177,6 @@ public class BladeSamplesTest {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
 		}
-
 		else {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "control-menu-entry", "cmehelloworld");
@@ -270,7 +271,6 @@ public class BladeSamplesTest {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "portlet-provider", "pphelloworld", "-v", "7.1");
 		}
-
 		else {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "portlet-provider", "pphelloworld");
@@ -308,7 +308,8 @@ public class BladeSamplesTest {
 		IO.copy(serviceProperties, servicePropertiesBackup);
 
 		BuildTask buildService = GradleRunnerUtil.executeGradleRunner(
-			_projectPath, ":apps:service-builder:basic:basic-service:buildService");
+			_projectPath,
+			":apps:service-builder:basic:basic-service:buildService");
 
 		GradleRunnerUtil.verifyGradleRunnerOutput(buildService);
 
@@ -361,7 +362,6 @@ public class BladeSamplesTest {
 				_testDir, "service-builder", "guestbook", "-p",
 				"com.liferay.docs.guestbook", "-v", "7.1");
 		}
-
 		else {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "service-builder", "guestbook", "-p",

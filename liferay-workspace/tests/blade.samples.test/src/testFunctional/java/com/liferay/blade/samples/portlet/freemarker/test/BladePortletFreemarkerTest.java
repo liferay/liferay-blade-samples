@@ -75,8 +75,7 @@ public class BladePortletFreemarkerTest {
 		Assert.assertTrue(
 			"Expected Hello from BLADE Freemarker!, but saw " +
 				_portletBody.getText(),
-			_portletBody.getText().equals(
-				"Hello from BLADE Freemarker!"));
+			_portletBody.getText().equals("Hello from BLADE Freemarker!"));
 
 		String portletBodyAttributeClass = _portletBody.getAttribute("class");
 
