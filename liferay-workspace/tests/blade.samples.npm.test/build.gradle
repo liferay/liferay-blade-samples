@@ -59,15 +59,21 @@ task testFunctional(type: Test) {
 	dependsOn startTestableTomcat
 
 	dependsOn ":apps:npm:angular-npm-portlet:jar"
+	dependsOn ":apps:npm:angular6-npm-portlet:jar"
 	dependsOn ":apps:npm:billboardjs-npm-portlet:jar"
 	dependsOn ":apps:npm:jquery-npm-portlet:jar"
 	dependsOn ":apps:npm:metaljs-npm-portlet:jar"
 	dependsOn ":apps:npm:react-npm-portlet:jar"
 	dependsOn ":apps:npm:simple-npm-portlet:jar"
 	dependsOn ":apps:npm:vuejs-npm-portlet:jar"
+	dependsOn ":apps:npm-deduplication-portlets:angular:angular-consumer-portlet:jar"
+	dependsOn ":apps:npm-deduplication-portlets:angular:angular-provider:jar"
 
 	doFirst {
+		systemProperty 'angularConsumerPortletJarFile', project(':apps:npm-deduplication-portlets:angular:angular-consumer-portlet').jar.archivePath
 		systemProperty 'angularNpmPortletJarFile', project(':apps:npm:angular-npm-portlet').jar.archivePath
+		systemProperty 'angular6NpmPortletJarFile', project(':apps:npm:angular6-npm-portlet').jar.archivePath
+		systemProperty 'angularProviderJarFile', project(':apps:npm-deduplication-portlets:angular:angular-provider').jar.archivePath
 		systemProperty 'billboardjsNpmPortletJarFile', project(':apps:npm:billboardjs-npm-portlet').jar.archivePath
 		systemProperty 'jqueryNpmPortletJarFile', project(':apps:npm:jquery-npm-portlet').jar.archivePath
 		systemProperty 'metaljsNpmPortletJarFile', project(':apps:npm:metaljs-npm-portlet').jar.archivePath
