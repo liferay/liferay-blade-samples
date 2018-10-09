@@ -68,10 +68,9 @@ public class BladeJqueryNpmPortletTest {
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected: LIFERAY NPM JQUERY EXAMPLE, but saw: " +
+			"Expected: jQuery Portlet, but saw: " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals(
-				"LIFERAY NPM JQUERY EXAMPLE"));
+			_portletTitle.getText().contentEquals("jQuery Portlet"));
 
 		Assert.assertTrue(
 			"Expected: Hello from jQuery!..., but saw: " +
