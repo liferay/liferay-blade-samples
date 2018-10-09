@@ -31,7 +31,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -54,7 +53,6 @@ public class BladeVueJsNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore //does not work in headless mode
 	@Test
 	public void testBladeVuejsNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());
