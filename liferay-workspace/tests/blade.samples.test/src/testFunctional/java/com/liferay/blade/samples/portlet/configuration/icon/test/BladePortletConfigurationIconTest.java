@@ -63,8 +63,7 @@ public class BladePortletConfigurationIconTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_helloWorldPortlet.isDisplayed());
+			"Portlet was not deployed", _helloWorldPortlet.isDisplayed());
 
 		_helloWorldPortlet.click();
 
@@ -78,7 +77,6 @@ public class BladePortletConfigurationIconTest {
 			"Expected: https://www.liferay.com/, but saw " +
 				_webDriver.getCurrentUrl(),
 			_webDriver.getCurrentUrl().equals("https://www.liferay.com/"));
-
 	}
 
 	@FindBy(xpath = "//section[contains(@id,'HelloWorld')]//..//div[@class='portlet-body']")

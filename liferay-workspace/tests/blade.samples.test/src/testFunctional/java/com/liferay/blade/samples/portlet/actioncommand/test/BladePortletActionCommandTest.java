@@ -69,8 +69,7 @@ public class BladePortletActionCommandTest {
 			_bladeSampleActionCommandGreeterPortlet.isDisplayed());
 
 		Assert.assertTrue(
-			"Name Field is not visible",
-			_nameField.isDisplayed());
+			"Name Field is not visible", _nameField.isDisplayed());
 
 		_nameField.clear();
 
@@ -86,8 +85,7 @@ public class BladePortletActionCommandTest {
 			"Expected Hello tester! Welcome to OSGi Hello from BLADE!," +
 				" but saw " + _portletBody.getText(),
 			BladeSampleFunctionalActionUtil.isTextPresent(
-				_webDriver,
-				_portletBody,
+				_webDriver, _portletBody,
 				"Hello tester! Welcome to OSGi Hello from BLADE!"));
 	}
 

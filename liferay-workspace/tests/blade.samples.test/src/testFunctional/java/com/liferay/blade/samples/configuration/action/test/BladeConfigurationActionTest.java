@@ -67,8 +67,7 @@ public class BladeConfigurationActionTest {
 		String url = _webDriver.getCurrentUrl();
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_bladeMessagePortlet.isDisplayed());
+			"Portlet was not deployed", _bladeMessagePortlet.isDisplayed());
 
 		_bladeMessagePortlet.click();
 
@@ -86,8 +85,7 @@ public class BladeConfigurationActionTest {
 			_newWebDriverWindow, _saveButton);
 
 		Assert.assertTrue(
-			"Success Message is not visible",
-			_successMessage.isDisplayed());
+			"Success Message is not visible", _successMessage.isDisplayed());
 
 		_webDriver.get(url);
 

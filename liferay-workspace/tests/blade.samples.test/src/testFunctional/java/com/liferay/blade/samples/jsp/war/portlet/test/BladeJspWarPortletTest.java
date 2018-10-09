@@ -69,7 +69,6 @@ public class BladeJspWarPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-
 	@Test
 	public void testBladePortletJSPWar()
 		throws InterruptedException, PortalException {
@@ -79,8 +78,7 @@ public class BladeJspWarPortletTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_bladeSampleJSPPortlet.isDisplayed());
+			"Portlet was not deployed", _bladeSampleJSPPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Liferay MVC, but saw " + _portletTitle.getText(),
@@ -93,10 +91,10 @@ public class BladeJspWarPortletTest {
 			_portletBody.getText().contains("Hello from JSP War Portlet web!"));
 	}
 
+	private static String _jspPortletWarBSN = "jsp-war-portlet";
+
 	@FindBy(xpath = "//div[contains(@id,'jspwarportlet_WAR_jspwarportlet')]")
 	private WebElement _bladeSampleJSPPortlet;
-
-	private static String _jspPortletWarBSN = "jsp-war-portlet";
 
 	@FindBy(xpath = "//div[contains(@id,'jspwarportlet_WAR_jspwarportlet')]//..//p")
 	private WebElement _portletBody;

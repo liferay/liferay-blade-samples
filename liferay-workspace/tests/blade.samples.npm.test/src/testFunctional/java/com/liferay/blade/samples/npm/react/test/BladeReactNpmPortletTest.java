@@ -108,4 +108,5 @@ public class BladeReactNpmPortletTest {
 
 	@Drone
 	private WebDriver _webDriver;
+
 }

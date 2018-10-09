@@ -68,9 +68,9 @@ public class BladeJqueryNpmPortletTest {
 		Thread.sleep(1000);
 
 		Assert.assertTrue(
-			"Expected: jQuery Portlet, but saw: " +
+			"Expected: JQUERY PORTLET, but saw: " +
 				_portletTitle.getText(),
-			_portletTitle.getText().contentEquals("jQuery Portlet"));
+			_portletTitle.getText().toLowerCase().contentEquals("jquery portlet"));
 
 		Assert.assertTrue(
 			"Expected: Hello from jQuery!..., but saw: " +
