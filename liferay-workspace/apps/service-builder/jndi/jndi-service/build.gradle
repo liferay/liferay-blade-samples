@@ -26,14 +26,6 @@ startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-task (foobar) {
-
-	doFirst {
-		HSQLServerUtil.doFoo()
-	}
-
-}
-
 testIntegration {
 
 	testClassesDir = sourceSets.testIntegration.output.classesDir
