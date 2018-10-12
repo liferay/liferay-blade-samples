@@ -1,8 +1,5 @@
 # Metal.js npm Portlet
 
-**Important:** This sample works for Liferay DXP Fix Pack 30+ and Liferay Portal
-CE GA5+.
-
 The Metal.js npm Portlet sample provides a portlet that uses the
 [Metal.js](https://metaljs.com/) framework to render its output.
 
