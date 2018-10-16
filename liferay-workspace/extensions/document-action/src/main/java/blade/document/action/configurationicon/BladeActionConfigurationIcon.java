@@ -83,6 +83,7 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		String version = fileEntry.getVersion();
 		String createdDate = String.valueOf(fileEntry.getCreateDate());
 		String createdUserName = fileEntry.getUserName();
+
 		String statusLabel = null;
 
 		try {

@@ -75,8 +75,7 @@ public class BladePortletOsgiApiTest {
 			"Expected OSGi API Portlet - Hello World!, but saw " +
 				_portletBody.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
-				_portletBody).equals(
-					"osgi api portlet - hello world!"));
+				_portletBody).equals("osgi api portlet - hello world!"));
 	}
 
 	@FindBy(xpath = "//div[contains(@id,'com_liferay_blade_samples_portlet_osgiapi_OSGiAPIPortlet')]")

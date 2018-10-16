@@ -122,15 +122,19 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(
 			"Liferay Icon Menus is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrIconMenu));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
 			"Action Menu Delete is not clickable",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrMenuDelete));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _lfrMenuDelete));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuDelete);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrMenuDelete);
 
 		Assert.assertTrue(
 			"Alert is not present!",
@@ -154,7 +158,8 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(
 			"Expected " + expectedFoos + " foos, but saw " + newRows + " foos",
-			newRows == expectedFoos);	}
+			newRows == expectedFoos);
+		}
 
 	@Test
 	public void testReadFoo() throws PortalException {
@@ -177,15 +182,19 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrIconMenu));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
 			"Liferay Menu Edit is not visible",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuEdit));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _lfrMenuEdit));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuEdit);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrMenuEdit);
 
 		Assert.assertTrue(
 			"Field 1 form is not visible",
@@ -197,7 +206,8 @@ public class BladeServiceBuilderTest {
 
 		Assert.assertTrue(
 			"Save button is not visible",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _saveButton));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _saveButton));
 
 		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
 

@@ -87,15 +87,13 @@ public class BladeSamplesUpdateFragmentTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_loginPortlet.isDisplayed());
+			"Portlet was not deployed", _loginPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
 				_portletTitle).contentEquals("sign in"));
 		Assert.assertTrue(
-			"Portlet Body is not visible",
-			_portletBody.isDisplayed());
+			"Portlet Body is not visible", _portletBody.isDisplayed());
 		Assert.assertTrue(
 			"Expected changed, but saw: " + _portletStyle.getText(),
 			_portletStyle.getText().equals("changed"));
@@ -116,15 +114,13 @@ public class BladeSamplesUpdateFragmentTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_loginPortlet.isDisplayed());
+			"Portlet was not deployed", _loginPortlet.isDisplayed());
 		Assert.assertTrue(
 			_portletTitle.getText(),
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
 				_portletTitle).contentEquals("sign in"));
 		Assert.assertTrue(
-			"Portlet Body is not visible",
-			_portletBody.isDisplayed());
+			"Portlet Body is not visible", _portletBody.isDisplayed());
 		Assert.assertTrue(
 			"Expected samples work!, but saw: " + _portletStyle.getText(),
 			_portletStyle.getText().equals("samples work!"));

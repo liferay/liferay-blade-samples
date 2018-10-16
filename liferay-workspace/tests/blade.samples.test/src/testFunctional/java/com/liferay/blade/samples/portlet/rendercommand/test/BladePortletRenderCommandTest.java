@@ -78,8 +78,7 @@ public class BladePortletRenderCommandTest {
 			_webDriver, _portletButton);
 
 		Assert.assertTrue(
-			"Render Page is not available",
-			_portletBody.isDisplayed());
+			"Render Page is not available", _portletBody.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected render page, but saw " + _portletBodyMaster.getText(),

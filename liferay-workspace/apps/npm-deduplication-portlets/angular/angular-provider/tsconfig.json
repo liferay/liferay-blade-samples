@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": ["es2015", "dom"],
+		"moduleResolution": "node",
+		"outDir": "build/resources/main/META-INF/resources",
+		"sourceMap": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"target": "es5",
+		"typeRoots": ["./node_modules/@types/"],
+
+		"module": "commonjs",
+		"strict": true,
+		"noFallthroughCasesInSwitch": true,
+		"inlineSources": true,
+		"declaration": false,
+		"skipLibCheck": true,
+		"types": ["jasmine", "node"]
+	},
+	"include": ["src/main/resources/META-INF/resources/**/*.ts"]
+}

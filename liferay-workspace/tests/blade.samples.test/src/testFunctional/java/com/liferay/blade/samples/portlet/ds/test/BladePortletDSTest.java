@@ -62,8 +62,7 @@ public class BladePortletDSTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_bladeSampleDSPortlet.isDisplayed());
+			"Portlet was not deployed", _bladeSampleDSPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected DS Portlet, but saw " +

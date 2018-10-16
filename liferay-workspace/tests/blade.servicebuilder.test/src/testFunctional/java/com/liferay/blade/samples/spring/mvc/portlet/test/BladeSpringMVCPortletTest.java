@@ -107,7 +107,7 @@ public class BladeSpringMVCPortletTest {
 
 		Thread.sleep(1000);
 
-		_webDriver.navigate().to(url);;
+		_webDriver.navigate().to(url);
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible",
@@ -134,15 +134,19 @@ public class BladeSpringMVCPortletTest {
 
 		Assert.assertTrue(
 			"Liferay Icon Menus is not visible",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrIconMenu));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
 			"Action Menu Delete is not clickable",
-			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrMenuDelete));
+			BladeSampleFunctionalActionUtil.isVisible(
+				_webDriver, _lfrMenuDelete));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuDelete);
+		BladeSampleFunctionalActionUtil.mouseOverClick(
+			_webDriver, _lfrMenuDelete);
 
 		Assert.assertTrue(
 			"Alert is not present!",
@@ -194,13 +198,15 @@ public class BladeSpringMVCPortletTest {
 
 		Assert.assertTrue(
 			"Liferay Icon menu is not visible",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrIconMenu));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _lfrIconMenu));
 
 		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrIconMenu);
 
 		Assert.assertTrue(
 			"Liferay Menu Edit is not visible",
-			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuEdit));
+			BladeSampleFunctionalActionUtil.isClickable(
+				_webDriver, _lfrMenuEdit));
 
 		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuEdit);
 
@@ -224,8 +230,7 @@ public class BladeSpringMVCPortletTest {
 
 		Assert.assertTrue(
 			"Service Builder Table does not contain Spring Updated Name" +
-			_table.getText(),
-			_table.getText().contains("Spring Updated Name"));
+			_table.getText(), _table.getText().contains("Spring Updated Name"));
 	}
 
 	private static String _fooApiJarBSN = "com.liferay.blade.basic.api";
@@ -265,7 +270,8 @@ public class BladeSpringMVCPortletTest {
 	@FindBy(xpath = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]")
 	private WebElement _table;
 
-	private String _tableRow = "//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
+	private String _tableRow =
+		"//table[contains(@data-searchcontainerid,'foosSearchContainer')]/tbody/tr";
 
 	@Drone
 	private WebDriver _webDriver;

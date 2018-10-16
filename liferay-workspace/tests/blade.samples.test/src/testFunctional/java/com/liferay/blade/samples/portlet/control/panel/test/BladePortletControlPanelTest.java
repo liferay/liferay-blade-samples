@@ -67,8 +67,7 @@ public class BladePortletControlPanelTest {
 		_webDriver.get(url.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_controlPanelPortlet.isDisplayed());
+			"Portlet was not deployed", _controlPanelPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Control Panel Demo, but saw: " + _portletTitle.getText(),
