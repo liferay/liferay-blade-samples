@@ -54,7 +54,6 @@ public class BladeMetaljsNpmPortletTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore
 	@Test
 	public void testBladeMetaljsNpm() throws InterruptedException {
 		_webDriver.get(_portletURL.toExternalForm());

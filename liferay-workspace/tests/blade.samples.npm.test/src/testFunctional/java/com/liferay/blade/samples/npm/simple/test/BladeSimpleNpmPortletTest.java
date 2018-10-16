@@ -31,7 +31,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
-import org.junit.Assume;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,10 +56,6 @@ public class BladeSimpleNpmPortletTest {
 
 	@Test
 	public void testBladeSimpleNpm() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -82,43 +77,6 @@ public class BladeSimpleNpmPortletTest {
 			_portletBodyPre.getText().contains("Portlet main module loaded."));
 	}
 
-	@Ignore //only seems to work in firefox, not in phantomjs
-	@Test
-	public void testBladeSimpleNpmMaster() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
-
-		_webDriver.get(_portletURL.toExternalForm());
-
-		String url = _webDriver.getCurrentUrl();
-
-		Assert.assertTrue(
-			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeNpmSimplePortlet));
-
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _bladeNpmSimplePortlet);
-
-		_webDriver.navigate().to(url);
-
-		Thread.sleep(1000);
-
-		Assert.assertTrue(
-			"Expected: Simple npm Portlet, but saw: " +
-				_portletTitleMaster.getText(),
-			_portletTitleMaster.getText().contentEquals("Simple npm Portlet"));
-
-		Assert.assertTrue(
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _portletBodyPre));
-
-		Assert.assertTrue(
-			"Expected: Portlet main module loaded..., but saw: " +
-				_portletBodyPre.getText(),
-			_portletBodyPre.getText().contains("Portlet main module loaded."));
-	}
-
 	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]")
 	private WebElement _bladeNpmSimplePortlet;
 
@@ -127,9 +85,6 @@ public class BladeSimpleNpmPortletTest {
 
 	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]/div/h2")
 	private WebElement _portletTitle;
-
-	@FindBy(xpath = "//section[contains(@id,'SimpleNpmPortlet')]/div/div/div/h2")
-	private WebElement _portletTitleMaster;
 
 	@PortalURL("com_liferay_blade_npm_simple_npm_portlet_SimpleNpmPortlet")
 	private URL _portletURL;

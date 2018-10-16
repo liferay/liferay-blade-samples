@@ -7,7 +7,7 @@ export default function() {
 	t = isArray([]);
 	out.innerHTML += ' -> returns ' + t + '.\n';
 
-	out.innerHTML += 'Calling isArray([])';
-	t = isArray([]);
+	out.innerHTML += 'Calling isArray({})';
+	t = isArray({});
 	out.innerHTML += ' -> returns ' + t + '.\n';
 }

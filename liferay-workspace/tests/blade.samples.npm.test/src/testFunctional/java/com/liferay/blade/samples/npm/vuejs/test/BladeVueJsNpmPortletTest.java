@@ -57,10 +57,6 @@ public class BladeVueJsNpmPortletTest {
 
 	@Test
 	public void testBladeVuejsNpm() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
@@ -96,52 +92,6 @@ public class BladeVueJsNpmPortletTest {
 				"!sj.euV morf olleH"));
 	}
 
-	@Ignore //only seems to work in firefox, not in phantomjs
-	@Test
-	public void testBladeVuejsNpmMaster() throws InterruptedException {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("master"));
-
-		_webDriver.get(_portletURL.toExternalForm());
-
-		Assert.assertTrue(
-			"Portlet was not deployed",
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _bladeNpmVuejsPortlet));
-
-		Assert.assertTrue(
-			"Expected: Vue.js Portlet, but saw: " +
-				_portletTitleMaster.getText(),
-			_portletTitleMaster.getText().contentEquals("Vue.js Portlet"));
-
-		Thread.sleep(1000);
-
-		Assert.assertTrue(
-			BladeSampleFunctionalActionUtil.isVisible(
-				_webDriver, _portletListItemMaster));
-
-		Assert.assertTrue(
-			"Expected:Whatever else humans are supposed to eat, but saw: " +
-				_portletListItemMaster.getText(),
-			_portletListItemMaster.getText().contentEquals(
-				"Whatever else humans are supposed to eat"));
-
-		Assert.assertTrue(
-			"Expected: Hello from Vue.js!, but saw: " +
-				_portletReversibleMessageMaster.getText(),
-			_portletReversibleMessageMaster.getText().contentEquals(
-				"Hello from Vue.js!"));
-
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _portletBodyButton);
-
-		Assert.assertTrue(
-			"Expected: !sj.euV morf olleH, but saw: " +
-				_portletReversibleMessageMaster.getText(),
-			_portletReversibleMessageMaster.getText().contentEquals(
-				"!sj.euV morf olleH"));
-	}
-
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]")
 	private WebElement _bladeNpmVuejsPortlet;
 
@@ -151,20 +101,11 @@ public class BladeVueJsNpmPortletTest {
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//ol/li[3]")
 	private WebElement _portletListItem;
 
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//div/ol/li[3]")
-	private WebElement _portletListItemMaster;
-
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p[2]")
 	private WebElement _portletReversibleMessage;
 
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]//..//div[@class='portlet-body']/div/p")
-	private WebElement _portletReversibleMessageMaster;
-
 	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/h2")
 	private WebElement _portletTitle;
-
-	@FindBy(xpath = "//section[contains(@id,'VuejsPortlet')]/div/div/div/h2")
-	private WebElement _portletTitleMaster;
 
 	@PortalURL("com_liferay_blade_npm_vuejs_portlet_VuejsPortlet")
 	private URL _portletURL;

@@ -19,7 +19,7 @@
 <%@ include file="/init.jsp" %>
 
 <!-- Temporary workaround to obtain the library stylesheets -->
-<link href="/o/billboardjs-npm-portlet/node_modules/billboard.js@1.1.1/dist/billboard.css" rel="stylesheet">
+<link href="<%= billboardCss %>" rel="stylesheet">
 
 <div id="<portlet:namespace />-billboard">
 	<h1>An example from billboard.js</h1>
@@ -49,6 +49,6 @@
 	<svg height="600" id="<portlet:namespace />-D3Graph" width="960"></svg>
 </div>
 
-<aui:script require="billboardjs-npm-portlet@1.0.0">
-	billboardjsNpmPortlet100.default('<portlet:namespace />');
+<aui:script require="<%= mainRequire %>">
+	main.default('<portlet:namespace />');
 </aui:script>

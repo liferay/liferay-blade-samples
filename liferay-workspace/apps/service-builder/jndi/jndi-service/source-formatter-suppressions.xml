@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<suppressions>
+	<source-check>
+		<suppress checks="ArquillianCheck" files="src/testIntegration/java/com/liferay/blade/samples/jdbcservicebuilder/service/test/ConnectionTest.java" />
+	</source-check>
+</suppressions>
