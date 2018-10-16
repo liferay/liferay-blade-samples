@@ -16,7 +16,12 @@
 
 package com.liferay.blade.samples.override.search.portlet.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+import com.liferay.portal.kernel.exception.PortalException;
+
 import java.io.File;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -25,15 +30,13 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
-import com.liferay.portal.kernel.exception.PortalException;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author Lawrence Lee

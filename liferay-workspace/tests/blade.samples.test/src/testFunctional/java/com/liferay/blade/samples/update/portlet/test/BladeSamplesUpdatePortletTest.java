@@ -98,11 +98,9 @@ public class BladeSamplesUpdatePortletTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_helloWorldPortlet.isDisplayed());
+			"Portlet was not deployed", _helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
-			_helloWorldPortlet.getText().contains(
-				"Hello from Helloworld!"));
+			_helloWorldPortlet.getText().contains("Hello from Helloworld!"));
 
 		File dynamicFile = new File(
 			_projectPath +
@@ -188,11 +186,9 @@ public class BladeSamplesUpdatePortletTest {
 		_webDriver.get(_portletURL.toExternalForm());
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_helloWorldPortlet.isDisplayed());
+			"Portlet was not deployed", _helloWorldPortlet.isDisplayed());
 		Assert.assertTrue(
-			_helloWorldPortlet.getText().contains(
-				"Hello from Helloworld!bar"));
+			_helloWorldPortlet.getText().contains("Hello from Helloworld!bar"));
 	}
 
 	private static File _appsDir;

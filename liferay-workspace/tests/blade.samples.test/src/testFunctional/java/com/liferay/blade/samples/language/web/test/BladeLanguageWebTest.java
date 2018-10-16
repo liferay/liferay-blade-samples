@@ -74,7 +74,7 @@ public class BladeLanguageWebTest {
 
 		Assert.assertTrue(
 			"Portlet was not deployed",
-			 _bladeSampleLanguagePortlet.isDisplayed());
+			_bladeSampleLanguagePortlet.isDisplayed());
 		Assert.assertTrue(
 			_languageKeyFirst.getText(),
 			_languageKeyFirst.getText().equals(

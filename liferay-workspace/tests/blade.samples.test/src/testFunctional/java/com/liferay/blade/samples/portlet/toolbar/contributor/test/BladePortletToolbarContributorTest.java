@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -56,15 +57,14 @@ public class BladePortletToolbarContributorTest {
 
 	@Test
 	public void testBladePortletToolbarContributor()
-		throws InterruptedException, PortalException, IOException {
+		throws InterruptedException, IOException, PortalException {
 
 		_webDriver.get(_portletURL.toExternalForm());
 
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_helloWorldPortlet.isDisplayed());
+			"Portlet was not deployed", _helloWorldPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Portlet Topper Toolbar is not displayed",

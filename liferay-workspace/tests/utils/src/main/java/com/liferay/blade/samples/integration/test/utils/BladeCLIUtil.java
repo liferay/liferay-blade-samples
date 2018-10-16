@@ -44,7 +44,7 @@ public class BladeCLIUtil {
 
 	public static File createProject(
 			File testDir, String templateName, String bundleName,
-			String...createArgs)
+			String... createArgs)
 		throws Exception {
 
 		String[] executeArgs = new String[createArgs.length + 6];

@@ -1,0 +1,4 @@
+Bundle-Name: Angular Consumer Portlet
+Bundle-SymbolicName: com.liferay.blade.angular.consumer.portlet
+Bundle-Version: 1.0.0
+Web-ContextPath: /angular-consumer-portlet

@@ -16,7 +16,11 @@
 
 package com.liferay.blade.samples.rest.test;
 
+import com.liferay.arquillian.portal.annotation.PortalURL;
+import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+
 import java.io.File;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,13 +30,12 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 
-import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author Lawrence Lee
@@ -40,6 +43,7 @@ import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActio
 @RunAsClient
 @RunWith(Arquillian.class)
 public class BladeRestServiceTest {
+
 	@Deployment
 	public static JavaArchive create() throws Exception {
 		final File jarFile = new File(System.getProperty("restJarFile"));
@@ -67,4 +71,5 @@ public class BladeRestServiceTest {
 
 	@Drone
 	private WebDriver _webDriver;
+
 }

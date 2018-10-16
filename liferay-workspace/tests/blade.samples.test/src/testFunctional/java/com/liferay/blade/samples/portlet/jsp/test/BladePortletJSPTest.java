@@ -62,8 +62,7 @@ public class BladePortletJSPTest {
 		BladeSampleFunctionalActionUtil.implicitWait(_webDriver);
 
 		Assert.assertTrue(
-			"Portlet was not deployed",
-			_bladeSampleJSPPortlet.isDisplayed());
+			"Portlet was not deployed", _bladeSampleJSPPortlet.isDisplayed());
 
 		Assert.assertTrue(
 			"Expected Blade JSP Portlet, but saw " +
