@@ -26,12 +26,18 @@ startTestableTomcat {
 	checkTimeout = 10 * 60 * 1000
 }
 
-task (foobar) {
+task foobar
 
+foobar {
 	doFirst {
 		HSQLServerUtil.doFoo()
 	}
+}
 
+stopTestableTomcat {
+	doLast {
+		delete new File(liferay.liferayHome, "data")
+	}
 }
 
 testIntegration {
@@ -48,11 +54,5 @@ testIntegration {
 
 	finalizedBy {
 		stopTestableTomcat
-	}
-}
-
-stopTestableTomcat {
-	doLast {
-		delete new File(liferay.liferayHome, "data")
 	}
 }
