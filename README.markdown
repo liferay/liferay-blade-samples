@@ -72,15 +72,6 @@ drop them in your `osgi/modules` folder before deploying Blueprint bundles.
 
 ## Liferay Extension Points and Template Projects
 
-## Ext
-
-### Login Web Ext
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/ext/login-web-ext](./gradle/ext/login-web-ext) |
-| Liferay Workspace | [./liferay-workspace/ext/login-web-ext](./liferay-workspace/ext/login-web-ext)   |
-
 ## Apps
 
 ### Action Command Portlet
@@ -195,6 +186,16 @@ Refer to this sample's Readmes for more information.
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/kotlin-portlet](./gradle/apps/kotlin-portlet) |
 
+### npm Deduplication Portlets
+
+#### Angular
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm-deduplication-portlets/angular](./gradle/apps/npm-deduplication-portlets/angular) |
+
 ### npm
 
 #### Angular npm Portlet
@@ -205,6 +206,14 @@ Refer to this sample's Readme for more information.
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/angular-npm-portlet](./gradle/apps/npm/angular-npm-portlet) |
 
+#### Angular 6 npm Portlet
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/npm/angular6-npm-portlet](./gradle/apps/npm/angular6-npm-portlet) |
+
 #### Billboard.js npm Portlet
 
 Refer to this sample's Readme for more information.
@@ -212,14 +221,6 @@ Refer to this sample's Readme for more information.
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/apps/npm/billboardjs-npm-portlet](./gradle/apps/npm/billboardjs-npm-portlet) |
-
-#### Isomorphic npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/isomorphic-npm-portlet](./gradle/apps/npm/isomorphic-npm-portlet) |
 
 #### jQuery npm Portlet
 
@@ -327,6 +328,16 @@ Then you can access the service via
 
 ### Service Builder
 
+#### ADQ
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/apps/service-builder/adq](./gradle/apps/service-builder/adq)  |
+| Liferay Workspace | [./liferay-workspace/apps/service-builder/adq](./liferay-workspace/apps/service-builder/adq)   |
+| Maven  | [./maven/apps/service-builder/adq](./maven/apps/service-builder/adq)  |
+
 #### Basic
 
 **Template project description**: Demonstrates how to create a Service Builder
@@ -391,6 +402,17 @@ Refer to this sample's Readme for more information.
 | Gradle | [./gradle/apps/springmvc-portlet](./gradle/apps/springmvc-portlet) |
 | Liferay Workspace | [./liferay-workspace/wars/springmvc-portlet](./liferay-workspace/wars/springmvc-portlet)   |
 | Maven      | [./maven/apps/springmvc-portlet](./maven/apps/springmvc-portlet)        |
+
+## Ext
+
+### Login Web Ext
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/ext/login-web-ext](./gradle/ext/login-web-ext) |
+| Liferay Workspace | [./liferay-workspace/ext/login-web-ext](./liferay-workspace/ext/login-web-ext)   |
 
 ## Extensions
 
@@ -487,6 +509,16 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/gogo](./liferay-workspace/extensions/gogo)   |
 | Maven      | [./maven/extensions/gogo](./maven/extensions/gogo)          |
 
+### Index Settings Contributor
+
+Refer to this sample's Readme for more information.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Gradle | [./gradle/extensions/index-settings-contributor](./gradle/extensions/index-settings-contributor) |
+| Liferay Workspace | [./liferay-workspace/extensions/index-settings-contributor](./liferay-workspace/extensions/index-settings-contributor)   |
+| Maven      | [./maven/extensions/index-settings-contributor](./maven/extensions/index-settings-contributor)          |
+
 ### Indexer Post Processor
 
 Refer to this sample's Readme for more information.
@@ -549,16 +581,6 @@ Refer to this sample's Readme for more information.
 | Gradle | [./gradle/extensions/model-listener](./gradle/extensions/model-listener) |
 | Liferay Workspace | [./liferay-workspace/extensions/model-listener](./liferay-workspace/extensions/model-listener)   |
 | Maven      | [./maven/extensions/model-listener](./maven/extensions/model-listener)        |
-
-### Model Summary Contributor
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/model-summary-contributor](./gradle/extensions/model-summary-contributor) |
-| Liferay Workspace | [./liferay-workspace/extensions/model-summary-contributor](./liferay-workspace/extensions/model-summary-contributor)   |
-| Maven      | [./maven/extensions/model-summary-contributor](./maven/extensions/model-summary-contributor)        | 
 
 ### Poll Processor
 
