@@ -1,0 +1,18 @@
+{
+	"dependencies": {
+		"isarray": "2.0.2"
+	},
+	"description": "Simple npm Portlet",
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"liferay-npm-bundler": "^2.0.0"
+	},
+	"main": "lib/index.es.js",
+	"name": "simple-npm-portlet",
+	"private": true,
+	"scripts": {
+		"build": "babel --source-maps -d target/classes/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
+	},
+	"version": "1.0.0"
+}
