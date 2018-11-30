@@ -32,6 +32,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -54,6 +55,7 @@ public class BladePortletConfigurationIconTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	@Ignore
 	@Test
 	public void testBladePortletConfigurationIcon()
 		throws InterruptedException, PortalException {
