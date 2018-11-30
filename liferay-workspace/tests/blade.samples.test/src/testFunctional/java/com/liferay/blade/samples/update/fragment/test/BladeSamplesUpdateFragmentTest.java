@@ -37,6 +37,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -80,6 +81,7 @@ public class BladeSamplesUpdateFragmentTest {
 		}
 	}
 
+	@Ignore //Until BLADE-360 gets in
 	@Test
 	public void testUpdateModuleJSPFragmentProject() throws Exception {
 		_webDriver.get(_portletURL.toExternalForm());
