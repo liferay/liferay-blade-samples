@@ -1,0 +1,12 @@
+.liferay-npm-example-metal-modal {
+	left: 20%;
+	top: 10%;
+
+	&.hide {
+		display: none;
+	}
+
+	.modal-content {
+		width: 24em;
+	}
+}

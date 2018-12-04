@@ -157,9 +157,9 @@ public class BladeCLIUtil {
 	}
 
 	public static String installBundle(File file) throws Exception {
-		String printFileName;
 		String bundleID;
 		String output;
+		String printFileName;
 
 		if (file.getName().endsWith(".war")) {
 			printFileName = file.getName();
@@ -167,16 +167,18 @@ public class BladeCLIUtil {
 			printFileName = printFileName.substring(
 				0, printFileName.lastIndexOf('.'));
 
+			String fileURI = "webbundle:" + file.toURI().toASCIIString() +
+				"?Web-ContextPath=/" + printFileName;
+
 			output = execute(
-				"sh", "install",
-				"webbundle:" + file.toURI().toASCIIString() + "?Web-ContextPath=/" +
-					printFileName);
+				"sh", "install", "\'" + fileURI + "\'");
 
 			bundleID = output.substring(
 				output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
 		}
 		else {
-			output = execute("sh", "install", file.toURI().toASCIIString());
+			output = execute("sh", "install", "\'" +
+				file.toURI().toASCIIString() + "\'");
 
 			bundleID = output.substring(
 				output.indexOf("ID:") + 4, output.lastIndexOf("\n"));

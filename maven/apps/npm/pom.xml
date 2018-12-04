@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>npm</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>apps</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<modules>
+		<module>angular-npm-portlet</module>
+		<module>angular6-npm-portlet</module>
+		<module>billboardjs-npm-portlet</module>
+		<module>jquery-npm-portlet</module>
+		<module>metaljs-npm-portlet</module>
+		<module>react-npm-portlet</module>
+		<module>simple-npm-portlet</module>
+		<module>vuejs-npm-portlet</module>
+	</modules>
+</project>
