@@ -1,0 +1,10 @@
+Bundle-Name: Vue.js Portlet
+Bundle-SymbolicName: com.liferay.blade.npm.vuejs.portlet
+Bundle-Version: 1.0.0
+-contract: JavaPortlet
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-sources: true
+Web-ContextPath: /vuejs-npm-portlet
