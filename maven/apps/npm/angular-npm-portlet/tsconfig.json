@@ -15,7 +15,6 @@
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",
 		"typeRoots": ["./node_modules/@types/"],
-
 		"types": ["jasmine", "node"]
 	},
 	"include": ["src/**/*.ts"]
