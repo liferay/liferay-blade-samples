@@ -8,7 +8,7 @@
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"noFallthroughCasesInSwitch": true,
-		"outDir": "target/classes/META-INF/resources/lib",
+		"outDir": "target/classes/META-INF/resources",
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
