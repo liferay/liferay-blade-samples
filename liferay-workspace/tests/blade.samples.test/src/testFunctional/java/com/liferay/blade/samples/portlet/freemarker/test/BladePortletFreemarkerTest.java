@@ -55,7 +55,6 @@ public class BladePortletFreemarkerTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
-	@Ignore //Freemarker Template is broken
 	@Test
 	public void testBladePortletFreemarker()
 		throws InterruptedException, PortalException {
