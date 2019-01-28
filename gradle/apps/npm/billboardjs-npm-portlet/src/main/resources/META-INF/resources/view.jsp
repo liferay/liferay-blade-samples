@@ -34,6 +34,7 @@
 	<div id="<portlet:namespace />-StackedAreaChart"></div>
 
 	<h2>D3 custom charts</h2>
+
 	<style>
 		.links line {
 		stroke: #999;
