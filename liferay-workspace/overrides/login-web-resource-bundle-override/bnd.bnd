@@ -1,4 +1,4 @@
-
-Bundle-Name: login-web-resource-bundle-override
-Bundle-SymbolicName: login.web.resource.bundle.override
+Bundle-Description: Conveys the recommended approach to override com.liferay.login.web language keys file.
+Bundle-SymbolicName: com.liferay.blade.login.web.resource.bundle.override
 Bundle-Version: 1.0.0
+-sources: true

@@ -1,4 +1,4 @@
-package com.liferay.samples.login.web.resource.bundle;
+package com.liferay.blade.login.web.resource.bundle.override;
 
 import com.liferay.portal.kernel.util.AggregateResourceBundleLoader;
 import com.liferay.portal.kernel.util.CacheResourceBundleLoader;
@@ -12,7 +12,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author blah
+ * @author Liferay
  */
 @Component(
 	immediate = true,
@@ -30,7 +30,7 @@ public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
 	}
 
 	@Reference(
-		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(component.name=com.liferay.samples.login.web.resource.bundle.LoginModuleResourceBundleLoader)))"
+		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(component.name=com.liferay.blade.login.web.resource.bundle.override.LoginModuleResourceBundleLoader)))"
 	)
 	public void setResourceBundleLoader(
 		ResourceBundleLoader resourceBundleLoader) {
