@@ -30,8 +30,9 @@ public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
 	}
 
 	@Reference(
-		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(component.name=com.liferay.blade.login.web.resource.bundle.override.LoginModuleResourceBundleLoader)))"
+		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(resource.bundle.aggregate=*))(!(component.name=com.liferay.samples.login.web.resource.bundle.LoginModuleResourceBundleLoader)))"
 	)
+
 	public void setResourceBundleLoader(
 		ResourceBundleLoader resourceBundleLoader) {
 
