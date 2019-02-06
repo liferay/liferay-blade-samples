@@ -68,6 +68,7 @@ include(
 	'extensions:struts-portlet-action',
 	'extensions:user-service-wrapper',
 	'overrides:core-jsp-override',
+	'overrides:login-web-resource-bundle-override',
 	'overrides:module-jsp-override',
 	'overrides:portlet-form-taglib-override',
 	'overrides:resource-bundle-override',

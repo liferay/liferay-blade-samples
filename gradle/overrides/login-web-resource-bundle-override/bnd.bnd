@@ -1,0 +1,5 @@
+Bundle-Description: Conveys the recommended approach to override com.liferay.login.web language keys file.
+Bundle-SymbolicName: com.liferay.blade.login.web.resource.bundle.override
+Bundle-Version: 1.0.0
+Import-Package: *; version="${range;[=,+)}"
+-sources: true
