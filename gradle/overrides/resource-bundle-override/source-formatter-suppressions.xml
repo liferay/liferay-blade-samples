@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<suppressions>
-	<source-check>
-		<suppress checks="BNDRangeCheck" files="bnd.bnd" />
-	</source-check>
-</suppressions>
