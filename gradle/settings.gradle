@@ -71,7 +71,6 @@ include(
 	'overrides:login-web-resource-bundle-override',
 	'overrides:module-jsp-override',
 	'overrides:portlet-form-taglib-override',
-	'overrides:resource-bundle-override',
 	'themes:simple-theme',
 	'themes:template-context-contributor',
 	'themes:theme-contributor'
