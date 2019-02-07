@@ -38,7 +38,7 @@ import org.osgi.service.component.annotations.Reference;
 		"servlet.context.name=login-web"
 	}
 )
-public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
+public class LoginWebResourceBundleOverride implements ResourceBundleLoader {
 
 	@Override
 	public ResourceBundle loadResourceBundle(Locale locale) {
