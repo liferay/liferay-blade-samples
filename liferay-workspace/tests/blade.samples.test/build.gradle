@@ -77,7 +77,6 @@ task testFunctional(type: Test) {
 	dependsOn ":extensions:portlet-configuration-icon:jar"
 	dependsOn ":extensions:portlet-toolbar-contributor:jar"
 	dependsOn ":overrides:login-web-resource-bundle-override:jar"
-	dependsOn ":overrides:resource-bundle-override:jar"
 	dependsOn ":overrides:portlet-form-taglib-override:jar"
 	dependsOn ":wars:jsp-war-portlet:war"
 
@@ -105,7 +104,6 @@ task testFunctional(type: Test) {
 		systemProperty 'portletToolbarContributorJarFile', project(':extensions:portlet-toolbar-contributor').jar.archivePath
 		systemProperty 'projectDir', rootProject.projectDir
 		systemProperty 'renderCommandPortletJarFile', project(':apps:render-command-portlet').jar.archivePath
-		systemProperty 'resourceBundleOverrideJarFile', project(':overrides:resource-bundle-override').jar.archivePath
 		systemProperty 'restJarFile', project(':apps:rest').jar.archivePath
 	}
 
