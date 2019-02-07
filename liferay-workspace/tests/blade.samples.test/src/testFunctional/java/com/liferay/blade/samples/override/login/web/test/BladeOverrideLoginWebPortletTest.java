@@ -39,7 +39,7 @@ import com.liferay.portal.kernel.exception.PortalException;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class BladeOverrideLoginWebPortletTest {
+public class LoginWebResourceBundleOverrideTest {
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
