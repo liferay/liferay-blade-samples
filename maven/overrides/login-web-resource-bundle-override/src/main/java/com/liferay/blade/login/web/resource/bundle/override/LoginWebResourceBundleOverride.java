@@ -38,7 +38,7 @@ import org.osgi.service.component.annotations.Reference;
 		"servlet.context.name=login-web"
 	}
 )
-public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
+public class LoginWebResourceBundleOverride implements ResourceBundleLoader {
 
 	@Override
 	public ResourceBundle loadResourceBundle(Locale locale) {
@@ -46,7 +46,7 @@ public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
 	}
 
 	@Reference(
-		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(resource.bundle.aggregate=*))(!(component.name=com.liferay.samples.login.web.resource.bundle.LoginModuleResourceBundleLoader)))"
+		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(resource.bundle.aggregate=*))(!(component.name=com.liferay.samples.login.web.resource.bundle.LoginWebResourceBundleOverride)))"
 	)
 	public void setResourceBundleLoader(
 		ResourceBundleLoader resourceBundleLoader) {
@@ -55,7 +55,7 @@ public class LoginModuleResourceBundleLoader implements ResourceBundleLoader {
 			new CacheResourceBundleLoader(
 				new ClassResourceBundleLoader(
 					"content.Language",
-					LoginModuleResourceBundleLoader.class.getClassLoader())),
+					LoginWebResourceBundleOverride.class.getClassLoader())),
 			resourceBundleLoader);
 	}
 
