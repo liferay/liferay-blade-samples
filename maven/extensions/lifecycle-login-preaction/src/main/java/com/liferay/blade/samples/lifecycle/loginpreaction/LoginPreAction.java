@@ -19,10 +19,10 @@ package com.liferay.blade.samples.lifecycle.loginpreaction;
 import com.liferay.portal.kernel.events.ActionException;
 import com.liferay.portal.kernel.events.LifecycleAction;
 import com.liferay.portal.kernel.events.LifecycleEvent;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -39,10 +39,11 @@ public class LoginPreAction implements LifecycleAction {
 
 		System.out.println("login.event.pre=" + lifecycleEvent);
 
-		_log.log(LogService.LOG_INFO, "Blade Login Pre Action");
+		if (_log.isInfoEnabled()) {
+			_log.info("Blade Login Pre Action");
+		}
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(LoginPreAction.class);
 
 }

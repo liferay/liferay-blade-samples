@@ -16,6 +16,8 @@
 
 package com.liferay.blade.samples.indexerpostprocessor;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.IndexerPostProcessor;
@@ -26,8 +28,6 @@ import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -47,7 +47,9 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 			BooleanFilter booleanFilter, SearchContext searchContext)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessContextBooleanFilter");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessContextBooleanFilter");
+		}
 	}
 
 	@Override
@@ -55,14 +57,18 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 			BooleanQuery contextQuery, SearchContext searchContext)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessContextQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessContextQuery");
+		}
 	}
 
 	@Override
 	public void postProcessDocument(Document document, Object obj)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessDocument");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessDocument");
+		}
 	}
 
 	@Override
@@ -70,7 +76,9 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 			BooleanQuery fullQuery, SearchContext searchContext)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessFullQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessFullQuery");
+		}
 	}
 
 	@Override
@@ -79,7 +87,9 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 			SearchContext searchContext)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessSearchQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSearchQuery");
+		}
 	}
 
 	@Override
@@ -87,17 +97,21 @@ public class MultipleIndexerPostProcessor implements IndexerPostProcessor {
 			BooleanQuery searchQuery, SearchContext searchContext)
 		throws Exception {
 
-		_log.log(LogService.LOG_INFO, "postProcessSearchQuery");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSearchQuery");
+		}
 	}
 
 	@Override
 	public void postProcessSummary(
 		Summary summary, Document document, Locale locale, String snippet) {
 
-		_log.log(LogService.LOG_INFO, "postProcessSummary");
+		if (_log.isInfoEnabled()) {
+			_log.info("postProcessSummary");
+		}
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(
+		MultipleIndexerPostProcessor.class);
 
 }

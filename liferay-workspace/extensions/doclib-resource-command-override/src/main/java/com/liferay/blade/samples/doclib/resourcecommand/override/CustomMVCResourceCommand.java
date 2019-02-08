@@ -17,6 +17,8 @@
 package com.liferay.blade.samples.doclib.resourcecommand.override;
 
 import com.liferay.document.library.web.constants.DLPortletKeys;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
@@ -28,7 +30,6 @@ import javax.portlet.ResourceResponse;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -46,8 +47,9 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 
 	@Activate
 	public void activate() {
-		_log.log(
-			LogService.LOG_INFO, "Blade Doclib Resource Command Deployed!");
+		if (_log.isInfoEnabled()) {
+			_log.info("Blade Doclib Resource Command Deployed!");
+		}
 	}
 
 	@Override
@@ -75,12 +77,12 @@ public class CustomMVCResourceCommand implements MVCResourceCommand {
 
 	}
 
+	private static final Log _log = LogFactoryUtil.getLog(
+		CustomMVCResourceCommand.class);
+
 	@Reference(
 		target = "(component.name=com.liferay.document.library.web.portlet.action.EditFolderMVCResourceCommand)"
 	)
 	private MVCResourceCommand _editFolderMVCResourceCommand;
-
-	@Reference
-	private LogService _log;
 
 }
