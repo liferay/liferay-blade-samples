@@ -17,6 +17,8 @@
 package com.liferay.blade.samples.servlet;
 
 import com.liferay.petra.string.StringPool;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 
@@ -29,8 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -47,7 +47,9 @@ public class BladeServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		_log.log(LogService.LOG_INFO, "BladeServlet init");
+		if (_log.isInfoEnabled()) {
+			_log.info("BladeServlet init");
+		}
 
 		super.init();
 	}
@@ -57,7 +59,9 @@ public class BladeServlet extends HttpServlet {
 			HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException {
 
-		_log.log(LogService.LOG_INFO, "doGet");
+		if (_log.isInfoEnabled()) {
+			_log.info("doGet");
+		}
 
 		_writeSampleHTML(response);
 	}
@@ -94,15 +98,14 @@ public class BladeServlet extends HttpServlet {
 			ServletResponseUtil.write(resp, _generateSampleHTML());
 		}
 		catch (Exception e) {
-			_log.log(LogService.LOG_WARNING, e.getMessage(), e);
+			_log.warn(e.getMessage(), e);
 
 			resp.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
 		}
 	}
 
-	private static final long serialVersionUID = 1L;
+	private static final Log _log = LogFactoryUtil.getLog(BladeServlet.class);
 
-	@Reference
-	private LogService _log;
+	private static final long serialVersionUID = 1L;
 
 }
