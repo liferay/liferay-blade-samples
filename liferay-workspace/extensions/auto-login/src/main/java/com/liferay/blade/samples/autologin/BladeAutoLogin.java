@@ -16,6 +16,8 @@
 
 package com.liferay.blade.samples.autologin;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.security.auto.login.AutoLogin;
 import com.liferay.portal.kernel.security.auto.login.BaseAutoLogin;
@@ -27,7 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Marco Re
@@ -61,16 +62,16 @@ public class BladeAutoLogin extends BaseAutoLogin {
 			credentials[2] = Boolean.toString(true);
 		}
 
-		_log.log(
-			LogService.LOG_INFO,
-			"Logged in as" + autoLoginUser.getFullName() +
-				"by Blade Auto Login");
+		if (_log.isInfoEnabled()) {
+			_log.info(
+				"Logged in as" + autoLoginUser.getFullName() +
+					"by Blade Auto Login");
+		}
 
 		return credentials;
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(BladeAutoLogin.class);
 
 	@Reference
 	private UserLocalService _userLocalService;
