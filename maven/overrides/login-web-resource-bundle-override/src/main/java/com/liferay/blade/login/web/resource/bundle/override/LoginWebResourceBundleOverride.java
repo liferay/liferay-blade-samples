@@ -46,7 +46,7 @@ public class LoginWebResourceBundleOverride implements ResourceBundleLoader {
 	}
 
 	@Reference(
-		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(resource.bundle.aggregate=*))(!(component.name=com.liferay.samples.login.web.resource.bundle.LoginWebResourceBundleOverride)))"
+		target = "(&(bundle.symbolic.name=com.liferay.login.web)(!(resource.bundle.aggregate=*))(!(component.name=com.liferay.blade.login.web.resource.bundle.override.LoginWebResourceBundleOverride)))"
 	)
 	public void setResourceBundleLoader(
 		ResourceBundleLoader resourceBundleLoader) {
