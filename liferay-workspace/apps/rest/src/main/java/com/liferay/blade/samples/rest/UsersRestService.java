@@ -49,7 +49,7 @@ public class UsersRestService extends Application {
 	@Activate
 	public void activate() {
 		if (_log.isInfoEnabled()) {
-			_log.info("User Rest service activated.");
+			_log.info("User Rest service activated");
 		}
 	}
 
