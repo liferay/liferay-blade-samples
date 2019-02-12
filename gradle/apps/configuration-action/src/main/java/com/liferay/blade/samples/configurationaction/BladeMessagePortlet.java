@@ -18,6 +18,8 @@ package com.liferay.blade.samples.configurationaction;
 
 import com.liferay.blade.samples.configurationaction.constants.BladeMessagePortletKeys;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
 import java.io.IOException;
@@ -32,8 +34,6 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -61,7 +61,9 @@ public class BladeMessagePortlet extends MVCPortlet {
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
 
-		_log.log(LogService.LOG_INFO, "Blade Message Portlet render");
+		if (_log.isInfoEnabled()) {
+			_log.info("Blade Message Portlet render");
+		}
 
 		renderRequest.setAttribute(
 			MessageDisplayConfiguration.class.getName(),
@@ -77,8 +79,8 @@ public class BladeMessagePortlet extends MVCPortlet {
 			MessageDisplayConfiguration.class, properties);
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeMessagePortlet.class);
 
 	private volatile MessageDisplayConfiguration _messageDisplayConfiguration;
 
