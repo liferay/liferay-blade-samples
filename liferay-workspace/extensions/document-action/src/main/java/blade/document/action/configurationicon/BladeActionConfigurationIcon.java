@@ -158,7 +158,7 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		}
 	}
 
-	private private static final Log _log = LogFactoryUtil.getLog(
+	private static final Log _log = LogFactoryUtil.getLog(
 		BladeActionConfigurationIcon.class);
 
 	@Reference
