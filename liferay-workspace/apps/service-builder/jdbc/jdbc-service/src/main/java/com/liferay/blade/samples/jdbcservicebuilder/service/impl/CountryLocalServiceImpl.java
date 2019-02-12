@@ -17,6 +17,8 @@
 package com.liferay.blade.samples.jdbcservicebuilder.service.impl;
 
 import com.liferay.blade.samples.jdbcservicebuilder.service.base.CountryLocalServiceBaseImpl;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,9 +26,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.sql.DataSource;
-
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * The implementation of the country local service.
@@ -61,29 +60,31 @@ public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 				"select id, name from country");
 
 			while (resultSet.next()) {
-				_log.log(LogService.LOG_INFO, "Record from external database:");
+				if (_log.isInfoEnabled()) {
+					_log.info("Record from external database:");
+				}
 
 				String id = resultSet.getString("id");
 
-				_log.log(LogService.LOG_INFO, "ID: " + id);
+				if (_log.isInfoEnabled()) {
+					_log.info("ID: " + id);
+				}
 
 				String name = resultSet.getString("name");
 
-				_log.log(
-					LogService.LOG_INFO,
-					"Name: " + name + System.lineSeparator());
+				if (_log.isInfoEnabled()) {
+					_log.info("Name: " + name + System.lineSeparator());
+				}
 			}
 
 			connection.close();
 		}
 		catch (SQLException sqle) {
-			_log.log(
-				LogService.LOG_ERROR,
-				"Failed to retrieve data from external database!", sqle);
+			_log.error("Failed to retrieve data from external database!", sqle);
 		}
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(
+		CountryLocalServiceImpl.class);
 
 }
