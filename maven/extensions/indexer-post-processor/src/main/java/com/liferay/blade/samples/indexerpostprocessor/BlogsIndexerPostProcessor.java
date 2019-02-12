@@ -120,6 +120,6 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		BlogsIndexerPostProcessor);
+		BlogsIndexerPostProcessor.class);
 
 }
