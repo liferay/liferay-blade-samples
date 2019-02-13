@@ -111,7 +111,7 @@ public class BladeSamplesUpdateFragmentTest {
 
 		BladeCLIUtil.execute(_projectPath, "deploy");
 
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
 		_webDriver.get(_portletURL.toExternalForm());
 
