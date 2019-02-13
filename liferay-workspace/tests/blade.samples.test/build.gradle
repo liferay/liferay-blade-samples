@@ -103,11 +103,15 @@ task testFunctional(type: Test) {
 		systemProperty 'restJarFile', project(':apps:rest').jar.archivePath
 	}
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://releases.liferay.com/tools/blade-cli/latest/blade.jar")
+	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://repository.liferay.com/nexus/service/local/artifact/maven/redirect?r=liferay-public-releases&g=com.liferay.blade&a=com.liferay.blade.cli&v=LATEST")
 
 	doLast {
 		delete new File("blade.jar")
 		delete new File("target")
+	}
+
+	finalizedBy {
+		stopTestableTomcat
 	}
 }
 
