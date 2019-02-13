@@ -68,11 +68,9 @@ public class BladePortletConfigurationIconTest {
 
 		_helloWorldPortlet.click();
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _verticalEllipsis);
+		_verticalEllipsis.click();
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _lfrMenuSampleLink);
+		_lfrMenuSampleLink.click();
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +

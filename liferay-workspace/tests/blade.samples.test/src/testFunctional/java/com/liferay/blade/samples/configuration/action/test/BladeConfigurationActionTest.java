@@ -72,8 +72,7 @@ public class BladeConfigurationActionTest {
 
 		_bladeMessagePortlet.click();
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _verticalEllipsis);
+		_verticalEllipsis.click();
 
 		WebElement configuration = _webDriver.findElement(
 			By.linkText("Configuration"));
@@ -82,8 +81,7 @@ public class BladeConfigurationActionTest {
 
 		_newWebDriverWindow.get(configurationLink);
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_newWebDriverWindow, _saveButton);
+		_saveButton.click();
 
 		Assert.assertTrue(
 			"Success Message is not visible",

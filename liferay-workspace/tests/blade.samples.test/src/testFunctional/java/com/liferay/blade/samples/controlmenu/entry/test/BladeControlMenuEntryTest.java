@@ -17,7 +17,6 @@
 package com.liferay.blade.samples.controlmenu.entry.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -70,8 +69,7 @@ public class BladeControlMenuEntryTest {
 			_controlMenuLinkText.getText().contains(
 				"Blade Menu Entry Custom Message"));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _controlMenuLinkText);
+		_controlMenuLinkText.click();
 
 		Thread.sleep(1000);
 

@@ -72,8 +72,7 @@ public class BladePortletRenderCommandTest {
 			BladeSampleFunctionalActionUtil.getTextToLowerCase(
 				_portletTitle).equals("blade render portlet"));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _portletButton);
+		_portletButton.click();
 
 		Assert.assertTrue(
 			"Render Page is not available",
