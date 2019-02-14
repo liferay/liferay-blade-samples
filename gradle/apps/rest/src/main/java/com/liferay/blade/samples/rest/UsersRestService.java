@@ -16,6 +16,8 @@
 
 package com.liferay.blade.samples.rest;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
 
@@ -31,7 +33,6 @@ import javax.ws.rs.core.Application;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 
 /**
  * @author Liferay
@@ -45,7 +46,9 @@ public class UsersRestService extends Application {
 
 	@Activate
 	public void activate() {
-		_log.log(LogService.LOG_INFO, "Users Rest service activated.");
+		if (_log.isInfoEnabled()) {
+			_log.info("User Rest service activated");
+		}
 	}
 
 	@Override
@@ -67,8 +70,8 @@ public class UsersRestService extends Application {
 		return result.toString();
 	}
 
-	@Reference
-	private LogService _log;
+	private static final Log _log = LogFactoryUtil.getLog(
+		UsersRestService.class);
 
 	@Reference
 	private volatile UserLocalService _userLocalService;

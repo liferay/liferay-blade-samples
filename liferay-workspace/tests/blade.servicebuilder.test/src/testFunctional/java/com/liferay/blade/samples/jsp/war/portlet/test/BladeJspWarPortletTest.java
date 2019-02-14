@@ -85,7 +85,7 @@ public class BladeJspWarPortletTest {
 	public void testCreateFoo() throws InterruptedException, PortalException {
 		_webDriver.get(_portletURL.toExternalForm());
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _addButton);
+		_addButton.click();
 
 		Assert.assertTrue(
 			"Field1 is not visible",
@@ -97,7 +97,7 @@ public class BladeJspWarPortletTest {
 
 		_field5Form.sendKeys("field5");
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
+		_saveButton.click();
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible",
@@ -128,13 +128,13 @@ public class BladeJspWarPortletTest {
 			"Liferay Icon Menus is not visible",
 			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		_lfrIconMenu.click();
 
 		Assert.assertTrue(
 			"Action Menu Delete is not clickable",
 			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrMenuDelete));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuDelete);
+		_lfrMenuDelete.click();
 
 		Assert.assertTrue(
 			"Alert is not present!",
@@ -186,13 +186,13 @@ public class BladeJspWarPortletTest {
 			"Liferay Icon menu is not visible",
 			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		_lfrIconMenu.click();
 
 		Assert.assertTrue(
 			"Liferay Menu Edit is not visible",
 			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuEdit));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuEdit);
+		_lfrMenuEdit.click();
 
 		Assert.assertTrue(
 			"Field 1 form is not visible",
@@ -202,7 +202,7 @@ public class BladeJspWarPortletTest {
 
 		_field1Form.sendKeys("field1 with Updated Name");
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _saveButton);
+		_saveButton.click();
 
 		Assert.assertTrue(
 			"Service Builder Table is not visible",

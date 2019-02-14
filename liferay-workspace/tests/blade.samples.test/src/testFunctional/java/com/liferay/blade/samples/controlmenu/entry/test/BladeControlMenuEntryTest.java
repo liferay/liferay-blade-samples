@@ -17,7 +17,6 @@
 package com.liferay.blade.samples.controlmenu.entry.test;
 
 import com.liferay.arquillian.portal.annotation.PortalURL;
-import com.liferay.blade.sample.test.functional.utils.BladeSampleFunctionalActionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import java.io.File;
@@ -32,6 +31,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -54,6 +54,7 @@ public class BladeControlMenuEntryTest {
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
 
+	@Ignore
 	@Test
 	public void testBladeControlMenuEntry()
 		throws InterruptedException, PortalException {
@@ -70,8 +71,7 @@ public class BladeControlMenuEntryTest {
 			_controlMenuLinkText.getText().contains(
 				"Blade Menu Entry Custom Message"));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _controlMenuLinkText);
+		_controlMenuLinkText.click();
 
 		Thread.sleep(1000);
 

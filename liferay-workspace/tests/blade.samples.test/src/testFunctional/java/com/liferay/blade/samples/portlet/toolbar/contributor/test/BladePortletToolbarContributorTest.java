@@ -72,11 +72,9 @@ public class BladePortletToolbarContributorTest {
 
 		_helloWorldPortlet.click();
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _portletTopperToolbar);
+		_portletTopperToolbar.click();
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(
-			_webDriver, _lfrMenuLiferay);
+		_lfrMenuLiferay.click();
 
 		Assert.assertTrue(
 			"Expected: https://www.liferay.com/, but saw " +
