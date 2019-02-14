@@ -89,7 +89,7 @@ public class BladeSpringMVCPortletTest {
 
 		String url = _webDriver.getCurrentUrl();
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _addButton);
+		_addButton.click();
 
 		Assert.assertTrue(
 			"Field1 is not visible",
@@ -103,7 +103,7 @@ public class BladeSpringMVCPortletTest {
 
 		_field5Form.sendKeys("field5");
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _saveButton);
+		_saveButton.click();
 
 		Thread.sleep(1000);
 
@@ -138,13 +138,13 @@ public class BladeSpringMVCPortletTest {
 			"Liferay Icon Menus is not visible",
 			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrIconMenu);
+		_lfrIconMenu.click();
 
 		Assert.assertTrue(
 			"Action Menu Delete is not clickable",
 			BladeSampleFunctionalActionUtil.isVisible(_webDriver, _lfrMenuDelete));
 
-		BladeSampleFunctionalActionUtil.mouseOverClick(_webDriver, _lfrMenuDelete);
+		_lfrMenuDelete.click();
 
 		Assert.assertTrue(
 			"Alert is not present!",
@@ -198,13 +198,13 @@ public class BladeSpringMVCPortletTest {
 			"Liferay Icon menu is not visible",
 			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrIconMenu));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrIconMenu);
+		_lfrIconMenu.click();
 
 		Assert.assertTrue(
 			"Liferay Menu Edit is not visible",
 			BladeSampleFunctionalActionUtil.isClickable(_webDriver, _lfrMenuEdit));
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _lfrMenuEdit);
+		_lfrMenuEdit.click();
 
 		Assert.assertTrue(
 			"Field 1 form is not visible",
@@ -214,7 +214,7 @@ public class BladeSpringMVCPortletTest {
 
 		_field1Form.sendKeys("Spring Updated Name");
 
-		BladeSampleFunctionalActionUtil.customClick(_webDriver, _saveButton);
+		_saveButton.click();
 
 		Thread.sleep(1000);
 
