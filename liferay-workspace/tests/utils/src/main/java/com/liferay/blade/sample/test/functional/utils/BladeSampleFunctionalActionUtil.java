@@ -24,8 +24,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -33,38 +31,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @author Lawrence Lee
  */
 public class BladeSampleFunctionalActionUtil {
-
-	public static void twoPointClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
-		Actions action = new Actions(webDriver);
-
-		Actions actionBody = action.moveToElement(weblElement2);
-
-		Actions actionBodyClick = actionBody.click();
-
-		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
-
-		Actions actionClick = actionMoveTo.click();
-
-		Action buildActionbuild = actionClick.build();
-
-		buildActionbuild.perform();
-	}
-
-	public static void twoPointDoubleClick(WebDriver webDriver, WebElement webElement, WebElement weblElement2) {
-		Actions action = new Actions(webDriver);
-
-		Actions actionBody = action.moveToElement(weblElement2);
-
-		Actions actionBodyClick = actionBody.doubleClick();
-
-		Actions actionMoveTo = actionBodyClick.moveToElement(webElement);
-
-		Actions actionClick = actionMoveTo.doubleClick();
-
-		Action buildActionbuild = actionClick.build();
-
-		buildActionbuild.perform();
-	}
 
 	public static WebDriver implicitWait(WebDriver webDriver) {
 		Options webDriverOptions = webDriver.manage();
