@@ -40,11 +40,20 @@ import com.liferay.portal.kernel.exception.PortalException;
 @RunAsClient
 @RunWith(Arquillian.class)
 public class LoginWebResourceBundleOverrideTest {
+	
+	@AfterClass
+	public static void cleanUpDependencies() throws Exception {
+		new JMXBundleDeployer().uninstall(_loginWebOverrideJarBSN);
+	}
 
 	@Deployment
 	public static JavaArchive create() throws Exception {
-		final File jarFile = new File(
+		final File jarFile = new File(System.getProperty("jspPortletJarFile"));
+		
+		final File loginWebOverrideJar = new File(
 			System.getProperty("loginWebResourceBundleOverrideJarFile"));
+
+		new JMXBundleDeployer().deploy(_loginWebOverrideJarBSN, loginWebOverrideJar);
 
 		return ShrinkWrap.createFromZipFile(JavaArchive.class, jarFile);
 	}
@@ -61,6 +70,8 @@ public class LoginWebResourceBundleOverrideTest {
 			_webDriver.getPageSource().contains("Login Portlet Override"));
 	}
 
+	private static String _loginWebOverrideJarBSN = "com.liferay.blade.login.web.resource.bundle.override";
+	
 	@PortalURL("com_liferay_login_web_portlet_LoginPortlet")
 	private URL _portletURL;
 
