@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
 
-<service-builder package-path="com.liferay.blade.samples.servicebuilder">
+<service-builder dependency-injector="ds" package-path="com.liferay.blade.samples.servicebuilder">
 	<namespace>SSB</namespace>
 	<entity local-service="true" name="Foo" remote-service="true" uuid="true">
 		<!--<entity name="Foo" table="foo" uuid="true" local-service="true" remote-service="false" data-source="sampleDataSource" session-factory="sampleSessionFactory" tx-manager="sampleTransactionManager">-->
