@@ -115,7 +115,7 @@ public class BarUtil {
 	* @param uuid the uuid
 	* @return the matching bars
 	*/
-	public static List<Bar> findByUuid(String uuid) {
+	public static List<Bar> findByUuid(java.lang.String uuid) {
 		return getPersistence().findByUuid(uuid);
 	}
 
@@ -131,7 +131,7 @@ public class BarUtil {
 	* @param end the upper bound of the range of bars (not inclusive)
 	* @return the range of matching bars
 	*/
-	public static List<Bar> findByUuid(String uuid, int start, int end) {
+	public static List<Bar> findByUuid(java.lang.String uuid, int start, int end) {
 		return getPersistence().findByUuid(uuid, start, end);
 	}
 
@@ -148,8 +148,8 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching bars
 	*/
-	public static List<Bar> findByUuid(String uuid, int start, int end,
-		OrderByComparator<Bar> orderByComparator) {
+	public static List<Bar> findByUuid(java.lang.String uuid, int start,
+		int end, OrderByComparator<Bar> orderByComparator) {
 		return getPersistence().findByUuid(uuid, start, end, orderByComparator);
 	}
 
@@ -167,8 +167,9 @@ public class BarUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching bars
 	*/
-	public static List<Bar> findByUuid(String uuid, int start, int end,
-		OrderByComparator<Bar> orderByComparator, boolean retrieveFromCache) {
+	public static List<Bar> findByUuid(java.lang.String uuid, int start,
+		int end, OrderByComparator<Bar> orderByComparator,
+		boolean retrieveFromCache) {
 		return getPersistence()
 				   .findByUuid(uuid, start, end, orderByComparator,
 			retrieveFromCache);
@@ -182,7 +183,7 @@ public class BarUtil {
 	* @return the first matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public static Bar findByUuid_First(String uuid,
+	public static Bar findByUuid_First(java.lang.String uuid,
 		OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence().findByUuid_First(uuid, orderByComparator);
@@ -195,7 +196,7 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUuid_First(String uuid,
+	public static Bar fetchByUuid_First(java.lang.String uuid,
 		OrderByComparator<Bar> orderByComparator) {
 		return getPersistence().fetchByUuid_First(uuid, orderByComparator);
 	}
@@ -208,7 +209,7 @@ public class BarUtil {
 	* @return the last matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public static Bar findByUuid_Last(String uuid,
+	public static Bar findByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence().findByUuid_Last(uuid, orderByComparator);
@@ -221,7 +222,7 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUuid_Last(String uuid,
+	public static Bar fetchByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Bar> orderByComparator) {
 		return getPersistence().fetchByUuid_Last(uuid, orderByComparator);
 	}
@@ -235,8 +236,8 @@ public class BarUtil {
 	* @return the previous, current, and next bar
 	* @throws NoSuchBarException if a bar with the primary key could not be found
 	*/
-	public static Bar[] findByUuid_PrevAndNext(long barId, String uuid,
-		OrderByComparator<Bar> orderByComparator)
+	public static Bar[] findByUuid_PrevAndNext(long barId,
+		java.lang.String uuid, OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(barId, uuid, orderByComparator);
@@ -247,7 +248,7 @@ public class BarUtil {
 	*
 	* @param uuid the uuid
 	*/
-	public static void removeByUuid(String uuid) {
+	public static void removeByUuid(java.lang.String uuid) {
 		getPersistence().removeByUuid(uuid);
 	}
 
@@ -257,7 +258,7 @@ public class BarUtil {
 	* @param uuid the uuid
 	* @return the number of matching bars
 	*/
-	public static int countByUuid(String uuid) {
+	public static int countByUuid(java.lang.String uuid) {
 		return getPersistence().countByUuid(uuid);
 	}
 
@@ -269,7 +270,7 @@ public class BarUtil {
 	* @return the matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public static Bar findByUUID_G(String uuid, long groupId)
+	public static Bar findByUUID_G(java.lang.String uuid, long groupId)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence().findByUUID_G(uuid, groupId);
 	}
@@ -281,7 +282,7 @@ public class BarUtil {
 	* @param groupId the group ID
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUUID_G(String uuid, long groupId) {
+	public static Bar fetchByUUID_G(java.lang.String uuid, long groupId) {
 		return getPersistence().fetchByUUID_G(uuid, groupId);
 	}
 
@@ -293,7 +294,7 @@ public class BarUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUUID_G(String uuid, long groupId,
+	public static Bar fetchByUUID_G(java.lang.String uuid, long groupId,
 		boolean retrieveFromCache) {
 		return getPersistence().fetchByUUID_G(uuid, groupId, retrieveFromCache);
 	}
@@ -305,7 +306,7 @@ public class BarUtil {
 	* @param groupId the group ID
 	* @return the bar that was removed
 	*/
-	public static Bar removeByUUID_G(String uuid, long groupId)
+	public static Bar removeByUUID_G(java.lang.String uuid, long groupId)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence().removeByUUID_G(uuid, groupId);
 	}
@@ -317,7 +318,7 @@ public class BarUtil {
 	* @param groupId the group ID
 	* @return the number of matching bars
 	*/
-	public static int countByUUID_G(String uuid, long groupId) {
+	public static int countByUUID_G(java.lang.String uuid, long groupId) {
 		return getPersistence().countByUUID_G(uuid, groupId);
 	}
 
@@ -328,7 +329,7 @@ public class BarUtil {
 	* @param companyId the company ID
 	* @return the matching bars
 	*/
-	public static List<Bar> findByUuid_C(String uuid, long companyId) {
+	public static List<Bar> findByUuid_C(java.lang.String uuid, long companyId) {
 		return getPersistence().findByUuid_C(uuid, companyId);
 	}
 
@@ -345,7 +346,7 @@ public class BarUtil {
 	* @param end the upper bound of the range of bars (not inclusive)
 	* @return the range of matching bars
 	*/
-	public static List<Bar> findByUuid_C(String uuid, long companyId,
+	public static List<Bar> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end) {
 		return getPersistence().findByUuid_C(uuid, companyId, start, end);
 	}
@@ -364,7 +365,7 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching bars
 	*/
-	public static List<Bar> findByUuid_C(String uuid, long companyId,
+	public static List<Bar> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end, OrderByComparator<Bar> orderByComparator) {
 		return getPersistence()
 				   .findByUuid_C(uuid, companyId, start, end, orderByComparator);
@@ -385,7 +386,7 @@ public class BarUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching bars
 	*/
-	public static List<Bar> findByUuid_C(String uuid, long companyId,
+	public static List<Bar> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end, OrderByComparator<Bar> orderByComparator,
 		boolean retrieveFromCache) {
 		return getPersistence()
@@ -402,7 +403,7 @@ public class BarUtil {
 	* @return the first matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public static Bar findByUuid_C_First(String uuid, long companyId,
+	public static Bar findByUuid_C_First(java.lang.String uuid, long companyId,
 		OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence()
@@ -417,8 +418,8 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUuid_C_First(String uuid, long companyId,
-		OrderByComparator<Bar> orderByComparator) {
+	public static Bar fetchByUuid_C_First(java.lang.String uuid,
+		long companyId, OrderByComparator<Bar> orderByComparator) {
 		return getPersistence()
 				   .fetchByUuid_C_First(uuid, companyId, orderByComparator);
 	}
@@ -432,7 +433,7 @@ public class BarUtil {
 	* @return the last matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public static Bar findByUuid_C_Last(String uuid, long companyId,
+	public static Bar findByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence()
@@ -447,7 +448,7 @@ public class BarUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public static Bar fetchByUuid_C_Last(String uuid, long companyId,
+	public static Bar fetchByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Bar> orderByComparator) {
 		return getPersistence()
 				   .fetchByUuid_C_Last(uuid, companyId, orderByComparator);
@@ -463,8 +464,9 @@ public class BarUtil {
 	* @return the previous, current, and next bar
 	* @throws NoSuchBarException if a bar with the primary key could not be found
 	*/
-	public static Bar[] findByUuid_C_PrevAndNext(long barId, String uuid,
-		long companyId, OrderByComparator<Bar> orderByComparator)
+	public static Bar[] findByUuid_C_PrevAndNext(long barId,
+		java.lang.String uuid, long companyId,
+		OrderByComparator<Bar> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException {
 		return getPersistence()
 				   .findByUuid_C_PrevAndNext(barId, uuid, companyId,
@@ -477,7 +479,7 @@ public class BarUtil {
 	* @param uuid the uuid
 	* @param companyId the company ID
 	*/
-	public static void removeByUuid_C(String uuid, long companyId) {
+	public static void removeByUuid_C(java.lang.String uuid, long companyId) {
 		getPersistence().removeByUuid_C(uuid, companyId);
 	}
 
@@ -488,7 +490,7 @@ public class BarUtil {
 	* @param companyId the company ID
 	* @return the number of matching bars
 	*/
-	public static int countByUuid_C(String uuid, long companyId) {
+	public static int countByUuid_C(java.lang.String uuid, long companyId) {
 		return getPersistence().countByUuid_C(uuid, companyId);
 	}
 
@@ -792,7 +794,7 @@ public class BarUtil {
 		return getPersistence().countAll();
 	}
 
-	public static java.util.Set<String> getBadColumnNames() {
+	public static java.util.Set<java.lang.String> getBadColumnNames() {
 		return getPersistence().getBadColumnNames();
 	}
 

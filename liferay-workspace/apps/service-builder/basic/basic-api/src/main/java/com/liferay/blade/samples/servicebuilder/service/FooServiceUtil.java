@@ -18,45 +18,43 @@ import aQute.bnd.annotation.ProviderType;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
-
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the remote service utility for Foo. This utility wraps
- * {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and is the
- * primary access point for service operations in application layer code running
- * on a remote server. Methods of this service are expected to have security
- * checks based on the propagated JAAS credentials because this service can be
+ * <code>com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl</code> and is an
+ * access point for service operations in application layer code running on a
+ * remote server. Methods of this service are expected to have security checks
+ * based on the propagated JAAS credentials because this service can be
  * accessed remotely.
  *
  * @author Brian Wing Shun Chan
  * @see FooService
- * @see com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl
- * @see com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl
  * @generated
  */
 @ProviderType
 public class FooServiceUtil {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to <code>com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 
 	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
-	*/
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
+	 */
 	public static String fooRemote() {
 		return getService().fooRemote();
 	}
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
@@ -70,11 +68,13 @@ public class FooServiceUtil {
 	static {
 		Bundle bundle = FrameworkUtil.getBundle(FooService.class);
 
-		ServiceTracker<FooService, FooService> serviceTracker = new ServiceTracker<FooService, FooService>(bundle.getBundleContext(),
-				FooService.class, null);
+		ServiceTracker<FooService, FooService> serviceTracker =
+			new ServiceTracker<FooService, FooService>(
+				bundle.getBundleContext(), FooService.class, null);
 
 		serviceTracker.open();
 
 		_serviceTracker = serviceTracker;
 	}
+
 }

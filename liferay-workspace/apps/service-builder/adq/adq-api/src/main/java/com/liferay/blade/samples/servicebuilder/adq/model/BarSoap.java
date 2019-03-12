@@ -26,11 +26,11 @@ import java.util.List;
  * This class is used by SOAP remote services, specifically {@link com.liferay.blade.samples.servicebuilder.adq.service.http.BarServiceSoap}.
  *
  * @author Brian Wing Shun Chan
- * @see com.liferay.blade.samples.servicebuilder.adq.service.http.BarServiceSoap
  * @generated
  */
 @ProviderType
 public class BarSoap implements Serializable {
+
 	public static BarSoap toSoapModel(Bar model) {
 		BarSoap soapModel = new BarSoap();
 
@@ -220,4 +220,5 @@ public class BarSoap implements Serializable {
 	private int _field3;
 	private Date _field4;
 	private String _field5;
+
 }

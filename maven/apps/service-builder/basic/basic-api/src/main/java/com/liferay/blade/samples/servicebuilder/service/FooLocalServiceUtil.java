@@ -198,11 +198,11 @@ public class FooLocalServiceUtil {
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
-		String uuid, long groupId) {
+		java.lang.String uuid, long groupId) {
 		return getService().fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
-	public static String fooLocal() {
+	public static java.lang.String fooLocal() {
 		return getService().fooLocal();
 	}
 
@@ -236,7 +236,7 @@ public class FooLocalServiceUtil {
 	* @throws PortalException if a matching foo could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
-		String uuid, long groupId)
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getFooByUuidAndGroupId(uuid, groupId);
 	}
@@ -265,7 +265,7 @@ public class FooLocalServiceUtil {
 	* @return the matching foos, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		String uuid, long companyId) {
+		java.lang.String uuid, long companyId) {
 		return getService().getFoosByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -280,7 +280,7 @@ public class FooLocalServiceUtil {
 	* @return the range of matching foos, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
+		java.lang.String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.model.Foo> orderByComparator) {
 		return getService()
 				   .getFoosByUuidAndCompanyId(uuid, companyId, start, end,
@@ -305,7 +305,7 @@ public class FooLocalServiceUtil {
 	*
 	* @return the OSGi service identifier
 	*/
-	public static String getOSGiServiceIdentifier() {
+	public static java.lang.String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

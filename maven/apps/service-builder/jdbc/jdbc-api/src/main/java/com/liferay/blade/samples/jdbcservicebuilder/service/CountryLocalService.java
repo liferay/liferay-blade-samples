@@ -76,7 +76,6 @@ public interface CountryLocalService extends BaseLocalService,
 	* @param countryId the primary key for the new country
 	* @return the new country
 	*/
-	@Transactional(enabled = false)
 	public Country createCountry(long countryId);
 
 	/**
@@ -210,7 +209,7 @@ public interface CountryLocalService extends BaseLocalService,
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

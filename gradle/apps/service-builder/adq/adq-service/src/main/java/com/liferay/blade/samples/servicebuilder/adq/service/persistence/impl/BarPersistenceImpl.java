@@ -21,7 +21,6 @@ import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.model.impl.BarImpl;
 import com.liferay.blade.samples.servicebuilder.adq.model.impl.BarModelImpl;
 import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarPersistence;
-
 import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.FinderCache;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
@@ -67,51 +66,32 @@ import java.util.Set;
  * </p>
  *
  * @author Brian Wing Shun Chan
- * @see BarPersistence
- * @see com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarUtil
  * @generated
  */
 @ProviderType
-public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
-	implements BarPersistence {
+public class BarPersistenceImpl
+	extends BasePersistenceImpl<Bar> implements BarPersistence {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use {@link BarUtil} to access the bar persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
+	 * Never modify or reference this class directly. Always use <code>BarUtil</code> to access the bar persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static final String FINDER_CLASS_NAME_ENTITY = BarImpl.class.getName();
-	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION = FINDER_CLASS_NAME_ENTITY +
-		".List1";
-	public static final String FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION = FINDER_CLASS_NAME_ENTITY +
-		".List2";
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findAll", new String[0]);
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll", new String[0]);
-	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid",
-			new String[] {
-				String.class.getName(),
-				
-			Integer.class.getName(), Integer.class.getName(),
-				OrderByComparator.class.getName()
-			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid",
-			new String[] { String.class.getName() },
-			BarModelImpl.UUID_COLUMN_BITMASK |
-			BarModelImpl.FIELD1_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_UUID = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid",
-			new String[] { String.class.getName() });
+	public static final String FINDER_CLASS_NAME_ENTITY =
+		BarImpl.class.getName();
+
+	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION =
+		FINDER_CLASS_NAME_ENTITY + ".List1";
+
+	public static final String FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION =
+		FINDER_CLASS_NAME_ENTITY + ".List2";
+
+	private FinderPath _finderPathWithPaginationFindAll;
+	private FinderPath _finderPathWithoutPaginationFindAll;
+	private FinderPath _finderPathCountAll;
+	private FinderPath _finderPathWithPaginationFindByUuid;
+	private FinderPath _finderPathWithoutPaginationFindByUuid;
+	private FinderPath _finderPathCountByUuid;
 
 	/**
 	 * Returns all the bars where uuid = &#63;.
@@ -128,7 +108,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns a range of all the bars where uuid = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -145,7 +125,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars where uuid = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -155,8 +135,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByUuid(String uuid, int start, int end,
+	public List<Bar> findByUuid(
+		String uuid, int start, int end,
 		OrderByComparator<Bar> orderByComparator) {
+
 		return findByUuid(uuid, start, end, orderByComparator, true);
 	}
 
@@ -164,7 +146,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars where uuid = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -175,31 +157,37 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByUuid(String uuid, int start, int end,
+	public List<Bar> findByUuid(
+		String uuid, int start, int end,
 		OrderByComparator<Bar> orderByComparator, boolean retrieveFromCache) {
+
+		uuid = Objects.toString(uuid, "");
+
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-				(orderByComparator == null)) {
+			(orderByComparator == null)) {
+
 			pagination = false;
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID;
-			finderArgs = new Object[] { uuid };
+			finderPath = _finderPathWithoutPaginationFindByUuid;
+			finderArgs = new Object[] {uuid};
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID;
-			finderArgs = new Object[] { uuid, start, end, orderByComparator };
+			finderPath = _finderPathWithPaginationFindByUuid;
+			finderArgs = new Object[] {uuid, start, end, orderByComparator};
 		}
 
 		List<Bar> list = null;
 
 		if (retrieveFromCache) {
-			list = (List<Bar>)finderCache.getResult(finderPath, finderArgs, this);
+			list = (List<Bar>)finderCache.getResult(
+				finderPath, finderArgs, this);
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Bar bar : list) {
-					if (!Objects.equals(uuid, bar.getUuid())) {
+					if (!uuid.equals(bar.getUuid())) {
 						list = null;
 
 						break;
@@ -212,8 +200,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			StringBundler query = null;
 
 			if (orderByComparator != null) {
-				query = new StringBundler(3 +
-						(orderByComparator.getOrderByFields().length * 2));
+				query = new StringBundler(
+					3 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
 				query = new StringBundler(3);
@@ -223,10 +211,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_UUID_3);
 			}
 			else {
@@ -236,11 +221,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			}
 
 			if (orderByComparator != null) {
-				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-					orderByComparator);
+				appendOrderByComparator(
+					query, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
 			}
-			else
-			 if (pagination) {
+			else if (pagination) {
 				query.append(BarModelImpl.ORDER_BY_JPQL);
 			}
 
@@ -260,15 +244,16 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				}
 
 				if (!pagination) {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start,
-							end, false);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end, false);
 
 					Collections.sort(list);
 
 					list = Collections.unmodifiableList(list);
 				}
 				else {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start, end);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end);
 				}
 
 				cacheResult(list);
@@ -297,8 +282,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByUuid_First(String uuid,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByUuid_First(
+			String uuid, OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByUuid_First(uuid, orderByComparator);
 
 		if (bar != null) {
@@ -325,8 +312,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByUuid_First(String uuid,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByUuid_First(
+		String uuid, OrderByComparator<Bar> orderByComparator) {
+
 		List<Bar> list = findByUuid(uuid, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -345,8 +333,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByUuid_Last(String uuid,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByUuid_Last(
+			String uuid, OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByUuid_Last(uuid, orderByComparator);
 
 		if (bar != null) {
@@ -373,8 +363,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByUuid_Last(String uuid,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByUuid_Last(
+		String uuid, OrderByComparator<Bar> orderByComparator) {
+
 		int count = countByUuid(uuid);
 
 		if (count == 0) {
@@ -400,8 +391,12 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a bar with the primary key could not be found
 	 */
 	@Override
-	public Bar[] findByUuid_PrevAndNext(long barId, String uuid,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar[] findByUuid_PrevAndNext(
+			long barId, String uuid, OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
+		uuid = Objects.toString(uuid, "");
+
 		Bar bar = findByPrimaryKey(barId);
 
 		Session session = null;
@@ -411,13 +406,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			Bar[] array = new BarImpl[3];
 
-			array[0] = getByUuid_PrevAndNext(session, bar, uuid,
-					orderByComparator, true);
+			array[0] = getByUuid_PrevAndNext(
+				session, bar, uuid, orderByComparator, true);
 
 			array[1] = bar;
 
-			array[2] = getByUuid_PrevAndNext(session, bar, uuid,
-					orderByComparator, false);
+			array[2] = getByUuid_PrevAndNext(
+				session, bar, uuid, orderByComparator, false);
 
 			return array;
 		}
@@ -429,13 +424,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 	}
 
-	protected Bar getByUuid_PrevAndNext(Session session, Bar bar, String uuid,
+	protected Bar getByUuid_PrevAndNext(
+		Session session, Bar bar, String uuid,
 		OrderByComparator<Bar> orderByComparator, boolean previous) {
+
 		StringBundler query = null;
 
 		if (orderByComparator != null) {
-			query = new StringBundler(4 +
-					(orderByComparator.getOrderByConditionFields().length * 3) +
+			query = new StringBundler(
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
@@ -446,10 +443,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 		boolean bindUuid = false;
 
-		if (uuid == null) {
-			query.append(_FINDER_COLUMN_UUID_UUID_1);
-		}
-		else if (uuid.equals("")) {
+		if (uuid.isEmpty()) {
 			query.append(_FINDER_COLUMN_UUID_UUID_3);
 		}
 		else {
@@ -459,7 +453,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 
 		if (orderByComparator != null) {
-			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
 
 			if (orderByConditionFields.length > 0) {
 				query.append(WHERE_AND);
@@ -531,10 +526,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 
 		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(bar);
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(bar)) {
 
-			for (Object value : values) {
-				qPos.add(value);
+				qPos.add(orderByConditionValue);
 			}
 		}
 
@@ -555,8 +550,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public void removeByUuid(String uuid) {
-		for (Bar bar : findByUuid(uuid, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-				null)) {
+		for (Bar bar :
+				findByUuid(uuid, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+
 			remove(bar);
 		}
 	}
@@ -569,9 +565,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public int countByUuid(String uuid) {
-		FinderPath finderPath = FINDER_PATH_COUNT_BY_UUID;
+		uuid = Objects.toString(uuid, "");
 
-		Object[] finderArgs = new Object[] { uuid };
+		FinderPath finderPath = _finderPathCountByUuid;
+
+		Object[] finderArgs = new Object[] {uuid};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
@@ -582,10 +580,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_UUID_3);
 			}
 			else {
@@ -626,22 +621,16 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_UUID_UUID_1 = "bar.uuid IS NULL";
 	private static final String _FINDER_COLUMN_UUID_UUID_2 = "bar.uuid = ?";
-	private static final String _FINDER_COLUMN_UUID_UUID_3 = "(bar.uuid IS NULL OR bar.uuid = '')";
-	public static final FinderPath FINDER_PATH_FETCH_BY_UUID_G = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_ENTITY, "fetchByUUID_G",
-			new String[] { String.class.getName(), Long.class.getName() },
-			BarModelImpl.UUID_COLUMN_BITMASK |
-			BarModelImpl.GROUPID_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_UUID_G = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUUID_G",
-			new String[] { String.class.getName(), Long.class.getName() });
+
+	private static final String _FINDER_COLUMN_UUID_UUID_3 =
+		"(bar.uuid IS NULL OR bar.uuid = '')";
+
+	private FinderPath _finderPathFetchByUUID_G;
+	private FinderPath _finderPathCountByUUID_G;
 
 	/**
-	 * Returns the bar where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchBarException} if it could not be found.
+	 * Returns the bar where uuid = &#63; and groupId = &#63; or throws a <code>NoSuchBarException</code> if it could not be found.
 	 *
 	 * @param uuid the uuid
 	 * @param groupId the group ID
@@ -651,6 +640,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	@Override
 	public Bar findByUUID_G(String uuid, long groupId)
 		throws NoSuchBarException {
+
 		Bar bar = fetchByUUID_G(uuid, groupId);
 
 		if (bar == null) {
@@ -697,22 +687,26 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByUUID_G(String uuid, long groupId,
-		boolean retrieveFromCache) {
-		Object[] finderArgs = new Object[] { uuid, groupId };
+	public Bar fetchByUUID_G(
+		String uuid, long groupId, boolean retrieveFromCache) {
+
+		uuid = Objects.toString(uuid, "");
+
+		Object[] finderArgs = new Object[] {uuid, groupId};
 
 		Object result = null;
 
 		if (retrieveFromCache) {
-			result = finderCache.getResult(FINDER_PATH_FETCH_BY_UUID_G,
-					finderArgs, this);
+			result = finderCache.getResult(
+				_finderPathFetchByUUID_G, finderArgs, this);
 		}
 
 		if (result instanceof Bar) {
 			Bar bar = (Bar)result;
 
 			if (!Objects.equals(uuid, bar.getUuid()) ||
-					(groupId != bar.getGroupId())) {
+				(groupId != bar.getGroupId())) {
+
 				result = null;
 			}
 		}
@@ -724,10 +718,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_G_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_G_UUID_3);
 			}
 			else {
@@ -758,8 +749,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				List<Bar> list = q.list();
 
 				if (list.isEmpty()) {
-					finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G,
-						finderArgs, list);
+					finderCache.putResult(
+						_finderPathFetchByUUID_G, finderArgs, list);
 				}
 				else {
 					Bar bar = list.get(0);
@@ -770,7 +761,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				}
 			}
 			catch (Exception e) {
-				finderCache.removeResult(FINDER_PATH_FETCH_BY_UUID_G, finderArgs);
+				finderCache.removeResult(_finderPathFetchByUUID_G, finderArgs);
 
 				throw processException(e);
 			}
@@ -797,6 +788,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	@Override
 	public Bar removeByUUID_G(String uuid, long groupId)
 		throws NoSuchBarException {
+
 		Bar bar = findByUUID_G(uuid, groupId);
 
 		return remove(bar);
@@ -811,9 +803,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public int countByUUID_G(String uuid, long groupId) {
-		FinderPath finderPath = FINDER_PATH_COUNT_BY_UUID_G;
+		uuid = Objects.toString(uuid, "");
 
-		Object[] finderArgs = new Object[] { uuid, groupId };
+		FinderPath finderPath = _finderPathCountByUUID_G;
+
+		Object[] finderArgs = new Object[] {uuid, groupId};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
@@ -824,10 +818,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_G_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_G_UUID_3);
 			}
 			else {
@@ -872,31 +863,18 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_UUID_G_UUID_1 = "bar.uuid IS NULL AND ";
-	private static final String _FINDER_COLUMN_UUID_G_UUID_2 = "bar.uuid = ? AND ";
-	private static final String _FINDER_COLUMN_UUID_G_UUID_3 = "(bar.uuid IS NULL OR bar.uuid = '') AND ";
-	private static final String _FINDER_COLUMN_UUID_G_GROUPID_2 = "bar.groupId = ?";
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID_C = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid_C",
-			new String[] {
-				String.class.getName(), Long.class.getName(),
-				
-			Integer.class.getName(), Integer.class.getName(),
-				OrderByComparator.class.getName()
-			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C =
-		new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid_C",
-			new String[] { String.class.getName(), Long.class.getName() },
-			BarModelImpl.UUID_COLUMN_BITMASK |
-			BarModelImpl.COMPANYID_COLUMN_BITMASK |
-			BarModelImpl.FIELD1_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_UUID_C = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid_C",
-			new String[] { String.class.getName(), Long.class.getName() });
+	private static final String _FINDER_COLUMN_UUID_G_UUID_2 =
+		"bar.uuid = ? AND ";
+
+	private static final String _FINDER_COLUMN_UUID_G_UUID_3 =
+		"(bar.uuid IS NULL OR bar.uuid = '') AND ";
+
+	private static final String _FINDER_COLUMN_UUID_G_GROUPID_2 =
+		"bar.groupId = ?";
+
+	private FinderPath _finderPathWithPaginationFindByUuid_C;
+	private FinderPath _finderPathWithoutPaginationFindByUuid_C;
+	private FinderPath _finderPathCountByUuid_C;
 
 	/**
 	 * Returns all the bars where uuid = &#63; and companyId = &#63;.
@@ -907,15 +885,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public List<Bar> findByUuid_C(String uuid, long companyId) {
-		return findByUuid_C(uuid, companyId, QueryUtil.ALL_POS,
-			QueryUtil.ALL_POS, null);
+		return findByUuid_C(
+			uuid, companyId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
 	 * Returns a range of all the bars where uuid = &#63; and companyId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -925,8 +903,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the range of matching bars
 	 */
 	@Override
-	public List<Bar> findByUuid_C(String uuid, long companyId, int start,
-		int end) {
+	public List<Bar> findByUuid_C(
+		String uuid, long companyId, int start, int end) {
+
 		return findByUuid_C(uuid, companyId, start, end, null);
 	}
 
@@ -934,7 +913,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars where uuid = &#63; and companyId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -945,16 +924,19 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByUuid_C(String uuid, long companyId, int start,
-		int end, OrderByComparator<Bar> orderByComparator) {
-		return findByUuid_C(uuid, companyId, start, end, orderByComparator, true);
+	public List<Bar> findByUuid_C(
+		String uuid, long companyId, int start, int end,
+		OrderByComparator<Bar> orderByComparator) {
+
+		return findByUuid_C(
+			uuid, companyId, start, end, orderByComparator, true);
 	}
 
 	/**
 	 * Returns an ordered range of all the bars where uuid = &#63; and companyId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param uuid the uuid
@@ -966,37 +948,41 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByUuid_C(String uuid, long companyId, int start,
-		int end, OrderByComparator<Bar> orderByComparator,
-		boolean retrieveFromCache) {
+	public List<Bar> findByUuid_C(
+		String uuid, long companyId, int start, int end,
+		OrderByComparator<Bar> orderByComparator, boolean retrieveFromCache) {
+
+		uuid = Objects.toString(uuid, "");
+
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-				(orderByComparator == null)) {
+			(orderByComparator == null)) {
+
 			pagination = false;
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C;
-			finderArgs = new Object[] { uuid, companyId };
+			finderPath = _finderPathWithoutPaginationFindByUuid_C;
+			finderArgs = new Object[] {uuid, companyId};
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_UUID_C;
+			finderPath = _finderPathWithPaginationFindByUuid_C;
 			finderArgs = new Object[] {
-					uuid, companyId,
-					
-					start, end, orderByComparator
-				};
+				uuid, companyId, start, end, orderByComparator
+			};
 		}
 
 		List<Bar> list = null;
 
 		if (retrieveFromCache) {
-			list = (List<Bar>)finderCache.getResult(finderPath, finderArgs, this);
+			list = (List<Bar>)finderCache.getResult(
+				finderPath, finderArgs, this);
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Bar bar : list) {
-					if (!Objects.equals(uuid, bar.getUuid()) ||
-							(companyId != bar.getCompanyId())) {
+					if (!uuid.equals(bar.getUuid()) ||
+						(companyId != bar.getCompanyId())) {
+
 						list = null;
 
 						break;
@@ -1009,8 +995,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			StringBundler query = null;
 
 			if (orderByComparator != null) {
-				query = new StringBundler(4 +
-						(orderByComparator.getOrderByFields().length * 2));
+				query = new StringBundler(
+					4 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
 				query = new StringBundler(4);
@@ -1020,10 +1006,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_C_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_C_UUID_3);
 			}
 			else {
@@ -1035,11 +1018,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			query.append(_FINDER_COLUMN_UUID_C_COMPANYID_2);
 
 			if (orderByComparator != null) {
-				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-					orderByComparator);
+				appendOrderByComparator(
+					query, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
 			}
-			else
-			 if (pagination) {
+			else if (pagination) {
 				query.append(BarModelImpl.ORDER_BY_JPQL);
 			}
 
@@ -1061,15 +1043,16 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				qPos.add(companyId);
 
 				if (!pagination) {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start,
-							end, false);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end, false);
 
 					Collections.sort(list);
 
 					list = Collections.unmodifiableList(list);
 				}
 				else {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start, end);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end);
 				}
 
 				cacheResult(list);
@@ -1099,8 +1082,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByUuid_C_First(String uuid, long companyId,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByUuid_C_First(
+			String uuid, long companyId,
+			OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByUuid_C_First(uuid, companyId, orderByComparator);
 
 		if (bar != null) {
@@ -1131,8 +1117,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByUuid_C_First(String uuid, long companyId,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByUuid_C_First(
+		String uuid, long companyId, OrderByComparator<Bar> orderByComparator) {
+
 		List<Bar> list = findByUuid_C(uuid, companyId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -1152,8 +1139,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByUuid_C_Last(String uuid, long companyId,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByUuid_C_Last(
+			String uuid, long companyId,
+			OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByUuid_C_Last(uuid, companyId, orderByComparator);
 
 		if (bar != null) {
@@ -1184,16 +1174,17 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByUuid_C_Last(String uuid, long companyId,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByUuid_C_Last(
+		String uuid, long companyId, OrderByComparator<Bar> orderByComparator) {
+
 		int count = countByUuid_C(uuid, companyId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<Bar> list = findByUuid_C(uuid, companyId, count - 1, count,
-				orderByComparator);
+		List<Bar> list = findByUuid_C(
+			uuid, companyId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1213,9 +1204,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a bar with the primary key could not be found
 	 */
 	@Override
-	public Bar[] findByUuid_C_PrevAndNext(long barId, String uuid,
-		long companyId, OrderByComparator<Bar> orderByComparator)
+	public Bar[] findByUuid_C_PrevAndNext(
+			long barId, String uuid, long companyId,
+			OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException {
+
+		uuid = Objects.toString(uuid, "");
+
 		Bar bar = findByPrimaryKey(barId);
 
 		Session session = null;
@@ -1225,13 +1220,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			Bar[] array = new BarImpl[3];
 
-			array[0] = getByUuid_C_PrevAndNext(session, bar, uuid, companyId,
-					orderByComparator, true);
+			array[0] = getByUuid_C_PrevAndNext(
+				session, bar, uuid, companyId, orderByComparator, true);
 
 			array[1] = bar;
 
-			array[2] = getByUuid_C_PrevAndNext(session, bar, uuid, companyId,
-					orderByComparator, false);
+			array[2] = getByUuid_C_PrevAndNext(
+				session, bar, uuid, companyId, orderByComparator, false);
 
 			return array;
 		}
@@ -1243,14 +1238,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 	}
 
-	protected Bar getByUuid_C_PrevAndNext(Session session, Bar bar,
-		String uuid, long companyId, OrderByComparator<Bar> orderByComparator,
-		boolean previous) {
+	protected Bar getByUuid_C_PrevAndNext(
+		Session session, Bar bar, String uuid, long companyId,
+		OrderByComparator<Bar> orderByComparator, boolean previous) {
+
 		StringBundler query = null;
 
 		if (orderByComparator != null) {
-			query = new StringBundler(5 +
-					(orderByComparator.getOrderByConditionFields().length * 3) +
+			query = new StringBundler(
+				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
@@ -1261,10 +1257,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 		boolean bindUuid = false;
 
-		if (uuid == null) {
-			query.append(_FINDER_COLUMN_UUID_C_UUID_1);
-		}
-		else if (uuid.equals("")) {
+		if (uuid.isEmpty()) {
 			query.append(_FINDER_COLUMN_UUID_C_UUID_3);
 		}
 		else {
@@ -1276,7 +1269,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		query.append(_FINDER_COLUMN_UUID_C_COMPANYID_2);
 
 		if (orderByComparator != null) {
-			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
 
 			if (orderByConditionFields.length > 0) {
 				query.append(WHERE_AND);
@@ -1350,10 +1344,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		qPos.add(companyId);
 
 		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(bar);
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(bar)) {
 
-			for (Object value : values) {
-				qPos.add(value);
+				qPos.add(orderByConditionValue);
 			}
 		}
 
@@ -1375,8 +1369,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public void removeByUuid_C(String uuid, long companyId) {
-		for (Bar bar : findByUuid_C(uuid, companyId, QueryUtil.ALL_POS,
-				QueryUtil.ALL_POS, null)) {
+		for (Bar bar :
+				findByUuid_C(
+					uuid, companyId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+					null)) {
+
 			remove(bar);
 		}
 	}
@@ -1390,9 +1387,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public int countByUuid_C(String uuid, long companyId) {
-		FinderPath finderPath = FINDER_PATH_COUNT_BY_UUID_C;
+		uuid = Objects.toString(uuid, "");
 
-		Object[] finderArgs = new Object[] { uuid, companyId };
+		FinderPath finderPath = _finderPathCountByUuid_C;
+
+		Object[] finderArgs = new Object[] {uuid, companyId};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
@@ -1403,10 +1402,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			boolean bindUuid = false;
 
-			if (uuid == null) {
-				query.append(_FINDER_COLUMN_UUID_C_UUID_1);
-			}
-			else if (uuid.equals("")) {
+			if (uuid.isEmpty()) {
 				query.append(_FINDER_COLUMN_UUID_C_UUID_3);
 			}
 			else {
@@ -1451,30 +1447,18 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_UUID_C_UUID_1 = "bar.uuid IS NULL AND ";
-	private static final String _FINDER_COLUMN_UUID_C_UUID_2 = "bar.uuid = ? AND ";
-	private static final String _FINDER_COLUMN_UUID_C_UUID_3 = "(bar.uuid IS NULL OR bar.uuid = '') AND ";
-	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 = "bar.companyId = ?";
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FIELD2 = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByField2",
-			new String[] {
-				Boolean.class.getName(),
-				
-			Integer.class.getName(), Integer.class.getName(),
-				OrderByComparator.class.getName()
-			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2 =
-		new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByField2",
-			new String[] { Boolean.class.getName() },
-			BarModelImpl.FIELD2_COLUMN_BITMASK |
-			BarModelImpl.FIELD1_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_FIELD2 = new FinderPath(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByField2",
-			new String[] { Boolean.class.getName() });
+	private static final String _FINDER_COLUMN_UUID_C_UUID_2 =
+		"bar.uuid = ? AND ";
+
+	private static final String _FINDER_COLUMN_UUID_C_UUID_3 =
+		"(bar.uuid IS NULL OR bar.uuid = '') AND ";
+
+	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
+		"bar.companyId = ?";
+
+	private FinderPath _finderPathWithPaginationFindByField2;
+	private FinderPath _finderPathWithoutPaginationFindByField2;
+	private FinderPath _finderPathCountByField2;
 
 	/**
 	 * Returns all the bars where field2 = &#63;.
@@ -1491,7 +1475,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns a range of all the bars where field2 = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param field2 the field2
@@ -1508,7 +1492,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars where field2 = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param field2 the field2
@@ -1518,8 +1502,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByField2(boolean field2, int start, int end,
+	public List<Bar> findByField2(
+		boolean field2, int start, int end,
 		OrderByComparator<Bar> orderByComparator) {
+
 		return findByField2(field2, start, end, orderByComparator, true);
 	}
 
@@ -1527,7 +1513,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars where field2 = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param field2 the field2
@@ -1538,27 +1524,31 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of matching bars
 	 */
 	@Override
-	public List<Bar> findByField2(boolean field2, int start, int end,
+	public List<Bar> findByField2(
+		boolean field2, int start, int end,
 		OrderByComparator<Bar> orderByComparator, boolean retrieveFromCache) {
+
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-				(orderByComparator == null)) {
+			(orderByComparator == null)) {
+
 			pagination = false;
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2;
-			finderArgs = new Object[] { field2 };
+			finderPath = _finderPathWithoutPaginationFindByField2;
+			finderArgs = new Object[] {field2};
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FIELD2;
-			finderArgs = new Object[] { field2, start, end, orderByComparator };
+			finderPath = _finderPathWithPaginationFindByField2;
+			finderArgs = new Object[] {field2, start, end, orderByComparator};
 		}
 
 		List<Bar> list = null;
 
 		if (retrieveFromCache) {
-			list = (List<Bar>)finderCache.getResult(finderPath, finderArgs, this);
+			list = (List<Bar>)finderCache.getResult(
+				finderPath, finderArgs, this);
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Bar bar : list) {
@@ -1575,8 +1565,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			StringBundler query = null;
 
 			if (orderByComparator != null) {
-				query = new StringBundler(3 +
-						(orderByComparator.getOrderByFields().length * 2));
+				query = new StringBundler(
+					3 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
 				query = new StringBundler(3);
@@ -1587,11 +1577,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			query.append(_FINDER_COLUMN_FIELD2_FIELD2_2);
 
 			if (orderByComparator != null) {
-				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-					orderByComparator);
+				appendOrderByComparator(
+					query, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
 			}
-			else
-			 if (pagination) {
+			else if (pagination) {
 				query.append(BarModelImpl.ORDER_BY_JPQL);
 			}
 
@@ -1609,15 +1598,16 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				qPos.add(field2);
 
 				if (!pagination) {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start,
-							end, false);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end, false);
 
 					Collections.sort(list);
 
 					list = Collections.unmodifiableList(list);
 				}
 				else {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start, end);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end);
 				}
 
 				cacheResult(list);
@@ -1646,8 +1636,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByField2_First(boolean field2,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByField2_First(
+			boolean field2, OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByField2_First(field2, orderByComparator);
 
 		if (bar != null) {
@@ -1674,8 +1666,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByField2_First(boolean field2,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByField2_First(
+		boolean field2, OrderByComparator<Bar> orderByComparator) {
+
 		List<Bar> list = findByField2(field2, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -1694,8 +1687,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a matching bar could not be found
 	 */
 	@Override
-	public Bar findByField2_Last(boolean field2,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar findByField2_Last(
+			boolean field2, OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = fetchByField2_Last(field2, orderByComparator);
 
 		if (bar != null) {
@@ -1722,16 +1717,17 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	 */
 	@Override
-	public Bar fetchByField2_Last(boolean field2,
-		OrderByComparator<Bar> orderByComparator) {
+	public Bar fetchByField2_Last(
+		boolean field2, OrderByComparator<Bar> orderByComparator) {
+
 		int count = countByField2(field2);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<Bar> list = findByField2(field2, count - 1, count,
-				orderByComparator);
+		List<Bar> list = findByField2(
+			field2, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1750,8 +1746,11 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @throws NoSuchBarException if a bar with the primary key could not be found
 	 */
 	@Override
-	public Bar[] findByField2_PrevAndNext(long barId, boolean field2,
-		OrderByComparator<Bar> orderByComparator) throws NoSuchBarException {
+	public Bar[] findByField2_PrevAndNext(
+			long barId, boolean field2,
+			OrderByComparator<Bar> orderByComparator)
+		throws NoSuchBarException {
+
 		Bar bar = findByPrimaryKey(barId);
 
 		Session session = null;
@@ -1761,13 +1760,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			Bar[] array = new BarImpl[3];
 
-			array[0] = getByField2_PrevAndNext(session, bar, field2,
-					orderByComparator, true);
+			array[0] = getByField2_PrevAndNext(
+				session, bar, field2, orderByComparator, true);
 
 			array[1] = bar;
 
-			array[2] = getByField2_PrevAndNext(session, bar, field2,
-					orderByComparator, false);
+			array[2] = getByField2_PrevAndNext(
+				session, bar, field2, orderByComparator, false);
 
 			return array;
 		}
@@ -1779,14 +1778,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 	}
 
-	protected Bar getByField2_PrevAndNext(Session session, Bar bar,
-		boolean field2, OrderByComparator<Bar> orderByComparator,
-		boolean previous) {
+	protected Bar getByField2_PrevAndNext(
+		Session session, Bar bar, boolean field2,
+		OrderByComparator<Bar> orderByComparator, boolean previous) {
+
 		StringBundler query = null;
 
 		if (orderByComparator != null) {
-			query = new StringBundler(4 +
-					(orderByComparator.getOrderByConditionFields().length * 3) +
+			query = new StringBundler(
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
@@ -1798,7 +1798,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		query.append(_FINDER_COLUMN_FIELD2_FIELD2_2);
 
 		if (orderByComparator != null) {
-			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
 
 			if (orderByConditionFields.length > 0) {
 				query.append(WHERE_AND);
@@ -1868,10 +1869,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		qPos.add(field2);
 
 		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(bar);
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(bar)) {
 
-			for (Object value : values) {
-				qPos.add(value);
+				qPos.add(orderByConditionValue);
 			}
 		}
 
@@ -1892,8 +1893,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public void removeByField2(boolean field2) {
-		for (Bar bar : findByField2(field2, QueryUtil.ALL_POS,
-				QueryUtil.ALL_POS, null)) {
+		for (Bar bar :
+				findByField2(
+					field2, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+
 			remove(bar);
 		}
 	}
@@ -1906,9 +1909,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public int countByField2(boolean field2) {
-		FinderPath finderPath = FINDER_PATH_COUNT_BY_FIELD2;
+		FinderPath finderPath = _finderPathCountByField2;
 
-		Object[] finderArgs = new Object[] { field2 };
+		Object[] finderArgs = new Object[] {field2};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
@@ -1949,14 +1952,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_FIELD2_FIELD2_2 = "bar.field2 = ?";
+	private static final String _FINDER_COLUMN_FIELD2_FIELD2_2 =
+		"bar.field2 = ?";
 
 	public BarPersistenceImpl() {
 		setModelClass(Bar.class);
 
 		try {
 			Field field = BasePersistenceImpl.class.getDeclaredField(
-					"_dbColumnNames");
+				"_dbColumnNames");
 
 			field.setAccessible(true);
 
@@ -1980,11 +1984,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public void cacheResult(Bar bar) {
-		entityCache.putResult(BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+		entityCache.putResult(
+			BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
 			bar.getPrimaryKey(), bar);
 
-		finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G,
-			new Object[] { bar.getUuid(), bar.getGroupId() }, bar);
+		finderCache.putResult(
+			_finderPathFetchByUUID_G,
+			new Object[] {bar.getUuid(), bar.getGroupId()}, bar);
 
 		bar.resetOriginalValues();
 	}
@@ -1997,8 +2003,10 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	@Override
 	public void cacheResult(List<Bar> bars) {
 		for (Bar bar : bars) {
-			if (entityCache.getResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-						BarImpl.class, bar.getPrimaryKey()) == null) {
+			if (entityCache.getResult(
+					BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+					bar.getPrimaryKey()) == null) {
+
 				cacheResult(bar);
 			}
 			else {
@@ -2011,7 +2019,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Clears the cache for all bars.
 	 *
 	 * <p>
-	 * The {@link EntityCache} and {@link FinderCache} are both cleared by this method.
+	 * The <code>EntityCache</code> and <code>FinderCache</code> are both cleared by this method.
 	 * </p>
 	 */
 	@Override
@@ -2027,13 +2035,14 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Clears the cache for the bar.
 	 *
 	 * <p>
-	 * The {@link EntityCache} and {@link FinderCache} are both cleared by this method.
+	 * The <code>EntityCache</code> and <code>FinderCache</code> are both cleared by this method.
 	 * </p>
 	 */
 	@Override
 	public void clearCache(Bar bar) {
-		entityCache.removeResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarImpl.class, bar.getPrimaryKey());
+		entityCache.removeResult(
+			BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+			bar.getPrimaryKey());
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
@@ -2047,8 +2056,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 
 		for (Bar bar : bars) {
-			entityCache.removeResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-				BarImpl.class, bar.getPrimaryKey());
+			entityCache.removeResult(
+				BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+				bar.getPrimaryKey());
 
 			clearUniqueFindersCache((BarModelImpl)bar, true);
 		}
@@ -2056,35 +2066,37 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 	protected void cacheUniqueFindersCache(BarModelImpl barModelImpl) {
 		Object[] args = new Object[] {
+			barModelImpl.getUuid(), barModelImpl.getGroupId()
+		};
+
+		finderCache.putResult(
+			_finderPathCountByUUID_G, args, Long.valueOf(1), false);
+		finderCache.putResult(
+			_finderPathFetchByUUID_G, args, barModelImpl, false);
+	}
+
+	protected void clearUniqueFindersCache(
+		BarModelImpl barModelImpl, boolean clearCurrent) {
+
+		if (clearCurrent) {
+			Object[] args = new Object[] {
 				barModelImpl.getUuid(), barModelImpl.getGroupId()
 			};
 
-		finderCache.putResult(FINDER_PATH_COUNT_BY_UUID_G, args,
-			Long.valueOf(1), false);
-		finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G, args, barModelImpl,
-			false);
-	}
-
-	protected void clearUniqueFindersCache(BarModelImpl barModelImpl,
-		boolean clearCurrent) {
-		if (clearCurrent) {
-			Object[] args = new Object[] {
-					barModelImpl.getUuid(), barModelImpl.getGroupId()
-				};
-
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_G, args);
-			finderCache.removeResult(FINDER_PATH_FETCH_BY_UUID_G, args);
+			finderCache.removeResult(_finderPathCountByUUID_G, args);
+			finderCache.removeResult(_finderPathFetchByUUID_G, args);
 		}
 
 		if ((barModelImpl.getColumnBitmask() &
-				FINDER_PATH_FETCH_BY_UUID_G.getColumnBitmask()) != 0) {
-			Object[] args = new Object[] {
-					barModelImpl.getOriginalUuid(),
-					barModelImpl.getOriginalGroupId()
-				};
+			 _finderPathFetchByUUID_G.getColumnBitmask()) != 0) {
 
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_G, args);
-			finderCache.removeResult(FINDER_PATH_FETCH_BY_UUID_G, args);
+			Object[] args = new Object[] {
+				barModelImpl.getOriginalUuid(),
+				barModelImpl.getOriginalGroupId()
+			};
+
+			finderCache.removeResult(_finderPathCountByUUID_G, args);
+			finderCache.removeResult(_finderPathFetchByUUID_G, args);
 		}
 	}
 
@@ -2143,8 +2155,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 					_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 				}
 
-				throw new NoSuchBarException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
-					primaryKey);
+				throw new NoSuchBarException(
+					_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 			}
 
 			return remove(bar);
@@ -2201,12 +2213,12 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 				throw new IllegalArgumentException(
 					"Implement ModelWrapper in bar proxy " +
-					invocationHandler.getClass());
+						invocationHandler.getClass());
 			}
 
 			throw new IllegalArgumentException(
 				"Implement ModelWrapper in custom Bar implementation " +
-				bar.getClass());
+					bar.getClass());
 		}
 
 		BarModelImpl barModelImpl = (BarModelImpl)bar;
@@ -2217,7 +2229,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			bar.setUuid(uuid);
 		}
 
-		ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
+		ServiceContext serviceContext =
+			ServiceContextThreadLocal.getServiceContext();
 
 		Date now = new Date();
 
@@ -2265,86 +2278,91 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		if (!BarModelImpl.COLUMN_BITMASK_ENABLED) {
 			finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 		}
-		else
-		 if (isNew) {
-			Object[] args = new Object[] { barModelImpl.getUuid() };
+		else if (isNew) {
+			Object[] args = new Object[] {barModelImpl.getUuid()};
 
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID, args);
-			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID,
-				args);
+			finderCache.removeResult(_finderPathCountByUuid, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByUuid, args);
 
 			args = new Object[] {
+				barModelImpl.getUuid(), barModelImpl.getCompanyId()
+			};
+
+			finderCache.removeResult(_finderPathCountByUuid_C, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByUuid_C, args);
+
+			args = new Object[] {barModelImpl.isField2()};
+
+			finderCache.removeResult(_finderPathCountByField2, args);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindByField2, args);
+
+			finderCache.removeResult(_finderPathCountAll, FINDER_ARGS_EMPTY);
+			finderCache.removeResult(
+				_finderPathWithoutPaginationFindAll, FINDER_ARGS_EMPTY);
+		}
+		else {
+			if ((barModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindByUuid.getColumnBitmask()) !=
+					 0) {
+
+				Object[] args = new Object[] {barModelImpl.getOriginalUuid()};
+
+				finderCache.removeResult(_finderPathCountByUuid, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByUuid, args);
+
+				args = new Object[] {barModelImpl.getUuid()};
+
+				finderCache.removeResult(_finderPathCountByUuid, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByUuid, args);
+			}
+
+			if ((barModelImpl.getColumnBitmask() &
+				 _finderPathWithoutPaginationFindByUuid_C.getColumnBitmask()) !=
+					 0) {
+
+				Object[] args = new Object[] {
+					barModelImpl.getOriginalUuid(),
+					barModelImpl.getOriginalCompanyId()
+				};
+
+				finderCache.removeResult(_finderPathCountByUuid_C, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByUuid_C, args);
+
+				args = new Object[] {
 					barModelImpl.getUuid(), barModelImpl.getCompanyId()
 				};
 
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
-			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
-				args);
-
-			args = new Object[] { barModelImpl.isField2() };
-
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
-			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
-				args);
-
-			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
-			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
-				FINDER_ARGS_EMPTY);
-		}
-
-		else {
-			if ((barModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] { barModelImpl.getOriginalUuid() };
-
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID,
-					args);
-
-				args = new Object[] { barModelImpl.getUuid() };
-
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID,
-					args);
+				finderCache.removeResult(_finderPathCountByUuid_C, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByUuid_C, args);
 			}
 
 			if ((barModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] {
-						barModelImpl.getOriginalUuid(),
-						barModelImpl.getOriginalCompanyId()
-					};
+				 _finderPathWithoutPaginationFindByField2.getColumnBitmask()) !=
+					 0) {
 
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
-					args);
+				Object[] args = new Object[] {barModelImpl.getOriginalField2()};
 
-				args = new Object[] {
-						barModelImpl.getUuid(), barModelImpl.getCompanyId()
-					};
+				finderCache.removeResult(_finderPathCountByField2, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByField2, args);
 
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
-					args);
-			}
+				args = new Object[] {barModelImpl.isField2()};
 
-			if ((barModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] { barModelImpl.getOriginalField2() };
-
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
-					args);
-
-				args = new Object[] { barModelImpl.isField2() };
-
-				finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
-				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
-					args);
+				finderCache.removeResult(_finderPathCountByField2, args);
+				finderCache.removeResult(
+					_finderPathWithoutPaginationFindByField2, args);
 			}
 		}
 
-		entityCache.putResult(BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+		entityCache.putResult(
+			BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
 			bar.getPrimaryKey(), bar, false);
 
 		clearUniqueFindersCache(barModelImpl, false);
@@ -2356,7 +2374,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	}
 
 	/**
-	 * Returns the bar with the primary key or throws a {@link com.liferay.portal.kernel.exception.NoSuchModelException} if it could not be found.
+	 * Returns the bar with the primary key or throws a <code>com.liferay.portal.kernel.exception.NoSuchModelException</code> if it could not be found.
 	 *
 	 * @param primaryKey the primary key of the bar
 	 * @return the bar
@@ -2365,6 +2383,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	@Override
 	public Bar findByPrimaryKey(Serializable primaryKey)
 		throws NoSuchBarException {
+
 		Bar bar = fetchByPrimaryKey(primaryKey);
 
 		if (bar == null) {
@@ -2372,15 +2391,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 			}
 
-			throw new NoSuchBarException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
-				primaryKey);
+			throw new NoSuchBarException(
+				_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 		}
 
 		return bar;
 	}
 
 	/**
-	 * Returns the bar with the primary key or throws a {@link NoSuchBarException} if it could not be found.
+	 * Returns the bar with the primary key or throws a <code>NoSuchBarException</code> if it could not be found.
 	 *
 	 * @param barId the primary key of the bar
 	 * @return the bar
@@ -2399,8 +2418,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public Bar fetchByPrimaryKey(Serializable primaryKey) {
-		Serializable serializable = entityCache.getResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-				BarImpl.class, primaryKey);
+		Serializable serializable = entityCache.getResult(
+			BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class, primaryKey);
 
 		if (serializable == nullModel) {
 			return null;
@@ -2420,13 +2439,15 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 					cacheResult(bar);
 				}
 				else {
-					entityCache.putResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-						BarImpl.class, primaryKey, nullModel);
+					entityCache.putResult(
+						BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+						primaryKey, nullModel);
 				}
 			}
 			catch (Exception e) {
-				entityCache.removeResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-					BarImpl.class, primaryKey);
+				entityCache.removeResult(
+					BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+					primaryKey);
 
 				throw processException(e);
 			}
@@ -2452,6 +2473,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	@Override
 	public Map<Serializable, Bar> fetchByPrimaryKeys(
 		Set<Serializable> primaryKeys) {
+
 		if (primaryKeys.isEmpty()) {
 			return Collections.emptyMap();
 		}
@@ -2475,8 +2497,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		Set<Serializable> uncachedPrimaryKeys = null;
 
 		for (Serializable primaryKey : primaryKeys) {
-			Serializable serializable = entityCache.getResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-					BarImpl.class, primaryKey);
+			Serializable serializable = entityCache.getResult(
+				BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class, primaryKey);
 
 			if (serializable != nullModel) {
 				if (serializable == null) {
@@ -2496,8 +2518,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			return map;
 		}
 
-		StringBundler query = new StringBundler((uncachedPrimaryKeys.size() * 2) +
-				1);
+		StringBundler query = new StringBundler(
+			uncachedPrimaryKeys.size() * 2 + 1);
 
 		query.append(_SQL_SELECT_BAR_WHERE_PKS_IN);
 
@@ -2529,8 +2551,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			}
 
 			for (Serializable primaryKey : uncachedPrimaryKeys) {
-				entityCache.putResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-					BarImpl.class, primaryKey, nullModel);
+				entityCache.putResult(
+					BarModelImpl.ENTITY_CACHE_ENABLED, BarImpl.class,
+					primaryKey, nullModel);
 			}
 		}
 		catch (Exception e) {
@@ -2557,7 +2580,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns a range of all the bars.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of bars
@@ -2573,7 +2596,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of bars
@@ -2582,8 +2605,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of bars
 	 */
 	@Override
-	public List<Bar> findAll(int start, int end,
-		OrderByComparator<Bar> orderByComparator) {
+	public List<Bar> findAll(
+		int start, int end, OrderByComparator<Bar> orderByComparator) {
+
 		return findAll(start, end, orderByComparator, true);
 	}
 
@@ -2591,7 +2615,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Returns an ordered range of all the bars.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link BarModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>BarModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of bars
@@ -2601,27 +2625,31 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * @return the ordered range of bars
 	 */
 	@Override
-	public List<Bar> findAll(int start, int end,
-		OrderByComparator<Bar> orderByComparator, boolean retrieveFromCache) {
+	public List<Bar> findAll(
+		int start, int end, OrderByComparator<Bar> orderByComparator,
+		boolean retrieveFromCache) {
+
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-				(orderByComparator == null)) {
+			(orderByComparator == null)) {
+
 			pagination = false;
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL;
+			finderPath = _finderPathWithoutPaginationFindAll;
 			finderArgs = FINDER_ARGS_EMPTY;
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_ALL;
-			finderArgs = new Object[] { start, end, orderByComparator };
+			finderPath = _finderPathWithPaginationFindAll;
+			finderArgs = new Object[] {start, end, orderByComparator};
 		}
 
 		List<Bar> list = null;
 
 		if (retrieveFromCache) {
-			list = (List<Bar>)finderCache.getResult(finderPath, finderArgs, this);
+			list = (List<Bar>)finderCache.getResult(
+				finderPath, finderArgs, this);
 		}
 
 		if (list == null) {
@@ -2629,13 +2657,13 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			String sql = null;
 
 			if (orderByComparator != null) {
-				query = new StringBundler(2 +
-						(orderByComparator.getOrderByFields().length * 2));
+				query = new StringBundler(
+					2 + (orderByComparator.getOrderByFields().length * 2));
 
 				query.append(_SQL_SELECT_BAR);
 
-				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-					orderByComparator);
+				appendOrderByComparator(
+					query, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
 
 				sql = query.toString();
 			}
@@ -2655,15 +2683,16 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				Query q = session.createQuery(sql);
 
 				if (!pagination) {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start,
-							end, false);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end, false);
 
 					Collections.sort(list);
 
 					list = Collections.unmodifiableList(list);
 				}
 				else {
-					list = (List<Bar>)QueryUtil.list(q, getDialect(), start, end);
+					list = (List<Bar>)QueryUtil.list(
+						q, getDialect(), start, end);
 				}
 
 				cacheResult(list);
@@ -2701,8 +2730,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 */
 	@Override
 	public int countAll() {
-		Long count = (Long)finderCache.getResult(FINDER_PATH_COUNT_ALL,
-				FINDER_ARGS_EMPTY, this);
+		Long count = (Long)finderCache.getResult(
+			_finderPathCountAll, FINDER_ARGS_EMPTY, this);
 
 		if (count == null) {
 			Session session = null;
@@ -2714,12 +2743,12 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 				count = (Long)q.uniqueResult();
 
-				finderCache.putResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY,
-					count);
+				finderCache.putResult(
+					_finderPathCountAll, FINDER_ARGS_EMPTY, count);
 			}
 			catch (Exception e) {
-				finderCache.removeResult(FINDER_PATH_COUNT_ALL,
-					FINDER_ARGS_EMPTY);
+				finderCache.removeResult(
+					_finderPathCountAll, FINDER_ARGS_EMPTY);
 
 				throw processException(e);
 			}
@@ -2745,6 +2774,107 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 	 * Initializes the bar persistence.
 	 */
 	public void afterPropertiesSet() {
+		_finderPathWithPaginationFindAll = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findAll", new String[0]);
+
+		_finderPathWithoutPaginationFindAll = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll",
+			new String[0]);
+
+		_finderPathCountAll = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll",
+			new String[0]);
+
+		_finderPathWithPaginationFindByUuid = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid",
+			new String[] {
+				String.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByUuid = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid",
+			new String[] {String.class.getName()},
+			BarModelImpl.UUID_COLUMN_BITMASK |
+			BarModelImpl.FIELD1_COLUMN_BITMASK);
+
+		_finderPathCountByUuid = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid",
+			new String[] {String.class.getName()});
+
+		_finderPathFetchByUUID_G = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByUUID_G",
+			new String[] {String.class.getName(), Long.class.getName()},
+			BarModelImpl.UUID_COLUMN_BITMASK |
+			BarModelImpl.GROUPID_COLUMN_BITMASK);
+
+		_finderPathCountByUUID_G = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUUID_G",
+			new String[] {String.class.getName(), Long.class.getName()});
+
+		_finderPathWithPaginationFindByUuid_C = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUuid_C",
+			new String[] {
+				String.class.getName(), Long.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByUuid_C = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid_C",
+			new String[] {String.class.getName(), Long.class.getName()},
+			BarModelImpl.UUID_COLUMN_BITMASK |
+			BarModelImpl.COMPANYID_COLUMN_BITMASK |
+			BarModelImpl.FIELD1_COLUMN_BITMASK);
+
+		_finderPathCountByUuid_C = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid_C",
+			new String[] {String.class.getName(), Long.class.getName()});
+
+		_finderPathWithPaginationFindByField2 = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByField2",
+			new String[] {
+				Boolean.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			});
+
+		_finderPathWithoutPaginationFindByField2 = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, BarImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByField2",
+			new String[] {Boolean.class.getName()},
+			BarModelImpl.FIELD2_COLUMN_BITMASK |
+			BarModelImpl.FIELD1_COLUMN_BITMASK);
+
+		_finderPathCountByField2 = new FinderPath(
+			BarModelImpl.ENTITY_CACHE_ENABLED,
+			BarModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByField2",
+			new String[] {Boolean.class.getName()});
 	}
 
 	public void destroy() {
@@ -2756,20 +2886,39 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 	@ServiceReference(type = CompanyProviderWrapper.class)
 	protected CompanyProvider companyProvider;
+
 	@ServiceReference(type = EntityCache.class)
 	protected EntityCache entityCache;
+
 	@ServiceReference(type = FinderCache.class)
 	protected FinderCache finderCache;
+
 	private static final String _SQL_SELECT_BAR = "SELECT bar FROM Bar bar";
-	private static final String _SQL_SELECT_BAR_WHERE_PKS_IN = "SELECT bar FROM Bar bar WHERE barId IN (";
-	private static final String _SQL_SELECT_BAR_WHERE = "SELECT bar FROM Bar bar WHERE ";
-	private static final String _SQL_COUNT_BAR = "SELECT COUNT(bar) FROM Bar bar";
-	private static final String _SQL_COUNT_BAR_WHERE = "SELECT COUNT(bar) FROM Bar bar WHERE ";
+
+	private static final String _SQL_SELECT_BAR_WHERE_PKS_IN =
+		"SELECT bar FROM Bar bar WHERE barId IN (";
+
+	private static final String _SQL_SELECT_BAR_WHERE =
+		"SELECT bar FROM Bar bar WHERE ";
+
+	private static final String _SQL_COUNT_BAR =
+		"SELECT COUNT(bar) FROM Bar bar";
+
+	private static final String _SQL_COUNT_BAR_WHERE =
+		"SELECT COUNT(bar) FROM Bar bar WHERE ";
+
 	private static final String _ORDER_BY_ENTITY_ALIAS = "bar.";
-	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Bar exists with the primary key ";
-	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Bar exists with the key {";
-	private static final Log _log = LogFactoryUtil.getLog(BarPersistenceImpl.class);
-	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"uuid"
-			});
+
+	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY =
+		"No Bar exists with the primary key ";
+
+	private static final String _NO_SUCH_ENTITY_WITH_KEY =
+		"No Bar exists with the key {";
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		BarPersistenceImpl.class);
+
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(
+		new String[] {"uuid"});
+
 }
