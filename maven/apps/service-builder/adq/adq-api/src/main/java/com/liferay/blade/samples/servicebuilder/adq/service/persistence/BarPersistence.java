@@ -47,7 +47,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param uuid the uuid
 	* @return the matching bars
 	*/
-	public java.util.List<Bar> findByUuid(String uuid);
+	public java.util.List<Bar> findByUuid(java.lang.String uuid);
 
 	/**
 	* Returns a range of all the bars where uuid = &#63;.
@@ -61,7 +61,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param end the upper bound of the range of bars (not inclusive)
 	* @return the range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid(String uuid, int start, int end);
+	public java.util.List<Bar> findByUuid(java.lang.String uuid, int start,
+		int end);
 
 	/**
 	* Returns an ordered range of all the bars where uuid = &#63;.
@@ -76,7 +77,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid(String uuid, int start, int end,
+	public java.util.List<Bar> findByUuid(java.lang.String uuid, int start,
+		int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -93,7 +95,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid(String uuid, int start, int end,
+	public java.util.List<Bar> findByUuid(java.lang.String uuid, int start,
+		int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator,
 		boolean retrieveFromCache);
 
@@ -105,7 +108,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the first matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public Bar findByUuid_First(String uuid,
+	public Bar findByUuid_First(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
 
@@ -116,7 +119,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUuid_First(String uuid,
+	public Bar fetchByUuid_First(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -127,7 +130,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the last matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public Bar findByUuid_Last(String uuid,
+	public Bar findByUuid_Last(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
 
@@ -138,7 +141,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUuid_Last(String uuid,
+	public Bar fetchByUuid_Last(java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -150,7 +153,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the previous, current, and next bar
 	* @throws NoSuchBarException if a bar with the primary key could not be found
 	*/
-	public Bar[] findByUuid_PrevAndNext(long barId, String uuid,
+	public Bar[] findByUuid_PrevAndNext(long barId, java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
 
@@ -159,7 +162,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	*
 	* @param uuid the uuid
 	*/
-	public void removeByUuid(String uuid);
+	public void removeByUuid(java.lang.String uuid);
 
 	/**
 	* Returns the number of bars where uuid = &#63;.
@@ -167,7 +170,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param uuid the uuid
 	* @return the number of matching bars
 	*/
-	public int countByUuid(String uuid);
+	public int countByUuid(java.lang.String uuid);
 
 	/**
 	* Returns the bar where uuid = &#63; and groupId = &#63; or throws a {@link NoSuchBarException} if it could not be found.
@@ -177,7 +180,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public Bar findByUUID_G(String uuid, long groupId)
+	public Bar findByUUID_G(java.lang.String uuid, long groupId)
 		throws NoSuchBarException;
 
 	/**
@@ -187,7 +190,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param groupId the group ID
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUUID_G(String uuid, long groupId);
+	public Bar fetchByUUID_G(java.lang.String uuid, long groupId);
 
 	/**
 	* Returns the bar where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
@@ -197,7 +200,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUUID_G(String uuid, long groupId,
+	public Bar fetchByUUID_G(java.lang.String uuid, long groupId,
 		boolean retrieveFromCache);
 
 	/**
@@ -207,7 +210,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param groupId the group ID
 	* @return the bar that was removed
 	*/
-	public Bar removeByUUID_G(String uuid, long groupId)
+	public Bar removeByUUID_G(java.lang.String uuid, long groupId)
 		throws NoSuchBarException;
 
 	/**
@@ -217,7 +220,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param groupId the group ID
 	* @return the number of matching bars
 	*/
-	public int countByUUID_G(String uuid, long groupId);
+	public int countByUUID_G(java.lang.String uuid, long groupId);
 
 	/**
 	* Returns all the bars where uuid = &#63; and companyId = &#63;.
@@ -226,7 +229,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param companyId the company ID
 	* @return the matching bars
 	*/
-	public java.util.List<Bar> findByUuid_C(String uuid, long companyId);
+	public java.util.List<Bar> findByUuid_C(java.lang.String uuid,
+		long companyId);
 
 	/**
 	* Returns a range of all the bars where uuid = &#63; and companyId = &#63;.
@@ -241,8 +245,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param end the upper bound of the range of bars (not inclusive)
 	* @return the range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid_C(String uuid, long companyId,
-		int start, int end);
+	public java.util.List<Bar> findByUuid_C(java.lang.String uuid,
+		long companyId, int start, int end);
 
 	/**
 	* Returns an ordered range of all the bars where uuid = &#63; and companyId = &#63;.
@@ -258,8 +262,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid_C(String uuid, long companyId,
-		int start, int end,
+	public java.util.List<Bar> findByUuid_C(java.lang.String uuid,
+		long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -277,8 +281,8 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching bars
 	*/
-	public java.util.List<Bar> findByUuid_C(String uuid, long companyId,
-		int start, int end,
+	public java.util.List<Bar> findByUuid_C(java.lang.String uuid,
+		long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator,
 		boolean retrieveFromCache);
 
@@ -291,7 +295,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the first matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public Bar findByUuid_C_First(String uuid, long companyId,
+	public Bar findByUuid_C_First(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
 
@@ -303,7 +307,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUuid_C_First(String uuid, long companyId,
+	public Bar fetchByUuid_C_First(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -315,7 +319,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the last matching bar
 	* @throws NoSuchBarException if a matching bar could not be found
 	*/
-	public Bar findByUuid_C_Last(String uuid, long companyId,
+	public Bar findByUuid_C_Last(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
 
@@ -327,7 +331,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching bar, or <code>null</code> if a matching bar could not be found
 	*/
-	public Bar fetchByUuid_C_Last(String uuid, long companyId,
+	public Bar fetchByUuid_C_Last(java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator);
 
 	/**
@@ -340,7 +344,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @return the previous, current, and next bar
 	* @throws NoSuchBarException if a bar with the primary key could not be found
 	*/
-	public Bar[] findByUuid_C_PrevAndNext(long barId, String uuid,
+	public Bar[] findByUuid_C_PrevAndNext(long barId, java.lang.String uuid,
 		long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<Bar> orderByComparator)
 		throws NoSuchBarException;
@@ -351,7 +355,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param uuid the uuid
 	* @param companyId the company ID
 	*/
-	public void removeByUuid_C(String uuid, long companyId);
+	public void removeByUuid_C(java.lang.String uuid, long companyId);
 
 	/**
 	* Returns the number of bars where uuid = &#63; and companyId = &#63;.
@@ -360,7 +364,7 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	* @param companyId the company ID
 	* @return the number of matching bars
 	*/
-	public int countByUuid_C(String uuid, long companyId);
+	public int countByUuid_C(java.lang.String uuid, long companyId);
 
 	/**
 	* Returns all the bars where field2 = &#63;.
@@ -609,5 +613,5 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	public int countAll();
 
 	@Override
-	public java.util.Set<String> getBadColumnNames();
+	public java.util.Set<java.lang.String> getBadColumnNames();
 }

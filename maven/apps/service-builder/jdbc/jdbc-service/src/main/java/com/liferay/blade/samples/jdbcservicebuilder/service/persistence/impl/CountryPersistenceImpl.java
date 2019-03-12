@@ -249,6 +249,8 @@ public class CountryPersistenceImpl extends BasePersistenceImpl<Country>
 
 	@Override
 	protected Country removeImpl(Country country) {
+		country = toUnwrappedModel(country);
+
 		Session session = null;
 
 		try {
@@ -279,6 +281,8 @@ public class CountryPersistenceImpl extends BasePersistenceImpl<Country>
 
 	@Override
 	public Country updateImpl(Country country) {
+		country = toUnwrappedModel(country);
+
 		boolean isNew = country.isNew();
 
 		Session session = null;
@@ -316,6 +320,22 @@ public class CountryPersistenceImpl extends BasePersistenceImpl<Country>
 		country.resetOriginalValues();
 
 		return country;
+	}
+
+	protected Country toUnwrappedModel(Country country) {
+		if (country instanceof CountryImpl) {
+			return country;
+		}
+
+		CountryImpl countryImpl = new CountryImpl();
+
+		countryImpl.setNew(country.isNew());
+		countryImpl.setPrimaryKey(country.getPrimaryKey());
+
+		countryImpl.setCountryId(country.getCountryId());
+		countryImpl.setCountryName(country.getCountryName());
+
+		return countryImpl;
 	}
 
 	/**

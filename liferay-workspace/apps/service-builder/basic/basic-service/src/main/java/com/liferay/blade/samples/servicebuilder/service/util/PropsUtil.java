@@ -28,6 +28,7 @@ import java.util.Properties;
  */
 @ProviderType
 public class PropsUtil {
+
 	public static void addProperties(Properties properties) {
 		_instance._configuration.addProperties(properties);
 	}
@@ -65,11 +66,12 @@ public class PropsUtil {
 	}
 
 	private PropsUtil() {
-		_configuration = ConfigurationFactoryUtil.getConfiguration(getClass()
-																	   .getClassLoader(),
-				"service");
+		_configuration = ConfigurationFactoryUtil.getConfiguration(
+			getClass().getClassLoader(), "service");
 	}
 
 	private static PropsUtil _instance = new PropsUtil();
+
 	private Configuration _configuration;
+
 }

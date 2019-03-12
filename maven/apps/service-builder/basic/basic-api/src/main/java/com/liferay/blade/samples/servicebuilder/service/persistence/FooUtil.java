@@ -115,7 +115,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @return the matching foos
 	*/
-	public static List<Foo> findByUuid(String uuid) {
+	public static List<Foo> findByUuid(java.lang.String uuid) {
 		return getPersistence().findByUuid(uuid);
 	}
 
@@ -131,7 +131,7 @@ public class FooUtil {
 	* @param end the upper bound of the range of foos (not inclusive)
 	* @return the range of matching foos
 	*/
-	public static List<Foo> findByUuid(String uuid, int start, int end) {
+	public static List<Foo> findByUuid(java.lang.String uuid, int start, int end) {
 		return getPersistence().findByUuid(uuid, start, end);
 	}
 
@@ -148,8 +148,8 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching foos
 	*/
-	public static List<Foo> findByUuid(String uuid, int start, int end,
-		OrderByComparator<Foo> orderByComparator) {
+	public static List<Foo> findByUuid(java.lang.String uuid, int start,
+		int end, OrderByComparator<Foo> orderByComparator) {
 		return getPersistence().findByUuid(uuid, start, end, orderByComparator);
 	}
 
@@ -167,8 +167,9 @@ public class FooUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching foos
 	*/
-	public static List<Foo> findByUuid(String uuid, int start, int end,
-		OrderByComparator<Foo> orderByComparator, boolean retrieveFromCache) {
+	public static List<Foo> findByUuid(java.lang.String uuid, int start,
+		int end, OrderByComparator<Foo> orderByComparator,
+		boolean retrieveFromCache) {
 		return getPersistence()
 				   .findByUuid(uuid, start, end, orderByComparator,
 			retrieveFromCache);
@@ -182,7 +183,7 @@ public class FooUtil {
 	* @return the first matching foo
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
-	public static Foo findByUuid_First(String uuid,
+	public static Foo findByUuid_First(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_First(uuid, orderByComparator);
@@ -195,7 +196,7 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUuid_First(String uuid,
+	public static Foo fetchByUuid_First(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator) {
 		return getPersistence().fetchByUuid_First(uuid, orderByComparator);
 	}
@@ -208,7 +209,7 @@ public class FooUtil {
 	* @return the last matching foo
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
-	public static Foo findByUuid_Last(String uuid,
+	public static Foo findByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_Last(uuid, orderByComparator);
@@ -221,7 +222,7 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUuid_Last(String uuid,
+	public static Foo fetchByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator) {
 		return getPersistence().fetchByUuid_Last(uuid, orderByComparator);
 	}
@@ -235,8 +236,8 @@ public class FooUtil {
 	* @return the previous, current, and next foo
 	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
-	public static Foo[] findByUuid_PrevAndNext(long fooId, String uuid,
-		OrderByComparator<Foo> orderByComparator)
+	public static Foo[] findByUuid_PrevAndNext(long fooId,
+		java.lang.String uuid, OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(fooId, uuid, orderByComparator);
@@ -247,7 +248,7 @@ public class FooUtil {
 	*
 	* @param uuid the uuid
 	*/
-	public static void removeByUuid(String uuid) {
+	public static void removeByUuid(java.lang.String uuid) {
 		getPersistence().removeByUuid(uuid);
 	}
 
@@ -257,7 +258,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @return the number of matching foos
 	*/
-	public static int countByUuid(String uuid) {
+	public static int countByUuid(java.lang.String uuid) {
 		return getPersistence().countByUuid(uuid);
 	}
 
@@ -269,7 +270,7 @@ public class FooUtil {
 	* @return the matching foo
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
-	public static Foo findByUUID_G(String uuid, long groupId)
+	public static Foo findByUUID_G(java.lang.String uuid, long groupId)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUUID_G(uuid, groupId);
 	}
@@ -281,7 +282,7 @@ public class FooUtil {
 	* @param groupId the group ID
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUUID_G(String uuid, long groupId) {
+	public static Foo fetchByUUID_G(java.lang.String uuid, long groupId) {
 		return getPersistence().fetchByUUID_G(uuid, groupId);
 	}
 
@@ -293,7 +294,7 @@ public class FooUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUUID_G(String uuid, long groupId,
+	public static Foo fetchByUUID_G(java.lang.String uuid, long groupId,
 		boolean retrieveFromCache) {
 		return getPersistence().fetchByUUID_G(uuid, groupId, retrieveFromCache);
 	}
@@ -305,7 +306,7 @@ public class FooUtil {
 	* @param groupId the group ID
 	* @return the foo that was removed
 	*/
-	public static Foo removeByUUID_G(String uuid, long groupId)
+	public static Foo removeByUUID_G(java.lang.String uuid, long groupId)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence().removeByUUID_G(uuid, groupId);
 	}
@@ -317,7 +318,7 @@ public class FooUtil {
 	* @param groupId the group ID
 	* @return the number of matching foos
 	*/
-	public static int countByUUID_G(String uuid, long groupId) {
+	public static int countByUUID_G(java.lang.String uuid, long groupId) {
 		return getPersistence().countByUUID_G(uuid, groupId);
 	}
 
@@ -328,7 +329,7 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @return the matching foos
 	*/
-	public static List<Foo> findByUuid_C(String uuid, long companyId) {
+	public static List<Foo> findByUuid_C(java.lang.String uuid, long companyId) {
 		return getPersistence().findByUuid_C(uuid, companyId);
 	}
 
@@ -345,7 +346,7 @@ public class FooUtil {
 	* @param end the upper bound of the range of foos (not inclusive)
 	* @return the range of matching foos
 	*/
-	public static List<Foo> findByUuid_C(String uuid, long companyId,
+	public static List<Foo> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end) {
 		return getPersistence().findByUuid_C(uuid, companyId, start, end);
 	}
@@ -364,7 +365,7 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching foos
 	*/
-	public static List<Foo> findByUuid_C(String uuid, long companyId,
+	public static List<Foo> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end, OrderByComparator<Foo> orderByComparator) {
 		return getPersistence()
 				   .findByUuid_C(uuid, companyId, start, end, orderByComparator);
@@ -385,7 +386,7 @@ public class FooUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the ordered range of matching foos
 	*/
-	public static List<Foo> findByUuid_C(String uuid, long companyId,
+	public static List<Foo> findByUuid_C(java.lang.String uuid, long companyId,
 		int start, int end, OrderByComparator<Foo> orderByComparator,
 		boolean retrieveFromCache) {
 		return getPersistence()
@@ -402,7 +403,7 @@ public class FooUtil {
 	* @return the first matching foo
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
-	public static Foo findByUuid_C_First(String uuid, long companyId,
+	public static Foo findByUuid_C_First(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
@@ -417,8 +418,8 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUuid_C_First(String uuid, long companyId,
-		OrderByComparator<Foo> orderByComparator) {
+	public static Foo fetchByUuid_C_First(java.lang.String uuid,
+		long companyId, OrderByComparator<Foo> orderByComparator) {
 		return getPersistence()
 				   .fetchByUuid_C_First(uuid, companyId, orderByComparator);
 	}
@@ -432,7 +433,7 @@ public class FooUtil {
 	* @return the last matching foo
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
-	public static Foo findByUuid_C_Last(String uuid, long companyId,
+	public static Foo findByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
@@ -447,7 +448,7 @@ public class FooUtil {
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching foo, or <code>null</code> if a matching foo could not be found
 	*/
-	public static Foo fetchByUuid_C_Last(String uuid, long companyId,
+	public static Foo fetchByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator) {
 		return getPersistence()
 				   .fetchByUuid_C_Last(uuid, companyId, orderByComparator);
@@ -463,8 +464,9 @@ public class FooUtil {
 	* @return the previous, current, and next foo
 	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
-	public static Foo[] findByUuid_C_PrevAndNext(long fooId, String uuid,
-		long companyId, OrderByComparator<Foo> orderByComparator)
+	public static Foo[] findByUuid_C_PrevAndNext(long fooId,
+		java.lang.String uuid, long companyId,
+		OrderByComparator<Foo> orderByComparator)
 		throws com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_PrevAndNext(fooId, uuid, companyId,
@@ -477,7 +479,7 @@ public class FooUtil {
 	* @param uuid the uuid
 	* @param companyId the company ID
 	*/
-	public static void removeByUuid_C(String uuid, long companyId) {
+	public static void removeByUuid_C(java.lang.String uuid, long companyId) {
 		getPersistence().removeByUuid_C(uuid, companyId);
 	}
 
@@ -488,7 +490,7 @@ public class FooUtil {
 	* @param companyId the company ID
 	* @return the number of matching foos
 	*/
-	public static int countByUuid_C(String uuid, long companyId) {
+	public static int countByUuid_C(java.lang.String uuid, long companyId) {
 		return getPersistence().countByUuid_C(uuid, companyId);
 	}
 
@@ -792,7 +794,7 @@ public class FooUtil {
 		return getPersistence().countAll();
 	}
 
-	public static java.util.Set<String> getBadColumnNames() {
+	public static java.util.Set<java.lang.String> getBadColumnNames() {
 		return getPersistence().getBadColumnNames();
 	}
 

@@ -55,12 +55,12 @@ public interface FooService extends BaseService {
 	*
 	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
 	*/
-	public String fooRemote();
+	public java.lang.String fooRemote();
 
 	/**
 	* Returns the OSGi service identifier.
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 }

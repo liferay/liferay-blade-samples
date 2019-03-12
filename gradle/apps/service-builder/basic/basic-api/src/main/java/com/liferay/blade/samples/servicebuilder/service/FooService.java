@@ -32,35 +32,41 @@ import com.liferay.portal.kernel.transaction.Transactional;
  *
  * @author Brian Wing Shun Chan
  * @see FooServiceUtil
- * @see com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl
- * @see com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl
  * @generated
  */
 @AccessControlled
 @JSONWebService
-@OSGiBeanProperties(property =  {
-	"json.web.service.context.name=ssb", "json.web.service.context.path=Foo"}, service = FooService.class)
+@OSGiBeanProperties(
+	property = {
+		"json.web.service.context.name=ssb", "json.web.service.context.path=Foo"
+	},
+	service = FooService.class
+)
 @ProviderType
-@Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
-	PortalException.class, SystemException.class})
+@Transactional(
+	isolation = Isolation.PORTAL,
+	rollbackFor = {PortalException.class, SystemException.class}
+)
 public interface FooService extends BaseService {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link FooServiceUtil} to access the foo remote service. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link FooServiceUtil} to access the foo remote service. Add custom service methods to <code>com.liferay.blade.samples.servicebuilder.service.impl.FooServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
-	*/
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
+	 */
 	public String fooRemote();
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	public String getOSGiServiceIdentifier();
+
 }

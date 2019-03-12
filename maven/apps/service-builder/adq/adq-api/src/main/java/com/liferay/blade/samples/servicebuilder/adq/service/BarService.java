@@ -55,5 +55,5 @@ public interface BarService extends BaseService {
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 }

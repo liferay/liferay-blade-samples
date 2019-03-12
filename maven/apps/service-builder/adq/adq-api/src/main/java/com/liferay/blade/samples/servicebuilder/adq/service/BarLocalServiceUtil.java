@@ -64,7 +64,7 @@ public class BarLocalServiceUtil {
 		return getService().addBarWithoutId(bar);
 	}
 
-	public static String barLocal() {
+	public static java.lang.String barLocal() {
 		return getService().barLocal();
 	}
 
@@ -202,7 +202,7 @@ public class BarLocalServiceUtil {
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.adq.model.Bar fetchBarByUuidAndGroupId(
-		String uuid, long groupId) {
+		java.lang.String uuid, long groupId) {
 		return getService().fetchBarByUuidAndGroupId(uuid, groupId);
 	}
 
@@ -231,7 +231,7 @@ public class BarLocalServiceUtil {
 	* @throws PortalException if a matching bar could not be found
 	*/
 	public static com.liferay.blade.samples.servicebuilder.adq.model.Bar getBarByUuidAndGroupId(
-		String uuid, long groupId)
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getBarByUuidAndGroupId(uuid, groupId);
 	}
@@ -260,7 +260,7 @@ public class BarLocalServiceUtil {
 	* @return the matching bars, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.adq.model.Bar> getBarsByUuidAndCompanyId(
-		String uuid, long companyId) {
+		java.lang.String uuid, long companyId) {
 		return getService().getBarsByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -275,7 +275,7 @@ public class BarLocalServiceUtil {
 	* @return the range of matching bars, or an empty list if no matches were found
 	*/
 	public static java.util.List<com.liferay.blade.samples.servicebuilder.adq.model.Bar> getBarsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
+		java.lang.String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.adq.model.Bar> orderByComparator) {
 		return getService()
 				   .getBarsByUuidAndCompanyId(uuid, companyId, start, end,
@@ -305,7 +305,7 @@ public class BarLocalServiceUtil {
 	*
 	* @return the OSGi service identifier
 	*/
-	public static String getOSGiServiceIdentifier() {
+	public static java.lang.String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

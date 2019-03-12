@@ -37,7 +37,6 @@ import com.liferay.portal.kernel.service.persistence.CompanyProvider;
 import com.liferay.portal.kernel.service.persistence.CompanyProviderWrapper;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
-import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.Validator;
@@ -47,7 +46,6 @@ import com.liferay.portal.spring.extender.service.ServiceReference;
 import java.io.Serializable;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
 
 import java.util.Collections;
 import java.util.Date;
@@ -767,6 +765,12 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 					result = bar;
 
 					cacheResult(bar);
+
+					if ((bar.getUuid() == null) || !bar.getUuid().equals(uuid) ||
+							(bar.getGroupId() != groupId)) {
+						finderCache.putResult(FINDER_PATH_FETCH_BY_UUID_G,
+							finderArgs, bar);
+					}
 				}
 			}
 			catch (Exception e) {
@@ -1562,7 +1566,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Bar bar : list) {
-					if ((field2 != bar.isField2())) {
+					if ((field2 != bar.getField2())) {
 						list = null;
 
 						break;
@@ -2162,6 +2166,8 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 	@Override
 	protected Bar removeImpl(Bar bar) {
+		bar = toUnwrappedModel(bar);
+
 		Session session = null;
 
 		try {
@@ -2191,23 +2197,9 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 
 	@Override
 	public Bar updateImpl(Bar bar) {
+		bar = toUnwrappedModel(bar);
+
 		boolean isNew = bar.isNew();
-
-		if (!(bar instanceof BarModelImpl)) {
-			InvocationHandler invocationHandler = null;
-
-			if (ProxyUtil.isProxyClass(bar.getClass())) {
-				invocationHandler = ProxyUtil.getInvocationHandler(bar);
-
-				throw new IllegalArgumentException(
-					"Implement ModelWrapper in bar proxy " +
-					invocationHandler.getClass());
-			}
-
-			throw new IllegalArgumentException(
-				"Implement ModelWrapper in custom Bar implementation " +
-				bar.getClass());
-		}
 
 		BarModelImpl barModelImpl = (BarModelImpl)bar;
 
@@ -2281,7 +2273,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
 				args);
 
-			args = new Object[] { barModelImpl.isField2() };
+			args = new Object[] { barModelImpl.getField2() };
 
 			finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
@@ -2336,7 +2328,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
 					args);
 
-				args = new Object[] { barModelImpl.isField2() };
+				args = new Object[] { barModelImpl.getField2() };
 
 				finderCache.removeResult(FINDER_PATH_COUNT_BY_FIELD2, args);
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FIELD2,
@@ -2353,6 +2345,33 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		bar.resetOriginalValues();
 
 		return bar;
+	}
+
+	protected Bar toUnwrappedModel(Bar bar) {
+		if (bar instanceof BarImpl) {
+			return bar;
+		}
+
+		BarImpl barImpl = new BarImpl();
+
+		barImpl.setNew(bar.isNew());
+		barImpl.setPrimaryKey(bar.getPrimaryKey());
+
+		barImpl.setUuid(bar.getUuid());
+		barImpl.setBarId(bar.getBarId());
+		barImpl.setGroupId(bar.getGroupId());
+		barImpl.setCompanyId(bar.getCompanyId());
+		barImpl.setUserId(bar.getUserId());
+		barImpl.setUserName(bar.getUserName());
+		barImpl.setCreateDate(bar.getCreateDate());
+		barImpl.setModifiedDate(bar.getModifiedDate());
+		barImpl.setField1(bar.getField1());
+		barImpl.setField2(bar.isField2());
+		barImpl.setField3(bar.getField3());
+		barImpl.setField4(bar.getField4());
+		barImpl.setField5(bar.getField5());
+
+		return barImpl;
 	}
 
 	/**
