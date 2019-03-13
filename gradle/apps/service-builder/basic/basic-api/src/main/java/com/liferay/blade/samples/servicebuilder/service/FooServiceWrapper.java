@@ -26,27 +26,28 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @generated
  */
 @ProviderType
-public class FooServiceWrapper implements FooService,
-	ServiceWrapper<FooService> {
+public class FooServiceWrapper
+	implements FooService, ServiceWrapper<FooService> {
+
 	public FooServiceWrapper(FooService fooService) {
 		_fooService = fooService;
 	}
 
 	/**
-	* NOTE FOR DEVELOPERS:
-	*
-	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
-	*/
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
+	 */
 	@Override
 	public String fooRemote() {
 		return _fooService.fooRemote();
 	}
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	@Override
 	public String getOSGiServiceIdentifier() {
 		return _fooService.getOSGiServiceIdentifier();
@@ -63,4 +64,5 @@ public class FooServiceWrapper implements FooService,
 	}
 
 	private FooService _fooService;
+
 }

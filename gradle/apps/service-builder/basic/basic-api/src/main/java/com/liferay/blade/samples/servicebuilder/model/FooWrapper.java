@@ -17,9 +17,7 @@ package com.liferay.blade.samples.servicebuilder.model;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.exportimport.kernel.lar.StagedModelType;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.service.ServiceContext;
 
@@ -41,6 +39,7 @@ import java.util.Objects;
  */
 @ProviderType
 public class FooWrapper implements Foo, ModelWrapper<Foo> {
+
 	public FooWrapper(Foo foo) {
 		_foo = foo;
 	}
@@ -168,20 +167,20 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Returns the company ID of this foo.
-	*
-	* @return the company ID of this foo
-	*/
+	 * Returns the company ID of this foo.
+	 *
+	 * @return the company ID of this foo
+	 */
 	@Override
 	public long getCompanyId() {
 		return _foo.getCompanyId();
 	}
 
 	/**
-	* Returns the create date of this foo.
-	*
-	* @return the create date of this foo
-	*/
+	 * Returns the create date of this foo.
+	 *
+	 * @return the create date of this foo
+	 */
 	@Override
 	public Date getCreateDate() {
 		return _foo.getCreateDate();
@@ -193,90 +192,90 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Returns the field1 of this foo.
-	*
-	* @return the field1 of this foo
-	*/
+	 * Returns the field1 of this foo.
+	 *
+	 * @return the field1 of this foo
+	 */
 	@Override
 	public String getField1() {
 		return _foo.getField1();
 	}
 
 	/**
-	* Returns the field2 of this foo.
-	*
-	* @return the field2 of this foo
-	*/
+	 * Returns the field2 of this foo.
+	 *
+	 * @return the field2 of this foo
+	 */
 	@Override
 	public boolean getField2() {
 		return _foo.getField2();
 	}
 
 	/**
-	* Returns the field3 of this foo.
-	*
-	* @return the field3 of this foo
-	*/
+	 * Returns the field3 of this foo.
+	 *
+	 * @return the field3 of this foo
+	 */
 	@Override
 	public int getField3() {
 		return _foo.getField3();
 	}
 
 	/**
-	* Returns the field4 of this foo.
-	*
-	* @return the field4 of this foo
-	*/
+	 * Returns the field4 of this foo.
+	 *
+	 * @return the field4 of this foo
+	 */
 	@Override
 	public Date getField4() {
 		return _foo.getField4();
 	}
 
 	/**
-	* Returns the field5 of this foo.
-	*
-	* @return the field5 of this foo
-	*/
+	 * Returns the field5 of this foo.
+	 *
+	 * @return the field5 of this foo
+	 */
 	@Override
 	public String getField5() {
 		return _foo.getField5();
 	}
 
 	/**
-	* Returns the foo ID of this foo.
-	*
-	* @return the foo ID of this foo
-	*/
+	 * Returns the foo ID of this foo.
+	 *
+	 * @return the foo ID of this foo
+	 */
 	@Override
 	public long getFooId() {
 		return _foo.getFooId();
 	}
 
 	/**
-	* Returns the group ID of this foo.
-	*
-	* @return the group ID of this foo
-	*/
+	 * Returns the group ID of this foo.
+	 *
+	 * @return the group ID of this foo
+	 */
 	@Override
 	public long getGroupId() {
 		return _foo.getGroupId();
 	}
 
 	/**
-	* Returns the modified date of this foo.
-	*
-	* @return the modified date of this foo
-	*/
+	 * Returns the modified date of this foo.
+	 *
+	 * @return the modified date of this foo
+	 */
 	@Override
 	public Date getModifiedDate() {
 		return _foo.getModifiedDate();
 	}
 
 	/**
-	* Returns the primary key of this foo.
-	*
-	* @return the primary key of this foo
-	*/
+	 * Returns the primary key of this foo.
+	 *
+	 * @return the primary key of this foo
+	 */
 	@Override
 	public long getPrimaryKey() {
 		return _foo.getPrimaryKey();
@@ -288,40 +287,40 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Returns the user ID of this foo.
-	*
-	* @return the user ID of this foo
-	*/
+	 * Returns the user ID of this foo.
+	 *
+	 * @return the user ID of this foo
+	 */
 	@Override
 	public long getUserId() {
 		return _foo.getUserId();
 	}
 
 	/**
-	* Returns the user name of this foo.
-	*
-	* @return the user name of this foo
-	*/
+	 * Returns the user name of this foo.
+	 *
+	 * @return the user name of this foo
+	 */
 	@Override
 	public String getUserName() {
 		return _foo.getUserName();
 	}
 
 	/**
-	* Returns the user uuid of this foo.
-	*
-	* @return the user uuid of this foo
-	*/
+	 * Returns the user uuid of this foo.
+	 *
+	 * @return the user uuid of this foo
+	 */
 	@Override
 	public String getUserUuid() {
 		return _foo.getUserUuid();
 	}
 
 	/**
-	* Returns the uuid of this foo.
-	*
-	* @return the uuid of this foo
-	*/
+	 * Returns the uuid of this foo.
+	 *
+	 * @return the uuid of this foo
+	 */
 	@Override
 	public String getUuid() {
 		return _foo.getUuid();
@@ -343,10 +342,10 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Returns <code>true</code> if this foo is field2.
-	*
-	* @return <code>true</code> if this foo is field2; <code>false</code> otherwise
-	*/
+	 * Returns <code>true</code> if this foo is field2.
+	 *
+	 * @return <code>true</code> if this foo is field2; <code>false</code> otherwise
+	 */
 	@Override
 	public boolean isField2() {
 		return _foo.isField2();
@@ -368,20 +367,20 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Sets the company ID of this foo.
-	*
-	* @param companyId the company ID of this foo
-	*/
+	 * Sets the company ID of this foo.
+	 *
+	 * @param companyId the company ID of this foo
+	 */
 	@Override
 	public void setCompanyId(long companyId) {
 		_foo.setCompanyId(companyId);
 	}
 
 	/**
-	* Sets the create date of this foo.
-	*
-	* @param createDate the create date of this foo
-	*/
+	 * Sets the create date of this foo.
+	 *
+	 * @param createDate the create date of this foo
+	 */
 	@Override
 	public void setCreateDate(Date createDate) {
 		_foo.setCreateDate(createDate);
@@ -390,6 +389,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+
 		_foo.setExpandoBridgeAttributes(baseModel);
 	}
 
@@ -404,80 +404,80 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Sets the field1 of this foo.
-	*
-	* @param field1 the field1 of this foo
-	*/
+	 * Sets the field1 of this foo.
+	 *
+	 * @param field1 the field1 of this foo
+	 */
 	@Override
 	public void setField1(String field1) {
 		_foo.setField1(field1);
 	}
 
 	/**
-	* Sets whether this foo is field2.
-	*
-	* @param field2 the field2 of this foo
-	*/
+	 * Sets whether this foo is field2.
+	 *
+	 * @param field2 the field2 of this foo
+	 */
 	@Override
 	public void setField2(boolean field2) {
 		_foo.setField2(field2);
 	}
 
 	/**
-	* Sets the field3 of this foo.
-	*
-	* @param field3 the field3 of this foo
-	*/
+	 * Sets the field3 of this foo.
+	 *
+	 * @param field3 the field3 of this foo
+	 */
 	@Override
 	public void setField3(int field3) {
 		_foo.setField3(field3);
 	}
 
 	/**
-	* Sets the field4 of this foo.
-	*
-	* @param field4 the field4 of this foo
-	*/
+	 * Sets the field4 of this foo.
+	 *
+	 * @param field4 the field4 of this foo
+	 */
 	@Override
 	public void setField4(Date field4) {
 		_foo.setField4(field4);
 	}
 
 	/**
-	* Sets the field5 of this foo.
-	*
-	* @param field5 the field5 of this foo
-	*/
+	 * Sets the field5 of this foo.
+	 *
+	 * @param field5 the field5 of this foo
+	 */
 	@Override
 	public void setField5(String field5) {
 		_foo.setField5(field5);
 	}
 
 	/**
-	* Sets the foo ID of this foo.
-	*
-	* @param fooId the foo ID of this foo
-	*/
+	 * Sets the foo ID of this foo.
+	 *
+	 * @param fooId the foo ID of this foo
+	 */
 	@Override
 	public void setFooId(long fooId) {
 		_foo.setFooId(fooId);
 	}
 
 	/**
-	* Sets the group ID of this foo.
-	*
-	* @param groupId the group ID of this foo
-	*/
+	 * Sets the group ID of this foo.
+	 *
+	 * @param groupId the group ID of this foo
+	 */
 	@Override
 	public void setGroupId(long groupId) {
 		_foo.setGroupId(groupId);
 	}
 
 	/**
-	* Sets the modified date of this foo.
-	*
-	* @param modifiedDate the modified date of this foo
-	*/
+	 * Sets the modified date of this foo.
+	 *
+	 * @param modifiedDate the modified date of this foo
+	 */
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_foo.setModifiedDate(modifiedDate);
@@ -489,10 +489,10 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Sets the primary key of this foo.
-	*
-	* @param primaryKey the primary key of this foo
-	*/
+	 * Sets the primary key of this foo.
+	 *
+	 * @param primaryKey the primary key of this foo
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_foo.setPrimaryKey(primaryKey);
@@ -504,40 +504,40 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	/**
-	* Sets the user ID of this foo.
-	*
-	* @param userId the user ID of this foo
-	*/
+	 * Sets the user ID of this foo.
+	 *
+	 * @param userId the user ID of this foo
+	 */
 	@Override
 	public void setUserId(long userId) {
 		_foo.setUserId(userId);
 	}
 
 	/**
-	* Sets the user name of this foo.
-	*
-	* @param userName the user name of this foo
-	*/
+	 * Sets the user name of this foo.
+	 *
+	 * @param userName the user name of this foo
+	 */
 	@Override
 	public void setUserName(String userName) {
 		_foo.setUserName(userName);
 	}
 
 	/**
-	* Sets the user uuid of this foo.
-	*
-	* @param userUuid the user uuid of this foo
-	*/
+	 * Sets the user uuid of this foo.
+	 *
+	 * @param userUuid the user uuid of this foo
+	 */
 	@Override
 	public void setUserUuid(String userUuid) {
 		_foo.setUserUuid(userUuid);
 	}
 
 	/**
-	* Sets the uuid of this foo.
-	*
-	* @param uuid the uuid of this foo
-	*/
+	 * Sets the uuid of this foo.
+	 *
+	 * @param uuid the uuid of this foo
+	 */
 	@Override
 	public void setUuid(String uuid) {
 		_foo.setUuid(uuid);
@@ -613,4 +613,5 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	}
 
 	private final Foo _foo;
+
 }

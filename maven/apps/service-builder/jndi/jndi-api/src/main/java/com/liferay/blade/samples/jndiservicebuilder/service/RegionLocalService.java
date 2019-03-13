@@ -76,7 +76,6 @@ public interface RegionLocalService extends BaseLocalService,
 	* @param regionId the primary key for the new region
 	* @return the new region
 	*/
-	@Transactional(enabled = false)
 	public Region createRegion(long regionId);
 
 	/**
@@ -178,7 +177,7 @@ public interface RegionLocalService extends BaseLocalService,
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

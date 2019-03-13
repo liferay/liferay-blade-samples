@@ -160,5 +160,5 @@ public interface RegionPersistence extends BasePersistence<Region> {
 	public int countAll();
 
 	@Override
-	public java.util.Set<String> getBadColumnNames();
+	public java.util.Set<java.lang.String> getBadColumnNames();
 }

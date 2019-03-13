@@ -17,7 +17,6 @@ package com.liferay.blade.samples.servicebuilder.model.impl;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.blade.samples.servicebuilder.model.Foo;
-
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.util.HashUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -33,11 +32,11 @@ import java.util.Date;
  * The cache model class for representing Foo in entity cache.
  *
  * @author Brian Wing Shun Chan
- * @see Foo
  * @generated
  */
 @ProviderType
 public class FooCacheModel implements CacheModel<Foo>, Externalizable {
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -187,8 +186,7 @@ public class FooCacheModel implements CacheModel<Foo>, Externalizable {
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
+	public void writeExternal(ObjectOutput objectOutput) throws IOException {
 		if (uuid == null) {
 			objectOutput.writeUTF("");
 		}
@@ -247,4 +245,5 @@ public class FooCacheModel implements CacheModel<Foo>, Externalizable {
 	public int field3;
 	public long field4;
 	public String field5;
+
 }

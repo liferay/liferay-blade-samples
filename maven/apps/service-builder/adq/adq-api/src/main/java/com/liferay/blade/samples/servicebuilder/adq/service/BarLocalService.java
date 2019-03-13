@@ -80,7 +80,7 @@ public interface BarLocalService extends BaseLocalService,
 	*/
 	public Bar addBarWithoutId(Bar bar);
 
-	public String barLocal();
+	public java.lang.String barLocal();
 
 	/**
 	* Creates a new bar with the primary key. Does not add the bar to the database.
@@ -88,7 +88,6 @@ public interface BarLocalService extends BaseLocalService,
 	* @param barId the primary key for the new bar
 	* @return the new bar
 	*/
-	@Transactional(enabled = false)
 	public Bar createBar(long barId);
 
 	/**
@@ -187,7 +186,7 @@ public interface BarLocalService extends BaseLocalService,
 	* @return the matching bar, or <code>null</code> if a matching bar could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Bar fetchBarByUuidAndGroupId(String uuid, long groupId);
+	public Bar fetchBarByUuidAndGroupId(java.lang.String uuid, long groupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -211,7 +210,7 @@ public interface BarLocalService extends BaseLocalService,
 	* @throws PortalException if a matching bar could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Bar getBarByUuidAndGroupId(String uuid, long groupId)
+	public Bar getBarByUuidAndGroupId(java.lang.String uuid, long groupId)
 		throws PortalException;
 
 	/**
@@ -236,7 +235,8 @@ public interface BarLocalService extends BaseLocalService,
 	* @return the matching bars, or an empty list if no matches were found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Bar> getBarsByUuidAndCompanyId(String uuid, long companyId);
+	public List<Bar> getBarsByUuidAndCompanyId(java.lang.String uuid,
+		long companyId);
 
 	/**
 	* Returns a range of bars matching the UUID and company.
@@ -249,8 +249,9 @@ public interface BarLocalService extends BaseLocalService,
 	* @return the range of matching bars, or an empty list if no matches were found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Bar> getBarsByUuidAndCompanyId(String uuid, long companyId,
-		int start, int end, OrderByComparator<Bar> orderByComparator);
+	public List<Bar> getBarsByUuidAndCompanyId(java.lang.String uuid,
+		long companyId, int start, int end,
+		OrderByComparator<Bar> orderByComparator);
 
 	/**
 	* Returns the number of bars.
@@ -272,7 +273,7 @@ public interface BarLocalService extends BaseLocalService,
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

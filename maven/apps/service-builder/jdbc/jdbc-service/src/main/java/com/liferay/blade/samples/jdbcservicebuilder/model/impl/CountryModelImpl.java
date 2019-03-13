@@ -24,7 +24,6 @@ import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -78,14 +77,14 @@ public class CountryModelImpl extends BaseModelImpl<Country>
 	public static final String DATA_SOURCE = "extDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.get(
+	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"value.object.entity.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
 			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.get(
+	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"value.object.finder.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
 			true);
 	public static final boolean COLUMN_BITMASK_ENABLED = false;
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.get(
+	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"lock.expiration.time.com.liferay.blade.samples.jdbcservicebuilder.model.Country"));
 
 	public CountryModelImpl() {
@@ -319,7 +318,7 @@ public class CountryModelImpl extends BaseModelImpl<Country>
 
 	private static final ClassLoader _classLoader = Country.class.getClassLoader();
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-			Country.class, ModelWrapper.class
+			Country.class
 		};
 	private long _countryId;
 	private String _countryName;

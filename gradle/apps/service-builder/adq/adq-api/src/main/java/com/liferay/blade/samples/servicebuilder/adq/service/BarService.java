@@ -32,28 +32,34 @@ import com.liferay.portal.kernel.transaction.Transactional;
  *
  * @author Brian Wing Shun Chan
  * @see BarServiceUtil
- * @see com.liferay.blade.samples.servicebuilder.adq.service.base.BarServiceBaseImpl
- * @see com.liferay.blade.samples.servicebuilder.adq.service.impl.BarServiceImpl
  * @generated
  */
 @AccessControlled
 @JSONWebService
-@OSGiBeanProperties(property =  {
-	"json.web.service.context.name=adq", "json.web.service.context.path=Bar"}, service = BarService.class)
+@OSGiBeanProperties(
+	property = {
+		"json.web.service.context.name=adq", "json.web.service.context.path=Bar"
+	},
+	service = BarService.class
+)
 @ProviderType
-@Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
-	PortalException.class, SystemException.class})
+@Transactional(
+	isolation = Isolation.PORTAL,
+	rollbackFor = {PortalException.class, SystemException.class}
+)
 public interface BarService extends BaseService {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link BarServiceUtil} to access the bar remote service. Add custom service methods to {@link com.liferay.blade.samples.servicebuilder.adq.service.impl.BarServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link BarServiceUtil} to access the bar remote service. Add custom service methods to <code>com.liferay.blade.samples.servicebuilder.adq.service.impl.BarServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	public String getOSGiServiceIdentifier();
+
 }

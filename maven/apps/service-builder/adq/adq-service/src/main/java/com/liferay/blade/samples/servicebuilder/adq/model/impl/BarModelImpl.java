@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
@@ -111,13 +110,13 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	public static final String DATA_SOURCE = "liferayDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"value.object.entity.cache.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"value.object.finder.cache.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"value.object.column.bitmask.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 			true);
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
@@ -148,7 +147,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setField1(soapModel.getField1());
-		model.setField2(soapModel.isField2());
+		model.setField2(soapModel.getField2());
 		model.setField3(soapModel.getField3());
 		model.setField4(soapModel.getField4());
 		model.setField5(soapModel.getField5());
@@ -176,7 +175,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		return models;
 	}
 
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 				"lock.expiration.time.com.liferay.blade.samples.servicebuilder.adq.model.Bar"));
 
 	public BarModelImpl() {
@@ -225,7 +224,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("field1", getField1());
-		attributes.put("field2", isField2());
+		attributes.put("field2", getField2());
 		attributes.put("field3", getField3());
 		attributes.put("field4", getField4());
 		attributes.put("field5", getField5());
@@ -600,7 +599,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		barImpl.setCreateDate(getCreateDate());
 		barImpl.setModifiedDate(getModifiedDate());
 		barImpl.setField1(getField1());
-		barImpl.setField2(isField2());
+		barImpl.setField2(getField2());
 		barImpl.setField3(getField3());
 		barImpl.setField4(getField4());
 		barImpl.setField5(getField5());
@@ -737,7 +736,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 			barCacheModel.field1 = null;
 		}
 
-		barCacheModel.field2 = isField2();
+		barCacheModel.field2 = getField2();
 
 		barCacheModel.field3 = getField3();
 
@@ -784,7 +783,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		sb.append(", field1=");
 		sb.append(getField1());
 		sb.append(", field2=");
-		sb.append(isField2());
+		sb.append(getField2());
 		sb.append(", field3=");
 		sb.append(getField3());
 		sb.append(", field4=");
@@ -842,7 +841,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>field2</column-name><column-value><![CDATA[");
-		sb.append(isField2());
+		sb.append(getField2());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>field3</column-name><column-value><![CDATA[");
@@ -864,7 +863,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 
 	private static final ClassLoader _classLoader = Bar.class.getClassLoader();
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-			Bar.class, ModelWrapper.class
+			Bar.class
 		};
 	private String _uuid;
 	private String _originalUuid;

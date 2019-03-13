@@ -17,7 +17,6 @@ package com.liferay.blade.samples.jndiservicebuilder.model;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.service.ServiceContext;
 
@@ -38,6 +37,7 @@ import java.util.Objects;
  */
 @ProviderType
 public class RegionWrapper implements Region, ModelWrapper<Region> {
+
 	public RegionWrapper(Region region) {
 		_region = region;
 	}
@@ -93,10 +93,10 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	}
 
 	/**
-	* Returns the primary key of this region.
-	*
-	* @return the primary key of this region
-	*/
+	 * Returns the primary key of this region.
+	 *
+	 * @return the primary key of this region
+	 */
 	@Override
 	public long getPrimaryKey() {
 		return _region.getPrimaryKey();
@@ -108,20 +108,20 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	}
 
 	/**
-	* Returns the region ID of this region.
-	*
-	* @return the region ID of this region
-	*/
+	 * Returns the region ID of this region.
+	 *
+	 * @return the region ID of this region
+	 */
 	@Override
 	public long getRegionId() {
 		return _region.getRegionId();
 	}
 
 	/**
-	* Returns the region name of this region.
-	*
-	* @return the region name of this region
-	*/
+	 * Returns the region name of this region.
+	 *
+	 * @return the region name of this region
+	 */
 	@Override
 	public String getRegionName() {
 		return _region.getRegionName();
@@ -160,6 +160,7 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+
 		_region.setExpandoBridgeAttributes(baseModel);
 	}
 
@@ -179,10 +180,10 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	}
 
 	/**
-	* Sets the primary key of this region.
-	*
-	* @param primaryKey the primary key of this region
-	*/
+	 * Sets the primary key of this region.
+	 *
+	 * @param primaryKey the primary key of this region
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_region.setPrimaryKey(primaryKey);
@@ -194,20 +195,20 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	}
 
 	/**
-	* Sets the region ID of this region.
-	*
-	* @param regionId the region ID of this region
-	*/
+	 * Sets the region ID of this region.
+	 *
+	 * @param regionId the region ID of this region
+	 */
 	@Override
 	public void setRegionId(long regionId) {
 		_region.setRegionId(regionId);
 	}
 
 	/**
-	* Sets the region name of this region.
-	*
-	* @param regionName the region name of this region
-	*/
+	 * Sets the region name of this region.
+	 *
+	 * @param regionName the region name of this region
+	 */
 	@Override
 	public void setRegionName(String regionName) {
 		_region.setRegionName(regionName);
@@ -278,4 +279,5 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 	}
 
 	private final Region _region;
+
 }
