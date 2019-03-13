@@ -16,8 +16,11 @@
 
 package com.liferay.blade.samples.servicebuilder.service.impl;
 
+import org.osgi.service.component.annotations.Component;
+
 import com.liferay.blade.samples.servicebuilder.model.Foo;
 import com.liferay.blade.samples.servicebuilder.service.base.FooLocalServiceBaseImpl;
+import com.liferay.portal.aop.AopService;
 
 /**
  * The implementation of the foo local service.
@@ -33,6 +36,10 @@ import com.liferay.blade.samples.servicebuilder.service.base.FooLocalServiceBase
  * @see FooLocalServiceBaseImpl
  * @see com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil
  */
+@Component(
+		property = "model.class.name=com.liferay.blade.samples.servicebuilder.Foo",
+		service = AopService.class
+)
 public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 
 	/**

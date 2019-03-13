@@ -16,7 +16,10 @@
 
 package com.liferay.blade.samples.servicebuilder.service.impl;
 
+import org.osgi.service.component.annotations.Component;
+
 import com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl;
+import com.liferay.portal.aop.AopService;
 
 /**
  * The implementation of the foo remote service.
@@ -32,6 +35,10 @@ import com.liferay.blade.samples.servicebuilder.service.base.FooServiceBaseImpl;
  * @see FooServiceBaseImpl
  * @see com.liferay.blade.samples.servicebuilder.service.FooServiceUtil
  */
+@Component(
+		property = "model.class.name=com.liferay.blade.samples.servicebuilder.Foo",
+		service = AopService.class
+)
 public class FooServiceImpl extends FooServiceBaseImpl {
 
 	/**
