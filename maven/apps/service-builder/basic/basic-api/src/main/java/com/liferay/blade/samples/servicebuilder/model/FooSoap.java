@@ -43,7 +43,7 @@ public class FooSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setField1(model.getField1());
-		soapModel.setField2(model.isField2());
+		soapModel.setField2(model.getField2());
 		soapModel.setField3(model.getField3());
 		soapModel.setField4(model.getField4());
 		soapModel.setField5(model.getField5());

@@ -68,7 +68,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("field1", getField1());
-		attributes.put("field2", isField2());
+		attributes.put("field2", getField2());
 		attributes.put("field3", getField3());
 		attributes.put("field4", getField4());
 		attributes.put("field5", getField5());
@@ -158,7 +158,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	}
 
 	@Override
-	public Object clone() {
+	public java.lang.Object clone() {
 		return new BarWrapper((Bar)_bar.clone());
 	}
 
@@ -208,7 +208,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @return the field1 of this bar
 	*/
 	@Override
-	public String getField1() {
+	public java.lang.String getField1() {
 		return _bar.getField1();
 	}
 
@@ -248,7 +248,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @return the field5 of this bar
 	*/
 	@Override
-	public String getField5() {
+	public java.lang.String getField5() {
 		return _bar.getField5();
 	}
 
@@ -303,7 +303,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @return the user name of this bar
 	*/
 	@Override
-	public String getUserName() {
+	public java.lang.String getUserName() {
 		return _bar.getUserName();
 	}
 
@@ -313,7 +313,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @return the user uuid of this bar
 	*/
 	@Override
-	public String getUserUuid() {
+	public java.lang.String getUserUuid() {
 		return _bar.getUserUuid();
 	}
 
@@ -323,7 +323,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @return the uuid of this bar
 	*/
 	@Override
-	public String getUuid() {
+	public java.lang.String getUuid() {
 		return _bar.getUuid();
 	}
 
@@ -419,7 +419,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @param field1 the field1 of this bar
 	*/
 	@Override
-	public void setField1(String field1) {
+	public void setField1(java.lang.String field1) {
 		_bar.setField1(field1);
 	}
 
@@ -459,7 +459,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @param field5 the field5 of this bar
 	*/
 	@Override
-	public void setField5(String field5) {
+	public void setField5(java.lang.String field5) {
 		_bar.setField5(field5);
 	}
 
@@ -519,7 +519,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @param userName the user name of this bar
 	*/
 	@Override
-	public void setUserName(String userName) {
+	public void setUserName(java.lang.String userName) {
 		_bar.setUserName(userName);
 	}
 
@@ -529,7 +529,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @param userUuid the user uuid of this bar
 	*/
 	@Override
-	public void setUserUuid(String userUuid) {
+	public void setUserUuid(java.lang.String userUuid) {
 		_bar.setUserUuid(userUuid);
 	}
 
@@ -539,7 +539,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	* @param uuid the uuid of this bar
 	*/
 	@Override
-	public void setUuid(String uuid) {
+	public void setUuid(java.lang.String uuid) {
 		_bar.setUuid(uuid);
 	}
 
@@ -554,7 +554,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	}
 
 	@Override
-	public String toString() {
+	public java.lang.String toString() {
 		return _bar.toString();
 	}
 
@@ -564,7 +564,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	}
 
 	@Override
-	public String toXmlString() {
+	public java.lang.String toXmlString() {
 		return _bar.toXmlString();
 	}
 

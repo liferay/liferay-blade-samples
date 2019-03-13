@@ -17,7 +17,6 @@ package com.liferay.blade.samples.jdbcservicebuilder.model;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.service.ServiceContext;
 
@@ -38,6 +37,7 @@ import java.util.Objects;
  */
 @ProviderType
 public class CountryWrapper implements Country, ModelWrapper<Country> {
+
 	public CountryWrapper(Country country) {
 		_country = country;
 	}
@@ -88,20 +88,20 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	/**
-	* Returns the country ID of this country.
-	*
-	* @return the country ID of this country
-	*/
+	 * Returns the country ID of this country.
+	 *
+	 * @return the country ID of this country
+	 */
 	@Override
 	public long getCountryId() {
 		return _country.getCountryId();
 	}
 
 	/**
-	* Returns the country name of this country.
-	*
-	* @return the country name of this country
-	*/
+	 * Returns the country name of this country.
+	 *
+	 * @return the country name of this country
+	 */
 	@Override
 	public String getCountryName() {
 		return _country.getCountryName();
@@ -113,10 +113,10 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	/**
-	* Returns the primary key of this country.
-	*
-	* @return the primary key of this country
-	*/
+	 * Returns the primary key of this country.
+	 *
+	 * @return the primary key of this country
+	 */
 	@Override
 	public long getPrimaryKey() {
 		return _country.getPrimaryKey();
@@ -158,20 +158,20 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	/**
-	* Sets the country ID of this country.
-	*
-	* @param countryId the country ID of this country
-	*/
+	 * Sets the country ID of this country.
+	 *
+	 * @param countryId the country ID of this country
+	 */
 	@Override
 	public void setCountryId(long countryId) {
 		_country.setCountryId(countryId);
 	}
 
 	/**
-	* Sets the country name of this country.
-	*
-	* @param countryName the country name of this country
-	*/
+	 * Sets the country name of this country.
+	 *
+	 * @param countryName the country name of this country
+	 */
 	@Override
 	public void setCountryName(String countryName) {
 		_country.setCountryName(countryName);
@@ -180,6 +180,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+
 		_country.setExpandoBridgeAttributes(baseModel);
 	}
 
@@ -199,10 +200,10 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	/**
-	* Sets the primary key of this country.
-	*
-	* @param primaryKey the primary key of this country
-	*/
+	 * Sets the primary key of this country.
+	 *
+	 * @param primaryKey the primary key of this country
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_country.setPrimaryKey(primaryKey);
@@ -278,4 +279,5 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	private final Country _country;
+
 }

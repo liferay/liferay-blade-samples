@@ -86,7 +86,6 @@ public interface FooLocalService extends BaseLocalService,
 	* @param fooId the primary key for the new foo
 	* @return the new foo
 	*/
-	@Transactional(enabled = false)
 	public Foo createFoo(long fooId);
 
 	/**
@@ -185,9 +184,9 @@ public interface FooLocalService extends BaseLocalService,
 	* @return the matching foo, or <code>null</code> if a matching foo could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo fetchFooByUuidAndGroupId(String uuid, long groupId);
+	public Foo fetchFooByUuidAndGroupId(java.lang.String uuid, long groupId);
 
-	public String fooLocal();
+	public java.lang.String fooLocal();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -215,7 +214,7 @@ public interface FooLocalService extends BaseLocalService,
 	* @throws PortalException if a matching foo could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Foo getFooByUuidAndGroupId(String uuid, long groupId)
+	public Foo getFooByUuidAndGroupId(java.lang.String uuid, long groupId)
 		throws PortalException;
 
 	/**
@@ -240,7 +239,8 @@ public interface FooLocalService extends BaseLocalService,
 	* @return the matching foos, or an empty list if no matches were found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Foo> getFoosByUuidAndCompanyId(String uuid, long companyId);
+	public List<Foo> getFoosByUuidAndCompanyId(java.lang.String uuid,
+		long companyId);
 
 	/**
 	* Returns a range of foos matching the UUID and company.
@@ -253,8 +253,9 @@ public interface FooLocalService extends BaseLocalService,
 	* @return the range of matching foos, or an empty list if no matches were found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Foo> getFoosByUuidAndCompanyId(String uuid, long companyId,
-		int start, int end, OrderByComparator<Foo> orderByComparator);
+	public List<Foo> getFoosByUuidAndCompanyId(java.lang.String uuid,
+		long companyId, int start, int end,
+		OrderByComparator<Foo> orderByComparator);
 
 	/**
 	* Returns the number of foos.
@@ -272,7 +273,7 @@ public interface FooLocalService extends BaseLocalService,
 	*
 	* @return the OSGi service identifier
 	*/
-	public String getOSGiServiceIdentifier();
+	public java.lang.String getOSGiServiceIdentifier();
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

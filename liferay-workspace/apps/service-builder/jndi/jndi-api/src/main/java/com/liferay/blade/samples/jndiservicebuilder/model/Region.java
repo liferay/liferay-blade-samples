@@ -25,19 +25,22 @@ import com.liferay.portal.kernel.util.Accessor;
  *
  * @author Brian Wing Shun Chan
  * @see RegionModel
- * @see com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl
- * @see com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionModelImpl
  * @generated
  */
-@ImplementationClassName("com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl")
+@ImplementationClassName(
+	"com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl"
+)
 @ProviderType
 public interface Region extends RegionModel, PersistedModel {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to <code>com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Region, Long> REGION_ID_ACCESSOR = new Accessor<Region, Long>() {
+	public static final Accessor<Region, Long> REGION_ID_ACCESSOR =
+		new Accessor<Region, Long>() {
+
 			@Override
 			public Long get(Region region) {
 				return region.getRegionId();
@@ -52,5 +55,7 @@ public interface Region extends RegionModel, PersistedModel {
 			public Class<Region> getTypeClass() {
 				return Region.class;
 			}
+
 		};
+
 }

@@ -201,12 +201,12 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.model.Foo fetchFooByUuidAndGroupId(
-		String uuid, long groupId) {
+		java.lang.String uuid, long groupId) {
 		return _fooLocalService.fetchFooByUuidAndGroupId(uuid, groupId);
 	}
 
 	@Override
-	public String fooLocal() {
+	public java.lang.String fooLocal() {
 		return _fooLocalService.fooLocal();
 	}
 
@@ -244,7 +244,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.model.Foo getFooByUuidAndGroupId(
-		String uuid, long groupId)
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _fooLocalService.getFooByUuidAndGroupId(uuid, groupId);
 	}
@@ -275,7 +275,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		String uuid, long companyId) {
+		java.lang.String uuid, long companyId) {
 		return _fooLocalService.getFoosByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -291,7 +291,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.model.Foo> getFoosByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
+		java.lang.String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.model.Foo> orderByComparator) {
 		return _fooLocalService.getFoosByUuidAndCompanyId(uuid, companyId,
 			start, end, orderByComparator);
@@ -318,7 +318,7 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	* @return the OSGi service identifier
 	*/
 	@Override
-	public String getOSGiServiceIdentifier() {
+	public java.lang.String getOSGiServiceIdentifier() {
 		return _fooLocalService.getOSGiServiceIdentifier();
 	}
 

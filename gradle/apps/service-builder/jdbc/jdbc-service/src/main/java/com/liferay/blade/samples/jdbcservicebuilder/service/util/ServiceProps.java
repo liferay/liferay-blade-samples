@@ -28,6 +28,7 @@ import java.util.Properties;
  */
 @ProviderType
 public class ServiceProps {
+
 	public static void addProperties(Properties properties) {
 		_instance._configuration.addProperties(properties);
 	}
@@ -65,11 +66,12 @@ public class ServiceProps {
 	}
 
 	private ServiceProps() {
-		_configuration = ConfigurationFactoryUtil.getConfiguration(getClass()
-																	   .getClassLoader(),
-				"service");
+		_configuration = ConfigurationFactoryUtil.getConfiguration(
+			getClass().getClassLoader(), "service");
 	}
 
 	private static ServiceProps _instance = new ServiceProps();
+
 	private Configuration _configuration;
+
 }

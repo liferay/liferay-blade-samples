@@ -38,7 +38,7 @@ public class FooServiceWrapper implements FooService,
 	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
 	*/
 	@Override
-	public String fooRemote() {
+	public java.lang.String fooRemote() {
 		return _fooService.fooRemote();
 	}
 
@@ -48,7 +48,7 @@ public class FooServiceWrapper implements FooService,
 	* @return the OSGi service identifier
 	*/
 	@Override
-	public String getOSGiServiceIdentifier() {
+	public java.lang.String getOSGiServiceIdentifier() {
 		return _fooService.getOSGiServiceIdentifier();
 	}
 

@@ -55,7 +55,7 @@ import com.liferay.portal.kernel.util.MethodKey;
  */
 @ProviderType
 public class FooServiceHttp {
-	public static String fooRemote(HttpPrincipal httpPrincipal) {
+	public static java.lang.String fooRemote(HttpPrincipal httpPrincipal) {
 		try {
 			MethodKey methodKey = new MethodKey(FooServiceUtil.class,
 					"fooRemote", _fooRemoteParameterTypes0);
@@ -71,7 +71,7 @@ public class FooServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (String)returnObj;
+			return (java.lang.String)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);

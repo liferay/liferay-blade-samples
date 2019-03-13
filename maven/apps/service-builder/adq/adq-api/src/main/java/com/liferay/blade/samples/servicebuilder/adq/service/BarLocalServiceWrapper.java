@@ -56,7 +56,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	}
 
 	@Override
-	public String barLocal() {
+	public java.lang.String barLocal() {
 		return _barLocalService.barLocal();
 	}
 
@@ -206,7 +206,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.adq.model.Bar fetchBarByUuidAndGroupId(
-		String uuid, long groupId) {
+		java.lang.String uuid, long groupId) {
 		return _barLocalService.fetchBarByUuidAndGroupId(uuid, groupId);
 	}
 
@@ -238,7 +238,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	*/
 	@Override
 	public com.liferay.blade.samples.servicebuilder.adq.model.Bar getBarByUuidAndGroupId(
-		String uuid, long groupId)
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _barLocalService.getBarByUuidAndGroupId(uuid, groupId);
 	}
@@ -269,7 +269,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.adq.model.Bar> getBarsByUuidAndCompanyId(
-		String uuid, long companyId) {
+		java.lang.String uuid, long companyId) {
 		return _barLocalService.getBarsByUuidAndCompanyId(uuid, companyId);
 	}
 
@@ -285,7 +285,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	*/
 	@Override
 	public java.util.List<com.liferay.blade.samples.servicebuilder.adq.model.Bar> getBarsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
+		java.lang.String uuid, long companyId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blade.samples.servicebuilder.adq.model.Bar> orderByComparator) {
 		return _barLocalService.getBarsByUuidAndCompanyId(uuid, companyId,
 			start, end, orderByComparator);
@@ -318,7 +318,7 @@ public class BarLocalServiceWrapper implements BarLocalService,
 	* @return the OSGi service identifier
 	*/
 	@Override
-	public String getOSGiServiceIdentifier() {
+	public java.lang.String getOSGiServiceIdentifier() {
 		return _barLocalService.getOSGiServiceIdentifier();
 	}
 

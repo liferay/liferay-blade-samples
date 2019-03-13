@@ -15,13 +15,11 @@
 package com.liferay.blade.samples.servicebuilder.adq.service.persistence.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
-
 import com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException;
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
 import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarPersistence;
 import com.liferay.blade.samples.servicebuilder.adq.service.persistence.BarUtil;
-
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
@@ -40,15 +38,6 @@ import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 import com.liferay.portal.test.rule.PersistenceTestRule;
 import com.liferay.portal.test.rule.TransactionalTestRule;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-
-import org.junit.runner.RunWith;
-
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -59,16 +48,27 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 /**
  * @generated
  */
 @RunWith(Arquillian.class)
 public class BarPersistenceTest {
+
 	@ClassRule
 	@Rule
-	public static final AggregateTestRule aggregateTestRule = new AggregateTestRule(new LiferayIntegrationTestRule(),
-			PersistenceTestRule.INSTANCE,
-			new TransactionalTestRule(Propagation.REQUIRED,
+	public static final AggregateTestRule aggregateTestRule =
+		new AggregateTestRule(
+			new LiferayIntegrationTestRule(), PersistenceTestRule.INSTANCE,
+			new TransactionalTestRule(
+				Propagation.REQUIRED,
 				"com.liferay.blade.samples.servicebuilder.adq.service"));
 
 	@Before
@@ -108,7 +108,8 @@ public class BarPersistenceTest {
 
 		_persistence.remove(newBar);
 
-		Bar existingBar = _persistence.fetchByPrimaryKey(newBar.getPrimaryKey());
+		Bar existingBar = _persistence.fetchByPrimaryKey(
+			newBar.getPrimaryKey());
 
 		Assert.assertNull(existingBar);
 	}
@@ -158,15 +159,17 @@ public class BarPersistenceTest {
 		Assert.assertEquals(existingBar.getCompanyId(), newBar.getCompanyId());
 		Assert.assertEquals(existingBar.getUserId(), newBar.getUserId());
 		Assert.assertEquals(existingBar.getUserName(), newBar.getUserName());
-		Assert.assertEquals(Time.getShortTimestamp(existingBar.getCreateDate()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingBar.getCreateDate()),
 			Time.getShortTimestamp(newBar.getCreateDate()));
-		Assert.assertEquals(Time.getShortTimestamp(
-				existingBar.getModifiedDate()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingBar.getModifiedDate()),
 			Time.getShortTimestamp(newBar.getModifiedDate()));
 		Assert.assertEquals(existingBar.getField1(), newBar.getField1());
 		Assert.assertEquals(existingBar.isField2(), newBar.isField2());
 		Assert.assertEquals(existingBar.getField3(), newBar.getField3());
-		Assert.assertEquals(Time.getShortTimestamp(existingBar.getField4()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingBar.getField4()),
 			Time.getShortTimestamp(newBar.getField4()));
 		Assert.assertEquals(existingBar.getField5(), newBar.getField5());
 	}
@@ -223,23 +226,24 @@ public class BarPersistenceTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-		_persistence.findAll(QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-			getOrderByComparator());
+		_persistence.findAll(
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, getOrderByComparator());
 	}
 
 	protected OrderByComparator<Bar> getOrderByComparator() {
-		return OrderByComparatorFactoryUtil.create("ADQ_Bar", "uuid", true,
-			"barId", true, "groupId", true, "companyId", true, "userId", true,
-			"userName", true, "createDate", true, "modifiedDate", true,
-			"field1", true, "field2", true, "field3", true, "field4", true,
-			"field5", true);
+		return OrderByComparatorFactoryUtil.create(
+			"ADQ_Bar", "uuid", true, "barId", true, "groupId", true,
+			"companyId", true, "userId", true, "userName", true, "createDate",
+			true, "modifiedDate", true, "field1", true, "field2", true,
+			"field3", true, "field4", true, "field5", true);
 	}
 
 	@Test
 	public void testFetchByPrimaryKeyExisting() throws Exception {
 		Bar newBar = addBar();
 
-		Bar existingBar = _persistence.fetchByPrimaryKey(newBar.getPrimaryKey());
+		Bar existingBar = _persistence.fetchByPrimaryKey(
+			newBar.getPrimaryKey());
 
 		Assert.assertEquals(existingBar, newBar);
 	}
@@ -256,6 +260,7 @@ public class BarPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereAllPrimaryKeysExist()
 		throws Exception {
+
 		Bar newBar1 = addBar();
 		Bar newBar2 = addBar();
 
@@ -264,7 +269,8 @@ public class BarPersistenceTest {
 		primaryKeys.add(newBar1.getPrimaryKey());
 		primaryKeys.add(newBar2.getPrimaryKey());
 
-		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(2, bars.size());
 		Assert.assertEquals(newBar1, bars.get(newBar1.getPrimaryKey()));
@@ -274,6 +280,7 @@ public class BarPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereNoPrimaryKeysExist()
 		throws Exception {
+
 		long pk1 = RandomTestUtil.nextLong();
 
 		long pk2 = RandomTestUtil.nextLong();
@@ -283,7 +290,8 @@ public class BarPersistenceTest {
 		primaryKeys.add(pk1);
 		primaryKeys.add(pk2);
 
-		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertTrue(bars.isEmpty());
 	}
@@ -291,6 +299,7 @@ public class BarPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereSomePrimaryKeysExist()
 		throws Exception {
+
 		Bar newBar = addBar();
 
 		long pk = RandomTestUtil.nextLong();
@@ -300,32 +309,33 @@ public class BarPersistenceTest {
 		primaryKeys.add(newBar.getPrimaryKey());
 		primaryKeys.add(pk);
 
-		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(1, bars.size());
 		Assert.assertEquals(newBar, bars.get(newBar.getPrimaryKey()));
 	}
 
 	@Test
-	public void testFetchByPrimaryKeysWithNoPrimaryKeys()
-		throws Exception {
+	public void testFetchByPrimaryKeysWithNoPrimaryKeys() throws Exception {
 		Set<Serializable> primaryKeys = new HashSet<Serializable>();
 
-		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertTrue(bars.isEmpty());
 	}
 
 	@Test
-	public void testFetchByPrimaryKeysWithOnePrimaryKey()
-		throws Exception {
+	public void testFetchByPrimaryKeysWithOnePrimaryKey() throws Exception {
 		Bar newBar = addBar();
 
 		Set<Serializable> primaryKeys = new HashSet<Serializable>();
 
 		primaryKeys.add(newBar.getPrimaryKey());
 
-		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Bar> bars = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(1, bars.size());
 		Assert.assertEquals(newBar, bars.get(newBar.getPrimaryKey()));
@@ -335,15 +345,19 @@ public class BarPersistenceTest {
 	public void testActionableDynamicQuery() throws Exception {
 		final IntegerWrapper count = new IntegerWrapper();
 
-		ActionableDynamicQuery actionableDynamicQuery = BarLocalServiceUtil.getActionableDynamicQuery();
+		ActionableDynamicQuery actionableDynamicQuery =
+			BarLocalServiceUtil.getActionableDynamicQuery();
 
-		actionableDynamicQuery.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Bar>() {
+		actionableDynamicQuery.setPerformActionMethod(
+			new ActionableDynamicQuery.PerformActionMethod<Bar>() {
+
 				@Override
 				public void performAction(Bar bar) {
 					Assert.assertNotNull(bar);
 
 					count.increment();
 				}
+
 			});
 
 		actionableDynamicQuery.performActions();
@@ -352,14 +366,14 @@ public class BarPersistenceTest {
 	}
 
 	@Test
-	public void testDynamicQueryByPrimaryKeyExisting()
-		throws Exception {
+	public void testDynamicQueryByPrimaryKeyExisting() throws Exception {
 		Bar newBar = addBar();
 
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Bar.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Bar.class, _dynamicQueryClassLoader);
 
-		dynamicQuery.add(RestrictionsFactoryUtil.eq("barId", newBar.getBarId()));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.eq("barId", newBar.getBarId()));
 
 		List<Bar> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -372,11 +386,11 @@ public class BarPersistenceTest {
 
 	@Test
 	public void testDynamicQueryByPrimaryKeyMissing() throws Exception {
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Bar.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Bar.class, _dynamicQueryClassLoader);
 
-		dynamicQuery.add(RestrictionsFactoryUtil.eq("barId",
-				RandomTestUtil.nextLong()));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.eq("barId", RandomTestUtil.nextLong()));
 
 		List<Bar> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -384,19 +398,18 @@ public class BarPersistenceTest {
 	}
 
 	@Test
-	public void testDynamicQueryByProjectionExisting()
-		throws Exception {
+	public void testDynamicQueryByProjectionExisting() throws Exception {
 		Bar newBar = addBar();
 
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Bar.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Bar.class, _dynamicQueryClassLoader);
 
 		dynamicQuery.setProjection(ProjectionFactoryUtil.property("barId"));
 
 		Object newBarId = newBar.getBarId();
 
-		dynamicQuery.add(RestrictionsFactoryUtil.in("barId",
-				new Object[] { newBarId }));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.in("barId", new Object[] {newBarId}));
 
 		List<Object> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -409,13 +422,14 @@ public class BarPersistenceTest {
 
 	@Test
 	public void testDynamicQueryByProjectionMissing() throws Exception {
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Bar.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Bar.class, _dynamicQueryClassLoader);
 
 		dynamicQuery.setProjection(ProjectionFactoryUtil.property("barId"));
 
-		dynamicQuery.add(RestrictionsFactoryUtil.in("barId",
-				new Object[] { RandomTestUtil.nextLong() }));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.in(
+				"barId", new Object[] {RandomTestUtil.nextLong()}));
 
 		List<Object> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -430,12 +444,15 @@ public class BarPersistenceTest {
 
 		Bar existingBar = _persistence.findByPrimaryKey(newBar.getPrimaryKey());
 
-		Assert.assertTrue(Objects.equals(existingBar.getUuid(),
-				ReflectionTestUtil.invoke(existingBar, "getOriginalUuid",
-					new Class<?>[0])));
-		Assert.assertEquals(Long.valueOf(existingBar.getGroupId()),
-			ReflectionTestUtil.<Long>invoke(existingBar, "getOriginalGroupId",
-				new Class<?>[0]));
+		Assert.assertTrue(
+			Objects.equals(
+				existingBar.getUuid(),
+				ReflectionTestUtil.invoke(
+					existingBar, "getOriginalUuid", new Class<?>[0])));
+		Assert.assertEquals(
+			Long.valueOf(existingBar.getGroupId()),
+			ReflectionTestUtil.<Long>invoke(
+				existingBar, "getOriginalGroupId", new Class<?>[0]));
 	}
 
 	protected Bar addBar() throws Exception {
@@ -475,4 +492,5 @@ public class BarPersistenceTest {
 	private List<Bar> _bars = new ArrayList<Bar>();
 	private BarPersistence _persistence;
 	private ClassLoader _dynamicQueryClassLoader;
+
 }

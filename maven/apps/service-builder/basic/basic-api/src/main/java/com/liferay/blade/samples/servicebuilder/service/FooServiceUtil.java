@@ -48,7 +48,7 @@ public class FooServiceUtil {
 	*
 	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
 	*/
-	public static String fooRemote() {
+	public static java.lang.String fooRemote() {
 		return getService().fooRemote();
 	}
 
@@ -57,7 +57,7 @@ public class FooServiceUtil {
 	*
 	* @return the OSGi service identifier
 	*/
-	public static String getOSGiServiceIdentifier() {
+	public static java.lang.String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

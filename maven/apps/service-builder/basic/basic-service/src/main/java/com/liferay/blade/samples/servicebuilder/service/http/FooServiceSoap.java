@@ -70,9 +70,9 @@ public class FooServiceSoap {
 	*
 	* Never reference this class directly. Always use {@link FooServiceUtil} to access the foo remote service.
 	*/
-	public static String fooRemote() throws RemoteException {
+	public static java.lang.String fooRemote() throws RemoteException {
 		try {
-			String returnValue = FooServiceUtil.fooRemote();
+			java.lang.String returnValue = FooServiceUtil.fooRemote();
 
 			return returnValue;
 		}

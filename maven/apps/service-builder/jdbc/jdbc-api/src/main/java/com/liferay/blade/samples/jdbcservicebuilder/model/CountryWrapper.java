@@ -78,7 +78,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	@Override
-	public Object clone() {
+	public java.lang.Object clone() {
 		return new CountryWrapper((Country)_country.clone());
 	}
 
@@ -103,7 +103,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	* @return the country name of this country
 	*/
 	@Override
-	public String getCountryName() {
+	public java.lang.String getCountryName() {
 		return _country.getCountryName();
 	}
 
@@ -173,7 +173,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	* @param countryName the country name of this country
 	*/
 	@Override
-	public void setCountryName(String countryName) {
+	public void setCountryName(java.lang.String countryName) {
 		_country.setCountryName(countryName);
 	}
 
@@ -224,7 +224,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	@Override
-	public String toString() {
+	public java.lang.String toString() {
 		return _country.toString();
 	}
 
@@ -234,7 +234,7 @@ public class CountryWrapper implements Country, ModelWrapper<Country> {
 	}
 
 	@Override
-	public String toXmlString() {
+	public java.lang.String toXmlString() {
 		return _country.toXmlString();
 	}
 

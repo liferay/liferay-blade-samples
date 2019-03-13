@@ -248,6 +248,8 @@ public class RegionPersistenceImpl extends BasePersistenceImpl<Region>
 
 	@Override
 	protected Region removeImpl(Region region) {
+		region = toUnwrappedModel(region);
+
 		Session session = null;
 
 		try {
@@ -278,6 +280,8 @@ public class RegionPersistenceImpl extends BasePersistenceImpl<Region>
 
 	@Override
 	public Region updateImpl(Region region) {
+		region = toUnwrappedModel(region);
+
 		boolean isNew = region.isNew();
 
 		Session session = null;
@@ -315,6 +319,22 @@ public class RegionPersistenceImpl extends BasePersistenceImpl<Region>
 		region.resetOriginalValues();
 
 		return region;
+	}
+
+	protected Region toUnwrappedModel(Region region) {
+		if (region instanceof RegionImpl) {
+			return region;
+		}
+
+		RegionImpl regionImpl = new RegionImpl();
+
+		regionImpl.setNew(region.isNew());
+		regionImpl.setPrimaryKey(region.getPrimaryKey());
+
+		regionImpl.setRegionId(region.getRegionId());
+		regionImpl.setRegionName(region.getRegionName());
+
+		return regionImpl;
 	}
 
 	/**
