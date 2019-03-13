@@ -16,17 +16,13 @@ package com.liferay.blade.samples.servicebuilder.model;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.service.ServiceContext;
-
-import java.io.Serializable;
+import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>
@@ -38,20 +34,11 @@ import java.util.Objects;
  * @generated
  */
 @ProviderType
-public class FooWrapper implements Foo, ModelWrapper<Foo> {
+public class FooWrapper
+	extends BaseModelWrapper<Foo> implements Foo, ModelWrapper<Foo> {
 
 	public FooWrapper(Foo foo) {
-		_foo = foo;
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return Foo.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return Foo.class.getName();
+		super(foo);
 	}
 
 	@Override
@@ -156,16 +143,6 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 		}
 	}
 
-	@Override
-	public Object clone() {
-		return new FooWrapper((Foo)_foo.clone());
-	}
-
-	@Override
-	public int compareTo(Foo foo) {
-		return _foo.compareTo(foo);
-	}
-
 	/**
 	 * Returns the company ID of this foo.
 	 *
@@ -173,7 +150,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public long getCompanyId() {
-		return _foo.getCompanyId();
+		return model.getCompanyId();
 	}
 
 	/**
@@ -183,12 +160,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public Date getCreateDate() {
-		return _foo.getCreateDate();
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _foo.getExpandoBridge();
+		return model.getCreateDate();
 	}
 
 	/**
@@ -198,7 +170,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public String getField1() {
-		return _foo.getField1();
+		return model.getField1();
 	}
 
 	/**
@@ -208,7 +180,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public boolean getField2() {
-		return _foo.getField2();
+		return model.getField2();
 	}
 
 	/**
@@ -218,7 +190,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public int getField3() {
-		return _foo.getField3();
+		return model.getField3();
 	}
 
 	/**
@@ -228,7 +200,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public Date getField4() {
-		return _foo.getField4();
+		return model.getField4();
 	}
 
 	/**
@@ -238,7 +210,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public String getField5() {
-		return _foo.getField5();
+		return model.getField5();
 	}
 
 	/**
@@ -248,7 +220,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public long getFooId() {
-		return _foo.getFooId();
+		return model.getFooId();
 	}
 
 	/**
@@ -258,7 +230,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public long getGroupId() {
-		return _foo.getGroupId();
+		return model.getGroupId();
 	}
 
 	/**
@@ -268,7 +240,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public Date getModifiedDate() {
-		return _foo.getModifiedDate();
+		return model.getModifiedDate();
 	}
 
 	/**
@@ -278,12 +250,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public long getPrimaryKey() {
-		return _foo.getPrimaryKey();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _foo.getPrimaryKeyObj();
+		return model.getPrimaryKey();
 	}
 
 	/**
@@ -293,7 +260,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public long getUserId() {
-		return _foo.getUserId();
+		return model.getUserId();
 	}
 
 	/**
@@ -303,7 +270,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public String getUserName() {
-		return _foo.getUserName();
+		return model.getUserName();
 	}
 
 	/**
@@ -313,7 +280,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public String getUserUuid() {
-		return _foo.getUserUuid();
+		return model.getUserUuid();
 	}
 
 	/**
@@ -323,22 +290,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public String getUuid() {
-		return _foo.getUuid();
-	}
-
-	@Override
-	public int hashCode() {
-		return _foo.hashCode();
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _foo.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _foo.isEscapedModel();
+		return model.getUuid();
 	}
 
 	/**
@@ -348,22 +300,12 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public boolean isField2() {
-		return _foo.isField2();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _foo.isNew();
+		return model.isField2();
 	}
 
 	@Override
 	public void persist() {
-		_foo.persist();
-	}
-
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_foo.setCachedModel(cachedModel);
+		model.persist();
 	}
 
 	/**
@@ -373,7 +315,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setCompanyId(long companyId) {
-		_foo.setCompanyId(companyId);
+		model.setCompanyId(companyId);
 	}
 
 	/**
@@ -383,24 +325,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setCreateDate(Date createDate) {
-		_foo.setCreateDate(createDate);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
-
-		_foo.setExpandoBridgeAttributes(baseModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_foo.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		_foo.setExpandoBridgeAttributes(serviceContext);
+		model.setCreateDate(createDate);
 	}
 
 	/**
@@ -410,7 +335,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setField1(String field1) {
-		_foo.setField1(field1);
+		model.setField1(field1);
 	}
 
 	/**
@@ -420,7 +345,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setField2(boolean field2) {
-		_foo.setField2(field2);
+		model.setField2(field2);
 	}
 
 	/**
@@ -430,7 +355,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setField3(int field3) {
-		_foo.setField3(field3);
+		model.setField3(field3);
 	}
 
 	/**
@@ -440,7 +365,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setField4(Date field4) {
-		_foo.setField4(field4);
+		model.setField4(field4);
 	}
 
 	/**
@@ -450,7 +375,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setField5(String field5) {
-		_foo.setField5(field5);
+		model.setField5(field5);
 	}
 
 	/**
@@ -460,7 +385,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setFooId(long fooId) {
-		_foo.setFooId(fooId);
+		model.setFooId(fooId);
 	}
 
 	/**
@@ -470,7 +395,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setGroupId(long groupId) {
-		_foo.setGroupId(groupId);
+		model.setGroupId(groupId);
 	}
 
 	/**
@@ -480,12 +405,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
-		_foo.setModifiedDate(modifiedDate);
-	}
-
-	@Override
-	public void setNew(boolean n) {
-		_foo.setNew(n);
+		model.setModifiedDate(modifiedDate);
 	}
 
 	/**
@@ -495,12 +415,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		_foo.setPrimaryKey(primaryKey);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		_foo.setPrimaryKeyObj(primaryKeyObj);
+		model.setPrimaryKey(primaryKey);
 	}
 
 	/**
@@ -510,7 +425,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setUserId(long userId) {
-		_foo.setUserId(userId);
+		model.setUserId(userId);
 	}
 
 	/**
@@ -520,7 +435,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setUserName(String userName) {
-		_foo.setUserName(userName);
+		model.setUserName(userName);
 	}
 
 	/**
@@ -530,7 +445,7 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setUserUuid(String userUuid) {
-		_foo.setUserUuid(userUuid);
+		model.setUserUuid(userUuid);
 	}
 
 	/**
@@ -540,78 +455,17 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	 */
 	@Override
 	public void setUuid(String uuid) {
-		_foo.setUuid(uuid);
-	}
-
-	@Override
-	public com.liferay.portal.kernel.model.CacheModel<Foo> toCacheModel() {
-		return _foo.toCacheModel();
-	}
-
-	@Override
-	public Foo toEscapedModel() {
-		return new FooWrapper(_foo.toEscapedModel());
-	}
-
-	@Override
-	public String toString() {
-		return _foo.toString();
-	}
-
-	@Override
-	public Foo toUnescapedModel() {
-		return new FooWrapper(_foo.toUnescapedModel());
-	}
-
-	@Override
-	public String toXmlString() {
-		return _foo.toXmlString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof FooWrapper)) {
-			return false;
-		}
-
-		FooWrapper fooWrapper = (FooWrapper)obj;
-
-		if (Objects.equals(_foo, fooWrapper._foo)) {
-			return true;
-		}
-
-		return false;
+		model.setUuid(uuid);
 	}
 
 	@Override
 	public StagedModelType getStagedModelType() {
-		return _foo.getStagedModelType();
+		return model.getStagedModelType();
 	}
 
 	@Override
-	public Foo getWrappedModel() {
-		return _foo;
+	protected FooWrapper wrap(Foo foo) {
+		return new FooWrapper(foo);
 	}
-
-	@Override
-	public boolean isEntityCacheEnabled() {
-		return _foo.isEntityCacheEnabled();
-	}
-
-	@Override
-	public boolean isFinderCacheEnabled() {
-		return _foo.isFinderCacheEnabled();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		_foo.resetOriginalValues();
-	}
-
-	private final Foo _foo;
 
 }

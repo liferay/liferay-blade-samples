@@ -22,6 +22,7 @@ import com.liferay.blade.samples.servicebuilder.model.FooSoap;
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
@@ -34,7 +35,6 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Serializable;
 
@@ -116,21 +116,6 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
-			"value.object.entity.cache.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
-		true);
-
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
-			"value.object.finder.cache.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
-		true);
-
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
-			"value.object.column.bitmask.enabled.com.liferay.blade.samples.servicebuilder.model.Foo"),
-		true);
-
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 
 	public static final long FIELD2_COLUMN_BITMASK = 2L;
@@ -140,6 +125,14 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	public static final long UUID_COLUMN_BITMASK = 8L;
 
 	public static final long FIELD1_COLUMN_BITMASK = 16L;
+
+	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
+		_entityCacheEnabled = entityCacheEnabled;
+	}
+
+	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
+		_finderCacheEnabled = finderCacheEnabled;
+	}
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -190,10 +183,6 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 
 		return models;
 	}
-
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(
-		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
-			"lock.expiration.time.com.liferay.blade.samples.servicebuilder.model.Foo"));
 
 	public FooModelImpl() {
 	}
@@ -289,266 +278,45 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		Map<String, BiConsumer<Foo, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Foo, ?>>();
 
-		attributeGetterFunctions.put(
-			"uuid",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getUuid();
-				}
-
-			});
+		attributeGetterFunctions.put("uuid", Foo::getUuid);
 		attributeSetterBiConsumers.put(
-			"uuid",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object uuid) {
-					foo.setUuid((String)uuid);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"fooId",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getFooId();
-				}
-
-			});
+			"uuid", (BiConsumer<Foo, String>)Foo::setUuid);
+		attributeGetterFunctions.put("fooId", Foo::getFooId);
 		attributeSetterBiConsumers.put(
-			"fooId",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object fooId) {
-					foo.setFooId((Long)fooId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"groupId",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getGroupId();
-				}
-
-			});
+			"fooId", (BiConsumer<Foo, Long>)Foo::setFooId);
+		attributeGetterFunctions.put("groupId", Foo::getGroupId);
 		attributeSetterBiConsumers.put(
-			"groupId",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object groupId) {
-					foo.setGroupId((Long)groupId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"companyId",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getCompanyId();
-				}
-
-			});
+			"groupId", (BiConsumer<Foo, Long>)Foo::setGroupId);
+		attributeGetterFunctions.put("companyId", Foo::getCompanyId);
 		attributeSetterBiConsumers.put(
-			"companyId",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object companyId) {
-					foo.setCompanyId((Long)companyId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"userId",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getUserId();
-				}
-
-			});
+			"companyId", (BiConsumer<Foo, Long>)Foo::setCompanyId);
+		attributeGetterFunctions.put("userId", Foo::getUserId);
 		attributeSetterBiConsumers.put(
-			"userId",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object userId) {
-					foo.setUserId((Long)userId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"userName",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getUserName();
-				}
-
-			});
+			"userId", (BiConsumer<Foo, Long>)Foo::setUserId);
+		attributeGetterFunctions.put("userName", Foo::getUserName);
 		attributeSetterBiConsumers.put(
-			"userName",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object userName) {
-					foo.setUserName((String)userName);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"createDate",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getCreateDate();
-				}
-
-			});
+			"userName", (BiConsumer<Foo, String>)Foo::setUserName);
+		attributeGetterFunctions.put("createDate", Foo::getCreateDate);
 		attributeSetterBiConsumers.put(
-			"createDate",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object createDate) {
-					foo.setCreateDate((Date)createDate);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"modifiedDate",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getModifiedDate();
-				}
-
-			});
+			"createDate", (BiConsumer<Foo, Date>)Foo::setCreateDate);
+		attributeGetterFunctions.put("modifiedDate", Foo::getModifiedDate);
 		attributeSetterBiConsumers.put(
-			"modifiedDate",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object modifiedDate) {
-					foo.setModifiedDate((Date)modifiedDate);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field1",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getField1();
-				}
-
-			});
+			"modifiedDate", (BiConsumer<Foo, Date>)Foo::setModifiedDate);
+		attributeGetterFunctions.put("field1", Foo::getField1);
 		attributeSetterBiConsumers.put(
-			"field1",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object field1) {
-					foo.setField1((String)field1);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field2",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getField2();
-				}
-
-			});
+			"field1", (BiConsumer<Foo, String>)Foo::setField1);
+		attributeGetterFunctions.put("field2", Foo::getField2);
 		attributeSetterBiConsumers.put(
-			"field2",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object field2) {
-					foo.setField2((Boolean)field2);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field3",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getField3();
-				}
-
-			});
+			"field2", (BiConsumer<Foo, Boolean>)Foo::setField2);
+		attributeGetterFunctions.put("field3", Foo::getField3);
 		attributeSetterBiConsumers.put(
-			"field3",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object field3) {
-					foo.setField3((Integer)field3);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field4",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getField4();
-				}
-
-			});
+			"field3", (BiConsumer<Foo, Integer>)Foo::setField3);
+		attributeGetterFunctions.put("field4", Foo::getField4);
 		attributeSetterBiConsumers.put(
-			"field4",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object field4) {
-					foo.setField4((Date)field4);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field5",
-			new Function<Foo, Object>() {
-
-				@Override
-				public Object apply(Foo foo) {
-					return foo.getField5();
-				}
-
-			});
+			"field4", (BiConsumer<Foo, Date>)Foo::setField4);
+		attributeGetterFunctions.put("field5", Foo::getField5);
 		attributeSetterBiConsumers.put(
-			"field5",
-			new BiConsumer<Foo, Object>() {
-
-				@Override
-				public void accept(Foo foo, Object field5) {
-					foo.setField5((String)field5);
-				}
-
-			});
+			"field5", (BiConsumer<Foo, String>)Foo::setField5);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -894,12 +662,12 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 
 	@Override
 	public boolean isEntityCacheEnabled() {
-		return ENTITY_CACHE_ENABLED;
+		return _entityCacheEnabled;
 	}
 
 	@Override
 	public boolean isFinderCacheEnabled() {
-		return FINDER_CACHE_ENABLED;
+		return _finderCacheEnabled;
 	}
 
 	@Override
@@ -1068,6 +836,8 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 		Foo.class, ModelWrapper.class
 	};
+	private static boolean _entityCacheEnabled;
+	private static boolean _finderCacheEnabled;
 
 	private String _uuid;
 	private String _originalUuid;

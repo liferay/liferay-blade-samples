@@ -20,11 +20,6 @@ import com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException;
 import com.liferay.blade.samples.servicebuilder.model.Foo;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 
-import java.io.Serializable;
-
-import java.util.Map;
-import java.util.Set;
-
 /**
  * The persistence interface for the foo service.
  *
@@ -44,9 +39,6 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link FooUtil} to access the foo persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
 	 */
-	@Override
-	public Map<Serializable, Foo> fetchByPrimaryKeys(
-		Set<Serializable> primaryKeys);
 
 	/**
 	 * Returns all the foos where uuid = &#63;.
@@ -649,8 +641,5 @@ public interface FooPersistence extends BasePersistence<Foo> {
 	 * @return the number of foos
 	 */
 	public int countAll();
-
-	@Override
-	public Set<String> getBadColumnNames();
 
 }
