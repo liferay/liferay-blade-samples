@@ -18,8 +18,8 @@ package com.liferay.blade.samples.servicebuilder.service.test;
 
 import aQute.remote.util.JMXBundleDeployer;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalServiceUtil;
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
