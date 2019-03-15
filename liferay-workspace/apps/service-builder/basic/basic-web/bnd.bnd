@@ -1,3 +1,6 @@
 Bundle-SymbolicName: com.liferay.blade.basic.web
 Bundle-Version: 1.0.0
+Import-Package: !*
+DynamicImport-Package: *
+-dsannotations-options: inherit
 -sources: true
