@@ -191,8 +191,10 @@ public class VerifySample {
 	private static final String _WARNING =
 		_ANSI_YELLOW + " \u26A0 " + _ANSI_CLEAR;
 
-	private static final BundleContext _bundleContext = FrameworkUtil.getBundle(
-		VerifySample.class).getBundleContext();
+	private static final Bundle _bundle = FrameworkUtil.getBundle(
+		VerifySample.class);
+	private static final BundleContext _bundleContext =
+		_bundle.getBundleContext();
 
 	private StringBuilder _messages;
 
