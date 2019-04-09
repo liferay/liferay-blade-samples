@@ -14,9 +14,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<com.liferay.frontend.css.common.version>3.0.1</com.liferay.frontend.css.common.version>
 	</properties>
 	<build>
-		<finalName>com.liferay.blade.theme.contributor-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -46,7 +46,6 @@
 				<version>3.5.0</version>
 				<executions>
 					<execution>
-						<id>default-bnd-process</id>
 						<goals>
 							<goal>bnd-process</goal>
 						</goals>
@@ -61,17 +60,16 @@
 					<dependency>
 						<groupId>com.liferay</groupId>
 						<artifactId>com.liferay.ant.bnd</artifactId>
-						<version>2.0.43</version>
+						<version>2.0.52</version>
 					</dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>2.0.2</version>
+				<version>2.1.2</version>
 				<executions>
 					<execution>
-						<id>default-build-css</id>
 						<phase>generate-resources</phase>
 						<goals>
 							<goal>build</goal>
@@ -79,9 +77,17 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
+					<docrootDirName>src/main/resources</docrootDirName>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.frontend.css.common</artifactId>
+			<version>${com.liferay.frontend.css.common.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
