@@ -27,10 +27,9 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>2.0.2</version>
+				<version>2.1.2</version>
 				<executions>
 					<execution>
-						<id>default-build-css</id>
 						<phase>generate-resources</phase>
 						<goals>
 							<goal>build</goal>
@@ -38,7 +37,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>src/main/resources/META-INF/resources</docrootDirName>
+					<baseDir>src/main/resources/META-INF/resources</baseDir>
+					<outputDirName>${project.build.outputDirectory}/META-INF/resources</outputDirName>
+					<precision>9</precision>
 				</configuration>
 			</plugin>
 			<plugin>
