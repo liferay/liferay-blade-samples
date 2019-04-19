@@ -1,0 +1,18 @@
+Bundle-Name: Liferay Hello Soy Portlet
+Bundle-SymbolicName: com.liferay.hello.soy.portlet
+Bundle-Version: 1.0.0
+Provide-Capability:\
+	soy;\
+		type="hello-soy";\
+		version:Version="1.0.10"
+Require-Capability:\
+	soy;\
+		filter:="(type=metal)"
+-contract: JavaPortlet
+-plugin.npm: com.liferay.ant.bnd.npm.NpmAnalyzerPlugin
+-plugin.resourcebundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-sass: *
+-sources: true
+Web-ContextPath: /hello-soy-portlet
+-includeresource: package.json
