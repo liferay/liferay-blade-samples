@@ -1,0 +1,13 @@
+{
+	"dependencies": {
+		"metal-component": "^2.4.5",
+		"metal-soy": "^2.4.5"
+	},
+	"devDependencies": {
+		"gulp": "^3.9.0",
+		"liferay-module-config-generator": "^1.2.1",
+		"metal-cli": "^4.0.1"
+	},
+	"name": "hello-soy-portlet",
+	"version": "1.0.0"
+}

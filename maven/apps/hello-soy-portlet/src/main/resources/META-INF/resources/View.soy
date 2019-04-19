@@ -1,0 +1,32 @@
+{namespace View}
+
+/**
+ * Prints the Hello Soy portlet main view.
+ *
+ * @param id
+ * @param layouts
+ * @param navigationURL
+ */
+{template .render}
+	<div id="{$id}">
+		{call Header.render data="all"}{/call}
+
+		<p>{msg desc=""}here-you-will-find-how-easy-it-is-to-do-things-like{/msg}</p>
+
+		<h3>{msg desc=""}listing-pages{/msg}</h3>
+
+		<div class="list-group">
+			<div class="list-group-heading">{msg desc=""}navigate-to{/msg}</div>
+
+			{foreach $layout in $layouts}
+				<a class="list-group-item" href="{$layout.friendlyURL}">{$layout.nameCurrentValue}</a>
+			{/foreach}
+		</div>
+
+		<h3>{msg desc=""}navigating-between-views{/msg}</h3>
+
+		<a href="{$navigationURL}">{msg desc=""}click-here-to-navigate-to-another-view{/msg}</a>
+
+		{call Footer.render data="all"}{/call}
+	</div>
+{/template}
