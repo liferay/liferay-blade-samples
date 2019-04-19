@@ -1,0 +1,30 @@
+{namespace Navigation}
+
+/**
+ * Prints the Hello Soy portlet navigation example page.
+ *
+ * @param backURL
+ * @param formURL
+ * @param id
+ */
+{template .render}
+	<div id="{$id}">
+		{call Header.render data="all"}{/call}
+
+		<p>{msg desc=""}this-is-another-view{/msg}</p>
+
+		<form action="{$formURL}" enctype="multipart/form-data" method="post">
+			<label class="control-label" for="submittedData">{msg desc=""}what-is-your-name{/msg}</label>
+
+			<input class="field form-control" id="submittedData" name="{$ij.portletNamespace}submittedData" type="text" />
+
+			<div class="button-holder">
+				<button class="btn btn-primary" type="submit">{msg desc=""}submit{/msg}</button>
+			</div>
+		</form>
+
+		<a href="{$backURL}">{msg desc=""}click-here-to-navigate-back{/msg}</a>
+
+		{call Footer.render data="all"}{/call}
+	</div>
+{/template}
