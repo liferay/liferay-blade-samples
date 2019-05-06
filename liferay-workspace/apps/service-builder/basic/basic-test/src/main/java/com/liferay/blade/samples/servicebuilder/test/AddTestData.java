@@ -17,8 +17,6 @@
 package com.liferay.blade.samples.servicebuilder.test;
 
 import com.liferay.blade.basic.model.Foo;
-
-
 import com.liferay.blade.basic.service.FooLocalService;
 import com.liferay.blade.basic.service.FooLocalServiceUtil;
 import com.liferay.portal.kernel.log.Log;
