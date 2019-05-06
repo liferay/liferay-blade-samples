@@ -1,0 +1,3 @@
+Bundle-SymbolicName: com.liferay.blade.basic.test
+Bundle-Version: 1.0.0
+-sources: true
