@@ -5,7 +5,5 @@ Export-Package:\
 	com.liferay.blade.basic.model,\
 	com.liferay.blade.basic.service,\
 	com.liferay.blade.basic.service.persistence
-Import-Package: !*
-DynamicImport-Package: *
 -includeresource: META-INF/service.xml=../basic-service/service.xml
 -sources: true
