@@ -1,4 +1,0 @@
-Bundle-Name: Metal.js Portlet
-Bundle-SymbolicName: com.liferay.blade.npm.metaljs.portlet
-Bundle-Version: 1.0.0
-Web-ContextPath: /metaljs-npm-portlet

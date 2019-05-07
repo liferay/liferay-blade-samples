@@ -17,10 +17,9 @@ package com.liferay.blade.samples.jndiservicebuilder.model.impl;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
-
+import com.liferay.petra.lang.HashUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.util.HashUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -31,11 +30,11 @@ import java.io.ObjectOutput;
  * The cache model class for representing Region in entity cache.
  *
  * @author Brian Wing Shun Chan
- * @see Region
  * @generated
  */
 @ProviderType
 public class RegionCacheModel implements CacheModel<Region>, Externalizable {
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -98,8 +97,7 @@ public class RegionCacheModel implements CacheModel<Region>, Externalizable {
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
+	public void writeExternal(ObjectOutput objectOutput) throws IOException {
 		objectOutput.writeLong(regionId);
 
 		if (regionName == null) {
@@ -112,4 +110,5 @@ public class RegionCacheModel implements CacheModel<Region>, Externalizable {
 
 	public long regionId;
 	public String regionName;
+
 }

@@ -271,10 +271,6 @@ public class RegionUtil {
 		return getPersistence().countAll();
 	}
 
-	public static Set<String> getBadColumnNames() {
-		return getPersistence().getBadColumnNames();
-	}
-
 	public static RegionPersistence getPersistence() {
 		return _serviceTracker.getService();
 	}

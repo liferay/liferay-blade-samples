@@ -61,16 +61,6 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 	}
 
 	@Override
-	public void postProcessContextQuery(
-			BooleanQuery contextQuery, SearchContext searchContext)
-		throws Exception {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("postProcessContextQuery");
-		}
-	}
-
-	@Override
 	public void postProcessDocument(Document document, Object obj)
 		throws Exception {
 
@@ -93,16 +83,6 @@ public class BlogsIndexerPostProcessor implements IndexerPostProcessor {
 	public void postProcessSearchQuery(
 			BooleanQuery searchQuery, BooleanFilter booleanFilter,
 			SearchContext searchContext)
-		throws Exception {
-
-		if (_log.isInfoEnabled()) {
-			_log.info("postProcessSearchQuery");
-		}
-	}
-
-	@Override
-	public void postProcessSearchQuery(
-			BooleanQuery searchQuery, SearchContext searchContext)
 		throws Exception {
 
 		if (_log.isInfoEnabled()) {

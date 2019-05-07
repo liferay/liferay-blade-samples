@@ -20,11 +20,6 @@ import com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 
-import java.io.Serializable;
-
-import java.util.Map;
-import java.util.Set;
-
 /**
  * The persistence interface for the bar service.
  *
@@ -44,9 +39,6 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link BarUtil} to access the bar persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
 	 */
-	@Override
-	public Map<Serializable, Bar> fetchByPrimaryKeys(
-		Set<Serializable> primaryKeys);
 
 	/**
 	 * Returns all the bars where uuid = &#63;.
@@ -649,8 +641,5 @@ public interface BarPersistence extends BasePersistence<Bar> {
 	 * @return the number of bars
 	 */
 	public int countAll();
-
-	@Override
-	public Set<String> getBadColumnNames();
 
 }

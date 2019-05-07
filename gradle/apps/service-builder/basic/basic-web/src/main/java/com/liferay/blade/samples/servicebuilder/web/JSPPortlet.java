@@ -16,8 +16,8 @@
 
 package com.liferay.blade.samples.servicebuilder.web;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.servlet.SessionErrors;
@@ -145,7 +145,7 @@ public class JSPPortlet extends MVCPortlet {
 			foo.setField5(field5);
 			foo.isNew();
 
-			getFooLocalService().addFooWithoutId(foo);
+			getFooLocalService().addFoo(foo);
 		}
 		else {
 			Foo foo = getFooLocalService().fetchFoo(fooId);

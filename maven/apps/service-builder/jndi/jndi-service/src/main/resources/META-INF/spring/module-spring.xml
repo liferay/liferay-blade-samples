@@ -8,7 +8,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 	<bean class="com.liferay.blade.samples.jndiservicebuilder.service.impl.RegionLocalServiceImpl" id="com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalService" />
-	<bean class="com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl.RegionPersistenceImpl" id="com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionPersistence" parent="basePersistence">
+	<bean class="com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl.RegionPersistenceImpl" id="com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionPersistence">
 		<property name="dataSource" ref="extDataSource" />
 	</bean>
 </beans>

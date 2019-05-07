@@ -16,17 +16,13 @@ package com.liferay.blade.samples.servicebuilder.adq.model;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.service.ServiceContext;
-
-import java.io.Serializable;
+import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>
@@ -38,20 +34,11 @@ import java.util.Objects;
  * @generated
  */
 @ProviderType
-public class BarWrapper implements Bar, ModelWrapper<Bar> {
+public class BarWrapper
+	extends BaseModelWrapper<Bar> implements Bar, ModelWrapper<Bar> {
 
 	public BarWrapper(Bar bar) {
-		_bar = bar;
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return Bar.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return Bar.class.getName();
+		super(bar);
 	}
 
 	@Override
@@ -156,16 +143,6 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 		}
 	}
 
-	@Override
-	public Object clone() {
-		return new BarWrapper((Bar)_bar.clone());
-	}
-
-	@Override
-	public int compareTo(Bar bar) {
-		return _bar.compareTo(bar);
-	}
-
 	/**
 	 * Returns the bar ID of this bar.
 	 *
@@ -173,7 +150,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public long getBarId() {
-		return _bar.getBarId();
+		return model.getBarId();
 	}
 
 	/**
@@ -183,7 +160,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public long getCompanyId() {
-		return _bar.getCompanyId();
+		return model.getCompanyId();
 	}
 
 	/**
@@ -193,12 +170,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public Date getCreateDate() {
-		return _bar.getCreateDate();
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _bar.getExpandoBridge();
+		return model.getCreateDate();
 	}
 
 	/**
@@ -208,7 +180,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public String getField1() {
-		return _bar.getField1();
+		return model.getField1();
 	}
 
 	/**
@@ -218,7 +190,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public boolean getField2() {
-		return _bar.getField2();
+		return model.getField2();
 	}
 
 	/**
@@ -228,7 +200,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public int getField3() {
-		return _bar.getField3();
+		return model.getField3();
 	}
 
 	/**
@@ -238,7 +210,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public Date getField4() {
-		return _bar.getField4();
+		return model.getField4();
 	}
 
 	/**
@@ -248,7 +220,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public String getField5() {
-		return _bar.getField5();
+		return model.getField5();
 	}
 
 	/**
@@ -258,7 +230,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public long getGroupId() {
-		return _bar.getGroupId();
+		return model.getGroupId();
 	}
 
 	/**
@@ -268,7 +240,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public Date getModifiedDate() {
-		return _bar.getModifiedDate();
+		return model.getModifiedDate();
 	}
 
 	/**
@@ -278,12 +250,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public long getPrimaryKey() {
-		return _bar.getPrimaryKey();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _bar.getPrimaryKeyObj();
+		return model.getPrimaryKey();
 	}
 
 	/**
@@ -293,7 +260,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public long getUserId() {
-		return _bar.getUserId();
+		return model.getUserId();
 	}
 
 	/**
@@ -303,7 +270,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public String getUserName() {
-		return _bar.getUserName();
+		return model.getUserName();
 	}
 
 	/**
@@ -313,7 +280,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public String getUserUuid() {
-		return _bar.getUserUuid();
+		return model.getUserUuid();
 	}
 
 	/**
@@ -323,22 +290,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public String getUuid() {
-		return _bar.getUuid();
-	}
-
-	@Override
-	public int hashCode() {
-		return _bar.hashCode();
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _bar.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _bar.isEscapedModel();
+		return model.getUuid();
 	}
 
 	/**
@@ -348,17 +300,12 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public boolean isField2() {
-		return _bar.isField2();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _bar.isNew();
+		return model.isField2();
 	}
 
 	@Override
 	public void persist() {
-		_bar.persist();
+		model.persist();
 	}
 
 	/**
@@ -368,12 +315,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setBarId(long barId) {
-		_bar.setBarId(barId);
-	}
-
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_bar.setCachedModel(cachedModel);
+		model.setBarId(barId);
 	}
 
 	/**
@@ -383,7 +325,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setCompanyId(long companyId) {
-		_bar.setCompanyId(companyId);
+		model.setCompanyId(companyId);
 	}
 
 	/**
@@ -393,24 +335,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setCreateDate(Date createDate) {
-		_bar.setCreateDate(createDate);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
-
-		_bar.setExpandoBridgeAttributes(baseModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_bar.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		_bar.setExpandoBridgeAttributes(serviceContext);
+		model.setCreateDate(createDate);
 	}
 
 	/**
@@ -420,7 +345,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setField1(String field1) {
-		_bar.setField1(field1);
+		model.setField1(field1);
 	}
 
 	/**
@@ -430,7 +355,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setField2(boolean field2) {
-		_bar.setField2(field2);
+		model.setField2(field2);
 	}
 
 	/**
@@ -440,7 +365,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setField3(int field3) {
-		_bar.setField3(field3);
+		model.setField3(field3);
 	}
 
 	/**
@@ -450,7 +375,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setField4(Date field4) {
-		_bar.setField4(field4);
+		model.setField4(field4);
 	}
 
 	/**
@@ -460,7 +385,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setField5(String field5) {
-		_bar.setField5(field5);
+		model.setField5(field5);
 	}
 
 	/**
@@ -470,7 +395,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setGroupId(long groupId) {
-		_bar.setGroupId(groupId);
+		model.setGroupId(groupId);
 	}
 
 	/**
@@ -480,12 +405,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
-		_bar.setModifiedDate(modifiedDate);
-	}
-
-	@Override
-	public void setNew(boolean n) {
-		_bar.setNew(n);
+		model.setModifiedDate(modifiedDate);
 	}
 
 	/**
@@ -495,12 +415,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		_bar.setPrimaryKey(primaryKey);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		_bar.setPrimaryKeyObj(primaryKeyObj);
+		model.setPrimaryKey(primaryKey);
 	}
 
 	/**
@@ -510,7 +425,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setUserId(long userId) {
-		_bar.setUserId(userId);
+		model.setUserId(userId);
 	}
 
 	/**
@@ -520,7 +435,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setUserName(String userName) {
-		_bar.setUserName(userName);
+		model.setUserName(userName);
 	}
 
 	/**
@@ -530,7 +445,7 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setUserUuid(String userUuid) {
-		_bar.setUserUuid(userUuid);
+		model.setUserUuid(userUuid);
 	}
 
 	/**
@@ -540,78 +455,17 @@ public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	 */
 	@Override
 	public void setUuid(String uuid) {
-		_bar.setUuid(uuid);
-	}
-
-	@Override
-	public com.liferay.portal.kernel.model.CacheModel<Bar> toCacheModel() {
-		return _bar.toCacheModel();
-	}
-
-	@Override
-	public Bar toEscapedModel() {
-		return new BarWrapper(_bar.toEscapedModel());
-	}
-
-	@Override
-	public String toString() {
-		return _bar.toString();
-	}
-
-	@Override
-	public Bar toUnescapedModel() {
-		return new BarWrapper(_bar.toUnescapedModel());
-	}
-
-	@Override
-	public String toXmlString() {
-		return _bar.toXmlString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof BarWrapper)) {
-			return false;
-		}
-
-		BarWrapper barWrapper = (BarWrapper)obj;
-
-		if (Objects.equals(_bar, barWrapper._bar)) {
-			return true;
-		}
-
-		return false;
+		model.setUuid(uuid);
 	}
 
 	@Override
 	public StagedModelType getStagedModelType() {
-		return _bar.getStagedModelType();
+		return model.getStagedModelType();
 	}
 
 	@Override
-	public Bar getWrappedModel() {
-		return _bar;
+	protected BarWrapper wrap(Bar bar) {
+		return new BarWrapper(bar);
 	}
-
-	@Override
-	public boolean isEntityCacheEnabled() {
-		return _bar.isEntityCacheEnabled();
-	}
-
-	@Override
-	public boolean isFinderCacheEnabled() {
-		return _bar.isFinderCacheEnabled();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		_bar.resetOriginalValues();
-	}
-
-	private final Bar _bar;
 
 }
