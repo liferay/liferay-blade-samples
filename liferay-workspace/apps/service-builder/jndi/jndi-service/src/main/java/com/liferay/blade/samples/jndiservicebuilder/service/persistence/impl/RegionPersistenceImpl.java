@@ -21,6 +21,7 @@ import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl;
 import com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionModelImpl;
 import com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionPersistence;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.FinderCache;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
@@ -32,17 +33,12 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.SetUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
 import java.io.Serializable;
 
-import java.lang.reflect.Field;
-
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -82,24 +78,16 @@ public class RegionPersistenceImpl
 	public RegionPersistenceImpl() {
 		setModelClass(Region.class);
 
-		try {
-			Field field = BasePersistenceImpl.class.getDeclaredField(
-				"_dbColumnNames");
+		setModelImplClass(RegionImpl.class);
+		setModelPKClass(long.class);
+		setEntityCacheEnabled(RegionModelImpl.ENTITY_CACHE_ENABLED);
 
-			field.setAccessible(true);
+		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
-			Map<String, String> dbColumnNames = new HashMap<String, String>();
+		dbColumnNames.put("regionId", "id");
+		dbColumnNames.put("regionName", "name");
 
-			dbColumnNames.put("regionId", "id");
-			dbColumnNames.put("regionName", "name");
-
-			field.set(this, dbColumnNames);
-		}
-		catch (Exception e) {
-			if (_log.isDebugEnabled()) {
-				_log.debug(e, e);
-			}
-		}
+		setDBColumnNames(dbColumnNames);
 	}
 
 	/**
@@ -359,158 +347,12 @@ public class RegionPersistenceImpl
 	/**
 	 * Returns the region with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param primaryKey the primary key of the region
-	 * @return the region, or <code>null</code> if a region with the primary key could not be found
-	 */
-	@Override
-	public Region fetchByPrimaryKey(Serializable primaryKey) {
-		Serializable serializable = entityCache.getResult(
-			RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class, primaryKey);
-
-		if (serializable == nullModel) {
-			return null;
-		}
-
-		Region region = (Region)serializable;
-
-		if (region == null) {
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				region = (Region)session.get(RegionImpl.class, primaryKey);
-
-				if (region != null) {
-					cacheResult(region);
-				}
-				else {
-					entityCache.putResult(
-						RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-						primaryKey, nullModel);
-				}
-			}
-			catch (Exception e) {
-				entityCache.removeResult(
-					RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-					primaryKey);
-
-				throw processException(e);
-			}
-			finally {
-				closeSession(session);
-			}
-		}
-
-		return region;
-	}
-
-	/**
-	 * Returns the region with the primary key or returns <code>null</code> if it could not be found.
-	 *
 	 * @param regionId the primary key of the region
 	 * @return the region, or <code>null</code> if a region with the primary key could not be found
 	 */
 	@Override
 	public Region fetchByPrimaryKey(long regionId) {
 		return fetchByPrimaryKey((Serializable)regionId);
-	}
-
-	@Override
-	public Map<Serializable, Region> fetchByPrimaryKeys(
-		Set<Serializable> primaryKeys) {
-
-		if (primaryKeys.isEmpty()) {
-			return Collections.emptyMap();
-		}
-
-		Map<Serializable, Region> map = new HashMap<Serializable, Region>();
-
-		if (primaryKeys.size() == 1) {
-			Iterator<Serializable> iterator = primaryKeys.iterator();
-
-			Serializable primaryKey = iterator.next();
-
-			Region region = fetchByPrimaryKey(primaryKey);
-
-			if (region != null) {
-				map.put(primaryKey, region);
-			}
-
-			return map;
-		}
-
-		Set<Serializable> uncachedPrimaryKeys = null;
-
-		for (Serializable primaryKey : primaryKeys) {
-			Serializable serializable = entityCache.getResult(
-				RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-				primaryKey);
-
-			if (serializable != nullModel) {
-				if (serializable == null) {
-					if (uncachedPrimaryKeys == null) {
-						uncachedPrimaryKeys = new HashSet<Serializable>();
-					}
-
-					uncachedPrimaryKeys.add(primaryKey);
-				}
-				else {
-					map.put(primaryKey, (Region)serializable);
-				}
-			}
-		}
-
-		if (uncachedPrimaryKeys == null) {
-			return map;
-		}
-
-		StringBundler query = new StringBundler(
-			uncachedPrimaryKeys.size() * 2 + 1);
-
-		query.append(_SQL_SELECT_REGION_WHERE_PKS_IN);
-
-		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((long)primaryKey);
-
-			query.append(",");
-		}
-
-		query.setIndex(query.index() - 1);
-
-		query.append(")");
-
-		String sql = query.toString();
-
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			Query q = session.createQuery(sql);
-
-			for (Region region : (List<Region>)q.list()) {
-				map.put(region.getPrimaryKeyObj(), region);
-
-				cacheResult(region);
-
-				uncachedPrimaryKeys.remove(region.getPrimaryKeyObj());
-			}
-
-			for (Serializable primaryKey : uncachedPrimaryKeys) {
-				entityCache.putResult(
-					RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-					primaryKey, nullModel);
-			}
-		}
-		catch (Exception e) {
-			throw processException(e);
-		}
-		finally {
-			closeSession(session);
-		}
-
-		return map;
 	}
 
 	/**
@@ -713,6 +555,21 @@ public class RegionPersistenceImpl
 	}
 
 	@Override
+	protected EntityCache getEntityCache() {
+		return entityCache;
+	}
+
+	@Override
+	protected String getPKDBName() {
+		return "id";
+	}
+
+	@Override
+	protected String getSelectSQL() {
+		return _SQL_SELECT_REGION;
+	}
+
+	@Override
 	protected Map<String, Integer> getTableColumnsMap() {
 		return RegionModelImpl.TABLE_COLUMNS_MAP;
 	}
@@ -754,9 +611,6 @@ public class RegionPersistenceImpl
 
 	private static final String _SQL_SELECT_REGION =
 		"SELECT region FROM Region region";
-
-	private static final String _SQL_SELECT_REGION_WHERE_PKS_IN =
-		"SELECT region FROM Region region WHERE id IN (";
 
 	private static final String _SQL_COUNT_REGION =
 		"SELECT COUNT(region) FROM Region region";
