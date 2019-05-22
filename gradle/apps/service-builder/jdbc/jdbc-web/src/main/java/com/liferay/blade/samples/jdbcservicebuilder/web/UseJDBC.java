@@ -45,10 +45,7 @@ public class UseJDBC {
 		CountryLocalService countryLocalService = tracker.getService();
 
 		try {
-			List<Country> countries = countryLocalService.getCountries(
-				0, getCountriesCount());
-
-			return countries;
+			return countryLocalService.getCountries(0, getCountriesCount());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +70,7 @@ public class UseJDBC {
 		CountryLocalService countryLocalService = tracker.getService();
 
 		try {
-			int regionsCount = countryLocalService.getCountriesCount();
-
-			return regionsCount;
+			return countryLocalService.getCountriesCount();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

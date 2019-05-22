@@ -20,11 +20,6 @@ import com.liferay.blade.samples.jdbcservicebuilder.exception.NoSuchCountryExcep
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 
-import java.io.Serializable;
-
-import java.util.Map;
-import java.util.Set;
-
 /**
  * The persistence interface for the country service.
  *
@@ -44,9 +39,6 @@ public interface CountryPersistence extends BasePersistence<Country> {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link CountryUtil} to access the country persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
 	 */
-	@Override
-	public Map<Serializable, Country> fetchByPrimaryKeys(
-		Set<Serializable> primaryKeys);
 
 	/**
 	 * Caches the country in the entity cache if it is enabled.
@@ -166,8 +158,5 @@ public interface CountryPersistence extends BasePersistence<Country> {
 	 * @return the number of countries
 	 */
 	public int countAll();
-
-	@Override
-	public Set<String> getBadColumnNames();
 
 }

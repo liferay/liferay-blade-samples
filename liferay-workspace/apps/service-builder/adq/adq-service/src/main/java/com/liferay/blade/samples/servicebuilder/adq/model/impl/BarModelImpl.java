@@ -22,6 +22,7 @@ import com.liferay.blade.samples.servicebuilder.adq.model.BarSoap;
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
@@ -34,7 +35,6 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Serializable;
 
@@ -289,266 +289,45 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		Map<String, BiConsumer<Bar, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Bar, ?>>();
 
-		attributeGetterFunctions.put(
-			"uuid",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getUuid();
-				}
-
-			});
+		attributeGetterFunctions.put("uuid", Bar::getUuid);
 		attributeSetterBiConsumers.put(
-			"uuid",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object uuid) {
-					bar.setUuid((String)uuid);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"barId",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getBarId();
-				}
-
-			});
+			"uuid", (BiConsumer<Bar, String>)Bar::setUuid);
+		attributeGetterFunctions.put("barId", Bar::getBarId);
 		attributeSetterBiConsumers.put(
-			"barId",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object barId) {
-					bar.setBarId((Long)barId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"groupId",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getGroupId();
-				}
-
-			});
+			"barId", (BiConsumer<Bar, Long>)Bar::setBarId);
+		attributeGetterFunctions.put("groupId", Bar::getGroupId);
 		attributeSetterBiConsumers.put(
-			"groupId",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object groupId) {
-					bar.setGroupId((Long)groupId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"companyId",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getCompanyId();
-				}
-
-			});
+			"groupId", (BiConsumer<Bar, Long>)Bar::setGroupId);
+		attributeGetterFunctions.put("companyId", Bar::getCompanyId);
 		attributeSetterBiConsumers.put(
-			"companyId",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object companyId) {
-					bar.setCompanyId((Long)companyId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"userId",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getUserId();
-				}
-
-			});
+			"companyId", (BiConsumer<Bar, Long>)Bar::setCompanyId);
+		attributeGetterFunctions.put("userId", Bar::getUserId);
 		attributeSetterBiConsumers.put(
-			"userId",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object userId) {
-					bar.setUserId((Long)userId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"userName",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getUserName();
-				}
-
-			});
+			"userId", (BiConsumer<Bar, Long>)Bar::setUserId);
+		attributeGetterFunctions.put("userName", Bar::getUserName);
 		attributeSetterBiConsumers.put(
-			"userName",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object userName) {
-					bar.setUserName((String)userName);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"createDate",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getCreateDate();
-				}
-
-			});
+			"userName", (BiConsumer<Bar, String>)Bar::setUserName);
+		attributeGetterFunctions.put("createDate", Bar::getCreateDate);
 		attributeSetterBiConsumers.put(
-			"createDate",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object createDate) {
-					bar.setCreateDate((Date)createDate);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"modifiedDate",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getModifiedDate();
-				}
-
-			});
+			"createDate", (BiConsumer<Bar, Date>)Bar::setCreateDate);
+		attributeGetterFunctions.put("modifiedDate", Bar::getModifiedDate);
 		attributeSetterBiConsumers.put(
-			"modifiedDate",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object modifiedDate) {
-					bar.setModifiedDate((Date)modifiedDate);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field1",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getField1();
-				}
-
-			});
+			"modifiedDate", (BiConsumer<Bar, Date>)Bar::setModifiedDate);
+		attributeGetterFunctions.put("field1", Bar::getField1);
 		attributeSetterBiConsumers.put(
-			"field1",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object field1) {
-					bar.setField1((String)field1);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field2",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getField2();
-				}
-
-			});
+			"field1", (BiConsumer<Bar, String>)Bar::setField1);
+		attributeGetterFunctions.put("field2", Bar::getField2);
 		attributeSetterBiConsumers.put(
-			"field2",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object field2) {
-					bar.setField2((Boolean)field2);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field3",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getField3();
-				}
-
-			});
+			"field2", (BiConsumer<Bar, Boolean>)Bar::setField2);
+		attributeGetterFunctions.put("field3", Bar::getField3);
 		attributeSetterBiConsumers.put(
-			"field3",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object field3) {
-					bar.setField3((Integer)field3);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field4",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getField4();
-				}
-
-			});
+			"field3", (BiConsumer<Bar, Integer>)Bar::setField3);
+		attributeGetterFunctions.put("field4", Bar::getField4);
 		attributeSetterBiConsumers.put(
-			"field4",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object field4) {
-					bar.setField4((Date)field4);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"field5",
-			new Function<Bar, Object>() {
-
-				@Override
-				public Object apply(Bar bar) {
-					return bar.getField5();
-				}
-
-			});
+			"field4", (BiConsumer<Bar, Date>)Bar::setField4);
+		attributeGetterFunctions.put("field5", Bar::getField5);
 		attributeSetterBiConsumers.put(
-			"field5",
-			new BiConsumer<Bar, Object>() {
-
-				@Override
-				public void accept(Bar bar, Object field5) {
-					bar.setField5((String)field5);
-				}
-
-			});
+			"field5", (BiConsumer<Bar, String>)Bar::setField5);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);

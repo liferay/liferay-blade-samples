@@ -31,7 +31,7 @@ import com.liferay.portal.kernel.util.Accessor;
 	"com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl"
 )
 @ProviderType
-public interface Region extends RegionModel, PersistedModel {
+public interface Region extends PersistedModel, RegionModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:

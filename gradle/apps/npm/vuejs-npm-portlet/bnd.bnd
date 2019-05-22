@@ -1,4 +1,0 @@
-Bundle-Name: Vue.js Portlet
-Bundle-SymbolicName: com.liferay.blade.npm.vuejs.portlet
-Bundle-Version: 1.0.0
-Web-ContextPath: /vuejs-npm-portlet

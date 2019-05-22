@@ -20,6 +20,7 @@ import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.blade.samples.jdbcservicebuilder.model.CountryModel;
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
@@ -27,7 +28,6 @@ import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Serializable;
 
@@ -207,46 +207,13 @@ public class CountryModelImpl
 		Map<String, BiConsumer<Country, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Country, ?>>();
 
-		attributeGetterFunctions.put(
-			"countryId",
-			new Function<Country, Object>() {
-
-				@Override
-				public Object apply(Country country) {
-					return country.getCountryId();
-				}
-
-			});
+		attributeGetterFunctions.put("countryId", Country::getCountryId);
 		attributeSetterBiConsumers.put(
-			"countryId",
-			new BiConsumer<Country, Object>() {
-
-				@Override
-				public void accept(Country country, Object countryId) {
-					country.setCountryId((Long)countryId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"countryName",
-			new Function<Country, Object>() {
-
-				@Override
-				public Object apply(Country country) {
-					return country.getCountryName();
-				}
-
-			});
+			"countryId", (BiConsumer<Country, Long>)Country::setCountryId);
+		attributeGetterFunctions.put("countryName", Country::getCountryName);
 		attributeSetterBiConsumers.put(
 			"countryName",
-			new BiConsumer<Country, Object>() {
-
-				@Override
-				public void accept(Country country, Object countryName) {
-					country.setCountryName((String)countryName);
-				}
-
-			});
+			(BiConsumer<Country, String>)Country::setCountryName);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);

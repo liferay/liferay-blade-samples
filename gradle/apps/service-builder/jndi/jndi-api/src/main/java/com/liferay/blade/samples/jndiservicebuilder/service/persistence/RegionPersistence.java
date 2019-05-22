@@ -20,11 +20,6 @@ import com.liferay.blade.samples.jndiservicebuilder.exception.NoSuchRegionExcept
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 
-import java.io.Serializable;
-
-import java.util.Map;
-import java.util.Set;
-
 /**
  * The persistence interface for the region service.
  *
@@ -44,9 +39,6 @@ public interface RegionPersistence extends BasePersistence<Region> {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link RegionUtil} to access the region persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
 	 */
-	@Override
-	public Map<Serializable, Region> fetchByPrimaryKeys(
-		Set<Serializable> primaryKeys);
 
 	/**
 	 * Caches the region in the entity cache if it is enabled.
@@ -165,8 +157,5 @@ public interface RegionPersistence extends BasePersistence<Region> {
 	 * @return the number of regions
 	 */
 	public int countAll();
-
-	@Override
-	public Set<String> getBadColumnNames();
 
 }

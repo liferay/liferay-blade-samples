@@ -20,6 +20,7 @@ import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.model.RegionModel;
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
@@ -27,7 +28,6 @@ import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Serializable;
 
@@ -203,46 +203,12 @@ public class RegionModelImpl
 		Map<String, BiConsumer<Region, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Region, ?>>();
 
-		attributeGetterFunctions.put(
-			"regionId",
-			new Function<Region, Object>() {
-
-				@Override
-				public Object apply(Region region) {
-					return region.getRegionId();
-				}
-
-			});
+		attributeGetterFunctions.put("regionId", Region::getRegionId);
 		attributeSetterBiConsumers.put(
-			"regionId",
-			new BiConsumer<Region, Object>() {
-
-				@Override
-				public void accept(Region region, Object regionId) {
-					region.setRegionId((Long)regionId);
-				}
-
-			});
-		attributeGetterFunctions.put(
-			"regionName",
-			new Function<Region, Object>() {
-
-				@Override
-				public Object apply(Region region) {
-					return region.getRegionName();
-				}
-
-			});
+			"regionId", (BiConsumer<Region, Long>)Region::setRegionId);
+		attributeGetterFunctions.put("regionName", Region::getRegionName);
 		attributeSetterBiConsumers.put(
-			"regionName",
-			new BiConsumer<Region, Object>() {
-
-				@Override
-				public void accept(Region region, Object regionName) {
-					region.setRegionName((String)regionName);
-				}
-
-			});
+			"regionName", (BiConsumer<Region, String>)Region::setRegionName);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);

@@ -16,8 +16,8 @@
 
 package com.liferay.blade.samples.springmvc;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -154,7 +154,7 @@ public class SpringMVCPortletViewController {
 
 			// Invoke the service layer to add the foo.
 
-			FooLocalServiceUtil.addFooWithoutId(foo);
+			FooLocalServiceUtil.addFoo(foo);
 		}
 		else {
 			if (_log.isInfoEnabled()) {

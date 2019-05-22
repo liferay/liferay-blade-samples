@@ -1,4 +1,0 @@
-Bundle-Name: jQuery Portlet
-Bundle-SymbolicName: com.liferay.blade.npm.jquery.portlet
-Bundle-Version: 1.0.0
-Web-ContextPath: /jquery-npm-portlet

@@ -275,10 +275,6 @@ public class CountryUtil {
 		return getPersistence().countAll();
 	}
 
-	public static Set<String> getBadColumnNames() {
-		return getPersistence().getBadColumnNames();
-	}
-
 	public static CountryPersistence getPersistence() {
 		return _serviceTracker.getService();
 	}
