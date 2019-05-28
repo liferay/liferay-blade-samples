@@ -30,21 +30,6 @@ subprojects { subproject ->
 			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
 		}
 	}
-
-	subproject.plugins.withId("com.liferay.plugin") {
-		liferay {
-			appServers {
-				tomcat {
-					if (project.hasProperty('latestBranch')) {
-						version = "8.5.20"
-					}
-					else {
-						version = "8.0.32"
-					}
-				}
-			}
-		}
-	}
 }
 
 apply plugin: "com.gradle.build-scan"
