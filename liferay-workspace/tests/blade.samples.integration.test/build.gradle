@@ -76,6 +76,7 @@ testIntegration {
 	}
 
 	doLast {
-		delete new File("target/drone-phantomjs")
+		delete new File("blade.jar")
+		delete new File("target")
 	}
 }
