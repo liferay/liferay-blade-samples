@@ -28,34 +28,6 @@ stopTestableTomcat {
 }
 
 testIntegration {
-	outputs.upToDateWhen { false }
-
-	beforeSuite {
-		def moduleOutputPaths = []
-
-		rootProject.subprojects { p ->
-			def tempOutput
-
-			p.plugins.withType(WarPlugin) {
-				tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
-			}
-
-			if (tempOutput == null) {
-				p.plugins.withType(JavaPlugin) {
-					tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
-				}
-			}
-
-			if (tempOutput != null) {
-				moduleOutputPaths << tempOutput
-			}
-
-		}
-
-		moduleOutputPaths.removeAll { it.contains("test") }
-
-		systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
-	}
 
 	rootProject.subprojects { p ->
 		p.plugins.withType(JavaPlugin) {
@@ -68,7 +40,35 @@ testIntegration {
 
 	}
 
-	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://repository.liferay.com/nexus/service/local/artifact/maven/redirect?r=liferay-public-releases&g=com.liferay.blade&a=com.liferay.blade.cli&v=LATEST")
+	outputs.upToDateWhen { false }
+
+	def moduleOutputPaths = []
+
+	rootProject.subprojects { p ->
+		def tempOutput
+
+		p.plugins.withType(WarPlugin) {
+			tempOutput = p.tasks["war"].outputs.files.singleFile.absolutePath
+		}
+
+		if (tempOutput == null) {
+			p.plugins.withType(JavaPlugin) {
+				tempOutput = p.tasks["jar"].outputs.files.singleFile.absolutePath
+			}
+		}
+
+		if (tempOutput != null) {
+
+			moduleOutputPaths << tempOutput
+
+		}
+
+
+	}
+
+	moduleOutputPaths.removeAll { it.contains("test") }
+
+	systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
 	systemProperty 'portalVersion', project.getProperty("liferay.workspace.bundle.url")
 
 	finalizedBy {
