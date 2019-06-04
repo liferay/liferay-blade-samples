@@ -14,7 +14,7 @@
 
 package com.liferay.blade.basic.service.http;
 
-import aQute.bnd.annotation.ProviderType;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the SOAP utility for the

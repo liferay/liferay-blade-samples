@@ -14,8 +14,6 @@
 
 package com.liferay.blade.basic.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.basic.exception.NoSuchFooException;
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.blade.basic.model.impl.FooImpl;
@@ -60,6 +58,7 @@ import java.util.Set;
 
 import javax.sql.DataSource;
 
+import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;

@@ -14,11 +14,11 @@
 
 package com.liferay.blade.basic.service.persistence;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.basic.exception.NoSuchFooException;
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The persistence interface for the foo service.

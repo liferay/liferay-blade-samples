@@ -12,16 +12,14 @@
  * details.
  */
 
-package com.liferay.blade.samples.servicebuilder.service.persistence.test;
+package com.liferay.blade.basic.service.persistence.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
-
-import com.liferay.blade.samples.servicebuilder.exception.NoSuchFooException;
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
-import com.liferay.blade.samples.servicebuilder.service.persistence.FooPersistence;
-import com.liferay.blade.samples.servicebuilder.service.persistence.FooUtil;
-
+import com.liferay.blade.basic.exception.NoSuchFooException;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalServiceUtil;
+import com.liferay.blade.basic.service.persistence.FooPersistence;
+import com.liferay.blade.basic.service.persistence.FooUtil;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
@@ -40,15 +38,6 @@ import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 import com.liferay.portal.test.rule.PersistenceTestRule;
 import com.liferay.portal.test.rule.TransactionalTestRule;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-
-import org.junit.runner.RunWith;
-
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -59,17 +48,27 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 /**
  * @generated
  */
 @RunWith(Arquillian.class)
 public class FooPersistenceTest {
+
 	@ClassRule
 	@Rule
-	public static final AggregateTestRule aggregateTestRule = new AggregateTestRule(new LiferayIntegrationTestRule(),
-			PersistenceTestRule.INSTANCE,
-			new TransactionalTestRule(Propagation.REQUIRED,
-				"com.liferay.blade.samples.servicebuilder.service"));
+	public static final AggregateTestRule aggregateTestRule =
+		new AggregateTestRule(
+			new LiferayIntegrationTestRule(), PersistenceTestRule.INSTANCE,
+			new TransactionalTestRule(
+				Propagation.REQUIRED, "com.liferay.blade.basic.service"));
 
 	@Before
 	public void setUp() {
@@ -108,7 +107,8 @@ public class FooPersistenceTest {
 
 		_persistence.remove(newFoo);
 
-		Foo existingFoo = _persistence.fetchByPrimaryKey(newFoo.getPrimaryKey());
+		Foo existingFoo = _persistence.fetchByPrimaryKey(
+			newFoo.getPrimaryKey());
 
 		Assert.assertNull(existingFoo);
 	}
@@ -158,15 +158,17 @@ public class FooPersistenceTest {
 		Assert.assertEquals(existingFoo.getCompanyId(), newFoo.getCompanyId());
 		Assert.assertEquals(existingFoo.getUserId(), newFoo.getUserId());
 		Assert.assertEquals(existingFoo.getUserName(), newFoo.getUserName());
-		Assert.assertEquals(Time.getShortTimestamp(existingFoo.getCreateDate()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingFoo.getCreateDate()),
 			Time.getShortTimestamp(newFoo.getCreateDate()));
-		Assert.assertEquals(Time.getShortTimestamp(
-				existingFoo.getModifiedDate()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingFoo.getModifiedDate()),
 			Time.getShortTimestamp(newFoo.getModifiedDate()));
 		Assert.assertEquals(existingFoo.getField1(), newFoo.getField1());
-		Assert.assertEquals(existingFoo.getField2(), newFoo.getField2());
+		Assert.assertEquals(existingFoo.isField2(), newFoo.isField2());
 		Assert.assertEquals(existingFoo.getField3(), newFoo.getField3());
-		Assert.assertEquals(Time.getShortTimestamp(existingFoo.getField4()),
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingFoo.getField4()),
 			Time.getShortTimestamp(newFoo.getField4()));
 		Assert.assertEquals(existingFoo.getField5(), newFoo.getField5());
 	}
@@ -223,23 +225,24 @@ public class FooPersistenceTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-		_persistence.findAll(QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-			getOrderByComparator());
+		_persistence.findAll(
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, getOrderByComparator());
 	}
 
 	protected OrderByComparator<Foo> getOrderByComparator() {
-		return OrderByComparatorFactoryUtil.create("SSB_Foo", "uuid", true,
-			"fooId", true, "groupId", true, "companyId", true, "userId", true,
-			"userName", true, "createDate", true, "modifiedDate", true,
-			"field1", true, "field2", true, "field3", true, "field4", true,
-			"field5", true);
+		return OrderByComparatorFactoryUtil.create(
+			"SSB_Foo", "uuid", true, "fooId", true, "groupId", true,
+			"companyId", true, "userId", true, "userName", true, "createDate",
+			true, "modifiedDate", true, "field1", true, "field2", true,
+			"field3", true, "field4", true, "field5", true);
 	}
 
 	@Test
 	public void testFetchByPrimaryKeyExisting() throws Exception {
 		Foo newFoo = addFoo();
 
-		Foo existingFoo = _persistence.fetchByPrimaryKey(newFoo.getPrimaryKey());
+		Foo existingFoo = _persistence.fetchByPrimaryKey(
+			newFoo.getPrimaryKey());
 
 		Assert.assertEquals(existingFoo, newFoo);
 	}
@@ -256,6 +259,7 @@ public class FooPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereAllPrimaryKeysExist()
 		throws Exception {
+
 		Foo newFoo1 = addFoo();
 		Foo newFoo2 = addFoo();
 
@@ -264,7 +268,8 @@ public class FooPersistenceTest {
 		primaryKeys.add(newFoo1.getPrimaryKey());
 		primaryKeys.add(newFoo2.getPrimaryKey());
 
-		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(2, foos.size());
 		Assert.assertEquals(newFoo1, foos.get(newFoo1.getPrimaryKey()));
@@ -274,6 +279,7 @@ public class FooPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereNoPrimaryKeysExist()
 		throws Exception {
+
 		long pk1 = RandomTestUtil.nextLong();
 
 		long pk2 = RandomTestUtil.nextLong();
@@ -283,7 +289,8 @@ public class FooPersistenceTest {
 		primaryKeys.add(pk1);
 		primaryKeys.add(pk2);
 
-		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertTrue(foos.isEmpty());
 	}
@@ -291,6 +298,7 @@ public class FooPersistenceTest {
 	@Test
 	public void testFetchByPrimaryKeysWithMultiplePrimaryKeysWhereSomePrimaryKeysExist()
 		throws Exception {
+
 		Foo newFoo = addFoo();
 
 		long pk = RandomTestUtil.nextLong();
@@ -300,32 +308,33 @@ public class FooPersistenceTest {
 		primaryKeys.add(newFoo.getPrimaryKey());
 		primaryKeys.add(pk);
 
-		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(1, foos.size());
 		Assert.assertEquals(newFoo, foos.get(newFoo.getPrimaryKey()));
 	}
 
 	@Test
-	public void testFetchByPrimaryKeysWithNoPrimaryKeys()
-		throws Exception {
+	public void testFetchByPrimaryKeysWithNoPrimaryKeys() throws Exception {
 		Set<Serializable> primaryKeys = new HashSet<Serializable>();
 
-		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertTrue(foos.isEmpty());
 	}
 
 	@Test
-	public void testFetchByPrimaryKeysWithOnePrimaryKey()
-		throws Exception {
+	public void testFetchByPrimaryKeysWithOnePrimaryKey() throws Exception {
 		Foo newFoo = addFoo();
 
 		Set<Serializable> primaryKeys = new HashSet<Serializable>();
 
 		primaryKeys.add(newFoo.getPrimaryKey());
 
-		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(primaryKeys);
+		Map<Serializable, Foo> foos = _persistence.fetchByPrimaryKeys(
+			primaryKeys);
 
 		Assert.assertEquals(1, foos.size());
 		Assert.assertEquals(newFoo, foos.get(newFoo.getPrimaryKey()));
@@ -335,15 +344,19 @@ public class FooPersistenceTest {
 	public void testActionableDynamicQuery() throws Exception {
 		final IntegerWrapper count = new IntegerWrapper();
 
-		ActionableDynamicQuery actionableDynamicQuery = FooLocalServiceUtil.getActionableDynamicQuery();
+		ActionableDynamicQuery actionableDynamicQuery =
+			FooLocalServiceUtil.getActionableDynamicQuery();
 
-		actionableDynamicQuery.setPerformActionMethod(new ActionableDynamicQuery.PerformActionMethod<Foo>() {
+		actionableDynamicQuery.setPerformActionMethod(
+			new ActionableDynamicQuery.PerformActionMethod<Foo>() {
+
 				@Override
 				public void performAction(Foo foo) {
 					Assert.assertNotNull(foo);
 
 					count.increment();
 				}
+
 			});
 
 		actionableDynamicQuery.performActions();
@@ -352,14 +365,14 @@ public class FooPersistenceTest {
 	}
 
 	@Test
-	public void testDynamicQueryByPrimaryKeyExisting()
-		throws Exception {
+	public void testDynamicQueryByPrimaryKeyExisting() throws Exception {
 		Foo newFoo = addFoo();
 
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Foo.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Foo.class, _dynamicQueryClassLoader);
 
-		dynamicQuery.add(RestrictionsFactoryUtil.eq("fooId", newFoo.getFooId()));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.eq("fooId", newFoo.getFooId()));
 
 		List<Foo> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -372,11 +385,11 @@ public class FooPersistenceTest {
 
 	@Test
 	public void testDynamicQueryByPrimaryKeyMissing() throws Exception {
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Foo.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Foo.class, _dynamicQueryClassLoader);
 
-		dynamicQuery.add(RestrictionsFactoryUtil.eq("fooId",
-				RandomTestUtil.nextLong()));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.eq("fooId", RandomTestUtil.nextLong()));
 
 		List<Foo> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -384,19 +397,18 @@ public class FooPersistenceTest {
 	}
 
 	@Test
-	public void testDynamicQueryByProjectionExisting()
-		throws Exception {
+	public void testDynamicQueryByProjectionExisting() throws Exception {
 		Foo newFoo = addFoo();
 
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Foo.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Foo.class, _dynamicQueryClassLoader);
 
 		dynamicQuery.setProjection(ProjectionFactoryUtil.property("fooId"));
 
 		Object newFooId = newFoo.getFooId();
 
-		dynamicQuery.add(RestrictionsFactoryUtil.in("fooId",
-				new Object[] { newFooId }));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.in("fooId", new Object[] {newFooId}));
 
 		List<Object> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -409,13 +421,14 @@ public class FooPersistenceTest {
 
 	@Test
 	public void testDynamicQueryByProjectionMissing() throws Exception {
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Foo.class,
-				_dynamicQueryClassLoader);
+		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
+			Foo.class, _dynamicQueryClassLoader);
 
 		dynamicQuery.setProjection(ProjectionFactoryUtil.property("fooId"));
 
-		dynamicQuery.add(RestrictionsFactoryUtil.in("fooId",
-				new Object[] { RandomTestUtil.nextLong() }));
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.in(
+				"fooId", new Object[] {RandomTestUtil.nextLong()}));
 
 		List<Object> result = _persistence.findWithDynamicQuery(dynamicQuery);
 
@@ -430,12 +443,15 @@ public class FooPersistenceTest {
 
 		Foo existingFoo = _persistence.findByPrimaryKey(newFoo.getPrimaryKey());
 
-		Assert.assertTrue(Objects.equals(existingFoo.getUuid(),
-				ReflectionTestUtil.invoke(existingFoo, "getOriginalUuid",
-					new Class<?>[0])));
-		Assert.assertEquals(Long.valueOf(existingFoo.getGroupId()),
-			ReflectionTestUtil.<Long>invoke(existingFoo, "getOriginalGroupId",
-				new Class<?>[0]));
+		Assert.assertTrue(
+			Objects.equals(
+				existingFoo.getUuid(),
+				ReflectionTestUtil.invoke(
+					existingFoo, "getOriginalUuid", new Class<?>[0])));
+		Assert.assertEquals(
+			Long.valueOf(existingFoo.getGroupId()),
+			ReflectionTestUtil.<Long>invoke(
+				existingFoo, "getOriginalGroupId", new Class<?>[0]));
 	}
 
 	protected Foo addFoo() throws Exception {
@@ -475,4 +491,5 @@ public class FooPersistenceTest {
 	private List<Foo> _foos = new ArrayList<Foo>();
 	private FooPersistence _persistence;
 	private ClassLoader _dynamicQueryClassLoader;
+
 }
