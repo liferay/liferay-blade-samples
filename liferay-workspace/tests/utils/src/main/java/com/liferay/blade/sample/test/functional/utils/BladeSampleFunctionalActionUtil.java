@@ -62,6 +62,10 @@ public class BladeSampleFunctionalActionUtil {
 			return "7.1";
 		}
 
+		if (portalVersion.contains("7.2")) {
+			return "7.2";
+		}
+
 		if (portalVersion.contains("master")) {
 			return "master";
 		}

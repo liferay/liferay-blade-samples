@@ -49,7 +49,6 @@ import org.gradle.testkit.runner.BuildTask;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -105,10 +104,6 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testAllBladeSamples() throws Exception {
-		Assume.assumeTrue(
-			BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0") &&
-			!System.getProperty("portalVersion").contains("master"));
-
 		List<String> bladeSampleOutputFiles = new ArrayList<>();
 		Map<String, String> bundleIDAllMap = new HashMap<>();
 		Map<String, String> bundleIDStartMap = new HashMap<>();
@@ -173,10 +168,16 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testControlMenuEntryGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+		if (BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
 			_projectPath = BladeCLIUtil.createProject(
-				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
+				_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.0");
 		}
+
+		else if(BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.1")) {
+			_projectPath = BladeCLIUtil.createProject(
+					_testDir, "control-menu-entry", "cmehelloworld", "-v", "7.1");
+		}
+
 		else {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "control-menu-entry", "cmehelloworld");
@@ -267,7 +268,11 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testPortletProviderGradleTemplates() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+		if (BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+			_projectPath = BladeCLIUtil.createProject(
+				_testDir, "portlet-provider", "pphelloworld", "-v", "7.0");
+		}
+		else if (BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.1")) {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "portlet-provider", "pphelloworld", "-v", "7.1");
 		}
@@ -357,10 +362,15 @@ public class BladeSamplesTest {
 
 	@Test
 	public void testServiceBuilderGradleTemplate() throws Exception {
-		if (!BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
+		if (BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.0")) {
 			_projectPath = BladeCLIUtil.createProject(
 				_testDir, "service-builder", "guestbook", "-p",
-				"com.liferay.docs.guestbook", "-v", "7.1");
+				"com.liferay.docs.guestbook", "-v", "7.0");
+		}
+		else if (BladeSampleFunctionalActionUtil.getPortalVersion().equals("7.1")) {
+			_projectPath = BladeCLIUtil.createProject(
+					_testDir, "service-builder", "guestbook", "-p",
+					"com.liferay.docs.guestbook", "-v", "7.1");
 		}
 		else {
 			_projectPath = BladeCLIUtil.createProject(
