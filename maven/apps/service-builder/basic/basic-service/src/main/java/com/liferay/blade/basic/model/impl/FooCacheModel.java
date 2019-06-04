@@ -16,8 +16,6 @@
 
 package com.liferay.blade.basic.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.petra.lang.HashUtil;
 import com.liferay.petra.string.StringBundler;
@@ -29,6 +27,8 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
 import java.util.Date;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The cache model class for representing Foo in entity cache.

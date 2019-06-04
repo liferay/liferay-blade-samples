@@ -184,21 +184,11 @@ public class BladeCLIUtil {
 				output.indexOf("ID:") + 4, output.lastIndexOf("\n"));
 		}
 
-		if (output.toLowerCase().contains("failed") ||
-			output.toLowerCase().contains("exception")) {
-
-			throw new Exception(output);
-		}
-
 		return bundleID;
 	}
 
 	public static String startBundle(String bundleID) throws Exception {
 		String output = execute("sh", "start", bundleID);
-
-		if (output.toLowerCase().contains("exception")) {
-			throw new Exception(output);
-		}
 
 		return output;
 	}

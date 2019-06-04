@@ -16,8 +16,6 @@
 
 package com.liferay.blade.basic.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.blade.basic.model.FooModel;
 import com.liferay.blade.basic.model.FooSoap;
@@ -51,6 +49,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Foo service. Represents a row in the &quot;SSB_Foo&quot; database table, with each column mapped to a property of this class.

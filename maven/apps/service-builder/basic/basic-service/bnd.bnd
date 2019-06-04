@@ -7,4 +7,3 @@ Liferay-Service: true
 -includeresource: META-INF/service.xml=service.xml
 -liferay-service-xml: META-INF/service.xml
 -plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
--plugin.spring: com.liferay.ant.bnd.spring.SpringDependencyAnalyzerPlugin
