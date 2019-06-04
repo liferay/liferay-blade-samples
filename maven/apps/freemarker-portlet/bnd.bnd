@@ -2,10 +2,9 @@ Bundle-Name: com.liferay.blade.freemarker.portlet
 Bundle-SymbolicName: com.liferay.blade.freemarker.portlet
 Bundle-Version: 1.0.0
 -contract: JavaPortlet
--includeresource:\
-	@com.liferay.util.bridges-${bridges.version}.jar!/com/liferay/util/bridges/freemarker/FreeMarkerPortlet.class,\
-	@com.liferay.util.taglib-${taglib.version}.jar!/META-INF/*.tld
+	@com.liferay.util.taglib-[0-9\.]*.jar!/META-INF/*.tld
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-privatepackage: com.liferay.util.bridges.freemarker
 -sass: *
 -sources: true
