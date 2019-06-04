@@ -58,8 +58,7 @@ public class AddTestData {
 		FooLocalServiceUtil.deleteFoo(fooEntry);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		AddTestData.class);
+	private static final Log _log = LogFactoryUtil.getLog(AddTestData.class);
 
 	@Reference
 	private FooLocalService _fooLocalService;

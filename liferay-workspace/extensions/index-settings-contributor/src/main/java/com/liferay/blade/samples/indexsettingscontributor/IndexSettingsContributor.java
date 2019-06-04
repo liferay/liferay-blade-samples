@@ -29,12 +29,13 @@ import org.osgi.service.component.annotations.Component;
 	service = com.liferay.portal.search.elasticsearch6.settings.IndexSettingsContributor.class
 )
 public class IndexSettingsContributor
-	implements com.liferay.portal.search.elasticsearch6.settings.IndexSettingsContributor {
+	implements com.liferay.portal.search.elasticsearch6.settings.
+		IndexSettingsContributor {
 
 	@Override
 	public int compareTo(
-		com.liferay.portal.search.elasticsearch6.
-			settings.IndexSettingsContributor indexSettingsContributor) {
+		com.liferay.portal.search.elasticsearch6.settings.
+			IndexSettingsContributor indexSettingsContributor) {
 
 		return -1;
 	}
