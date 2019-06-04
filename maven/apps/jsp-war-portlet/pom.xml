@@ -19,6 +19,7 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
@@ -40,7 +41,7 @@
 							</excludes>
 						</resource>
 						<resource>
-							<directory>${project.build.directory}/compiledCss</directory>
+							<directory>${project.build.directory}/compiledCss/</directory>
 						</resource>
 					</webResources>
 				</configuration>
@@ -48,10 +49,9 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>2.1.2</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<id>default-build-css</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>build</goal>
@@ -59,12 +59,13 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>src/main/webapp</docrootDirName>
-					<outputDirName>${project.build.directory}/compiledCss</outputDirName>
+					<baseDir>src/main/webapp</baseDir>
+					<outputDirName>${project.build.directory}/compiledCss/</outputDirName>
 					<precision>9</precision>
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
 
 	<dependencies>

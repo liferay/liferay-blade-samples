@@ -67,7 +67,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>2.1.2</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>
