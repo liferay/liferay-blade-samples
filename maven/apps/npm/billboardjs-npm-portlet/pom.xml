@@ -161,7 +161,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<docrootDirName>src/main/resources</docrootDirName>
+					<baseDir>src/main/resources/META-INF/resources</baseDir>
+					<outputDirName>${project.build.outputDirectory}/META-INF/resources</outputDirName>
+					<precision>9</precision>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -16,6 +16,12 @@
 	</parent>
 
 	<dependencies>
+		 <dependency>
+			<groupId>blade</groupId>
+			<artifactId>basic-api</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.lang</artifactId>
@@ -48,14 +54,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>6.0.0</version>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.service.component.annotations</artifactId>
-			<version>1.3.0</version>
+			<artifactId>osgi.core</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -80,8 +86,6 @@
 					<osgiModule>true</osgiModule>
 					<propsUtil>com.liferay.blade.samples.servicebuilder.service.util.PropsUtil</propsUtil>
 					<resourcesDirName>src/main/resources</resourcesDirName>
-					<springFileName>src/main/resources/META-INF/spring/module-spring.xml</springFileName>
-					<springNamespaces>beans,osgi</springNamespaces>
 					<sqlDirName>src/main/resources/META-INF/sql</sqlDirName>
 					<sqlFileName>tables.sql</sqlFileName>
 					<testDirName>src/java/test</testDirName>
