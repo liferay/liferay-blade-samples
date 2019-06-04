@@ -16,8 +16,6 @@
 
 package com.liferay.blade.basic.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.basic.exception.NoSuchFooException;
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.blade.basic.model.impl.FooImpl;
@@ -54,6 +52,7 @@ import java.lang.reflect.InvocationHandler;
 
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -61,6 +60,7 @@ import java.util.Set;
 
 import javax.sql.DataSource;
 
+import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -1969,6 +1969,12 @@ public class FooPersistenceImpl
 
 		setModelImplClass(FooImpl.class);
 		setModelPKClass(long.class);
+
+		Map<String, String> dbColumnNames = new HashMap<String, String>();
+
+		dbColumnNames.put("uuid", "uuid_");
+
+		setDBColumnNames(dbColumnNames);
 	}
 
 	/**

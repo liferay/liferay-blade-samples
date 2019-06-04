@@ -8,10 +8,12 @@ buildscript {
 apply plugin: "com.liferay.portal.tools.theme.builder"
 
 dependencies {
-	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.styled", version: "3.0.4"
-	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.unstyled", version: "3.0.4"
+	cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "3.0.0"
 
-	portalCommonCSS group: "com.liferay", name: "com.liferay.frontend.css.common", version: "3.0.1"
+	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.styled", version: "4.0.2"
+	parentThemes group: "com.liferay", name: "com.liferay.frontend.theme.unstyled", version: "4.0.1"
+
+	portalCommonCSS group: "com.liferay", name: "com.liferay.frontend.css.common", version: "4.0.0"
 
 	themeBuilder group: "com.liferay", name: "com.liferay.portal.tools.theme.builder", version: "1.1.5"
 }
