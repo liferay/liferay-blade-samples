@@ -1,4 +1,4 @@
-# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.1
+# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.2
 
 Liferay's Blade samples provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
@@ -13,7 +13,7 @@ The template projects are categorized under three build tools:
 * `gradle` - A set of Liferay projects that can be bootstrapped onto the
   `com.liferay.plugin` (a Gradle plugin) based development environment.
 * `liferay-workspace` - A set of Liferay projects configured to work in a
-  [Liferay Workspace](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/liferay-workspace)
+  [Liferay Workspace](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/liferay-workspace)
   environment.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
@@ -40,7 +40,7 @@ folder of a sample project. This article should include the following sections:
 - *How does this sample leverage the API(s) and/or code component?*
 
 For example, the
-[Resource Bundle Override](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/resource-bundle-override)
+[Resource Bundle Override](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/resource-bundle-override)
 article explains the `resource-bundle-override` sample using the aforementioned
 sections.
 

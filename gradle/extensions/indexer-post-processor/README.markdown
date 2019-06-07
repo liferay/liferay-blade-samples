@@ -6,5 +6,5 @@ they're sent to the search engine, and/or customize result summaries when
 they're returned to end users.
 
 For more details on this sample, see the
-[Indexer Post Processor](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/indexer-post-processor)
+[Indexer Post Processor](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/indexer-post-processor)
 article on Liferay's Developer Network.

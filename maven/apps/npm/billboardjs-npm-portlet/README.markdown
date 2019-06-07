@@ -5,5 +5,5 @@ The Billboard.js npm Portlet sample provides a portlet that uses the
 output.
 
 For more details on this sample, see the
-[Billboard.js npm Portlet](https://dev.liferay.com/develop/reference/-/knowledge_base/7-1/billboard-js-npm-portlet)
+[Billboard.js npm Portlet](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/billboard-js-npm-portlet)
 article on Liferay's Developer Network.
