@@ -1,6 +1,6 @@
-# Bootstrap Liferay Advanced Developer Environments (BLADE) for Liferay Portal 7.2
+# Sample Projects for Liferay Portal 7.2
 
-Liferay's Blade samples provides bootstrap project environments for all major
+Liferay's sample projects provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
 start quickly and easily. These templates can be copied freely and contributions
 are welcome. See the [Contribution Guidelines](#contribution-guidelines) for
