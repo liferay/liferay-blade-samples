@@ -39,7 +39,8 @@ import org.osgi.service.component.annotations.Reference;
 public class BladeStrutsAction extends BaseStrutsAction {
 
 	public String execute(
-			HttpServletRequest request, HttpServletResponse response)
+			HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse)
 		throws Exception {
 
 		if (_log.isInfoEnabled()) {
@@ -49,7 +50,7 @@ public class BladeStrutsAction extends BaseStrutsAction {
 		RequestDispatcher requestDispatcher =
 			_servletContext.getRequestDispatcher("/html/portal/blade.jsp");
 
-		requestDispatcher.forward(request, response);
+		requestDispatcher.forward(httpServletRequest, httpServletResponse);
 
 		return null;
 	}
