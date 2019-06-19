@@ -62,12 +62,14 @@ public class BladeActionDisplayContext
 
 	public BladeActionDisplayContext(
 		UUID uuid, DLViewFileVersionDisplayContext parentDLDisplayContext,
-		HttpServletRequest request, HttpServletResponse response,
-		FileVersion fileVersion) {
+		HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse, FileVersion fileVersion) {
 
-		super(uuid, parentDLDisplayContext, request, response, fileVersion);
+		super(
+			uuid, parentDLDisplayContext, httpServletRequest,
+			httpServletResponse, fileVersion);
 
-		_themeDisplay = (ThemeDisplay)request.getAttribute(
+		_themeDisplay = (ThemeDisplay)httpServletRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 	}
 

@@ -68,11 +68,12 @@ public class BladeTemplateContextContributor
 	 * </p>
 	 *
 	 * @param contextObjects the variables available in the context
-	 * @param request the HTTP servlet request
+	 * @param httpServletRequest the HTTP servlet request
 	 */
 	@Override
 	public void prepare(
-		Map<String, Object> contextObjects, HttpServletRequest request) {
+		Map<String, Object> contextObjects,
+		HttpServletRequest httpServletRequest) {
 
 		contextObjects.put("sample_text", "This is some sample text");
 	}
