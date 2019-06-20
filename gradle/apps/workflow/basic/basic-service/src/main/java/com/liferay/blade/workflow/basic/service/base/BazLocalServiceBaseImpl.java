@@ -523,4 +523,8 @@ public abstract class BazLocalServiceBaseImpl
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
 
+	@Reference
+	protected com.liferay.portal.kernel.service.WorkflowInstanceLinkLocalService
+		workflowInstanceLinkLocalService;
+
 }

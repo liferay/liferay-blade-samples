@@ -22,6 +22,7 @@ import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 
 import java.util.Date;
 
@@ -63,12 +64,20 @@ public class BazLocalServiceImpl extends BazLocalServiceBaseImpl {
 
 		bazPersistence.update(baz);
 
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(
+			baz.getCompanyId(), baz.getGroupId(), baz.getUserId(),
+			Baz.class.getName(), baz.getPrimaryKey(), baz, serviceContext);
+
 		return baz;
 	}
 
 	@Override
 	public Baz deleteBaz(long bazId) throws PortalException {
 		Baz baz = bazPersistence.remove(bazId);
+
+		workflowInstanceLinkLocalService.deleteWorkflowInstanceLinks(
+			baz.getCompanyId(), baz.getGroupId(), Baz.class.getName(),
+			baz.getPrimaryKey());
 
 		return baz;
 	}
@@ -82,6 +91,10 @@ public class BazLocalServiceImpl extends BazLocalServiceBaseImpl {
 		baz.setModifiedDate(serviceContext.getModifiedDate(null));
 
 		bazPersistence.update(baz);
+
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(
+			baz.getCompanyId(), baz.getGroupId(), baz.getUserId(),
+			Baz.class.getName(), baz.getPrimaryKey(), baz, serviceContext);
 
 		return baz;
 	}
