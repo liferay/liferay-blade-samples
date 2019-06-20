@@ -3,8 +3,9 @@ Bundle-Name: com.liferay.blade.configuration.action
 Bundle-SymbolicName: com.liferay.blade.configuration.action
 Bundle-Version: 1.0.0
 -contract: JavaPortlet
--jsp: *.jsp,*.jspf
--metatype: *
+-jsp:\
+	*.jsp,\
+	*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true
