@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.jdbcservicebuilder.model.impl;
@@ -19,9 +17,10 @@ package com.liferay.blade.samples.jdbcservicebuilder.model.impl;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
-import com.liferay.petra.lang.HashUtil;
-import com.liferay.petra.string.StringBundler;
+
 import com.liferay.portal.kernel.model.CacheModel;
+import com.liferay.portal.kernel.util.HashUtil;
+import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -32,11 +31,11 @@ import java.io.ObjectOutput;
  * The cache model class for representing Country in entity cache.
  *
  * @author Brian Wing Shun Chan
+ * @see Country
  * @generated
  */
 @ProviderType
 public class CountryCacheModel implements CacheModel<Country>, Externalizable {
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -99,7 +98,8 @@ public class CountryCacheModel implements CacheModel<Country>, Externalizable {
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput) throws IOException {
+	public void writeExternal(ObjectOutput objectOutput)
+		throws IOException {
 		objectOutput.writeLong(countryId);
 
 		if (countryName == null) {
@@ -112,5 +112,4 @@ public class CountryCacheModel implements CacheModel<Country>, Externalizable {
 
 	public long countryId;
 	public String countryName;
-
 }

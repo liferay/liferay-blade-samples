@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl;
@@ -23,7 +21,7 @@ import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl;
 import com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionModelImpl;
 import com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionPersistence;
-import com.liferay.petra.string.StringBundler;
+
 import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.FinderCache;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
@@ -35,12 +33,17 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.SetUtil;
+import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Field;
+
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -53,43 +56,54 @@ import java.util.Set;
  * </p>
  *
  * @author Brian Wing Shun Chan
+ * @see RegionPersistence
+ * @see com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionUtil
  * @generated
  */
 @ProviderType
-public class RegionPersistenceImpl
-	extends BasePersistenceImpl<Region> implements RegionPersistence {
-
+public class RegionPersistenceImpl extends BasePersistenceImpl<Region>
+	implements RegionPersistence {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use <code>RegionUtil</code> to access the region persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
+	 * Never modify or reference this class directly. Always use {@link RegionUtil} to access the region persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static final String FINDER_CLASS_NAME_ENTITY =
-		RegionImpl.class.getName();
-
-	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION =
-		FINDER_CLASS_NAME_ENTITY + ".List1";
-
-	public static final String FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION =
-		FINDER_CLASS_NAME_ENTITY + ".List2";
-
-	private FinderPath _finderPathWithPaginationFindAll;
-	private FinderPath _finderPathWithoutPaginationFindAll;
-	private FinderPath _finderPathCountAll;
+	public static final String FINDER_CLASS_NAME_ENTITY = RegionImpl.class.getName();
+	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION = FINDER_CLASS_NAME_ENTITY +
+		".List1";
+	public static final String FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION = FINDER_CLASS_NAME_ENTITY +
+		".List2";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionModelImpl.FINDER_CACHE_ENABLED, RegionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findAll", new String[0]);
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL = new FinderPath(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionModelImpl.FINDER_CACHE_ENABLED, RegionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll", new String[0]);
+	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
 
 	public RegionPersistenceImpl() {
 		setModelClass(Region.class);
 
-		setModelImplClass(RegionImpl.class);
-		setModelPKClass(long.class);
-		setEntityCacheEnabled(RegionModelImpl.ENTITY_CACHE_ENABLED);
+		try {
+			Field field = BasePersistenceImpl.class.getDeclaredField(
+					"_dbColumnNames");
 
-		Map<String, String> dbColumnNames = new HashMap<String, String>();
+			field.setAccessible(true);
 
-		dbColumnNames.put("regionId", "id");
-		dbColumnNames.put("regionName", "name");
+			Map<String, String> dbColumnNames = new HashMap<String, String>();
 
-		setDBColumnNames(dbColumnNames);
+			dbColumnNames.put("regionId", "id");
+			dbColumnNames.put("regionName", "name");
+
+			field.set(this, dbColumnNames);
+		}
+		catch (Exception e) {
+			if (_log.isDebugEnabled()) {
+				_log.debug(e, e);
+			}
+		}
 	}
 
 	/**
@@ -99,9 +113,8 @@ public class RegionPersistenceImpl
 	 */
 	@Override
 	public void cacheResult(Region region) {
-		entityCache.putResult(
-			RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-			region.getPrimaryKey(), region);
+		entityCache.putResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionImpl.class, region.getPrimaryKey(), region);
 
 		region.resetOriginalValues();
 	}
@@ -114,10 +127,8 @@ public class RegionPersistenceImpl
 	@Override
 	public void cacheResult(List<Region> regions) {
 		for (Region region : regions) {
-			if (entityCache.getResult(
-					RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-					region.getPrimaryKey()) == null) {
-
+			if (entityCache.getResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+						RegionImpl.class, region.getPrimaryKey()) == null) {
 				cacheResult(region);
 			}
 			else {
@@ -130,7 +141,7 @@ public class RegionPersistenceImpl
 	 * Clears the cache for all regions.
 	 *
 	 * <p>
-	 * The <code>EntityCache</code> and <code>FinderCache</code> are both cleared by this method.
+	 * The {@link EntityCache} and {@link FinderCache} are both cleared by this method.
 	 * </p>
 	 */
 	@Override
@@ -146,14 +157,13 @@ public class RegionPersistenceImpl
 	 * Clears the cache for the region.
 	 *
 	 * <p>
-	 * The <code>EntityCache</code> and <code>FinderCache</code> are both cleared by this method.
+	 * The {@link EntityCache} and {@link FinderCache} are both cleared by this method.
 	 * </p>
 	 */
 	@Override
 	public void clearCache(Region region) {
-		entityCache.removeResult(
-			RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-			region.getPrimaryKey());
+		entityCache.removeResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionImpl.class, region.getPrimaryKey());
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
@@ -165,9 +175,8 @@ public class RegionPersistenceImpl
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 
 		for (Region region : regions) {
-			entityCache.removeResult(
-				RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-				region.getPrimaryKey());
+			entityCache.removeResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+				RegionImpl.class, region.getPrimaryKey());
 		}
 	}
 
@@ -220,8 +229,8 @@ public class RegionPersistenceImpl
 					_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 				}
 
-				throw new NoSuchRegionException(
-					_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
+				throw new NoSuchRegionException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
+					primaryKey);
 			}
 
 			return remove(region);
@@ -239,14 +248,16 @@ public class RegionPersistenceImpl
 
 	@Override
 	protected Region removeImpl(Region region) {
+		region = toUnwrappedModel(region);
+
 		Session session = null;
 
 		try {
 			session = openSession();
 
 			if (!session.contains(region)) {
-				region = (Region)session.get(
-					RegionImpl.class, region.getPrimaryKeyObj());
+				region = (Region)session.get(RegionImpl.class,
+						region.getPrimaryKeyObj());
 			}
 
 			if (region != null) {
@@ -269,6 +280,8 @@ public class RegionPersistenceImpl
 
 	@Override
 	public Region updateImpl(Region region) {
+		region = toUnwrappedModel(region);
+
 		boolean isNew = region.isNew();
 
 		Session session = null;
@@ -295,22 +308,37 @@ public class RegionPersistenceImpl
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
 		if (isNew) {
-			finderCache.removeResult(_finderPathCountAll, FINDER_ARGS_EMPTY);
-			finderCache.removeResult(
-				_finderPathWithoutPaginationFindAll, FINDER_ARGS_EMPTY);
+			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
+				FINDER_ARGS_EMPTY);
 		}
 
-		entityCache.putResult(
-			RegionModelImpl.ENTITY_CACHE_ENABLED, RegionImpl.class,
-			region.getPrimaryKey(), region, false);
+		entityCache.putResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+			RegionImpl.class, region.getPrimaryKey(), region, false);
 
 		region.resetOriginalValues();
 
 		return region;
 	}
 
+	protected Region toUnwrappedModel(Region region) {
+		if (region instanceof RegionImpl) {
+			return region;
+		}
+
+		RegionImpl regionImpl = new RegionImpl();
+
+		regionImpl.setNew(region.isNew());
+		regionImpl.setPrimaryKey(region.getPrimaryKey());
+
+		regionImpl.setRegionId(region.getRegionId());
+		regionImpl.setRegionName(region.getRegionName());
+
+		return regionImpl;
+	}
+
 	/**
-	 * Returns the region with the primary key or throws a <code>com.liferay.portal.kernel.exception.NoSuchModelException</code> if it could not be found.
+	 * Returns the region with the primary key or throws a {@link com.liferay.portal.kernel.exception.NoSuchModelException} if it could not be found.
 	 *
 	 * @param primaryKey the primary key of the region
 	 * @return the region
@@ -319,7 +347,6 @@ public class RegionPersistenceImpl
 	@Override
 	public Region findByPrimaryKey(Serializable primaryKey)
 		throws NoSuchRegionException {
-
 		Region region = fetchByPrimaryKey(primaryKey);
 
 		if (region == null) {
@@ -327,15 +354,15 @@ public class RegionPersistenceImpl
 				_log.debug(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 			}
 
-			throw new NoSuchRegionException(
-				_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
+			throw new NoSuchRegionException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
+				primaryKey);
 		}
 
 		return region;
 	}
 
 	/**
-	 * Returns the region with the primary key or throws a <code>NoSuchRegionException</code> if it could not be found.
+	 * Returns the region with the primary key or throws a {@link NoSuchRegionException} if it could not be found.
 	 *
 	 * @param regionId the primary key of the region
 	 * @return the region
@@ -349,12 +376,153 @@ public class RegionPersistenceImpl
 	/**
 	 * Returns the region with the primary key or returns <code>null</code> if it could not be found.
 	 *
+	 * @param primaryKey the primary key of the region
+	 * @return the region, or <code>null</code> if a region with the primary key could not be found
+	 */
+	@Override
+	public Region fetchByPrimaryKey(Serializable primaryKey) {
+		Serializable serializable = entityCache.getResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+				RegionImpl.class, primaryKey);
+
+		if (serializable == nullModel) {
+			return null;
+		}
+
+		Region region = (Region)serializable;
+
+		if (region == null) {
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				region = (Region)session.get(RegionImpl.class, primaryKey);
+
+				if (region != null) {
+					cacheResult(region);
+				}
+				else {
+					entityCache.putResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+						RegionImpl.class, primaryKey, nullModel);
+				}
+			}
+			catch (Exception e) {
+				entityCache.removeResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+					RegionImpl.class, primaryKey);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return region;
+	}
+
+	/**
+	 * Returns the region with the primary key or returns <code>null</code> if it could not be found.
+	 *
 	 * @param regionId the primary key of the region
 	 * @return the region, or <code>null</code> if a region with the primary key could not be found
 	 */
 	@Override
 	public Region fetchByPrimaryKey(long regionId) {
 		return fetchByPrimaryKey((Serializable)regionId);
+	}
+
+	@Override
+	public Map<Serializable, Region> fetchByPrimaryKeys(
+		Set<Serializable> primaryKeys) {
+		if (primaryKeys.isEmpty()) {
+			return Collections.emptyMap();
+		}
+
+		Map<Serializable, Region> map = new HashMap<Serializable, Region>();
+
+		if (primaryKeys.size() == 1) {
+			Iterator<Serializable> iterator = primaryKeys.iterator();
+
+			Serializable primaryKey = iterator.next();
+
+			Region region = fetchByPrimaryKey(primaryKey);
+
+			if (region != null) {
+				map.put(primaryKey, region);
+			}
+
+			return map;
+		}
+
+		Set<Serializable> uncachedPrimaryKeys = null;
+
+		for (Serializable primaryKey : primaryKeys) {
+			Serializable serializable = entityCache.getResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+					RegionImpl.class, primaryKey);
+
+			if (serializable != nullModel) {
+				if (serializable == null) {
+					if (uncachedPrimaryKeys == null) {
+						uncachedPrimaryKeys = new HashSet<Serializable>();
+					}
+
+					uncachedPrimaryKeys.add(primaryKey);
+				}
+				else {
+					map.put(primaryKey, (Region)serializable);
+				}
+			}
+		}
+
+		if (uncachedPrimaryKeys == null) {
+			return map;
+		}
+
+		StringBundler query = new StringBundler((uncachedPrimaryKeys.size() * 2) +
+				1);
+
+		query.append(_SQL_SELECT_REGION_WHERE_PKS_IN);
+
+		for (Serializable primaryKey : uncachedPrimaryKeys) {
+			query.append((long)primaryKey);
+
+			query.append(",");
+		}
+
+		query.setIndex(query.index() - 1);
+
+		query.append(")");
+
+		String sql = query.toString();
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			Query q = session.createQuery(sql);
+
+			for (Region region : (List<Region>)q.list()) {
+				map.put(region.getPrimaryKeyObj(), region);
+
+				cacheResult(region);
+
+				uncachedPrimaryKeys.remove(region.getPrimaryKeyObj());
+			}
+
+			for (Serializable primaryKey : uncachedPrimaryKeys) {
+				entityCache.putResult(RegionModelImpl.ENTITY_CACHE_ENABLED,
+					RegionImpl.class, primaryKey, nullModel);
+			}
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+
+		return map;
 	}
 
 	/**
@@ -371,7 +539,7 @@ public class RegionPersistenceImpl
 	 * Returns a range of all the regions.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of regions
@@ -387,7 +555,7 @@ public class RegionPersistenceImpl
 	 * Returns an ordered range of all the regions.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of regions
@@ -396,9 +564,8 @@ public class RegionPersistenceImpl
 	 * @return the ordered range of regions
 	 */
 	@Override
-	public List<Region> findAll(
-		int start, int end, OrderByComparator<Region> orderByComparator) {
-
+	public List<Region> findAll(int start, int end,
+		OrderByComparator<Region> orderByComparator) {
 		return findAll(start, end, orderByComparator, true);
 	}
 
@@ -406,7 +573,7 @@ public class RegionPersistenceImpl
 	 * Returns an ordered range of all the regions.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of regions
@@ -416,31 +583,28 @@ public class RegionPersistenceImpl
 	 * @return the ordered range of regions
 	 */
 	@Override
-	public List<Region> findAll(
-		int start, int end, OrderByComparator<Region> orderByComparator,
-		boolean retrieveFromCache) {
-
+	public List<Region> findAll(int start, int end,
+		OrderByComparator<Region> orderByComparator, boolean retrieveFromCache) {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-			(orderByComparator == null)) {
-
+				(orderByComparator == null)) {
 			pagination = false;
-			finderPath = _finderPathWithoutPaginationFindAll;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL;
 			finderArgs = FINDER_ARGS_EMPTY;
 		}
 		else {
-			finderPath = _finderPathWithPaginationFindAll;
-			finderArgs = new Object[] {start, end, orderByComparator};
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_ALL;
+			finderArgs = new Object[] { start, end, orderByComparator };
 		}
 
 		List<Region> list = null;
 
 		if (retrieveFromCache) {
-			list = (List<Region>)finderCache.getResult(
-				finderPath, finderArgs, this);
+			list = (List<Region>)finderCache.getResult(finderPath, finderArgs,
+					this);
 		}
 
 		if (list == null) {
@@ -448,13 +612,13 @@ public class RegionPersistenceImpl
 			String sql = null;
 
 			if (orderByComparator != null) {
-				query = new StringBundler(
-					2 + (orderByComparator.getOrderByFields().length * 2));
+				query = new StringBundler(2 +
+						(orderByComparator.getOrderByFields().length * 2));
 
 				query.append(_SQL_SELECT_REGION);
 
-				appendOrderByComparator(
-					query, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
 
 				sql = query.toString();
 			}
@@ -474,16 +638,16 @@ public class RegionPersistenceImpl
 				Query q = session.createQuery(sql);
 
 				if (!pagination) {
-					list = (List<Region>)QueryUtil.list(
-						q, getDialect(), start, end, false);
+					list = (List<Region>)QueryUtil.list(q, getDialect(), start,
+							end, false);
 
 					Collections.sort(list);
 
 					list = Collections.unmodifiableList(list);
 				}
 				else {
-					list = (List<Region>)QueryUtil.list(
-						q, getDialect(), start, end);
+					list = (List<Region>)QueryUtil.list(q, getDialect(), start,
+							end);
 				}
 
 				cacheResult(list);
@@ -521,8 +685,8 @@ public class RegionPersistenceImpl
 	 */
 	@Override
 	public int countAll() {
-		Long count = (Long)finderCache.getResult(
-			_finderPathCountAll, FINDER_ARGS_EMPTY, this);
+		Long count = (Long)finderCache.getResult(FINDER_PATH_COUNT_ALL,
+				FINDER_ARGS_EMPTY, this);
 
 		if (count == null) {
 			Session session = null;
@@ -534,12 +698,12 @@ public class RegionPersistenceImpl
 
 				count = (Long)q.uniqueResult();
 
-				finderCache.putResult(
-					_finderPathCountAll, FINDER_ARGS_EMPTY, count);
+				finderCache.putResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY,
+					count);
 			}
 			catch (Exception e) {
-				finderCache.removeResult(
-					_finderPathCountAll, FINDER_ARGS_EMPTY);
+				finderCache.removeResult(FINDER_PATH_COUNT_ALL,
+					FINDER_ARGS_EMPTY);
 
 				throw processException(e);
 			}
@@ -557,21 +721,6 @@ public class RegionPersistenceImpl
 	}
 
 	@Override
-	protected EntityCache getEntityCache() {
-		return entityCache;
-	}
-
-	@Override
-	protected String getPKDBName() {
-		return "id";
-	}
-
-	@Override
-	protected String getSelectSQL() {
-		return _SQL_SELECT_REGION;
-	}
-
-	@Override
 	protected Map<String, Integer> getTableColumnsMap() {
 		return RegionModelImpl.TABLE_COLUMNS_MAP;
 	}
@@ -580,22 +729,6 @@ public class RegionPersistenceImpl
 	 * Initializes the region persistence.
 	 */
 	public void afterPropertiesSet() {
-		_finderPathWithPaginationFindAll = new FinderPath(
-			RegionModelImpl.ENTITY_CACHE_ENABLED,
-			RegionModelImpl.FINDER_CACHE_ENABLED, RegionImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findAll", new String[0]);
-
-		_finderPathWithoutPaginationFindAll = new FinderPath(
-			RegionModelImpl.ENTITY_CACHE_ENABLED,
-			RegionModelImpl.FINDER_CACHE_ENABLED, RegionImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll",
-			new String[0]);
-
-		_finderPathCountAll = new FinderPath(
-			RegionModelImpl.ENTITY_CACHE_ENABLED,
-			RegionModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll",
-			new String[0]);
 	}
 
 	public void destroy() {
@@ -607,25 +740,15 @@ public class RegionPersistenceImpl
 
 	@ServiceReference(type = EntityCache.class)
 	protected EntityCache entityCache;
-
 	@ServiceReference(type = FinderCache.class)
 	protected FinderCache finderCache;
-
-	private static final String _SQL_SELECT_REGION =
-		"SELECT region FROM Region region";
-
-	private static final String _SQL_COUNT_REGION =
-		"SELECT COUNT(region) FROM Region region";
-
+	private static final String _SQL_SELECT_REGION = "SELECT region FROM Region region";
+	private static final String _SQL_SELECT_REGION_WHERE_PKS_IN = "SELECT region FROM Region region WHERE id IN (";
+	private static final String _SQL_COUNT_REGION = "SELECT COUNT(region) FROM Region region";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "region.";
-
-	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY =
-		"No Region exists with the primary key ";
-
-	private static final Log _log = LogFactoryUtil.getLog(
-		RegionPersistenceImpl.class);
-
-	private static final Set<String> _badColumnNames = SetUtil.fromArray(
-		new String[] {"regionId", "regionName"});
-
+	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Region exists with the primary key ";
+	private static final Log _log = LogFactoryUtil.getLog(RegionPersistenceImpl.class);
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
+				"regionId", "regionName"
+			});
 }
