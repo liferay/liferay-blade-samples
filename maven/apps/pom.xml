@@ -33,5 +33,6 @@
 		<module>shared-language-keys</module>
 		<module>simulation-panel-app</module>
 		<module>springmvc-portlet</module>
+		<module>workflow</module>
 	</modules>
 </project>

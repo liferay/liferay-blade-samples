@@ -1,0 +1,10 @@
+Bundle-Name: Liferay Blade Workflow Basic API
+Bundle-SymbolicName: com.liferay.blade.workflow.basic.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.workflow.basic.exception,\
+	com.liferay.blade.workflow.basic.model,\
+	com.liferay.blade.workflow.basic.service,\
+	com.liferay.blade.workflow.basic.service.persistence
+-includeresource: META-INF/service.xml=../basic-service/service.xml
+-sources: true
