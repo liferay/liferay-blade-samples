@@ -2,9 +2,7 @@ Bundle-Name: com.liferay.blade.resource.command.portlet
 Bundle-SymbolicName: com.liferay.blade.resource.command.portlet
 Bundle-Version: 1.0.0
 -contract: JavaPortlet
--jsp:\
-	*.jsp,\
-	*.jspf
+-jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin

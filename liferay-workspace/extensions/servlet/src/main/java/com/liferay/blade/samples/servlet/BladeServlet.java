@@ -56,15 +56,14 @@ public class BladeServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(
-			HttpServletRequest httpServletRequest,
-			HttpServletResponse httpServletResponse)
+			HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException {
 
 		if (_log.isInfoEnabled()) {
 			_log.info("doGet");
 		}
 
-		_writeSampleHTML(httpServletResponse);
+		_writeSampleHTML(response);
 	}
 
 	/**
@@ -88,22 +87,20 @@ public class BladeServlet extends HttpServlet {
 	/**
 	 * Write sample HTML
 	 *
-	 * @param httpServletResponse
+	 * @param resp
 	 */
-	private void _writeSampleHTML(HttpServletResponse httpServletResponse) {
-		httpServletResponse.setCharacterEncoding(StringPool.UTF8);
-		httpServletResponse.setContentType(ContentTypes.TEXT_HTML_UTF8);
-		httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+	private void _writeSampleHTML(HttpServletResponse resp) {
+		resp.setCharacterEncoding(StringPool.UTF8);
+		resp.setContentType(ContentTypes.TEXT_HTML_UTF8);
+		resp.setStatus(HttpServletResponse.SC_OK);
 
 		try {
-			ServletResponseUtil.write(
-				httpServletResponse, _generateSampleHTML());
+			ServletResponseUtil.write(resp, _generateSampleHTML());
 		}
 		catch (Exception e) {
 			_log.warn(e.getMessage(), e);
 
-			httpServletResponse.setStatus(
-				HttpServletResponse.SC_PRECONDITION_FAILED);
+			resp.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
 		}
 	}
 

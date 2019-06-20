@@ -2,4 +2,5 @@ Bundle-Name: com.liferay.blade.resource.bundle
 Bundle-SymbolicName: com.liferay.blade.resource.bundle
 Bundle-Version: 1.0.0
 -sources: true
+
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin

@@ -3,10 +3,9 @@ Bundle-Name: com.liferay.blade.simulation.panel.app
 Bundle-SymbolicName: com.liferay.blade.simulation.panel.app
 Bundle-Version: 1.0.0
 Web-ContextPath: /simulation-panel-app-blade.simulation.panel.app
+-sources: true
+
 -contract: JavaPortlet
--jsp:\
-	*.jsp,\
-	*.jspf
+-jsp: *.jsp,*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
--sources: true
