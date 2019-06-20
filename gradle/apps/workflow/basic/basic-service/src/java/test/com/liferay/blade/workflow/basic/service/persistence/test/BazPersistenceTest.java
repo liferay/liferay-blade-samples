@@ -139,6 +139,14 @@ public class BazPersistenceTest {
 
 		newBaz.setModifiedDate(RandomTestUtil.nextDate());
 
+		newBaz.setStatus(RandomTestUtil.nextInt());
+
+		newBaz.setStatusByUserId(RandomTestUtil.nextLong());
+
+		newBaz.setStatusByUserName(RandomTestUtil.randomString());
+
+		newBaz.setStatusDate(RandomTestUtil.nextDate());
+
 		_bazs.add(_persistence.update(newBaz));
 
 		Baz existingBaz = _persistence.findByPrimaryKey(newBaz.getPrimaryKey());
@@ -155,6 +163,14 @@ public class BazPersistenceTest {
 		Assert.assertEquals(
 			Time.getShortTimestamp(existingBaz.getModifiedDate()),
 			Time.getShortTimestamp(newBaz.getModifiedDate()));
+		Assert.assertEquals(existingBaz.getStatus(), newBaz.getStatus());
+		Assert.assertEquals(
+			existingBaz.getStatusByUserId(), newBaz.getStatusByUserId());
+		Assert.assertEquals(
+			existingBaz.getStatusByUserName(), newBaz.getStatusByUserName());
+		Assert.assertEquals(
+			Time.getShortTimestamp(existingBaz.getStatusDate()),
+			Time.getShortTimestamp(newBaz.getStatusDate()));
 	}
 
 	@Test
@@ -210,7 +226,8 @@ public class BazPersistenceTest {
 		return OrderByComparatorFactoryUtil.create(
 			"Workflow_Baz", "uuid", true, "bazId", true, "groupId", true,
 			"companyId", true, "userId", true, "userName", true, "createDate",
-			true, "modifiedDate", true);
+			true, "modifiedDate", true, "status", true, "statusByUserId", true,
+			"statusByUserName", true, "statusDate", true);
 	}
 
 	@Test
@@ -448,6 +465,14 @@ public class BazPersistenceTest {
 		baz.setCreateDate(RandomTestUtil.nextDate());
 
 		baz.setModifiedDate(RandomTestUtil.nextDate());
+
+		baz.setStatus(RandomTestUtil.nextInt());
+
+		baz.setStatusByUserId(RandomTestUtil.nextLong());
+
+		baz.setStatusByUserName(RandomTestUtil.randomString());
+
+		baz.setStatusDate(RandomTestUtil.nextDate());
 
 		_bazs.add(_persistence.update(baz));
 

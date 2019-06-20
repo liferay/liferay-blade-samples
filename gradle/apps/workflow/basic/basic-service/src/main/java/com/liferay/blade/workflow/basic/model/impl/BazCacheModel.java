@@ -63,7 +63,7 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -81,6 +81,14 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
+		sb.append(", status=");
+		sb.append(status);
+		sb.append(", statusByUserId=");
+		sb.append(statusByUserId);
+		sb.append(", statusByUserName=");
+		sb.append(statusByUserName);
+		sb.append(", statusDate=");
+		sb.append(statusDate);
 		sb.append("}");
 
 		return sb.toString();
@@ -123,6 +131,23 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 			bazImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
+		bazImpl.setStatus(status);
+		bazImpl.setStatusByUserId(statusByUserId);
+
+		if (statusByUserName == null) {
+			bazImpl.setStatusByUserName("");
+		}
+		else {
+			bazImpl.setStatusByUserName(statusByUserName);
+		}
+
+		if (statusDate == Long.MIN_VALUE) {
+			bazImpl.setStatusDate(null);
+		}
+		else {
+			bazImpl.setStatusDate(new Date(statusDate));
+		}
+
 		bazImpl.resetOriginalValues();
 
 		return bazImpl;
@@ -142,6 +167,12 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
+
+		status = objectInput.readInt();
+
+		statusByUserId = objectInput.readLong();
+		statusByUserName = objectInput.readUTF();
+		statusDate = objectInput.readLong();
 	}
 
 	@Override
@@ -170,6 +201,19 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
+
+		objectOutput.writeInt(status);
+
+		objectOutput.writeLong(statusByUserId);
+
+		if (statusByUserName == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(statusByUserName);
+		}
+
+		objectOutput.writeLong(statusDate);
 	}
 
 	public String uuid;
@@ -180,5 +224,9 @@ public class BazCacheModel implements CacheModel<Baz>, Externalizable {
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
+	public int status;
+	public long statusByUserId;
+	public String statusByUserName;
+	public long statusDate;
 
 }

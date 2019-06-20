@@ -371,6 +371,14 @@ public class BazLocalServiceWrapper
 	}
 
 	@Override
+	public com.liferay.blade.workflow.basic.model.Baz updateStatus(
+			long userId, long bazId, int status)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _bazLocalService.updateStatus(userId, bazId, status);
+	}
+
+	@Override
 	public BazLocalService getWrappedService() {
 		return _bazLocalService;
 	}
