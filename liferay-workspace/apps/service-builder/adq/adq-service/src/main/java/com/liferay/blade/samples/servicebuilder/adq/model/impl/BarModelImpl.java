@@ -1,22 +1,18 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.adq.model.impl;
-
-import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.model.BarModel;
@@ -40,6 +36,9 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+
 import java.sql.Types;
 
 import java.util.ArrayList;
@@ -51,6 +50,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Bar service. Represents a row in the &quot;ADQ_Bar&quot; database table, with each column mapped to a property of this class.
@@ -278,6 +279,31 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		getAttributeSetterBiConsumers() {
 
 		return _attributeSetterBiConsumers;
+	}
+
+	private static Function<InvocationHandler, Bar>
+		_getProxyProviderFunction() {
+
+		Class<?> proxyClass = ProxyUtil.getProxyClass(
+			Bar.class.getClassLoader(), Bar.class, ModelWrapper.class);
+
+		try {
+			Constructor<Bar> constructor =
+				(Constructor<Bar>)proxyClass.getConstructor(
+					InvocationHandler.class);
+
+			return invocationHandler -> {
+				try {
+					return constructor.newInstance(invocationHandler);
+				}
+				catch (ReflectiveOperationException roe) {
+					throw new InternalError(roe);
+				}
+			};
+		}
+		catch (NoSuchMethodException nsme) {
+			throw new InternalError(nsme);
+		}
 	}
 
 	private static final Map<String, Function<Bar, Object>>
@@ -602,8 +628,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	@Override
 	public Bar toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = (Bar)ProxyUtil.newProxyInstance(
-				_classLoader, _escapedModelInterfaces,
+			_escapedModel = _escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -845,10 +870,8 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		return sb.toString();
 	}
 
-	private static final ClassLoader _classLoader = Bar.class.getClassLoader();
-	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-		Bar.class, ModelWrapper.class
-	};
+	private static final Function<InvocationHandler, Bar>
+		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
 
 	private String _uuid;
 	private String _originalUuid;
