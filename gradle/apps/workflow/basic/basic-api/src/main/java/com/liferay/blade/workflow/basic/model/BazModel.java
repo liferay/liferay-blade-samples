@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.model.BaseModel;
 import com.liferay.portal.kernel.model.GroupedModel;
 import com.liferay.portal.kernel.model.ShardedModel;
 import com.liferay.portal.kernel.model.StagedAuditedModel;
+import com.liferay.portal.kernel.model.WorkflowedModel;
 
 import java.util.Date;
 
@@ -37,7 +38,8 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @ProviderType
 public interface BazModel
-	extends BaseModel<Baz>, GroupedModel, ShardedModel, StagedAuditedModel {
+	extends BaseModel<Baz>, GroupedModel, ShardedModel, StagedAuditedModel,
+			WorkflowedModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -202,5 +204,150 @@ public interface BazModel
 	 */
 	@Override
 	public void setModifiedDate(Date modifiedDate);
+
+	/**
+	 * Returns the status of this baz.
+	 *
+	 * @return the status of this baz
+	 */
+	@Override
+	public int getStatus();
+
+	/**
+	 * Sets the status of this baz.
+	 *
+	 * @param status the status of this baz
+	 */
+	@Override
+	public void setStatus(int status);
+
+	/**
+	 * Returns the status by user ID of this baz.
+	 *
+	 * @return the status by user ID of this baz
+	 */
+	@Override
+	public long getStatusByUserId();
+
+	/**
+	 * Sets the status by user ID of this baz.
+	 *
+	 * @param statusByUserId the status by user ID of this baz
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId);
+
+	/**
+	 * Returns the status by user uuid of this baz.
+	 *
+	 * @return the status by user uuid of this baz
+	 */
+	@Override
+	public String getStatusByUserUuid();
+
+	/**
+	 * Sets the status by user uuid of this baz.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this baz
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid);
+
+	/**
+	 * Returns the status by user name of this baz.
+	 *
+	 * @return the status by user name of this baz
+	 */
+	@AutoEscape
+	@Override
+	public String getStatusByUserName();
+
+	/**
+	 * Sets the status by user name of this baz.
+	 *
+	 * @param statusByUserName the status by user name of this baz
+	 */
+	@Override
+	public void setStatusByUserName(String statusByUserName);
+
+	/**
+	 * Returns the status date of this baz.
+	 *
+	 * @return the status date of this baz
+	 */
+	@Override
+	public Date getStatusDate();
+
+	/**
+	 * Sets the status date of this baz.
+	 *
+	 * @param statusDate the status date of this baz
+	 */
+	@Override
+	public void setStatusDate(Date statusDate);
+
+	/**
+	 * Returns <code>true</code> if this baz is approved.
+	 *
+	 * @return <code>true</code> if this baz is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved();
+
+	/**
+	 * Returns <code>true</code> if this baz is denied.
+	 *
+	 * @return <code>true</code> if this baz is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied();
+
+	/**
+	 * Returns <code>true</code> if this baz is a draft.
+	 *
+	 * @return <code>true</code> if this baz is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft();
+
+	/**
+	 * Returns <code>true</code> if this baz is expired.
+	 *
+	 * @return <code>true</code> if this baz is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired();
+
+	/**
+	 * Returns <code>true</code> if this baz is inactive.
+	 *
+	 * @return <code>true</code> if this baz is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive();
+
+	/**
+	 * Returns <code>true</code> if this baz is incomplete.
+	 *
+	 * @return <code>true</code> if this baz is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete();
+
+	/**
+	 * Returns <code>true</code> if this baz is pending.
+	 *
+	 * @return <code>true</code> if this baz is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending();
+
+	/**
+	 * Returns <code>true</code> if this baz is scheduled.
+	 *
+	 * @return <code>true</code> if this baz is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled();
 
 }

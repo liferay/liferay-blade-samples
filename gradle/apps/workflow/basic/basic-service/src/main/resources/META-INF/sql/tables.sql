@@ -6,5 +6,9 @@ create table Workflow_Baz (
 	userId LONG,
 	userName VARCHAR(75) null,
 	createDate DATE null,
-	modifiedDate DATE null
+	modifiedDate DATE null,
+	status INTEGER,
+	statusByUserId LONG,
+	statusByUserName VARCHAR(75) null,
+	statusDate DATE null
 );

@@ -358,6 +358,13 @@ public class BazLocalServiceUtil {
 		return getService().updateBaz(bazId, serviceContext);
 	}
 
+	public static com.liferay.blade.workflow.basic.model.Baz updateStatus(
+			long userId, long bazId, int status)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return getService().updateStatus(userId, bazId, status);
+	}
+
 	public static BazLocalService getService() {
 		return _serviceTracker.getService();
 	}

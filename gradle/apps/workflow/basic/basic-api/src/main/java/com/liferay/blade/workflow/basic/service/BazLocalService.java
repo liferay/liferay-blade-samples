@@ -293,4 +293,7 @@ public interface BazLocalService
 	public Baz updateBaz(long bazId, ServiceContext serviceContext)
 		throws PortalException;
 
+	public Baz updateStatus(long userId, long bazId, int status)
+		throws PortalException;
+
 }

@@ -31,6 +31,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 
 import java.io.Serializable;
 
@@ -74,7 +75,9 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 		{"uuid_", Types.VARCHAR}, {"bazId", Types.BIGINT},
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
-		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP}
+		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
+		{"status", Types.INTEGER}, {"statusByUserId", Types.BIGINT},
+		{"statusByUserName", Types.VARCHAR}, {"statusDate", Types.TIMESTAMP}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -89,10 +92,14 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("status", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("statusByUserId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("statusByUserName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("statusDate", Types.TIMESTAMP);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table Workflow_Baz (uuid_ VARCHAR(75) null,bazId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null)";
+		"create table Workflow_Baz (uuid_ VARCHAR(75) null,bazId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null)";
 
 	public static final String TABLE_SQL_DROP = "drop table Workflow_Baz";
 
@@ -266,6 +273,20 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 		attributeGetterFunctions.put("modifiedDate", Baz::getModifiedDate);
 		attributeSetterBiConsumers.put(
 			"modifiedDate", (BiConsumer<Baz, Date>)Baz::setModifiedDate);
+		attributeGetterFunctions.put("status", Baz::getStatus);
+		attributeSetterBiConsumers.put(
+			"status", (BiConsumer<Baz, Integer>)Baz::setStatus);
+		attributeGetterFunctions.put("statusByUserId", Baz::getStatusByUserId);
+		attributeSetterBiConsumers.put(
+			"statusByUserId", (BiConsumer<Baz, Long>)Baz::setStatusByUserId);
+		attributeGetterFunctions.put(
+			"statusByUserName", Baz::getStatusByUserName);
+		attributeSetterBiConsumers.put(
+			"statusByUserName",
+			(BiConsumer<Baz, String>)Baz::setStatusByUserName);
+		attributeGetterFunctions.put("statusDate", Baz::getStatusDate);
+		attributeSetterBiConsumers.put(
+			"statusDate", (BiConsumer<Baz, Date>)Baz::setStatusDate);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -420,9 +441,150 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 	}
 
 	@Override
+	public int getStatus() {
+		return _status;
+	}
+
+	@Override
+	public void setStatus(int status) {
+		_status = status;
+	}
+
+	@Override
+	public long getStatusByUserId() {
+		return _statusByUserId;
+	}
+
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		_statusByUserId = statusByUserId;
+	}
+
+	@Override
+	public String getStatusByUserUuid() {
+		try {
+			User user = UserLocalServiceUtil.getUserById(getStatusByUserId());
+
+			return user.getUuid();
+		}
+		catch (PortalException pe) {
+			return "";
+		}
+	}
+
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid) {
+	}
+
+	@Override
+	public String getStatusByUserName() {
+		if (_statusByUserName == null) {
+			return "";
+		}
+		else {
+			return _statusByUserName;
+		}
+	}
+
+	@Override
+	public void setStatusByUserName(String statusByUserName) {
+		_statusByUserName = statusByUserName;
+	}
+
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
 			PortalUtil.getClassNameId(Baz.class.getName()));
+	}
+
+	@Override
+	public boolean isApproved() {
+		if (getStatus() == WorkflowConstants.STATUS_APPROVED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDenied() {
+		if (getStatus() == WorkflowConstants.STATUS_DENIED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDraft() {
+		if (getStatus() == WorkflowConstants.STATUS_DRAFT) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isExpired() {
+		if (getStatus() == WorkflowConstants.STATUS_EXPIRED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isInactive() {
+		if (getStatus() == WorkflowConstants.STATUS_INACTIVE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isIncomplete() {
+		if (getStatus() == WorkflowConstants.STATUS_INCOMPLETE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isPending() {
+		if (getStatus() == WorkflowConstants.STATUS_PENDING) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isScheduled() {
+		if (getStatus() == WorkflowConstants.STATUS_SCHEDULED) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public long getColumnBitmask() {
@@ -468,6 +630,10 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 		bazImpl.setUserName(getUserName());
 		bazImpl.setCreateDate(getCreateDate());
 		bazImpl.setModifiedDate(getModifiedDate());
+		bazImpl.setStatus(getStatus());
+		bazImpl.setStatusByUserId(getStatusByUserId());
+		bazImpl.setStatusByUserName(getStatusByUserName());
+		bazImpl.setStatusDate(getStatusDate());
 
 		bazImpl.resetOriginalValues();
 
@@ -591,6 +757,27 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 			bazCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
+		bazCacheModel.status = getStatus();
+
+		bazCacheModel.statusByUserId = getStatusByUserId();
+
+		bazCacheModel.statusByUserName = getStatusByUserName();
+
+		String statusByUserName = bazCacheModel.statusByUserName;
+
+		if ((statusByUserName != null) && (statusByUserName.length() == 0)) {
+			bazCacheModel.statusByUserName = null;
+		}
+
+		Date statusDate = getStatusDate();
+
+		if (statusDate != null) {
+			bazCacheModel.statusDate = statusDate.getTime();
+		}
+		else {
+			bazCacheModel.statusDate = Long.MIN_VALUE;
+		}
+
 		return bazCacheModel;
 	}
 
@@ -679,6 +866,10 @@ public class BazModelImpl extends BaseModelImpl<Baz> implements BazModel {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
 	private long _columnBitmask;
 	private Baz _escapedModel;
 
