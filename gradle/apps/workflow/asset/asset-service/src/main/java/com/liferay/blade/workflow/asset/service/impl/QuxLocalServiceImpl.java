@@ -18,10 +18,12 @@ package com.liferay.blade.workflow.asset.service.impl;
 
 import com.liferay.blade.workflow.asset.model.Qux;
 import com.liferay.blade.workflow.asset.service.base.QuxLocalServiceBaseImpl;
+import com.liferay.petra.string.StringPool;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 
 import java.util.Date;
@@ -64,6 +66,15 @@ public class QuxLocalServiceImpl extends QuxLocalServiceBaseImpl {
 
 		quxPersistence.update(qux);
 
+		assetEntryLocalService.updateEntry(
+			userId, qux.getGroupId(), qux.getCreateDate(),
+			qux.getModifiedDate(), Qux.class.getName(), qux.getQuxId(),
+			qux.getUuid(), 0, serviceContext.getAssetCategoryIds(),
+			serviceContext.getAssetTagNames(), false, false, null, null, null,
+			null, ContentTypes.TEXT, String.valueOf(qux.getPrimaryKey()), null,
+			StringPool.BLANK, null, null, 0, 0,
+			serviceContext.getAssetPriority());
+
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
 			qux.getCompanyId(), qux.getGroupId(), qux.getUserId(),
 			Qux.class.getName(), qux.getPrimaryKey(), qux, serviceContext);
@@ -74,6 +85,8 @@ public class QuxLocalServiceImpl extends QuxLocalServiceBaseImpl {
 	@Override
 	public Qux deleteQux(long quxId) throws PortalException {
 		Qux qux = quxPersistence.remove(quxId);
+
+		assetEntryLocalService.deleteEntry(Qux.class.getName(), quxId);
 
 		workflowInstanceLinkLocalService.deleteWorkflowInstanceLinks(
 			qux.getCompanyId(), qux.getGroupId(), Qux.class.getName(),
