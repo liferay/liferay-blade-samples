@@ -1,22 +1,18 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.jdbcservicebuilder.model.impl;
-
-import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.blade.samples.jdbcservicebuilder.model.CountryModel;
@@ -33,6 +29,9 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+
 import java.sql.Types;
 
 import java.util.Collections;
@@ -41,6 +40,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Country service. Represents a row in the &quot;country&quot; database table, with each column mapped to a property of this class.
@@ -198,6 +199,31 @@ public class CountryModelImpl
 		return _attributeSetterBiConsumers;
 	}
 
+	private static Function<InvocationHandler, Country>
+		_getProxyProviderFunction() {
+
+		Class<?> proxyClass = ProxyUtil.getProxyClass(
+			Country.class.getClassLoader(), Country.class, ModelWrapper.class);
+
+		try {
+			Constructor<Country> constructor =
+				(Constructor<Country>)proxyClass.getConstructor(
+					InvocationHandler.class);
+
+			return invocationHandler -> {
+				try {
+					return constructor.newInstance(invocationHandler);
+				}
+				catch (ReflectiveOperationException roe) {
+					throw new InternalError(roe);
+				}
+			};
+		}
+		catch (NoSuchMethodException nsme) {
+			throw new InternalError(nsme);
+		}
+	}
+
 	private static final Map<String, Function<Country, Object>>
 		_attributeGetterFunctions;
 	private static final Map<String, BiConsumer<Country, Object>>
@@ -264,8 +290,7 @@ public class CountryModelImpl
 	@Override
 	public Country toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = (Country)ProxyUtil.newProxyInstance(
-				_classLoader, _escapedModelInterfaces,
+			_escapedModel = _escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -420,11 +445,8 @@ public class CountryModelImpl
 		return sb.toString();
 	}
 
-	private static final ClassLoader _classLoader =
-		Country.class.getClassLoader();
-	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-		Country.class, ModelWrapper.class
-	};
+	private static final Function<InvocationHandler, Country>
+		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
 
 	private long _countryId;
 	private String _countryName;
