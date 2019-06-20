@@ -23,6 +23,8 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
 
+import java.util.Date;
+
 import org.osgi.service.component.annotations.Component;
 
 /**
@@ -82,6 +84,22 @@ public class BazLocalServiceImpl extends BazLocalServiceBaseImpl {
 		bazPersistence.update(baz);
 
 		return baz;
+	}
+
+	@Override
+	public Baz updateStatus(long userId, long bazId, int status)
+		throws PortalException {
+
+		User user = userLocalService.getUser(userId);
+
+		Baz baz = getBaz(bazId);
+
+		baz.setStatus(status);
+		baz.setStatusByUserId(user.getUserId());
+		baz.setStatusByUserName(user.getFullName());
+		baz.setStatusDate(new Date());
+
+		return updateBaz(baz);
 	}
 
 }
