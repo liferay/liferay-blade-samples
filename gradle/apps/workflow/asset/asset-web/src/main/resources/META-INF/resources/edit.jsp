@@ -43,7 +43,17 @@ long groupId = BeanParamUtil.getLong(qux, request, "groupId", scopeGroupId);
 		title='<%= (qux != null) ? String.valueOf(qux.getPrimaryKey()) : "new-qux" %>'
 	/>
 
+	<liferay-asset:asset-categories-error />
+
+	<liferay-asset:asset-tags-error />
+
 	<aui:model-context bean="<%= qux %>" model="<%= Qux.class %>" />
+
+	<aui:fieldset collapsed="<%= true %>" collapsible="<%= true %>" label="categorization">
+		<liferay-asset:asset-categories-selector name="categories" type="assetCategories" />
+
+		<liferay-asset:asset-tags-selector name="tags" type="assetTags" />
+	</aui:fieldset>
 
 	<aui:button-row>
 		<aui:button type="submit" />

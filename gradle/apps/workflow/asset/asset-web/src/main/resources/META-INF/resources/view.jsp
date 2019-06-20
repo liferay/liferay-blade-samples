@@ -54,6 +54,16 @@
 			statusDate="<%= qux.getStatusDate() %>"
 		/>
 
+		<liferay-asset:asset-categories-summary
+			className="<%= Qux.class.getName() %>"
+			classPK="<%= qux.getQuxId() %>"
+		/>
+
+		<liferay-asset:asset-tags-summary
+			className="<%= Qux.class.getName() %>"
+			classPK="<%= qux.getQuxId() %>"
+		/>
+
 		<liferay-ui:search-container-column-jsp
 			cssClass="entry-action"
 			path="/action.jsp"
