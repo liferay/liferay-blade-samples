@@ -1,18 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>authenticator-shiro</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
+
 	<properties>
 		<shiro.version>1.1.0</shiro.version>
 	</properties>
+
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
@@ -44,6 +51,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>com.liferay.blade.authenticator.shiro-${project.version}</finalName>
 	</build>

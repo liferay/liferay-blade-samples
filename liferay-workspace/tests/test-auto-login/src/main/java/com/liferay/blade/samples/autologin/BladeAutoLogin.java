@@ -36,13 +36,12 @@ public class BladeAutoLogin extends BaseAutoLogin {
 
 	@Override
 	protected String[] doLogin(
-			HttpServletRequest httpServletRequest,
-			HttpServletResponse httpServletResponse)
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		String[] credentials = null;
 
-		long companyId = PortalUtil.getCompanyId(httpServletRequest);
+		long companyId = PortalUtil.getCompanyId(request);
 
 		User autoLoginUser = null;
 

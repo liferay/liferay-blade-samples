@@ -3,4 +3,5 @@ Bundle-Name: com.liferay.blade.control.menu.entry
 Bundle-SymbolicName: com.liferay.blade.control.menu.entry
 Bundle-Version: 1.0.0
 -sources: true
+
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin

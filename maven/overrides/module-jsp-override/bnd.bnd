@@ -3,8 +3,7 @@ Bundle-Name: com.liferay.blade.module.jsp.override
 Bundle-SymbolicName: com.liferay.blade.module.jsp.override
 Bundle-Version: 1.0.0
 Fragment-Host: com.liferay.login.web;bundle-version="1.0.0"
--jsp:\
-	*.jsp,\
-	*.jspf
--plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -sources: true
+
+-jsp: *.jsp,*.jspf
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
