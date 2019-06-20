@@ -30,7 +30,7 @@ import java.sql.Statement;
 import org.hsqldb.persist.HsqlProperties;
 
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
@@ -73,14 +73,14 @@ public class ConnectionTest {
 	}
 
 	private static void _addData() throws Exception {
-		_executeNonQuery(
+		_executeNonquery(
 			"create table country(id bigint not null primary key," +
 				"name varchar(255));");
-		_executeNonQuery(
+		_executeNonquery(
 			"insert into country(id, name) values(1, 'Australia');");
 	}
 
-	private static void _executeNonQuery(String nonQuery) throws Exception {
+	private static void _executeNonquery(String nonQuery) throws Exception {
 		Statement stmt = null;
 
 		try (Connection conn = _get()) {
