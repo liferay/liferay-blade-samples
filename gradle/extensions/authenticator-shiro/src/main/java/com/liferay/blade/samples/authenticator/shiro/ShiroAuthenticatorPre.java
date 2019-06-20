@@ -82,9 +82,8 @@ public class ShiroAuthenticatorPre implements Authenticator {
 
 				return SKIP_LIFERAY_CHECK;
 			}
-			else {
-				return FAILURE;
-			}
+
+			return FAILURE;
 		}
 		catch (AuthenticationException ae) {
 			_log.error(ae.getMessage(), ae);

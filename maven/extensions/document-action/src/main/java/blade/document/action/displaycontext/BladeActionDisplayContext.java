@@ -62,12 +62,14 @@ public class BladeActionDisplayContext
 
 	public BladeActionDisplayContext(
 		UUID uuid, DLViewFileVersionDisplayContext parentDLDisplayContext,
-		HttpServletRequest request, HttpServletResponse response,
-		FileVersion fileVersion) {
+		HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse, FileVersion fileVersion) {
 
-		super(uuid, parentDLDisplayContext, request, response, fileVersion);
+		super(
+			uuid, parentDLDisplayContext, httpServletRequest,
+			httpServletResponse, fileVersion);
 
-		_themeDisplay = (ThemeDisplay)request.getAttribute(
+		_themeDisplay = (ThemeDisplay)httpServletRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 	}
 
@@ -110,9 +112,7 @@ public class BladeActionDisplayContext
 		return toolbarItems;
 	}
 
-	private String _getOnclick()
-	{
-
+	private String _getOnclick() {
 		PortletURL portletURL = PortletURLFactoryUtil.create(
 			request, "blade_document_action_portlet_BladeDocumentActionPortlet",
 			_themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
