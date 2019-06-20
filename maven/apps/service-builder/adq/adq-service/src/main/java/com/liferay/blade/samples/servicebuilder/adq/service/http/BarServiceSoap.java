@@ -1,17 +1,15 @@
 /**
- * Copyright 2000-present Liferay, Inc.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 
 package com.liferay.blade.samples.servicebuilder.adq.service.http;
@@ -20,20 +18,19 @@ import aQute.bnd.annotation.ProviderType;
 
 /**
  * Provides the SOAP utility for the
- * <code>com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil</code> service
- * utility. The static methods of this class call the same methods of the
- * service utility. However, the signatures are different because it is
- * difficult for SOAP to support certain types.
+ * {@link com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil} service utility. The
+ * static methods of this class calls the same methods of the service utility.
+ * However, the signatures are different because it is difficult for SOAP to
+ * support certain types.
  *
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
- * if the method in the service utility returns a <code>java.util.List</code>,
- * that is translated to an array of
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.BarSoap</code>. If the method in the
- * service utility returns a
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.Bar</code>, that is translated to a
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.BarSoap</code>. Methods that SOAP
- * cannot safely wire are skipped.
+ * if the method in the service utility returns a {@link java.util.List}, that
+ * is translated to an array of {@link com.liferay.blade.samples.servicebuilder.adq.model.BarSoap}.
+ * If the method in the service utility returns a
+ * {@link com.liferay.blade.samples.servicebuilder.adq.model.Bar}, that is translated to a
+ * {@link com.liferay.blade.samples.servicebuilder.adq.model.BarSoap}. Methods that SOAP cannot
+ * safely wire are skipped.
  * </p>
  *
  * <p>
@@ -55,6 +52,8 @@ import aQute.bnd.annotation.ProviderType;
  *
  * @author Brian Wing Shun Chan
  * @see BarServiceHttp
+ * @see com.liferay.blade.samples.servicebuilder.adq.model.BarSoap
+ * @see com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil
  * @generated
  */
 @ProviderType
