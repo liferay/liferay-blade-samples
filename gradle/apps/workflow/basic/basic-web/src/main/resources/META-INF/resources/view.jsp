@@ -47,6 +47,13 @@
 			valign="top"
 		/>
 
+		<liferay-ui:search-container-column-status
+			name="status"
+			status="<%= baz.getStatus() %>"
+			statusByUserId="<%= baz.getStatusByUserId() %>"
+			statusDate="<%= baz.getStatusDate() %>"
+		/>
+
 		<liferay-ui:search-container-column-jsp
 			cssClass="entry-action"
 			path="/action.jsp"
