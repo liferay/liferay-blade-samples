@@ -16,11 +16,11 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.model;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.annotation.ImplementationClassName;
 import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.Accessor;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The extended model interface for the Bar service. Represents a row in the &quot;ADQ_Bar&quot; database table, with each column mapped to a property of this class.

@@ -18,11 +18,16 @@ package com.liferay.blade.samples.jdbcservicebuilder.model;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
+import com.liferay.portal.kernel.service.ServiceContext;
+
+import java.io.Serializable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * <p>
@@ -34,12 +39,19 @@ import java.util.Map;
  * @generated
  */
 @ProviderType
-public class CountryWrapper
-	extends BaseModelWrapper<Country>
-	implements Country, ModelWrapper<Country> {
-
+public class CountryWrapper implements Country, ModelWrapper<Country> {
 	public CountryWrapper(Country country) {
-		super(country);
+		_country = country;
+	}
+
+	@Override
+	public Class<?> getModelClass() {
+		return Country.class;
+	}
+
+	@Override
+	public String getModelClassName() {
+		return Country.class.getName();
 	}
 
 	@Override
@@ -67,74 +79,205 @@ public class CountryWrapper
 		}
 	}
 
+	@Override
+	public java.lang.Object clone() {
+		return new CountryWrapper((Country)_country.clone());
+	}
+
+	@Override
+	public int compareTo(Country country) {
+		return _country.compareTo(country);
+	}
+
 	/**
-	 * Returns the country ID of this country.
-	 *
-	 * @return the country ID of this country
-	 */
+	* Returns the country ID of this country.
+	*
+	* @return the country ID of this country
+	*/
 	@Override
 	public long getCountryId() {
-		return model.getCountryId();
+		return _country.getCountryId();
 	}
 
 	/**
-	 * Returns the country name of this country.
-	 *
-	 * @return the country name of this country
-	 */
+	* Returns the country name of this country.
+	*
+	* @return the country name of this country
+	*/
 	@Override
-	public String getCountryName() {
-		return model.getCountryName();
+	public java.lang.String getCountryName() {
+		return _country.getCountryName();
+	}
+
+	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return _country.getExpandoBridge();
 	}
 
 	/**
-	 * Returns the primary key of this country.
-	 *
-	 * @return the primary key of this country
-	 */
+	* Returns the primary key of this country.
+	*
+	* @return the primary key of this country
+	*/
 	@Override
 	public long getPrimaryKey() {
-		return model.getPrimaryKey();
+		return _country.getPrimaryKey();
+	}
+
+	@Override
+	public Serializable getPrimaryKeyObj() {
+		return _country.getPrimaryKeyObj();
+	}
+
+	@Override
+	public int hashCode() {
+		return _country.hashCode();
+	}
+
+	@Override
+	public boolean isCachedModel() {
+		return _country.isCachedModel();
+	}
+
+	@Override
+	public boolean isEscapedModel() {
+		return _country.isEscapedModel();
+	}
+
+	@Override
+	public boolean isNew() {
+		return _country.isNew();
 	}
 
 	@Override
 	public void persist() {
-		model.persist();
+		_country.persist();
+	}
+
+	@Override
+	public void setCachedModel(boolean cachedModel) {
+		_country.setCachedModel(cachedModel);
 	}
 
 	/**
-	 * Sets the country ID of this country.
-	 *
-	 * @param countryId the country ID of this country
-	 */
+	* Sets the country ID of this country.
+	*
+	* @param countryId the country ID of this country
+	*/
 	@Override
 	public void setCountryId(long countryId) {
-		model.setCountryId(countryId);
+		_country.setCountryId(countryId);
 	}
 
 	/**
-	 * Sets the country name of this country.
-	 *
-	 * @param countryName the country name of this country
-	 */
+	* Sets the country name of this country.
+	*
+	* @param countryName the country name of this country
+	*/
 	@Override
-	public void setCountryName(String countryName) {
-		model.setCountryName(countryName);
+	public void setCountryName(java.lang.String countryName) {
+		_country.setCountryName(countryName);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(
+		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+		_country.setExpandoBridgeAttributes(baseModel);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
+		_country.setExpandoBridgeAttributes(expandoBridge);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		_country.setExpandoBridgeAttributes(serviceContext);
+	}
+
+	@Override
+	public void setNew(boolean n) {
+		_country.setNew(n);
 	}
 
 	/**
-	 * Sets the primary key of this country.
-	 *
-	 * @param primaryKey the primary key of this country
-	 */
+	* Sets the primary key of this country.
+	*
+	* @param primaryKey the primary key of this country
+	*/
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		model.setPrimaryKey(primaryKey);
+		_country.setPrimaryKey(primaryKey);
 	}
 
 	@Override
-	protected CountryWrapper wrap(Country country) {
-		return new CountryWrapper(country);
+	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+		_country.setPrimaryKeyObj(primaryKeyObj);
 	}
 
+	@Override
+	public com.liferay.portal.kernel.model.CacheModel<Country> toCacheModel() {
+		return _country.toCacheModel();
+	}
+
+	@Override
+	public Country toEscapedModel() {
+		return new CountryWrapper(_country.toEscapedModel());
+	}
+
+	@Override
+	public java.lang.String toString() {
+		return _country.toString();
+	}
+
+	@Override
+	public Country toUnescapedModel() {
+		return new CountryWrapper(_country.toUnescapedModel());
+	}
+
+	@Override
+	public java.lang.String toXmlString() {
+		return _country.toXmlString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof CountryWrapper)) {
+			return false;
+		}
+
+		CountryWrapper countryWrapper = (CountryWrapper)obj;
+
+		if (Objects.equals(_country, countryWrapper._country)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	@Override
+	public Country getWrappedModel() {
+		return _country;
+	}
+
+	@Override
+	public boolean isEntityCacheEnabled() {
+		return _country.isEntityCacheEnabled();
+	}
+
+	@Override
+	public boolean isFinderCacheEnabled() {
+		return _country.isFinderCacheEnabled();
+	}
+
+	@Override
+	public void resetOriginalValues() {
+		_country.resetOriginalValues();
+	}
+
+	private final Country _country;
 }

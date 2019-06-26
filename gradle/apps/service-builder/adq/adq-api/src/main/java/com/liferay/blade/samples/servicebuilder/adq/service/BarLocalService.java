@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.exportimport.kernel.lar.PortletDataContext;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
@@ -40,6 +38,8 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import java.io.Serializable;
 
 import java.util.List;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the local service interface for Bar. Methods of this

@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.exception.NoSuchRegionException;
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.model.impl.RegionImpl;
@@ -44,6 +42,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The persistence implementation for the region service.

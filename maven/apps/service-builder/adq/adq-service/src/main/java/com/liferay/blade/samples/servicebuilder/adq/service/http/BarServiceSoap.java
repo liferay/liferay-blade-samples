@@ -20,20 +20,19 @@ import aQute.bnd.annotation.ProviderType;
 
 /**
  * Provides the SOAP utility for the
- * <code>com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil</code> service
- * utility. The static methods of this class call the same methods of the
- * service utility. However, the signatures are different because it is
- * difficult for SOAP to support certain types.
+ * {@link com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil} service utility. The
+ * static methods of this class calls the same methods of the service utility.
+ * However, the signatures are different because it is difficult for SOAP to
+ * support certain types.
  *
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
- * if the method in the service utility returns a <code>java.util.List</code>,
- * that is translated to an array of
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.BarSoap</code>. If the method in the
- * service utility returns a
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.Bar</code>, that is translated to a
- * <code>com.liferay.blade.samples.servicebuilder.adq.model.BarSoap</code>. Methods that SOAP
- * cannot safely wire are skipped.
+ * if the method in the service utility returns a {@link java.util.List}, that
+ * is translated to an array of {@link com.liferay.blade.samples.servicebuilder.adq.model.BarSoap}.
+ * If the method in the service utility returns a
+ * {@link com.liferay.blade.samples.servicebuilder.adq.model.Bar}, that is translated to a
+ * {@link com.liferay.blade.samples.servicebuilder.adq.model.BarSoap}. Methods that SOAP cannot
+ * safely wire are skipped.
  * </p>
  *
  * <p>
@@ -55,6 +54,8 @@ import aQute.bnd.annotation.ProviderType;
  *
  * @author Brian Wing Shun Chan
  * @see BarServiceHttp
+ * @see com.liferay.blade.samples.servicebuilder.adq.model.BarSoap
+ * @see com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil
  * @generated
  */
 @ProviderType

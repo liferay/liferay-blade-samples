@@ -18,13 +18,19 @@ package com.liferay.blade.samples.servicebuilder.adq.model;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+
 import com.liferay.exportimport.kernel.lar.StagedModelType;
+
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
+import com.liferay.portal.kernel.service.ServiceContext;
+
+import java.io.Serializable;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * <p>
@@ -36,11 +42,19 @@ import java.util.Map;
  * @generated
  */
 @ProviderType
-public class BarWrapper
-	extends BaseModelWrapper<Bar> implements Bar, ModelWrapper<Bar> {
-
+public class BarWrapper implements Bar, ModelWrapper<Bar> {
 	public BarWrapper(Bar bar) {
-		super(bar);
+		_bar = bar;
+	}
+
+	@Override
+	public Class<?> getModelClass() {
+		return Bar.class;
+	}
+
+	@Override
+	public String getModelClassName() {
+		return Bar.class.getName();
 	}
 
 	@Override
@@ -56,7 +70,7 @@ public class BarWrapper
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("field1", getField1());
-		attributes.put("field2", isField2());
+		attributes.put("field2", getField2());
 		attributes.put("field3", getField3());
 		attributes.put("field4", getField4());
 		attributes.put("field5", getField5());
@@ -145,329 +159,460 @@ public class BarWrapper
 		}
 	}
 
+	@Override
+	public java.lang.Object clone() {
+		return new BarWrapper((Bar)_bar.clone());
+	}
+
+	@Override
+	public int compareTo(Bar bar) {
+		return _bar.compareTo(bar);
+	}
+
 	/**
-	 * Returns the bar ID of this bar.
-	 *
-	 * @return the bar ID of this bar
-	 */
+	* Returns the bar ID of this bar.
+	*
+	* @return the bar ID of this bar
+	*/
 	@Override
 	public long getBarId() {
-		return model.getBarId();
+		return _bar.getBarId();
 	}
 
 	/**
-	 * Returns the company ID of this bar.
-	 *
-	 * @return the company ID of this bar
-	 */
+	* Returns the company ID of this bar.
+	*
+	* @return the company ID of this bar
+	*/
 	@Override
 	public long getCompanyId() {
-		return model.getCompanyId();
+		return _bar.getCompanyId();
 	}
 
 	/**
-	 * Returns the create date of this bar.
-	 *
-	 * @return the create date of this bar
-	 */
+	* Returns the create date of this bar.
+	*
+	* @return the create date of this bar
+	*/
 	@Override
 	public Date getCreateDate() {
-		return model.getCreateDate();
+		return _bar.getCreateDate();
 	}
 
-	/**
-	 * Returns the field1 of this bar.
-	 *
-	 * @return the field1 of this bar
-	 */
 	@Override
-	public String getField1() {
-		return model.getField1();
+	public ExpandoBridge getExpandoBridge() {
+		return _bar.getExpandoBridge();
 	}
 
 	/**
-	 * Returns the field2 of this bar.
-	 *
-	 * @return the field2 of this bar
-	 */
+	* Returns the field1 of this bar.
+	*
+	* @return the field1 of this bar
+	*/
+	@Override
+	public java.lang.String getField1() {
+		return _bar.getField1();
+	}
+
+	/**
+	* Returns the field2 of this bar.
+	*
+	* @return the field2 of this bar
+	*/
 	@Override
 	public boolean getField2() {
-		return model.getField2();
+		return _bar.getField2();
 	}
 
 	/**
-	 * Returns the field3 of this bar.
-	 *
-	 * @return the field3 of this bar
-	 */
+	* Returns the field3 of this bar.
+	*
+	* @return the field3 of this bar
+	*/
 	@Override
 	public int getField3() {
-		return model.getField3();
+		return _bar.getField3();
 	}
 
 	/**
-	 * Returns the field4 of this bar.
-	 *
-	 * @return the field4 of this bar
-	 */
+	* Returns the field4 of this bar.
+	*
+	* @return the field4 of this bar
+	*/
 	@Override
 	public Date getField4() {
-		return model.getField4();
+		return _bar.getField4();
 	}
 
 	/**
-	 * Returns the field5 of this bar.
-	 *
-	 * @return the field5 of this bar
-	 */
+	* Returns the field5 of this bar.
+	*
+	* @return the field5 of this bar
+	*/
 	@Override
-	public String getField5() {
-		return model.getField5();
+	public java.lang.String getField5() {
+		return _bar.getField5();
 	}
 
 	/**
-	 * Returns the group ID of this bar.
-	 *
-	 * @return the group ID of this bar
-	 */
+	* Returns the group ID of this bar.
+	*
+	* @return the group ID of this bar
+	*/
 	@Override
 	public long getGroupId() {
-		return model.getGroupId();
+		return _bar.getGroupId();
 	}
 
 	/**
-	 * Returns the modified date of this bar.
-	 *
-	 * @return the modified date of this bar
-	 */
+	* Returns the modified date of this bar.
+	*
+	* @return the modified date of this bar
+	*/
 	@Override
 	public Date getModifiedDate() {
-		return model.getModifiedDate();
+		return _bar.getModifiedDate();
 	}
 
 	/**
-	 * Returns the primary key of this bar.
-	 *
-	 * @return the primary key of this bar
-	 */
+	* Returns the primary key of this bar.
+	*
+	* @return the primary key of this bar
+	*/
 	@Override
 	public long getPrimaryKey() {
-		return model.getPrimaryKey();
+		return _bar.getPrimaryKey();
+	}
+
+	@Override
+	public Serializable getPrimaryKeyObj() {
+		return _bar.getPrimaryKeyObj();
 	}
 
 	/**
-	 * Returns the user ID of this bar.
-	 *
-	 * @return the user ID of this bar
-	 */
+	* Returns the user ID of this bar.
+	*
+	* @return the user ID of this bar
+	*/
 	@Override
 	public long getUserId() {
-		return model.getUserId();
+		return _bar.getUserId();
 	}
 
 	/**
-	 * Returns the user name of this bar.
-	 *
-	 * @return the user name of this bar
-	 */
+	* Returns the user name of this bar.
+	*
+	* @return the user name of this bar
+	*/
 	@Override
-	public String getUserName() {
-		return model.getUserName();
+	public java.lang.String getUserName() {
+		return _bar.getUserName();
 	}
 
 	/**
-	 * Returns the user uuid of this bar.
-	 *
-	 * @return the user uuid of this bar
-	 */
+	* Returns the user uuid of this bar.
+	*
+	* @return the user uuid of this bar
+	*/
 	@Override
-	public String getUserUuid() {
-		return model.getUserUuid();
+	public java.lang.String getUserUuid() {
+		return _bar.getUserUuid();
 	}
 
 	/**
-	 * Returns the uuid of this bar.
-	 *
-	 * @return the uuid of this bar
-	 */
+	* Returns the uuid of this bar.
+	*
+	* @return the uuid of this bar
+	*/
 	@Override
-	public String getUuid() {
-		return model.getUuid();
+	public java.lang.String getUuid() {
+		return _bar.getUuid();
+	}
+
+	@Override
+	public int hashCode() {
+		return _bar.hashCode();
+	}
+
+	@Override
+	public boolean isCachedModel() {
+		return _bar.isCachedModel();
+	}
+
+	@Override
+	public boolean isEscapedModel() {
+		return _bar.isEscapedModel();
 	}
 
 	/**
-	 * Returns <code>true</code> if this bar is field2.
-	 *
-	 * @return <code>true</code> if this bar is field2; <code>false</code> otherwise
-	 */
+	* Returns <code>true</code> if this bar is field2.
+	*
+	* @return <code>true</code> if this bar is field2; <code>false</code> otherwise
+	*/
 	@Override
 	public boolean isField2() {
-		return model.isField2();
+		return _bar.isField2();
+	}
+
+	@Override
+	public boolean isNew() {
+		return _bar.isNew();
 	}
 
 	@Override
 	public void persist() {
-		model.persist();
+		_bar.persist();
 	}
 
 	/**
-	 * Sets the bar ID of this bar.
-	 *
-	 * @param barId the bar ID of this bar
-	 */
+	* Sets the bar ID of this bar.
+	*
+	* @param barId the bar ID of this bar
+	*/
 	@Override
 	public void setBarId(long barId) {
-		model.setBarId(barId);
+		_bar.setBarId(barId);
+	}
+
+	@Override
+	public void setCachedModel(boolean cachedModel) {
+		_bar.setCachedModel(cachedModel);
 	}
 
 	/**
-	 * Sets the company ID of this bar.
-	 *
-	 * @param companyId the company ID of this bar
-	 */
+	* Sets the company ID of this bar.
+	*
+	* @param companyId the company ID of this bar
+	*/
 	@Override
 	public void setCompanyId(long companyId) {
-		model.setCompanyId(companyId);
+		_bar.setCompanyId(companyId);
 	}
 
 	/**
-	 * Sets the create date of this bar.
-	 *
-	 * @param createDate the create date of this bar
-	 */
+	* Sets the create date of this bar.
+	*
+	* @param createDate the create date of this bar
+	*/
 	@Override
 	public void setCreateDate(Date createDate) {
-		model.setCreateDate(createDate);
+		_bar.setCreateDate(createDate);
 	}
 
-	/**
-	 * Sets the field1 of this bar.
-	 *
-	 * @param field1 the field1 of this bar
-	 */
 	@Override
-	public void setField1(String field1) {
-		model.setField1(field1);
+	public void setExpandoBridgeAttributes(
+		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+		_bar.setExpandoBridgeAttributes(baseModel);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
+		_bar.setExpandoBridgeAttributes(expandoBridge);
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		_bar.setExpandoBridgeAttributes(serviceContext);
 	}
 
 	/**
-	 * Sets whether this bar is field2.
-	 *
-	 * @param field2 the field2 of this bar
-	 */
+	* Sets the field1 of this bar.
+	*
+	* @param field1 the field1 of this bar
+	*/
+	@Override
+	public void setField1(java.lang.String field1) {
+		_bar.setField1(field1);
+	}
+
+	/**
+	* Sets whether this bar is field2.
+	*
+	* @param field2 the field2 of this bar
+	*/
 	@Override
 	public void setField2(boolean field2) {
-		model.setField2(field2);
+		_bar.setField2(field2);
 	}
 
 	/**
-	 * Sets the field3 of this bar.
-	 *
-	 * @param field3 the field3 of this bar
-	 */
+	* Sets the field3 of this bar.
+	*
+	* @param field3 the field3 of this bar
+	*/
 	@Override
 	public void setField3(int field3) {
-		model.setField3(field3);
+		_bar.setField3(field3);
 	}
 
 	/**
-	 * Sets the field4 of this bar.
-	 *
-	 * @param field4 the field4 of this bar
-	 */
+	* Sets the field4 of this bar.
+	*
+	* @param field4 the field4 of this bar
+	*/
 	@Override
 	public void setField4(Date field4) {
-		model.setField4(field4);
+		_bar.setField4(field4);
 	}
 
 	/**
-	 * Sets the field5 of this bar.
-	 *
-	 * @param field5 the field5 of this bar
-	 */
+	* Sets the field5 of this bar.
+	*
+	* @param field5 the field5 of this bar
+	*/
 	@Override
-	public void setField5(String field5) {
-		model.setField5(field5);
+	public void setField5(java.lang.String field5) {
+		_bar.setField5(field5);
 	}
 
 	/**
-	 * Sets the group ID of this bar.
-	 *
-	 * @param groupId the group ID of this bar
-	 */
+	* Sets the group ID of this bar.
+	*
+	* @param groupId the group ID of this bar
+	*/
 	@Override
 	public void setGroupId(long groupId) {
-		model.setGroupId(groupId);
+		_bar.setGroupId(groupId);
 	}
 
 	/**
-	 * Sets the modified date of this bar.
-	 *
-	 * @param modifiedDate the modified date of this bar
-	 */
+	* Sets the modified date of this bar.
+	*
+	* @param modifiedDate the modified date of this bar
+	*/
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
-		model.setModifiedDate(modifiedDate);
+		_bar.setModifiedDate(modifiedDate);
+	}
+
+	@Override
+	public void setNew(boolean n) {
+		_bar.setNew(n);
 	}
 
 	/**
-	 * Sets the primary key of this bar.
-	 *
-	 * @param primaryKey the primary key of this bar
-	 */
+	* Sets the primary key of this bar.
+	*
+	* @param primaryKey the primary key of this bar
+	*/
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		model.setPrimaryKey(primaryKey);
+		_bar.setPrimaryKey(primaryKey);
+	}
+
+	@Override
+	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
+		_bar.setPrimaryKeyObj(primaryKeyObj);
 	}
 
 	/**
-	 * Sets the user ID of this bar.
-	 *
-	 * @param userId the user ID of this bar
-	 */
+	* Sets the user ID of this bar.
+	*
+	* @param userId the user ID of this bar
+	*/
 	@Override
 	public void setUserId(long userId) {
-		model.setUserId(userId);
+		_bar.setUserId(userId);
 	}
 
 	/**
-	 * Sets the user name of this bar.
-	 *
-	 * @param userName the user name of this bar
-	 */
+	* Sets the user name of this bar.
+	*
+	* @param userName the user name of this bar
+	*/
 	@Override
-	public void setUserName(String userName) {
-		model.setUserName(userName);
+	public void setUserName(java.lang.String userName) {
+		_bar.setUserName(userName);
 	}
 
 	/**
-	 * Sets the user uuid of this bar.
-	 *
-	 * @param userUuid the user uuid of this bar
-	 */
+	* Sets the user uuid of this bar.
+	*
+	* @param userUuid the user uuid of this bar
+	*/
 	@Override
-	public void setUserUuid(String userUuid) {
-		model.setUserUuid(userUuid);
+	public void setUserUuid(java.lang.String userUuid) {
+		_bar.setUserUuid(userUuid);
 	}
 
 	/**
-	 * Sets the uuid of this bar.
-	 *
-	 * @param uuid the uuid of this bar
-	 */
+	* Sets the uuid of this bar.
+	*
+	* @param uuid the uuid of this bar
+	*/
 	@Override
-	public void setUuid(String uuid) {
-		model.setUuid(uuid);
+	public void setUuid(java.lang.String uuid) {
+		_bar.setUuid(uuid);
+	}
+
+	@Override
+	public com.liferay.portal.kernel.model.CacheModel<Bar> toCacheModel() {
+		return _bar.toCacheModel();
+	}
+
+	@Override
+	public Bar toEscapedModel() {
+		return new BarWrapper(_bar.toEscapedModel());
+	}
+
+	@Override
+	public java.lang.String toString() {
+		return _bar.toString();
+	}
+
+	@Override
+	public Bar toUnescapedModel() {
+		return new BarWrapper(_bar.toUnescapedModel());
+	}
+
+	@Override
+	public java.lang.String toXmlString() {
+		return _bar.toXmlString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof BarWrapper)) {
+			return false;
+		}
+
+		BarWrapper barWrapper = (BarWrapper)obj;
+
+		if (Objects.equals(_bar, barWrapper._bar)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override
 	public StagedModelType getStagedModelType() {
-		return model.getStagedModelType();
+		return _bar.getStagedModelType();
 	}
 
 	@Override
-	protected BarWrapper wrap(Bar bar) {
-		return new BarWrapper(bar);
+	public Bar getWrappedModel() {
+		return _bar;
 	}
 
+	@Override
+	public boolean isEntityCacheEnabled() {
+		return _bar.isEntityCacheEnabled();
+	}
+
+	@Override
+	public boolean isFinderCacheEnabled() {
+		return _bar.isFinderCacheEnabled();
+	}
+
+	@Override
+	public void resetOriginalValues() {
+		_bar.resetOriginalValues();
+	}
+
+	private final Bar _bar;
 }

@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.model.BarModel;
 import com.liferay.blade.samples.servicebuilder.adq.model.BarSoap;
@@ -40,6 +38,9 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+
 import java.sql.Types;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Bar service. Represents a row in the &quot;ADQ_Bar&quot; database table, with each column mapped to a property of this class.
@@ -278,6 +281,31 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		getAttributeSetterBiConsumers() {
 
 		return _attributeSetterBiConsumers;
+	}
+
+	private static Function<InvocationHandler, Bar>
+		_getProxyProviderFunction() {
+
+		Class<?> proxyClass = ProxyUtil.getProxyClass(
+			Bar.class.getClassLoader(), Bar.class, ModelWrapper.class);
+
+		try {
+			Constructor<Bar> constructor =
+				(Constructor<Bar>)proxyClass.getConstructor(
+					InvocationHandler.class);
+
+			return invocationHandler -> {
+				try {
+					return constructor.newInstance(invocationHandler);
+				}
+				catch (ReflectiveOperationException roe) {
+					throw new InternalError(roe);
+				}
+			};
+		}
+		catch (NoSuchMethodException nsme) {
+			throw new InternalError(nsme);
+		}
 	}
 
 	private static final Map<String, Function<Bar, Object>>
@@ -602,8 +630,11 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	@Override
 	public Bar toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = (Bar)ProxyUtil.newProxyInstance(
-				_classLoader, _escapedModelInterfaces,
+			Function<InvocationHandler, Bar> escapedModelProxyProviderFunction =
+				EscapedModelProxyProviderFunctionHolder.
+					_escapedModelProxyProviderFunction;
+
+			_escapedModel = escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -845,10 +876,12 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		return sb.toString();
 	}
 
-	private static final ClassLoader _classLoader = Bar.class.getClassLoader();
-	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-		Bar.class, ModelWrapper.class
-	};
+	private static class EscapedModelProxyProviderFunctionHolder {
+
+		private static final Function<InvocationHandler, Bar>
+			_escapedModelProxyProviderFunction = _getProxyProviderFunction();
+
+	}
 
 	private String _uuid;
 	private String _originalUuid;

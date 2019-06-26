@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jdbcservicebuilder.service.base;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.blade.samples.jdbcservicebuilder.service.CountryLocalService;
 import com.liferay.blade.samples.jdbcservicebuilder.service.persistence.CountryPersistence;
@@ -52,6 +50,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the base implementation for the country local service.

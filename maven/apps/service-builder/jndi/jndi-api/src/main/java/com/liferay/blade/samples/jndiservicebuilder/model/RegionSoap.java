@@ -31,7 +31,6 @@ import java.util.List;
  */
 @ProviderType
 public class RegionSoap implements Serializable {
-
 	public static RegionSoap toSoapModel(Region model) {
 		RegionSoap soapModel = new RegionSoap();
 
@@ -107,5 +106,4 @@ public class RegionSoap implements Serializable {
 
 	private long _regionId;
 	private String _regionName;
-
 }

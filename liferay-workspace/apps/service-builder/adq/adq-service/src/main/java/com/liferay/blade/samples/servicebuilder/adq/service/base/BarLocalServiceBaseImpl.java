@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.base;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.asset.kernel.service.persistence.AssetEntryPersistence;
 import com.liferay.asset.kernel.service.persistence.AssetTagPersistence;
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
@@ -60,6 +58,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the base implementation for the bar local service.

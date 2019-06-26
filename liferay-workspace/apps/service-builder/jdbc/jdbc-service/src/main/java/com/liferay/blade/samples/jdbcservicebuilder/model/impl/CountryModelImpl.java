@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jdbcservicebuilder.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.blade.samples.jdbcservicebuilder.model.CountryModel;
 import com.liferay.expando.kernel.model.ExpandoBridge;
@@ -33,6 +31,9 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+
 import java.sql.Types;
 
 import java.util.Collections;
@@ -41,6 +42,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Country service. Represents a row in the &quot;country&quot; database table, with each column mapped to a property of this class.
@@ -198,6 +201,31 @@ public class CountryModelImpl
 		return _attributeSetterBiConsumers;
 	}
 
+	private static Function<InvocationHandler, Country>
+		_getProxyProviderFunction() {
+
+		Class<?> proxyClass = ProxyUtil.getProxyClass(
+			Country.class.getClassLoader(), Country.class, ModelWrapper.class);
+
+		try {
+			Constructor<Country> constructor =
+				(Constructor<Country>)proxyClass.getConstructor(
+					InvocationHandler.class);
+
+			return invocationHandler -> {
+				try {
+					return constructor.newInstance(invocationHandler);
+				}
+				catch (ReflectiveOperationException roe) {
+					throw new InternalError(roe);
+				}
+			};
+		}
+		catch (NoSuchMethodException nsme) {
+			throw new InternalError(nsme);
+		}
+	}
+
 	private static final Map<String, Function<Country, Object>>
 		_attributeGetterFunctions;
 	private static final Map<String, BiConsumer<Country, Object>>
@@ -264,8 +292,7 @@ public class CountryModelImpl
 	@Override
 	public Country toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = (Country)ProxyUtil.newProxyInstance(
-				_classLoader, _escapedModelInterfaces,
+			_escapedModel = _escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -420,11 +447,8 @@ public class CountryModelImpl
 		return sb.toString();
 	}
 
-	private static final ClassLoader _classLoader =
-		Country.class.getClassLoader();
-	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-		Country.class, ModelWrapper.class
-	};
+	private static final Function<InvocationHandler, Country>
+		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
 
 	private long _countryId;
 	private String _countryName;

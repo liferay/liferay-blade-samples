@@ -16,11 +16,11 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.service.persistence;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.exception.NoSuchRegionException;
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The persistence interface for the region service.

@@ -2,7 +2,9 @@ Bundle-Description: Injects a new variable into Liferay Portal's theme context u
 Bundle-Name: com.liferay.blade.template.context.contributor
 Bundle-SymbolicName: com.liferay.blade.template.context.contributor
 Bundle-Version: 1.0.0
--jsp: *.jsp,*.jspf
+-jsp:\
+	*.jsp,\
+	*.jspf
 -plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
 -plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
