@@ -16,7 +16,7 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.http;
 
-import aQute.bnd.annotation.ProviderType;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the HTTP utility for the

@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.adq.exception.NoSuchBarException;
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.model.impl.BarImpl;
@@ -56,6 +54,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The persistence implementation for the bar service.

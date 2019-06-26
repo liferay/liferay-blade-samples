@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.model.RegionModel;
 import com.liferay.expando.kernel.model.ExpandoBridge;
@@ -33,6 +31,9 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import java.io.Serializable;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+
 import java.sql.Types;
 
 import java.util.Collections;
@@ -41,6 +42,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The base model implementation for the Region service. Represents a row in the &quot;region&quot; database table, with each column mapped to a property of this class.
@@ -194,6 +197,31 @@ public class RegionModelImpl
 		return _attributeSetterBiConsumers;
 	}
 
+	private static Function<InvocationHandler, Region>
+		_getProxyProviderFunction() {
+
+		Class<?> proxyClass = ProxyUtil.getProxyClass(
+			Region.class.getClassLoader(), Region.class, ModelWrapper.class);
+
+		try {
+			Constructor<Region> constructor =
+				(Constructor<Region>)proxyClass.getConstructor(
+					InvocationHandler.class);
+
+			return invocationHandler -> {
+				try {
+					return constructor.newInstance(invocationHandler);
+				}
+				catch (ReflectiveOperationException roe) {
+					throw new InternalError(roe);
+				}
+			};
+		}
+		catch (NoSuchMethodException nsme) {
+			throw new InternalError(nsme);
+		}
+	}
+
 	private static final Map<String, Function<Region, Object>>
 		_attributeGetterFunctions;
 	private static final Map<String, BiConsumer<Region, Object>>
@@ -259,8 +287,7 @@ public class RegionModelImpl
 	@Override
 	public Region toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = (Region)ProxyUtil.newProxyInstance(
-				_classLoader, _escapedModelInterfaces,
+			_escapedModel = _escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -413,11 +440,8 @@ public class RegionModelImpl
 		return sb.toString();
 	}
 
-	private static final ClassLoader _classLoader =
-		Region.class.getClassLoader();
-	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
-		Region.class, ModelWrapper.class
-	};
+	private static final Function<InvocationHandler, Region>
+		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
 
 	private long _regionId;
 	private String _regionName;

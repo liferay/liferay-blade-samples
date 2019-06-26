@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jdbcservicebuilder.service;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -38,6 +36,8 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import java.io.Serializable;
 
 import java.util.List;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the local service interface for Country. Methods of this

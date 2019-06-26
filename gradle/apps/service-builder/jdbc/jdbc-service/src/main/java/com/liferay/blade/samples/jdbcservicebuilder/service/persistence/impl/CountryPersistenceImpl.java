@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jdbcservicebuilder.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jdbcservicebuilder.exception.NoSuchCountryException;
 import com.liferay.blade.samples.jdbcservicebuilder.model.Country;
 import com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl;
@@ -44,6 +42,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The persistence implementation for the country service.

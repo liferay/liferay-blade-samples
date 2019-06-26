@@ -35,11 +35,10 @@ import com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalServiceUt
  */
 @ProviderType
 public abstract class RegionBaseImpl extends RegionModelImpl implements Region {
-
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. All methods that expect a region model instance should use the <code>Region</code> interface instead.
+	 * Never modify or reference this class directly. All methods that expect a region model instance should use the {@link Region} interface instead.
 	 */
 	@Override
 	public void persist() {
@@ -50,5 +49,4 @@ public abstract class RegionBaseImpl extends RegionModelImpl implements Region {
 			RegionLocalServiceUtil.updateRegion(this);
 		}
 	}
-
 }

@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.service.base;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalService;
 import com.liferay.blade.samples.jndiservicebuilder.service.persistence.RegionPersistence;
@@ -52,6 +50,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the base implementation for the region local service.

@@ -8,11 +8,11 @@ Provide-Capability:\
 Require-Capability:\
 	soy;\
 		filter:="(type=metal)"
+Web-ContextPath: /hello-soy-portlet
 -contract: JavaPortlet
 -plugin.npm: com.liferay.ant.bnd.npm.NpmAnalyzerPlugin
 -plugin.resourcebundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
 -plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-includeresource: package.json
 -sass: *
 -sources: true
-Web-ContextPath: /hello-soy-portlet
--includeresource: package.json

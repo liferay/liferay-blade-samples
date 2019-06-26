@@ -16,7 +16,7 @@
 	</parent>
 
 	<dependencies>
-		 <dependency>
+		<dependency>
 			<groupId>blade</groupId>
 			<artifactId>jndi-api</artifactId>
 			<version>1.0.0</version>
