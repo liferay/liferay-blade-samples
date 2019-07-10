@@ -60,7 +60,7 @@ public class GreedyPortlet extends MVCPortlet {
 		super.doView(renderRequest, renderResponse);
 	}
 
-	@Reference (policyOption = ReferencePolicyOption.GREEDY)
+	@Reference(policyOption = ReferencePolicyOption.GREEDY)
 	private SomeService _someService;
 
 }
