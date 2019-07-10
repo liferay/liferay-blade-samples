@@ -53,7 +53,11 @@ public class SampleFormTagDynamicIdFactory implements TagDynamicIdFactory {
 			return null;
 		}
 
-		return portletId.concat(StringPool.DASH).concat(name);
+		return portletId.concat(
+			StringPool.DASH
+		).concat(
+			name
+		);
 	}
 
 	@Reference
