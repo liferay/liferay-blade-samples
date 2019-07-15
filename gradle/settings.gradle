@@ -32,7 +32,6 @@ include(
 	'apps:shared-language-keys:language',
 	'apps:shared-language-keys:language-web',
 	'apps:simulation-panel-app',
-	'apps:springmvc-portlet',
 	'apps:workflow:asset:asset-api',
 	'apps:workflow:asset:asset-service',
 	'apps:workflow:asset:asset-web',
