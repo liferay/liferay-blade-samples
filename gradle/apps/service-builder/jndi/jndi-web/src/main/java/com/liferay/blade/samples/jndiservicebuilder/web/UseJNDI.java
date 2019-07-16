@@ -44,10 +44,7 @@ public class UseJNDI {
 		RegionLocalService regionLocalService = tracker.getService();
 
 		try {
-			List<Region> regions = regionLocalService.getRegions(
-				0, getRegionsCount());
-
-			return regions;
+			return regionLocalService.getRegions(0, getRegionsCount());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -71,9 +68,7 @@ public class UseJNDI {
 		RegionLocalService regionLocalService = tracker.getService();
 
 		try {
-			int regionsCount = regionLocalService.getRegionsCount();
-
-			return regionsCount;
+			return regionLocalService.getRegionsCount();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

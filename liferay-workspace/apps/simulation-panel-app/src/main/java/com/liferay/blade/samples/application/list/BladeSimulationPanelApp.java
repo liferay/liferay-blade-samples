@@ -89,7 +89,7 @@ public class BladeSimulationPanelApp extends BaseJSPPanelApp {
 
 	@Override
 	@Reference(
-		target = "(osgi.web.symbolicname=blade.simulation.panel.app)",
+		target = "(osgi.web.symbolicname=com.liferay.blade.simulation.panel.app)",
 		unbind = "-"
 	)
 	public void setServletContext(ServletContext servletContext) {

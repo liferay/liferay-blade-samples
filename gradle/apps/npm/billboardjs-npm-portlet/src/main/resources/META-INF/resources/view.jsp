@@ -19,7 +19,7 @@
 <%@ include file="/init.jsp" %>
 
 <!-- Temporary workaround to obtain the library stylesheets -->
-<link href="/o/billboardjs-npm-portlet/node_modules/billboard.js@1.1.1/dist/billboard.css" rel="stylesheet">
+<link href="/o/billboardjs-npm-portlet/node_modules/billboard.js@1.1.1/dist/billboard.css" rel="stylesheet" />
 
 <div id="<portlet:namespace />-billboard">
 	<h1>An example from billboard.js</h1>

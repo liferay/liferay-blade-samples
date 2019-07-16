@@ -38,9 +38,10 @@ import org.osgi.service.component.annotations.Reference;
 public class SampleFormTagDynamicIdFactory implements TagDynamicIdFactory {
 
 	public String getTagDynamicId(
-		HttpServletRequest request, HttpServletResponse response, Object tag) {
+		HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse, Object tag) {
 
-		String portletId = _portal.getPortletId(request);
+		String portletId = _portal.getPortletId(httpServletRequest);
 
 		if (Validator.isNull(portletId)) {
 			return null;
@@ -52,7 +53,11 @@ public class SampleFormTagDynamicIdFactory implements TagDynamicIdFactory {
 			return null;
 		}
 
-		return portletId.concat(StringPool.DASH).concat(name);
+		return portletId.concat(
+			StringPool.DASH
+		).concat(
+			name
+		);
 	}
 
 	@Reference
