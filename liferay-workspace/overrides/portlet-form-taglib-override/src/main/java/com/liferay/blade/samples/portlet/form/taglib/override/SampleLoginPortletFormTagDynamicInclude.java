@@ -36,11 +36,12 @@ public class SampleLoginPortletFormTagDynamicInclude
 	implements TagDynamicInclude {
 
 	public void include(
-			HttpServletRequest request, HttpServletResponse response,
-			String tagClassName, String tagDynamicId, String tagPoint)
+			HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse, String tagClassName,
+			String tagDynamicId, String tagPoint)
 		throws IOException {
 
-		PrintWriter printWriter = response.getWriter();
+		PrintWriter printWriter = httpServletResponse.getWriter();
 
 		printWriter.println(
 			"<h2>Sample Login Portlet Form Taglib Override</h2><br />");

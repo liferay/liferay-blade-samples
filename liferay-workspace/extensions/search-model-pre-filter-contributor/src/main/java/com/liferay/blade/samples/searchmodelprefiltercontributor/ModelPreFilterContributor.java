@@ -33,7 +33,8 @@ import org.osgi.service.component.annotations.Component;
 	service = com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor.class
 )
 public class ModelPreFilterContributor
-	implements com.liferay.portal.search.spi.model.query.contributor.ModelPreFilterContributor {
+	implements com.liferay.portal.search.spi.model.query.contributor.
+		ModelPreFilterContributor {
 
 	@Override
 	public void contribute(

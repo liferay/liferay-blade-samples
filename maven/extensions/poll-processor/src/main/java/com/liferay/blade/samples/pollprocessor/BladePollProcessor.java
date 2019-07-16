@@ -16,8 +16,8 @@
 
 package com.liferay.blade.samples.pollprocessor;
 
-import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.poller.BasePollerProcessor;
@@ -48,9 +48,9 @@ public class BladePollProcessor extends BasePollerProcessor {
 			_log.info("Recevied the poller request" + pollerRequest);
 		}
 
-		JSONObject responseObject = JSONFactoryUtil.createJSONObject();
 		PollerResponse pollerResponse = new DefaultPollerResponse();
-		responseObject.put(
+
+		JSONObject responseObject = JSONUtil.put(
 			"message", "Hello from BLADE Poller, time now is:" + new Date());
 
 		pollerResponse.setParameter("content", responseObject);

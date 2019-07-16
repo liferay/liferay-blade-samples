@@ -3,7 +3,10 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"inlineSources": true,
-		"lib": ["es2015", "dom"],
+		"lib": [
+			"es2015",
+			"dom"
+		],
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
@@ -11,7 +14,11 @@
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"target": "es5",
-		"typeRoots": ["./node_modules/@types/"]
+		"typeRoots": [
+			"./node_modules/@types/"
+		]
 	},
-	"include": ["./build/resources/main/META-INF/resources/**/*.ts"]
+	"include": [
+		"./build/resources/main/META-INF/resources/**/*.ts"
+	]
 }

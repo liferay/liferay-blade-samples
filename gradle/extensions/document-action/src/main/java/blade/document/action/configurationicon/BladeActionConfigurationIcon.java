@@ -66,16 +66,16 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 	public String getURL(
 		PortletRequest portletRequest, PortletResponse portletResponse) {
 
-		HttpServletRequest servletRequest = _portal.getHttpServletRequest(
+		HttpServletRequest httpServletRequest = _portal.getHttpServletRequest(
 			portletRequest);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)portletRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
-		FileEntry fileEntry = _retrieveFile(servletRequest);
+		FileEntry fileEntry = _retrieveFile(httpServletRequest);
 
 		PortletURL portletURL = PortletURLFactoryUtil.create(
-			servletRequest,
+			httpServletRequest,
 			"blade_document_action_portlet_BladeDocumentActionPortlet",
 			themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
 
@@ -127,9 +127,10 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		return true;
 	}
 
-	private FileEntry _retrieveFile(HttpServletRequest request) {
+	private FileEntry _retrieveFile(HttpServletRequest httpServletRequest) {
 		try {
-			long fileEntryId = ParamUtil.getLong(request, "fileEntryId");
+			long fileEntryId = ParamUtil.getLong(
+				httpServletRequest, "fileEntryId");
 
 			FileEntry fileEntry = null;
 
@@ -141,7 +142,7 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 				return null;
 			}
 
-			String cmd = ParamUtil.getString(request, Constants.CMD);
+			String cmd = ParamUtil.getString(httpServletRequest, Constants.CMD);
 
 			if (fileEntry.isInTrash() &&
 				!cmd.equals(Constants.MOVE_FROM_TRASH)) {

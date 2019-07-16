@@ -54,11 +54,11 @@ public class BladeProductNavigationControlMenuEntry
 	 * available, see
 	 * <a href="http://liferay.github.io/lexicon/content/icons-lexicon/">http://liferay.github.io/lexicon/content/icons-lexicon/</a>.
 	 *
-	 * @param  request the request
+	 * @param  httpServletRequest the request
 	 * @return the icon to display in the Control Menu
 	 */
 	@Override
-	public String getIcon(HttpServletRequest request) {
+	public String getIcon(HttpServletRequest httpServletRequest) {
 		return "link";
 	}
 
@@ -81,11 +81,11 @@ public class BladeProductNavigationControlMenuEntry
 	/**
 	 * Returns the Control Menu entry's linked URL.
 	 *
-	 * @param  request the request
+	 * @param  httpServletRequest the request
 	 * @return the Control Menu entry's linked URL
 	 */
 	@Override
-	public String getURL(HttpServletRequest request) {
+	public String getURL(HttpServletRequest httpServletRequest) {
 		return "http://www.liferay.com";
 	}
 
@@ -93,13 +93,15 @@ public class BladeProductNavigationControlMenuEntry
 	 * Returns <code>true</code> if the Control Menu entry is visible in the
 	 * Control Menu.
 	 *
-	 * @param  request the request
+	 * @param  httpServletRequest the request
 	 * @return <code>true</code> if the Control Menu entry is visible in the
 	 *         Control Menu; <code>false</code> otherwise
 	 * @throws PortalException if a portal exception occurred
 	 */
 	@Override
-	public boolean isShow(HttpServletRequest request) throws PortalException {
+	public boolean isShow(HttpServletRequest httpServletRequest)
+		throws PortalException {
+
 		return true;
 	}
 
