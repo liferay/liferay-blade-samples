@@ -44,9 +44,9 @@ if (fooId > 0) {
 		title='<%= (foo != null) ? foo.getField1() : "new-foo" %>'
 	/>
 
-	<liferay-ui:asset-categories-error />
+	<liferay-asset:asset-categories-error />
 
-	<liferay-ui:asset-tags-error />
+	<liferay-asset:asset-tags-error />
 
 	<aui:model-context bean="<%= foo %>" model="<%= Foo.class %>" />
 
@@ -61,14 +61,14 @@ if (fooId > 0) {
 
 		<aui:input name="field5" />
 
-		<liferay-ui:custom-attributes-available className="<%= Foo.class.getName() %>">
-			<liferay-ui:custom-attribute-list
+		<liferay-expando:custom-attributes-available className="<%= Foo.class.getName() %>">
+			<liferay-expando:custom-attribute-list
 				className="<%= Foo.class.getName() %>"
 				classPK="<%= (foo != null) ? foo.getFooId() : 0 %>"
 				editable="<%= true %>"
 				label="<%= true %>"
 			/>
-		</liferay-ui:custom-attributes-available>
+		</liferay-expando:custom-attributes-available>
 
 		<aui:input name="categories" type="assetCategories" />
 
