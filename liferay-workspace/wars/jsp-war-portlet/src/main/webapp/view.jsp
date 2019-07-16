@@ -24,11 +24,11 @@ page import="com.liferay.portal.kernel.log.LogFactoryUtil" %>
 <strong><liferay-ui:message key="welcome-to-the-blade-liferay-mvc-service-builder-web" /></strong>
 
 <%
-	int count = fooLocalService.getFoosCount();
+int count = fooLocalService.getFoosCount();
 
-	Log log = LogFactoryUtil.getLog("com.liferay.blade.samples.portlet.jsp.view");
+Log log = LogFactoryUtil.getLog("com.liferay.blade.samples.portlet.jsp.view");
 
-	log.info("Have " + count + " records.");
+log.info("Have " + count + " records.");
 %>
 
 <aui:button-row>
