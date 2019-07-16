@@ -58,7 +58,7 @@ if (fooId > 0) {
 		<aui:input name="field5" />
 
 		<liferay-expando:custom-attributes-available className="<%= Foo.class.getName() %>">
-			<liferay-ui:custom-attribute-list
+			<liferay-expando:custom-attribute-list
 				className="<%= Foo.class.getName() %>"
 				classPK="<%= (foo != null) ? foo.getFooId() : 0 %>"
 				editable="<%= true %>"

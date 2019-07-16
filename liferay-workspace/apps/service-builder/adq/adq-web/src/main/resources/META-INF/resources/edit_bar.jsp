@@ -40,9 +40,9 @@ if (barId > 0) {
 		title='<%= (bar != null) ? bar.getField1() : "new-bar" %>'
 	/>
 
-	<liferay-ui:asset-categories-error />
+	<liferay-asset:asset-categories-error />
 
-	<liferay-ui:asset-tags-error />
+	<liferay-asset:asset-tags-error />
 
 	<aui:model-context bean="<%= bar %>" model="<%= Bar.class %>" />
 
@@ -57,14 +57,14 @@ if (barId > 0) {
 
 		<aui:input name="field5" />
 
-		<liferay-ui:custom-attributes-available className="<%= Bar.class.getName() %>">
-			<liferay-ui:custom-attribute-list
+		<liferay-expando:custom-attributes-available className="<%= Bar.class.getName() %>">
+			<liferay-expando:custom-attribute-list
 				className="<%= Bar.class.getName() %>"
 				classPK="<%= (bar != null) ? bar.getBarId() : 0 %>"
 				editable="<%= true %>"
 				label="<%= true %>"
 			/>
-		</liferay-ui:custom-attributes-available>
+		</liferay-expando:custom-attributes-available>
 
 		<aui:input name="categories" type="assetCategories" />
 
