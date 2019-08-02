@@ -50,9 +50,8 @@ public class QuxAssetRendererFactory extends BaseAssetRendererFactory<Qux> {
 	public AssetRenderer<Qux> getAssetRenderer(long classPK, int type)
 		throws PortalException {
 
-		Qux qux = _quxLocalService.getQux(classPK);
-
-		QuxAssetRenderer quxAssetRenderer = new QuxAssetRenderer(qux);
+		QuxAssetRenderer quxAssetRenderer = new QuxAssetRenderer(
+			_quxLocalService.getQux(classPK));
 
 		quxAssetRenderer.setAssetRendererType(type);
 		quxAssetRenderer.setServletContext(_servletContext);
