@@ -22,7 +22,6 @@ import com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalService;
 import java.util.List;
 
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
@@ -34,10 +33,9 @@ public class UseJNDI {
 	public static List<Region> getRegions() {
 		Bundle bundle = FrameworkUtil.getBundle(UseJNDI.class);
 
-		BundleContext bundleContext = bundle.getBundleContext();
-
 		ServiceTracker<RegionLocalService, RegionLocalService> tracker =
-			new ServiceTracker<>(bundleContext, RegionLocalService.class, null);
+			new ServiceTracker<>(
+				bundle.getBundleContext(), RegionLocalService.class, null);
 
 		tracker.open();
 
@@ -58,10 +56,9 @@ public class UseJNDI {
 	public static int getRegionsCount() {
 		Bundle bundle = FrameworkUtil.getBundle(UseJNDI.class);
 
-		BundleContext bundleContext = bundle.getBundleContext();
-
 		ServiceTracker<RegionLocalService, RegionLocalService> tracker =
-			new ServiceTracker<>(bundleContext, RegionLocalService.class, null);
+			new ServiceTracker<>(
+				bundle.getBundleContext(), RegionLocalService.class, null);
 
 		tracker.open();
 
@@ -82,10 +79,9 @@ public class UseJNDI {
 	public static void useJNDI() {
 		Bundle bundle = FrameworkUtil.getBundle(UseJNDI.class);
 
-		BundleContext bundleContext = bundle.getBundleContext();
-
 		ServiceTracker<RegionLocalService, RegionLocalService> tracker =
-			new ServiceTracker<>(bundleContext, RegionLocalService.class, null);
+			new ServiceTracker<>(
+				bundle.getBundleContext(), RegionLocalService.class, null);
 
 		tracker.open();
 

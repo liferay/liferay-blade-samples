@@ -62,9 +62,7 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 			Company company = _companyLocalService.getCompanyByWebId(
 				PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
 
-			long companyId = company.getCompanyId();
-
-			String[] reservedWords = _getReservedWords(companyId);
+			String[] reservedWords = _getReservedWords(company.getCompanyId());
 
 			javascript.append("function(val) { return !(");
 
