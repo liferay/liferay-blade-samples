@@ -140,18 +140,20 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>3.0.0</version>
+				<version>2.1.2</version>
 				<executions>
 					<execution>
-						<phase>generate-resources</phase>
+						<id>default-build-css</id>
+						<phase>compile</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<baseDir>src/main/webapp</baseDir>
+					<docrootDirName>src/main/webapp</docrootDirName>
 					<outputDirName>${project.build.directory}/compiledCss</outputDirName>
+					<precision>9</precision>
 				</configuration>
 			</plugin>
 		</plugins>
