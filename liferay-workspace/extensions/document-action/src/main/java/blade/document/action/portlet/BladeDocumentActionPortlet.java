@@ -44,17 +44,18 @@ import org.osgi.service.component.annotations.Component;
 public class BladeDocumentActionPortlet extends GenericPortlet {
 
 	@Override
-	protected void doView(RenderRequest request, RenderResponse response)
+	protected void doView(
+			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
 
-		PrintWriter printWriter = response.getWriter();
+		PrintWriter printWriter = renderResponse.getWriter();
 
-		String fileName = request.getParameter("fileName");
-		String mimeType = request.getParameter("mimeType");
-		String version = request.getParameter("version");
-		String statusLabel = request.getParameter("statusLabel");
-		String createdDate = request.getParameter("createdDate");
-		String createdUserName = request.getParameter("createdUserName");
+		String fileName = renderRequest.getParameter("fileName");
+		String mimeType = renderRequest.getParameter("mimeType");
+		String version = renderRequest.getParameter("version");
+		String statusLabel = renderRequest.getParameter("statusLabel");
+		String createdDate = renderRequest.getParameter("createdDate");
+		String createdUserName = renderRequest.getParameter("createdUserName");
 
 		printWriter.print(
 			"<span style=\"color:green\">File Name</span>:" + fileName +

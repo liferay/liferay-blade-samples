@@ -90,9 +90,8 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		try {
 			FileVersion fileVersion = fileEntry.getLatestFileVersion();
 
-			int status = fileVersion.getStatus();
-
-			statusLabel = WorkflowConstants.getStatusLabel(status);
+			statusLabel = WorkflowConstants.getStatusLabel(
+				fileVersion.getStatus());
 		}
 		catch (PortalException pe) {
 			_log.error(pe.getMessage(), pe);
