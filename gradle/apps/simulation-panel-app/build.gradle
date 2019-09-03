@@ -1,5 +1,7 @@
 dependencies {
 	compileOnly group: "com.liferay", name: "com.liferay.application.list.api", version: "2.0.0"
+	compileOnly group: "com.liferay", name: "com.liferay.frontend.taglib", version: "2.2.17"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.lang", version: "3.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.product.navigation.simulation", version: "2.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.product.navigation.simulation.web", version: "2.0.0"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
