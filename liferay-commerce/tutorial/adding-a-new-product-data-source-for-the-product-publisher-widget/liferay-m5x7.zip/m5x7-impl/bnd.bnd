@@ -1,0 +1,3 @@
+Bundle-Name: Acme M5X7 Commerce Product Data Source
+Bundle-SymbolicName: com.acme.m5x7.impl
+Bundle-Version: 1.0.0

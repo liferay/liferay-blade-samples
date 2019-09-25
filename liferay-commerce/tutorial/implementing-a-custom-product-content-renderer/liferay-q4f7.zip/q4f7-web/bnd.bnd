@@ -1,0 +1,4 @@
+Bundle-Name: Acme Q4F7 Commerce Product Content Renderer
+Bundle-SymbolicName: com.acme.q4f7.web
+Bundle-Version: 1.0.0
+Web-ContextPath: /q4f7-web

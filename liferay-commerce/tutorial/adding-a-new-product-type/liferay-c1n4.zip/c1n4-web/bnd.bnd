@@ -1,0 +1,4 @@
+Bundle-Name: Acme C1N4 Commerce Product Type
+Bundle-SymbolicName: com.acme.c1n4.web
+Bundle-Version: 1.0.0
+Web-ContextPath: /c1n4-web

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<suppressions>
+	<checkstyle>
+		<suppress checks="MissingAuthorCheck" files=".*" />
+	</checkstyle>
+	<source-check>
+		<suppress checks="CopyrightCheck" files=".*" />
+	</source-check>
+</suppressions>

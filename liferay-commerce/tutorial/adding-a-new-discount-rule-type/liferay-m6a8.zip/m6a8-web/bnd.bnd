@@ -1,0 +1,4 @@
+Bundle-Name: Acme M6A8 Commerce Discount Rule Type
+Bundle-SymbolicName: com.acme.m6a8.web
+Bundle-Version: 1.0.0
+Web-ContextPath: /m6a8-web
