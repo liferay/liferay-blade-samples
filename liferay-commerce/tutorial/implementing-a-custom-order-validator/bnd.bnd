@@ -1,0 +1,3 @@
+Bundle-Name: Acme N9B2 Commerce Order Validator
+Bundle-SymbolicName: com.acme.n9b2.impl
+Bundle-Version: 1.0.0

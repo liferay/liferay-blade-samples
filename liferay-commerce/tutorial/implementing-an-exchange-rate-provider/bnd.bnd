@@ -1,0 +1,3 @@
+Bundle-Name: Acme F2Y1 Commerce Exchange Rate Provider
+Bundle-SymbolicName: com.acme.f2y1.impl
+Bundle-Version: 1.0.0
