@@ -70,7 +70,7 @@
 			name="fontColor"
 			value="<%= fontColor %>"
 		>
-			<aui:option value="voilet">Voilet</aui:option>
+			<aui:option value="violet">Violet</aui:option>
 			<aui:option value="indigo">Indigo</aui:option>
 			<aui:option value="blue">Blue</aui:option>
 			<aui:option value="green">Green</aui:option>
