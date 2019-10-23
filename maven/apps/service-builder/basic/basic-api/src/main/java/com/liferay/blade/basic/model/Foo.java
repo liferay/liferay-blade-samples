@@ -33,7 +33,7 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface Foo extends FooModel, PersistedModel {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify this interface directly. Add methods to <code>com.liferay.blade.basic.model.impl.FooImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
