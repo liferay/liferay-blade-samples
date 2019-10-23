@@ -16,7 +16,6 @@
 
 package com.liferay.blade.basic.service;
 
-import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
@@ -33,10 +32,9 @@ import org.osgi.util.tracker.ServiceTracker;
  * @see FooService
  * @generated
  */
-@ProviderType
 public class FooServiceUtil {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.liferay.blade.basic.service.impl.FooServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
