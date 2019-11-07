@@ -37,7 +37,7 @@
 	/>
 
 	<liferay-ui:search-container-row
-		className="com.liferay.blade.samples.servicebuilder.model.Foo"
+		className="com.liferay.blade.basic.model.Foo"
 		escapedModel="true"
 		modelVar="foo"
 	>
