@@ -16,8 +16,6 @@
 
 package com.liferay.blade.basic.service.http;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * Provides the HTTP utility for the
  * <code>com.liferay.blade.basic.service.FooServiceUtil</code> service
@@ -45,6 +43,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see FooServiceSoap
  * @generated
  */
-@ProviderType
 public class FooServiceHttp {
 }

@@ -46,9 +46,9 @@ import org.osgi.service.component.annotations.Reference;
  */
 public abstract class FooServiceBaseImpl
 	extends BaseServiceImpl
-	implements FooService, AopService, IdentifiableOSGiService {
+	implements AopService, FooService, IdentifiableOSGiService {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this class directly. Use <code>FooService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.blade.basic.service.FooServiceUtil</code>.
