@@ -41,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface FooModel
 	extends BaseModel<Foo>, GroupedModel, ShardedModel, StagedAuditedModel {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this interface directly. All methods that expect a foo model instance should use the {@link Foo} interface instead.
