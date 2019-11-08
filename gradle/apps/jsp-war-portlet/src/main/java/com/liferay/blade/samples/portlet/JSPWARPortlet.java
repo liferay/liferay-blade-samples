@@ -16,9 +16,9 @@
 
 package com.liferay.blade.samples.portlet;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalServiceUtil;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalService;
+import com.liferay.blade.basic.service.FooLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -109,7 +109,7 @@ public class JSPWARPortlet extends MVCPortlet {
 			foo.setField5(field5);
 			foo.isNew();
 
-			getFooLocalService().addFooWithoutId(foo);
+			getFooLocalService().addFoo(foo);
 		}
 		else {
 			if (_log.isInfoEnabled()) {
