@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.basic.servicebuilder.web;
+package com.liferay.blade.samples.servicebuilder.web;
 
 import com.liferay.blade.basic.model.Foo;
 import com.liferay.blade.basic.service.FooLocalService;
@@ -53,7 +53,7 @@ import org.osgi.service.component.annotations.Reference;
 		"javax.portlet.display-name=Service Builder",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.name=com_liferay_blade_basic_servicebuilder_web",
+		"javax.portlet.name=com_liferay_blade_samples_servicebuilder_web",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
