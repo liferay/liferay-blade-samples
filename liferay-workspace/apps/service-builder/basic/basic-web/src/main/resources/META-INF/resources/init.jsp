@@ -24,8 +24,8 @@
 taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
 taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
-<%@ page import="com.liferay.blade.samples.servicebuilder.model.Foo" %><%@
-page import="com.liferay.blade.samples.servicebuilder.service.FooLocalService" %><%@
+<%@ page import="com.liferay.blade.basic.model.Foo" %><%@
+page import="com.liferay.blade.basic.service.FooLocalService" %><%@
 page import="com.liferay.portal.kernel.util.Constants" %><%@
 page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
 page import="com.liferay.portal.kernel.util.StringPool" %><%@
