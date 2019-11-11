@@ -16,8 +16,8 @@
 
 package com.liferay.blade.samples.servicebuilder.web.test;
 
-import com.liferay.blade.samples.servicebuilder.model.Foo;
-import com.liferay.blade.samples.servicebuilder.service.FooLocalService;
+import com.liferay.blade.basic.model.Foo;
+import com.liferay.blade.basic.service.FooLocalService;
 
 import java.util.Date;
 
@@ -45,7 +45,7 @@ public class AddTestData {
 			foo.setField5("new field5 entry" + entries);
 			foo.isNew();
 
-			_fooLocalService.addFooWithoutId(foo);
+			_fooLocalService.addFoo(foo);
 
 			entries--;
 		}

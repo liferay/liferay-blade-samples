@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false" default-lazy="false">
-	<import class="com.liferay.blade.samples.servicebuilder.model.Foo" />
-	<class name="com.liferay.blade.samples.servicebuilder.model.impl.FooImpl" table="SSB_Foo">
+	<import class="com.liferay.blade.basic.model.Foo" />
+	<class name="com.liferay.blade.basic.model.impl.FooImpl" table="SSB_Foo">
 		<id name="fooId" type="long">
 			<generator class="assigned" />
 		</id>
