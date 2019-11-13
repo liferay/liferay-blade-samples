@@ -19,5 +19,6 @@
 		<module>basic-api</module>
 		<module>basic-service</module>
 		<module>basic-web</module>
+		<module>basic-wsdd</module>
 	</modules>
 </project>
