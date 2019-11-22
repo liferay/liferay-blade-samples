@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>basic-wsdd</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>parent.bnd.bundle.plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../../../../parent.bnd.bundle.plugin</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>blade</groupId>
+			<artifactId>basic-service</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>com.liferay.blade.basic.wsdd-${project.version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
+				<version>1.0.10</version>
+				<configuration>
+					<classPath>../basic-service/target/classes</classPath>
+					<inputFileName>../basic-service/service.xml</inputFileName>
+					<outputDirName>src/main/resources</outputDirName>
+					<serverConfigFileName>src/main/resources/WEB-INF/server-config.wsdd</serverConfigFileName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

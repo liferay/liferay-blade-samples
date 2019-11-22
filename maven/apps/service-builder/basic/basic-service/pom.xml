@@ -91,16 +91,6 @@
 					<testDirName>src/java/test</testDirName>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.liferay</groupId>
-				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
-				<version>1.0.3</version>
-				<configuration>
-					<inputFileName>service.xml</inputFileName>
-					<outputDirName>src/main/java</outputDirName>
-					<serverConfigFileName>src/main/resources/server-config.wsdd</serverConfigFileName>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>
