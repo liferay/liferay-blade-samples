@@ -1,0 +1,7 @@
+Bundle-Name: com.liferay.blade.basic.wsdd
+Bundle-SymbolicName: com.liferay.blade.basic.wsdd
+Bundle-Version: 1.0.0
+Fragment-Host: com.liferay.blade.basic.service
+Import-Package:\
+	javax.servlet,\
+	javax.servlet.http
