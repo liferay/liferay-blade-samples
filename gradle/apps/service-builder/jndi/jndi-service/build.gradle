@@ -1,9 +1,3 @@
-buildscript {
-	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
-	}
-}
-
 apply plugin: "com.liferay.portal.tools.service.builder"
 
 dependencies {
@@ -29,30 +23,3 @@ buildService {
 }
 
 group = "com.liferay.blade.samples.jndiservicebuilder"
-
-startTestableTomcat {
-	checkTimeout = 10 * 60 * 1000
-}
-
-testIntegration {
-	testClassesDir = sourceSets.testIntegration.output.classesDir
-	outputs.upToDateWhen { false }
-
-	dependsOn jar//, ":initBundle", startTestableTomcat
-	dependsOn ":apps:service-builder:jndi:jndi-api:jar"
-
-	systemProperty 'jarFile', jar.archivePath
-
-	project(':apps:service-builder:jndi:jndi-api').afterEvaluate { project ->
-		dependsOn project.jar
-		systemProperty 'jndiApiJarFile', project.jar.archivePath
-	}
-}
-
-stopTestableTomcat {
-	doLast {
-		delete new File(liferay.liferayHome, "data")
-	}
-}
-
-check.dependsOn testIntegration
