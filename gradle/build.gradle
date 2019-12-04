@@ -1,6 +1,6 @@
 buildscript {
 	dependencies {
-		classpath group: "com.gradle", name: "build-scan-plugin", version: "1.16"
+		classpath group: "com.gradle", name: "gradle-enterprise-gradle-plugin", version: "3.1"
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
 	}
 
