@@ -27,7 +27,7 @@ startTestableTomcat {
 }
 
 testIntegration {
-	testClassesDir = sourceSets.testIntegration.output.classesDir
+	testClassesDirs = sourceSets.testIntegration.output.classesDirs
 	outputs.upToDateWhen { false }
 
 	dependsOn jar, ":initBundle", startTestableTomcat

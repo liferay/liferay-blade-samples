@@ -1,6 +1,6 @@
 buildscript {
 	dependencies {
-		classpath group: "com.gradle", name: "build-scan-plugin", version: "1.16"
+		classpath group: "com.gradle", name: "gradle-enterprise-gradle-plugin", version: "3.1"
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
 	}
 
@@ -42,7 +42,7 @@ buildScan {
 	termsOfServiceAgree = "yes"
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '4.1'
+wrapper {
+	gradleVersion = '5.6.4'
 	jarFile = "${project.projectDir}/.gradle-wrapper/gradle-wrapper.jar"
 }
