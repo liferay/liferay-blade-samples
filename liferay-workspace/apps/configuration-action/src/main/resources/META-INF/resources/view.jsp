@@ -19,7 +19,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-boolean doConfigure = Validator.isNull(fontFamily) && Validator.isNull(fontColor) && (Validator.isNull(fontSize) || "0".equals(fontSize));
+boolean doConfigure = Validator.isNull(fontFamily) && Validator.isNull(fontColor) && (Validator.isNull(fontSize) || fontSize.equals("0"));
 %>
 
 <c:choose>
