@@ -6,6 +6,7 @@ buildService {
 }
 
 dependencies {
+	compileOnly group: "com.liferay", name: "com.liferay.petra.io", version: "3.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.lang", version: "3.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.string", version: "3.0.0"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.aop.api", version: "1.0.0"
