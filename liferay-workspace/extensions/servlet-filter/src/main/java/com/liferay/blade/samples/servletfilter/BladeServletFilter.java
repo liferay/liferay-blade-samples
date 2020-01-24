@@ -56,7 +56,7 @@ import org.osgi.service.component.annotations.Component;
 				"url-pattern=/web/*",
 				"url-pattern=/change/me"
 		},
-		service=Filter.class
+		service = Filter.class
 )
 public class BladeServletFilter extends BaseFilter {
 
@@ -74,9 +74,8 @@ public class BladeServletFilter extends BaseFilter {
 		// implement your own logic here
 		// determine if you shortcut, or continue in the filter chain
 
-		String requestURI = httpServletRequest.getRequestURI();
-
-		httpServletResponse.addHeader("X-Blade-Servlet-Filter", requestURI);
+		httpServletResponse.addHeader(
+			"X-Blade-Servlet-Filter", httpServletRequest.getRequestURI());
 
 		processFilter(
 			BladeServletFilter.class.getName(), httpServletRequest,
