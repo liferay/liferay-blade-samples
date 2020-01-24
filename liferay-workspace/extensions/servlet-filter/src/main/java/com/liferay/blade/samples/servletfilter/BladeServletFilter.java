@@ -22,10 +22,8 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 		immediate = true,
 		property = {
-// To figure out valid values for before-filter, deploy the portlet 
-// in this project and drop it on a page. If you omit this value or
-// specify a nonexisting value, this filter will be added to the end
-// of the list.
+// To figure out valid values for before-filter, look up Liferay's
+// WEB-INF/liferay-web.xml
 				"before-filter=Auto Login Filter",
 				"dispatcher=REQUEST",
 //				"dispatcher=FORWARD",
