@@ -1,0 +1,4 @@
+Bundle-Name: servlet-filter
+Bundle-SymbolicName: com.liferay.blade.samples.servletfilter
+Bundle-Version: 1.0.0
+-sources: true

@@ -63,6 +63,7 @@ include(
 	'extensions:search-keyword-query-contributor',
 	'extensions:search-model-pre-filter-contributor',
 	'extensions:servlet',
+	'extensions:servlet-filter',
 	'extensions:struts-action',
 	'extensions:struts-portlet-action',
 	'extensions:user-service-wrapper',
