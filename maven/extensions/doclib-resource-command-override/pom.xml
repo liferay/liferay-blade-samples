@@ -19,8 +19,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.document.library.web</artifactId>
-			<version>4.0.1</version>
+			<artifactId>com.liferay.document.library.api</artifactId>
+			<version>6.0.3</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

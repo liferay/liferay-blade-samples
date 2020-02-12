@@ -25,8 +25,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.portal.search.web</artifactId>
-			<version>5.0.7</version>
+			<artifactId>com.liferay.portal.search.web.api</artifactId>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
