@@ -65,8 +65,14 @@
 		</dependency>
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.bnd.annotation</artifactId>
-			<version>3.1.0</version>
+			<artifactId>biz.aQute.bndlib</artifactId>
+			<version>3.5.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.annotation.versioning</artifactId>
+			<version>1.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -79,12 +85,6 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.core</artifactId>
 			<version>6.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.bndlib</artifactId>
-			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

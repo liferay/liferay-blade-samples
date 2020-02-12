@@ -16,9 +16,9 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.service.ServiceWrapper;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides a wrapper for {@link BarService}.
@@ -28,19 +28,20 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @generated
  */
 @ProviderType
-public class BarServiceWrapper implements BarService,
-	ServiceWrapper<BarService> {
+public class BarServiceWrapper
+	implements BarService, ServiceWrapper<BarService> {
+
 	public BarServiceWrapper(BarService barService) {
 		_barService = barService;
 	}
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	@Override
-	public java.lang.String getOSGiServiceIdentifier() {
+	public String getOSGiServiceIdentifier() {
 		return _barService.getOSGiServiceIdentifier();
 	}
 
@@ -55,4 +56,5 @@ public class BarServiceWrapper implements BarService,
 	}
 
 	private BarService _barService;
+
 }

@@ -16,14 +16,15 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.http;
 
-import aQute.bnd.annotation.ProviderType;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the HTTP utility for the
- * {@link com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil} service utility. The
+ * <code>com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil</code> service
+ * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * {@link com.liferay.portal.kernel.security.auth.HttpPrincipal} parameter.
+ * <code>com.liferay.portal.kernel.security.auth.HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -42,8 +43,6 @@ import aQute.bnd.annotation.ProviderType;
  *
  * @author Brian Wing Shun Chan
  * @see BarServiceSoap
- * @see com.liferay.portal.kernel.security.auth.HttpPrincipal
- * @see com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil
  * @generated
  */
 @ProviderType
