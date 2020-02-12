@@ -17,8 +17,8 @@
 	</parent>
 
 	<properties>
-		<bridges.version>6.0.2</bridges.version>
-		<taglib.version>4.0.8</taglib.version>
+		<bridges.version>7.0.1</bridges.version>
+		<taglib.version>5.0.3</taglib.version>
 	</properties>
 
 	<build>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>4.4.0</version>
+			<version>5.4.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

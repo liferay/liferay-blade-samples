@@ -16,10 +16,10 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
 import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The extended model base implementation for the Bar service. Represents a row in the &quot;ADQ_Bar&quot; database table, with each column mapped to a property of this class.
@@ -35,10 +35,11 @@ import com.liferay.blade.samples.servicebuilder.adq.service.BarLocalServiceUtil;
  */
 @ProviderType
 public abstract class BarBaseImpl extends BarModelImpl implements Bar {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. All methods that expect a bar model instance should use the {@link Bar} interface instead.
+	 * Never modify or reference this class directly. All methods that expect a bar model instance should use the <code>Bar</code> interface instead.
 	 */
 	@Override
 	public void persist() {
@@ -49,4 +50,5 @@ public abstract class BarBaseImpl extends BarModelImpl implements Bar {
 			BarLocalServiceUtil.updateBar(this);
 		}
 	}
+
 }

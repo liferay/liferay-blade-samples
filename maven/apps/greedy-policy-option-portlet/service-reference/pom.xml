@@ -25,13 +25,13 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>4.4.0</version>
+			<version>5.4.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.taglib</artifactId>
-			<version>4.0.8</version>
+			<version>5.0.3</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

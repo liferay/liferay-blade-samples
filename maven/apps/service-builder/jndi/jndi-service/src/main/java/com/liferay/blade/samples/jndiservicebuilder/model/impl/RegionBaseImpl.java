@@ -16,10 +16,10 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
 import com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalServiceUtil;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The extended model base implementation for the Region service. Represents a row in the &quot;region&quot; database table, with each column mapped to a property of this class.
@@ -35,10 +35,11 @@ import com.liferay.blade.samples.jndiservicebuilder.service.RegionLocalServiceUt
  */
 @ProviderType
 public abstract class RegionBaseImpl extends RegionModelImpl implements Region {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. All methods that expect a region model instance should use the {@link Region} interface instead.
+	 * Never modify or reference this class directly. All methods that expect a region model instance should use the <code>Region</code> interface instead.
 	 */
 	@Override
 	public void persist() {
@@ -49,4 +50,5 @@ public abstract class RegionBaseImpl extends RegionModelImpl implements Region {
 			RegionLocalServiceUtil.updateRegion(this);
 		}
 	}
+
 }

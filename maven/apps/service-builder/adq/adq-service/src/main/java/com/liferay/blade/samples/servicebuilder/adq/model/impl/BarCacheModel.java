@@ -16,13 +16,10 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.servicebuilder.adq.model.Bar;
-
+import com.liferay.petra.lang.HashUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.util.HashUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -31,15 +28,17 @@ import java.io.ObjectOutput;
 
 import java.util.Date;
 
+import org.osgi.annotation.versioning.ProviderType;
+
 /**
  * The cache model class for representing Bar in entity cache.
  *
  * @author Brian Wing Shun Chan
- * @see Bar
  * @generated
  */
 @ProviderType
 public class BarCacheModel implements CacheModel<Bar>, Externalizable {
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -189,8 +188,7 @@ public class BarCacheModel implements CacheModel<Bar>, Externalizable {
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
+	public void writeExternal(ObjectOutput objectOutput) throws IOException {
 		if (uuid == null) {
 			objectOutput.writeUTF("");
 		}
@@ -249,4 +247,5 @@ public class BarCacheModel implements CacheModel<Bar>, Externalizable {
 	public int field3;
 	public long field4;
 	public String field5;
+
 }
