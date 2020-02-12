@@ -1,4 +1,4 @@
-# Sample Projects for Liferay Portal 7.2
+# Sample Projects for Liferay Portal 7.3
 
 Liferay's sample projects provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
@@ -179,88 +179,6 @@ Refer to this sample's Readmes for more information.
 | Gradle | [./gradle/apps/jsp-war-portlet](./gradle/apps/jsp-war-portlet) |
 | Liferay Workspace | [./liferay-workspace/wars/jsp-war-portlet](./liferay-workspace/wars/jsp-war-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-war-portlet)        |
-
-### Kotlin Portlet
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/kotlin-portlet](./gradle/apps/kotlin-portlet) |
-
-### npm Deduplication Portlets
-
-#### Angular
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm-deduplication-portlets/angular](./gradle/apps/npm-deduplication-portlets/angular) |
-
-### npm
-
-#### Angular npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/angular-npm-portlet](./gradle/apps/npm/angular-npm-portlet) |
-
-#### Angular 6 npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/angular6-npm-portlet](./gradle/apps/npm/angular6-npm-portlet) |
-
-#### Billboard.js npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/billboardjs-npm-portlet](./gradle/apps/npm/billboardjs-npm-portlet) |
-
-#### jQuery npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/jquery-npm-portlet](./gradle/apps/npm/jquery-npm-portlet) |
-
-#### Metal.js npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/metaljs-npm-portlet](./gradle/apps/npm/metaljs-npm-portlet) |
-
-#### React npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/react-npm-portlet](./gradle/apps/npm/react-npm-portlet) |
-
-#### Simple npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/simple-npm-portlet](./gradle/apps/npm/simple-npm-portlet) |
-
-#### Vue.js npm Portlet
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/npm/vuejs-npm-portlet](./gradle/apps/npm/vuejs-npm-portlet) |
 
 ### OSGi Portlet
 
@@ -617,14 +535,6 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/resource-bundle](./liferay-workspace/extensions/resource-bundle)   |
 | Maven      | [./maven/extensions/resource-bundle](./maven/extensions/resource-bundle)        |
 
-### Scheduler Entry
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/scheduler-entry](./gradle/extensions/scheduler-entry) |
-| Liferay Workspace | [./liferay-workspace/extensions/scheduler-entry](./liferay-workspace/extensions/scheduler-entry)   |
-| Maven      | [./maven/extensions/scheduler-entry](./maven/extensions/scheduler-entry)        |
-
 ### Screen Name Validator
 
 Refer to this sample's Readme for more information.
@@ -653,7 +563,7 @@ Refer to this sample's Readme for more information.
 | ---------- | ------------------------------------------------------------------------------- |
 | Gradle | [./gradle/extensions/search-model-pre-filter-contributor](./gradle/extensions/search-model-pre-filter-contributor) |
 | Liferay Workspace | [./liferay-workspace/extensions/search-model-pre-filter-contributor](./liferay-workspace/extensions/search-model-pre-filter-contributor)   |
-| Maven      | [./maven/extensions/search-model-pre-filter-contributor](./maven/extensions/search-model-pre-filter-contributor)     
+| Maven      | [./maven/extensions/search-model-pre-filter-contributor](./maven/extensions/search-model-pre-filter-contributor)
 
 ### Servlet
 
@@ -664,27 +574,6 @@ Refer to this sample's Readme for more information.
 | Gradle | [./gradle/extensions/servlet](./gradle/extensions/servlet) |
 | Liferay Workspace | [./liferay-workspace/extensions/servlet](./liferay-workspace/extensions/servlet)   |
 | Maven      | [./maven/extensions/servlet](./maven/extensions/servlet)        |
-
-### Struts Action
-
-**Template project description**:  Demonstrates how to write a `StrutsAction`.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/struts-action](./gradle/extensions/struts-action) |
-| Liferay Workspace | [./liferay-workspace/extensions/struts-action](./liferay-workspace/extensions/struts-action)   |
-| Maven      | [./maven/extensions/struts-action](./maven/extensions/struts-action)        |
-
-### Struts Portlet Action
-
-**Template project description**: Demonstrates how to write a
-`StrutsPortletAction`.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/struts-portlet-action](./gradle/extensions/struts-portlet-action) |
-| Liferay Workspace | [./liferay-workspace/extensions/struts-portlet-action](./liferay-workspace/extensions/struts-portlet-action)   |
-| Maven      | [./maven/extensions/struts-portlet-action](./maven/extensions/struts-portlet-action)        |
 
 ### User Service Wrapper
 
@@ -698,16 +587,6 @@ Refer to this sample's Readme for more information.
 | Maven      | [./maven/user-service-wrapper](./maven/user-service-wrapper)        |
 
 ## Overrides
-
-### Core JSP Override
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/overrides/core-jsp-override](./gradle/overrides/core-jsp-override) |
-| Liferay Workspace | [./liferay-workspace/overrides/core-jsp-override](./liferay-workspace/overrides/core-jsp-override)   |
-| Maven      | [./maven/overrides/core-jsp-override](./maven/overrides/core-jsp-override)          |
 
 ### Module JSP Override
 
@@ -726,16 +605,6 @@ Refer to this sample's Readme for more information.
 | Gradle | [./gradle/overrides/portlet-form-taglib-override](./gradle/overrides/portlet-form-taglib-override) |
 | Liferay Workspace | [./liferay-workspace/overrides/portlet-form-taglib-override](./liferay-workspace/overrides/portlet-form-taglib-override)   |
 | Maven      | [./maven/overrides/portlet-form-taglib-override](./maven/overrides/portlet-form-taglib-override)          |
-
-### Resource Bundle Override
-
-Refer to this sample's Readme for more information.
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/overrides/resource-bundle-override](./gradle/overrides/resource-bundle-override) |
-| Liferay Workspace | [./liferay-workspace/overrides/resource-bundle-override](./liferay-workspace/overrides/resource-bundle-override)   |
-| Maven      | [./maven/overrides/resource-bundle-override](./maven/overrides/resource-bundle-override)        |
 
 ## Themes
 
