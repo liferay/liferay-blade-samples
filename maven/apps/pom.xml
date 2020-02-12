@@ -24,7 +24,6 @@
     	<module>jsp-portlet-mvc-4-spring</module>
 	    <module>jsp-spring-mvc-portlet</module>
 		<module>jsp-war-portlet</module>
-		<module>npm</module>
 		<module>osgi-portlet</module>
 		<module>render-command-portlet</module>
 		<module>resource-command-portlet</module>
