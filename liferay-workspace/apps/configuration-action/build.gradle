@@ -1,6 +1,7 @@
 dependencies {
 	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.5.0"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.lang", version: "4.0.1"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.string", version: "4.0.1"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype.api", version: "3.0.1"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "5.4.0"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib", version: "5.0.3"
