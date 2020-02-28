@@ -64,7 +64,7 @@ public class QuxLocalServiceImpl extends QuxLocalServiceBaseImpl {
 		qux.setCreateDate(serviceContext.getCreateDate(null));
 		qux.setModifiedDate(serviceContext.getModifiedDate(null));
 
-		quxPersistence.update(qux);
+		qux = quxPersistence.update(qux);
 
 		assetEntryLocalService.updateEntry(
 			userId, qux.getGroupId(), qux.getCreateDate(),
@@ -103,7 +103,7 @@ public class QuxLocalServiceImpl extends QuxLocalServiceBaseImpl {
 
 		qux.setModifiedDate(serviceContext.getModifiedDate(null));
 
-		quxPersistence.update(qux);
+		qux = quxPersistence.update(qux);
 
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
 			qux.getCompanyId(), qux.getGroupId(), qux.getUserId(),
