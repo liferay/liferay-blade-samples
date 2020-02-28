@@ -19,7 +19,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-boolean doConfigure = fontFamily == null && fontColor == null && fontSize == null || fontSize.equals("0");
+boolean doConfigure = (fontFamily == null) && (fontColor == null) && ((fontSize == null) || (fontSize.equals("0")));
 %>
 
 <c:choose>
