@@ -42,7 +42,7 @@ page import="com.liferay.portal.kernel.util.Validator" %>
 	String fontColor = StringPool.BLANK;
 	String fontSize = StringPool.BLANK;
 
-	if (Validator.isNotNull(messageDisplayConfiguration)) {
+	if (messageDisplayConfiguration != null) {
 		fontFamily = portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
 
 		fontColor = portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
