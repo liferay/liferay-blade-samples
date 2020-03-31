@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class IndexSettingsContributor
 	implements com.liferay.portal.search.elasticsearch6.settings.
-				   IndexSettingsContributor {
+		IndexSettingsContributor {
 
 	@Override
 	public int compareTo(

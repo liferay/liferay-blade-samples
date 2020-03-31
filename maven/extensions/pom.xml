@@ -26,6 +26,7 @@
 		<module>gogo</module>
 		<module>index-settings-contributor</module>
 		<module>indexer-post-processor</module>
+		<module>info-list-provider</module>
 		<module>lifecycle-login-preaction</module>
 		<module>model-listener</module>
 		<module>poll-processor</module>
@@ -36,6 +37,7 @@
 		<module>search-keyword-query-contributor</module>
 		<module>search-model-pre-filter-contributor</module>
 		<module>servlet</module>
+		<module>servlet-filter</module>
 		<module>user-service-wrapper</module>
 	</modules>
 </project>

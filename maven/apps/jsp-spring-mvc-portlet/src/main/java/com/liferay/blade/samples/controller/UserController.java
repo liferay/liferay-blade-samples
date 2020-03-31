@@ -2,9 +2,6 @@ package com.liferay.blade.samples.controller;
 
 import com.liferay.blade.samples.dto.User;
 
-import org.springframework.web.portlet.bind.annotation.ActionMapping;
-import org.springframework.web.portlet.bind.annotation.RenderMapping;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -26,6 +23,8 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.portlet.bind.annotation.ActionMapping;
+import org.springframework.web.portlet.bind.annotation.RenderMapping;
 
 /**
  * @author lawrence
@@ -46,7 +45,6 @@ public class UserController {
 
 	@RenderMapping(params = "javax.portlet.action=success")
 	public String showGreeting(ModelMap modelMap) {
-
 		DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d, yyyy G");
 
 		Calendar todayCalendar = Calendar.getInstance();
@@ -70,7 +68,8 @@ public class UserController {
 				_logger.debug("lastName=" + user.getLastName());
 			}
 
-			actionResponse.setRenderParameter("javax.portlet.action", "success");
+			actionResponse.setRenderParameter(
+				"javax.portlet.action", "success");
 
 			sessionStatus.setComplete();
 		}

@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.document.library.web</artifactId>
+			<artifactId>com.liferay.document.library.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -44,7 +44,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>osgi.core</artifactId>
+			<artifactId>org.osgi.core</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

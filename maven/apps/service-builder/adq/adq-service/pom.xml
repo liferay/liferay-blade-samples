@@ -18,7 +18,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.portal.spring.extender</artifactId>
+			<artifactId>com.liferay.portal.spring.extender.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -59,6 +59,7 @@
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>
 			<artifactId>biz.aQute.bndlib</artifactId>
+			<version>4.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -69,7 +70,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.188</version>
+				<version>1.0.311</version>
 				<configuration>
 					<apiDirName>../adq-api/src/main/java</apiDirName>
 					<autoImportDefaultReferences>true</autoImportDefaultReferences>

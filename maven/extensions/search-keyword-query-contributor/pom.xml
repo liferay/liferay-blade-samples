@@ -20,6 +20,7 @@
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>
 			<artifactId>biz.aQute.bndlib</artifactId>
+			<version>4.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -33,6 +34,11 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

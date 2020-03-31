@@ -24,8 +24,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * <p>
  * This class is a wrapper for {@link Bar}.
@@ -35,7 +33,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see Bar
  * @generated
  */
-@ProviderType
 public class BarWrapper
 	extends BaseModelWrapper<Bar> implements Bar, ModelWrapper<Bar> {
 
@@ -305,6 +302,11 @@ public class BarWrapper
 		return model.isField2();
 	}
 
+	/**
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never modify or reference this class directly. All methods that expect a bar model instance should use the <code>Bar</code> interface instead.
+	 */
 	@Override
 	public void persist() {
 		model.persist();
