@@ -17,21 +17,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.bndlib</artifactId>
-			<version>3.5.0</version>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.portal.spring.extender</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.osgi.service.tracker.collections</artifactId>
-			<version>5.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.portal.spring.extender.api</artifactId>
-			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -42,49 +34,31 @@
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.io</artifactId>
-			<version>4.0.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.lang</artifactId>
-			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.string</artifactId>
-			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.portal.aop.api</artifactId>
-			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>5.4.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.annotation.versioning</artifactId>
-			<version>1.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>6.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.service.component.annotations</artifactId>
-			<version>1.3.0</version>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bndlib</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -95,7 +69,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.324</version>
+				<version>1.0.188</version>
 				<configuration>
 					<apiDirName>../adq-api/src/main/java</apiDirName>
 					<autoImportDefaultReferences>true</autoImportDefaultReferences>
