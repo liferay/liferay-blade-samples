@@ -16,11 +16,6 @@
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
-	<properties>
-		<bridges.version>6.0.2</bridges.version>
-		<taglib.version>4.0.8</taglib.version>
-	</properties>
-
 	<build>
 		<finalName>com.liferay.blade.freemarker.portlet-${project.version}</finalName>
 		<plugins>

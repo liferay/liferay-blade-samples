@@ -16,11 +16,6 @@
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
-	<properties>
-		<bridges.version>2.0.0</bridges.version>
-		<taglib.version>2.0.0</taglib.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay</groupId>

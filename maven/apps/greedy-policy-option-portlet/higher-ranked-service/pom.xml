@@ -29,6 +29,7 @@
 		<dependency>
 			<groupId>blade</groupId>
 			<artifactId>service-reference</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
