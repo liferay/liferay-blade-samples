@@ -16,7 +16,7 @@
 
 package com.liferay.blade.samples.doclib.resourcecommand.override;
 
-import com.liferay.document.library.web.constants.DLPortletKeys;
+import com.liferay.document.library.constants.DLPortletKeys;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;

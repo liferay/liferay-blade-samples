@@ -33,14 +33,11 @@
 		<module>portlet-configuration-icon</module>
 		<module>portlet-toolbar-contributor</module>
 		<module>resource-bundle</module>
-		<module>scheduler-entry</module>
 		<module>screen-name-validator</module>
 		<module>search-keyword-query-contributor</module>
 		<module>search-model-pre-filter-contributor</module>
 		<module>servlet</module>
 		<module>servlet-filter</module>
-		<module>struts-action</module>
-		<module>struts-portlet-action</module>
 		<module>user-service-wrapper</module>
 	</modules>
 </project>

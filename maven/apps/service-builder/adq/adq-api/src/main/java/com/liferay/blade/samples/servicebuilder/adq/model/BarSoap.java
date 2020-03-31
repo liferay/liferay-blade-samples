@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.model;
 
-import aQute.bnd.annotation.ProviderType;
-
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -28,11 +26,10 @@ import java.util.List;
  * This class is used by SOAP remote services, specifically {@link com.liferay.blade.samples.servicebuilder.adq.service.http.BarServiceSoap}.
  *
  * @author Brian Wing Shun Chan
- * @see com.liferay.blade.samples.servicebuilder.adq.service.http.BarServiceSoap
  * @generated
  */
-@ProviderType
 public class BarSoap implements Serializable {
+
 	public static BarSoap toSoapModel(Bar model) {
 		BarSoap soapModel = new BarSoap();
 
@@ -45,7 +42,7 @@ public class BarSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setField1(model.getField1());
-		soapModel.setField2(model.getField2());
+		soapModel.setField2(model.isField2());
 		soapModel.setField3(model.getField3());
 		soapModel.setField4(model.getField4());
 		soapModel.setField5(model.getField5());
@@ -222,4 +219,5 @@ public class BarSoap implements Serializable {
 	private int _field3;
 	private Date _field4;
 	private String _field5;
+
 }

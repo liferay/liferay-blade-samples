@@ -34,7 +34,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class ModelPreFilterContributor
 	implements com.liferay.portal.search.spi.model.query.contributor.
-				   ModelPreFilterContributor {
+		ModelPreFilterContributor {
 
 	@Override
 	public void contribute(

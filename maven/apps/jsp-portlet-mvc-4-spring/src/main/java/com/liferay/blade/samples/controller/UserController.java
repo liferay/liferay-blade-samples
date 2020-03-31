@@ -1,7 +1,6 @@
 package com.liferay.blade.samples.controller;
 
 import com.liferay.blade.samples.dto.User;
-
 import com.liferay.portletmvc4spring.bind.annotation.ActionMapping;
 import com.liferay.portletmvc4spring.bind.annotation.RenderMapping;
 
@@ -47,7 +46,6 @@ public class UserController {
 
 	@RenderMapping(params = "javax.portlet.action=success")
 	public String showGreeting(ModelMap modelMap) {
-
 		DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d, yyyy G");
 
 		Calendar todayCalendar = Calendar.getInstance();

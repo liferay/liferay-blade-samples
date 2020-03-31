@@ -16,6 +16,10 @@
 		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
+	<properties>
+		<taglib.version>5.0.3</taglib.version>
+	</properties>
+
 	<build>
 		<finalName>com.liferay.blade.freemarker.portlet-${project.version}</finalName>
 		<plugins>
