@@ -4,5 +4,5 @@ dependencies {
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib"
 	compileOnly group: "javax.portlet", name: "portlet-api"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
-	compileOnly group: "org.osgi", name: "osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.core"
 }

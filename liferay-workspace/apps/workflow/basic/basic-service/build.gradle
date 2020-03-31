@@ -14,7 +14,7 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
 	compileOnly group: "org.osgi", name: "org.osgi.annotation.versioning"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
-	compileOnly group: "org.osgi", name: "osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.core"
 	compileOnly project(":apps:workflow:basic:basic-api")
 
 	testCompile group: "com.liferay.arquillian", name: "com.liferay.arquillian.arquillian-container-liferay", version: "1.0.6"

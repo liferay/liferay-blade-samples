@@ -1,6 +1,6 @@
 dependencies {
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bnd.annotation"
-	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bnd.annotation", version: "4.3.0"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype.api"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 }
