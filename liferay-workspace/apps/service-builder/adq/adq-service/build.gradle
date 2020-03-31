@@ -6,7 +6,7 @@ buildService {
 }
 
 dependencies {
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "4.3.0"
 	compileOnly group: "com.liferay", name: "com.liferay.osgi.service.tracker.collections"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.io"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.lang"

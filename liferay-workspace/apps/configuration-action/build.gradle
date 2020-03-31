@@ -1,11 +1,11 @@
 dependencies {
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "4.3.0"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.lang"
-	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.configuration.metatype.api"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib"
 	compileOnly group: "javax.portlet", name: "portlet-api"
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
-	compileOnly group: "org.osgi", name: "osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.core"
 }
