@@ -1,0 +1,5 @@
+Bundle-Description: InfoListProviders are a way of programmatically filtering content
+Bundle-Name: com.liferay.blade.samples.infolistprovider
+Bundle-SymbolicName: com.liferay.blade.samples.infolistprovider
+Bundle-Version: 1.0.0
+-sources: true
