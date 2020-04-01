@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>blade</groupId>
+		<artifactId>maven</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>maven-wars</artifactId>
+	<name>maven Wars</name>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>jsp-portlet-mvc-4-spring</module>
+		<module>simple-theme</module>
+		<module>jsp-spring-mvc-portlet</module>
+		<module>jsp-war-portlet</module>
+		<module>thymeleaf-portlet-mvc-4-spring</module>
+	</modules>
+</project>

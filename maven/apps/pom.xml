@@ -2,13 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>apps</artifactId>
+	<artifactId>maven-apps</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>maven</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<modules>
@@ -21,9 +22,7 @@
 		<module>freemarker-portlet</module>
 		<module>greedy-policy-option-portlet</module>
 		<module>jsp-portlet</module>
-		<module>jsp-portlet-mvc-4-spring</module>
-		<module>jsp-spring-mvc-portlet</module>
-		<module>jsp-war-portlet</module>
+		<module>npm</module>
 		<module>osgi-portlet</module>
 		<module>render-command-portlet</module>
 		<module>resource-command-portlet</module>
@@ -32,7 +31,6 @@
 		<module>service-builder</module>
 		<module>shared-language-keys</module>
 		<module>simulation-panel-app</module>
-		<module>thymeleaf-portlet-mvc-4-spring</module>
 		<module>workflow</module>
 	</modules>
 </project>

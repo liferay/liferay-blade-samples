@@ -1,0 +1,16 @@
+Bundle-Name: sample-mvc
+Bundle-SymbolicName: sample.mvc
+Bundle-Version: 1.0.0
+Export-Package: sample.mvc.constants
+-contract:\
+	JavaPortlet,\
+	JavaServlet
+-jsp:\
+	*.jsp,\
+	*.jspf
+-metatype: *
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-plugin.metatype: com.liferay.ant.bnd.metatype.MetatypePlugin
+-plugin.resourcebundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.sass: com.liferay.ant.bnd.sass.SassAnalyzerPlugin
+-sass: *

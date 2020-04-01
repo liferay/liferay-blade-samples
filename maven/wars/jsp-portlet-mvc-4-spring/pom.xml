@@ -2,18 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>apps</artifactId>
+		<artifactId>maven-wars</artifactId>
 		<groupId>blade</groupId>
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.liferay.blade.samples</groupId>
-	<artifactId>jsp-spring-mvc-portlet</artifactId>
+	<artifactId>jsp-portlet-mvc-4-spring</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.scope>compile</spring.scope>
-		<spring.version>4.1.9</spring.version>
+		<spring.security.version>5.1.4</spring.security.version>
+		<spring.version>5.1.5</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,6 +37,17 @@
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portletmvc4spring</groupId>
+			<artifactId>com.liferay.portletmvc4spring.framework</artifactId>
+			<version>5.1.0</version>
+			<scope>${spring.scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portletmvc4spring</groupId>
+			<artifactId>com.liferay.portletmvc4spring.security</artifactId>
+			<version>5.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
@@ -90,6 +102,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>spring-jcl</artifactId>
+			<version>${spring.version}.RELEASE</version>
+			<scope>${spring.scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}.RELEASE</version>
 			<scope>${spring.scope}</scope>
@@ -101,10 +119,19 @@
 			<scope>${spring.scope}</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc-portlet</artifactId>
-			<version>${spring.version}.RELEASE</version>
-			<scope>${spring.scope}</scope>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -139,7 +166,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>

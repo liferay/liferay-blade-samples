@@ -11,10 +11,9 @@
 	<packaging>jar</packaging>
 
 	<parent>
+		<artifactId>npm</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<properties>
@@ -144,7 +143,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>
