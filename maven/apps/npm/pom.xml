@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>apps</artifactId>
+		<artifactId>maven-apps</artifactId>
 		<version>1.0.0</version>
 	</parent>
 

@@ -14,10 +14,9 @@
 	</properties>
 
 	<parent>
+		<artifactId>maven-extensions</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
