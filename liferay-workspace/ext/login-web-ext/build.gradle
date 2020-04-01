@@ -1,4 +1,5 @@
 dependencies {
+	compileOnly group: "com.liferay", name: "com.liferay.login.web.api"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.impl"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "javax.portlet", name: "portlet-api"
