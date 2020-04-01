@@ -16,7 +16,7 @@
 	</parent>
 
 	<properties>
-		<taglib.version>5.0.3</taglib.version>
+		<taglib.version>5.0.6</taglib.version>
 	</properties>
 
 	<build>
