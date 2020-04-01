@@ -62,6 +62,7 @@ include(
 	'extensions:search-keyword-query-contributor',
 	'extensions:search-model-pre-filter-contributor',
 	'extensions:servlet',
+	'extensions:servlet-filter',
 	'extensions:user-service-wrapper',
 	'overrides:login-web-resource-bundle-override',
 	'overrides:module-jsp-override',

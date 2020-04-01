@@ -43,8 +43,6 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * The base model implementation for the Country service. Represents a row in the &quot;country&quot; database table, with each column mapped to a property of this class.
  *
@@ -56,11 +54,10 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see CountryImpl
  * @generated
  */
-@ProviderType
 public class CountryModelImpl
 	extends BaseModelImpl<Country> implements CountryModel {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this class directly. All methods that expect a country model instance should use the <code>Country</code> interface instead.
@@ -96,23 +93,20 @@ public class CountryModelImpl
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.
-			get(
-				"value.object.entity.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+			"value.object.entity.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
 		true);
 
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.
-			get(
-				"value.object.finder.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+			"value.object.finder.cache.enabled.com.liferay.blade.samples.jdbcservicebuilder.model.Country"),
 		true);
 
 	public static final boolean COLUMN_BITMASK_ENABLED = false;
 
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(
-		com.liferay.blade.samples.jdbcservicebuilder.service.util.ServiceProps.
-			get(
-				"lock.expiration.time.com.liferay.blade.samples.jdbcservicebuilder.model.Country"));
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
+			"lock.expiration.time.com.liferay.blade.samples.jdbcservicebuilder.model.Country"));
 
 	public CountryModelImpl() {
 	}
@@ -292,7 +286,12 @@ public class CountryModelImpl
 	@Override
 	public Country toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = _escapedModelProxyProviderFunction.apply(
+			Function<InvocationHandler, Country>
+				escapedModelProxyProviderFunction =
+					EscapedModelProxyProviderFunctionHolder.
+						_escapedModelProxyProviderFunction;
+
+			_escapedModel = escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -447,8 +446,12 @@ public class CountryModelImpl
 		return sb.toString();
 	}
 
-	private static final Function<InvocationHandler, Country>
-		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
+	private static class EscapedModelProxyProviderFunctionHolder {
+
+		private static final Function<InvocationHandler, Country>
+			_escapedModelProxyProviderFunction = _getProxyProviderFunction();
+
+	}
 
 	private long _countryId;
 	private String _countryName;

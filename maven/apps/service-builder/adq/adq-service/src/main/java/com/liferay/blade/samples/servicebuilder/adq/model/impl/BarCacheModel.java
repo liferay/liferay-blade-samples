@@ -36,7 +36,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * @author Brian Wing Shun Chan
  * @generated
  */
-@ProviderType
 public class BarCacheModel implements CacheModel<Bar>, Externalizable {
 
 	@Override

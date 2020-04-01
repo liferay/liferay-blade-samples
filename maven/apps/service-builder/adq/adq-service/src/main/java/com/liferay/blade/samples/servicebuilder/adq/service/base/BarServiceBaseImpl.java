@@ -50,7 +50,7 @@ import javax.sql.DataSource;
 public abstract class BarServiceBaseImpl
 	extends BaseServiceImpl implements BarService, IdentifiableOSGiService {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this class directly. Use <code>BarService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil</code>.

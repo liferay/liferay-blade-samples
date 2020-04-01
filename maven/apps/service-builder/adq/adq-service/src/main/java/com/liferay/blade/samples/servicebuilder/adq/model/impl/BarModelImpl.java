@@ -53,8 +53,6 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * The base model implementation for the Bar service. Represents a row in the &quot;ADQ_Bar&quot; database table, with each column mapped to a property of this class.
  *
@@ -67,10 +65,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @JSON(strict = true)
-@ProviderType
 public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this class directly. All methods that expect a bar model instance should use the <code>Bar</code> interface instead.
@@ -122,17 +119,17 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 			"value.object.entity.cache.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 		true);
 
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 			"value.object.finder.cache.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 		true);
 
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(
-		com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 			"value.object.column.bitmask.enabled.com.liferay.blade.samples.servicebuilder.adq.model.Bar"),
 		true);
 
@@ -197,7 +194,7 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	}
 
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(
-		com.liferay.blade.samples.servicebuilder.adq.service.util.PropsUtil.get(
+		com.liferay.blade.samples.servicebuilder.service.util.PropsUtil.get(
 			"lock.expiration.time.com.liferay.blade.samples.servicebuilder.adq.model.Bar"));
 
 	public BarModelImpl() {
@@ -630,7 +627,11 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 	@Override
 	public Bar toEscapedModel() {
 		if (_escapedModel == null) {
-			_escapedModel = _escapedModelProxyProviderFunction.apply(
+			Function<InvocationHandler, Bar> escapedModelProxyProviderFunction =
+				EscapedModelProxyProviderFunctionHolder.
+					_escapedModelProxyProviderFunction;
+
+			_escapedModel = escapedModelProxyProviderFunction.apply(
 				new AutoEscapeBeanHandler(this));
 		}
 
@@ -872,8 +873,12 @@ public class BarModelImpl extends BaseModelImpl<Bar> implements BarModel {
 		return sb.toString();
 	}
 
-	private static final Function<InvocationHandler, Bar>
-		_escapedModelProxyProviderFunction = _getProxyProviderFunction();
+	private static class EscapedModelProxyProviderFunctionHolder {
+
+		private static final Function<InvocationHandler, Bar>
+			_escapedModelProxyProviderFunction = _getProxyProviderFunction();
+
+	}
 
 	private String _uuid;
 	private String _originalUuid;

@@ -16,30 +16,33 @@
 
 package com.liferay.blade.samples.jdbcservicebuilder.model;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.annotation.ImplementationClassName;
 import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.Accessor;
+
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * The extended model interface for the Country service. Represents a row in the &quot;country&quot; database table, with each column mapped to a property of this class.
  *
  * @author Brian Wing Shun Chan
  * @see CountryModel
- * @see com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl
- * @see com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryModelImpl
  * @generated
  */
-@ImplementationClassName("com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl")
+@ImplementationClassName(
+	"com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl"
+)
 @ProviderType
 public interface Country extends CountryModel, PersistedModel {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to <code>com.liferay.blade.samples.jdbcservicebuilder.model.impl.CountryImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Country, Long> COUNTRY_ID_ACCESSOR = new Accessor<Country, Long>() {
+	public static final Accessor<Country, Long> COUNTRY_ID_ACCESSOR =
+		new Accessor<Country, Long>() {
+
 			@Override
 			public Long get(Country country) {
 				return country.getCountryId();
@@ -54,5 +57,7 @@ public interface Country extends CountryModel, PersistedModel {
 			public Class<Country> getTypeClass() {
 				return Country.class;
 			}
+
 		};
+
 }
