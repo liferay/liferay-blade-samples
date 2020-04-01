@@ -7,12 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>service-reference</artifactId>
 	<packaging>jar</packaging>
+	<groupId>blade</groupId>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
+		<artifactId>greedy-policy-option-portlet</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>

@@ -7,13 +7,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>template-context-contributor</artifactId>
 	<version>1.0.0</version>
+	<groupId>template.context.contributor</groupId>
 	<packaging>jar</packaging>
 
 	<parent>
+		<artifactId>maven-themes</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>

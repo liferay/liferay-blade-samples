@@ -5,14 +5,11 @@
 	<groupId>com.liferay.blade.samples</groupId>
 	<artifactId>jsp-war-portlet</artifactId>
 	<packaging>war</packaging>
-
 	<parent>
+		<artifactId>maven-wars</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -49,7 +46,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<phase>compile</phase>

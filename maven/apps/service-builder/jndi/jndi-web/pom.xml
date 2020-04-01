@@ -9,10 +9,9 @@
 	<packaging>jar</packaging>
 
 	<parent>
+		<artifactId>service-builder-jndi</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
