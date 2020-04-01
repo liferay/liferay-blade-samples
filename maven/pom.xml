@@ -21,7 +21,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<liferay.workspace.bundle.url>https://releases-cdn.liferay.com/portal/7.2.1-ga2/liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz</liferay.workspace.bundle.url>
+		<liferay.workspace.bundle.url>https://releases-cdn.liferay.com/portal/7.3.1-ga2/liferay-ce-portal-tomcat-7.3.1-ga2-20200327090859603.tar.gz</liferay.workspace.bundle.url>
 	</properties>
 
 	<dependencyManagement>
@@ -29,21 +29,21 @@
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom</artifactId>
-				<version>7.2.1</version>
+				<version>7.3.1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom.compile.only</artifactId>
-				<version>7.2.1</version>
+				<version>7.3.1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom.third.party</artifactId>
-				<version>7.2.1</version>
+				<version>7.3.1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
