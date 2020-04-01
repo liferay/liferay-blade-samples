@@ -18,14 +18,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.portal.spring.extender</artifactId>
-			<version>2.0.0</version>
+			<artifactId>com.liferay.portal.spring.extender.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.osgi.service.tracker.collections</artifactId>
-			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -36,37 +34,32 @@
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.io</artifactId>
-			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.lang</artifactId>
-			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.petra.string</artifactId>
-			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.portal.aop.api</artifactId>
-			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>4.4.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>
 			<artifactId>biz.aQute.bndlib</artifactId>
-			<version>3.5.0</version>
+			<version>4.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -77,7 +70,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.188</version>
+				<version>1.0.311</version>
 				<configuration>
 					<apiDirName>../adq-api/src/main/java</apiDirName>
 					<autoImportDefaultReferences>true</autoImportDefaultReferences>

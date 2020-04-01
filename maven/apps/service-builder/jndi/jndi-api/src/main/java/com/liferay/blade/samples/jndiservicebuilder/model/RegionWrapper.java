@@ -16,18 +16,11 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.model;
 
-import aQute.bnd.annotation.ProviderType;
-
-import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.service.ServiceContext;
-
-import java.io.Serializable;
+import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>
@@ -38,20 +31,11 @@ import java.util.Objects;
  * @see Region
  * @generated
  */
-@ProviderType
-public class RegionWrapper implements Region, ModelWrapper<Region> {
+public class RegionWrapper
+	extends BaseModelWrapper<Region> implements ModelWrapper<Region>, Region {
+
 	public RegionWrapper(Region region) {
-		_region = region;
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return Region.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return Region.class.getName();
+		super(region);
 	}
 
 	@Override
@@ -79,205 +63,79 @@ public class RegionWrapper implements Region, ModelWrapper<Region> {
 		}
 	}
 
-	@Override
-	public java.lang.Object clone() {
-		return new RegionWrapper((Region)_region.clone());
-	}
-
-	@Override
-	public int compareTo(Region region) {
-		return _region.compareTo(region);
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _region.getExpandoBridge();
-	}
-
 	/**
-	* Returns the primary key of this region.
-	*
-	* @return the primary key of this region
-	*/
+	 * Returns the primary key of this region.
+	 *
+	 * @return the primary key of this region
+	 */
 	@Override
 	public long getPrimaryKey() {
-		return _region.getPrimaryKey();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _region.getPrimaryKeyObj();
+		return model.getPrimaryKey();
 	}
 
 	/**
-	* Returns the region ID of this region.
-	*
-	* @return the region ID of this region
-	*/
+	 * Returns the region ID of this region.
+	 *
+	 * @return the region ID of this region
+	 */
 	@Override
 	public long getRegionId() {
-		return _region.getRegionId();
+		return model.getRegionId();
 	}
 
 	/**
-	* Returns the region name of this region.
-	*
-	* @return the region name of this region
-	*/
+	 * Returns the region name of this region.
+	 *
+	 * @return the region name of this region
+	 */
 	@Override
-	public java.lang.String getRegionName() {
-		return _region.getRegionName();
+	public String getRegionName() {
+		return model.getRegionName();
 	}
 
-	@Override
-	public int hashCode() {
-		return _region.hashCode();
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _region.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _region.isEscapedModel();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _region.isNew();
-	}
-
+	/**
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never modify or reference this class directly. All methods that expect a region model instance should use the <code>Region</code> interface instead.
+	 */
 	@Override
 	public void persist() {
-		_region.persist();
-	}
-
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_region.setCachedModel(cachedModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
-		_region.setExpandoBridgeAttributes(baseModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_region.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		_region.setExpandoBridgeAttributes(serviceContext);
-	}
-
-	@Override
-	public void setNew(boolean n) {
-		_region.setNew(n);
+		model.persist();
 	}
 
 	/**
-	* Sets the primary key of this region.
-	*
-	* @param primaryKey the primary key of this region
-	*/
+	 * Sets the primary key of this region.
+	 *
+	 * @param primaryKey the primary key of this region
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		_region.setPrimaryKey(primaryKey);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		_region.setPrimaryKeyObj(primaryKeyObj);
+		model.setPrimaryKey(primaryKey);
 	}
 
 	/**
-	* Sets the region ID of this region.
-	*
-	* @param regionId the region ID of this region
-	*/
+	 * Sets the region ID of this region.
+	 *
+	 * @param regionId the region ID of this region
+	 */
 	@Override
 	public void setRegionId(long regionId) {
-		_region.setRegionId(regionId);
+		model.setRegionId(regionId);
 	}
 
 	/**
-	* Sets the region name of this region.
-	*
-	* @param regionName the region name of this region
-	*/
+	 * Sets the region name of this region.
+	 *
+	 * @param regionName the region name of this region
+	 */
 	@Override
-	public void setRegionName(java.lang.String regionName) {
-		_region.setRegionName(regionName);
+	public void setRegionName(String regionName) {
+		model.setRegionName(regionName);
 	}
 
 	@Override
-	public com.liferay.portal.kernel.model.CacheModel<Region> toCacheModel() {
-		return _region.toCacheModel();
+	protected RegionWrapper wrap(Region region) {
+		return new RegionWrapper(region);
 	}
 
-	@Override
-	public Region toEscapedModel() {
-		return new RegionWrapper(_region.toEscapedModel());
-	}
-
-	@Override
-	public java.lang.String toString() {
-		return _region.toString();
-	}
-
-	@Override
-	public Region toUnescapedModel() {
-		return new RegionWrapper(_region.toUnescapedModel());
-	}
-
-	@Override
-	public java.lang.String toXmlString() {
-		return _region.toXmlString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof RegionWrapper)) {
-			return false;
-		}
-
-		RegionWrapper regionWrapper = (RegionWrapper)obj;
-
-		if (Objects.equals(_region, regionWrapper._region)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	@Override
-	public Region getWrappedModel() {
-		return _region;
-	}
-
-	@Override
-	public boolean isEntityCacheEnabled() {
-		return _region.isEntityCacheEnabled();
-	}
-
-	@Override
-	public boolean isFinderCacheEnabled() {
-		return _region.isFinderCacheEnabled();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		_region.resetOriginalValues();
-	}
-
-	private final Region _region;
 }

@@ -13,7 +13,7 @@
 		<property name="suffix" value=".jspx" />
 		<property name="viewClass" value="com.liferay.portletmvc4spring.PortletJstlView" />
 	</bean>
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
 		<property name="basenames">
 			<list>
 				<value>content.Language</value>
@@ -21,8 +21,8 @@
 		</property>
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
-	<bean id="springSecurityPortletConfigurer" class="com.liferay.portletmvc4spring.security.SpringSecurityPortletConfigurer" />
-	<bean id="delegatingFilterProxy" class="org.springframework.web.filter.DelegatingFilterProxy">
+	<bean class="com.liferay.portletmvc4spring.security.SpringSecurityPortletConfigurer" id="springSecurityPortletConfigurer" />
+	<bean class="org.springframework.web.filter.DelegatingFilterProxy" id="delegatingFilterProxy">
 		<property name="targetBeanName" value="springSecurityFilterChain" />
 	</bean>
 </beans>

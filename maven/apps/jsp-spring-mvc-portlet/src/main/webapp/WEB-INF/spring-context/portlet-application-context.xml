@@ -13,7 +13,7 @@
 		<property name="suffix" value=".jspx" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
 		<property name="basenames">
 			<list>
 				<value>content.Language</value>

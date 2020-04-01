@@ -2,21 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>apps</artifactId>
-    <groupId>blade</groupId>
-    <version>1.0.0</version>
-  </parent>
+		<artifactId>apps</artifactId>
+		<groupId>blade</groupId>
+		<version>1.0.0</version>
+	</parent>
 	<groupId>com.liferay.blade.samples</groupId>
 	<artifactId>jsp-spring-mvc-portlet</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<portal.kernel.version>4.4.0</portal.kernel.version>
-		<portlet.api.version>2.0</portlet.api.version>
-		<servlet.api.version>3.1.0</servlet.api.version>
-		<portlet.api.version>2.0</portlet.api.version>
-		<servlet.api.version>3.1.0</servlet.api.version>
 		<spring.scope>compile</spring.scope>
 		<spring.version>4.1.9</spring.version>
 	</properties>
@@ -24,19 +19,16 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>${portal.kernel.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
-			<version>${portlet.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -59,13 +51,11 @@
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.service.component.annotations</artifactId>
-			<version>1.3.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
