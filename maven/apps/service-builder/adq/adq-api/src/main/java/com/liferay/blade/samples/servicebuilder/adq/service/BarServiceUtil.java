@@ -16,7 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service;
 
-import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
@@ -33,10 +32,9 @@ import org.osgi.util.tracker.ServiceTracker;
  * @see BarService
  * @generated
  */
-@ProviderType
 public class BarServiceUtil {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.liferay.blade.samples.servicebuilder.adq.service.impl.BarServiceImpl</code> and rerun ServiceBuilder to regenerate this class.

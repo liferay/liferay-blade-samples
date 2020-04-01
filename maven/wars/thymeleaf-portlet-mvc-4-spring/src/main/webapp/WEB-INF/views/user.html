@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:th="http://www.thymeleaf.org">
+	<form class="user-form" method="post" th:action="${mainFormActionURL}" th:id="|${namespace}mainForm|" th:object="${user}">
+		<span class="portlet-msg-error" th:errors="*{global}" th:if="${#fields.hasGlobalErrors()}" />
+
+		<p class="caption" th:text="#{personal-information}" />
+
+		<fieldset>
+			<div class="form-group">
+				<label path="firstName" th:for="|${namespace}firstName|" th:text="#{first-name}" />
+
+				<input class="form-control" th:field="*{firstName}" th:id="|${namespace}firstName|" />
+
+				<span class="portlet-msg-error" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}" />
+			</div>
+
+			<div class="form-group">
+				<label path="lastName" th:for="|${namespace}lastName|" th:text="#{last-name}" />
+
+				<input class="form-control" th:field="*{lastName}" th:id="|${namespace}lastName|" />
+
+				<span class="portlet-msg-error" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}" />
+			</div>
+		</fieldset>
+
+		<hr />
+
+		<input class="btn btn-primary" th:text="${submit}" type="submit" />
+	</form>
+</div>

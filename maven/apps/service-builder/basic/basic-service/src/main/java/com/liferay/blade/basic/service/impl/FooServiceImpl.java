@@ -47,4 +47,5 @@ public class FooServiceImpl extends FooServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use <code>com.liferay.blade.basic.service.FooServiceUtil</code> to access the foo remote service.
 	 */
+
 }

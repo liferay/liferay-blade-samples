@@ -41,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface BarModel
 	extends BaseModel<Bar>, GroupedModel, ShardedModel, StagedAuditedModel {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify or reference this interface directly. All methods that expect a bar model instance should use the {@link Bar} interface instead.

@@ -16,8 +16,6 @@
 
 package com.liferay.blade.samples.servicebuilder.adq.service.http;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * Provides the HTTP utility for the
  * <code>com.liferay.blade.samples.servicebuilder.adq.service.BarServiceUtil</code> service
@@ -45,6 +43,5 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see BarServiceSoap
  * @generated
  */
-@ProviderType
 public class BarServiceHttp {
 }

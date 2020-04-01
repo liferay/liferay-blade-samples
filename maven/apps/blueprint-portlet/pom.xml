@@ -10,17 +10,15 @@
 	<packaging>jar</packaging>
 
 	<parent>
+		<artifactId>maven-apps</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
-			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

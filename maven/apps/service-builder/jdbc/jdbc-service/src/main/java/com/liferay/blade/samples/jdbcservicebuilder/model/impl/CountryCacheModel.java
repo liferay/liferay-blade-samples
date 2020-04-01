@@ -34,7 +34,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * @author Brian Wing Shun Chan
  * @generated
  */
-@ProviderType
 public class CountryCacheModel implements CacheModel<Country>, Externalizable {
 
 	@Override

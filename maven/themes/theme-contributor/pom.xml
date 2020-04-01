@@ -3,18 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>theme-contributor</artifactId>
 	<version>1.0.0</version>
+	<groupId>theme.contributor</groupId>
 	<packaging>jar</packaging>
 
 	<parent>
+		<artifactId>maven-themes</artifactId>
 		<groupId>blade</groupId>
-		<artifactId>parent.bnd.bundle.plugin</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../../parent.bnd.bundle.plugin</relativePath>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<com.liferay.frontend.css.common.version>4.0.0</com.liferay.frontend.css.common.version>
 	</properties>
 	<build>
 		<plugins>
@@ -67,7 +66,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.css.builder</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>
@@ -86,7 +85,6 @@
 		<dependency>
 			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.frontend.css.common</artifactId>
-			<version>${com.liferay.frontend.css.common.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

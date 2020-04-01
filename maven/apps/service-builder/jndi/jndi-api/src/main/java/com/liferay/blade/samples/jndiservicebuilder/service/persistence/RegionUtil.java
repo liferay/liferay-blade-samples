@@ -16,23 +16,23 @@
 
 package com.liferay.blade.samples.jndiservicebuilder.service.persistence;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.blade.samples.jndiservicebuilder.model.Region;
-
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-
-import org.osgi.util.tracker.ServiceTracker;
+import java.io.Serializable;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * The persistence utility for the region service. This utility wraps {@link com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl.RegionPersistenceImpl} and provides direct access to the database for CRUD operations. This utility should only be used by the service layer, as it must operate within a transaction. Never access this utility in a JSP, controller, model, or other front-end class.
+ * The persistence utility for the region service. This utility wraps <code>com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl.RegionPersistenceImpl</code> and provides direct access to the database for CRUD operations. This utility should only be used by the service layer, as it must operate within a transaction. Never access this utility in a JSP, controller, model, or other front-end class.
  *
  * <p>
  * Caching information and settings can be found in <code>portal.properties</code>
@@ -40,12 +40,11 @@ import java.util.List;
  *
  * @author Brian Wing Shun Chan
  * @see RegionPersistence
- * @see com.liferay.blade.samples.jndiservicebuilder.service.persistence.impl.RegionPersistenceImpl
  * @generated
  */
-@ProviderType
 public class RegionUtil {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify this class directly. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
@@ -73,6 +72,15 @@ public class RegionUtil {
 	}
 
 	/**
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#fetchByPrimaryKeys(Set)
+	 */
+	public static Map<Serializable, Region> fetchByPrimaryKeys(
+		Set<Serializable> primaryKeys) {
+
+		return getPersistence().fetchByPrimaryKeys(primaryKeys);
+	}
+
+	/**
 	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery)
 	 */
 	public static List<Region> findWithDynamicQuery(DynamicQuery dynamicQuery) {
@@ -82,19 +90,21 @@ public class RegionUtil {
 	/**
 	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int)
 	 */
-	public static List<Region> findWithDynamicQuery(DynamicQuery dynamicQuery,
-		int start, int end) {
+	public static List<Region> findWithDynamicQuery(
+		DynamicQuery dynamicQuery, int start, int end) {
+
 		return getPersistence().findWithDynamicQuery(dynamicQuery, start, end);
 	}
 
 	/**
 	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int, OrderByComparator)
 	 */
-	public static List<Region> findWithDynamicQuery(DynamicQuery dynamicQuery,
-		int start, int end, OrderByComparator<Region> orderByComparator) {
-		return getPersistence()
-				   .findWithDynamicQuery(dynamicQuery, start, end,
-			orderByComparator);
+	public static List<Region> findWithDynamicQuery(
+		DynamicQuery dynamicQuery, int start, int end,
+		OrderByComparator<Region> orderByComparator) {
+
+		return getPersistence().findWithDynamicQuery(
+			dynamicQuery, start, end, orderByComparator);
 	}
 
 	/**
@@ -112,42 +122,44 @@ public class RegionUtil {
 	}
 
 	/**
-	* Caches the region in the entity cache if it is enabled.
-	*
-	* @param region the region
-	*/
+	 * Caches the region in the entity cache if it is enabled.
+	 *
+	 * @param region the region
+	 */
 	public static void cacheResult(Region region) {
 		getPersistence().cacheResult(region);
 	}
 
 	/**
-	* Caches the regions in the entity cache if it is enabled.
-	*
-	* @param regions the regions
-	*/
+	 * Caches the regions in the entity cache if it is enabled.
+	 *
+	 * @param regions the regions
+	 */
 	public static void cacheResult(List<Region> regions) {
 		getPersistence().cacheResult(regions);
 	}
 
 	/**
-	* Creates a new region with the primary key. Does not add the region to the database.
-	*
-	* @param regionId the primary key for the new region
-	* @return the new region
-	*/
+	 * Creates a new region with the primary key. Does not add the region to the database.
+	 *
+	 * @param regionId the primary key for the new region
+	 * @return the new region
+	 */
 	public static Region create(long regionId) {
 		return getPersistence().create(regionId);
 	}
 
 	/**
-	* Removes the region with the primary key from the database. Also notifies the appropriate model listeners.
-	*
-	* @param regionId the primary key of the region
-	* @return the region that was removed
-	* @throws NoSuchRegionException if a region with the primary key could not be found
-	*/
+	 * Removes the region with the primary key from the database. Also notifies the appropriate model listeners.
+	 *
+	 * @param regionId the primary key of the region
+	 * @return the region that was removed
+	 * @throws NoSuchRegionException if a region with the primary key could not be found
+	 */
 	public static Region remove(long regionId)
-		throws com.liferay.blade.samples.jndiservicebuilder.exception.NoSuchRegionException {
+		throws com.liferay.blade.samples.jndiservicebuilder.exception.
+			NoSuchRegionException {
+
 		return getPersistence().remove(regionId);
 	}
 
@@ -156,126 +168,125 @@ public class RegionUtil {
 	}
 
 	/**
-	* Returns the region with the primary key or throws a {@link NoSuchRegionException} if it could not be found.
-	*
-	* @param regionId the primary key of the region
-	* @return the region
-	* @throws NoSuchRegionException if a region with the primary key could not be found
-	*/
+	 * Returns the region with the primary key or throws a <code>NoSuchRegionException</code> if it could not be found.
+	 *
+	 * @param regionId the primary key of the region
+	 * @return the region
+	 * @throws NoSuchRegionException if a region with the primary key could not be found
+	 */
 	public static Region findByPrimaryKey(long regionId)
-		throws com.liferay.blade.samples.jndiservicebuilder.exception.NoSuchRegionException {
+		throws com.liferay.blade.samples.jndiservicebuilder.exception.
+			NoSuchRegionException {
+
 		return getPersistence().findByPrimaryKey(regionId);
 	}
 
 	/**
-	* Returns the region with the primary key or returns <code>null</code> if it could not be found.
-	*
-	* @param regionId the primary key of the region
-	* @return the region, or <code>null</code> if a region with the primary key could not be found
-	*/
+	 * Returns the region with the primary key or returns <code>null</code> if it could not be found.
+	 *
+	 * @param regionId the primary key of the region
+	 * @return the region, or <code>null</code> if a region with the primary key could not be found
+	 */
 	public static Region fetchByPrimaryKey(long regionId) {
 		return getPersistence().fetchByPrimaryKey(regionId);
 	}
 
-	public static java.util.Map<java.io.Serializable, Region> fetchByPrimaryKeys(
-		java.util.Set<java.io.Serializable> primaryKeys) {
-		return getPersistence().fetchByPrimaryKeys(primaryKeys);
-	}
-
 	/**
-	* Returns all the regions.
-	*
-	* @return the regions
-	*/
+	 * Returns all the regions.
+	 *
+	 * @return the regions
+	 */
 	public static List<Region> findAll() {
 		return getPersistence().findAll();
 	}
 
 	/**
-	* Returns a range of all the regions.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param start the lower bound of the range of regions
-	* @param end the upper bound of the range of regions (not inclusive)
-	* @return the range of regions
-	*/
+	 * Returns a range of all the regions.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of regions
+	 * @param end the upper bound of the range of regions (not inclusive)
+	 * @return the range of regions
+	 */
 	public static List<Region> findAll(int start, int end) {
 		return getPersistence().findAll(start, end);
 	}
 
 	/**
-	* Returns an ordered range of all the regions.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param start the lower bound of the range of regions
-	* @param end the upper bound of the range of regions (not inclusive)
-	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	* @return the ordered range of regions
-	*/
-	public static List<Region> findAll(int start, int end,
-		OrderByComparator<Region> orderByComparator) {
+	 * Returns an ordered range of all the regions.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of regions
+	 * @param end the upper bound of the range of regions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of regions
+	 */
+	public static List<Region> findAll(
+		int start, int end, OrderByComparator<Region> orderByComparator) {
+
 		return getPersistence().findAll(start, end, orderByComparator);
 	}
 
 	/**
-	* Returns an ordered range of all the regions.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link RegionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param start the lower bound of the range of regions
-	* @param end the upper bound of the range of regions (not inclusive)
-	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	* @param retrieveFromCache whether to retrieve from the finder cache
-	* @return the ordered range of regions
-	*/
-	public static List<Region> findAll(int start, int end,
-		OrderByComparator<Region> orderByComparator, boolean retrieveFromCache) {
-		return getPersistence()
-				   .findAll(start, end, orderByComparator, retrieveFromCache);
+	 * Returns an ordered range of all the regions.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>RegionModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of regions
+	 * @param end the upper bound of the range of regions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of regions
+	 */
+	public static List<Region> findAll(
+		int start, int end, OrderByComparator<Region> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findAll(
+			start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
-	* Removes all the regions from the database.
-	*/
+	 * Removes all the regions from the database.
+	 */
 	public static void removeAll() {
 		getPersistence().removeAll();
 	}
 
 	/**
-	* Returns the number of regions.
-	*
-	* @return the number of regions
-	*/
+	 * Returns the number of regions.
+	 *
+	 * @return the number of regions
+	 */
 	public static int countAll() {
 		return getPersistence().countAll();
-	}
-
-	public static java.util.Set<java.lang.String> getBadColumnNames() {
-		return getPersistence().getBadColumnNames();
 	}
 
 	public static RegionPersistence getPersistence() {
 		return _serviceTracker.getService();
 	}
 
-	private static ServiceTracker<RegionPersistence, RegionPersistence> _serviceTracker;
+	private static ServiceTracker<RegionPersistence, RegionPersistence>
+		_serviceTracker;
 
 	static {
 		Bundle bundle = FrameworkUtil.getBundle(RegionPersistence.class);
 
-		ServiceTracker<RegionPersistence, RegionPersistence> serviceTracker = new ServiceTracker<RegionPersistence, RegionPersistence>(bundle.getBundleContext(),
-				RegionPersistence.class, null);
+		ServiceTracker<RegionPersistence, RegionPersistence> serviceTracker =
+			new ServiceTracker<RegionPersistence, RegionPersistence>(
+				bundle.getBundleContext(), RegionPersistence.class, null);
 
 		serviceTracker.open();
 
 		_serviceTracker = serviceTracker;
 	}
+
 }

@@ -6,13 +6,14 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>extensions</artifactId>
+	<artifactId>maven-extensions</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>maven</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<modules>
@@ -26,6 +27,7 @@
 		<module>gogo</module>
 		<module>index-settings-contributor</module>
 		<module>indexer-post-processor</module>
+		<module>info-list-provider</module>
 		<module>lifecycle-login-preaction</module>
 		<module>model-listener</module>
 		<module>poll-processor</module>
@@ -36,6 +38,7 @@
 		<module>search-keyword-query-contributor</module>
 		<module>search-model-pre-filter-contributor</module>
 		<module>servlet</module>
+		<module>servlet-filter</module>
 		<module>user-service-wrapper</module>
 	</modules>
 </project>

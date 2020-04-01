@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0"?>
 
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>blade</groupId>
 	<artifactId>maven</artifactId>
-	<version>1.0.0</version>
 	<packaging>pom</packaging>
+	<version>1.0.0</version>
+	<name>maven</name>
 
 	<repositories>
 		<repository>
@@ -13,6 +18,37 @@
 			<url>https://repository-cdn.liferay.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<liferay.workspace.bundle.url>https://releases-cdn.liferay.com/portal/7.3.1-ga2/liferay-ce-portal-tomcat-7.3.1-ga2-20200327090859603.tar.gz</liferay.workspace.bundle.url>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.liferay.portal</groupId>
+				<artifactId>release.portal.bom</artifactId>
+				<version>7.3.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.liferay.portal</groupId>
+				<artifactId>release.portal.bom.compile.only</artifactId>
+				<version>7.3.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.liferay.portal</groupId>
+				<artifactId>release.portal.bom.third.party</artifactId>
+				<version>7.3.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -36,6 +72,49 @@
 		<plugins>
 			<plugin>
 				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.portal.tools.bundle.support</artifactId>
+				<version>3.5.4</version>
+				<executions>
+					<execution>
+						<id>clean</id>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<phase>clean</phase>
+					</execution>
+
+					<!--
+					<execution>
+						<id>init</id>
+						<goals>
+							<goal>init</goal>
+						</goals>
+						<phase>initialize</phase>
+					</execution>
+					-->
+
+					<execution>
+						<id>deploy</id>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<phase>pre-integration-test</phase>
+					</execution>
+
+					<!--
+					<execution>
+						<id>dist</id>
+						<goals>
+							<goal>dist</goal>
+						</goals>
+						<phase>post-integration-test</phase>
+					</execution>
+					-->
+
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.source.formatter</artifactId>
 				<version>1.0.874</version>
 				<executions>
@@ -47,17 +126,56 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>bnd-process</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>biz.aQute.bnd</groupId>
+						<artifactId>biz.aQute.bndlib</artifactId>
+						<version>4.3.0</version>
+					</dependency>
+					<dependency>
+						<groupId>com.liferay</groupId>
+						<artifactId>com.liferay.ant.bnd</artifactId>
+						<version>3.2.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<modules>
 		<module>apps</module>
 		<module>extensions</module>
 		<module>overrides</module>
 		<module>themes</module>
+		<module>wars</module>
 	</modules>
 </project>

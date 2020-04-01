@@ -30,7 +30,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * @author Brian Wing Shun Chan
  * @generated
  */
-@ProviderType
 public class BarSoap implements Serializable {
 
 	public static BarSoap toSoapModel(Bar model) {

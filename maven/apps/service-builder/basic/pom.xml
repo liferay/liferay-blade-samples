@@ -6,15 +6,16 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>basic</artifactId>
+	<artifactId>service-builder-basic</artifactId>
 	<packaging>pom</packaging>
+	<groupId>blade</groupId>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>blade</groupId>
 		<artifactId>service-builder</artifactId>
 		<version>1.0.0</version>
 	</parent>
-
 	<modules>
 		<module>basic-api</module>
 		<module>basic-service</module>

@@ -18,8 +18,6 @@ package com.liferay.blade.samples.servicebuilder.adq.service;
 
 import com.liferay.portal.kernel.service.ServiceWrapper;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * Provides a wrapper for {@link BarService}.
  *
@@ -27,7 +25,6 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see BarService
  * @generated
  */
-@ProviderType
 public class BarServiceWrapper
 	implements BarService, ServiceWrapper<BarService> {
 
