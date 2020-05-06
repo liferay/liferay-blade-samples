@@ -1,3 +1,19 @@
+/**
+ * Copyright 2000-present Liferay, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.liferay.blade.samples.infolistprovider;
 
 import com.liferay.asset.kernel.model.AssetEntry;
@@ -24,7 +40,7 @@ import org.osgi.service.component.annotations.Reference;
  * InfoListProviders appear on the UI as "Content Set Providers"
  *
  * @author Liferay Docs Team, Olaf Kock
- * @see https://portal.liferay.dev/docs/7-2/frameworks/-/knowledge_base/f/creating-an-information-list-provider
+ * @see <a href="https://portal.liferay.dev/docs/7-2/frameworks/-/knowledge_base/f/creating-an-information-list-provider">Creating an information list provider</a>
  */
 @Component(service = InfoListProvider.class)
 public class BladeInfoListProvider implements InfoListProvider<AssetEntry> {
@@ -67,6 +83,6 @@ public class BladeInfoListProvider implements InfoListProvider<AssetEntry> {
 	}
 
 	@Reference
-	AssetEntryLocalService _assetEntryLocalService;
+	private AssetEntryLocalService _assetEntryLocalService;
 
 }
