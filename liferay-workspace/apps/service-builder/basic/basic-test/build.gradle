@@ -4,8 +4,8 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
 	compileOnly group: "junit", name: "junit"
 	compileOnly group: "org.osgi", name: "org.osgi.annotation.versioning"
-	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 	compileOnly group: "org.osgi", name: "org.osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 	compileOnly project(":apps:service-builder:basic:basic-api")
 }
 
