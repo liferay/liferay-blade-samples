@@ -6,6 +6,6 @@ You can easily modify this sample by customizing its `JSPPortlet` Java class or 
 
 Although this project is built and deployed as a portlet war, it still relies on the WAR->WAB conversion to repackage the portlet as an OSGi-friendly bundle. To that end, it relies on the same kinds of OSGi component declaration and reference resolution as a standard Liferay MVC portlet bundle.
 
-NOTE: The javax.portlet.name value comes from the &lt;portlet-name /&gt; tag value from the liferay-portlet.xml file, except all punctuation will be removed.  For example, "blade-liferay-mvc-sample-portlet" would become "bladeliferaymvcsampleportlet".
+NOTE: The javax.portlet.name value comes from the &lt;portlet-name /&gt; tag value from the liferay-portlet.xml file, except all punctuation will be removed. For example, "blade-liferay-mvc-sample-portlet" would become "bladeliferaymvcsampleportlet".
 
 The web context path comes from the Web-ContextPath key value from the liferay-plugin-package.properties file.

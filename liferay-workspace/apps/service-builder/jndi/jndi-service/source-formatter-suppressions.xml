@@ -2,6 +2,6 @@
 
 <suppressions>
 	<source-check>
-		<suppress checks="ArquillianCheck" files="src/testIntegration/java/com/liferay/blade/samples/jdbcservicebuilder/service/test/ConnectionTest.java" />
+		<suppress checks="ArquillianCheck" files="src/testIntegration/java/com/liferay/blade/samples/jndiservicebuilder/test/ConnectionTest.java" />
 	</source-check>
 </suppressions>
