@@ -62,7 +62,7 @@ public class BazLocalServiceImpl extends BazLocalServiceBaseImpl {
 		baz.setCreateDate(serviceContext.getCreateDate(null));
 		baz.setModifiedDate(serviceContext.getModifiedDate(null));
 
-		bazPersistence.update(baz);
+		baz = bazPersistence.update(baz);
 
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
 			baz.getCompanyId(), baz.getGroupId(), baz.getUserId(),
@@ -90,7 +90,7 @@ public class BazLocalServiceImpl extends BazLocalServiceBaseImpl {
 
 		baz.setModifiedDate(serviceContext.getModifiedDate(null));
 
-		bazPersistence.update(baz);
+		baz = bazPersistence.update(baz);
 
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
 			baz.getCompanyId(), baz.getGroupId(), baz.getUserId(),
