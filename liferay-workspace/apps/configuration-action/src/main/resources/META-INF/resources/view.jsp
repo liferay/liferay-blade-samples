@@ -29,7 +29,7 @@ boolean doConfigure = Validator.isNull(fontFamily) && Validator.isNull(fontColor
 		/>
 	</c:when>
 	<c:otherwise>
-		<p style="font-family:<%= fontFamily %>;color:<%= fontColor %>;font-size:<%= fontSize %>">
+		<p style="font-family: <%= fontFamily %>; color: <%= fontColor %>; font-size: <%= fontSize %>">
 			<liferay-ui:message
 				key="blade_configurationaction_portlet_BladeMessagePortlet.caption"
 			/>
