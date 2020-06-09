@@ -1,3 +1,19 @@
+/**
+ * Copyright 2000-present Liferay, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.liferay.blade.struts.override;
 
 import com.liferay.portal.action.UpdatePasswordAction;
@@ -30,30 +46,37 @@ import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.security.pwd.PwdToolkitUtilThreadLocal;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Kris Patefield
+ */
 @Component(
-	immediate=true,
-	property={
-	"path=/portal/update_password"
-	},
+	immediate = true, property = "path=/portal/update_password",
 	service = StrutsAction.class
 )
-
 public class StrutsActionOverridePasswordChange implements StrutsAction {
 
 	@Override
-	public String execute(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+	public String execute(
+			HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse)
+		throws Exception {
 
 		//Execute out print in logs - Proof this works
-		_log.debug(String.format("Custom StrutsAction implementation has been called"));
+		_log.debug(
+			String.format(
+				"Custom StrutsAction implementation has been called"));
 
 		//Place your logic from here onwards
 		//Standard update password logic included below
@@ -136,11 +159,7 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 
 			return null;
 		}
-
-
 	}
-
-
 
 	protected Ticket getTicket(HttpServletRequest httpServletRequest) {
 		String ticketKey = ParamUtil.getString(httpServletRequest, "ticketKey");
@@ -186,7 +205,6 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 
 		return true;
 	}
-
 
 	protected void resendAsPost(
 			HttpServletRequest httpServletRequest,
@@ -299,8 +317,7 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 			null);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(StrutsActionOverridePasswordChange.class);
-
-
+	private static final Log _log = LogFactoryUtil.getLog(
+		StrutsActionOverridePasswordChange.class);
 
 }
