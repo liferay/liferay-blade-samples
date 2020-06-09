@@ -39,6 +39,7 @@
 		<module>search-model-pre-filter-contributor</module>
 		<module>servlet</module>
 		<module>servlet-filter</module>
+		<module>struts-action-override</module>
 		<module>user-service-wrapper</module>
 	</modules>
 </project>
