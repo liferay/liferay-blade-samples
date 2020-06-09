@@ -1,0 +1,3 @@
+Bundle-Name: struts-action-override
+Bundle-SymbolicName: com.liferay.blade.struts.override
+Bundle-Version: 1.0.0
