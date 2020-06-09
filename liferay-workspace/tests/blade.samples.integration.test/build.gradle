@@ -70,7 +70,7 @@ testIntegration {
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://repository.liferay.com/nexus/content/groups/public/com/liferay/blade/com.liferay.blade.cli/3.7.0-SNAPSHOT/com.liferay.blade.cli-3.7.0-20190603.194543-15.jar")
 	systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")
-	systemProperty 'portalVersion', project.getProperty("liferay.workspace.bundle.url")
+	systemProperty 'portalVersion', project.getProperty("liferay.workspace.product")
 
 	finalizedBy {
 		stopTestableTomcat
