@@ -6,20 +6,19 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>service-builder</artifactId>
+	<artifactId>service-builder-dsp</artifactId>
 	<packaging>pom</packaging>
+	<groupId>blade</groupId>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>blade</groupId>
-		<artifactId>maven-apps</artifactId>
+		<artifactId>service-builder</artifactId>
 		<version>1.0.0</version>
 	</parent>
-
 	<modules>
-		<module>adq</module>
-		<module>basic</module>
-		<module>dsp</module>
-		<module>jdbc</module>
-		<module>jndi</module>
+		<module>dsp-api</module>
+		<module>dsp-service</module>
+		<module>dsp-web</module>
 	</modules>
 </project>
