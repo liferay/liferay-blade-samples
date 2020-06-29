@@ -47,7 +47,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Use <code>com.liferay.blade.samples.dspservicebuilder.service.CountryLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.blade.samples.dspservicebuilder.service.CountryLocalServiceUtil</code>.
@@ -90,4 +90,5 @@ public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		CountryLocalServiceImpl.class);
+
 }
