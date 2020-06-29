@@ -5,7 +5,7 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>dsp-api</artifactId>
+	<artifactId>dsp-web</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -25,12 +25,12 @@
 			<artifactId>com.liferay.portal.kernel</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.util.taglib</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
 			<scope>provided</scope>
@@ -40,7 +40,7 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<scope>provided</scope>
@@ -55,12 +55,12 @@
 			<artifactId>org.osgi.service.component.annotations</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    <dependency>
-      <groupId>blade</groupId>
-      <artifactId>dsp-api</artifactId>
-      <version>1.0.0</version>
-      <scope>provided</scope>
-    </dependency>
+		<dependency>
+			<groupId>blade</groupId>
+			<artifactId>dsp-api</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

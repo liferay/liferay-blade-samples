@@ -25,7 +25,7 @@ package com.liferay.blade.samples.dspservicebuilder.model.impl;
  */
 public class CountryImpl extends CountryBaseImpl {
 
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a country model instance should use the {@link com.liferay.blade.samples.dspservicebuilder.model.Country} interface instead.
