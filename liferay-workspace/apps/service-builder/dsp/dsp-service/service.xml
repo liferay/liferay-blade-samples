@@ -3,14 +3,14 @@
 
 <service-builder dependency-injector="ds" package-path="com.liferay.blade.samples.dspservicebuilder">
 	<namespace>DSPCOUNTRY</namespace>
-    <entity
-        local-service="true"
-        name="Country"
-        remote-service="false"
-        table="country"
-        uuid="false"
-    >
-        <column db-name="id" name="countryId" primary="true" type="long" />
-        <column db-name="name" name="countryName" type="String" />
-    </entity>
+	<entity
+		local-service="true"
+		name="Country"
+		remote-service="false"
+		table="country"
+		uuid="false"
+	>
+		<column db-name="id" name="countryId" primary="true" type="long" />
+		<column db-name="name" name="countryName" type="String" />
+	</entity>
 </service-builder>
