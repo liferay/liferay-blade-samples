@@ -1,3 +1,19 @@
+/**
+ * Copyright 2000-present Liferay, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.liferay.blade.samples.dto;
 
 import java.io.Serializable;
@@ -5,32 +21,32 @@ import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @author lawrence
+ * @author Liferay
  */
 public class User implements Serializable {
 
 	public String getFirstName() {
-		return firstName;
+		return _firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return _lastName;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		_firstName = firstName;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		_lastName = lastName;
 	}
 
 	private static final long serialVersionUID = 1113488483222411111L;
 
 	@NotBlank
-	private String firstName;
+	private String _firstName;
 
 	@NotBlank
-	private String lastName;
+	private String _lastName;
 
 }
