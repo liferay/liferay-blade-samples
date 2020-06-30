@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.samples.servicebuilder.adq.service.persistence.impl.constants;
+package com.liferay.blade.samples.dspservicebuilder.service.persistence.impl.constants;
 
 import com.liferay.petra.string.StringBundler;
 
@@ -26,10 +26,10 @@ import org.osgi.framework.FrameworkUtil;
  * @author Brian Wing Shun Chan
  * @generated
  */
-public class ADQPersistenceConstants {
+public class DSPCOUNTRYPersistenceConstants {
 
 	public static final String BUNDLE_SYMBOLIC_NAME =
-		"com.liferay.blade.samples.servicebuilder.adq.service";
+		"com.liferay.blade.samples.dspservicebuilder.service";
 
 	public static final String ORIGIN_BUNDLE_SYMBOLIC_NAME_FILTER =
 		"(origin.bundle.symbolic.name=" + BUNDLE_SYMBOLIC_NAME + ")";
@@ -38,7 +38,8 @@ public class ADQPersistenceConstants {
 		"(&" + ORIGIN_BUNDLE_SYMBOLIC_NAME_FILTER + "(name=service))";
 
 	static {
-		Bundle bundle = FrameworkUtil.getBundle(ADQPersistenceConstants.class);
+		Bundle bundle = FrameworkUtil.getBundle(
+			DSPCOUNTRYPersistenceConstants.class);
 
 		if (!BUNDLE_SYMBOLIC_NAME.equals(bundle.getSymbolicName())) {
 			throw new IllegalStateException(

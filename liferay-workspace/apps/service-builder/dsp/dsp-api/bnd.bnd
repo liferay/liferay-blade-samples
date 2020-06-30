@@ -1,0 +1,10 @@
+Bundle-Name: dsp-api
+Bundle-SymbolicName: com.liferay.blade.samples.dspservicebuilder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.blade.samples.dspservicebuilder.exception,\
+	com.liferay.blade.samples.dspservicebuilder.model,\
+	com.liferay.blade.samples.dspservicebuilder.service,\
+	com.liferay.blade.samples.dspservicebuilder.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../dsp-service/service.xml
