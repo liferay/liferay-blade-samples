@@ -25,7 +25,7 @@ jobs:
         run: |
           cd liferay-workspace
           ./gradlew --no-daemon checkSourceFormatting
-          cd maven
+          cd ../maven
           mvn source-formatter:format
   Maven-Linux-JDK8:
     runs-on: ubuntu-18.04
