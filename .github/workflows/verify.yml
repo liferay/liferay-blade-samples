@@ -1,7 +1,7 @@
 name: SF and Build Test
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ 7.2 ]
 jobs:
   CheckSourceFormatting:
     name: Check source formatting
