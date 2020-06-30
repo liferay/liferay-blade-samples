@@ -116,7 +116,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.source.formatter</artifactId>
-				<version>1.0.874</version>
+				<version>1.0.885</version>
 				<executions>
 					<execution>
 						<phase>process-sources</phase>
@@ -125,6 +125,10 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<autoFix>true</autoFix>
+					<throwException>true</throwException>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
