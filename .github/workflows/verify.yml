@@ -25,6 +25,8 @@ jobs:
         run: |
           cd liferay-workspace
           ./gradlew --no-daemon checkSourceFormatting
+          cd maven
+          mvn source-formatter:format
   Maven-Linux-JDK8:
     runs-on: ubuntu-18.04
     steps:
@@ -35,8 +37,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: |
-        cd liferay-workspace
-        ./gradlew --no-daemon clean assemble
+        cd maven
+        mvn clean package
   Maven-Linux-JDK11:
     runs-on: ubuntu-18.04
     steps:
@@ -47,7 +49,8 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: |
-        mvn clean package --file maven/pom.xml
+        cd maven
+        mvn clean package
   Maven-MacOS-JDK8:
     runs-on: macos-latest
     steps:
@@ -58,7 +61,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: |
-        mvn clean package --file maven/pom.xml
+        cd maven
+        mvn clean package
   Maven-Windows-JDK8:
     runs-on: windows-latest
     steps:
@@ -69,7 +73,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: |
-        mvn clean package --file maven/pom.xml
+        cd maven
+        mvn clean package
   Gradle-Linux-JDK8:
     runs-on: ubuntu-18.04
     steps:
