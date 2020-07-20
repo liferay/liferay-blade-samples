@@ -26,27 +26,27 @@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
 taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@ page import="com.liferay.blade.samples.configurationaction.MessageDisplayConfiguration" %><%@
-page import="com.liferay.portal.kernel.util.StringPool" %><%@
-page import="com.liferay.portal.kernel.util.Validator" %>
+page import="com.liferay.portal.kernel.util.StringPool" %>
 
 <liferay-theme:defineObjects />
 
 <portlet:defineObjects />
 
 <%
-	MessageDisplayConfiguration messageDisplayConfiguration =
-		(MessageDisplayConfiguration)
-		renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
+MessageDisplayConfiguration messageDisplayConfiguration =
+(MessageDisplayConfiguration)
+renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
 
-	String fontFamily = StringPool.BLANK;
-	String fontColor = StringPool.BLANK;
-	String fontSize = StringPool.BLANK;
+String fontFamily = StringPool.BLANK;
+String fontColor = StringPool.BLANK;
+String fontSize = StringPool.BLANK;
 
-	if (Validator.isNotNull(messageDisplayConfiguration)) {
-		fontFamily = portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
+if (!messageDisplayConfiguration == null)) {
 
-		fontColor = portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
+fontFamily = portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
 
-		fontSize = portletPreferences.getValue("fontSize", String.valueOf(messageDisplayConfiguration.fontSize()));
-	}
+fontColor = portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
+
+fontSize = portletPreferences.getValue("fontSize", String.valueOf(messageDisplayConfiguration.fontSize()));
+}
 %>
