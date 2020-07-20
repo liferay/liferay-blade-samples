@@ -110,8 +110,10 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 					UserLocalServiceUtil.updatePasswordReset(
 						user.getUserId(), true);
 				}
-				catch (UserLockoutException ule) {
-					SessionErrors.add(httpServletRequest, ule.getClass(), ule);
+				catch (UserLockoutException userLockoutException) {
+					SessionErrors.add(
+						httpServletRequest, userLockoutException.getClass(),
+						userLockoutException);
 				}
 			}
 
@@ -221,7 +223,7 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 		Map<String, String[]> parameterMap =
 			httpServletRequest.getParameterMap();
 
-		StringBundler sb = new StringBundler(7 + parameterMap.size() * 5);
+		StringBundler sb = new StringBundler(7 + (parameterMap.size() * 5));
 
 		sb.append("<html><body onload=\"document.fm.submit();\">");
 		sb.append("<form action=\"");
