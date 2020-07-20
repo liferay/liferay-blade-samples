@@ -223,7 +223,7 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 		Map<String, String[]> parameterMap =
 			httpServletRequest.getParameterMap();
 
-		StringBundler sb = new StringBundler(7 + parameterMap.size() * 5);
+		StringBundler sb = new StringBundler(7 + (parameterMap.size() * 5));
 
 		sb.append("<html><body onload=\"document.fm.submit();\">");
 		sb.append("<form action=\"");

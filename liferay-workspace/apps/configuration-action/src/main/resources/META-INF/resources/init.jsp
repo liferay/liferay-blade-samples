@@ -33,19 +33,20 @@ page import="com.liferay.portal.kernel.util.StringPool" %>
 <portlet:defineObjects />
 
 <%
-	MessageDisplayConfiguration messageDisplayConfiguration =
-		(MessageDisplayConfiguration)
-		renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
+MessageDisplayConfiguration messageDisplayConfiguration =
+(MessageDisplayConfiguration)
+renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
 
-	String fontFamily = StringPool.BLANK;
-	String fontColor = StringPool.BLANK;
-	String fontSize = StringPool.BLANK;
+String fontFamily = StringPool.BLANK;
+String fontColor = StringPool.BLANK;
+String fontSize = StringPool.BLANK;
 
-	if (!messageDisplayConfiguration == null)) {
-		fontFamily = portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
+if (!messageDisplayConfiguration == null)) {
 
-		fontColor = portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
+fontFamily = portletPreferences.getValue("fontFamily", messageDisplayConfiguration.fontFamily());
 
-		fontSize = portletPreferences.getValue("fontSize", String.valueOf(messageDisplayConfiguration.fontSize()));
-	}
+fontColor = portletPreferences.getValue("fontColor", messageDisplayConfiguration.fontColor());
+
+fontSize = portletPreferences.getValue("fontSize", String.valueOf(messageDisplayConfiguration.fontSize()));
+}
 %>
