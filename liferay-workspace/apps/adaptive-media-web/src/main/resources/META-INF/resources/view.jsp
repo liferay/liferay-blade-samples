@@ -28,10 +28,9 @@ List<FileEntry> fileEntries = DLAppServiceUtil.getFileEntries(scopeGroupId, DLFo
 int columns = 0;
 
 for (FileEntry fileEntry : fileEntries) {
-	boolean row = ((columns % 2) == 0);
 %>
 
-	<c:if test="<%= row %>">
+	<c:if test="<%= (columns % 2) == 0 %>">
 		<c:if test="<%= columns != 0 %>">
 			</div>
 		</c:if>
