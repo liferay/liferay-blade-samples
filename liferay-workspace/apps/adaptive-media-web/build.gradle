@@ -1,0 +1,7 @@
+dependencies {
+	compileOnly group: "com.liferay", name: "com.liferay.adaptive.media.image.taglib"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+	compileOnly group: "javax.portlet", name: "portlet-api"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+}
