@@ -1,0 +1,14 @@
+{
+    "batchMode": false,
+    "answers": {
+        "*": {
+            "liferayDir": "/opt/dev/projects/github/liferay-blade-samples/yarn-workspace/bundles",
+            "target": "react-widget",
+            "folder": "modules/js-vue",
+            "description": "js-vue",
+            "category": "category.sample",
+            "liferayPresent": "true",
+            "createInitializer": false
+        }
+    }
+}
