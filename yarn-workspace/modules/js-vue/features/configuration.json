@@ -1,0 +1,35 @@
+{
+	"$schema": "https://raw.githubusercontent.com/liferay/liferay-js-toolkit/master/resources/schemas/configuration.schema.json",
+	"system": {
+		"category": "js-vue",
+		"name": "js-vue",
+		"fields": {
+			"fruit": {
+				"type": "string",
+				"name": "Favorite fruit",
+				"description": "Choose the fruit you like the most",
+				"default": "orange",
+				"options": {
+					"orange": "An orange",
+					"pear": "A pear",
+					"apple": "An apple"
+				}
+			}
+		}
+	},
+	"portletInstance": {
+		"fields": {
+			"drink": {
+				"type": "string",
+				"name": "Favorite drink",
+				"description": "Choose the drink you like the most",
+				"default": "water",
+				"options": {
+					"water": "Water",
+					"wine": "Wine",
+					"beer": "Beer"
+				}
+			}
+		}
+	}
+}
