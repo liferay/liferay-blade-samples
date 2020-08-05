@@ -28,7 +28,7 @@ jobs:
           cd ../maven
           mvn source-formatter:format
           cd ../yarn-workspace
-          ./gradlw --no-daemon checkSourceFormatting
+          ./gradlew --no-daemon checkSourceFormatting
   Maven-Linux-JDK8:
     runs-on: ubuntu-18.04
     steps:
