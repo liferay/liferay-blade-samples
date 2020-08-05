@@ -1,0 +1,10 @@
+{
+	"webpack": {
+		"rules": [
+			{
+				"test": "src\\/.*\\.js$",
+				"use": "babel-loader"
+			}
+		]
+	}
+}
