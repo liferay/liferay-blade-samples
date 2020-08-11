@@ -1,0 +1,19 @@
+{
+	"name": "redux-provider",
+	"version": "1.0.0",
+	"description": "Redux Provider",
+	"dependencies": {
+		"react-redux": "5.1.1",
+		"redux": "4.0.1",
+		"redux-actions": "2.6.5"
+	},
+	"devDependencies": {
+		"liferay-npm-bundler": "^2.8.0",
+		"liferay-npm-build-support": "^2.8.0"
+	},
+	"scripts": {
+		"build": "npm run copy-assets && liferay-npm-bundler",
+		"copy-assets": "lnbs-copy-assets",
+		"deploy": "npm run build && lnbs-deploy"
+	}
+}
