@@ -1,0 +1,72 @@
+import java.nio.file.FileSystem
+import java.nio.file.FileSystems
+import java.nio.file.FileVisitResult
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+import java.nio.file.SimpleFileVisitor
+import java.nio.file.attribute.BasicFileAttributes
+
+allprojects {
+	task pluginInfo
+
+	pluginInfo {
+		doLast {
+			def appliedClasses = []
+			def classesIds = [:]
+			Set classpath = []
+
+			plugins.each {
+				appliedClasses << it.class.name
+				it.class.classLoader.getURLs().each { classpath.add(it)}
+				def jarUrl = it.class.protectionDomain.codeSource.location
+				def pluginPath = Paths.get(jarUrl.toURI())
+				def pluginUri = URI.create("jar:" + pluginPath.toUri())
+
+				def jarFs
+
+				try {
+					jarFs = FileSystems.getFileSystem(pluginUri)
+				}
+				catch (Throwable t) {
+				}
+
+				if (jarFs == null) {
+					jarFs = FileSystems.newFileSystem(pluginUri, Collections.emptyMap())
+				}
+
+				def gradlePlugins = jarFs.getPath("/META-INF/gradle-plugins")
+
+				Files.walkFileTree(gradlePlugins, new SimpleFileVisitor<Path>() {
+						@Override
+						public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+							if (path.toString().endsWith(".properties")) {
+								Properties properties = new Properties()
+								properties.load(jarFs.provider.newInputStream(path))
+
+								String implClass = properties.get("implementation-class")
+
+								if (implClass != null) {
+									classesIds.put(implClass, path.fileName.toString().replaceAll(".properties\$",""))
+								}
+							}
+
+							return FileVisitResult.CONTINUE;
+						}
+					});
+			}
+
+			println "Plugin classpath..."
+
+			classpath.each { println it }
+
+			println "Applied ids..."
+
+			def appliedIds = classesIds.findAll { appliedClasses.contains(it.key) }
+
+			appliedIds.each { println "$it.value = $it.key" }
+
+			println "\nTotal plugins applied = ${appliedIds.size()}"
+		}
+	}
+}
