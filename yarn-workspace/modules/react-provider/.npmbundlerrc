@@ -1,0 +1,10 @@
+{
+	"create-jar": {
+		"output-dir": "dist",
+		"features": {
+			"js-extender": false,
+			"web-context": "/react-provider"
+		}		
+	},
+	"dump-report": false
+}

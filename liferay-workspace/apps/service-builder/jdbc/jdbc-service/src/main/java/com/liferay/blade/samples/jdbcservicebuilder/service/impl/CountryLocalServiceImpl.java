@@ -64,15 +64,15 @@ public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 					_log.info("Record from external database:");
 				}
 
-				String id = resultSet.getString("id");
-
 				if (_log.isInfoEnabled()) {
+					String id = resultSet.getString("id");
+
 					_log.info("ID: " + id);
 				}
 
-				String name = resultSet.getString("name");
-
 				if (_log.isInfoEnabled()) {
+					String name = resultSet.getString("name");
+
 					_log.info("Name: " + name + System.lineSeparator());
 				}
 			}

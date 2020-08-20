@@ -44,12 +44,12 @@ public class LogMaxFailures implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByEmailAddress(
-				companyId, emailAddress);
-
-			boolean lockout = user.isLockout();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserByEmailAddress(
+					companyId, emailAddress);
+
+				boolean lockout = user.isLockout();
+
 				_log.info(
 					"onFailureByEmailAddress: " + emailAddress + " is " +
 						(lockout ? "" : "not") + " locked out.");
@@ -67,12 +67,12 @@ public class LogMaxFailures implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByScreenName(
-				companyId, screenName);
-
-			boolean lockout = user.isLockout();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserByScreenName(
+					companyId, screenName);
+
+				boolean lockout = user.isLockout();
+
 				_log.info(
 					"onFailureByScreenName: " + screenName + " is " +
 						(lockout ? "" : "not") + " locked out.");
@@ -90,11 +90,11 @@ public class LogMaxFailures implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserById(userId);
-
-			boolean lockout = user.isLockout();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserById(userId);
+
+				boolean lockout = user.isLockout();
+
 				_log.info(
 					"onFailureById: userId " + userId + " is " +
 						(lockout ? "" : "not") + " locked out.");
