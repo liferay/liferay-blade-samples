@@ -43,12 +43,12 @@ public class LogAuthFailure implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByEmailAddress(
-				companyId, emailAddress);
-
-			int failures = user.getFailedLoginAttempts();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserByEmailAddress(
+					companyId, emailAddress);
+
+				int failures = user.getFailedLoginAttempts();
+
 				_log.info(
 					"onFailureByEmailAddress: " + emailAddress +
 						" has failed to login " + failures + " times");
@@ -66,12 +66,12 @@ public class LogAuthFailure implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserByScreenName(
-				companyId, screenName);
-
-			int failures = user.getFailedLoginAttempts();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserByScreenName(
+					companyId, screenName);
+
+				int failures = user.getFailedLoginAttempts();
+
 				_log.info(
 					"onFailureByScreenName: " + screenName +
 						" has failed to login " + failures + " times");
@@ -89,11 +89,11 @@ public class LogAuthFailure implements AuthFailure {
 		throws AuthException {
 
 		try {
-			User user = UserLocalServiceUtil.getUserById(userId);
-
-			int failures = user.getFailedLoginAttempts();
-
 			if (_log.isInfoEnabled()) {
+				User user = UserLocalServiceUtil.getUserById(userId);
+
+				int failures = user.getFailedLoginAttempts();
+
 				_log.info(
 					"onFailureByUserId: userId " + userId +
 						" has failed to login " + failures + " times");
