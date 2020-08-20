@@ -1,0 +1,20 @@
+{
+	"name": "redux-store",
+	"version": "1.0.0",
+	"description": "Redux Store",
+	"dependencies": {
+		"papaparse": "^4.6.3"
+	},
+	"devDependencies": {
+		"liferay-npm-bundler": "^2.8.0",
+		"liferay-npm-build-support": "^2.8.0",
+		"babel-cli": "6.26.0",
+		"babel-preset-env": "1.7.0"
+	},
+	"scripts": {
+		"build": "babel --source-maps -d build src && npm run copy-assets && liferay-npm-bundler",
+		"copy-assets": "lnbs-copy-assets",
+		"deploy": "npm run build && lnbs-deploy"
+	},
+	"main": "index.js"
+}

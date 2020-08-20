@@ -60,9 +60,9 @@ public class BladePollProcessor extends BasePollerProcessor {
 
 	@Override
 	protected void doSend(PollerRequest pollerRequest) throws Exception {
-		String status = getString(pollerRequest, "status");
-
 		if (_log.isInfoEnabled()) {
+			String status = getString(pollerRequest, "status");
+
 			_log.info("Poller status:" + status);
 		}
 	}

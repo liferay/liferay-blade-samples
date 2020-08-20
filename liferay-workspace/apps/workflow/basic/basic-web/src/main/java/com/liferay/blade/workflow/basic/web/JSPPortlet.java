@@ -107,16 +107,17 @@ public class JSPPortlet extends MVCPortlet {
 	}
 
 	protected void updateBaz(ActionRequest actionRequest) throws Exception {
-		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
-			WebKeys.THEME_DISPLAY);
-
 		long bazId = ParamUtil.getLong(actionRequest, "bazId");
-		long groupId = ParamUtil.getLong(actionRequest, "groupId");
 
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 			Baz.class.getName(), actionRequest);
 
 		if (bazId <= 0) {
+			ThemeDisplay themeDisplay =
+				(ThemeDisplay)actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+
+			long groupId = ParamUtil.getLong(actionRequest, "groupId");
+
 			_bazLocalService.addBaz(
 				themeDisplay.getUserId(), groupId, serviceContext);
 		}

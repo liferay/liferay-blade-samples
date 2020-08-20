@@ -1,9 +1,12 @@
 {
-	"private": true,
-	"workspaces": {
-		"packages": [
-			"modules/*",
-			"modules/*/*"
-		]
-	}
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "modules/redux-store",
+            "modules/react-provider",
+            "modules/js-vue",
+            "modules/redux-provider",
+            "modules/js-react"
+        ]
+    }
 }

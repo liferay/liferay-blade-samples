@@ -7,7 +7,7 @@
 **/bin
 **/build
 **/build_gradle
-**/node_modules
+**/node_modules*
 **/test-coverage
 **/tmp
 **/.web_bundle_build

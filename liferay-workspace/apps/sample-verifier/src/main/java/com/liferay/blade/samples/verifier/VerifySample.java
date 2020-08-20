@@ -114,8 +114,6 @@ public class VerifySample {
 			sr -> sr.getProperty("objectClass") instanceof String[]
 		).forEach(
 			sr -> {
-				String type = ((String[])sr.getProperty("objectClass"))[0];
-
 				Bundle[] usingBundles = Optional.ofNullable(
 					sr.getUsingBundles()
 				).orElseGet(
@@ -123,6 +121,8 @@ public class VerifySample {
 				);
 
 				if (usingBundles.length > 0) {
+					String type = ((String[])sr.getProperty("objectClass"))[0];
+
 					_messages.append(
 						"\t" + _CHECK + "\tService{" + type + "} used by " +
 							usingBundles[0].getSymbolicName() + "\n");
