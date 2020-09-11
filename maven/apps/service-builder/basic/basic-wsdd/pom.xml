@@ -33,11 +33,27 @@
 				<artifactId>com.liferay.portal.tools.wsdd.builder</artifactId>
 				<version>1.0.10</version>
 				<configuration>
-					<classPath>../basic-service/target/classes</classPath>
 					<inputFileName>../basic-service/service.xml</inputFileName>
 					<outputDirName>src/main/resources</outputDirName>
 					<serverConfigFileName>src/main/resources/WEB-INF/server-config.wsdd</serverConfigFileName>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.liferay.portal</groupId>
+						<artifactId>com.liferay.portal.kernel</artifactId>
+						<version>4.4.0</version>
+					</dependency>
+					<dependency>
+						<groupId>blade</groupId>
+						<artifactId>basic-api</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+					<dependency>
+						<groupId>blade</groupId>
+						<artifactId>basic-service</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
