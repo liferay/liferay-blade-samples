@@ -1,0 +1,13 @@
+{
+	"translatorTextKey": "",
+	"supportedLocales": ["es_ES"],
+	"liferayDir": "/opt/liferay",
+	"webpack": {
+		"rules": [
+			{
+				"test": "src\\/.*\\.js$",
+				"use": "babel-loader"
+			}
+		]
+	}
+}

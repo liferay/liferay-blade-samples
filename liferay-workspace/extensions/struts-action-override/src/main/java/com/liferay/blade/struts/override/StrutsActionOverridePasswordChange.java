@@ -81,10 +81,6 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 		//Place your logic from here onwards
 		//Standard update password logic included below
 
-		ThemeDisplay themeDisplay =
-			(ThemeDisplay)httpServletRequest.getAttribute(
-				WebKeys.THEME_DISPLAY);
-
 		Ticket ticket = getTicket(httpServletRequest);
 
 		if ((ticket != null) &&
@@ -119,6 +115,10 @@ public class StrutsActionOverridePasswordChange implements StrutsAction {
 
 			return "portal.update_password";
 		}
+
+		ThemeDisplay themeDisplay =
+			(ThemeDisplay)httpServletRequest.getAttribute(
+				WebKeys.THEME_DISPLAY);
 
 		try {
 			updatePassword(

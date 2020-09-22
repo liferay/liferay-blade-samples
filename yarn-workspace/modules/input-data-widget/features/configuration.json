@@ -1,0 +1,13 @@
+{
+	"$schema": "https://raw.githubusercontent.com/liferay/liferay-js-toolkit/master/resources/schemas/configuration.schema.json",
+	"portletInstance": {
+		"fields": {
+			"initialCsv": {
+				"type": "string",
+				"name": "initial-csv",
+				"description": "initial-csv-help",
+				"default": ""
+			}
+		}
+	}
+}
