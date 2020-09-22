@@ -1,0 +1,31 @@
+{
+	"config": {
+		"imports": {
+			"react-provider": {
+				"highcharts": "7.1.1",
+				"prop-types": "15.6.2",
+				"react": "16.8.6",
+				"react-dom": "16.8.6",
+				"react-jsx-highcharts": "3.5.0"
+			},
+			"redux-provider": {
+				"react-redux": "5.1.1",
+				"redux": "4.0.1",
+				"redux-actions": "2.6.5"
+			},
+			"redux-store": {
+				"/": "1.0.0"
+			}
+		}
+	},
+	"create-jar": {
+		"output-dir": "dist",
+		"features": {
+			"js-extender": true,
+			"web-context": "/display-data-widget",
+			"localization": "features/localization/Language",
+			"configuration": "features/configuration.json"
+		}
+	},
+	"dump-report": false
+}

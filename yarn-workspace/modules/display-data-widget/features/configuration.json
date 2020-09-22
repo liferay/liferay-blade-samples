@@ -1,0 +1,38 @@
+{
+	"$schema": "https://raw.githubusercontent.com/liferay/liferay-js-toolkit/master/resources/schemas/configuration.schema.json",
+	"system": {
+		"category": "display-data-widget",
+		"name": "display-data-widget",
+		"fields": {
+			"measureType": {
+				"type": "string",
+				"name": "measure-type",
+				"description": "measure-type-help",
+				"default": "fat",
+				"options": {
+					"fat": "fat",
+					"muscle": "muscle",
+					"weight": "weight",
+					"visceralFat": "visceral-fat"
+				}
+			},
+			"period": {
+				"type": "string",
+				"name": "period",
+				"description": "period-help",
+				"default": "1m",
+				"options": {
+					"1m": "period-1m",
+					"2m": "period-2m",
+					"3m": "period-3m",
+					"6m": "period-6m",
+					"1y": "period-1y",
+					"all": "period-all"
+				}
+			}
+		}
+	},
+	"portletInstance": {
+		"fields": {}
+	}
+}

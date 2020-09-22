@@ -1,0 +1,17 @@
+.BodyTrackerAnalysis > .measureTypeBlock {
+	border: 1px solid #eee;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1em;
+	padding: 0.2em 0.6em;
+}
+
+.BodyTrackerAnalysis > .measureTypeBlock > label > input {
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+.BodyTrackerAnalysis > .periodBlock {
+	display: flex;
+	justify-content: center;
+}
