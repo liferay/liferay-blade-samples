@@ -40,7 +40,6 @@ import com.liferay.portal.kernel.util.PortletKeys;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,6 +77,7 @@ public class BladeActionDisplayContext
 	 * If you want to see context menu in Documents and Media portlet , you should check "Show Actions"
 	 * in portlet configuration
 	 */
+	@Override
 	public Menu getMenu() throws PortalException {
 		Menu menu = super.getMenu();
 
@@ -121,9 +121,7 @@ public class BladeActionDisplayContext
 		String mimeType = fileVersion.getMimeType();
 		String version = fileVersion.getVersion();
 
-		Date date = fileVersion.getCreateDate();
-
-		String createdDate = date.toString();
+		String createdDate = String.valueOf(fileVersion.getCreateDate());
 
 		String createdUserName = fileVersion.getUserName();
 		String statusLabel = WorkflowConstants.getStatusLabel(
