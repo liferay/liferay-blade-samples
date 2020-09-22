@@ -1,0 +1,9 @@
+.BodyDataLoader > textarea {
+	border: 1px solid #eee;
+	color: #444;
+	display: block;
+	font-size: 9pt;
+	height: 350px;
+	margin-bottom: 1em;
+	width: 100%;
+}

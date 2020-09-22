@@ -1,0 +1,33 @@
+{
+	"name": "input-data-widget",
+	"version": "1.0.0",
+	"description": "Input Data Widget",
+	"devDependencies": {
+		"liferay-npm-bundler": "^2.8.0",
+		"liferay-npm-build-support": "^2.8.0",
+		"copy-webpack-plugin": "4.6.0",
+		"webpack": "4.29.6",
+		"webpack-cli": "3.3.0",
+		"webpack-dev-server": "3.2.1",
+		"babel-cli": "6.26.0",
+		"babel-preset-env": "1.7.0",
+		"babel-preset-react": "6.24.1",
+		"babel-loader": "7.1.5"
+	},
+	"scripts": {
+		"build": "babel --source-maps -d build src && npm run copy-assets && liferay-npm-bundler",
+		"copy-assets": "lnbs-copy-assets",
+		"translate": "lnbs-translate",
+		"deploy": "npm run build && lnbs-deploy",
+		"start": "lnbs-start"
+	},
+	"portlet": {
+		"com.liferay.portlet.display-category": "Liferay JS Toolkit Showcase",
+		"com.liferay.portlet.header-portlet-css": "/css/styles.css",
+		"com.liferay.portlet.instanceable": true,
+		"javax.portlet.name": "input_data_widget",
+		"javax.portlet.security-role-ref": "power-user,user",
+		"javax.portlet.resource-bundle": "content.Language"
+	},
+	"main": "index.js"
+}
