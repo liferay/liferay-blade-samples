@@ -28,15 +28,13 @@ Baz baz = null;
 if (bazId > 0) {
 	baz = bazLocalService.getBaz(bazId);
 }
-
-long groupId = BeanParamUtil.getLong(baz, request, "groupId", scopeGroupId);
 %>
 
 <aui:form action="<%= (javax.portlet.ActionURL)renderResponse.createActionURL() %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= (baz == null) ? Constants.ADD : Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
 	<aui:input name="bazId" type="hidden" value="<%= bazId %>" />
-	<aui:input name="groupId" type="hidden" value="<%= groupId %>" />
+	<aui:input name="groupId" type="hidden" value='<%= BeanParamUtil.getLong(baz, request, "groupId", scopeGroupId) %>' />
 
 	<liferay-ui:header
 		backURL="<%= redirect %>"
