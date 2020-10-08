@@ -40,7 +40,6 @@ import com.liferay.portal.kernel.util.PortletKeys;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -117,24 +116,15 @@ public class BladeActionDisplayContext
 			request, "blade_document_action_portlet_BladeDocumentActionPortlet",
 			_themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
 
-		String fileName = fileVersion.getFileName();
-		String mimeType = fileVersion.getMimeType();
-		String version = fileVersion.getVersion();
-
-		Date date = fileVersion.getCreateDate();
-
-		String createdDate = date.toString();
-
-		String createdUserName = fileVersion.getUserName();
-		String statusLabel = WorkflowConstants.getStatusLabel(
-			fileVersion.getStatus());
-
-		portletURL.setParameter("fileName", fileName);
-		portletURL.setParameter("mimeType", mimeType);
-		portletURL.setParameter("version", version);
-		portletURL.setParameter("statusLabel", statusLabel);
-		portletURL.setParameter("createdDate", createdDate);
-		portletURL.setParameter("createdUserName", createdUserName);
+		portletURL.setParameter("fileName", fileVersion.getFileName());
+		portletURL.setParameter("mimeType", fileVersion.getMimeType());
+		portletURL.setParameter("version", fileVersion.getVersion());
+		portletURL.setParameter(
+			"createdDate", String.valueOf(fileVersion.getCreateDate()));
+		portletURL.setParameter("createdUserName", fileVersion.getUserName());
+		portletURL.setParameter(
+			"statusLabel",
+			WorkflowConstants.getStatusLabel(fileVersion.getStatus()));
 
 		try {
 			portletURL.setWindowState(LiferayWindowState.POP_UP);

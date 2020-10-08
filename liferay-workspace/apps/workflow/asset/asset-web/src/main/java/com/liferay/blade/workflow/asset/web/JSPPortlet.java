@@ -107,16 +107,17 @@ public class JSPPortlet extends MVCPortlet {
 	}
 
 	protected void updateQux(ActionRequest actionRequest) throws Exception {
-		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
-			WebKeys.THEME_DISPLAY);
-
 		long quxId = ParamUtil.getLong(actionRequest, "quxId");
-		long groupId = ParamUtil.getLong(actionRequest, "groupId");
 
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 			Qux.class.getName(), actionRequest);
 
 		if (quxId <= 0) {
+			ThemeDisplay themeDisplay =
+				(ThemeDisplay)actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+
+			long groupId = ParamUtil.getLong(actionRequest, "groupId");
+
 			_quxLocalService.addQux(
 				themeDisplay.getUserId(), groupId, serviceContext);
 		}
