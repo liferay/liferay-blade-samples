@@ -18,12 +18,8 @@
 
 <%@ include file="/init.jsp" %>
 
-<%
-boolean doConfigure = (fontFamily == null) && (fontColor == null) && ((fontSize == null) || (fontSize.equals("0")));
-%>
-
 <c:choose>
-	<c:when test="<%= doConfigure %>">
+	<c:when test='<%= (fontFamily == null) && (fontColor == null) && ((fontSize == null) || fontSize.equals("0")) %>'>
 		<liferay-ui:message
 			key="blade_configurationaction_portlet_BladeMessagePortlet.no-config"
 		/>
