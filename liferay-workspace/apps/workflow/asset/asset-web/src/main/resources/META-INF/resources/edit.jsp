@@ -28,15 +28,13 @@ Qux qux = null;
 if (quxId > 0) {
 	qux = quxLocalService.getQux(quxId);
 }
-
-long groupId = BeanParamUtil.getLong(qux, request, "groupId", scopeGroupId);
 %>
 
 <aui:form action="<%= (javax.portlet.ActionURL)renderResponse.createActionURL() %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= (qux == null) ? Constants.ADD : Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
 	<aui:input name="quxId" type="hidden" value="<%= quxId %>" />
-	<aui:input name="groupId" type="hidden" value="<%= groupId %>" />
+	<aui:input name="groupId" type="hidden" value='<%= BeanParamUtil.getLong(qux, request, "groupId", scopeGroupId) %>' />
 
 	<liferay-ui:header
 		backURL="<%= redirect %>"
