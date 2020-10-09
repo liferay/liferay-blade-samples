@@ -89,7 +89,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.service.builder</artifactId>
-				<version>1.0.311</version>
+				<version>1.0.365</version>
 				<configuration>
 					<apiDirName>../adq-api/src/main/java</apiDirName>
 					<autoImportDefaultReferences>true</autoImportDefaultReferences>

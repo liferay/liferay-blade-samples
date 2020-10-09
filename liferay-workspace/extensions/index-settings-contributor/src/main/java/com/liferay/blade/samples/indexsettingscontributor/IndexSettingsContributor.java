@@ -16,8 +16,8 @@
 
 package com.liferay.blade.samples.indexsettingscontributor;
 
-import com.liferay.portal.search.elasticsearch6.settings.IndexSettingsHelper;
-import com.liferay.portal.search.elasticsearch6.settings.TypeMappingsHelper;
+import com.liferay.portal.search.elasticsearch7.settings.IndexSettingsHelper;
+import com.liferay.portal.search.elasticsearch7.settings.TypeMappingsHelper;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -26,15 +26,15 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	immediate = true,
-	service = com.liferay.portal.search.elasticsearch6.settings.IndexSettingsContributor.class
+	service = com.liferay.portal.search.elasticsearch7.settings.IndexSettingsContributor.class
 )
 public class IndexSettingsContributor
-	implements com.liferay.portal.search.elasticsearch6.settings.
+	implements com.liferay.portal.search.elasticsearch7.settings.
 				   IndexSettingsContributor {
 
 	@Override
 	public int compareTo(
-		com.liferay.portal.search.elasticsearch6.settings.
+		com.liferay.portal.search.elasticsearch7.settings.
 			IndexSettingsContributor indexSettingsContributor) {
 
 		return -1;
