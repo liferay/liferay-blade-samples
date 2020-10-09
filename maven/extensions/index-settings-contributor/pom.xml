@@ -29,7 +29,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.liferay</groupId>
-			<artifactId>com.liferay.portal.search.elasticsearch6.api</artifactId>
+			<artifactId>com.liferay.portal.search.elasticsearch7.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
