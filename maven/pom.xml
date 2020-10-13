@@ -21,7 +21,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<liferay.workspace.bundle.url>https://releases-cdn.liferay.com/portal/7.3.2-ga3/liferay-ce-portal-tomcat-7.3.2-ga3-20200519164024819.tar.gz</liferay.workspace.bundle.url>
+		<liferay.workspace.bundle.url>https://releases-cdn.liferay.com/portal/7.3.5-ga6/liferay-ce-portal-tomcat-7.3.5-ga6-20200930172312275.tar.gz</liferay.workspace.bundle.url>
 	</properties>
 
 	<dependencyManagement>
