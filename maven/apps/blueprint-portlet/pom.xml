@@ -17,8 +17,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.portlet</groupId>
-			<artifactId>portlet-api</artifactId>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>release.portal.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

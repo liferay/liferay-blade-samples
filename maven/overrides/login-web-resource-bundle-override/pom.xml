@@ -18,11 +18,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>com.liferay.portal.kernel</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<artifactId>release.portal.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
