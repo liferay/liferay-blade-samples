@@ -1,7 +1,5 @@
 dependencies {
 	compileOnly group: "com.liferay.portal", name: "release.portal.api"
-
 	compileOnly group: "javax.ws.rs", name: "javax.ws.rs-api"
-
 	compileOnly group: "org.osgi", name: "org.osgi.service.jaxrs"
 }

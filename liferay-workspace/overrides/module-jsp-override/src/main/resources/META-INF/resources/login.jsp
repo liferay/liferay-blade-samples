@@ -82,13 +82,8 @@
 					</div>
 				</c:when>
 				<c:when test='<%= SessionMessages.contains(request, "userPending") %>'>
-
-					<%
-					String userEmailAddress = (String)SessionMessages.get(request, "userPending");
-					%>
-
 					<div class="alert alert-success">
-						<liferay-ui:message arguments="<%= userEmailAddress %>" key="thank-you-for-creating-an-account.-you-will-be-notified-via-email-at-x-when-your-account-has-been-approved" translateArguments="<%= false %>" />
+						<liferay-ui:message arguments='<%= (String)SessionMessages.get(request, "userPending") %>' key="thank-you-for-creating-an-account.-you-will-be-notified-via-email-at-x-when-your-account-has-been-approved" translateArguments="<%= false %>" />
 					</div>
 				</c:when>
 			</c:choose>

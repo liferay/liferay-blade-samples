@@ -43,8 +43,8 @@ for (FileEntry fileEntry : fileEntries) {
 	</div>
 
 	<%
-	columns++;
-}
-%>
+		columns++;
+	}
+	%>
 
 </div>
