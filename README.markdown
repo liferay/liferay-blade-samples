@@ -1,4 +1,4 @@
-# Sample Projects for Liferay Portal 7.3
+# Sample Projects for Liferay Portal
 
 Liferay's sample projects provides bootstrap project environments for all major
 build tools in common use for Java projects so that Liferay development can
@@ -10,8 +10,6 @@ more information on how to contribute new sample projects and/or documentation.
 
 The template projects are categorized under three build tools:
 
-* `gradle` - A set of Liferay projects that can be bootstrapped onto the
-  `com.liferay.plugin` (a Gradle plugin) based development environment.
 * `liferay-workspace` - A set of Liferay projects configured to work in a
   [Liferay Workspace](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/liferay-workspace)
   environment.
