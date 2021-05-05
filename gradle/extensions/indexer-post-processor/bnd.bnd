@@ -1,4 +1,0 @@
-Bundle-Description: Demonstrates using the IndexerPostProcessor interface, which is provided to customize search queries and documents before they're sent to the search engine, and/or customize result summaries when they're returned to end users.
-Bundle-SymbolicName: com.liferay.blade.indexer.post.processor
-Bundle-Version: 1.0.0
--sources: true

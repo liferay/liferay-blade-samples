@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 7.3.0//EN" "http://www.liferay.com/dtd/liferay-display_7_3_0.dtd">
-
-<display>
-	<category name="category.sample">
-		<portlet id="thymeleaf-portlet-mvc-4-spring" />
-	</category>
-</display>

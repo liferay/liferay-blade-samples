@@ -1,4 +1,0 @@
-Bundle-Name: Liferay Blade Workflow Asset Web
-Bundle-SymbolicName: com.liferay.blade.workflow.asset.web
-Bundle-Version: 1.0.0
--sources: true

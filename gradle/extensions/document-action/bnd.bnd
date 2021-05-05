@@ -1,4 +1,0 @@
-Bundle-Description: Demonstrates how to add a context menu option to an entry in the Documents and Media portlet.
-Bundle-SymbolicName: com.liferay.blade.document.action
-Bundle-Version: 1.0.0
--sources: true
