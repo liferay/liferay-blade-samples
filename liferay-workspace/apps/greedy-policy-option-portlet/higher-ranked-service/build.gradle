@@ -1,5 +1,4 @@
 dependencies {
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
-	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
 	compileOnly project(":apps:greedy-policy-option-portlet:service-reference")
 }

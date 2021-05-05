@@ -15,9 +15,7 @@ apply plugin: "com.liferay.css.builder"
 apply plugin: 'war'
 
 dependencies {
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
-	compileOnly group: "javax.portlet", name: "portlet-api"
-	compileOnly group: "javax.servlet", name: "javax.servlet-api"
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
 	compileOnly project(":apps:service-builder:basic:basic-api")
 }
 
