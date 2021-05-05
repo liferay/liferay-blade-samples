@@ -75,9 +75,7 @@ public class BladePortletToolbarContributor
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", getLocale(portletRequest), getClass());
 
-		String message = LanguageUtil.get(resourceBundle, "list-of-links");
-
-		menu.setMessage(message);
+		menu.setMessage(LanguageUtil.get(resourceBundle, "list-of-links"));
 
 		menu.setScroll(false);
 		menu.setShowArrow(false);

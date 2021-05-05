@@ -1,4 +1,0 @@
-Bundle-Description: Overrides taglib JSPs by calling TagDynamicInclude
-Bundle-SymbolicName: com.liferay.blade.portlet.form.taglib.override
-Bundle-Version: 1.0.0
--sources: true

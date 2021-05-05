@@ -29,21 +29,21 @@
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom</artifactId>
-				<version>7.3.5</version>
+				<version>7.4.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom.compile.only</artifactId>
-				<version>7.3.5</version>
+				<version>7.4.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.liferay.portal</groupId>
 				<artifactId>release.portal.bom.third.party</artifactId>
-				<version>7.3.5</version>
+				<version>7.4.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -73,7 +73,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.bundle.support</artifactId>
-				<version>3.7.2</version>
+				<version>3.7.3</version>
 				<executions>
 					<execution>
 						<id>clean</id>
@@ -152,7 +152,7 @@
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
-				<version>4.3.0</version>
+				<version>5.2.0</version>
 				<executions>
 					<execution>
 						<goals>
@@ -164,7 +164,7 @@
 					<dependency>
 						<groupId>biz.aQute.bnd</groupId>
 						<artifactId>biz.aQute.bndlib</artifactId>
-						<version>4.3.0</version>
+						<version>5.2.0</version>
 					</dependency>
 					<dependency>
 						<groupId>com.liferay</groupId>

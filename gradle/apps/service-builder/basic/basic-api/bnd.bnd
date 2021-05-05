@@ -1,9 +1,0 @@
-Bundle-SymbolicName: com.liferay.blade.basic.api
-Bundle-Version: 1.0.0
-Export-Package:\
-	com.liferay.blade.basic.exception,\
-	com.liferay.blade.basic.model,\
-	com.liferay.blade.basic.service,\
-	com.liferay.blade.basic.service.persistence
--includeresource: META-INF/service.xml=../basic-service/service.xml
--sources: true

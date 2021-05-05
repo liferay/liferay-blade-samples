@@ -16,13 +16,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.portlet</groupId>
-			<artifactId>portlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>release.portal.api</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -249,11 +249,6 @@ warsDiffTest.doLast{
 	}
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '4.1'
-	jarFile = "${projectDir}/.gradle/gradle-wrapper.jar"
-}
-
 task diff
 
 diff.dependsOn bundlesTest, warsTest, bundlesDiffTest, warsDiffTest
