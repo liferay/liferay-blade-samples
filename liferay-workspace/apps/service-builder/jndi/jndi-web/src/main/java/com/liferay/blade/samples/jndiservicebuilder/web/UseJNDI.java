@@ -44,8 +44,8 @@ public class UseJNDI {
 		try {
 			return regionLocalService.getRegions(0, getRegionsCount());
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -67,8 +67,8 @@ public class UseJNDI {
 		try {
 			return regionLocalService.getRegionsCount();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -90,8 +90,8 @@ public class UseJNDI {
 		try {
 			regionLocalService.useJNDI();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();

@@ -33,9 +33,7 @@ page import="com.liferay.petra.string.StringPool" %>
 <portlet:defineObjects />
 
 <%
-MessageDisplayConfiguration messageDisplayConfiguration =
-	(MessageDisplayConfiguration)
-	renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
+MessageDisplayConfiguration messageDisplayConfiguration = (MessageDisplayConfiguration)renderRequest.getAttribute(MessageDisplayConfiguration.class.getName());
 
 String fontFamily = StringPool.BLANK;
 String fontColor = StringPool.BLANK;

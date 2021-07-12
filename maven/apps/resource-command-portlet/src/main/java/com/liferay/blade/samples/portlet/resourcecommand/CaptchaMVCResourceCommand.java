@@ -54,8 +54,8 @@ public class CaptchaMVCResourceCommand implements MVCResourceCommand {
 
 			return false;
 		}
-		catch (Exception e) {
-			_log.error(e.getMessage(), e);
+		catch (Exception exception) {
+			_log.error(exception.getMessage(), exception);
 
 			return true;
 		}

@@ -41,11 +41,7 @@ public class AddTestData {
 		foo.setField1("createFooEntryField1");
 		foo.setField2(true);
 		foo.setField3(1);
-
-		Date createDate = new Date();
-
-		foo.setField4(createDate);
-
+		foo.setField4(new Date());
 		foo.setField5("createFooEntryField5");
 		foo.isNew();
 

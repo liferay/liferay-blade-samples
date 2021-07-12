@@ -99,8 +99,8 @@ public class BladeServlet extends HttpServlet {
 			ServletResponseUtil.write(
 				httpServletResponse, _generateSampleHTML());
 		}
-		catch (Exception e) {
-			_log.warn(e.getMessage(), e);
+		catch (Exception exception) {
+			_log.warn(exception.getMessage(), exception);
 
 			httpServletResponse.setStatus(
 				HttpServletResponse.SC_PRECONDITION_FAILED);

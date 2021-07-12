@@ -83,7 +83,7 @@ public class VerifySample {
 
 					return object.equals(Integer.valueOf(state));
 				}
-				catch (Exception e) {
+				catch (Exception exception) {
 					return false;
 				}
 			}
@@ -102,8 +102,8 @@ public class VerifySample {
 			_verifyBundleState(bundle);
 			_verifyBundleComponents(bundle);
 		}
-		catch (IOException ioe) {
-			_messages.append("ERROR: " + ioe.getMessage());
+		catch (IOException ioException) {
+			_messages.append("ERROR: " + ioException.getMessage());
 		}
 	}
 

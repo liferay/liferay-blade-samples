@@ -32,7 +32,7 @@ import java.util.stream.Stream;
  */
 public class ResourceUtil {
 
-	public static String readResouceAsString(String filename)
+	public static String readResouceAsString(String fileName)
 		throws UnsupportedEncodingException {
 
 		InputStream inputStream = null;
@@ -41,7 +41,7 @@ public class ResourceUtil {
 		try {
 			ClassLoader classLoader = ResourceUtil.class.getClassLoader();
 
-			inputStream = classLoader.getResourceAsStream(filename);
+			inputStream = classLoader.getResourceAsStream(fileName);
 
 			InputStreamReader inputStreamReader = new InputStreamReader(
 				inputStream, StandardCharsets.UTF_8.name());
@@ -52,8 +52,8 @@ public class ResourceUtil {
 
 			return stream.collect(Collectors.joining(System.lineSeparator()));
 		}
-		catch (UnsupportedEncodingException uee) {
-			throw uee;
+		catch (UnsupportedEncodingException unsupportedEncodingException) {
+			throw unsupportedEncodingException;
 		}
 		finally {
 			try {
@@ -61,7 +61,7 @@ public class ResourceUtil {
 					bufferedReader.close();
 				}
 			}
-			catch (IOException ioe) {
+			catch (IOException ioException) {
 			}
 
 			try {
@@ -69,7 +69,7 @@ public class ResourceUtil {
 					inputStream.close();
 				}
 			}
-			catch (IOException ioe) {
+			catch (IOException ioException) {
 			}
 		}
 	}

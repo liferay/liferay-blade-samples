@@ -93,8 +93,8 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 			statusLabel = WorkflowConstants.getStatusLabel(
 				fileVersion.getStatus());
 		}
-		catch (PortalException pe) {
-			_log.error(pe.getMessage(), pe);
+		catch (PortalException portalException) {
+			_log.error(portalException.getMessage(), portalException);
 		}
 
 		portletURL.setParameter("fileName", fileName);
@@ -107,8 +107,8 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 		try {
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 		}
-		catch (WindowStateException wse) {
-			_log.error(wse.getMessage(), wse);
+		catch (WindowStateException windowStateException) {
+			_log.error(windowStateException.getMessage(), windowStateException);
 		}
 
 		StringBuilder stringBuilder = new StringBuilder();
@@ -151,8 +151,8 @@ public class BladeActionConfigurationIcon extends BasePortletConfigurationIcon {
 
 			return fileEntry;
 		}
-		catch (PortalException pe) {
-			_log.error(pe.getMessage(), pe);
+		catch (PortalException portalException) {
+			_log.error(portalException.getMessage(), portalException);
 
 			return null;
 		}

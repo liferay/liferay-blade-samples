@@ -96,8 +96,8 @@ public class JSPPortlet extends MVCPortlet {
 				actionResponse.sendRedirect(redirect);
 			}
 		}
-		catch (Exception e) {
-			throw new PortletException(e);
+		catch (Exception exception) {
+			throw new PortletException(exception);
 		}
 	}
 
