@@ -23,7 +23,6 @@
 		<module>control-menu-entry</module>
 		<module>doclib-resource-command-override</module>
 		<module>document-action</module>
-		<module>friendly-url</module>
 		<module>gogo</module>
 		<module>index-settings-contributor</module>
 		<module>indexer-post-processor</module>

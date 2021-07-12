@@ -393,28 +393,6 @@ Refer to this sample's Readme for more information.
 | Liferay Workspace | [./liferay-workspace/extensions/document-action](./liferay-workspace/extensions/document-action)   |
 | Maven      | [./maven/extensions/document-action](./maven/extensions/document-action)        |
 
-### Friendly URL
-
-**Extension point description**: Lets a developer provide (or overwrite)
-friendly URL mapping for portlets.
-
-**Template project description**: Demonstrates how to create a
-`FriendlyURLMapper` for the standard `NetworkUtilities` portlet.
-
-The `NetworkUtilities` portlet does not provide friendly URLs out of the box. To
-test this plugin, put a `NetworkUtilities` portlet on the home page. After
-deploying this plugin, you can access its tabs directly using the following
-URLs:
-
-* http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
-* http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/friendly-url](./gradle/extensions/friendly-url) |
-| Liferay Workspace | [./liferay-workspace/extensions/friendly-url](./liferay-workspace/extensions/friendly-url)   |
-| Maven      | [./maven/extensions/friendly-url](./maven/extensions/friendly-url)          |
-
 ### Gogo Command
 
 Refer to this sample's Readme for more information.
