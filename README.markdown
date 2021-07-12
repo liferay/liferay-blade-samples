@@ -8,13 +8,22 @@ more information on how to contribute new sample projects and/or documentation.
 
 ## Build Tools
 
-The template projects are categorized under three build tools:
+The template projects are categorized under two build tools:
 
 * `liferay-workspace` - A set of Liferay projects configured to work in a
   [Liferay Workspace](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/liferay-workspace)
   environment.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
+
+## Usage
+
+The projects follow the Liferay Workspace project style for gradle and maven.
+
+* `liferay-workspace` - in `gradle.properties`, Set `liferay.workspace.product`
+  to the target product version.
+* `maven` - Set the corresponding `release.portal.bom` found in
+  `dependencyManagement`
 
 ## Contribution Guidelines
 
@@ -41,10 +50,6 @@ For example, the
 [Resource Bundle Override](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/resource-bundle-override)
 article explains the `resource-bundle-override` sample using the aforementioned
 sections.
-
-You can send a pull request to `codyhoag/liferay-blade-samples` for
-documentation-only submissions, or tag `@codyhoag` in a new sample contributed
-to `liferay/liferay-blade-samples` that includes documentation.
 
 ## Frameworks
 
