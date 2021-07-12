@@ -44,8 +44,8 @@ public class UseJDBC {
 		try {
 			return countryLocalService.getCountries(0, getCountriesCount());
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -67,8 +67,8 @@ public class UseJDBC {
 		try {
 			return countryLocalService.getCountriesCount();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -90,8 +90,8 @@ public class UseJDBC {
 		try {
 			countryLocalService.useJDBC();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();

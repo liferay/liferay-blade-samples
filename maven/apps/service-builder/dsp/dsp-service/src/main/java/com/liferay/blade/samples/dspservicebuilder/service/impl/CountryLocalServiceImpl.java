@@ -85,8 +85,10 @@ public class CountryLocalServiceImpl extends CountryLocalServiceBaseImpl {
 
 			connection.close();
 		}
-		catch (SQLException sqle) {
-			_log.error("Failed to retrieve data from external database!", sqle);
+		catch (SQLException sqlException) {
+			_log.error(
+				"Failed to retrieve data from external database!",
+				sqlException);
 		}
 	}
 

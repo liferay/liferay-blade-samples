@@ -8,13 +8,22 @@ more information on how to contribute new sample projects and/or documentation.
 
 ## Build Tools
 
-The template projects are categorized under three build tools:
+The template projects are categorized under two build tools:
 
 * `liferay-workspace` - A set of Liferay projects configured to work in a
   [Liferay Workspace](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/liferay-workspace)
   environment.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
+
+## Usage
+
+The projects follow the Liferay Workspace project style for gradle and maven.
+
+* `liferay-workspace` - in `gradle.properties`, Set `liferay.workspace.product`
+  to the target product version.
+* `maven` - Set the corresponding `release.portal.bom` found in
+  `dependencyManagement`
 
 ## Contribution Guidelines
 
@@ -41,10 +50,6 @@ For example, the
 [Resource Bundle Override](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/resource-bundle-override)
 article explains the `resource-bundle-override` sample using the aforementioned
 sections.
-
-You can send a pull request to `codyhoag/liferay-blade-samples` for
-documentation-only submissions, or tag `@codyhoag` in a new sample contributed
-to `liferay/liferay-blade-samples` that includes documentation.
 
 ## Frameworks
 
@@ -85,7 +90,6 @@ redeploy the Portlet plugin).
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/action-command-portlet](./gradle/apps/action-command-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/action-command-portlet](./liferay-workspace/apps/action-command-portlet)   |
 | Maven      | [./maven/apps/action-command-portlet](./maven/apps/action-command-portlet)        |
 
@@ -96,7 +100,6 @@ framework for registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/blueprint-portlet](./gradle/apps/blueprint-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/blueprint-portlet](./liferay-workspace/apps/blueprint-portlet)   |
 | Maven      | [./maven/apps/blueprint-portlet](./maven/apps/blueprint-portlet)        |
 
@@ -107,7 +110,6 @@ integration point.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/configuration-action](./gradle/apps/configuration-action) |
 | Liferay Workspace | [./liferay-workspace/apps/configuration-action](./liferay-workspace/apps/configuration-action)   |
 | Maven      | [./maven/apps/configuration-action](./maven/apps/configuration-action)          |
 
@@ -115,7 +117,6 @@ integration point.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/control-panel-portlet](./gradle/apps/control-panel-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/control-panel-portlet](./liferay-workspace/apps/control-panel-portlet)   |
 | Maven      | [./maven/apps/control-panel-portlet](./maven/apps/control-panel-portlet)        |
 
@@ -126,7 +127,6 @@ Services) framework for registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/ds-portlet](./gradle/apps/ds-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/ds-portlet](./liferay-workspace/apps/ds-portlet)   |
 | Maven      | [./maven/apps/ds-portlet](./maven/apps/ds-portlet)        |
 
@@ -136,7 +136,6 @@ Services) framework for registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/filter-portlet](./gradle/apps/filter-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/filter-portlet](./liferay-workspace/apps/filter-portlet)   |
 | Maven      | [./maven/apps/filter-portlet](./maven/apps/filter-portlet)        |
 
@@ -146,7 +145,6 @@ Services) framework for registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/freemarker-portlet](./gradle/apps/freemarker-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/freemarker-portlet](./liferay-workspace/apps/freemarker-portlet)   |
 | Maven      | [./maven/apps/freemarker-portlet](./maven/apps/freemarker-portlet)        |
 
@@ -156,7 +154,6 @@ Refer to this sample's Readmes for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/greedy-policy-option-portlet](./gradle/apps/greedy-policy-option-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/greedy-policy-option-portlet](./liferay-workspace/apps/greedy-policy-option-portlet)   |
 | Maven      | [./maven/apps/greedy-policy-option-portlet](./maven/apps/greedy-policy-option-portlet)        |
 
@@ -166,7 +163,6 @@ Refer to this sample's Readmes for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/jsp-portlet](./gradle/apps/jsp-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/jsp-portlet](./liferay-workspace/apps/jsp-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-portlet)        |
 
@@ -174,7 +170,6 @@ Refer to this sample's Readmes for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/jsp-war-portlet](./gradle/apps/jsp-war-portlet) |
 | Liferay Workspace | [./liferay-workspace/wars/jsp-war-portlet](./liferay-workspace/wars/jsp-war-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-war-portlet)        |
 
@@ -185,7 +180,6 @@ registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/osgi-portlet](./gradle/apps/osgi-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/osgi-portlet](./liferay-workspace/apps/osgi-portlet)   |
 | Maven      | [./maven/apps/osgi-portlet](./maven/apps/osgi-portlet)        |
 
@@ -193,7 +187,6 @@ registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/render-command-portlet](./gradle/apps/render-command-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/render-command-portlet](./liferay-workspace/apps/render-command-portlet)   |
 | Maven      | [./maven/apps/render-command-portlet](./maven/apps/render-command-portlet)        |
 
@@ -201,7 +194,6 @@ registering a Liferay MVC portlet.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/resource-command-portlet](./gradle/apps/resource-command-portlet) |
 | Liferay Workspace | [./liferay-workspace/apps/resource-command-portlet](./liferay-workspace/apps/resource-command-portlet)   |
 | Maven      | [./maven/apps/resource-command-portlet](./maven/apps/resource-command-portlet)
 
@@ -230,7 +222,6 @@ Then you can access the service via
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/rest](./gradle/apps/rest) |
 | Liferay Workspace | [./liferay-workspace/apps/rest](./liferay-workspace/apps/rest)   |
 | Maven      | [./maven/apps/rest](./maven/apps/rest)        |
 
@@ -238,7 +229,6 @@ Then you can access the service via
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/sample-verifier](./gradle/apps/sample-verifier) |
 | Liferay Workspace | [./liferay-workspace/apps/sample-verifier](./liferay-workspace/apps/sample-verifier)   |
 | Maven      | [./maven/apps/sample-verifier](./maven/apps/sample-verifier)        |
 
@@ -250,7 +240,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/service-builder/adq](./gradle/apps/service-builder/adq)  |
 | Liferay Workspace | [./liferay-workspace/apps/service-builder/adq](./liferay-workspace/apps/service-builder/adq)   |
 | Maven  | [./maven/apps/service-builder/adq](./maven/apps/service-builder/adq)  |
 
@@ -265,7 +254,6 @@ project separated into three bundles:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/service-builder/basic](./gradle/apps/service-builder/basic)  |
 | Liferay Workspace | [./liferay-workspace/apps/service-builder/basic](./liferay-workspace/apps/service-builder/basic)   |
 | Maven  | [./maven/apps/service-builder/basic](./maven/apps/service-builder/basic)  |
 
@@ -275,7 +263,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/service-builder/jdbc](./gradle/apps/service-builder/jdbc)  |
 | Liferay Workspace | [./liferay-workspace/apps/service-builder/jdbc](./liferay-workspace/apps/service-builder/jdbc)   |
 | Maven  | [./maven/apps/service-builder/jdbc](./maven/apps/service-builder/jdbc)  |
 
@@ -285,7 +272,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/service-builder/jndi](./gradle/apps/service-builder/jndi)  |
 | Liferay Workspace | [./liferay-workspace/apps/service-builder/jndi](./liferay-workspace/apps/service-builder/jndi)   |
 | Maven  | [./maven/apps/service-builder/jndi](./maven/apps/service-builder/jndi)  |
 
@@ -295,7 +281,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/shared-language-keys](./gradle/apps/shared-language-keys) |
 | Liferay Workspace | [./liferay-workspace/apps/shared-language-keys](./liferay-workspace/apps/shared-language-keys)   |
 | Maven      | [./maven/apps/shared-language-keys](./maven/apps/shared-language-keys)        |
 
@@ -305,7 +290,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/simulation-panel-app](./gradle/apps/simulation-panel-app) |
 | Liferay Workspace | [./liferay-workspace/apps/simulation-panel-app](./liferay-workspace/apps/simulation-panel-app)   |
 | Maven      | [./maven/apps/simulation-panel-app](./maven/apps/simulation-panel-app)        |
 
@@ -315,7 +299,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/apps/springmvc-portlet](./gradle/apps/springmvc-portlet) |
 | Liferay Workspace | [./liferay-workspace/wars/springmvc-portlet](./liferay-workspace/wars/springmvc-portlet)   |
 | Maven      | [./maven/apps/springmvc-portlet](./maven/apps/springmvc-portlet)        |
 
@@ -327,7 +310,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/ext/login-web-ext](./gradle/ext/login-web-ext) |
 | Liferay Workspace | [./liferay-workspace/ext/login-web-ext](./liferay-workspace/ext/login-web-ext)   |
 
 ## Extensions
@@ -339,7 +321,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/auth-failure](./gradle/extensions/auth-failure) |
 | Liferay Workspace | [./liferay-workspace/extensions/auth-failure](./liferay-workspace/extensions/auth-failure)   |
 | Maven      | [./maven/extensions/auth-failure](./maven/extensions/auth-failure)          |
 
@@ -350,7 +331,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/authenticator-shiro](./gradle/extensions/authenticator-shiro) |
 | Liferay Workspace | [./liferay-workspace/extensions/authenticator-shiro](./liferay-workspace/extensions/authenticator-shiro)   |
 | Maven      | [./maven/extensions/authenticator-shiro](./maven/extensions/authenticator-shiro)          |
 
@@ -361,7 +341,6 @@ point.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/auto-login](./gradle/extensions/auto-login) |
 | Liferay Workspace | [./liferay-workspace/extensions/auto-login](./liferay-workspace/extensions/auto-login)   |
 | Maven      | [./maven/extensions/auto-login](./maven/extensions/auto-login)          |
 
@@ -371,7 +350,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/control-menu-entry](./gradle/extensions/control-menu-entry) |
 | Liferay Workspace | [./liferay-workspace/extensions/control-menu-entry](./liferay-workspace/extensions/control-menu-entry)   |
 | Maven      | [./maven/extensions/control-menu-entry](./maven/extensions/control-menu-entry)          |
 
@@ -379,7 +357,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/doclib-resource-command-override](./gradle/extensions/doclib-resource-command-override) |
 | Liferay Workspace | [./liferay-workspace/extensions/doclib-resource-command-override](./liferay-workspace/extensions/doclib-resource-command-override)   |
 | Maven      | [./maven/extensions/doclib-resource-command-override](./maven/extensions/doclib-resource-command-override)        |
 
@@ -389,31 +366,8 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/document-action](./gradle/extensions/document-action) |
 | Liferay Workspace | [./liferay-workspace/extensions/document-action](./liferay-workspace/extensions/document-action)   |
 | Maven      | [./maven/extensions/document-action](./maven/extensions/document-action)        |
-
-### Friendly URL
-
-**Extension point description**: Lets a developer provide (or overwrite)
-friendly URL mapping for portlets.
-
-**Template project description**: Demonstrates how to create a
-`FriendlyURLMapper` for the standard `NetworkUtilities` portlet.
-
-The `NetworkUtilities` portlet does not provide friendly URLs out of the box. To
-test this plugin, put a `NetworkUtilities` portlet on the home page. After
-deploying this plugin, you can access its tabs directly using the following
-URLs:
-
-* http://localhost:8080/web/guest/home/-/NetworkUtilities/dns-lookup
-* http://localhost:8080/web/guest/home/-/NetworkUtilities/whois
-
-| Build tool | Link to project's source code                                                   |
-| ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/friendly-url](./gradle/extensions/friendly-url) |
-| Liferay Workspace | [./liferay-workspace/extensions/friendly-url](./liferay-workspace/extensions/friendly-url)   |
-| Maven      | [./maven/extensions/friendly-url](./maven/extensions/friendly-url)          |
 
 ### Gogo Command
 
@@ -421,7 +375,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/gogo](./gradle/extensions/gogo) |
 | Liferay Workspace | [./liferay-workspace/extensions/gogo](./liferay-workspace/extensions/gogo)   |
 | Maven      | [./maven/extensions/gogo](./maven/extensions/gogo)          |
 
@@ -431,7 +384,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/index-settings-contributor](./gradle/extensions/index-settings-contributor) |
 | Liferay Workspace | [./liferay-workspace/extensions/index-settings-contributor](./liferay-workspace/extensions/index-settings-contributor)   |
 | Maven      | [./maven/extensions/index-settings-contributor](./maven/extensions/index-settings-contributor)          |
 
@@ -441,7 +393,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/indexer-post-processor](./gradle/extensions/indexer-post-processor) |
 | Liferay Workspace | [./liferay-workspace/extensions/indexer-post-processor](./liferay-workspace/extensions/indexer-post-processor)   |
 | Maven      | [./maven/extensions/indexer-post-processor](./maven/extensions/indexer-post-processor)        |
 
@@ -484,7 +435,6 @@ following keys are supported:
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/lifecycle-login-preaction](./gradle/extensions/lifecycle-login-preaction) |
 | Liferay Workspace | [./liferay-workspace/extensions/lifecycle-login-preaction](./liferay-workspace/extensions/lifecycle-login-preaction)   |
 | Maven      | [./maven/extensions/lifecycle-login-preaction](./maven/extensions/lifecycle-login-preaction)        |
 
@@ -494,7 +444,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/model-listener](./gradle/extensions/model-listener) |
 | Liferay Workspace | [./liferay-workspace/extensions/model-listener](./liferay-workspace/extensions/model-listener)   |
 | Maven      | [./maven/extensions/model-listener](./maven/extensions/model-listener)        |
 
@@ -505,7 +454,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/poll-processor](./gradle/extensions/poll-processor) |
 | Liferay Workspace | [./liferay-workspace/extensions/poll-processor](./liferay-workspace/extensions/poll-processor)   |
 | Maven      | [./maven/extensions/poll-processor](./maven/extensions/poll-processor)        |
 
@@ -513,7 +461,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/portlet-configuration-icon](./gradle/extensions/portlet-configuration-icon) |
 | Liferay Workspace | [./liferay-workspace/extensions/portlet-configuration-icon](./liferay-workspace/extensions/portlet-configuration-icon)   |
 | Maven      | [./maven/extensions/portlet-configuration-icon](./maven/extensions/portlet-configuration-icon)        |
 
@@ -521,7 +468,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/portlet-toolbar-contributor](./gradle/extensions/portlet-toolbar-contributor) |
 | Liferay Workspace | [./liferay-workspace/extensions/portlet-toolbar-contributor](./liferay-workspace/extensions/portlet-toolbar-contributor)   |
 | Maven      | [./maven/extensions/portlet-toolbar-contributor](./maven/extensions/portlet-toolbar-contributor)        |
 
@@ -529,7 +475,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/resource-bundle](./gradle/extensions/resource-bundle) |
 | Liferay Workspace | [./liferay-workspace/extensions/resource-bundle](./liferay-workspace/extensions/resource-bundle)   |
 | Maven      | [./maven/extensions/resource-bundle](./maven/extensions/resource-bundle)        |
 
@@ -539,7 +484,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/screen-name-validator](./gradle/extensions/screen-name-validator) |
 | Liferay Workspace | [./liferay-workspace/extensions/screen-name-validator](./liferay-workspace/extensions/screen-name-validator)   |
 | Maven      | [./maven/extensions/screen-name-validator](./maven/extensions/screen-name-validator)        |
 
@@ -549,7 +493,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/search-keyword-query-contributor](gradle/extensions/search-keyword-query-contributor) |
 | Liferay Workspace | [./liferay-workspace/extensions/search-keyword-query-contributor](./liferay-workspace/extensions/search-keyword-query-contributor) |
 | Maven      | [./maven/extensions/search-keyword-query-contributor](maven/extensions/search-keyword-query-contributor) |
 
@@ -559,7 +502,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/search-model-pre-filter-contributor](./gradle/extensions/search-model-pre-filter-contributor) |
 | Liferay Workspace | [./liferay-workspace/extensions/search-model-pre-filter-contributor](./liferay-workspace/extensions/search-model-pre-filter-contributor)   |
 | Maven      | [./maven/extensions/search-model-pre-filter-contributor](./maven/extensions/search-model-pre-filter-contributor)
 
@@ -569,7 +511,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/servlet](./gradle/extensions/servlet) |
 | Liferay Workspace | [./liferay-workspace/extensions/servlet](./liferay-workspace/extensions/servlet)   |
 | Maven      | [./maven/extensions/servlet](./maven/extensions/servlet)        |
 
@@ -580,7 +521,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/extensions/user-service-wrapper](./gradle/user-service-wrapper) |
 | Liferay Workspace | [./liferay-workspace/user-service-wrapper](./liferay-workspace/user-service-wrapper)   |
 | Maven      | [./maven/user-service-wrapper](./maven/user-service-wrapper)        |
 
@@ -592,7 +532,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/overrides/module-jsp-override](./gradle/overrides/module-jsp-override) |
 | Liferay Workspace | [./liferay-workspace/overrides/module-jsp-override](./liferay-workspace/overrides/module-jsp-override)   |
 | Maven      | [./maven/overrides/module-jsp-override](./maven/overrides/module-jsp-override)          |
 
@@ -600,7 +539,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/overrides/portlet-form-taglib-override](./gradle/overrides/portlet-form-taglib-override) |
 | Liferay Workspace | [./liferay-workspace/overrides/portlet-form-taglib-override](./liferay-workspace/overrides/portlet-form-taglib-override)   |
 | Maven      | [./maven/overrides/portlet-form-taglib-override](./maven/overrides/portlet-form-taglib-override)          |
 
@@ -612,7 +550,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/themes/simple-theme](./gradle/themes/simple-theme) |
 | Liferay Workspace | [./liferay-workspace/wars/simple-theme](./liferay-workspace/wars/simple-theme)   |
 | Maven      | [./maven/themes/simple-theme](./maven/themes/simple-theme)        |
 
@@ -622,7 +559,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/themes/template-context-contributor](./gradle/themes/template-context-contributor) |
 | Liferay Workspace | [./liferay-workspace/themes/template-context-contributor](./liferay-workspace/themes/template-context-contributor)   |
 | Maven      | [./maven/themes/template-context-contributor](./maven/themes/template-context-contributor)        |
 
@@ -632,7 +568,6 @@ Refer to this sample's Readme for more information.
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
-| Gradle | [./gradle/themes/theme-contributor](./gradle/themes/theme-contributor) |
 | Liferay Workspace | [./liferay-workspace/themes/theme-contributor](./liferay-workspace/themes/theme-contributor)   |
 | Maven      | [./maven/themes/theme-contributor](./maven/themes/theme-contributor)        |
 
@@ -649,7 +584,6 @@ points. We encourage you to contribute some!
 * com.liferay.portal.kernel.lock.LockListener
 * com.liferay.portal.kernel.notifications.UserNotificationHandler
 * com.liferay.portal.kernel.pop.MessageListener
-* com.liferay.portal.kernel.portlet.FriendlyURLMapper
 * com.liferay.portal.kernel.portlet.PortletLayoutListener
 * com.liferay.portal.kernel.sanitizer.Sanitizer
 * com.liferay.portal.kernel.scheduler.SchedulerEntry

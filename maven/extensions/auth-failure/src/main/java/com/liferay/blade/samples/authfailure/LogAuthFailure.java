@@ -54,8 +54,8 @@ public class LogAuthFailure implements AuthFailure {
 						" has failed to login " + failures + " times");
 			}
 		}
-		catch (PortalException pe) {
-			_log.error(pe.getMessage(), pe);
+		catch (PortalException portalException) {
+			_log.error(portalException.getMessage(), portalException);
 		}
 	}
 
@@ -77,8 +77,8 @@ public class LogAuthFailure implements AuthFailure {
 						" has failed to login " + failures + " times");
 			}
 		}
-		catch (PortalException pe) {
-			_log.error(pe.getMessage(), pe);
+		catch (PortalException portalException) {
+			_log.error(portalException.getMessage(), portalException);
 		}
 	}
 
@@ -99,8 +99,8 @@ public class LogAuthFailure implements AuthFailure {
 						" has failed to login " + failures + " times");
 			}
 		}
-		catch (PortalException pe) {
-			_log.error(pe.getMessage(), pe);
+		catch (PortalException portalException) {
+			_log.error(portalException.getMessage(), portalException);
 		}
 	}
 

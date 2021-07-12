@@ -52,7 +52,7 @@ public class BladeAutoLogin extends BaseAutoLogin {
 			autoLoginUser = _userLocalService.getUserByEmailAddress(
 				companyId, "auto.login@liferay.com");
 		}
-		catch (Exception e) {
+		catch (Exception exception) {
 		}
 
 		if (autoLoginUser != null) {

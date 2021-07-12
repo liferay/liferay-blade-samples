@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class IndexSettingsContributor
 	implements com.liferay.portal.search.elasticsearch7.settings.
-		IndexSettingsContributor {
+				   IndexSettingsContributor {
 
 	@Override
 	public int compareTo(
@@ -50,8 +50,8 @@ public class IndexSettingsContributor
 
 			typeMappingsHelper.addTypeMappings(indexName, mappings);
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 	}
 

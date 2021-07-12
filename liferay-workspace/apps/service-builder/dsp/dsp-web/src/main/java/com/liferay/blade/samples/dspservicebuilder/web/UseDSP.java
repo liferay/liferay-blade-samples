@@ -44,8 +44,8 @@ public class UseDSP {
 		try {
 			return countryLocalService.getCountries(0, getCountriesCount());
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -67,8 +67,8 @@ public class UseDSP {
 		try {
 			return countryLocalService.getCountriesCount();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();
@@ -90,8 +90,8 @@ public class UseDSP {
 		try {
 			countryLocalService.useDSP();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 
 		tracker.close();

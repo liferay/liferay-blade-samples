@@ -50,8 +50,8 @@ public class IndexSettingsContributor
 
 			typeMappingsHelper.addTypeMappings(indexName, mappings);
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 	}
 

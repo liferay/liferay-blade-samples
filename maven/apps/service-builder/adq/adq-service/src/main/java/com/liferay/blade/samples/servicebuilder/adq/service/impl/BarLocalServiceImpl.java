@@ -86,8 +86,8 @@ public class BarLocalServiceImpl extends BarLocalServiceBaseImpl {
 		try {
 			adq.performActions();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			exception.printStackTrace();
 		}
 	}
 
