@@ -59,11 +59,11 @@ public class HelloSoyViewMVCRenderCommand implements MVCRenderCommand {
 
 		List<Layout> layouts = themeDisplay.getLayouts();
 
-		Stream<Layout> layoutStream = layouts.stream();
+		Stream<Layout> layoutsStream = layouts.stream();
 
 		template.put(
 			"layouts",
-			layoutStream.map(
+			layoutsStream.map(
 				layout -> new HashMap<String, String>() {
 					{
 						put("friendlyURL", layout.getFriendlyURL());
