@@ -1,0 +1,4 @@
+Bundle-Name: notification-portlet
+Bundle-SymbolicName: notification.portlet
+Bundle-Version: 1.0.0
+Export-Package: notification.portlet.constants
