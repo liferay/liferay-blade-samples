@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+.sass-cache/
+build/
+target/
+*.iml
