@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.sample.notifications.notifications.action;
+package com.liferay.blade.sample.notifications.action;
 
 import com.liferay.blade.sample.notifications.constants.BladeNotificationPortletKeys;
 import com.liferay.blade.sample.notifications.notifications.BladeNotificationSubscriptionSender;
@@ -27,7 +27,6 @@ import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextFactory;
 import com.liferay.portal.kernel.service.SubscriptionLocalService;
 import com.liferay.portal.kernel.service.UserLocalService;
-import com.liferay.portal.kernel.settings.LocalizedValuesMap;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Portal;
@@ -39,6 +38,10 @@ import javax.portlet.ActionResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+/**
+ * @author István András Dézsi
+ * @author Vilmos Papp
+ */
 @Component(
 	immediate = true,
 	property = {
@@ -60,21 +63,21 @@ public class NotifyMVCActionCommand extends BaseMVCActionCommand {
 			return;
 		}
 
-		String email =  ParamUtil.getString(actionRequest, BladeNotificationPortletKeys.USER_EMAIL);
-		long companyId = _portal.getCompanyId(actionRequest);
-
 		if (BladeNotificationPortletKeys.NOTIFY.equals(cmd)) {
-			ServiceContext serviceContext = null;
-			
-			serviceContext = ServiceContextFactory.getInstance(actionRequest);
+			long companyId = _portal.getCompanyId(actionRequest);
+
+			String email = ParamUtil.getString(
+				actionRequest, BladeNotificationPortletKeys.USER_EMAIL);
+
+			ServiceContext serviceContext = ServiceContextFactory.getInstance(
+				actionRequest);
 
 			notifySubscriber(companyId, email, serviceContext);
 		}
 	}
 
-	protected void notifySubscriber(long companyId, String userEmail, ServiceContext serviceContext) {
-
-		User user = _userLocalService.fetchUserByEmailAddress(companyId, userEmail);
+	protected void notifySubscriber(
+		long companyId, String userEmail, ServiceContext serviceContext) {
 
 		String entryTitle = "Blade notification";
 
@@ -82,34 +85,39 @@ public class NotifyMVCActionCommand extends BaseMVCActionCommand {
 		String fromAddress = "blade.notifications@liferay.com";
 
 		BladeNotificationSubscriptionSender subscriptionSender =
-				new BladeNotificationSubscriptionSender();
+			new BladeNotificationSubscriptionSender();
 
 		subscriptionSender.setValue("sample value");
 
-		User sender = _userLocalService.fetchUserById(serviceContext.getUserId());
+		User sender = _userLocalService.fetchUserById(
+			serviceContext.getUserId());
 
 		subscriptionSender.setSender(sender.getScreenName());
 
 		subscriptionSender.setBody("Blade Notification Body Text");
 		subscriptionSender.setClassPK(0);
-		subscriptionSender.setClassName(BladeNotificationPortlet.class.getName());
+		subscriptionSender.setClassName(
+			BladeNotificationPortlet.class.getName());
 		subscriptionSender.setCompanyId(companyId);
 		subscriptionSender.setCurrentUserId(serviceContext.getUserId());
 		subscriptionSender.setEntryTitle(entryTitle);
 		subscriptionSender.setFrom(fromAddress, fromName);
 		subscriptionSender.setHtmlFormat(true);
 		subscriptionSender.setMailId("Blade Notification", 0);
-		subscriptionSender.setNotificationType(BladeNotificationType.NOTIFICATION_TYPE_BLADE);
-		subscriptionSender.setPortletId(BladeNotificationPortletKeys.BLADE_NOTIFICATION);
+		subscriptionSender.setNotificationType(
+			BladeNotificationType.NOTIFICATION_TYPE_BLADE);
+		subscriptionSender.setPortletId(
+			BladeNotificationPortletKeys.BLADE_NOTIFICATION);
 		subscriptionSender.setReplyToAddress(fromAddress);
 		subscriptionSender.setServiceContext(serviceContext);
 		subscriptionSender.setSubject("Blade Notification Subject");
 
-		subscriptionSender.addPersistedSubscribers(BladeNotificationPortlet.class.getName(), 0);
+		subscriptionSender.addPersistedSubscribers(
+			BladeNotificationPortlet.class.getName(), 0);
 
 		subscriptionSender.flushNotificationsAsync();
 	}
-	
+
 	@Reference(unbind = "-")
 	protected void setSubscriptionLocalService(
 		final SubscriptionLocalService subscriptionLocalService) {

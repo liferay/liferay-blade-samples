@@ -16,8 +16,11 @@
 
 package com.liferay.blade.sample.notifications.notifications;
 
+/**
+ * @author Vilmos Papp
+ */
 public interface BladeNotificationType {
 
-    public static final int NOTIFICATION_TYPE_BLADE = 100;
+	public static final int NOTIFICATION_TYPE_BLADE = 100;
 
 }

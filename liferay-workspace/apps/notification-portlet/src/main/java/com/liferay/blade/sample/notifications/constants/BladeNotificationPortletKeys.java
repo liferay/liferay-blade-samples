@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-
 package com.liferay.blade.sample.notifications.constants;
 
+/**
+ * @author István András Dézsi
+ * @author Vilmos Papp
+ */
 public class BladeNotificationPortletKeys {
 
 	public static final String BLADE_NOTIFICATION =
@@ -27,7 +30,7 @@ public class BladeNotificationPortletKeys {
 	public static final String SAMPLE_VALUE = "sampleValue";
 
 	public static final String SENDER = "sender";
-	
+
 	public static final String USER_EMAIL = "userEmail";
 
 }

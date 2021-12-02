@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liferay.blade.sample.notifications.notifications.action;
+package com.liferay.blade.sample.notifications.action;
 
 import com.liferay.blade.sample.notifications.constants.BladeNotificationPortletKeys;
 import com.liferay.blade.sample.notifications.portlet.BladeNotificationPortlet;
@@ -32,6 +32,9 @@ import javax.portlet.ActionResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+/**
+ * @author Vilmos Papp
+ */
 @Component(
 	immediate = true,
 	property = {
@@ -40,7 +43,6 @@ import org.osgi.service.component.annotations.Reference;
 	},
 	service = MVCActionCommand.class
 )
-
 public class SubscribeMVCActionCommand extends BaseMVCActionCommand {
 
 	@Override

@@ -23,35 +23,16 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Subscription;
 import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.util.SubscriptionSender;
-import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.service.SubscriptionLocalServiceUtil;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.SubscriptionSender;
 
 import java.util.List;
 
+/**
+ * @author Vilmos Papp
+ */
 public class BladeNotificationSubscriptionSender extends SubscriptionSender {
-
-	public void setValue(String value) {
-		_value = value;
-	}
-
-	public void setSender(String sender) {
-		_sender = sender;
-	}
-
-	@Override
-	protected void populateNotificationEventJSONObject(
-		JSONObject notificationEventJSONObject) {
-
-		super.populateNotificationEventJSONObject(notificationEventJSONObject);
-
-		notificationEventJSONObject.put(
-			BladeNotificationPortletKeys.SAMPLE_VALUE, _value);
-		notificationEventJSONObject.put(
-			BladeNotificationPortletKeys.SENDER, _sender);
-
-	}
-
 
 	@Override
 	public void flushNotifications() throws Exception {
@@ -74,10 +55,30 @@ public class BladeNotificationSubscriptionSender extends SubscriptionSender {
 		}
 	}
 
+	public void setSender(String sender) {
+		_sender = sender;
+	}
+
+	public void setValue(String value) {
+		_value = value;
+	}
+
+	@Override
+	protected void populateNotificationEventJSONObject(
+		JSONObject notificationEventJSONObject) {
+
+		super.populateNotificationEventJSONObject(notificationEventJSONObject);
+
+		notificationEventJSONObject.put(
+			BladeNotificationPortletKeys.SAMPLE_VALUE, _value);
+		notificationEventJSONObject.put(
+			BladeNotificationPortletKeys.SENDER, _sender);
+	}
+
 	private static final Log _log = LogFactoryUtil.getLog(
 		BladeNotificationSubscriptionSender.class);
 
-	private String _value;
 	private String _sender;
+	private String _value;
 
 }

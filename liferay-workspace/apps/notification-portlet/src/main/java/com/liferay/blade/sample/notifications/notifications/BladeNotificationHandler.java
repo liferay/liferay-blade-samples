@@ -17,16 +17,12 @@
 package com.liferay.blade.sample.notifications.notifications;
 
 import com.liferay.blade.sample.notifications.constants.BladeNotificationPortletKeys;
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.model.Company;
-import com.liferay.portal.kernel.model.CompanyConstants;
-import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.UserNotificationEvent;
 import com.liferay.portal.kernel.notifications.BaseUserNotificationHandler;
 import com.liferay.portal.kernel.notifications.UserNotificationFeedEntry;
@@ -35,11 +31,13 @@ import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.Validator;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+/**
+ * @author Vilmos Papp
+ */
 @Component(
 	immediate = true,
 	property = "javax.portlet.name=" + BladeNotificationPortletKeys.BLADE_NOTIFICATION,
@@ -74,50 +72,68 @@ public class BladeNotificationHandler extends BaseUserNotificationHandler {
 
 			return userNotificationFeedEntry;
 		}
-		catch (Exception e) {
-			_log.error("Unable to interpret notification", e);
+		catch (Exception exception) {
+			_log.error("Unable to interpret notification", exception);
 		}
 
 		return null;
 	}
 
 	@Override
-	protected String getBody(UserNotificationEvent userNotificationEvent, ServiceContext serviceContext) throws Exception {
+	protected String getBody(
+			UserNotificationEvent userNotificationEvent,
+			ServiceContext serviceContext)
+		throws Exception {
 
 		JSONObject jsonObject = JSONFactoryUtil.createJSONObject(
 			userNotificationEvent.getPayload());
-		
-		String value = jsonObject.getString(BladeNotificationPortletKeys.SAMPLE_VALUE);
-		String sender = jsonObject.getString(BladeNotificationPortletKeys.SENDER);
+
+		String value = jsonObject.getString(
+			BladeNotificationPortletKeys.SAMPLE_VALUE);
+		String sender = jsonObject.getString(
+			BladeNotificationPortletKeys.SENDER);
 
 		String title = LanguageUtil.get(serviceContext.getLocale(), _TITLE_KEY);
 
-		String body = LanguageUtil.format(serviceContext.getLocale(), _BODY_KEY, new Object[] {sender, value});
+		String body = LanguageUtil.format(
+			serviceContext.getLocale(), _BODY_KEY,
+			new Object[] {sender, value});
 
-		String html = StringUtil.replace(_BODY_TEMPLATE, _BODY_REPLACEMENTS, new String[] {title, body});
-
-		return html;
+		return StringUtil.replace(
+			_BODY_TEMPLATE, _BODY_REPLACEMENTS, new String[] {title, body});
 	}
 
-    @Reference(unbind = "-")
-	protected void setCompanyLocalService(final CompanyLocalService companyLocalService) {
+	@Reference(unbind = "-")
+	protected void setCompanyLocalService(
+		final CompanyLocalService companyLocalService) {
+
 		_companyLocalService = companyLocalService;
 	}
 
-    @Reference(unbind = "-")
-	protected void setUserLocalService(final UserLocalService userLocalService) {
+	@Reference(unbind = "-")
+	protected void setUserLocalService(
+		final UserLocalService userLocalService) {
+
 		_userLocalService = userLocalService;
 	}
 
-	private CompanyLocalService _companyLocalService;
-    private UserLocalService _userLocalService;
+	private static final String _BODY_KEY =
+		"{0} has sent you a Blade Notification with value: {1}";
 
-	private static final String _BODY_KEY = "{0} has sent you a Blade Notification with value: {1}";
+	private static final String[] _BODY_REPLACEMENTS = {
+		"[$TITLE$]", "[$BODY$]"
+	};
+
+	private static final String _BODY_TEMPLATE =
+		"<div class=\"title\">[$TITLE$]</div><div class=\"body\">[$BODY$]" +
+			"</div>";
+
 	private static final String _TITLE_KEY = "Blade Notification";
 
-	private static final String _BODY_TEMPLATE = "<div class=\"title\">[$TITLE$]</div><div class=\"body\">[$BODY$]</div>";
-	private static final String[] _BODY_REPLACEMENTS = new String[] {"[$TITLE$]", "[$BODY$]"};
+	private static final Log _log = LogFactoryUtil.getLog(
+		BladeNotificationHandler.class);
 
-	private static final Log _log = LogFactoryUtil.getLog(BladeNotificationHandler.class);
+	private CompanyLocalService _companyLocalService;
+	private UserLocalService _userLocalService;
 
 }

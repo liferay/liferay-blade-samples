@@ -17,10 +17,8 @@
 package com.liferay.blade.sample.notifications.portlet;
 
 import com.liferay.blade.sample.notifications.constants.BladeNotificationPortletKeys;
-
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.SubscriptionLocalService;
-import com.liferay.portal.kernel.util.PortalUtil;
 
 import java.io.IOException;
 
@@ -32,7 +30,10 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-
+/**
+ * @author István András Dézsi
+ * @author Vilmos Papp
+ */
 @Component(
 	immediate = true,
 	property = {
@@ -49,17 +50,22 @@ import org.osgi.service.component.annotations.Reference;
 	service = Portlet.class
 )
 public class BladeNotificationPortlet extends MVCPortlet {
+
 	@Override
 	public void render(
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
 
-		renderRequest.setAttribute("subscriptionLocalService", _subscriptionLocalService);
+		renderRequest.setAttribute(
+			"subscriptionLocalService", _subscriptionLocalService);
+
 		super.render(renderRequest, renderResponse);
 	}
 
 	@Reference(unbind = "-")
-	protected void setSubscriptionLocalService(final SubscriptionLocalService subscriptionLocalService) {
+	protected void setSubscriptionLocalService(
+		final SubscriptionLocalService subscriptionLocalService) {
+
 		_subscriptionLocalService = subscriptionLocalService;
 	}
 
