@@ -166,12 +166,23 @@ Refer to this sample's Readmes for more information.
 | Liferay Workspace | [./liferay-workspace/apps/jsp-portlet](./liferay-workspace/apps/jsp-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-portlet)        |
 
+### JSP Portlet with Notification Framework
+
+**Template project description**:  Demonstrates a simple JSP portlet and the usage of Liferay's Notification framework.
+
+| Build tool | Link to project's source code                                                   |
+| ---------- | ------------------------------------------------------------------------------- |
+| Liferay Workspace | [./liferay-workspace/apps/notification-portlet](./liferay-workspace/apps/notification-portlet)   |
+
+
 ### JSP WAR Portlet
 
 | Build tool | Link to project's source code                                                   |
 | ---------- | ------------------------------------------------------------------------------- |
 | Liferay Workspace | [./liferay-workspace/wars/jsp-war-portlet](./liferay-workspace/wars/jsp-war-portlet)   |
 | Maven      | [./maven/apps/jsp-portlet](./maven/apps/jsp-war-portlet)        |
+
+
 
 ### OSGi Portlet
 
