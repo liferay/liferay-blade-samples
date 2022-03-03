@@ -8,9 +8,9 @@ following steps:
 
 1.  Add a blog entry with an image.
 
-2.  After saving the new blog entry, enter a value for the image's caption.
+1.  After saving the new blog entry, enter a value for the image's caption.
 
-3.  Search for the entry in the search bar by using the caption value. The
+1.  Search for the entry in the search bar by using the caption value. The
     matching blog entry is displayed in the search results.
 
 ## What API(s) and/or code components does this sample highlight? [](id=what-apis-and-or-code-components-does-this-sample-highlight)
