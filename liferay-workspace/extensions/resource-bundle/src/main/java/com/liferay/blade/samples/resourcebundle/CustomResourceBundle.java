@@ -19,12 +19,14 @@ package com.liferay.blade.samples.resourcebundle;
 import com.liferay.portal.kernel.language.UTF8Control;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.module.framework.ModuleServiceLifecycle;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Liferay
@@ -54,6 +56,9 @@ public class CustomResourceBundle extends ResourceBundle {
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		CustomResourceBundle.class);
+
+	@Reference(target = ModuleServiceLifecycle.PORTAL_INITIALIZED)
+	private ModuleServiceLifecycle _dataInitialized;
 
 	private final ResourceBundle _resourceBundle = ResourceBundle.getBundle(
 		"content.Language", UTF8Control.INSTANCE);
