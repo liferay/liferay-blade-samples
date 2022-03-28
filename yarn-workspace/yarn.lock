@@ -3899,7 +3899,7 @@ lie@~3.3.0:
   dependencies:
     immediate "~3.0.5"
 
-liferay-npm-build-support@^2.18.2, liferay-npm-build-support@^2.8.0:
+liferay-npm-build-support@^2.8.0:
   version "2.18.8"
   resolved "https://registry.yarnpkg.com/liferay-npm-build-support/-/liferay-npm-build-support-2.18.8.tgz#c6e096d83aa54f7d7f227e54669bdfe3bba4a46a"
   integrity sha512-2vgevWZgM8Rq3eGEJ06ZLL12VwMyJQ+9qiPhRQw/KIJmmbmyAOk0o325nQEgyhvKb2DimN4xVmEF/TZn7uzvMA==
@@ -3995,7 +3995,7 @@ liferay-npm-bundler-preset-standard@2.18.8:
     liferay-npm-bundler-plugin-replace-browser-modules "2.18.8"
     liferay-npm-bundler-plugin-resolve-linked-dependencies "2.18.8"
 
-liferay-npm-bundler@^2.18.2, liferay-npm-bundler@^2.8.0:
+liferay-npm-bundler@^2.8.0:
   version "2.18.8"
   resolved "https://registry.yarnpkg.com/liferay-npm-bundler/-/liferay-npm-bundler-2.18.8.tgz#bb830de122e64078772bcb115e7929eaad3f9390"
   integrity sha512-Zz/Fd02NufzvkYv7n3eb5ns18Le1GwecgbuGyyVXLGINncsxcxIeuR7hgb7pWtdti1g/6j4+Kyt8mwGFzK9hJw==
@@ -4308,9 +4308,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mississippi@^2.0.0:
   version "2.0.0"
@@ -5665,6 +5665,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
+simple-statistics@^7.0.2:
+  version "7.7.5"
+  resolved "https://registry.yarnpkg.com/simple-statistics/-/simple-statistics-7.7.5.tgz#b34ad7dc18f4dea7bce2cbd376c467147062e839"
+  integrity sha512-CYq683Yg2mb7M4mklQ6FtxEdsYeziGa2giaLvqXobfK1qVqZDKd7BIqLnngnKQSw9GsfNinbiScbfjc3IRWdQA==
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -6326,11 +6331,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vue@2.6.7:
-  version "2.6.7"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.7.tgz#254f188e7621d2d19ee28d0c0442c6d21b53ae2d"
-  integrity sha512-g7ADfQ82QU+j6F/bVDioVQf2ccIMYLuR4E8ev+RsDBlmwRkhGO3HhgF4PF9vpwjdPpxyb1zzLur2nQ2oIMAMEg==
 
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"
