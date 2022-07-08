@@ -79,10 +79,8 @@ public class RegionLocalServiceImpl extends RegionLocalServiceBaseImpl {
 
 			connection.close();
 		}
-		catch (SQLException sqlException) {
-			_log.error(
-				"Failed to retrieve data from external database!",
-				sqlException);
+		catch (SQLException sqle) {
+			_log.error("Failed to retrieve data from external database!", sqle);
 		}
 	}
 

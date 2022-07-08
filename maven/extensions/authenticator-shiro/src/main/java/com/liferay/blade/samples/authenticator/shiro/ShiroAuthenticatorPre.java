@@ -85,12 +85,10 @@ public class ShiroAuthenticatorPre implements Authenticator {
 
 			return FAILURE;
 		}
-		catch (AuthenticationException authenticationException) {
-			_log.error(
-				authenticationException.getMessage(), authenticationException);
+		catch (AuthenticationException ae) {
+			_log.error(ae.getMessage(), ae);
 
-			throw new AuthException(
-				authenticationException.getMessage(), authenticationException);
+			throw new AuthException(ae.getMessage(), ae);
 		}
 	}
 

@@ -52,8 +52,8 @@ public class ResourceUtil {
 
 			return stream.collect(Collectors.joining(System.lineSeparator()));
 		}
-		catch (UnsupportedEncodingException unsupportedEncodingException) {
-			throw unsupportedEncodingException;
+		catch (UnsupportedEncodingException uee) {
+			throw uee;
 		}
 		finally {
 			try {
@@ -61,7 +61,7 @@ public class ResourceUtil {
 					bufferedReader.close();
 				}
 			}
-			catch (IOException ioException) {
+			catch (IOException ioe) {
 			}
 
 			try {
@@ -69,7 +69,7 @@ public class ResourceUtil {
 					inputStream.close();
 				}
 			}
-			catch (IOException ioException) {
+			catch (IOException ioe) {
 			}
 		}
 	}

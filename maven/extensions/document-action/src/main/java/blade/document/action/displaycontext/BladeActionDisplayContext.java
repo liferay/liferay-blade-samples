@@ -137,8 +137,8 @@ public class BladeActionDisplayContext
 		try {
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 		}
-		catch (WindowStateException windowStateException) {
-			_log.error(windowStateException.getMessage(), windowStateException);
+		catch (WindowStateException wse) {
+			_log.error(wse.getMessage(), wse);
 		}
 
 		StringBuilder stringBuilder = new StringBuilder();
