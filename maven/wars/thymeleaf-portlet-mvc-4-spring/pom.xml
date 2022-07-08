@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.scope>compile</spring.scope>
-		<spring.security.version>5.1.4</spring.security.version>
+		<spring.security.version>5.5.7</spring.security.version>
 		<spring.version>5.1.5</spring.version>
 	</properties>
 	<dependencies>
@@ -126,7 +126,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>${spring.security.version}.RELEASE</version>
+			<version>${spring.security.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
