@@ -102,8 +102,8 @@ public class VerifySample {
 			_verifyBundleState(bundle);
 			_verifyBundleComponents(bundle);
 		}
-		catch (IOException ioException) {
-			_messages.append("ERROR: " + ioException.getMessage());
+		catch (IOException ioe) {
+			_messages.append("ERROR: " + ioe.getMessage());
 		}
 	}
 

@@ -79,8 +79,8 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 
 			javascript.append(")}");
 		}
-		catch (PortalException portalException) {
-			_log.error(portalException);
+		catch (PortalException pe) {
+			_log.error(pe);
 		}
 
 		return javascript.toString();
@@ -133,9 +133,8 @@ public class CustomScreenNameValidator implements ScreenNameValidator {
 				new CompanyServiceSettingsLocator(
 					companyId, CustomScreenName.SETTINGS_ID));
 		}
-		catch (ConfigurationException configurationException) {
-			_log.error(
-				"Error initializing the configuration", configurationException);
+		catch (ConfigurationException ce) {
+			_log.error("Error initializing the configuration", ce);
 		}
 
 		return null;

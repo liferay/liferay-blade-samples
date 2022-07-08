@@ -55,8 +55,8 @@ public class LogMaxFailures implements AuthFailure {
 						(lockout ? "" : "not") + " locked out.");
 			}
 		}
-		catch (PortalException portalException) {
-			_log.error(portalException.getMessage(), portalException);
+		catch (PortalException pe) {
+			_log.error(pe.getMessage(), pe);
 		}
 	}
 
@@ -78,8 +78,8 @@ public class LogMaxFailures implements AuthFailure {
 						(lockout ? "" : "not") + " locked out.");
 			}
 		}
-		catch (PortalException portalException) {
-			_log.error(portalException.getMessage(), portalException);
+		catch (PortalException pe) {
+			_log.error(pe.getMessage(), pe);
 		}
 	}
 
@@ -100,8 +100,8 @@ public class LogMaxFailures implements AuthFailure {
 						(lockout ? "" : "not") + " locked out.");
 			}
 		}
-		catch (PortalException portalException) {
-			_log.error(portalException.getMessage(), portalException);
+		catch (PortalException pe) {
+			_log.error(pe.getMessage(), pe);
 		}
 	}
 
