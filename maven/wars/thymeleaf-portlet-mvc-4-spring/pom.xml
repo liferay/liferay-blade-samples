@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.scope>compile</spring.scope>
 		<spring.security.version>5.1.4</spring.security.version>
-		<spring.version>5.1.5</spring.version>
+		<spring.version>5.2.21.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -97,7 +97,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>${spring.version}.RELEASE</version>
+			<version>${spring.version}</version>
 			<scope>${spring.scope}</scope>
 		</dependency>
 		<dependency>
