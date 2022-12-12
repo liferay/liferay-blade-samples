@@ -1,0 +1,4 @@
+Bundle-Name: angular-mvc-portlet
+Bundle-SymbolicName: com.liferay.example.angular.mvc.portlet
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.example.angular.mvc.portlet.constants
