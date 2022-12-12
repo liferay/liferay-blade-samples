@@ -21,3 +21,4 @@ plugins-sdk/dependencies/**/*.jar
 plugins-sdk/dist
 plugins-sdk/lib
 test-results
+/node_modules_cache
