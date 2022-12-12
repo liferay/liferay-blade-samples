@@ -32,9 +32,9 @@ When contributing a new sample, you **must** include accompanying documentation.
 ### Sample Code
 
 You can contribute additional template samples by creating the project for one
-of the three build tools and sending a pull request to
+of the possible build tools and sending a pull request to
 `liferay/liferay-blade-samples`. A repository admin will review the submission
-and replicate the project for the other three build tools, once the submission
+and replicate the project for the other supported build tools, once the submission
 is approved.
 
 ### Sample Docs
