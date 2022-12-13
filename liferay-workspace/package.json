@@ -2,6 +2,7 @@
     "private": true,
     "workspaces": {
         "packages": [
+            "apps/angular-remote-app",
             "apps/angular-mvc-portlet"
         ]
     }
