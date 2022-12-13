@@ -1,0 +1,21 @@
+assemble:
+    - from: dist
+      include: angular-remote-app/*
+      into: static/
+
+angular-remote-app:
+    cssURLs:
+        - angular-remote-app/*.css
+    friendlyURLMapping: angular-remote-app
+    htmlElementName: app-component
+    instanceable: true
+    name: Angular Remote App
+    portletCategoryName: category.remote-apps
+    type: customElement
+    urls:
+        - angular-remote-app/*.js
+        # To enable dev server run following command
+        # blade gw deploy && yarn start
+        # and then uncomment the line below
+        # - http://localhost:3000/static/js/bundle.js
+    useESM: true
