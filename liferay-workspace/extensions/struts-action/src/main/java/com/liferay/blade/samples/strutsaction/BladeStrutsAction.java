@@ -58,7 +58,8 @@ public class BladeStrutsAction extends BaseStrutsAction {
 	private static final Log _log = LogFactoryUtil.getLog(
 		BladeStrutsAction.class);
 
-	@Reference(target = "(osgi.web.symbolicname=blade.strutsaction)")
+	// TODO: Change the symbolicname here AND in bnd.bnd to a value unique to your system
+	@Reference(target = "(osgi.web.symbolicname=bladestrutsaction)")
 	private volatile ServletContext _servletContext;
 
 }
