@@ -1,0 +1,14 @@
+sourceCompatibility = "11";
+targetCompatibility = "11";
+
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly project(":modules:sample:sample-api")
+}
+
+buildService {
+	apiDir = "../sample-api/src/main/java"
+	testDir = "../sample-test/src/testIntegration/java"
+}
+
+group = "com.liferay.sample"

@@ -1,0 +1,3 @@
+Bundle-Name: sample-test
+Bundle-SymbolicName: com.liferay.sample.test
+Bundle-Version: 1.0.0
