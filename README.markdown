@@ -24,9 +24,9 @@ The projects follow the Liferay Workspace project style for gradle and maven.
 
 * `liferay-workspace` - in `gradle.properties`, Set `liferay.workspace.product`
   to the target product version.
-* `liferay-workspace-test-integration-sample` - You can find test project in
-  modules/sample/sample-test folder. Then run `gradlew buildService testIntegration`
-  in root folder of this sample workspace test project.
+* `liferay-workspace-test-integration-sample` - The test project is in 
+  modules/sample/sample-test folder. Run `gradlew buildService testIntegration` 
+  in modules/sample.
 * `maven` - Set the corresponding `release.portal.bom` found in
   `dependencyManagement`
 
