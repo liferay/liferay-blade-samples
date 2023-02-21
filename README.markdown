@@ -13,6 +13,8 @@ The template projects are categorized under two build tools:
 * `liferay-workspace` - A set of Liferay projects configured to work in a
   [Liferay Workspace](https://portal.liferay.dev/docs/7-2/reference/-/knowledge_base/r/liferay-workspace)
   environment.
+* `liferay-workspace-test-integration-sample` - A Liferay project configured to 
+  execute Integration Tests.
 * `maven` - A set of Liferay projects that can be bootstrapped onto the *Maven*
   development environment.
 
@@ -22,6 +24,9 @@ The projects follow the Liferay Workspace project style for gradle and maven.
 
 * `liferay-workspace` - in `gradle.properties`, Set `liferay.workspace.product`
   to the target product version.
+* `liferay-workspace-test-integration-sample` - The test project is in 
+  modules/sample/sample-test folder. Run `gradlew buildService testIntegration` 
+  in modules/sample.
 * `maven` - Set the corresponding `release.portal.bom` found in
   `dependencyManagement`
 
