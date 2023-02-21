@@ -28,7 +28,7 @@ jobs:
           cd ../maven
           mvn source-formatter:format
   Maven-Linux-JDK8:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -40,7 +40,7 @@ jobs:
         cd maven
         mvn clean package
   Maven-Linux-JDK11:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -76,7 +76,7 @@ jobs:
         cd maven
         mvn clean package
   Gradle-Linux-JDK8:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -88,7 +88,7 @@ jobs:
         cd liferay-workspace
         ./gradlew --no-daemon clean assemble
   Gradle-Linux-JDK11:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -153,7 +153,7 @@ jobs:
           ./gradlew --no-daemon buildService build testIntegration        
         
   Yarn-Linux-JDK8:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -165,7 +165,7 @@ jobs:
         cd yarn-workspace
         ./gradlew --no-daemon clean build
   Yarn-Linux-JDK11:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
