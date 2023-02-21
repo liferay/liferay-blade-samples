@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Redux Store",
 	"dependencies": {
-		"papaparse": "^4.6.3"
+		"papaparse": "^5.2.0"
 	},
 	"devDependencies": {
 		"liferay-npm-bundler": "^2.8.0",
