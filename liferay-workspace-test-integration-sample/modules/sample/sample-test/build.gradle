@@ -1,16 +1,16 @@
 dependencies {
-	testIntegrationCompile group: "com.liferay", name: "com.liferay.arquillian.extension.junit.bridge"
-	testIntegrationCompile group: "com.liferay.portal", name: "release.portal.api"
-	testIntegrationCompile group: "junit", name: "junit", version: "4.13.1"
-	testIntegrationCompile group: "org.apache.logging.log4j", name: "log4j-api", version: "2.18.0"
-	testIntegrationCompile group: "org.apache.logging.log4j", name: "log4j-core", version: "2.18.0"
-	testIntegrationCompile group: "org.slf4j", name: "log4j-over-slf4j", version: "1.7.25"
-	testIntegrationCompile project(":modules:sample:sample-api")
-	testIntegrationCompile project(":modules:sample:sample-service")
+	testIntegrationImplementation group: "com.liferay", name: "com.liferay.arquillian.extension.junit.bridge"
+	testIntegrationImplementation group: "com.liferay.portal", name: "release.portal.api"
+	testIntegrationImplementation group: "junit", name: "junit", version: "4.13.1"
+	testIntegrationImplementation group: "org.apache.logging.log4j", name: "log4j-api", version: "2.18.0"
+	testIntegrationImplementation group: "org.apache.logging.log4j", name: "log4j-core", version: "2.18.0"
+	testIntegrationImplementation group: "org.slf4j", name: "log4j-over-slf4j", version: "1.7.25"
+	testIntegrationImplementation project(":modules:sample:sample-api")
+	testIntegrationImplementation project(":modules:sample:sample-service")
 
-	testModules group: "com.liferay", name: "com.liferay.arquillian.extension.junit.bridge.connector"
-	testModules group: "com.liferay.portal", name: "com.liferay.portal.test", version: "latest.release"
-	testModules group: "com.liferay.portal", name: "com.liferay.portal.test.integration", version: "latest.release"
+	testModules group: "com.liferay", name: "com.liferay.arquillian.extension.junit.bridge.connector", version: "1.0.1"
+	testModules group: "com.liferay.portal", name: "com.liferay.portal.test", version: "14.2.2"
+	testModules group: "com.liferay.portal", name: "com.liferay.portal.test.integration", version: "5.3.2"
 	testModules group: "org.apache.aries.jmx", name: "org.apache.aries.jmx.core", version: "latest.release"
 	testModules project(":modules:sample:sample-api")
 	testModules project(":modules:sample:sample-service")
