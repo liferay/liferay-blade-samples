@@ -154,7 +154,7 @@ jobs:
         shell: bash
         working-directory: ./liferay-workspace-test-integration-sample
         run: |
-          ./gradlew --no-daemon buildService build testIntegration        
+          ./gradlew --no-daemon clean buildService build testIntegration
         
   Yarn-Linux-JDK8:
     runs-on: ubuntu-latest

@@ -6,48 +6,37 @@ buildscript {
 	}
 
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "3.0.0"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "5.0.9"
 	}
 }
 
 apply plugin: "com.liferay.css.builder"
-apply plugin: "java-library"
 
 dependencies {
-	api group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.framework", version: "5.1.0"
-	api group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.security", version: "5.1.0"
-	api(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
+	implementation group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.framework", version: "5.3.2"
+	implementation group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.security", version: "5.3.2"
+	implementation(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
 		exclude group: "javax.validation", module: "validation-api"
 	}
-	api group: "org.springframework", name: "spring-aop", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-beans", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-context", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-core", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-expression", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-jcl", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-web", version: "5.1.5.RELEASE"
-	api group: "org.springframework", name: "spring-webmvc", version: "5.1.5.RELEASE"
-	api group: "org.springframework.security", name: "spring-security-config", version: "5.1.4.RELEASE"
-	api group: "org.springframework.security", name: "spring-security-core", version: "5.1.4.RELEASE"
-	api group: "org.springframework.security", name: "spring-security-web", version: "5.1.4.RELEASE"
+	implementation (group: "org.springframework", name: "spring-aop", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-beans", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-context", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-core", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-expression", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-jcl", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-web", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework", name: "spring-webmvc", version: "5.3.18") {force = true}
+	implementation (group: "org.springframework.security", name: "spring-security-config", version: "5.5.1") {force = true}
+	implementation (group: "org.springframework.security", name: "spring-security-core", version: "5.5.1") {force = true}
+	implementation (group: "org.springframework.security", name: "spring-security-web", version: "5.5.1") {force = true}
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "javax.portlet", name: "portlet-api"
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
 	compileOnly group: "javax.validation", name: "validation-api", version: "2.0.1.Final"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 	compileOnly group: "org.slf4j", name: "slf4j-api"
-	cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "3.0.3"
+
+	cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "3.1.3"
 
 	portalCommonCSS group: "com.liferay", name: "com.liferay.frontend.css.common"
-}
-
-war {
-	dependsOn buildCSS
-	exclude "**/*.scss"
-
-	filesMatching("**/.sass-cache/") {
-		it.path = it.path.replace(".sass-cache/", "")
-	}
-
-	includeEmptyDirs = false
 }
