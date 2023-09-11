@@ -73,7 +73,7 @@
 			<plugin>
 				<groupId>com.liferay</groupId>
 				<artifactId>com.liferay.portal.tools.bundle.support</artifactId>
-				<version>3.7.3</version>
+				<version>3.7.4</version>
 				<executions>
 					<execution>
 						<id>clean</id>
