@@ -11,19 +11,20 @@ buildscript {
 }
 
 apply plugin: "com.liferay.css.builder"
+apply plugin: "java-library"
 
 dependencies {
-	compile(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
+	api(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
 		exclude group: "javax.validation", module: "validation-api"
 	}
-	compile group: "org.springframework", name: "spring-aop", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-beans", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-context", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-core", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-expression", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-web", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-webmvc", version: "4.1.9.RELEASE"
-	compile group: "org.springframework", name: "spring-webmvc-portlet", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-aop", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-beans", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-context", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-core", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-expression", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-web", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-webmvc", version: "4.1.9.RELEASE"
+	api group: "org.springframework", name: "spring-webmvc-portlet", version: "4.1.9.RELEASE"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "javax.portlet", name: "portlet-api"
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
