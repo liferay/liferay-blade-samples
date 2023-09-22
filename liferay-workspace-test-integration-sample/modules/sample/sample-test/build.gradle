@@ -9,9 +9,8 @@ dependencies {
 	testIntegrationImplementation project(":modules:sample:sample-service")
 
 	testModules group: "com.liferay", name: "com.liferay.arquillian.extension.junit.bridge.connector"
-	testModules group: "com.liferay.portal", name: "com.liferay.portal.test.integration", version: "6.0.34"
-	testModules group: "com.liferay.portal", name: "com.liferay.portal.test", version: "19.0.0"
 	testModules group: "com.liferay.portal", name: "com.liferay.portal.test.integration", version: "latest.release"
+	testModules group: "com.liferay.portal", name: "com.liferay.portal.test", version: "latest.release"
 	testModules group: "org.apache.aries.jmx", name: "org.apache.aries.jmx.core", version: "latest.release"
 	testModules project(":modules:sample:sample-api")
 	testModules project(":modules:sample:sample-service")

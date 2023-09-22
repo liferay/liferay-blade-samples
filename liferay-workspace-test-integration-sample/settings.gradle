@@ -1,13 +1,7 @@
 buildscript {
 	dependencies {
-		classpath group: "org.yaml", name: "snakeyaml", version: "1.32"
-		classpath group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "5.3.0"
-		classpath group: "com.github.docker-java", name: "docker-java-transport", version: "3.2.8"
-		classpath(group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "8.0.8") {
-			exclude group: "biz.aQute.bnd", module: "biz.aQute.bnd"
-		}
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "8.0.8"
 	}
-	1
 	repositories {
 		maven {
 			url "https://repository.liferay.com/nexus/content/groups/public"
