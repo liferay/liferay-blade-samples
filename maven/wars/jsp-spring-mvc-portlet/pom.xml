@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.scope>compile</spring.scope>
-		<spring.version>4.1.9</spring.version>
+		<spring.version>5.2.24.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -79,7 +79,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}.RELEASE</version>
+			<version>${spring.version}</version>
 			<scope>${spring.scope}</scope>
 		</dependency>
 		<dependency>
