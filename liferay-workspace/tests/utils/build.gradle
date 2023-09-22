@@ -1,10 +1,10 @@
 dependencies {
-	compile gradleApi()
-	compile gradleTestKit()
-	compile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.5.0"
-	compile group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "3.5.0"
-	compile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
-	compile group: "commons-io", name: "commons-io", version: "2.5"
-	compile group: "junit", name: "junit", version: "4.12"
-	compile group: "org.seleniumhq.selenium", name: "selenium-java", version: "3.8.1"
+	api gradleApi()
+	api gradleTestKit()
+	api group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "5.3.0"
+	api group: "biz.aQute.bnd", name: "biz.aQute.remote.api", version: "5.3.0"
+	api group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.20.0"
+	api group: "commons-io", name: "commons-io", version: "2.5"
+	api group: "junit", name: "junit", version: "4.12"
+	api group: "org.seleniumhq.selenium", name: "selenium-java", version: "3.8.1"
 }

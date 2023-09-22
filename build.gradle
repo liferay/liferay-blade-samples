@@ -139,7 +139,7 @@ configurations {
 }
 
 dependencies {
-	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.5.0"
+	bnd group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "5.3.0"
 }
 
 repositories {

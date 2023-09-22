@@ -1,14 +1,13 @@
 apply plugin: 'groovy'
 
 dependencies {
-	testCompile gradleApi()
-	testCompile gradleTestKit()
-	testCompile group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
-	testCompile group: "com.squareup.okhttp3", name: "okhttp", version: "3.3.1"
-	testCompile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
-	testCompile group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
-
-	testCompile project(":tests:utils")
+	testImplementation gradleApi()
+	testImplementation gradleTestKit()
+	testImplementation group: "biz.aQute.bnd", name: "biz.aQute.bnd", version: "3.3.0"
+	testImplementation group: "com.squareup.okhttp3", name: "okhttp", version: "3.3.1"
+	testImplementation group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.4"
+	testImplementation group: "org.spockframework", name: "spock-core", version: "1.0-groovy-2.4"
+	testImplementation project(":tests:utils")
 }
 
 repositories {
@@ -29,7 +28,8 @@ stopTestableTomcat {
 
 testIntegration {
 
-	rootProject.subprojects { p ->
+	rootProject.subprojects {
+		p ->
 		p.plugins.withType(JavaPlugin) {
 			dependsOn p.tasks["jar"]
 		}
@@ -40,11 +40,14 @@ testIntegration {
 
 	}
 
-	outputs.upToDateWhen { false }
+	outputs.upToDateWhen {
+		false
+	}
 
 	def moduleOutputPaths = []
 
-	rootProject.subprojects { p ->
+	rootProject.subprojects {
+		p ->
 		def tempOutput
 
 		p.plugins.withType(WarPlugin) {
@@ -63,10 +66,11 @@ testIntegration {
 
 		}
 
-
 	}
 
-	moduleOutputPaths.removeAll { it.contains("test") }
+	moduleOutputPaths.removeAll {
+		it.contains("test")
+	}
 
 	systemProperty 'bladeURL', System.getProperty('bladeURL', "https://repository.liferay.com/nexus/content/groups/public//com/liferay/blade/com.liferay.blade.cli/3.9.0/com.liferay.blade.cli-3.9.0.jar")
 	systemProperty 'moduleOutputPaths', moduleOutputPaths.unique().join(",")

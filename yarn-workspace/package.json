@@ -2,11 +2,11 @@
     "private": true,
     "workspaces": {
         "packages": [
-            "modules/display-data-widget",
-            "modules/redux-store",
             "modules/react-provider",
-            "modules/input-data-widget",
-            "modules/redux-provider"
+            "modules/redux-store",
+            "modules/display-data-widget",
+            "modules/redux-provider",
+            "modules/input-data-widget"
         ]
     }
 }

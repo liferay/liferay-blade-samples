@@ -11,29 +11,30 @@ buildscript {
 }
 
 apply plugin: "com.liferay.css.builder"
+apply plugin: "java-library"
 
 dependencies {
-	compile group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.framework", version: "5.1.0"
-	compile group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.security", version: "5.1.0"
-	compile(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
+	api group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.framework", version: "5.1.0"
+	api group: "com.liferay.portletmvc4spring", name: "com.liferay.portletmvc4spring.security", version: "5.1.0"
+	api(group: "org.hibernate.validator", name: "hibernate-validator", version: "6.0.14.Final") {
 		exclude group: "javax.validation", module: "validation-api"
 	}
-	compile group: "org.springframework", name: "spring-aop", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-beans", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-context", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-core", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-expression", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-jcl", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-web", version: "5.1.5.RELEASE"
-	compile group: "org.springframework", name: "spring-webmvc", version: "5.1.5.RELEASE"
-	compile group: "org.springframework.security", name: "spring-security-config", version: "5.1.4.RELEASE"
-	compile group: "org.springframework.security", name: "spring-security-core", version: "5.1.4.RELEASE"
-	compile group: "org.springframework.security", name: "spring-security-web", version: "5.1.4.RELEASE"
-	compile(group: "org.thymeleaf", name: "thymeleaf", version: "3.0.11.RELEASE") {
+	api group: "org.springframework", name: "spring-aop", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-beans", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-context", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-core", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-expression", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-jcl", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-web", version: "5.1.5.RELEASE"
+	api group: "org.springframework", name: "spring-webmvc", version: "5.1.5.RELEASE"
+	api group: "org.springframework.security", name: "spring-security-config", version: "5.1.4.RELEASE"
+	api group: "org.springframework.security", name: "spring-security-core", version: "5.1.4.RELEASE"
+	api group: "org.springframework.security", name: "spring-security-web", version: "5.1.4.RELEASE"
+	api(group: "org.thymeleaf", name: "thymeleaf", version: "3.0.11.RELEASE") {
 		exclude group: "ognl", module: "ognl"
 		exclude group: "org.slf4j", module: "slf4j-api"
 	}
-	compile(group: "org.thymeleaf", name: "thymeleaf-spring5", version: "3.0.11.RELEASE") {
+	api(group: "org.thymeleaf", name: "thymeleaf-spring5", version: "3.0.11.RELEASE") {
 		exclude group: "org.slf4j", module: "slf4j-api"
 	}
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"

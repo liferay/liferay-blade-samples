@@ -1,18 +1,5 @@
-buildscript {
-	dependencies {
-		classpath group: "com.gradle", name: "gradle-enterprise-gradle-plugin", version: "3.1"
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
-	}
-
-	repositories {
-		maven {
-			url "https://plugins.gradle.org/m2/"
-			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
-		}
-	}
-}
-
-subprojects { subproject ->
+subprojects {
+	subproject ->
 	buildscript {
 		repositories {
 			maven {
@@ -30,19 +17,6 @@ subprojects { subproject ->
 			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
 		}
 	}
-}
-
-apply plugin: "com.gradle.build-scan"
-
-repositories {
-	maven {
-		url "https://repository-cdn.liferay.com/nexus/content/groups/public"
-	}
-}
-
-buildScan {
-	termsOfServiceUrl = "https://gradle.com/terms-of-service"
-	termsOfServiceAgree = "yes"
 }
 
 initBundle {

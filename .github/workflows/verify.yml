@@ -5,7 +5,7 @@ on:
 jobs:
   CheckSourceFormatting:
     name: Check source formatting
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,10 +43,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
+    - name: Setup Java 11
+      uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: 11.0.19
+        distribution: 'zulu'
+        cache: gradle
     - name: Build with Maven
       run: |
         cd maven
@@ -91,10 +93,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
+    - name: Setup Java 11
+      uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: 11.0.19
+        distribution: 'zulu'
+        cache: gradle
     - name: Build with Gradle
       run: |
         cd liferay-workspace
@@ -134,7 +138,7 @@ jobs:
       - name: Setup Java 11
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: 11.0.19
           distribution: 'zulu'
           cache: gradle
 
@@ -150,7 +154,7 @@ jobs:
         shell: bash
         working-directory: ./liferay-workspace-test-integration-sample
         run: |
-          ./gradlew --no-daemon buildService build testIntegration        
+          ./gradlew --no-daemon clean buildService build testIntegration
         
   Yarn-Linux-JDK8:
     runs-on: ubuntu-latest
@@ -168,10 +172,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
+    - name: Setup Java 11
+      uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: 11.0.19
+        distribution: 'zulu'
+        cache: gradle
     - name: Build with Yarn
       run: |
         cd yarn-workspace
